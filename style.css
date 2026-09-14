@@ -19,6 +19,7 @@ html, body {
   color: var(--ink);
   font-family: 'Inter', sans-serif;
 }
+button { touch-action: manipulation; }
 @media (prefers-reduced-motion: reduce) {
   * { animation: none !important; transition: none !important; }
 }
@@ -33,7 +34,7 @@ html, body {
   max-width: 1100px;
   margin: 0 auto 22px;
   display: flex;
-  align-items: baseline;
+  align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 10px 12px;
@@ -68,11 +69,15 @@ html, body {
   font-family: 'Inter', sans-serif;
   font-size: 12px;
   font-weight: 600;
-  padding: 6px 12px;
+  padding: 8px 14px;
+  min-height: 36px;
   border: 1px solid rgba(184,134,59,0.6);
   background: transparent;
   color: #f0ead8;
   cursor: pointer;
+  touch-action: manipulation;
+  position: relative;
+  z-index: 1;
 }
 .masthead-btn:hover { background: rgba(184,134,59,0.18); }
 .masthead-btn:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
@@ -152,6 +157,7 @@ html, body {
   background: var(--gold);
   color: #221a0d;
   cursor: pointer;
+  touch-action: manipulation;
   width: 100%;
   margin-top: 12px;
 }
