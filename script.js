@@ -353,37 +353,58 @@ async function deleteEntry(id) {
   }
 }
 
-function highlightMatch(text, query) {
+function highlightMatches(text, terms) {
   const str = text == null ? '' : String(text);
-  if (!query) return escapeHtml(str);
+  if (!terms || !terms.length) return escapeHtml(str);
   const lowerStr = str.toLowerCase();
-  let cursor = 0;
-  let idx = lowerStr.indexOf(query, cursor);
-  if (idx === -1) return escapeHtml(str);
-  let result = '';
-  while (idx !== -1) {
-    result += escapeHtml(str.slice(cursor, idx));
-    result += `<mark class="search-hit">${escapeHtml(str.slice(idx, idx + query.length))}</mark>`;
-    cursor = idx + query.length;
-    idx = lowerStr.indexOf(query, cursor);
+  const ranges = [];
+  terms.forEach(term => {
+    if (!term) return;
+    let idx = lowerStr.indexOf(term);
+    while (idx !== -1) {
+      ranges.push([idx, idx + term.length]);
+      idx = lowerStr.indexOf(term, idx + 1);
+    }
+  });
+  if (!ranges.length) return escapeHtml(str);
+  ranges.sort((a, b) => a[0] - b[0]);
+  const merged = [ranges[0]];
+  for (let i = 1; i < ranges.length; i++) {
+    const last = merged[merged.length - 1];
+    const cur = ranges[i];
+    if (cur[0] <= last[1]) {
+      last[1] = Math.max(last[1], cur[1]);
+    } else {
+      merged.push(cur);
+    }
   }
+  let result = '';
+  let cursor = 0;
+  merged.forEach(([start, end]) => {
+    result += escapeHtml(str.slice(cursor, start));
+    result += `<mark class="search-hit">${escapeHtml(str.slice(start, end))}</mark>`;
+    cursor = end;
+  });
   result += escapeHtml(str.slice(cursor));
   return result;
 }
 
 function renderEntries() {
-  const q = document.getElementById('searchInput').value.trim().toLowerCase();
+  const raw = document.getElementById('searchInput').value.trim().toLowerCase();
+  const terms = raw.split(/\s+/).filter(Boolean);
+  const modeInput = document.querySelector('input[name="searchMode"]:checked');
+  const mode = modeInput ? modeInput.value : 'and';
   const container = document.getElementById('entries');
   const emptyMsg = document.getElementById('emptyMsg');
   container.innerHTML = '';
 
   const filtered = allEntries.filter(e => {
-    if (!q) return true;
+    if (!terms.length) return true;
     const hay = [e.character, e.parent1, e.parent2, e.notes,
       ...(e.blue || []).map(f => f.name), ...(e.red || []).map(f => f.name),
       ...(e.green || []).map(f => f.name), ...(e.white || []).map(f => f.name)]
       .filter(Boolean).join(' ').toLowerCase();
-    return hay.includes(q);
+    return mode === 'or' ? terms.some(t => hay.includes(t)) : terms.every(t => hay.includes(t));
   });
 
   document.getElementById('countLabel').textContent = allEntries.length + ' 頭 登録';
@@ -401,21 +422,21 @@ function renderEntries() {
 
     const chips = [];
     const mark = v => v ? '○' : '×';
-    const stackLabel = f => `${highlightMatch(f.name, q)}<${mark(f.self)},${mark(f.parent1)},${mark(f.parent2)}>`;
+    const stackLabel = f => `${highlightMatches(f.name, terms)}<${mark(f.self)},${mark(f.parent1)},${mark(f.parent2)}>`;
     const pushChip = (color, f) => chips.push(`<span class="chip ${color}${f.self ? '' : ' muted'}">${stackLabel(f)}</span>`);
     (entry.blue || []).forEach(f => pushChip('blue', f));
     (entry.red || []).forEach(f => pushChip('red', f));
     (entry.green || []).forEach(f => pushChip('green', f));
     (entry.white || []).forEach(f => pushChip('white', f));
 
-    const parents = [entry.parent1, entry.parent2].filter(Boolean).map(p => highlightMatch(p, q)).join(' × ');
+    const parents = [entry.parent1, entry.parent2].filter(Boolean).map(p => highlightMatches(p, terms)).join(' × ');
 
     row.innerHTML = `
       <div>
-        <div class="entry-name">${highlightMatch(entry.character, q)}</div>
+        <div class="entry-name">${highlightMatches(entry.character, terms)}</div>
         ${parents ? `<div class="entry-parents">継承元: ${parents}</div>` : ''}
         <div class="chips">${chips.join('') || '<span style="color:var(--ink-soft);font-size:12px;">因子未登録</span>'}</div>
-        ${entry.notes ? `<div class="entry-notes">${highlightMatch(entry.notes, q)}</div>` : ''}
+        ${entry.notes ? `<div class="entry-notes">${highlightMatches(entry.notes, terms)}</div>` : ''}
       </div>
       <button class="entry-del" data-id="${entry.id}">削除</button>
     `;
@@ -425,6 +446,7 @@ function renderEntries() {
 }
 
 document.getElementById('searchInput').addEventListener('input', renderEntries);
+document.querySelectorAll('input[name="searchMode"]').forEach(r => r.addEventListener('change', renderEntries));
 
 fillConfigForm();
 resetForm();
