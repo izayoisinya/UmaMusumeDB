@@ -11,6 +11,7 @@ class ConflictError extends Error {
 let config = loadConfig();
 let currentSha = null;
 let allEntries = [];
+let editingEntryId = null;
 
 const THEME_KEY = 'umaFactorLedger:theme';
 
@@ -262,7 +263,33 @@ function closeModal() {
   document.querySelectorAll('.modal').forEach(m => { m.hidden = true; });
 }
 
-document.getElementById('openRegisterModalBtn').addEventListener('click', () => openModal('registerModal'));
+function setRegisterModalMode(isEditing) {
+  editingEntryId = isEditing;
+  document.getElementById('registerModalTitle').textContent = isEditing ? '因子を編集' : '因子を登録';
+  document.getElementById('saveEntryBtn').textContent = isEditing ? 'この内容で更新' : 'この内容を保存';
+}
+
+document.getElementById('openRegisterModalBtn').addEventListener('click', () => {
+  resetForm();
+  setRegisterModalMode(null);
+  openModal('registerModal');
+});
+
+function startEditEntry(id) {
+  const entry = allEntries.find(e => e.id === id);
+  if (!entry) return;
+  resetForm();
+  setRegisterModalMode(id);
+  document.getElementById('fCharacter').value = entry.character || '';
+  document.getElementById('fParent1').value = entry.parent1 || '';
+  document.getElementById('fParent2').value = entry.parent2 || '';
+  fillFactorList('blueList', entry.blue);
+  fillFactorList('redList', entry.red);
+  fillFactorList('greenList', entry.green);
+  fillFactorList('whiteList', entry.white);
+  document.getElementById('fNotes').value = entry.notes || '';
+  openModal('registerModal');
+}
 document.getElementById('openGithubModalBtn').addEventListener('click', () => openModal('githubModal'));
 document.getElementById('openPromptModalBtn').addEventListener('click', () => openModal('promptModal'));
 document.querySelectorAll('.modal-close-btn').forEach(btn => btn.addEventListener('click', closeModal));
@@ -324,6 +351,7 @@ function resetForm() {
   });
   document.getElementById('pasteJson').value = '';
   setStatus('');
+  setRegisterModalMode(null);
 }
 
 // --- save / storage (GitHub Contents API) ---
@@ -335,7 +363,7 @@ document.getElementById('entryForm').addEventListener('submit', async e => {
   if (!character) { setStatus('キャラ名を入力してください。', true); return; }
 
   const entry = {
-    id: 'factor_' + Date.now() + '_' + Math.random().toString(36).slice(2, 7),
+    id: editingEntryId || ('factor_' + Date.now() + '_' + Math.random().toString(36).slice(2, 7)),
     character,
     parent1: document.getElementById('fParent1').value.trim(),
     parent2: document.getElementById('fParent2').value.trim(),
@@ -347,14 +375,17 @@ document.getElementById('entryForm').addEventListener('submit', async e => {
     savedAt: new Date().toISOString()
   };
 
-  const updated = [entry, ...allEntries];
-  setStatus('保存しています…');
+  const isEditing = !!editingEntryId;
+  const updated = isEditing
+    ? allEntries.map(e => e.id === editingEntryId ? entry : e)
+    : [entry, ...allEntries];
+  setStatus(isEditing ? '更新しています…' : '保存しています…');
   try {
-    await saveEntriesToGitHub(updated, `因子登録: ${character}`);
+    await saveEntriesToGitHub(updated, `${isEditing ? '因子編集' : '因子登録'}: ${character}`);
     allEntries = updated;
     renderEntries();
     resetForm();
-    setStatus('保存しました。');
+    setStatus(isEditing ? '更新しました。' : '保存しました。');
     setTimeout(closeModal, 700);
   } catch (err) {
     console.error(err);
@@ -482,12 +513,16 @@ function renderEntries() {
     row.innerHTML = `
       <div class="entry-top">
         <div class="entry-name">${highlightMatches(entry.character, terms)}</div>
-        <button class="entry-del" data-id="${entry.id}">削除</button>
+        <div class="entry-actions">
+          <button class="entry-edit" data-id="${entry.id}">編集</button>
+          <button class="entry-del" data-id="${entry.id}">削除</button>
+        </div>
       </div>
       ${parents ? `<div class="entry-parents">継承元: ${parents}</div>` : ''}
       <div class="chips">${chips.join('') || '<span style="color:var(--ink-soft);font-size:12px;">因子未登録</span>'}</div>
       ${entry.notes ? `<div class="entry-notes">${highlightMatches(entry.notes, terms)}</div>` : ''}
     `;
+    row.querySelector('.entry-edit').addEventListener('click', () => startEditEntry(entry.id));
     row.querySelector('.entry-del').addEventListener('click', () => deleteEntry(entry.id));
     container.appendChild(row);
   });
