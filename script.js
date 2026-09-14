@@ -1,5 +1,7 @@
 const CONFIG_KEY = 'umaFactorLedger:githubConfig';
 const DATA_PATH = 'data/factors.json';
+const DEFAULT_OWNER = 'izayoisinya';
+const DEFAULT_REPO = 'UmaMusumeDB';
 
 class ConflictError extends Error {
   constructor() {
@@ -54,15 +56,18 @@ function clearStoredConfig() {
 }
 
 function contentsApiUrl() {
-  return `https://api.github.com/repos/${encodeURIComponent(config.owner)}/${encodeURIComponent(config.repo)}/contents/${DATA_PATH}`;
+  const owner = (config && config.owner) || DEFAULT_OWNER;
+  const repo = (config && config.repo) || DEFAULT_REPO;
+  return `https://api.github.com/repos/${encodeURIComponent(owner)}/${encodeURIComponent(repo)}/contents/${DATA_PATH}`;
 }
 function contentsApiUrlForGet() {
   const url = contentsApiUrl();
-  return config.branch ? `${url}?ref=${encodeURIComponent(config.branch)}` : url;
+  const branch = config && config.branch;
+  return branch ? `${url}?ref=${encodeURIComponent(branch)}` : url;
 }
 function authHeaders() {
   const headers = { 'Accept': 'application/vnd.github+json' };
-  if (config.token) headers['Authorization'] = `Bearer ${config.token}`;
+  if (config && config.token) headers['Authorization'] = `Bearer ${config.token}`;
   return headers;
 }
 
@@ -106,7 +111,7 @@ async function saveEntriesToGitHub(newEntries, commitMessage) {
     message: commitMessage,
     content: encodeUtf8Base64(JSON.stringify(newEntries, null, 2)),
   };
-  if (config.branch) body.branch = config.branch;
+  if (config && config.branch) body.branch = config.branch;
   if (currentSha) body.sha = currentSha;
 
   const res = await fetch(contentsApiUrl(), {
@@ -135,11 +140,10 @@ const cfgSaveBtn = document.getElementById('cfgSaveBtn');
 const cfgClearBtn = document.getElementById('cfgClearBtn');
 
 function fillConfigForm() {
-  if (!config) return;
-  cfgOwner.value = config.owner || '';
-  cfgRepo.value = config.repo || '';
-  cfgBranch.value = config.branch || '';
-  cfgToken.value = config.token || '';
+  cfgOwner.value = (config && config.owner) || DEFAULT_OWNER;
+  cfgRepo.value = (config && config.repo) || DEFAULT_REPO;
+  cfgBranch.value = (config && config.branch) || '';
+  cfgToken.value = (config && config.token) || '';
 }
 
 function setCfgStatus(msg, isError) {
@@ -357,8 +361,7 @@ function resetForm() {
 // --- save / storage (GitHub Contents API) ---
 document.getElementById('entryForm').addEventListener('submit', async e => {
   e.preventDefault();
-  if (!config) { setStatus('先にGitHub連携設定を保存してください。', true); return; }
-  if (!config.token) { setStatus('保存にはPATが必要です。GitHub連携設定でPATを入力してください。', true); return; }
+  if (!config || !config.token) { setStatus('保存にはPATが必要です。GitHub連携設定でPATを入力してください。', true); return; }
   const character = document.getElementById('fCharacter').value.trim();
   if (!character) { setStatus('キャラ名を入力してください。', true); return; }
 
@@ -398,7 +401,6 @@ document.getElementById('entryForm').addEventListener('submit', async e => {
 });
 
 async function loadEntries() {
-  if (!config) { renderEntries(); return; }
   setListStatus('読み込み中…');
   try {
     const { sha, entries } = await fetchFactorsRaw();
