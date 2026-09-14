@@ -474,9 +474,64 @@ function matchesAnyTerm(text, terms) {
   return terms.some(t => t && lowerStr.includes(t));
 }
 
+// --- 検索欄のタグ入力(必須/任意) ---
+const requiredTags = [];
+const optionalTags = [];
+
+function renderTagBox(boxId, tags, chipClass) {
+  const box = document.getElementById(boxId);
+  box.querySelectorAll('.tag-chip').forEach(el => el.remove());
+  const input = box.querySelector('input');
+  tags.forEach((tag, i) => {
+    const chip = document.createElement('span');
+    chip.className = 'tag-chip' + (chipClass ? ' ' + chipClass : '');
+    chip.innerHTML = `${escapeHtml(tag)}<button type="button" class="tag-remove" aria-label="削除">×</button>`;
+    chip.querySelector('.tag-remove').addEventListener('click', () => {
+      tags.splice(i, 1);
+      renderTagBox(boxId, tags, chipClass);
+      renderEntries();
+    });
+    box.insertBefore(chip, input);
+  });
+}
+
+function setupTagInput(boxId, inputId, tags, chipClass) {
+  const input = document.getElementById(inputId);
+  const commit = () => {
+    const val = input.value.trim();
+    if (val) {
+      tags.push(val);
+      input.value = '';
+      renderTagBox(boxId, tags, chipClass);
+    }
+    renderEntries();
+  };
+  input.addEventListener('keydown', e => {
+    if (e.key === ' ' || e.key === 'Enter') {
+      e.preventDefault();
+      commit();
+    } else if (e.key === 'Backspace' && !input.value && tags.length) {
+      tags.pop();
+      renderTagBox(boxId, tags, chipClass);
+      renderEntries();
+    }
+  });
+  input.addEventListener('blur', () => { if (input.value.trim()) commit(); });
+  input.addEventListener('input', renderEntries);
+}
+
+function getFieldTerms(inputId, tags) {
+  const partial = document.getElementById(inputId).value.trim().toLowerCase();
+  const committed = tags.map(t => t.toLowerCase());
+  return partial ? [...committed, partial] : committed;
+}
+
+setupTagInput('searchRequiredBox', 'searchRequiredInput', requiredTags, 'required');
+setupTagInput('searchOptionalBox', 'searchOptionalInput', optionalTags, 'optional');
+
 function renderEntries() {
-  const requiredTerms = document.getElementById('searchRequired').value.trim().toLowerCase().split(/\s+/).filter(Boolean);
-  const optionalTerms = document.getElementById('searchOptional').value.trim().toLowerCase().split(/\s+/).filter(Boolean);
+  const requiredTerms = getFieldTerms('searchRequiredInput', requiredTags);
+  const optionalTerms = getFieldTerms('searchOptionalInput', optionalTags);
   const terms = [...requiredTerms, ...optionalTerms];
   const container = document.getElementById('entries');
   const emptyMsg = document.getElementById('emptyMsg');
@@ -537,9 +592,6 @@ function renderEntries() {
     container.appendChild(row);
   });
 }
-
-document.getElementById('searchRequired').addEventListener('input', renderEntries);
-document.getElementById('searchOptional').addEventListener('input', renderEntries);
 
 fillConfigForm();
 resetForm();

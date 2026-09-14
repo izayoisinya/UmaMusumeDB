@@ -38,12 +38,16 @@
       </h2>
       <div class="search-row">
         <div class="search-field">
-          <label for="searchRequired">必須（すべて含む）</label>
-          <input type="text" id="searchRequired" placeholder="例: スタミナ 賢さ（スペース区切りで複数指定可）">
+          <label for="searchRequiredInput">必須（すべて含む）</label>
+          <div class="tag-input" id="searchRequiredBox">
+            <input type="text" id="searchRequiredInput" placeholder="入力してスペースで確定">
+          </div>
         </div>
         <div class="search-field">
-          <label for="searchOptional">任意（いずれか含めばOK）</label>
-          <input type="text" id="searchOptional" placeholder="例: 東京レース場 中山レース場">
+          <label for="searchOptionalInput">任意（いずれか含めばOK）</label>
+          <div class="tag-input" id="searchOptionalBox">
+            <input type="text" id="searchOptionalInput" placeholder="入力してスペースで確定">
+          </div>
         </div>
       </div>
       <div class="status" id="listStatus"></div>
