@@ -12,7 +12,7 @@ let config = loadConfig();
 let currentSha = null;
 let allEntries = [];
 
-const CLAUDE_PROMPT = 'この画像はウマ娘プリティーダービーの因子継承画面のスクリーンショットです。書かれている因子情報を読み取って、次のJSON形式だけを出力してください（説明や前置き、コードフェンスは不要です）。\n\n画面には「本人」「継承元1」「継承元2」の3つの因子ブロックが縦に並んでいます。青因子・赤（ピンク）因子・緑因子（固有）・白因子のすべてについて、3ブロック分を読み取ってください。\n\n同じ名前の因子が本人・継承元1・継承元2のいずれかに重複して存在する場合は1つのエントリにまとめ、それぞれの星の数をself(本人)/parent1(継承元1)/parent2(継承元2)に対応させてください。存在しない生成の値はnullにしてください。\n\n各ブロックの青因子列・赤因子列は、一番上の色付き見出し（例:「根性」「逃げ」）もその列の1項目として含めてください。そこから下に続く項目も同じ列の色として全て含めてください（青列はblue_factors、ピンク/赤列はred_factorsに）。緑色で強調された項目は、その列の色分類ではなくgreen_factorsに入れてください。\n\n{"character": string, "blue_factors": [{"name": string, "self": number, "parent1": number, "parent2": number}], "red_factors": [同じ形式], "green_factors": [同じ形式], "white_factors": [同じ形式]}\n\n各因子名の下には星のアイコンが3つ並んでおり、黄色に塗りつぶされた星と、輪郭だけで塗りつぶされていない星があります。self/parent1/parent2には、黄色に塗りつぶされている星の数だけを数えて入れてください（塗りつぶされていない星は数えないでください）。読み取れない・存在しない値はnullにしてください。characterは本人のキャラ名のみ（継承元のキャラ名は含めない）。項目は省略せず全て出力してください。';
+const CLAUDE_PROMPT = 'この画像はウマ娘プリティーダービーの因子継承画面のスクリーンショットです。書かれている因子情報を読み取って、次のJSON形式だけを出力してください（説明や前置き、コードフェンスは不要です）。\n\n画面には「本人」「継承元1」「継承元2」の3つの因子ブロックが縦に並んでいます。青因子・赤（ピンク）因子・緑因子（固有）・白因子のすべてについて、3ブロック分を読み取ってください。\n\n同じ名前の因子が本人・継承元1・継承元2のいずれかに存在する場合は1つのエントリにまとめ、その因子が各ブロックに存在するかどうかをself(本人)/parent1(継承元1)/parent2(継承元2)にtrue/falseで入れてください。星の数を数える必要はありません。存在すればtrue、存在しなければfalseだけで構いません。\n\n各ブロックの青因子列・赤因子列は、一番上の色付き見出し（例:「根性」「逃げ」）もその列の1項目として含めてください。そこから下に続く項目も同じ列の色として全て含めてください（青列はblue_factors、ピンク/赤列はred_factorsに）。緑色で強調された項目は、その列の色分類ではなくgreen_factorsに入れてください。\n\n{"character": string, "blue_factors": [{"name": string, "self": boolean, "parent1": boolean, "parent2": boolean}], "red_factors": [同じ形式], "green_factors": [同じ形式], "white_factors": [同じ形式]}\n\ncharacterは本人のキャラ名のみ（継承元のキャラ名は含めない）。項目は省略せず全て出力してください。';
 
 function loadConfig() {
   try {
@@ -162,9 +162,9 @@ function addFactorLine(listId, name, self, parent1, parent2) {
   row.className = 'stack-factor-row';
   row.innerHTML = `
     <input type="text" class="fname" placeholder="因子名" value="${escapeAttr(name||'')}">
-    <input type="number" class="flevel-self" min="0" max="3" placeholder="本体" value="${self||''}">
-    <input type="number" class="flevel-p1" min="0" max="3" placeholder="親1" value="${parent1||''}">
-    <input type="number" class="flevel-p2" min="0" max="3" placeholder="親2" value="${parent2||''}">
+    <input type="checkbox" class="fself" ${self ? 'checked' : ''}>
+    <input type="checkbox" class="fp1" ${parent1 ? 'checked' : ''}>
+    <input type="checkbox" class="fp2" ${parent2 ? 'checked' : ''}>
     <button type="button" class="remove-line" aria-label="削除">×</button>
   `;
   row.querySelector('.remove-line').addEventListener('click', () => row.remove());
@@ -175,7 +175,7 @@ const FACTOR_LIST_IDS = { blue: 'blueList', red: 'redList', green: 'greenList', 
 
 document.querySelectorAll('.add-line[data-add]').forEach(btn => {
   btn.addEventListener('click', () => {
-    addFactorLine(FACTOR_LIST_IDS[btn.dataset.add], '', '', '', '');
+    addFactorLine(FACTOR_LIST_IDS[btn.dataset.add], '', false, false, false);
   });
 });
 
@@ -192,14 +192,11 @@ function readListFactors(listId) {
   rows.forEach(r => {
     const name = r.querySelector('.fname').value.trim();
     if (!name) return;
-    const self = r.querySelector('.flevel-self').value;
-    const parent1 = r.querySelector('.flevel-p1').value;
-    const parent2 = r.querySelector('.flevel-p2').value;
     out.push({
       name,
-      self: self ? Number(self) : null,
-      parent1: parent1 ? Number(parent1) : null,
-      parent2: parent2 ? Number(parent2) : null,
+      self: r.querySelector('.fself').checked,
+      parent1: r.querySelector('.fp1').checked,
+      parent2: r.querySelector('.fp2').checked,
     });
   });
   return out;
@@ -244,8 +241,8 @@ document.getElementById('loadJsonBtn').addEventListener('click', () => {
 function fillFactorList(listId, factors) {
   document.getElementById(listId).innerHTML = '';
   const list = factors || [];
-  list.forEach(f => addFactorLine(listId, f.name, f.self, f.parent1, f.parent2));
-  if (!list.length) addFactorLine(listId, '', '', '', '');
+  list.forEach(f => addFactorLine(listId, f.name, !!f.self, !!f.parent1, !!f.parent2));
+  if (!list.length) addFactorLine(listId, '', false, false, false);
 }
 
 function fillForm(parsed) {
@@ -262,7 +259,7 @@ function resetForm() {
   document.getElementById('entryForm').reset();
   Object.values(FACTOR_LIST_IDS).forEach(listId => {
     document.getElementById(listId).innerHTML = '';
-    addFactorLine(listId, '', '', '', '');
+    addFactorLine(listId, '', false, false, false);
   });
   document.getElementById('pasteJson').value = '';
   setStatus('');
@@ -369,11 +366,13 @@ function renderEntries() {
     row.className = 'entry';
 
     const chips = [];
-    const stackLabel = f => [f.self, f.parent1, f.parent2].map(n => (n === null || n === undefined) ? '' : n).join(',');
-    (entry.blue || []).forEach(f => chips.push(`<span class="chip blue">${escapeHtml(f.name)}${stackLabel(f)}</span>`));
-    (entry.red || []).forEach(f => chips.push(`<span class="chip red">${escapeHtml(f.name)}${stackLabel(f)}</span>`));
-    (entry.green || []).forEach(f => chips.push(`<span class="chip green">${escapeHtml(f.name)}${stackLabel(f)}</span>`));
-    (entry.white || []).forEach(f => chips.push(`<span class="chip white">${escapeHtml(f.name)}${stackLabel(f)}</span>`));
+    const mark = v => v ? '○' : '×';
+    const stackLabel = f => `${escapeHtml(f.name)}<${mark(f.self)},${mark(f.parent1)},${mark(f.parent2)}>`;
+    const pushChip = (color, f) => chips.push(`<span class="chip ${color}${f.self ? '' : ' muted'}">${stackLabel(f)}</span>`);
+    (entry.blue || []).forEach(f => pushChip('blue', f));
+    (entry.red || []).forEach(f => pushChip('red', f));
+    (entry.green || []).forEach(f => pushChip('green', f));
+    (entry.white || []).forEach(f => pushChip('white', f));
 
     const parents = [entry.parent1, entry.parent2].filter(Boolean).join(' × ');
 

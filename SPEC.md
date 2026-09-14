@@ -20,16 +20,16 @@
   "character": "スペシャルウィーク",
   "parent1": "継承元1のキャラ名（手入力）",
   "parent2": "継承元2のキャラ名（手入力）",
-  "blue": [{ "name": "青因子名", "self": 3, "parent1": 3, "parent2": null }],
-  "red": [{ "name": "赤（ピンク）因子名", "self": 2, "parent1": null, "parent2": 2 }],
-  "green": [{ "name": "固有因子名", "self": 1, "parent1": null, "parent2": null }],
-  "white": [{ "name": "白因子名", "self": 3, "parent1": 3, "parent2": null }],
+  "blue": [{ "name": "青因子名", "self": true, "parent1": true, "parent2": false }],
+  "red": [{ "name": "赤（ピンク）因子名", "self": false, "parent1": false, "parent2": true }],
+  "green": [{ "name": "固有因子名", "self": true, "parent1": false, "parent2": false }],
+  "white": [{ "name": "白因子名", "self": true, "parent1": true, "parent2": false }],
   "notes": "用途メモ",
   "savedAt": "ISO8601形式の日時"
 }
 ```
 
-※青・赤・緑・白すべての因子カテゴリで、同名因子が本体・継承元1・継承元2のどこにあるかをスタック確認のため自己(self)/親1(parent1)/親2(parent2)の星数として個別に保持する（表示は「急ぎ足3,3,3」のように本体→親1→親2の順で連結表示）。parent1/parent2フィールド（継承元のキャラ名）は自動抽出の対象外で、常に手入力。
+※青・赤・緑・白すべての因子カテゴリで、同名因子が本体・継承元1・継承元2のどこにあるかをスタック確認のため自己(self)/親1(parent1)/親2(parent2)の真偽値(true/false)として個別に保持する（表示は「急ぎ足<○,○,×>」のように本体→親1→親2の順で○×連結表示、本体が○の因子はチップの色を濃く表示）。当初は星の数(1〜3)も保持していたが、画像認識での読み取り精度が低かったため、存在有無の判定のみに簡略化した。parent1/parent2フィールド（継承元のキャラ名）は自動抽出の対象外で、常に手入力。
 
 一覧は上記エントリの配列を、リポジトリ内の1つのJSONファイル（例: `data/factors.json`）にまとめて保存する方針。
 
