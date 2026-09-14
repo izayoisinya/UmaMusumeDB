@@ -65,10 +65,22 @@ button { touch-action: manipulation; }
   background: linear-gradient(180deg, var(--bg-top) 0%, var(--bg-bottom) 55%);
   padding: 24px 18px 60px;
 }
+@media (min-width: 761px) {
+  html, body { height: 100%; overflow: hidden; }
+  .ledger {
+    height: 100vh;
+    min-height: 0;
+    padding: 24px 18px;
+    display: flex;
+    flex-direction: column;
+  }
+}
 
 .masthead {
   max-width: 1100px;
+  width: 100%;
   margin: 0 auto 22px;
+  flex: 0 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -127,6 +139,7 @@ button { touch-action: manipulation; }
 
 .layout {
   max-width: 1100px;
+  width: 100%;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 340px 1fr;
@@ -139,10 +152,14 @@ button { touch-action: manipulation; }
   gap: 20px;
 }
 @media (min-width: 761px) {
+  .layout {
+    flex: 1 1 auto;
+    min-height: 0;
+    align-items: stretch;
+  }
   .left-col, .list-panel {
-    position: sticky;
-    top: 16px;
-    max-height: calc(100vh - 32px);
+    min-height: 0;
+    max-height: none;
     overflow-y: auto;
   }
 }

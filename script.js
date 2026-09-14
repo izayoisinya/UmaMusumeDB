@@ -497,3 +497,9 @@ document.querySelectorAll('input[name="searchMode"]').forEach(r => r.addEventLis
 fillConfigForm();
 resetForm();
 loadEntries();
+
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('sw.js').catch(err => console.error('SW登録失敗:', err));
+  });
+}
