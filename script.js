@@ -12,7 +12,7 @@ let config = loadConfig();
 let currentSha = null;
 let allEntries = [];
 
-const CLAUDE_PROMPT = 'この画像はウマ娘プリティーダービーの因子継承画面のスクリーンショットです。書かれている因子情報を読み取って、次のJSON形式だけを出力してください（説明や前置き、コードフェンスは不要です）。\n\n{"character": string, "blue_factor": {"name": string, "level": number}, "red_factors": [{"name": string, "level": number}], "white_factors": [{"name": string, "level": number}]}\n\nlevelは星の数(1〜3程度)。読み取れない項目は空文字列または空配列にしてください。';
+const CLAUDE_PROMPT = 'この画像はウマ娘プリティーダービーの因子継承画面のスクリーンショットです。書かれている因子情報を読み取って、次のJSON形式だけを出力してください（説明や前置き、コードフェンスは不要です）。\n\n{"character": string, "blue_factors": [{"name": string, "level": number}], "red_factors": [{"name": string, "level": number}], "green_factors": [{"name": string, "level": number}], "white_factors": [{"name": string, "level": number}]}\n\ngreen_factorsは緑色で強調表示されている固有因子。levelは星の数(1〜3程度)。読み取れない項目は空配列にしてください。継承元のキャラ名は含めず、このキャラ自身の因子のみを対象にしてください。';
 
 function loadConfig() {
   try {
@@ -169,10 +169,11 @@ function addFactorLine(listId, name, level) {
   list.appendChild(row);
 }
 
+const FACTOR_LIST_IDS = { blue: 'blueList', red: 'redList', green: 'greenList', white: 'whiteList' };
+
 document.querySelectorAll('.add-line').forEach(btn => {
   btn.addEventListener('click', () => {
-    const target = btn.dataset.add === 'red' ? 'redList' : 'whiteList';
-    addFactorLine(target, '', '');
+    addFactorLine(FACTOR_LIST_IDS[btn.dataset.add], '', '');
   });
 });
 
@@ -230,28 +231,28 @@ document.getElementById('loadJsonBtn').addEventListener('click', () => {
   }
 });
 
+function fillFactorList(listId, factors) {
+  document.getElementById(listId).innerHTML = '';
+  (factors || []).forEach(f => addFactorLine(listId, f.name, f.level));
+  if (!(factors || []).length) addFactorLine(listId, '', '');
+}
+
 function fillForm(parsed) {
   document.getElementById('fCharacter').value = parsed.character || '';
-  document.getElementById('fBlueName').value = (parsed.blue_factor && parsed.blue_factor.name) || '';
-  document.getElementById('fBlueLevel').value = (parsed.blue_factor && parsed.blue_factor.level) || '';
-
-  document.getElementById('redList').innerHTML = '';
-  (parsed.red_factors || []).forEach(f => addFactorLine('redList', f.name, f.level));
-  if (!(parsed.red_factors || []).length) addFactorLine('redList', '', '');
-
-  document.getElementById('whiteList').innerHTML = '';
-  (parsed.white_factors || []).forEach(f => addFactorLine('whiteList', f.name, f.level));
-  if (!(parsed.white_factors || []).length) addFactorLine('whiteList', '', '');
+  fillFactorList('blueList', parsed.blue_factors);
+  fillFactorList('redList', parsed.red_factors);
+  fillFactorList('greenList', parsed.green_factors);
+  fillFactorList('whiteList', parsed.white_factors);
 }
 
 document.getElementById('clearBtn').addEventListener('click', resetForm);
 
 function resetForm() {
   document.getElementById('entryForm').reset();
-  document.getElementById('redList').innerHTML = '';
-  document.getElementById('whiteList').innerHTML = '';
-  addFactorLine('redList', '', '');
-  addFactorLine('whiteList', '', '');
+  Object.values(FACTOR_LIST_IDS).forEach(listId => {
+    document.getElementById(listId).innerHTML = '';
+    addFactorLine(listId, '', '');
+  });
   document.getElementById('pasteJson').value = '';
   setStatus('');
 }
@@ -266,11 +267,11 @@ document.getElementById('entryForm').addEventListener('submit', async e => {
   const entry = {
     id: 'factor_' + Date.now() + '_' + Math.random().toString(36).slice(2, 7),
     character,
-    blue: {
-      name: document.getElementById('fBlueName').value.trim(),
-      level: document.getElementById('fBlueLevel').value ? Number(document.getElementById('fBlueLevel').value) : null
-    },
+    parent1: document.getElementById('fParent1').value.trim(),
+    parent2: document.getElementById('fParent2').value.trim(),
+    blue: readListFactors('blueList'),
     red: readListFactors('redList'),
+    green: readListFactors('greenList'),
     white: readListFactors('whiteList'),
     notes: document.getElementById('fNotes').value.trim(),
     savedAt: new Date().toISOString()
@@ -336,8 +337,9 @@ function renderEntries() {
 
   const filtered = allEntries.filter(e => {
     if (!q) return true;
-    const hay = [e.character, e.blue && e.blue.name, e.notes,
-      ...(e.red || []).map(f => f.name), ...(e.white || []).map(f => f.name)]
+    const hay = [e.character, e.parent1, e.parent2, e.notes,
+      ...(e.blue || []).map(f => f.name), ...(e.red || []).map(f => f.name),
+      ...(e.green || []).map(f => f.name), ...(e.white || []).map(f => f.name)]
       .filter(Boolean).join(' ').toLowerCase();
     return hay.includes(q);
   });
@@ -356,15 +358,17 @@ function renderEntries() {
     row.className = 'entry';
 
     const chips = [];
-    if (entry.blue && entry.blue.name) {
-      chips.push(`<span class="chip blue">${escapeHtml(entry.blue.name)}${entry.blue.level ? ' ×' + entry.blue.level : ''}</span>`);
-    }
+    (entry.blue || []).forEach(f => chips.push(`<span class="chip blue">${escapeHtml(f.name)}${f.level ? ' ×' + f.level : ''}</span>`));
     (entry.red || []).forEach(f => chips.push(`<span class="chip red">${escapeHtml(f.name)}${f.level ? ' ×' + f.level : ''}</span>`));
+    (entry.green || []).forEach(f => chips.push(`<span class="chip green">${escapeHtml(f.name)}${f.level ? ' ×' + f.level : ''}</span>`));
     (entry.white || []).forEach(f => chips.push(`<span class="chip white">${escapeHtml(f.name)}${f.level ? ' ×' + f.level : ''}</span>`));
+
+    const parents = [entry.parent1, entry.parent2].filter(Boolean).join(' × ');
 
     row.innerHTML = `
       <div>
         <div class="entry-name">${escapeHtml(entry.character)}</div>
+        ${parents ? `<div class="entry-parents">継承元: ${escapeHtml(parents)}</div>` : ''}
         <div class="chips">${chips.join('') || '<span style="color:var(--ink-soft);font-size:12px;">因子未登録</span>'}</div>
         ${entry.notes ? `<div class="entry-notes">${escapeHtml(entry.notes)}</div>` : ''}
       </div>

@@ -53,7 +53,7 @@
         <div class="form-grid">
           <div>
             <label for="pasteJson">Claudeの出力を貼り付け</label>
-            <textarea id="pasteJson" rows="4" placeholder='{"character": "...", "blue_factor": {...}, ...}'></textarea>
+            <textarea id="pasteJson" rows="4" placeholder='{"character": "...", "blue_factors": [...], "red_factors": [...], "green_factors": [...], "white_factors": [...]}'></textarea>
           </div>
           <button type="button" class="btn" id="loadJsonBtn">この内容をフォームに反映</button>
         </div>
@@ -65,18 +65,33 @@
             <input type="text" id="fCharacter" placeholder="例: スペシャルウィーク">
           </div>
 
+          <div class="factor-row">
+            <div style="flex:1;">
+              <label for="fParent1">継承元1</label>
+              <input type="text" id="fParent1" placeholder="親1のキャラ名（手入力）">
+            </div>
+            <div style="flex:1;">
+              <label for="fParent2">継承元2</label>
+              <input type="text" id="fParent2" placeholder="親2のキャラ名（手入力）">
+            </div>
+          </div>
+
           <div>
             <label>青因子</label>
-            <div class="factor-row">
-              <input type="text" id="fBlueName" placeholder="因子名 / 適性">
-              <input type="number" id="fBlueLevel" min="0" max="3" placeholder="Lv">
-            </div>
+            <div class="factor-list-edit" id="blueList"></div>
+            <button type="button" class="add-line" data-add="blue">＋ 青因子を追加</button>
           </div>
 
           <div>
             <label>赤因子</label>
             <div class="factor-list-edit" id="redList"></div>
             <button type="button" class="add-line" data-add="red">＋ 赤因子を追加</button>
+          </div>
+
+          <div>
+            <label>緑因子（固有）</label>
+            <div class="factor-list-edit" id="greenList"></div>
+            <button type="button" class="add-line" data-add="green">＋ 緑因子を追加</button>
           </div>
 
           <div>

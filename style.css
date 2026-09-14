@@ -9,6 +9,7 @@
   --blue: #3e6fa8;
   --red: #b4463b;
   --white-f: #8a8578;
+  --green: #4c8c46;
   --danger: #a5433a;
 }
 * { box-sizing: border-box; }
@@ -212,6 +213,11 @@ input[type=text], input[type=number], input[type=password], textarea {
   font-weight: 600;
   font-size: 16px;
 }
+.entry-parents {
+  font-size: 12px;
+  color: var(--ink-soft);
+  margin-top: 2px;
+}
 .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
 .chip {
   font-size: 11px;
@@ -221,6 +227,7 @@ input[type=text], input[type=number], input[type=password], textarea {
 }
 .chip.blue { background: var(--blue); }
 .chip.red { background: var(--red); }
+.chip.green { background: var(--green); }
 .chip.white { background: var(--white-f); }
 .entry-notes { font-size: 12px; color: var(--ink-soft); margin-top: 6px; }
 .entry-del {

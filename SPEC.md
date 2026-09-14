@@ -18,13 +18,18 @@
 {
   "id": "factor_xxxxx",
   "character": "スペシャルウィーク",
-  "blue": { "name": "スタミナ", "level": 3 },
-  "red": [{ "name": "シナリオ因子名", "level": 2 }],
+  "parent1": "継承元1のキャラ名（手入力）",
+  "parent2": "継承元2のキャラ名（手入力）",
+  "blue": [{ "name": "青因子名", "level": 3 }],
+  "red": [{ "name": "赤（ピンク）因子名", "level": 2 }],
+  "green": [{ "name": "固有因子名", "level": 1 }],
   "white": [{ "name": "白因子名", "level": 1 }],
   "notes": "用途メモ",
   "savedAt": "ISO8601形式の日時"
 }
 ```
+
+※当初案ではblueを単一因子として設計していたが、実際のゲーム画面では青因子も複数持つため、red/white/greenと同様に配列に変更した。parent1/parent2は自動抽出の対象外で、常に手入力。
 
 一覧は上記エントリの配列を、リポジトリ内の1つのJSONファイル（例: `data/factors.json`）にまとめて保存する方針。
 
