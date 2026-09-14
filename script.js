@@ -227,14 +227,37 @@ function setListStatus(msg, isError) {
   el.className = 'status' + (isError ? ' error' : '');
 }
 
+// --- モーダル(GitHub連携設定 / Claudeプロンプト) ---
+const modalOverlay = document.getElementById('modalOverlay');
+
+function openModal(id) {
+  document.querySelectorAll('.modal').forEach(m => { m.hidden = m.id !== id; });
+  modalOverlay.hidden = false;
+}
+function closeModal() {
+  modalOverlay.hidden = true;
+  document.querySelectorAll('.modal').forEach(m => { m.hidden = true; });
+}
+
+document.getElementById('openGithubModalBtn').addEventListener('click', () => openModal('githubModal'));
+document.getElementById('openPromptModalBtn').addEventListener('click', () => openModal('promptModal'));
+document.querySelectorAll('.modal-close-btn').forEach(btn => btn.addEventListener('click', closeModal));
+modalOverlay.addEventListener('click', e => { if (e.target === modalOverlay) closeModal(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && !modalOverlay.hidden) closeModal(); });
+
+document.getElementById('promptText').value = CLAUDE_PROMPT;
+
 // --- Claude出力の貼り付け読み込み ---
 document.getElementById('copyPromptBtn').addEventListener('click', async () => {
+  const el = document.getElementById('promptStatus');
   try {
     await navigator.clipboard.writeText(CLAUDE_PROMPT);
-    setStatus('プロンプトをコピーしました。Claudeにスクリーンショットと一緒に貼り付けてください。');
+    el.textContent = 'プロンプトをコピーしました。Claudeにスクリーンショットと一緒に貼り付けてください。';
+    el.className = 'status';
   } catch (err) {
     console.error(err);
-    setStatus('コピーに失敗しました。手動で選択してコピーしてください。', true);
+    el.textContent = 'コピーに失敗しました。上のテキストを手動で選択してコピーしてください。';
+    el.className = 'status error';
   }
 });
 

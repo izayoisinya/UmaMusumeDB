@@ -12,44 +12,23 @@
 <div class="ledger">
   <div class="masthead">
     <h1>因子台帳</h1>
-    <p id="countLabel">0 頭 登録</p>
+    <div class="masthead-right">
+      <p id="countLabel">0 頭 登録</p>
+      <div class="masthead-menu">
+        <button type="button" class="masthead-btn" id="openGithubModalBtn">GitHub連携</button>
+        <button type="button" class="masthead-btn" id="openPromptModalBtn">プロンプト</button>
+      </div>
+    </div>
   </div>
 
   <div class="layout">
     <div class="left-col">
       <div class="panel">
-        <h2>GitHub連携設定</h2>
-        <p class="hint">この台帳のデータは、このリポジトリの <code>data/factors.json</code> に保存されます。<strong>閲覧のみならPATなしでも見られます</strong>（リポジトリ所有者・リポジトリ名だけ入力）。保存・削除には Contents 権限を持つ個人アクセストークン(PAT)が必要です。</p>
-        <div class="form-grid">
-          <div>
-            <label for="cfgOwner">リポジトリ所有者</label>
-            <input type="text" id="cfgOwner" placeholder="例: izayoisinya">
-          </div>
-          <div>
-            <label for="cfgRepo">リポジトリ名</label>
-            <input type="text" id="cfgRepo" placeholder="例: UmaMusumeDB">
-          </div>
-          <div>
-            <label for="cfgBranch">ブランチ</label>
-            <input type="text" id="cfgBranch" placeholder="main">
-          </div>
-          <div>
-            <label for="cfgToken">個人アクセストークン (PAT・保存/削除する場合のみ)</label>
-            <input type="password" id="cfgToken" placeholder="閲覧だけなら空欄でOK" autocomplete="off">
-          </div>
-          <button type="button" class="btn" id="cfgSaveBtn">保存して読み込む</button>
-          <button type="button" class="btn secondary" id="cfgClearBtn">設定を消去</button>
-        </div>
-        <div class="status" id="cfgStatus"></div>
-      </div>
-
-      <div class="panel">
         <h2>因子を登録</h2>
 
         <p class="hint">
-          継承画面のスクリーンショットをClaudeアプリに見せて、下のプロンプトで因子情報をJSON抽出してもらい、その出力をここに貼り付けてください。
+          継承画面のスクリーンショットをClaudeアプリに見せて抽出してもらったJSONを、下の欄に貼り付けてください（抽出用プロンプトは右上の「プロンプト」ボタンから確認・コピーできます）。
         </p>
-        <button type="button" class="btn secondary" id="copyPromptBtn">Claude用プロンプトをコピー</button>
         <div class="form-grid">
           <div>
             <label for="pasteJson">Claudeの出力を貼り付け</label>
@@ -139,6 +118,44 @@
       <div class="entries" id="entries"></div>
       <div class="empty" id="emptyMsg" style="display:none;">まだ登録がありません。左でClaudeの出力を貼り付けるか、手入力して保存してください。</div>
     </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modalOverlay" hidden>
+  <div class="modal" id="githubModal" role="dialog" aria-labelledby="githubModalTitle" hidden>
+    <h2 id="githubModalTitle">GitHub連携設定</h2>
+    <p class="hint">この台帳のデータは、このリポジトリの <code>data/factors.json</code> に保存されます。<strong>閲覧のみならPATなしでも見られます</strong>（リポジトリ所有者・リポジトリ名だけ入力）。保存・削除には Contents 権限を持つ個人アクセストークン(PAT)が必要です。</p>
+    <div class="form-grid">
+      <div>
+        <label for="cfgOwner">リポジトリ所有者</label>
+        <input type="text" id="cfgOwner" placeholder="例: izayoisinya">
+      </div>
+      <div>
+        <label for="cfgRepo">リポジトリ名</label>
+        <input type="text" id="cfgRepo" placeholder="例: UmaMusumeDB">
+      </div>
+      <div>
+        <label for="cfgBranch">ブランチ</label>
+        <input type="text" id="cfgBranch" placeholder="main">
+      </div>
+      <div>
+        <label for="cfgToken">個人アクセストークン (PAT・保存/削除する場合のみ)</label>
+        <input type="password" id="cfgToken" placeholder="閲覧だけなら空欄でOK" autocomplete="off">
+      </div>
+      <button type="button" class="btn" id="cfgSaveBtn">保存して読み込む</button>
+      <button type="button" class="btn secondary" id="cfgClearBtn">設定を消去</button>
+    </div>
+    <div class="status" id="cfgStatus"></div>
+    <button type="button" class="btn secondary modal-close-btn" data-modal="githubModal">閉じる</button>
+  </div>
+
+  <div class="modal" id="promptModal" role="dialog" aria-labelledby="promptModalTitle" hidden>
+    <h2 id="promptModalTitle">Claude用プロンプト</h2>
+    <p class="hint">このプロンプトをコピーして、継承画面のスクリーンショットと一緒にClaudeアプリ（claude.ai等）に送ってください。返ってきたJSONを台帳画面の「Claudeの出力を貼り付け」欄に貼り付けます。</p>
+    <textarea id="promptText" rows="10" readonly></textarea>
+    <button type="button" class="btn" id="copyPromptBtn">プロンプトをコピー</button>
+    <div class="status" id="promptStatus"></div>
+    <button type="button" class="btn secondary modal-close-btn" data-modal="promptModal">閉じる</button>
   </div>
 </div>
 
