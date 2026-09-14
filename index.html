@@ -19,7 +19,7 @@
     <div class="left-col">
       <div class="panel">
         <h2>GitHub連携設定</h2>
-        <p class="hint">この台帳のデータは、このリポジトリの <code>data/factors.json</code> に保存されます。読み書きには Contents 権限を持つ個人アクセストークン(PAT)が必要です。</p>
+        <p class="hint">この台帳のデータは、このリポジトリの <code>data/factors.json</code> に保存されます。<strong>閲覧のみならPATなしでも見られます</strong>（リポジトリ所有者・リポジトリ名だけ入力）。保存・削除には Contents 権限を持つ個人アクセストークン(PAT)が必要です。</p>
         <div class="form-grid">
           <div>
             <label for="cfgOwner">リポジトリ所有者</label>
@@ -34,8 +34,8 @@
             <input type="text" id="cfgBranch" placeholder="main">
           </div>
           <div>
-            <label for="cfgToken">個人アクセストークン (PAT)</label>
-            <input type="password" id="cfgToken" placeholder="このリポジトリのContents読み書き権限を持つトークン" autocomplete="off">
+            <label for="cfgToken">個人アクセストークン (PAT・保存/削除する場合のみ)</label>
+            <input type="password" id="cfgToken" placeholder="閲覧だけなら空欄でOK" autocomplete="off">
           </div>
           <button type="button" class="btn" id="cfgSaveBtn">保存して読み込む</button>
           <button type="button" class="btn secondary" id="cfgClearBtn">設定を消去</button>

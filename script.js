@@ -37,10 +37,9 @@ function contentsApiUrlForGet() {
   return config.branch ? `${url}?ref=${encodeURIComponent(config.branch)}` : url;
 }
 function authHeaders() {
-  return {
-    'Authorization': `Bearer ${config.token}`,
-    'Accept': 'application/vnd.github+json',
-  };
+  const headers = { 'Accept': 'application/vnd.github+json' };
+  if (config.token) headers['Authorization'] = `Bearer ${config.token}`;
+  return headers;
 }
 
 function decodeBase64Utf8(b64) {
@@ -130,15 +129,15 @@ cfgSaveBtn.addEventListener('click', async () => {
   const repo = cfgRepo.value.trim();
   const branch = cfgBranch.value.trim();
   const token = cfgToken.value.trim();
-  if (!owner || !repo || !token) {
-    setCfgStatus('リポジトリ所有者・リポジトリ名・トークンは必須です。', true);
+  if (!owner || !repo) {
+    setCfgStatus('リポジトリ所有者・リポジトリ名は必須です。', true);
     return;
   }
   config = { owner, repo, branch, token };
   persistConfig(config);
   setCfgStatus('保存しました。読み込んでいます…');
   await loadEntries();
-  setCfgStatus('接続しました。');
+  setCfgStatus(token ? '接続しました。' : '接続しました（閲覧のみ。保存・削除にはPATが必要です）。');
 });
 
 cfgClearBtn.addEventListener('click', () => {
@@ -269,6 +268,7 @@ function resetForm() {
 document.getElementById('entryForm').addEventListener('submit', async e => {
   e.preventDefault();
   if (!config) { setStatus('先にGitHub連携設定を保存してください。', true); return; }
+  if (!config.token) { setStatus('保存にはPATが必要です。GitHub連携設定でPATを入力してください。', true); return; }
   const character = document.getElementById('fCharacter').value.trim();
   if (!character) { setStatus('キャラ名を入力してください。', true); return; }
 
@@ -319,6 +319,7 @@ async function loadEntries() {
 }
 
 async function deleteEntry(id) {
+  if (!config || !config.token) { setListStatus('削除にはPATが必要です。GitHub連携設定でPATを入力してください。', true); return; }
   const target = allEntries.find(e => e.id === id);
   const updated = allEntries.filter(e => e.id !== id);
   setListStatus('削除しています…');
