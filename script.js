@@ -12,7 +12,7 @@ let config = loadConfig();
 let currentSha = null;
 let allEntries = [];
 
-const CLAUDE_PROMPT = 'この画像はウマ娘プリティーダービーの因子継承画面のスクリーンショットです。書かれている因子情報を読み取って、次のJSON形式だけを出力してください（説明や前置き、コードフェンスは不要です）。\n\n対象は画面いちばん上の「本人」の因子ブロックのみです。その下にある「継承元」（親の因子ブロック）は対象外なので含めないでください。\n\n本人のブロックには青因子の列とピンク（赤）因子の列が横に並んでいます。各列の一番上にある色付きの見出し（例:「根性」「逃げ」）も、その列に属する因子の1項目として扱ってください（見出しとして除外しない）。そこから下に続く項目も、見出しと同じ列の色として全て含めてください（青列の項目はすべてblue_factors、ピンク/赤列の項目はすべてred_factors。white_factorsに紛れ込ませないこと）。緑色で強調されている項目は、その列の色分類ではなくgreen_factorsに入れてください。white_factorsは、青・ピンクの列とは別に独立して表示されている白因子がある場合のみ含めてください。\n\n{"character": string, "blue_factors": [{"name": string, "level": number}], "red_factors": [{"name": string, "level": number}], "green_factors": [{"name": string, "level": number}], "white_factors": [{"name": string, "level": number}]}\n\nlevelは星の数(1〜3程度)。各列に写っている項目は省略せず全て出力してください。文字が読み取りにくい項目があっても、推測でよいので省略しないでください。';
+const CLAUDE_PROMPT = 'この画像はウマ娘プリティーダービーの因子継承画面のスクリーンショットです。書かれている因子情報を読み取って、次のJSON形式だけを出力してください（説明や前置き、コードフェンスは不要です）。\n\n青因子・赤（ピンク）因子・緑因子（固有）は、画面いちばん上の「本人」ブロックのものだけを対象にしてください。その下にある「継承元」（親のブロック）の青・赤・緑因子は対象外です。\n\n白因子（スキル因子）だけは、本人に加えて継承元1・継承元2の分も読み取ってください。同じ名前の白因子が本人・継承元1・継承元2のいずれかに重複して存在する場合は1つのエントリにまとめ、それぞれの星の数をself/parent1/parent2に対応させてください。存在しない生成の値はnullにしてください。\n\n本人ブロックの青因子列・赤因子列は、一番上の色付き見出し（例:「根性」「逃げ」）もその列の1項目として含めてください。そこから下に続く項目も同じ列の色としてすべて含めてください（青列はblue_factors、ピンク/赤列はred_factorsに。white_factorsへ混ぜないこと）。緑色で強調された項目はgreen_factorsに入れてください。\n\n{"character": string, "blue_factors": [{"name": string, "level": number}], "red_factors": [{"name": string, "level": number}], "green_factors": [{"name": string, "level": number}], "white_factors": [{"name": string, "self": number, "parent1": number, "parent2": number}]}\n\nlevelとself/parent1/parent2は星の数(1〜3程度)。読み取れない・存在しない値はnullにしてください。項目は省略せず全て出力してください。';
 
 function loadConfig() {
   try {
@@ -169,12 +169,31 @@ function addFactorLine(listId, name, level) {
   list.appendChild(row);
 }
 
-const FACTOR_LIST_IDS = { blue: 'blueList', red: 'redList', green: 'greenList', white: 'whiteList' };
+function addWhiteFactorLine(name, self, parent1, parent2) {
+  const list = document.getElementById('whiteList');
+  const row = document.createElement('div');
+  row.className = 'white-factor-row';
+  row.innerHTML = `
+    <input type="text" class="fname" placeholder="因子名" value="${escapeAttr(name||'')}">
+    <input type="number" class="flevel-self" min="0" max="3" placeholder="本体" value="${self||''}">
+    <input type="number" class="flevel-p1" min="0" max="3" placeholder="親1" value="${parent1||''}">
+    <input type="number" class="flevel-p2" min="0" max="3" placeholder="親2" value="${parent2||''}">
+    <button type="button" class="remove-line" aria-label="削除">×</button>
+  `;
+  row.querySelector('.remove-line').addEventListener('click', () => row.remove());
+  list.appendChild(row);
+}
 
-document.querySelectorAll('.add-line').forEach(btn => {
+const FACTOR_LIST_IDS = { blue: 'blueList', red: 'redList', green: 'greenList' };
+
+document.querySelectorAll('.add-line[data-add]').forEach(btn => {
   btn.addEventListener('click', () => {
     addFactorLine(FACTOR_LIST_IDS[btn.dataset.add], '', '');
   });
+});
+
+document.getElementById('addWhiteBtn').addEventListener('click', () => {
+  addWhiteFactorLine('', '', '', '');
 });
 
 function escapeAttr(s) {
@@ -191,6 +210,25 @@ function readListFactors(listId) {
     const name = r.querySelector('.fname').value.trim();
     const level = r.querySelector('.flevel').value;
     if (name) out.push({ name, level: level ? Number(level) : null });
+  });
+  return out;
+}
+
+function readWhiteFactors() {
+  const rows = document.querySelectorAll('#whiteList .white-factor-row');
+  const out = [];
+  rows.forEach(r => {
+    const name = r.querySelector('.fname').value.trim();
+    if (!name) return;
+    const self = r.querySelector('.flevel-self').value;
+    const parent1 = r.querySelector('.flevel-p1').value;
+    const parent2 = r.querySelector('.flevel-p2').value;
+    out.push({
+      name,
+      self: self ? Number(self) : null,
+      parent1: parent1 ? Number(parent1) : null,
+      parent2: parent2 ? Number(parent2) : null,
+    });
   });
   return out;
 }
@@ -242,7 +280,11 @@ function fillForm(parsed) {
   fillFactorList('blueList', parsed.blue_factors);
   fillFactorList('redList', parsed.red_factors);
   fillFactorList('greenList', parsed.green_factors);
-  fillFactorList('whiteList', parsed.white_factors);
+
+  document.getElementById('whiteList').innerHTML = '';
+  const whiteFactors = parsed.white_factors || [];
+  whiteFactors.forEach(f => addWhiteFactorLine(f.name, f.self, f.parent1, f.parent2));
+  if (!whiteFactors.length) addWhiteFactorLine('', '', '', '');
 }
 
 document.getElementById('clearBtn').addEventListener('click', resetForm);
@@ -253,6 +295,8 @@ function resetForm() {
     document.getElementById(listId).innerHTML = '';
     addFactorLine(listId, '', '');
   });
+  document.getElementById('whiteList').innerHTML = '';
+  addWhiteFactorLine('', '', '', '');
   document.getElementById('pasteJson').value = '';
   setStatus('');
 }
@@ -272,7 +316,7 @@ document.getElementById('entryForm').addEventListener('submit', async e => {
     blue: readListFactors('blueList'),
     red: readListFactors('redList'),
     green: readListFactors('greenList'),
-    white: readListFactors('whiteList'),
+    white: readWhiteFactors(),
     notes: document.getElementById('fNotes').value.trim(),
     savedAt: new Date().toISOString()
   };
@@ -361,7 +405,10 @@ function renderEntries() {
     (entry.blue || []).forEach(f => chips.push(`<span class="chip blue">${escapeHtml(f.name)}${f.level ? ' ×' + f.level : ''}</span>`));
     (entry.red || []).forEach(f => chips.push(`<span class="chip red">${escapeHtml(f.name)}${f.level ? ' ×' + f.level : ''}</span>`));
     (entry.green || []).forEach(f => chips.push(`<span class="chip green">${escapeHtml(f.name)}${f.level ? ' ×' + f.level : ''}</span>`));
-    (entry.white || []).forEach(f => chips.push(`<span class="chip white">${escapeHtml(f.name)}${f.level ? ' ×' + f.level : ''}</span>`));
+    (entry.white || []).forEach(f => {
+      const levels = [f.self, f.parent1, f.parent2].map(n => (n === null || n === undefined) ? '' : n).join(',');
+      chips.push(`<span class="chip white">${escapeHtml(f.name)}${levels}</span>`);
+    });
 
     const parents = [entry.parent1, entry.parent2].filter(Boolean).join(' × ');
 

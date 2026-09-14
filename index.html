@@ -53,7 +53,7 @@
         <div class="form-grid">
           <div>
             <label for="pasteJson">Claudeの出力を貼り付け</label>
-            <textarea id="pasteJson" rows="4" placeholder='{"character": "...", "blue_factors": [...], "red_factors": [...], "green_factors": [...], "white_factors": [...]}'></textarea>
+            <textarea id="pasteJson" rows="4" placeholder='{"character": "...", "blue_factors": [...], "red_factors": [...], "green_factors": [...], "white_factors": [{"name":"...", "self":N, "parent1":N, "parent2":N}]}'></textarea>
           </div>
           <button type="button" class="btn" id="loadJsonBtn">この内容をフォームに反映</button>
         </div>
@@ -95,9 +95,12 @@
           </div>
 
           <div>
-            <label>白因子</label>
+            <label>白因子（本体・親1・親2）</label>
+            <div class="white-header">
+              <span>因子名</span><span>本体</span><span>親1</span><span>親2</span><span></span>
+            </div>
             <div class="factor-list-edit" id="whiteList"></div>
-            <button type="button" class="add-line" data-add="white">＋ 白因子を追加</button>
+            <button type="button" class="add-line" id="addWhiteBtn">＋ 白因子を追加</button>
           </div>
 
           <div>
