@@ -262,6 +262,7 @@ function closeModal() {
   document.querySelectorAll('.modal').forEach(m => { m.hidden = true; });
 }
 
+document.getElementById('openRegisterModalBtn').addEventListener('click', () => openModal('registerModal'));
 document.getElementById('openGithubModalBtn').addEventListener('click', () => openModal('githubModal'));
 document.getElementById('openPromptModalBtn').addEventListener('click', () => openModal('promptModal'));
 document.querySelectorAll('.modal-close-btn').forEach(btn => btn.addEventListener('click', closeModal));
@@ -354,6 +355,7 @@ document.getElementById('entryForm').addEventListener('submit', async e => {
     renderEntries();
     resetForm();
     setStatus('保存しました。');
+    setTimeout(closeModal, 700);
   } catch (err) {
     console.error(err);
     if (err instanceof ConflictError) {
@@ -457,7 +459,7 @@ function renderEntries() {
 
   if (!filtered.length) {
     emptyMsg.style.display = 'block';
-    emptyMsg.textContent = allEntries.length ? '該当する登録が見つかりません。' : 'まだ登録がありません。左で画像を読み込むか、手入力して保存してください。';
+    emptyMsg.textContent = allEntries.length ? '該当する登録が見つかりません。' : 'まだ登録がありません。「＋ 因子登録」からClaudeの出力を貼り付けるか、手入力して保存してください。';
     return;
   }
   emptyMsg.style.display = 'none';

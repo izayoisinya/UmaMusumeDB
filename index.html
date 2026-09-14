@@ -23,6 +23,7 @@
       <p id="countLabel">0 頭 登録</p>
       <div class="masthead-menu">
         <button type="button" class="masthead-btn" id="themeToggleBtn" aria-label="ダークモード切り替え">🌙 ダーク</button>
+        <button type="button" class="masthead-btn" id="openRegisterModalBtn">＋ 因子登録</button>
         <button type="button" class="masthead-btn" id="openGithubModalBtn">GitHub連携</button>
         <button type="button" class="masthead-btn" id="openPromptModalBtn">プロンプト</button>
       </div>
@@ -30,86 +31,6 @@
   </div>
 
   <div class="layout">
-    <div class="left-col">
-      <div class="panel">
-        <h2>因子を登録</h2>
-
-        <p class="hint">
-          継承画面のスクリーンショットをClaudeアプリに見せて抽出してもらったJSONを、下の欄に貼り付けてください（抽出用プロンプトは右上の「プロンプト」ボタンから確認・コピーできます）。
-        </p>
-        <div class="form-grid">
-          <div>
-            <label for="pasteJson">Claudeの出力を貼り付け</label>
-            <textarea id="pasteJson" rows="4" placeholder='{"character": "...", "blue_factors": [{"name":"...", "self":true, "parent1":false, "parent2":true}], "red_factors": [...], "green_factors": [...], "white_factors": [...]}'></textarea>
-          </div>
-          <button type="button" class="btn" id="loadJsonBtn">この内容をフォームに反映</button>
-        </div>
-        <div class="status" id="status"></div>
-
-        <form class="form-grid" id="entryForm">
-          <div>
-            <label for="fCharacter">キャラ名</label>
-            <input type="text" id="fCharacter" placeholder="例: スペシャルウィーク">
-          </div>
-
-          <div class="factor-row">
-            <div style="flex:1;">
-              <label for="fParent1">継承元1</label>
-              <input type="text" id="fParent1" placeholder="親1のキャラ名（手入力）">
-            </div>
-            <div style="flex:1;">
-              <label for="fParent2">継承元2</label>
-              <input type="text" id="fParent2" placeholder="親2のキャラ名（手入力）">
-            </div>
-          </div>
-
-          <div>
-            <label>青因子（本体・親1・親2）</label>
-            <div class="stack-header">
-              <span>因子名</span><span>本体</span><span>親1</span><span>親2</span><span></span>
-            </div>
-            <div class="factor-list-edit" id="blueList"></div>
-            <button type="button" class="add-line" data-add="blue">＋ 青因子を追加</button>
-          </div>
-
-          <div>
-            <label>赤因子（本体・親1・親2）</label>
-            <div class="stack-header">
-              <span>因子名</span><span>本体</span><span>親1</span><span>親2</span><span></span>
-            </div>
-            <div class="factor-list-edit" id="redList"></div>
-            <button type="button" class="add-line" data-add="red">＋ 赤因子を追加</button>
-          </div>
-
-          <div>
-            <label>緑因子（固有・本体・親1・親2）</label>
-            <div class="stack-header">
-              <span>因子名</span><span>本体</span><span>親1</span><span>親2</span><span></span>
-            </div>
-            <div class="factor-list-edit" id="greenList"></div>
-            <button type="button" class="add-line" data-add="green">＋ 緑因子を追加</button>
-          </div>
-
-          <div>
-            <label>白因子（本体・親1・親2）</label>
-            <div class="stack-header">
-              <span>因子名</span><span>本体</span><span>親1</span><span>親2</span><span></span>
-            </div>
-            <div class="factor-list-edit" id="whiteList"></div>
-            <button type="button" class="add-line" data-add="white">＋ 白因子を追加</button>
-          </div>
-
-          <div>
-            <label for="fNotes">メモ</label>
-            <textarea id="fNotes" rows="2" placeholder="用途など"></textarea>
-          </div>
-
-          <button type="submit" class="btn">この内容を保存</button>
-          <button type="button" class="btn secondary" id="clearBtn">フォームをクリア</button>
-        </form>
-      </div>
-    </div>
-
     <div class="panel list-panel">
       <h2>
         登録済み一覧
@@ -124,12 +45,91 @@
       </div>
       <div class="status" id="listStatus"></div>
       <div class="entries" id="entries"></div>
-      <div class="empty" id="emptyMsg" style="display:none;">まだ登録がありません。左でClaudeの出力を貼り付けるか、手入力して保存してください。</div>
+      <div class="empty" id="emptyMsg" style="display:none;">まだ登録がありません。「＋ 因子登録」からClaudeの出力を貼り付けるか、手入力して保存してください。</div>
     </div>
   </div>
 </div>
 
 <div class="modal-overlay" id="modalOverlay" hidden>
+  <div class="modal" id="registerModal" role="dialog" aria-labelledby="registerModalTitle" hidden>
+    <h2 id="registerModalTitle">因子を登録</h2>
+
+    <p class="hint">
+      継承画面のスクリーンショットをClaudeアプリに見せて抽出してもらったJSONを、下の欄に貼り付けてください（抽出用プロンプトは「プロンプト」ボタンから確認・コピーできます）。
+    </p>
+    <div class="form-grid">
+      <div>
+        <label for="pasteJson">Claudeの出力を貼り付け</label>
+        <textarea id="pasteJson" rows="4" placeholder='{"character": "...", "blue_factors": [{"name":"...", "self":true, "parent1":false, "parent2":true}], "red_factors": [...], "green_factors": [...], "white_factors": [...]}'></textarea>
+      </div>
+      <button type="button" class="btn" id="loadJsonBtn">この内容をフォームに反映</button>
+    </div>
+    <div class="status" id="status"></div>
+
+    <form class="form-grid" id="entryForm">
+      <div>
+        <label for="fCharacter">キャラ名</label>
+        <input type="text" id="fCharacter" placeholder="例: スペシャルウィーク">
+      </div>
+
+      <div class="factor-row">
+        <div style="flex:1;">
+          <label for="fParent1">継承元1</label>
+          <input type="text" id="fParent1" placeholder="親1のキャラ名（手入力）">
+        </div>
+        <div style="flex:1;">
+          <label for="fParent2">継承元2</label>
+          <input type="text" id="fParent2" placeholder="親2のキャラ名（手入力）">
+        </div>
+      </div>
+
+      <div>
+        <label>青因子（本体・親1・親2）</label>
+        <div class="stack-header">
+          <span>因子名</span><span>本体</span><span>親1</span><span>親2</span><span></span>
+        </div>
+        <div class="factor-list-edit" id="blueList"></div>
+        <button type="button" class="add-line" data-add="blue">＋ 青因子を追加</button>
+      </div>
+
+      <div>
+        <label>赤因子（本体・親1・親2）</label>
+        <div class="stack-header">
+          <span>因子名</span><span>本体</span><span>親1</span><span>親2</span><span></span>
+        </div>
+        <div class="factor-list-edit" id="redList"></div>
+        <button type="button" class="add-line" data-add="red">＋ 赤因子を追加</button>
+      </div>
+
+      <div>
+        <label>緑因子（固有・本体・親1・親2）</label>
+        <div class="stack-header">
+          <span>因子名</span><span>本体</span><span>親1</span><span>親2</span><span></span>
+        </div>
+        <div class="factor-list-edit" id="greenList"></div>
+        <button type="button" class="add-line" data-add="green">＋ 緑因子を追加</button>
+      </div>
+
+      <div>
+        <label>白因子（本体・親1・親2）</label>
+        <div class="stack-header">
+          <span>因子名</span><span>本体</span><span>親1</span><span>親2</span><span></span>
+        </div>
+        <div class="factor-list-edit" id="whiteList"></div>
+        <button type="button" class="add-line" data-add="white">＋ 白因子を追加</button>
+      </div>
+
+      <div>
+        <label for="fNotes">メモ</label>
+        <textarea id="fNotes" rows="2" placeholder="用途など"></textarea>
+      </div>
+
+      <button type="submit" class="btn">この内容を保存</button>
+      <button type="button" class="btn secondary" id="clearBtn">フォームをクリア</button>
+    </form>
+    <button type="button" class="btn secondary modal-close-btn" data-modal="registerModal">閉じる</button>
+  </div>
+
   <div class="modal" id="githubModal" role="dialog" aria-labelledby="githubModalTitle" hidden>
     <h2 id="githubModalTitle">GitHub連携設定</h2>
     <p class="hint">この台帳のデータは、このリポジトリの <code>data/factors.json</code> に保存されます。<strong>閲覧のみならPATなしでも見られます</strong>（リポジトリ所有者・リポジトリ名だけ入力）。保存・削除には Contents 権限を持つ個人アクセストークン(PAT)が必要です。</p>
