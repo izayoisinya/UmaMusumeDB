@@ -12,7 +12,7 @@ let config = loadConfig();
 let currentSha = null;
 let allEntries = [];
 
-const CLAUDE_PROMPT = 'この画像はウマ娘プリティーダービーの因子継承画面のスクリーンショットです。書かれている因子情報を読み取って、次のJSON形式だけを出力してください（説明や前置き、コードフェンスは不要です）。\n\n{"character": string, "blue_factors": [{"name": string, "level": number}], "red_factors": [{"name": string, "level": number}], "green_factors": [{"name": string, "level": number}], "white_factors": [{"name": string, "level": number}]}\n\ngreen_factorsは緑色で強調表示されている固有因子。levelは星の数(1〜3程度)。読み取れない項目は空配列にしてください。継承元のキャラ名は含めず、このキャラ自身の因子のみを対象にしてください。';
+const CLAUDE_PROMPT = 'この画像はウマ娘プリティーダービーの因子継承画面のスクリーンショットです。書かれている因子情報を読み取って、次のJSON形式だけを出力してください（説明や前置き、コードフェンスは不要です）。\n\n対象は画面いちばん上の「本人」の因子ブロックのみです。その下にある「継承元」（親の因子ブロック）は対象外なので含めないでください。\n\n本人のブロックには青因子の列とピンク（赤）因子の列が横に並んでいます。各列の一番上にある色付きの見出し（例:「根性」「逃げ」）も、その列に属する因子の1項目として扱ってください（見出しとして除外しない）。そこから下に続く項目も、見出しと同じ列の色として全て含めてください（青列の項目はすべてblue_factors、ピンク/赤列の項目はすべてred_factors。white_factorsに紛れ込ませないこと）。緑色で強調されている項目は、その列の色分類ではなくgreen_factorsに入れてください。white_factorsは、青・ピンクの列とは別に独立して表示されている白因子がある場合のみ含めてください。\n\n{"character": string, "blue_factors": [{"name": string, "level": number}], "red_factors": [{"name": string, "level": number}], "green_factors": [{"name": string, "level": number}], "white_factors": [{"name": string, "level": number}]}\n\nlevelは星の数(1〜3程度)。各列に写っている項目は省略せず全て出力してください。文字が読み取りにくい項目があっても、推測でよいので省略しないでください。';
 
 function loadConfig() {
   try {
