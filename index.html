@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>因子台帳</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="ledger">
+  <div class="masthead">
+    <h1>因子台帳</h1>
+    <p id="countLabel">0 頭 登録</p>
+  </div>
+
+  <div class="layout">
+    <div class="left-col">
+      <div class="panel">
+        <h2>GitHub連携設定</h2>
+        <p class="hint">この台帳のデータは、このリポジトリの <code>data/factors.json</code> に保存されます。読み書きには Contents 権限を持つ個人アクセストークン(PAT)が必要です。</p>
+        <div class="form-grid">
+          <div>
+            <label for="cfgOwner">リポジトリ所有者</label>
+            <input type="text" id="cfgOwner" placeholder="例: izayoisinya">
+          </div>
+          <div>
+            <label for="cfgRepo">リポジトリ名</label>
+            <input type="text" id="cfgRepo" placeholder="例: UmaMusumeDB">
+          </div>
+          <div>
+            <label for="cfgBranch">ブランチ</label>
+            <input type="text" id="cfgBranch" placeholder="main">
+          </div>
+          <div>
+            <label for="cfgToken">個人アクセストークン (PAT)</label>
+            <input type="password" id="cfgToken" placeholder="このリポジトリのContents読み書き権限を持つトークン" autocomplete="off">
+          </div>
+          <button type="button" class="btn" id="cfgSaveBtn">保存して読み込む</button>
+          <button type="button" class="btn secondary" id="cfgClearBtn">設定を消去</button>
+        </div>
+        <div class="status" id="cfgStatus"></div>
+      </div>
+
+      <div class="panel">
+        <h2>因子を登録</h2>
+
+        <div class="dropzone" id="dropzone" tabindex="0">
+          <div id="dropzoneInner">
+            画像を貼り付け（Ctrl+V）<br>またはクリックして選択
+          </div>
+          <input type="file" id="fileInput" accept="image/*">
+        </div>
+        <button class="btn" id="analyzeBtn" disabled>画像から読み取る</button>
+        <div class="status" id="status"></div>
+
+        <form class="form-grid" id="entryForm">
+          <div>
+            <label for="fCharacter">キャラ名</label>
+            <input type="text" id="fCharacter" placeholder="例: スペシャルウィーク">
+          </div>
+
+          <div>
+            <label>青因子</label>
+            <div class="factor-row">
+              <input type="text" id="fBlueName" placeholder="因子名 / 適性">
+              <input type="number" id="fBlueLevel" min="0" max="3" placeholder="Lv">
+            </div>
+          </div>
+
+          <div>
+            <label>赤因子</label>
+            <div class="factor-list-edit" id="redList"></div>
+            <button type="button" class="add-line" data-add="red">＋ 赤因子を追加</button>
+          </div>
+
+          <div>
+            <label>白因子</label>
+            <div class="factor-list-edit" id="whiteList"></div>
+            <button type="button" class="add-line" data-add="white">＋ 白因子を追加</button>
+          </div>
+
+          <div>
+            <label for="fNotes">メモ</label>
+            <textarea id="fNotes" rows="2" placeholder="用途など"></textarea>
+          </div>
+
+          <button type="submit" class="btn">この内容を保存</button>
+          <button type="button" class="btn secondary" id="clearBtn">フォームをクリア</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h2>
+        登録済み一覧
+        <button type="button" class="btn secondary btn-inline" id="refreshBtn">更新</button>
+      </h2>
+      <div class="search-row">
+        <input type="text" id="searchInput" placeholder="キャラ名・因子名で検索">
+      </div>
+      <div class="status" id="listStatus"></div>
+      <div class="entries" id="entries"></div>
+      <div class="empty" id="emptyMsg" style="display:none;">まだ登録がありません。左で画像を読み込むか、手入力して保存してください。</div>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
