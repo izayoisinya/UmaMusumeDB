@@ -1,1 +1,372 @@
-[]
+[
+  {
+    "id": "factor_1789416604746_7dazw",
+    "character": "セイウンスカイ",
+    "parent1": "キタサンブラック",
+    "parent2": "アグネスタキオン",
+    "blue": [
+      {
+        "name": "根性",
+        "self": 3,
+        "parent1": null,
+        "parent2": 3
+      },
+      {
+        "name": "賢さ",
+        "self": null,
+        "parent1": 3,
+        "parent2": null
+      }
+    ],
+    "red": [
+      {
+        "name": "逃げ",
+        "self": 3,
+        "parent1": null,
+        "parent2": null
+      },
+      {
+        "name": "長距離",
+        "self": null,
+        "parent1": 3,
+        "parent2": null
+      },
+      {
+        "name": "マイル",
+        "self": null,
+        "parent1": null,
+        "parent2": 3
+      }
+    ],
+    "green": [
+      {
+        "name": "アングリング×スキーミング",
+        "self": 3,
+        "parent1": null,
+        "parent2": null
+      },
+      {
+        "name": "あっぱれ大飯振る舞い!",
+        "self": null,
+        "parent1": 3,
+        "parent2": null
+      },
+      {
+        "name": "恵福バルカローレ",
+        "self": null,
+        "parent1": null,
+        "parent2": 3
+      }
+    ],
+    "white": [
+      {
+        "name": "急ぎ足",
+        "self": 3,
+        "parent1": 3,
+        "parent2": null
+      },
+      {
+        "name": "リードキープ",
+        "self": 3,
+        "parent1": null,
+        "parent2": null
+      },
+      {
+        "name": "遊びはおしまいっ!",
+        "self": 3,
+        "parent1": null,
+        "parent2": null
+      },
+      {
+        "name": "押しの一手",
+        "self": 3,
+        "parent1": null,
+        "parent2": 3
+      },
+      {
+        "name": "アオハル点火・賢",
+        "self": 3,
+        "parent1": 3,
+        "parent2": 3
+      },
+      {
+        "name": "マイルの遺伝子",
+        "self": 3,
+        "parent1": 3,
+        "parent2": 3
+      },
+      {
+        "name": "左回りの目覚め",
+        "self": 3,
+        "parent1": null,
+        "parent2": null
+      },
+      {
+        "name": "日本ダービー",
+        "self": 3,
+        "parent1": null,
+        "parent2": null
+      },
+      {
+        "name": "スピードイーター",
+        "self": 3,
+        "parent1": null,
+        "parent2": null
+      },
+      {
+        "name": "先頭プライド",
+        "self": 3,
+        "parent1": null,
+        "parent2": 3
+      },
+      {
+        "name": "序盤巧者",
+        "self": 3,
+        "parent1": null,
+        "parent2": null
+      },
+      {
+        "name": "連綿",
+        "self": 3,
+        "parent1": 3,
+        "parent2": 3
+      },
+      {
+        "name": "海の加護",
+        "self": 3,
+        "parent1": 3,
+        "parent2": null
+      },
+      {
+        "name": "スピードの目覚め",
+        "self": 3,
+        "parent1": null,
+        "parent2": 3
+      },
+      {
+        "name": "連戦連勝",
+        "self": 3,
+        "parent1": null,
+        "parent2": 3
+      },
+      {
+        "name": "NHKマイルC",
+        "self": null,
+        "parent1": 3,
+        "parent2": null
+      },
+      {
+        "name": "エリザベス女王杯",
+        "self": null,
+        "parent1": 3,
+        "parent2": 3
+      },
+      {
+        "name": "右回り○",
+        "self": null,
+        "parent1": 2,
+        "parent2": null
+      },
+      {
+        "name": "コーナー回復○",
+        "self": null,
+        "parent1": 3,
+        "parent2": null
+      },
+      {
+        "name": "勢い任せ",
+        "self": null,
+        "parent1": 3,
+        "parent2": null
+      },
+      {
+        "name": "品行方正",
+        "self": null,
+        "parent1": 3,
+        "parent2": null
+      },
+      {
+        "name": "比類なき",
+        "self": null,
+        "parent1": 3,
+        "parent2": 3
+      },
+      {
+        "name": "長距離の遺伝子",
+        "self": null,
+        "parent1": 3,
+        "parent2": null
+      },
+      {
+        "name": "東の雄",
+        "self": null,
+        "parent1": 3,
+        "parent2": null
+      },
+      {
+        "name": "早月賞",
+        "self": null,
+        "parent1": 3,
+        "parent2": null
+      },
+      {
+        "name": "菊花賞",
+        "self": null,
+        "parent1": 3,
+        "parent2": null
+      },
+      {
+        "name": "有馬記念",
+        "self": null,
+        "parent1": 3,
+        "parent2": null
+      },
+      {
+        "name": "阪神レース場○",
+        "self": null,
+        "parent1": 3,
+        "parent2": null
+      },
+      {
+        "name": "先駆け",
+        "self": null,
+        "parent1": 3,
+        "parent2": null
+      },
+      {
+        "name": "逃げコーナー○",
+        "self": null,
+        "parent1": 3,
+        "parent2": 3
+      },
+      {
+        "name": "快速",
+        "self": null,
+        "parent1": 3,
+        "parent2": null
+      },
+      {
+        "name": "素直な一歩",
+        "self": null,
+        "parent1": 3,
+        "parent2": null
+      },
+      {
+        "name": "心惹かれて",
+        "self": null,
+        "parent1": 3,
+        "parent2": 3
+      },
+      {
+        "name": "秋の目覚め",
+        "self": null,
+        "parent1": 3,
+        "parent2": 3
+      },
+      {
+        "name": "天皇賞（春）",
+        "self": null,
+        "parent1": null,
+        "parent2": 3
+      },
+      {
+        "name": "マイルCS",
+        "self": null,
+        "parent1": null,
+        "parent2": 3
+      },
+      {
+        "name": "冬ウマ娘○",
+        "self": null,
+        "parent1": null,
+        "parent2": 2
+      },
+      {
+        "name": "ベースアップ",
+        "self": null,
+        "parent1": null,
+        "parent2": 3
+      },
+      {
+        "name": "逃げのコツ",
+        "self": null,
+        "parent1": null,
+        "parent2": 3
+      },
+      {
+        "name": "尻尾上がり",
+        "self": null,
+        "parent1": null,
+        "parent2": 3
+      },
+      {
+        "name": "中盤巧者",
+        "self": null,
+        "parent1": null,
+        "parent2": 3
+      },
+      {
+        "name": "トレセン軒シナリオ",
+        "self": null,
+        "parent1": null,
+        "parent2": 3
+      },
+      {
+        "name": "皐月賞",
+        "self": null,
+        "parent1": null,
+        "parent2": 3
+      },
+      {
+        "name": "非根幹距離○",
+        "self": null,
+        "parent1": null,
+        "parent2": 3
+      },
+      {
+        "name": "おひとり様",
+        "self": null,
+        "parent1": null,
+        "parent2": 3
+      },
+      {
+        "name": "逃げ直線○",
+        "self": null,
+        "parent1": null,
+        "parent2": 3
+      },
+      {
+        "name": "地固め",
+        "self": null,
+        "parent1": null,
+        "parent2": 3
+      },
+      {
+        "name": "影打",
+        "self": null,
+        "parent1": null,
+        "parent2": 3
+      },
+      {
+        "name": "切り込み隊長",
+        "self": null,
+        "parent1": null,
+        "parent2": 3
+      },
+      {
+        "name": "恩返し、召し上がれ",
+        "self": null,
+        "parent1": null,
+        "parent2": 3
+      },
+      {
+        "name": "賢さの目覚め",
+        "self": null,
+        "parent1": null,
+        "parent2": 3
+      }
+    ],
+    "notes": "",
+    "savedAt": "2026-09-14T20:10:04.746Z"
+  }
+]
