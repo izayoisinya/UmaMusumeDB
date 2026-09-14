@@ -475,10 +475,9 @@ function matchesAnyTerm(text, terms) {
 }
 
 function renderEntries() {
-  const raw = document.getElementById('searchInput').value.trim().toLowerCase();
-  const terms = raw.split(/\s+/).filter(Boolean);
-  const modeInput = document.querySelector('input[name="searchMode"]:checked');
-  const mode = modeInput ? modeInput.value : 'and';
+  const requiredTerms = document.getElementById('searchRequired').value.trim().toLowerCase().split(/\s+/).filter(Boolean);
+  const optionalTerms = document.getElementById('searchOptional').value.trim().toLowerCase().split(/\s+/).filter(Boolean);
+  const terms = [...requiredTerms, ...optionalTerms];
   const container = document.getElementById('entries');
   const emptyMsg = document.getElementById('emptyMsg');
   container.innerHTML = '';
@@ -489,7 +488,9 @@ function renderEntries() {
       ...(e.blue || []).map(f => f.name), ...(e.red || []).map(f => f.name),
       ...(e.green || []).map(f => f.name), ...(e.white || []).map(f => f.name)]
       .filter(Boolean).join(' ').toLowerCase();
-    return mode === 'or' ? terms.some(t => hay.includes(t)) : terms.every(t => hay.includes(t));
+    const requiredOk = requiredTerms.every(t => hay.includes(t));
+    const optionalOk = !optionalTerms.length || optionalTerms.some(t => hay.includes(t));
+    return requiredOk && optionalOk;
   });
 
   document.getElementById('countLabel').textContent = allEntries.length + ' 頭 登録';
@@ -537,8 +538,8 @@ function renderEntries() {
   });
 }
 
-document.getElementById('searchInput').addEventListener('input', renderEntries);
-document.querySelectorAll('input[name="searchMode"]').forEach(r => r.addEventListener('change', renderEntries));
+document.getElementById('searchRequired').addEventListener('input', renderEntries);
+document.getElementById('searchOptional').addEventListener('input', renderEntries);
 
 fillConfigForm();
 resetForm();

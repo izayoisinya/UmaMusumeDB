@@ -290,30 +290,17 @@ input[type=text]:focus, input[type=number]:focus, textarea:focus {
   display: flex;
   gap: 10px;
   margin-bottom: 16px;
+  flex-wrap: wrap;
 }
-.search-row input[type=text] {
+.search-field {
   flex: 1;
+  min-width: 200px;
 }
-.search-mode {
-  display: flex;
-  gap: 8px;
-  align-items: center;
-  font-size: 12px;
+.search-field label {
+  font-size: 11px;
   color: var(--ink-soft);
   font-weight: 700;
-  white-space: nowrap;
-}
-.search-mode label {
-  display: flex;
-  align-items: center;
-  gap: 3px;
-  margin-bottom: 0;
-  cursor: pointer;
-}
-.search-mode input[type=radio] {
-  width: auto;
-  cursor: pointer;
-  accent-color: var(--blue-dim);
+  margin-bottom: 3px;
 }
 
 .entries { display: flex; flex-direction: column; gap: 10px; }

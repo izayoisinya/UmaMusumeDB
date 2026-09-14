@@ -37,10 +37,13 @@
         <button type="button" class="btn secondary btn-inline" id="refreshBtn">更新</button>
       </h2>
       <div class="search-row">
-        <input type="text" id="searchInput" placeholder="キャラ名・因子名で検索（スペース区切りで複数指定可）">
-        <div class="search-mode">
-          <label><input type="radio" name="searchMode" value="and" checked> AND</label>
-          <label><input type="radio" name="searchMode" value="or"> OR</label>
+        <div class="search-field">
+          <label for="searchRequired">必須（すべて含む）</label>
+          <input type="text" id="searchRequired" placeholder="例: スタミナ 賢さ（スペース区切りで複数指定可）">
+        </div>
+        <div class="search-field">
+          <label for="searchOptional">任意（いずれか含めばOK）</label>
+          <input type="text" id="searchOptional" placeholder="例: 東京レース場 中山レース場">
         </div>
       </div>
       <div class="status" id="listStatus"></div>
