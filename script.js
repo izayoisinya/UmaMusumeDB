@@ -185,6 +185,21 @@ function escapeHtml(s) {
   return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 }
 
+function dedupeFactors(factors) {
+  const map = new Map();
+  factors.forEach(f => {
+    const existing = map.get(f.name);
+    if (existing) {
+      existing.self = existing.self || f.self;
+      existing.parent1 = existing.parent1 || f.parent1;
+      existing.parent2 = existing.parent2 || f.parent2;
+    } else {
+      map.set(f.name, { ...f });
+    }
+  });
+  return Array.from(map.values());
+}
+
 function readListFactors(listId) {
   const rows = document.querySelectorAll('#' + listId + ' .stack-factor-row');
   const out = [];
@@ -198,7 +213,7 @@ function readListFactors(listId) {
       parent2: r.querySelector('.fp2').checked,
     });
   });
-  return out;
+  return dedupeFactors(out);
 }
 
 function setStatus(msg, isError) {
