@@ -480,13 +480,13 @@ function renderEntries() {
     const parents = [entry.parent1, entry.parent2].filter(Boolean).map(p => highlightMatches(p, terms)).join(' × ');
 
     row.innerHTML = `
-      <div>
+      <div class="entry-top">
         <div class="entry-name">${highlightMatches(entry.character, terms)}</div>
-        ${parents ? `<div class="entry-parents">継承元: ${parents}</div>` : ''}
-        <div class="chips">${chips.join('') || '<span style="color:var(--ink-soft);font-size:12px;">因子未登録</span>'}</div>
-        ${entry.notes ? `<div class="entry-notes">${highlightMatches(entry.notes, terms)}</div>` : ''}
+        <button class="entry-del" data-id="${entry.id}">削除</button>
       </div>
-      <button class="entry-del" data-id="${entry.id}">削除</button>
+      ${parents ? `<div class="entry-parents">継承元: ${parents}</div>` : ''}
+      <div class="chips">${chips.join('') || '<span style="color:var(--ink-soft);font-size:12px;">因子未登録</span>'}</div>
+      ${entry.notes ? `<div class="entry-notes">${highlightMatches(entry.notes, terms)}</div>` : ''}
     `;
     row.querySelector('.entry-del').addEventListener('click', () => deleteEntry(entry.id));
     container.appendChild(row);

@@ -322,10 +322,12 @@ input[type=text]:focus, input[type=number]:focus, textarea:focus {
   border-radius: 14px;
   background: var(--surface);
   padding: 14px 16px;
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 8px;
-  align-items: start;
+}
+.entry-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
 }
 .entry-name {
   font-family: 'M PLUS Rounded 1c', sans-serif;
@@ -368,6 +370,8 @@ mark.search-hit {
   border-radius: 999px;
   padding: 5px 12px;
   cursor: pointer;
+  flex-shrink: 0;
+  white-space: nowrap;
 }
 .entry-del:hover { background: var(--danger); color: #fff; }
 
