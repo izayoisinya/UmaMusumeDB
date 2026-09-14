@@ -323,19 +323,6 @@ input[type=text]:focus, input[type=number]:focus, textarea:focus {
   background: var(--surface);
   padding: 14px 16px;
 }
-.entry.search-match {
-  animation: neon-glow 1.8s ease-in-out infinite alternate;
-}
-@keyframes neon-glow {
-  0% {
-    border-color: #00e5ff;
-    box-shadow: 0 0 6px 1px #00e5ff, 0 0 16px 3px rgba(0,229,255,0.45);
-  }
-  100% {
-    border-color: #ff2fd1;
-    box-shadow: 0 0 6px 1px #ff2fd1, 0 0 16px 3px rgba(255,47,209,0.45);
-  }
-}
 .entry-top {
   display: flex;
   align-items: center;
@@ -367,6 +354,21 @@ input[type=text]:focus, input[type=number]:focus, textarea:focus {
 .chip.green { background: linear-gradient(135deg, #81c784, var(--green-dim)); }
 .chip.white { background: var(--panel); color: var(--ink-soft); border: 1.5px solid var(--white-f); }
 .chip.muted { opacity: 0.45; }
+.chip.search-match {
+  outline: 2px solid #00e5ff;
+  outline-offset: 2px;
+  animation: chip-neon-glow 1.8s ease-in-out infinite alternate;
+}
+@keyframes chip-neon-glow {
+  0% {
+    outline-color: #00e5ff;
+    box-shadow: 0 0 5px 1px #00e5ff, 0 0 10px 2px rgba(0,229,255,0.55);
+  }
+  100% {
+    outline-color: #ff2fd1;
+    box-shadow: 0 0 5px 1px #ff2fd1, 0 0 10px 2px rgba(255,47,209,0.55);
+  }
+}
 mark.search-hit {
   background: #fff176;
   color: #4a3527;

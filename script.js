@@ -468,6 +468,12 @@ function highlightMatches(text, terms) {
   return result;
 }
 
+function matchesAnyTerm(text, terms) {
+  if (!terms || !terms.length) return false;
+  const lowerStr = String(text == null ? '' : text).toLowerCase();
+  return terms.some(t => t && lowerStr.includes(t));
+}
+
 function renderEntries() {
   const raw = document.getElementById('searchInput').value.trim().toLowerCase();
   const terms = raw.split(/\s+/).filter(Boolean);
@@ -497,12 +503,15 @@ function renderEntries() {
 
   filtered.forEach(entry => {
     const row = document.createElement('div');
-    row.className = 'entry' + (terms.length ? ' search-match' : '');
+    row.className = 'entry';
 
     const chips = [];
     const mark = v => v ? '○' : '×';
     const stackLabel = f => `${highlightMatches(f.name, terms)}<${mark(f.self)},${mark(f.parent1)},${mark(f.parent2)}>`;
-    const pushChip = (color, f) => chips.push(`<span class="chip ${color}${f.self ? '' : ' muted'}">${stackLabel(f)}</span>`);
+    const pushChip = (color, f) => {
+      const matchClass = matchesAnyTerm(f.name, terms) ? ' search-match' : '';
+      chips.push(`<span class="chip ${color}${f.self ? '' : ' muted'}${matchClass}">${stackLabel(f)}</span>`);
+    };
     (entry.blue || []).forEach(f => pushChip('blue', f));
     (entry.red || []).forEach(f => pushChip('red', f));
     (entry.green || []).forEach(f => pushChip('green', f));
