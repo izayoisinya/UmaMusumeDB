@@ -189,21 +189,21 @@ input[type=text], input[type=number], input[type=password], textarea {
 .add-line { font-size: 12px; color: var(--gold-dim); background: none; border: none; cursor: pointer; padding: 2px 0; text-align: left; }
 .remove-line { font-size: 12px; color: var(--danger); background: none; border: none; cursor: pointer; padding: 0 4px; }
 
-.white-header {
+.stack-header {
   display: flex;
   gap: 6px;
   font-size: 10px;
   color: var(--ink-soft);
   margin-bottom: 2px;
 }
-.white-header span:nth-child(1) { flex: 1; }
-.white-header span:nth-child(2),
-.white-header span:nth-child(3),
-.white-header span:nth-child(4) { width: 44px; }
-.white-header span:nth-child(5) { width: 20px; }
-.white-factor-row { display: flex; gap: 6px; align-items: center; }
-.white-factor-row input[type=text] { flex: 1; }
-.white-factor-row input[type=number] { width: 44px; }
+.stack-header span:nth-child(1) { flex: 1; }
+.stack-header span:nth-child(2),
+.stack-header span:nth-child(3),
+.stack-header span:nth-child(4) { width: 44px; }
+.stack-header span:nth-child(5) { width: 20px; }
+.stack-factor-row { display: flex; gap: 6px; align-items: center; }
+.stack-factor-row input[type=text] { flex: 1; }
+.stack-factor-row input[type=number] { width: 44px; }
 
 .search-row {
   display: flex;

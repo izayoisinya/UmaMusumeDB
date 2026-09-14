@@ -53,7 +53,7 @@
         <div class="form-grid">
           <div>
             <label for="pasteJson">Claudeの出力を貼り付け</label>
-            <textarea id="pasteJson" rows="4" placeholder='{"character": "...", "blue_factors": [...], "red_factors": [...], "green_factors": [...], "white_factors": [{"name":"...", "self":N, "parent1":N, "parent2":N}]}'></textarea>
+            <textarea id="pasteJson" rows="4" placeholder='{"character": "...", "blue_factors": [{"name":"...", "self":N, "parent1":N, "parent2":N}], "red_factors": [...], "green_factors": [...], "white_factors": [...]}'></textarea>
           </div>
           <button type="button" class="btn" id="loadJsonBtn">この内容をフォームに反映</button>
         </div>
@@ -77,30 +77,39 @@
           </div>
 
           <div>
-            <label>青因子</label>
+            <label>青因子（本体・親1・親2）</label>
+            <div class="stack-header">
+              <span>因子名</span><span>本体</span><span>親1</span><span>親2</span><span></span>
+            </div>
             <div class="factor-list-edit" id="blueList"></div>
             <button type="button" class="add-line" data-add="blue">＋ 青因子を追加</button>
           </div>
 
           <div>
-            <label>赤因子</label>
+            <label>赤因子（本体・親1・親2）</label>
+            <div class="stack-header">
+              <span>因子名</span><span>本体</span><span>親1</span><span>親2</span><span></span>
+            </div>
             <div class="factor-list-edit" id="redList"></div>
             <button type="button" class="add-line" data-add="red">＋ 赤因子を追加</button>
           </div>
 
           <div>
-            <label>緑因子（固有）</label>
+            <label>緑因子（固有・本体・親1・親2）</label>
+            <div class="stack-header">
+              <span>因子名</span><span>本体</span><span>親1</span><span>親2</span><span></span>
+            </div>
             <div class="factor-list-edit" id="greenList"></div>
             <button type="button" class="add-line" data-add="green">＋ 緑因子を追加</button>
           </div>
 
           <div>
             <label>白因子（本体・親1・親2）</label>
-            <div class="white-header">
+            <div class="stack-header">
               <span>因子名</span><span>本体</span><span>親1</span><span>親2</span><span></span>
             </div>
             <div class="factor-list-edit" id="whiteList"></div>
-            <button type="button" class="add-line" id="addWhiteBtn">＋ 白因子を追加</button>
+            <button type="button" class="add-line" data-add="white">＋ 白因子を追加</button>
           </div>
 
           <div>
