@@ -1,34 +1,21 @@
-const CACHE_NAME = 'uma-factor-ledger-v1';
-const APP_SHELL = ['./', './index.html', './style.css', './script.js', './manifest.json'];
+// キャッシュは行わず、常にネットワークから最新のファイルを取得する。
+// (以前はapp shellをキャッシュしていたが、HTMLとCSS/JSのキャッシュが
+//  別タイミングで更新されてバージョンがずれる問題があったため撤去)
+const OLD_CACHES_PREFIX = 'uma-factor-ledger-';
 
-self.addEventListener('install', event => {
-  event.waitUntil(
-    caches.open(CACHE_NAME).then(cache => cache.addAll(APP_SHELL))
-  );
+self.addEventListener('install', () => {
   self.skipWaiting();
 });
 
 self.addEventListener('activate', event => {
   event.waitUntil(
     caches.keys().then(keys =>
-      Promise.all(keys.filter(k => k !== CACHE_NAME).map(k => caches.delete(k)))
+      Promise.all(keys.filter(k => k.startsWith(OLD_CACHES_PREFIX)).map(k => caches.delete(k)))
     )
   );
   self.clients.claim();
 });
 
 self.addEventListener('fetch', event => {
-  const url = new URL(event.request.url);
-  if (event.request.method !== 'GET' || url.origin !== self.location.origin) return;
-  if (!APP_SHELL.some(path => url.pathname.endsWith(path.replace('./', '')))) return;
-
-  event.respondWith(
-    fetch(event.request)
-      .then(res => {
-        const clone = res.clone();
-        caches.open(CACHE_NAME).then(cache => cache.put(event.request, clone));
-        return res;
-      })
-      .catch(() => caches.match(event.request))
-  );
+  event.respondWith(fetch(event.request));
 });
