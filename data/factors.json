@@ -1,5 +1,453 @@
 [
   {
+    "id": "factor_1789427633989_5dsqa",
+    "character": "ファレノプシス",
+    "parent1": "マルゼンスキー",
+    "parent2": "エルコンドルパサー",
+    "blue": [
+      {
+        "name": "賢さ",
+        "self": true,
+        "parent1": false,
+        "parent2": true
+      },
+      {
+        "name": "スタミナ",
+        "self": false,
+        "parent1": true,
+        "parent2": false
+      }
+    ],
+    "red": [
+      {
+        "name": "マイル",
+        "self": true,
+        "parent1": false,
+        "parent2": false
+      },
+      {
+        "name": "ダート",
+        "self": false,
+        "parent1": true,
+        "parent2": true
+      }
+    ],
+    "green": [
+      {
+        "name": "烈々と咲く",
+        "self": true,
+        "parent1": false,
+        "parent2": false
+      },
+      {
+        "name": "紅焔ギア/LP1211-M",
+        "self": false,
+        "parent1": true,
+        "parent2": false
+      },
+      {
+        "name": "プランチャ☆ガナドール",
+        "self": false,
+        "parent1": false,
+        "parent2": true
+      }
+    ],
+    "white": [
+      {
+        "name": "安田記念",
+        "self": true,
+        "parent1": false,
+        "parent2": true
+      },
+      {
+        "name": "ホープフルS",
+        "self": true,
+        "parent1": false,
+        "parent2": false
+      },
+      {
+        "name": "マイルCS南部杯",
+        "self": true,
+        "parent1": false,
+        "parent2": true
+      },
+      {
+        "name": "東京レース場○",
+        "self": true,
+        "parent1": false,
+        "parent2": true
+      },
+      {
+        "name": "コーナー巧者○",
+        "self": true,
+        "parent1": false,
+        "parent2": true
+      },
+      {
+        "name": "直線巧者",
+        "self": true,
+        "parent1": false,
+        "parent2": true
+      },
+      {
+        "name": "地固め",
+        "self": true,
+        "parent1": false,
+        "parent2": false
+      },
+      {
+        "name": "下り坂巧者",
+        "self": true,
+        "parent1": false,
+        "parent2": false
+      },
+      {
+        "name": "一番乗り",
+        "self": true,
+        "parent1": false,
+        "parent2": false
+      },
+      {
+        "name": "心惹かれて",
+        "self": true,
+        "parent1": false,
+        "parent2": false
+      },
+      {
+        "name": "立ち合い",
+        "self": true,
+        "parent1": false,
+        "parent2": false
+      },
+      {
+        "name": "トレセン軒シナリオ",
+        "self": true,
+        "parent1": false,
+        "parent2": false
+      },
+      {
+        "name": "賢さの目覚め",
+        "self": true,
+        "parent1": false,
+        "parent2": false
+      },
+      {
+        "name": "左回りの目覚め",
+        "self": true,
+        "parent1": false,
+        "parent2": false
+      },
+      {
+        "name": "ヴィクトリアマイル",
+        "self": true,
+        "parent1": false,
+        "parent2": false
+      },
+      {
+        "name": "天皇賞（秋）",
+        "self": true,
+        "parent1": true,
+        "parent2": false
+      },
+      {
+        "name": "JDダービー",
+        "self": true,
+        "parent1": true,
+        "parent2": false
+      },
+      {
+        "name": "右回り○",
+        "self": true,
+        "parent1": false,
+        "parent2": false
+      },
+      {
+        "name": "中京レース場○",
+        "self": true,
+        "parent1": false,
+        "parent2": false
+      },
+      {
+        "name": "コーナー回復○",
+        "self": true,
+        "parent1": true,
+        "parent2": true
+      },
+      {
+        "name": "深呼吸",
+        "self": true,
+        "parent1": false,
+        "parent2": false
+      },
+      {
+        "name": "遊びはおしまいっ!",
+        "self": true,
+        "parent1": false,
+        "parent2": false
+      },
+      {
+        "name": "向こう見ず",
+        "self": true,
+        "parent1": false,
+        "parent2": false
+      },
+      {
+        "name": "風切り",
+        "self": true,
+        "parent1": false,
+        "parent2": false
+      },
+      {
+        "name": "連綿",
+        "self": true,
+        "parent1": true,
+        "parent2": true
+      },
+      {
+        "name": "海の加護",
+        "self": true,
+        "parent1": true,
+        "parent2": false
+      },
+      {
+        "name": "ダートの遺伝子",
+        "self": true,
+        "parent1": true,
+        "parent2": false
+      },
+      {
+        "name": "右回りの目覚め",
+        "self": true,
+        "parent1": false,
+        "parent2": true
+      },
+      {
+        "name": "叩き良化型",
+        "self": true,
+        "parent1": false,
+        "parent2": false
+      },
+      {
+        "name": "日本ダービー",
+        "self": false,
+        "parent1": true,
+        "parent2": true
+      },
+      {
+        "name": "川崎記念",
+        "self": false,
+        "parent1": true,
+        "parent2": false
+      },
+      {
+        "name": "冬ウマ娘○",
+        "self": false,
+        "parent1": true,
+        "parent2": true
+      },
+      {
+        "name": "ベースキープ",
+        "self": false,
+        "parent1": true,
+        "parent2": false
+      },
+      {
+        "name": "シンパシー",
+        "self": false,
+        "parent1": true,
+        "parent2": false
+      },
+      {
+        "name": "追い風に乗って",
+        "self": false,
+        "parent1": true,
+        "parent2": true
+      },
+      {
+        "name": "筆に任せて",
+        "self": false,
+        "parent1": true,
+        "parent2": false
+      },
+      {
+        "name": "アオハル点火・賢",
+        "self": false,
+        "parent1": true,
+        "parent2": true
+      },
+      {
+        "name": "レースの真髄・速",
+        "self": false,
+        "parent1": true,
+        "parent2": false
+      },
+      {
+        "name": "Dreamsシナリオ",
+        "self": false,
+        "parent1": true,
+        "parent2": false
+      },
+      {
+        "name": "長距離の遺伝子",
+        "self": false,
+        "parent1": true,
+        "parent2": false
+      },
+      {
+        "name": "フェブラリーS",
+        "self": false,
+        "parent1": true,
+        "parent2": true
+      },
+      {
+        "name": "菊花賞",
+        "self": false,
+        "parent1": true,
+        "parent2": false
+      },
+      {
+        "name": "朝日杯FS",
+        "self": false,
+        "parent1": true,
+        "parent2": false
+      },
+      {
+        "name": "夏ウマ娘○",
+        "self": false,
+        "parent1": true,
+        "parent2": false
+      },
+      {
+        "name": "先駆け",
+        "self": false,
+        "parent1": true,
+        "parent2": false
+      },
+      {
+        "name": "中盤巧者",
+        "self": false,
+        "parent1": true,
+        "parent2": false
+      },
+      {
+        "name": "巨歩",
+        "self": false,
+        "parent1": true,
+        "parent2": false
+      },
+      {
+        "name": "綺羅星",
+        "self": false,
+        "parent1": true,
+        "parent2": true
+      },
+      {
+        "name": "皐月賞",
+        "self": false,
+        "parent1": false,
+        "parent2": true
+      },
+      {
+        "name": "ジャパンC",
+        "self": false,
+        "parent1": false,
+        "parent2": true
+      },
+      {
+        "name": "スタミナキープ",
+        "self": false,
+        "parent1": false,
+        "parent2": true
+      },
+      {
+        "name": "恐れぬ心",
+        "self": false,
+        "parent1": false,
+        "parent2": true
+      },
+      {
+        "name": "快速",
+        "self": false,
+        "parent1": false,
+        "parent2": true
+      },
+      {
+        "name": "二段構え",
+        "self": false,
+        "parent1": false,
+        "parent2": true
+      },
+      {
+        "name": "精進",
+        "self": false,
+        "parent1": false,
+        "parent2": true
+      },
+      {
+        "name": "バイタリティ",
+        "self": false,
+        "parent1": false,
+        "parent2": true
+      },
+      {
+        "name": "レースの真髄・心",
+        "self": false,
+        "parent1": false,
+        "parent2": true
+      },
+      {
+        "name": "春の目覚め",
+        "self": false,
+        "parent1": false,
+        "parent2": true
+      },
+      {
+        "name": "エリザベス女王杯",
+        "self": false,
+        "parent1": false,
+        "parent2": true
+      },
+      {
+        "name": "東京大賞典",
+        "self": false,
+        "parent1": false,
+        "parent2": true
+      },
+      {
+        "name": "ベースアップ",
+        "self": false,
+        "parent1": false,
+        "parent2": true
+      },
+      {
+        "name": "直滑降",
+        "self": false,
+        "parent1": false,
+        "parent2": true
+      },
+      {
+        "name": "砂浴び○",
+        "self": false,
+        "parent1": false,
+        "parent2": true
+      },
+      {
+        "name": "迷いなし",
+        "self": false,
+        "parent1": false,
+        "parent2": true
+      },
+      {
+        "name": "静かな胆",
+        "self": false,
+        "parent1": false,
+        "parent2": true
+      }
+    ],
+    "notes": "メモ",
+    "savedAt": "2026-09-14T23:13:53.989Z"
+  },
+  {
     "id": "factor_1789420449318_audqp",
     "character": "セイウンスカイ",
     "parent1": "マヤのトップガン",
