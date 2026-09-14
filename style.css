@@ -323,6 +323,19 @@ input[type=text]:focus, input[type=number]:focus, textarea:focus {
   background: var(--surface);
   padding: 14px 16px;
 }
+.entry.search-match {
+  animation: neon-glow 1.8s ease-in-out infinite alternate;
+}
+@keyframes neon-glow {
+  0% {
+    border-color: #00e5ff;
+    box-shadow: 0 0 6px 1px #00e5ff, 0 0 16px 3px rgba(0,229,255,0.45);
+  }
+  100% {
+    border-color: #ff2fd1;
+    box-shadow: 0 0 6px 1px #ff2fd1, 0 0 16px 3px rgba(255,47,209,0.45);
+  }
+}
 .entry-top {
   display: flex;
   align-items: center;

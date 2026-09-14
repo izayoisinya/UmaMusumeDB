@@ -497,7 +497,7 @@ function renderEntries() {
 
   filtered.forEach(entry => {
     const row = document.createElement('div');
-    row.className = 'entry';
+    row.className = 'entry' + (terms.length ? ' search-match' : '');
 
     const chips = [];
     const mark = v => v ? '○' : '×';
