@@ -353,6 +353,24 @@ async function deleteEntry(id) {
   }
 }
 
+function highlightMatch(text, query) {
+  const str = text == null ? '' : String(text);
+  if (!query) return escapeHtml(str);
+  const lowerStr = str.toLowerCase();
+  let cursor = 0;
+  let idx = lowerStr.indexOf(query, cursor);
+  if (idx === -1) return escapeHtml(str);
+  let result = '';
+  while (idx !== -1) {
+    result += escapeHtml(str.slice(cursor, idx));
+    result += `<mark class="search-hit">${escapeHtml(str.slice(idx, idx + query.length))}</mark>`;
+    cursor = idx + query.length;
+    idx = lowerStr.indexOf(query, cursor);
+  }
+  result += escapeHtml(str.slice(cursor));
+  return result;
+}
+
 function renderEntries() {
   const q = document.getElementById('searchInput').value.trim().toLowerCase();
   const container = document.getElementById('entries');
@@ -383,21 +401,21 @@ function renderEntries() {
 
     const chips = [];
     const mark = v => v ? '○' : '×';
-    const stackLabel = f => `${escapeHtml(f.name)}<${mark(f.self)},${mark(f.parent1)},${mark(f.parent2)}>`;
+    const stackLabel = f => `${highlightMatch(f.name, q)}<${mark(f.self)},${mark(f.parent1)},${mark(f.parent2)}>`;
     const pushChip = (color, f) => chips.push(`<span class="chip ${color}${f.self ? '' : ' muted'}">${stackLabel(f)}</span>`);
     (entry.blue || []).forEach(f => pushChip('blue', f));
     (entry.red || []).forEach(f => pushChip('red', f));
     (entry.green || []).forEach(f => pushChip('green', f));
     (entry.white || []).forEach(f => pushChip('white', f));
 
-    const parents = [entry.parent1, entry.parent2].filter(Boolean).join(' × ');
+    const parents = [entry.parent1, entry.parent2].filter(Boolean).map(p => highlightMatch(p, q)).join(' × ');
 
     row.innerHTML = `
       <div>
-        <div class="entry-name">${escapeHtml(entry.character)}</div>
-        ${parents ? `<div class="entry-parents">継承元: ${escapeHtml(parents)}</div>` : ''}
+        <div class="entry-name">${highlightMatch(entry.character, q)}</div>
+        ${parents ? `<div class="entry-parents">継承元: ${parents}</div>` : ''}
         <div class="chips">${chips.join('') || '<span style="color:var(--ink-soft);font-size:12px;">因子未登録</span>'}</div>
-        ${entry.notes ? `<div class="entry-notes">${escapeHtml(entry.notes)}</div>` : ''}
+        ${entry.notes ? `<div class="entry-notes">${highlightMatch(entry.notes, q)}</div>` : ''}
       </div>
       <button class="entry-del" data-id="${entry.id}">削除</button>
     `;

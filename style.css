@@ -246,6 +246,12 @@ input[type=text], input[type=number], input[type=password], textarea {
 .chip.green { background: var(--green); }
 .chip.white { background: var(--white-f); }
 .chip.muted { opacity: 0.5; }
+mark.search-hit {
+  background: #ffe066;
+  color: #221a0d;
+  padding: 0 1px;
+  border-radius: 2px;
+}
 .entry-notes { font-size: 12px; color: var(--ink-soft); margin-top: 6px; }
 .entry-del {
   font-size: 12px;
