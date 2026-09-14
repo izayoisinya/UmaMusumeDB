@@ -11,8 +11,8 @@ class ConflictError extends Error {
 let config = loadConfig();
 let currentSha = null;
 let allEntries = [];
-let currentImageBase64 = null;
-let currentImageMediaType = null;
+
+const CLAUDE_PROMPT = 'この画像はウマ娘プリティーダービーの因子継承画面のスクリーンショットです。書かれている因子情報を読み取って、次のJSON形式だけを出力してください（説明や前置き、コードフェンスは不要です）。\n\n{"character": string, "blue_factor": {"name": string, "level": number}, "red_factors": [{"name": string, "level": number}], "white_factors": [{"name": string, "level": number}]}\n\nlevelは星の数(1〜3程度)。読み取れない項目は空文字列または空配列にしてください。';
 
 function loadConfig() {
   try {
@@ -205,85 +205,28 @@ function setListStatus(msg, isError) {
   el.className = 'status' + (isError ? ' error' : '');
 }
 
-// --- image intake ---
-const dropzone = document.getElementById('dropzone');
-const fileInput = document.getElementById('fileInput');
-const analyzeBtn = document.getElementById('analyzeBtn');
-const dropzoneInner = document.getElementById('dropzoneInner');
-
-dropzone.addEventListener('click', () => fileInput.click());
-dropzone.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') fileInput.click(); });
-
-dropzone.addEventListener('dragover', e => { e.preventDefault(); dropzone.classList.add('drag'); });
-dropzone.addEventListener('dragleave', () => dropzone.classList.remove('drag'));
-dropzone.addEventListener('drop', e => {
-  e.preventDefault();
-  dropzone.classList.remove('drag');
-  if (e.dataTransfer.files && e.dataTransfer.files[0]) handleImageFile(e.dataTransfer.files[0]);
-});
-
-fileInput.addEventListener('change', () => {
-  if (fileInput.files[0]) handleImageFile(fileInput.files[0]);
-});
-
-document.addEventListener('paste', e => {
-  const items = e.clipboardData && e.clipboardData.items;
-  if (!items) return;
-  for (const item of items) {
-    if (item.type.startsWith('image/')) {
-      const file = item.getAsFile();
-      if (file) handleImageFile(file);
-      break;
-    }
+// --- Claude出力の貼り付け読み込み ---
+document.getElementById('copyPromptBtn').addEventListener('click', async () => {
+  try {
+    await navigator.clipboard.writeText(CLAUDE_PROMPT);
+    setStatus('プロンプトをコピーしました。Claudeにスクリーンショットと一緒に貼り付けてください。');
+  } catch (err) {
+    console.error(err);
+    setStatus('コピーに失敗しました。手動で選択してコピーしてください。', true);
   }
 });
 
-function handleImageFile(file) {
-  const reader = new FileReader();
-  reader.onload = () => {
-    const dataUrl = reader.result;
-    const [meta, b64] = dataUrl.split(',');
-    currentImageBase64 = b64;
-    currentImageMediaType = meta.match(/data:(.*);base64/)[1];
-    dropzoneInner.innerHTML = '';
-    const img = document.createElement('img');
-    img.src = dataUrl;
-    dropzoneInner.appendChild(img);
-    const label = document.createElement('div');
-    label.textContent = '画像を読み込みました（クリックで変更）';
-    dropzoneInner.appendChild(label);
-    analyzeBtn.disabled = false;
-    setStatus('');
-  };
-  reader.readAsDataURL(file);
-}
-
-analyzeBtn.addEventListener('click', async () => {
-  if (!currentImageBase64) return;
-  analyzeBtn.disabled = true;
-  setStatus('画像を解析しています…');
+document.getElementById('loadJsonBtn').addEventListener('click', () => {
+  const raw = document.getElementById('pasteJson').value.trim();
+  if (!raw) { setStatus('Claudeの出力を貼り付けてください。', true); return; }
   try {
-    const response = await fetch('/api/analyze', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        mediaType: currentImageMediaType,
-        data: currentImageBase64,
-      }),
-    });
-    const data = await response.json();
-    if (!response.ok) throw new Error(data.error || `解析APIエラー: ${response.status}`);
-    const textBlock = (data.content || []).find(b => b.type === 'text');
-    if (!textBlock) throw new Error('応答にテキストがありませんでした');
-    const clean = textBlock.text.replace(/```json|```/g, '').trim();
+    const clean = raw.replace(/```json|```/g, '').trim();
     const parsed = JSON.parse(clean);
     fillForm(parsed);
-    setStatus('読み取り完了。内容を確認して保存してください。');
+    setStatus('読み込み完了。内容を確認して保存してください。');
   } catch (err) {
     console.error(err);
-    setStatus('読み取りに失敗しました。手入力で修正・登録できます。', true);
-  } finally {
-    analyzeBtn.disabled = false;
+    setStatus('JSONの解析に失敗しました。Claudeの出力をそのまま貼り付けているか確認してください。', true);
   }
 });
 
@@ -309,10 +252,7 @@ function resetForm() {
   document.getElementById('whiteList').innerHTML = '';
   addFactorLine('redList', '', '');
   addFactorLine('whiteList', '', '');
-  currentImageBase64 = null;
-  currentImageMediaType = null;
-  dropzoneInner.innerHTML = '画像を貼り付け（Ctrl+V）<br>またはクリックして選択';
-  analyzeBtn.disabled = true;
+  document.getElementById('pasteJson').value = '';
   setStatus('');
 }
 

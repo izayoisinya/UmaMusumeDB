@@ -1,9 +1,0 @@
-{
-  "name": "uma-factor-ledger",
-  "version": "1.0.0",
-  "private": true,
-  "description": "ウマ娘の因子（青/赤/白）を画像から読み取って登録・検索する個人用ツール",
-  "engines": {
-    "node": ">=18"
-  }
-}

@@ -46,13 +46,17 @@
       <div class="panel">
         <h2>因子を登録</h2>
 
-        <div class="dropzone" id="dropzone" tabindex="0">
-          <div id="dropzoneInner">
-            画像を貼り付け（Ctrl+V）<br>またはクリックして選択
+        <p class="hint">
+          継承画面のスクリーンショットをClaudeアプリに見せて、下のプロンプトで因子情報をJSON抽出してもらい、その出力をここに貼り付けてください。
+        </p>
+        <button type="button" class="btn secondary" id="copyPromptBtn">Claude用プロンプトをコピー</button>
+        <div class="form-grid">
+          <div>
+            <label for="pasteJson">Claudeの出力を貼り付け</label>
+            <textarea id="pasteJson" rows="4" placeholder='{"character": "...", "blue_factor": {...}, ...}'></textarea>
           </div>
-          <input type="file" id="fileInput" accept="image/*">
+          <button type="button" class="btn" id="loadJsonBtn">この内容をフォームに反映</button>
         </div>
-        <button class="btn" id="analyzeBtn" disabled>画像から読み取る</button>
         <div class="status" id="status"></div>
 
         <form class="form-grid" id="entryForm">
@@ -102,7 +106,7 @@
       </div>
       <div class="status" id="listStatus"></div>
       <div class="entries" id="entries"></div>
-      <div class="empty" id="emptyMsg" style="display:none;">まだ登録がありません。左で画像を読み込むか、手入力して保存してください。</div>
+      <div class="empty" id="emptyMsg" style="display:none;">まだ登録がありません。左でClaudeの出力を貼り付けるか、手入力して保存してください。</div>
     </div>
   </div>
 </div>
