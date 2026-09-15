@@ -1,5 +1,44 @@
 [
   {
+    "id": "uma_1789507346863_pg2yu",
+    "name": "セイウンスカイ",
+    "skills": [
+      "Do Ya Breakin!",
+      "春ウマ娘○",
+      "先駆け",
+      "脱出術",
+      "急ぎ足",
+      "前途洋々",
+      "トップランナー",
+      "先頭プライド"
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "G",
+      "mile": "C",
+      "medium": "A",
+      "long": "A"
+    },
+    "style": {
+      "nige": "A",
+      "senko": "B",
+      "sashi": "D",
+      "oikomi": "E"
+    },
+    "growth": {
+      "speed": 8,
+      "stamina": 0,
+      "power": 8,
+      "guts": 14,
+      "wisdom": 0
+    },
+    "notes": "",
+    "savedAt": "2026-09-15T21:22:26.863Z"
+  },
+  {
     "id": "uma_1789507304779_twpg1",
     "name": "セイウンスカイ",
     "skills": [
