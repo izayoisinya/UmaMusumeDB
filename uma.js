@@ -423,10 +423,11 @@ function renderUmas() {
       return `<span class="chip white skill-chip skill-${skill.type}">${escapeHtml(skill.name)}</span>`;
     }).join('');
     const growthLabels = { speed: 'スピ', stamina: 'スタ', power: 'パワ', guts: '根性', wisdom: '賢さ' };
-    const growthParts = Object.entries(growthLabels)
+    const growthItemsHtml = Object.entries(growthLabels)
       .filter(([key]) => uma.growth[key])
-      .map(([key, label]) => `${label}+${uma.growth[key]}%`);
-    const growthText = growthParts.length ? '成長率: ' + growthParts.join(' ') : '';
+      .map(([key, label]) => `<span class="growth-item">${label}+${uma.growth[key]}%</span>`)
+      .join('');
+    const growthText = growthItemsHtml ? `<span class="growth-item">成長率:</span>${growthItemsHtml}` : '';
     row.innerHTML = `
       <div class="entry-main">
         <div class="entry-name-row">
