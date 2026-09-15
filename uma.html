@@ -4,6 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ウマ娘図鑑 - 因子台帳</title>
+<script>
+window.PAGE_PROMPT = 'この画像はウマ娘プリティーダービーの「育成ウマ娘詳細」画面のスクリーンショットです。書かれている情報を読み取って、次のJSON形式だけを出力してください（説明や前置き、コードフェンスは不要です）。\n\n{"name": string, "skills": [string], "track": {"turf": string, "dirt": string}, "distance": {"short": string, "mile": string, "medium": string, "long": string}, "style": {"nige": string, "senko": string, "sashi": string, "oikomi": string}, "growth": {"speed": number, "stamina": number, "power": number, "guts": number, "wisdom": number}}\n\n・nameは称号（[ ]で囲まれた部分）を除いたキャラ名のみ。\n・skillsは画面に表示されているスキル名をすべて含めてください（習得済み・ヒントの区別は不要、進化後のスキル名が表示されていればそちらを採用）。\n・track/distance/styleの各値はA〜Gのランク表記のみを文字列で入れてください（+やGなどの記号はそのまま、数値化しないでください）。\n・growthの各値は成長率のパーセント表記から数値だけを取り出してください（例: 「+15%」なら15）。\n\n項目は省略せず全て出力してください。';
+</script>
+
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#8bc34a">
 <link rel="icon" href="icons/icon-192.png">
@@ -20,7 +24,9 @@
   <div class="masthead">
     <h1>ウマ娘図鑑</h1>
     <div class="masthead-right">
+      <p id="countLabel">0 頭 登録</p>
       <div class="masthead-menu">
+        <button type="button" class="masthead-btn" id="openRegisterModalBtn">＋ ウマ娘登録</button>
         <a href="index.html" class="masthead-btn masthead-nav">因子台帳</a>
         <a href="uma.html" class="masthead-btn masthead-nav">ウマ娘</a>
         <a href="support.html" class="masthead-btn masthead-nav">サポカ</a>
@@ -31,13 +37,103 @@
 
   <div class="layout">
     <div class="panel list-panel">
-      <h2>所有ウマ娘データベース</h2>
-      <div class="empty" style="display:block;">この機能は準備中です。名前・所持スキル・馬場適性・距離適性・脚質適性・成長率を登録できるようにする予定です。</div>
+      <h2>
+        所有ウマ娘一覧
+        <button type="button" class="btn secondary btn-inline" id="refreshBtn">更新</button>
+      </h2>
+      <div class="status" id="listStatus"></div>
+      <div class="entries" id="entries"></div>
+      <div class="empty" id="emptyMsg" style="display:none;">まだ登録がありません。「＋ ウマ娘登録」からClaudeの出力を貼り付けるか、手入力して保存してください。</div>
     </div>
   </div>
 </div>
 
 <div class="modal-overlay" id="modalOverlay" hidden>
+  <div class="modal" id="umaModal" role="dialog" aria-labelledby="umaModalTitle" hidden>
+    <h2 id="umaModalTitle">ウマ娘を登録</h2>
+
+    <p class="hint">
+      育成ウマ娘詳細画面のスクリーンショットをClaudeアプリに見せて抽出してもらったJSONを、下の欄に貼り付けてください（抽出用プロンプトは「設定」→「プロンプト」から確認・コピーできます）。
+    </p>
+    <div class="form-grid">
+      <div>
+        <label for="pasteJson">Claudeの出力を貼り付け</label>
+        <textarea id="pasteJson" rows="4" placeholder='{"name": "...", "skills": ["...", "..."], "track": {"turf":"A","dirt":"G"}, "distance": {...}, "style": {...}, "growth": {...}}'></textarea>
+      </div>
+      <button type="button" class="btn" id="loadJsonBtn">この内容をフォームに反映</button>
+    </div>
+    <div class="status" id="status"></div>
+
+    <form class="form-grid" id="umaForm">
+      <div>
+        <label for="fName">名前</label>
+        <input type="text" id="fName" placeholder="例: セイウンスカイ">
+      </div>
+
+      <div>
+        <label for="skillTagInput">所持スキル</label>
+        <div class="tag-input" id="skillTagBox">
+          <input type="text" id="skillTagInput" placeholder="入力してスペースで確定">
+        </div>
+      </div>
+
+      <div>
+        <label>バ場適性</label>
+        <div class="apt-select-row">
+          <div><span>芝</span><select id="fTurf"><option value="">-</option><option>S</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option></select></div>
+          <div><span>ダート</span><select id="fDirt"><option value="">-</option><option>S</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option></select></div>
+        </div>
+      </div>
+
+      <div>
+        <label>距離適性</label>
+        <div class="apt-select-row">
+          <div><span>短距離</span><select id="fShort"><option value="">-</option><option>S</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option></select></div>
+          <div><span>マイル</span><select id="fMile"><option value="">-</option><option>S</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option></select></div>
+          <div><span>中距離</span><select id="fMedium"><option value="">-</option><option>S</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option></select></div>
+          <div><span>長距離</span><select id="fLong"><option value="">-</option><option>S</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option></select></div>
+        </div>
+      </div>
+
+      <div>
+        <label>脚質適性</label>
+        <div class="apt-select-row">
+          <div><span>逃げ</span><select id="fNige"><option value="">-</option><option>S</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option></select></div>
+          <div><span>先行</span><select id="fSenko"><option value="">-</option><option>S</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option></select></div>
+          <div><span>差し</span><select id="fSashi"><option value="">-</option><option>S</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option></select></div>
+          <div><span>追込</span><select id="fOikomi"><option value="">-</option><option>S</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option></select></div>
+        </div>
+      </div>
+
+      <div>
+        <label>成長率（%）</label>
+        <div class="growth-input-row">
+          <div><span>スピード</span><input type="number" id="fGrowthSpeed" value="0"></div>
+          <div><span>スタミナ</span><input type="number" id="fGrowthStamina" value="0"></div>
+          <div><span>パワー</span><input type="number" id="fGrowthPower" value="0"></div>
+          <div><span>根性</span><input type="number" id="fGrowthGuts" value="0"></div>
+          <div><span>賢さ</span><input type="number" id="fGrowthWisdom" value="0"></div>
+        </div>
+      </div>
+
+      <div>
+        <label for="fNotes">メモ</label>
+        <textarea id="fNotes" rows="2" placeholder="用途など"></textarea>
+      </div>
+
+      <button type="submit" class="btn" id="saveUmaBtn">この内容を保存</button>
+      <button type="button" class="btn secondary" id="clearBtn">フォームをクリア</button>
+    </form>
+    <button type="button" class="btn secondary modal-close-btn" data-modal="umaModal">閉じる</button>
+  </div>
+
+  <div class="modal" id="confirmDeleteModal" role="dialog" aria-labelledby="confirmDeleteTitle" hidden>
+    <h2 id="confirmDeleteTitle">削除の確認</h2>
+    <p class="hint" id="confirmDeleteMessage"></p>
+    <button type="button" class="btn danger" id="confirmDeleteBtn">削除する</button>
+    <button type="button" class="btn secondary modal-close-btn" data-modal="confirmDeleteModal">キャンセル</button>
+  </div>
+
   <div class="modal" id="settingsModal" role="dialog" aria-labelledby="settingsModalTitle" hidden>
     <h2 id="settingsModalTitle">設定</h2>
     <div class="settings-tabs">
@@ -88,5 +184,6 @@
 </div>
 
 <script src="common.js"></script>
+<script src="uma.js"></script>
 </body>
 </html>

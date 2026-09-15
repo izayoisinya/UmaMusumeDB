@@ -282,7 +282,7 @@ label {
   display: block;
   margin-bottom: 3px;
 }
-input[type=text], input[type=number], input[type=password], textarea {
+input[type=text], input[type=number], input[type=password], textarea, select {
   width: 100%;
   font-family: 'M PLUS Rounded 1c', sans-serif;
   font-size: 13px;
@@ -292,9 +292,48 @@ input[type=text], input[type=number], input[type=password], textarea {
   background: var(--surface);
   color: var(--ink);
 }
-input[type=text]:focus, input[type=number]:focus, textarea:focus {
+input[type=text]:focus, input[type=number]:focus, textarea:focus, select:focus {
   border-color: var(--blue);
 }
+
+.apt-select-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.apt-select-row > div { flex: 1; min-width: 70px; }
+.apt-select-row span {
+  display: block;
+  font-size: 10px;
+  color: var(--ink-soft);
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+.growth-input-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.growth-input-row > div { flex: 1; min-width: 70px; }
+.growth-input-row span {
+  display: block;
+  font-size: 10px;
+  color: var(--ink-soft);
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+.apt-row { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 6px; }
+.apt-badge {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: var(--surface-alt);
+  color: var(--ink-soft);
+  border: 1.5px solid var(--panel-line);
+  white-space: nowrap;
+}
+.growth-row { font-size: 12px; color: var(--ink-soft); margin-top: 6px; }
 .factor-row {
   display: flex;
   gap: 6px;
