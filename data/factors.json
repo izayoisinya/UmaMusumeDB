@@ -2,8 +2,8 @@
   {
     "id": "factor_1789500205251_hxe3s",
     "character": "エピファネイア",
-    "parent1": "",
-    "parent2": "",
+    "parent1": "ミホノブルボン",
+    "parent2": "キタサンブラック",
     "blue": [
       {
         "name": "スタミナ",
@@ -386,7 +386,7 @@
     ],
     "notes": "",
     "imagePath": null,
-    "savedAt": "2026-09-15T19:23:25.252Z"
+    "savedAt": "2026-09-15T19:24:17.216Z"
   },
   {
     "id": "factor_1789416604746_7dazw",
