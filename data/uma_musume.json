@@ -1,5 +1,68 @@
 [
   {
+    "id": "uma_1789508282654_jqgsg",
+    "name": "セイウンスカイ",
+    "skills": [
+      {
+        "name": "アングリング×スキーミング",
+        "type": "unique"
+      },
+      {
+        "name": "脱出術",
+        "type": "gold"
+      },
+      {
+        "name": "急ぎ足",
+        "type": "normal"
+      },
+      {
+        "name": "先行ためらい",
+        "type": "normal"
+      },
+      {
+        "name": "先陣の心得",
+        "type": "gold"
+      },
+      {
+        "name": "リードキープ",
+        "type": "normal"
+      },
+      {
+        "name": "逃げのコツ○",
+        "type": "normal"
+      },
+      {
+        "name": "尻尾上がり",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "G",
+      "mile": "C",
+      "medium": "A",
+      "long": "A"
+    },
+    "style": {
+      "nige": "A",
+      "senko": "B",
+      "sashi": "D",
+      "oikomi": "E"
+    },
+    "growth": {
+      "speed": 0,
+      "stamina": 10,
+      "power": 0,
+      "guts": 0,
+      "wisdom": 20
+    },
+    "notes": "",
+    "savedAt": "2026-09-15T21:38:02.654Z"
+  },
+  {
     "id": "uma_1789507425364_zcho6",
     "name": "シュヴァルグラン",
     "skills": [
