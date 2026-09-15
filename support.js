@@ -193,12 +193,66 @@ function setSupportModalMode(isEditing) {
   document.getElementById('saveSupportBtn').textContent = isEditing ? 'この内容で更新' : 'この内容を保存';
 }
 
+// --- 画像添付(サポカイラスト) ---
+const imageDropzone = document.getElementById('imageDropzone');
+const fImage = document.getElementById('fImage');
+const imagePreview = document.getElementById('imagePreview');
+const imagePreviewWrap = document.getElementById('imagePreviewWrap');
+const imageDropzoneHint = document.getElementById('imageDropzoneHint');
+const removeImageBtn = document.getElementById('removeImageBtn');
+
+let pendingImageDataUrl = null;
+let currentImagePath = null;
+let removeImageFlag = false;
+
+function showImagePreview(src) {
+  imagePreview.src = src;
+  imagePreviewWrap.hidden = false;
+  imageDropzoneHint.hidden = true;
+  removeImageBtn.hidden = false;
+}
+function hideImagePreview() {
+  imagePreview.src = '';
+  imagePreviewWrap.hidden = true;
+  imageDropzoneHint.hidden = false;
+  removeImageBtn.hidden = true;
+}
+
+imageDropzone.addEventListener('click', () => fImage.click());
+
+fImage.addEventListener('change', async () => {
+  const file = fImage.files[0];
+  if (!file) return;
+  try {
+    setStatus('画像を処理しています…');
+    pendingImageDataUrl = await resizeImageFile(file, 1000, 0.8);
+    removeImageFlag = false;
+    showImagePreview(pendingImageDataUrl);
+    setStatus('');
+  } catch (err) {
+    console.error(err);
+    setStatus('画像の処理に失敗しました: ' + err.message, true);
+  }
+});
+
+removeImageBtn.addEventListener('click', e => {
+  e.stopPropagation();
+  pendingImageDataUrl = null;
+  fImage.value = '';
+  if (currentImagePath) removeImageFlag = true;
+  hideImagePreview();
+});
+
 function resetForm() {
   document.getElementById('supportForm').reset();
   skillManager.reset();
   eventSkillManager.reset();
   setSelectedTypes([]);
   document.getElementById('pasteJson').value = '';
+  pendingImageDataUrl = null;
+  currentImagePath = null;
+  removeImageFlag = false;
+  hideImagePreview();
   setStatus('');
   setSupportModalMode(null);
 }
@@ -239,6 +293,10 @@ function startEditCard(id) {
   setSupportModalMode(id);
   fillForm(card);
   document.getElementById('fNotes').value = card.notes || '';
+  if (card.imagePath) {
+    currentImagePath = card.imagePath;
+    showImagePreview(imageRawUrl(card.imagePath));
+  }
   openModal('supportModal');
 }
 
@@ -249,9 +307,11 @@ document.getElementById('supportForm').addEventListener('submit', async e => {
   const name = document.getElementById('fName').value.trim();
   if (!name) { setStatus('名前を入力してください。', true); return; }
 
+  const cardId = editingCardId || ('support_' + Date.now() + '_' + Math.random().toString(36).slice(2, 7));
   const card = {
-    id: editingCardId || ('support_' + Date.now() + '_' + Math.random().toString(36).slice(2, 7)),
+    id: cardId,
     name,
+    imagePath: removeImageFlag ? null : (currentImagePath || null),
     types: getSelectedTypes(),
     skills: skillManager.get(),
     eventSkills: eventSkillManager.get(),
@@ -267,6 +327,17 @@ document.getElementById('supportForm').addEventListener('submit', async e => {
   const saveBtn = document.getElementById('saveSupportBtn');
   saveBtn.disabled = true;
   try {
+    if (pendingImageDataUrl) {
+      setStatus('画像をアップロードしています…');
+      const imagePath = `images/${cardId}.jpg`;
+      await uploadImageToGitHub(imagePath, pendingImageDataUrl, `サポカ画像アップロード: ${name}`);
+      card.imagePath = imagePath;
+    } else if (removeImageFlag && currentImagePath) {
+      setStatus('画像を削除しています…');
+      await deleteImageFromGitHub(currentImagePath, `サポカ画像削除: ${name}`);
+      card.imagePath = null;
+    }
+    setStatus(isEditing ? '更新しています…' : '保存しています…');
     await saveCardsToGitHub(updated, `${isEditing ? 'サポカ編集' : 'サポカ登録'}: ${name}`);
     allCards = sortByName(updated);
     renderCards();
@@ -359,6 +430,7 @@ function renderCards() {
       const skill = normalizeSkill(s);
       return `<span class="chip white skill-chip skill-${skill.type}">${escapeHtml(skill.name)}</span>`;
     }).join('');
+    const imageUrl = card.imagePath ? imageRawUrl(card.imagePath) : null;
     row.innerHTML = `
       <div class="entry-main">
         <div class="entry-name-row">
@@ -376,10 +448,13 @@ function renderCards() {
           <button class="entry-edit" data-id="${card.id}">編集</button>
           <button class="entry-del" data-id="${card.id}">削除</button>
         </div>
+        ${imageUrl ? `<div class="entry-image"><img class="entry-thumb" src="${escapeHtml(imageUrl)}" alt="${escapeHtml(card.name)}のイラスト" loading="lazy"></div>` : ''}
       </div>
     `;
     row.querySelector('.entry-edit').addEventListener('click', () => startEditCard(card.id));
     row.querySelector('.entry-del').addEventListener('click', e => askDeleteConfirm(card, e.currentTarget));
+    const thumb = row.querySelector('.entry-thumb');
+    if (thumb) thumb.addEventListener('click', () => openLightbox(imageUrl));
     container.appendChild(row);
   });
 }

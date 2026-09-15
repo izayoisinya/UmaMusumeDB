@@ -71,6 +71,18 @@ window.PAGE_PROMPT = 'このサポートカードの詳細画面のスクリー�
       </div>
 
       <div>
+        <label for="fImage">サポカイラスト（任意）</label>
+        <div class="dropzone" id="imageDropzone">
+          <div id="imagePreviewWrap" hidden>
+            <img id="imagePreview" alt="">
+          </div>
+          <div id="imageDropzoneHint">タップして画像を選択</div>
+          <input type="file" id="fImage" accept="image/*">
+        </div>
+        <button type="button" class="btn secondary" id="removeImageBtn" hidden>画像を削除</button>
+      </div>
+
+      <div>
         <label>タイプ（複数可）</label>
         <div class="type-checkbox-row">
           <label class="type-checkbox type-speed"><input type="checkbox" value="speed" class="fType">スピード</label>
@@ -160,6 +172,10 @@ window.PAGE_PROMPT = 'このサポートカードの詳細画面のスクリー�
 
     <button type="button" class="btn secondary modal-close-btn" data-modal="settingsModal">閉じる</button>
   </div>
+</div>
+
+<div id="lightbox" hidden>
+  <img id="lightboxImg" alt="">
 </div>
 
 <script src="common.js"></script>
