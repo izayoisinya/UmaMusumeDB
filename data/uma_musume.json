@@ -1,5 +1,44 @@
 [
   {
+    "id": "uma_1789507425364_zcho6",
+    "name": "シュヴァルグラン",
+    "skills": [
+      "Tidebreaker",
+      "かっとばせ！",
+      "勝利に向かって",
+      "地道に重ねて",
+      "光明",
+      "思い切り",
+      "ショーダウン",
+      "勇気の一歩"
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "G",
+      "mile": "G",
+      "medium": "A",
+      "long": "A"
+    },
+    "style": {
+      "nige": "G",
+      "senko": "A",
+      "sashi": "B",
+      "oikomi": "F"
+    },
+    "growth": {
+      "speed": 0,
+      "stamina": 10,
+      "power": 0,
+      "guts": 20,
+      "wisdom": 0
+    },
+    "notes": "",
+    "savedAt": "2026-09-15T21:23:45.364Z"
+  },
+  {
     "id": "uma_1789507386398_xpsma",
     "name": "セイウンスカイ",
     "skills": [
