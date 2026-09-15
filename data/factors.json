@@ -1,5 +1,393 @@
 [
   {
+    "id": "factor_1789430935551_qji14",
+    "character": "エピファネイア",
+    "parent1": "ミホノブルボン",
+    "parent2": "キタサンブラック",
+    "blue": [
+      {
+        "name": "スタミナ",
+        "self": true,
+        "parent1": true,
+        "parent2": false
+      },
+      {
+        "name": "パワー",
+        "self": false,
+        "parent1": false,
+        "parent2": true
+      }
+    ],
+    "red": [
+      {
+        "name": "中距離",
+        "self": true,
+        "parent1": false,
+        "parent2": false
+      },
+      {
+        "name": "マイル",
+        "self": false,
+        "parent1": true,
+        "parent2": true
+      }
+    ],
+    "green": [
+      {
+        "name": "光れ！弾けろ！超新星爆発！",
+        "self": true,
+        "parent1": false,
+        "parent2": false
+      },
+      {
+        "name": "オペレーション・Cacao",
+        "self": false,
+        "parent1": true,
+        "parent2": false
+      },
+      {
+        "name": "ミンナノアタシへ！",
+        "self": false,
+        "parent1": false,
+        "parent2": true
+      }
+    ],
+    "white": [
+      {
+        "name": "天皇賞（春）",
+        "self": true,
+        "parent1": true,
+        "parent2": false
+      },
+      {
+        "name": "ホープフルS",
+        "self": true,
+        "parent1": true,
+        "parent2": false
+      },
+      {
+        "name": "おひとり様○",
+        "self": true,
+        "parent1": false,
+        "parent2": false
+      },
+      {
+        "name": "スピードイーター",
+        "self": true,
+        "parent1": false,
+        "parent2": false
+      },
+      {
+        "name": "危険回避",
+        "self": true,
+        "parent1": false,
+        "parent2": false
+      },
+      {
+        "name": "弾みをつけて",
+        "self": true,
+        "parent1": false,
+        "parent2": false
+      },
+      {
+        "name": "連綿",
+        "self": true,
+        "parent1": false,
+        "parent2": false
+      },
+      {
+        "name": "アオハル点火・賢",
+        "self": true,
+        "parent1": true,
+        "parent2": true
+      },
+      {
+        "name": "恩返し、召し上がれ",
+        "self": true,
+        "parent1": false,
+        "parent2": false
+      },
+      {
+        "name": "春の目覚め",
+        "self": true,
+        "parent1": true,
+        "parent2": false
+      },
+      {
+        "name": "大阪杯",
+        "self": true,
+        "parent1": true,
+        "parent2": false
+      },
+      {
+        "name": "ジャパンC",
+        "self": true,
+        "parent1": true,
+        "parent2": true
+      },
+      {
+        "name": "良バ場○",
+        "self": true,
+        "parent1": false,
+        "parent2": false
+      },
+      {
+        "name": "先駆け",
+        "self": true,
+        "parent1": false,
+        "parent2": false
+      },
+      {
+        "name": "逃げ直線○",
+        "self": true,
+        "parent1": false,
+        "parent2": false
+      },
+      {
+        "name": "気持ちを乗せて",
+        "self": true,
+        "parent1": false,
+        "parent2": false
+      },
+      {
+        "name": "存在感",
+        "self": true,
+        "parent1": false,
+        "parent2": false
+      },
+      {
+        "name": "突き抜ける走り",
+        "self": true,
+        "parent1": false,
+        "parent2": false
+      },
+      {
+        "name": "海の加護",
+        "self": true,
+        "parent1": true,
+        "parent2": false
+      },
+      {
+        "name": "トレセン軒シナリオ",
+        "self": true,
+        "parent1": false,
+        "parent2": true
+      },
+      {
+        "name": "東の雄",
+        "self": true,
+        "parent1": true,
+        "parent2": true
+      },
+      {
+        "name": "NHKマイルC",
+        "self": false,
+        "parent1": true,
+        "parent2": true
+      },
+      {
+        "name": "マイルCS",
+        "self": false,
+        "parent1": true,
+        "parent2": false
+      },
+      {
+        "name": "日本ダービー",
+        "self": false,
+        "parent1": true,
+        "parent2": false
+      },
+      {
+        "name": "朝日杯FS",
+        "self": false,
+        "parent1": true,
+        "parent2": false
+      },
+      {
+        "name": "有馬記念",
+        "self": false,
+        "parent1": true,
+        "parent2": false
+      },
+      {
+        "name": "春ウマ娘○",
+        "self": false,
+        "parent1": true,
+        "parent2": false
+      },
+      {
+        "name": "冬ウマ娘○",
+        "self": false,
+        "parent1": true,
+        "parent2": false
+      },
+      {
+        "name": "ペースキープ",
+        "self": false,
+        "parent1": true,
+        "parent2": false
+      },
+      {
+        "name": "負けん気",
+        "self": false,
+        "parent1": true,
+        "parent2": false
+      },
+      {
+        "name": "ウマ好み",
+        "self": false,
+        "parent1": true,
+        "parent2": false
+      },
+      {
+        "name": "地固め",
+        "self": false,
+        "parent1": true,
+        "parent2": false
+      },
+      {
+        "name": "中盤巧者",
+        "self": false,
+        "parent1": true,
+        "parent2": false
+      },
+      {
+        "name": "風切り",
+        "self": false,
+        "parent1": true,
+        "parent2": false
+      },
+      {
+        "name": "押しの一手",
+        "self": false,
+        "parent1": true,
+        "parent2": true
+      },
+      {
+        "name": "連戦連勝",
+        "self": false,
+        "parent1": true,
+        "parent2": true
+      },
+      {
+        "name": "バランス重視",
+        "self": false,
+        "parent1": true,
+        "parent2": false
+      },
+      {
+        "name": "皐月賞",
+        "self": false,
+        "parent1": false,
+        "parent2": true
+      },
+      {
+        "name": "道悪○",
+        "self": false,
+        "parent1": false,
+        "parent2": true
+      },
+      {
+        "name": "集中力",
+        "self": false,
+        "parent1": false,
+        "parent2": true
+      },
+      {
+        "name": "急ぎ足",
+        "self": false,
+        "parent1": false,
+        "parent2": true
+      },
+      {
+        "name": "先頭プライド",
+        "self": false,
+        "parent1": false,
+        "parent2": true
+      },
+      {
+        "name": "差しコーナー○",
+        "self": false,
+        "parent1": false,
+        "parent2": true
+      },
+      {
+        "name": "遊びはおしまいっ!",
+        "self": false,
+        "parent1": false,
+        "parent2": true
+      },
+      {
+        "name": "フルスロットル",
+        "self": false,
+        "parent1": false,
+        "parent2": true
+      },
+      {
+        "name": "粘り腰",
+        "self": false,
+        "parent1": false,
+        "parent2": true
+      },
+      {
+        "name": "序盤巧者",
+        "self": false,
+        "parent1": false,
+        "parent2": true
+      },
+      {
+        "name": "大詰め",
+        "self": false,
+        "parent1": false,
+        "parent2": true
+      },
+      {
+        "name": "迷いなし",
+        "self": false,
+        "parent1": false,
+        "parent2": true
+      },
+      {
+        "name": "瞬発力",
+        "self": false,
+        "parent1": false,
+        "parent2": true
+      },
+      {
+        "name": "灯を胸に",
+        "self": false,
+        "parent1": false,
+        "parent2": true
+      },
+      {
+        "name": "急旋回",
+        "self": false,
+        "parent1": false,
+        "parent2": true
+      },
+      {
+        "name": "レースの真髄・心",
+        "self": false,
+        "parent1": false,
+        "parent2": true
+      },
+      {
+        "name": "マイルの遺伝子",
+        "self": false,
+        "parent1": false,
+        "parent2": true
+      },
+      {
+        "name": "右回りの目覚め",
+        "self": false,
+        "parent1": false,
+        "parent2": true
+      }
+    ],
+    "notes": "",
+    "savedAt": "2026-09-15T00:08:55.551Z"
+  },
+  {
     "id": "factor_1789427633989_5dsqa",
     "character": "ファレノプシス",
     "parent1": "マルゼンスキー",
