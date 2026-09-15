@@ -1,5 +1,44 @@
 [
   {
+    "id": "uma_1789507386398_xpsma",
+    "name": "セイウンスカイ",
+    "skills": [
+      "海風にまったり身を任せ",
+      "脱出術",
+      "急ぎ足",
+      "破天荒",
+      "急先鋒",
+      "先導者",
+      "奥の手",
+      "勝負勘"
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "G",
+      "mile": "C",
+      "medium": "A",
+      "long": "A"
+    },
+    "style": {
+      "nige": "A",
+      "senko": "B",
+      "sashi": "D",
+      "oikomi": "E"
+    },
+    "growth": {
+      "speed": 0,
+      "stamina": 0,
+      "power": 5,
+      "guts": 10,
+      "wisdom": 15
+    },
+    "notes": "",
+    "savedAt": "2026-09-15T21:23:06.398Z"
+  },
+  {
     "id": "uma_1789507346863_pg2yu",
     "name": "セイウンスカイ",
     "skills": [
