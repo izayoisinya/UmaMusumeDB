@@ -1,0 +1,41 @@
+[
+  {
+    "id": "uma_1789507304779_twpg1",
+    "name": "セイウンスカイ",
+    "skills": [
+      "アングリング×スキーミング",
+      "脱出術",
+      "急ぎ足",
+      "先行ためらい",
+      "先陣の心得",
+      "リードキープ",
+      "逃げのコツ○",
+      "尻尾上がり"
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "G",
+      "mile": "C",
+      "medium": "A",
+      "long": "A"
+    },
+    "style": {
+      "nige": "A",
+      "senko": "B",
+      "sashi": "D",
+      "oikomi": "E"
+    },
+    "growth": {
+      "speed": 0,
+      "stamina": 10,
+      "power": 0,
+      "guts": 0,
+      "wisdom": 20
+    },
+    "notes": "",
+    "savedAt": "2026-09-15T21:21:44.779Z"
+  }
+]
