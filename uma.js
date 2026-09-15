@@ -373,10 +373,21 @@ function getAptValue(uma, path) {
   return uma[group] && uma[group][key];
 }
 
-const aptFilterField = document.getElementById('aptFilterField');
-const aptFilterRank = document.getElementById('aptFilterRank');
-const aptFilterLte = document.getElementById('aptFilterLte');
-[aptFilterField, aptFilterRank, aptFilterLte].forEach(el => el.addEventListener('change', renderUmas));
+const APT_FILTER_FIELDS = [
+  { id: 'filterTurf', path: 'track.turf' },
+  { id: 'filterDirt', path: 'track.dirt' },
+  { id: 'filterShort', path: 'distance.short' },
+  { id: 'filterMile', path: 'distance.mile' },
+  { id: 'filterMedium', path: 'distance.medium' },
+  { id: 'filterLong', path: 'distance.long' },
+  { id: 'filterNige', path: 'style.nige' },
+  { id: 'filterSenko', path: 'style.senko' },
+  { id: 'filterSashi', path: 'style.sashi' },
+  { id: 'filterOikomi', path: 'style.oikomi' },
+];
+const aptSearchLte = document.getElementById('aptSearchLte');
+APT_FILTER_FIELDS.forEach(f => document.getElementById(f.id).addEventListener('change', renderUmas));
+aptSearchLte.addEventListener('change', renderUmas);
 
 function renderUmas() {
   const container = document.getElementById('entries');
@@ -385,14 +396,16 @@ function renderUmas() {
 
   document.getElementById('countLabel').textContent = allUmas.length + ' 頭 登録';
 
-  const field = aptFilterField.value;
-  const rank = aptFilterRank.value;
-  const filterActive = field && rank;
+  const activeFilters = APT_FILTER_FIELDS
+    .map(f => ({ path: f.path, rank: document.getElementById(f.id).value }))
+    .filter(f => f.rank);
+  const lte = aptSearchLte.checked;
   const filtered = allUmas.filter(uma => {
-    if (!filterActive) return true;
-    const val = getAptValue(uma, field);
-    if (!val) return false;
-    return aptFilterLte.checked ? rankValue(val) <= rankValue(rank) : rankValue(val) >= rankValue(rank);
+    return activeFilters.every(f => {
+      const val = getAptValue(uma, f.path);
+      if (!val) return false;
+      return lte ? rankValue(val) <= rankValue(f.rank) : rankValue(val) >= rankValue(f.rank);
+    });
   });
 
   if (!filtered.length) {

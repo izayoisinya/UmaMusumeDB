@@ -42,37 +42,27 @@ window.PAGE_PROMPT = 'この画像はウマ娘プリティーダービーの「�
         <button type="button" class="btn secondary btn-inline" id="refreshBtn">更新</button>
       </h2>
 
-      <div class="count-filter-row">
-        <label>適性で絞り込み</label>
-        <div class="count-filter-controls">
-          <select id="aptFilterField">
-            <option value="">項目を選択</option>
-            <option value="track.turf">芝</option>
-            <option value="track.dirt">ダート</option>
-            <option value="distance.short">短距離</option>
-            <option value="distance.mile">マイル</option>
-            <option value="distance.medium">中距離</option>
-            <option value="distance.long">長距離</option>
-            <option value="style.nige">逃げ</option>
-            <option value="style.senko">先行</option>
-            <option value="style.sashi">差し</option>
-            <option value="style.oikomi">追込</option>
-          </select>
-          <select id="aptFilterRank">
-            <option value="">-</option>
-            <option>S</option>
-            <option>A</option>
-            <option>B</option>
-            <option>C</option>
-            <option>D</option>
-            <option>E</option>
-            <option>F</option>
-            <option>G</option>
-          </select>
-          <label class="count-filter-checkbox">
-            <input type="checkbox" id="aptFilterLte">
-            以下
-          </label>
+      <div class="count-filter-row apt-search">
+        <label>適性で絞り込み（指定した項目だけAND条件で判定。空欄は無視）</label>
+        <label class="count-filter-checkbox apt-search-lte">
+          <input type="checkbox" id="aptSearchLte">
+          指定ランク以下で検索（未チェックなら以上）
+        </label>
+        <div class="apt-select-row">
+          <div><span>芝</span><select id="filterTurf" class="apt-filter-select"><option value="">-</option><option>S</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option></select></div>
+          <div><span>ダート</span><select id="filterDirt" class="apt-filter-select"><option value="">-</option><option>S</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option></select></div>
+        </div>
+        <div class="apt-select-row">
+          <div><span>短距離</span><select id="filterShort" class="apt-filter-select"><option value="">-</option><option>S</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option></select></div>
+          <div><span>マイル</span><select id="filterMile" class="apt-filter-select"><option value="">-</option><option>S</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option></select></div>
+          <div><span>中距離</span><select id="filterMedium" class="apt-filter-select"><option value="">-</option><option>S</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option></select></div>
+          <div><span>長距離</span><select id="filterLong" class="apt-filter-select"><option value="">-</option><option>S</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option></select></div>
+        </div>
+        <div class="apt-select-row">
+          <div><span>逃げ</span><select id="filterNige" class="apt-filter-select"><option value="">-</option><option>S</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option></select></div>
+          <div><span>先行</span><select id="filterSenko" class="apt-filter-select"><option value="">-</option><option>S</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option></select></div>
+          <div><span>差し</span><select id="filterSashi" class="apt-filter-select"><option value="">-</option><option>S</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option></select></div>
+          <div><span>追込</span><select id="filterOikomi" class="apt-filter-select"><option value="">-</option><option>S</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option></select></div>
         </div>
       </div>
 
