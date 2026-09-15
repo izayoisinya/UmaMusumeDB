@@ -653,9 +653,10 @@ function matchesAnyTerm(text, terms) {
   return terms.some(t => t && lowerStr.includes(t));
 }
 
-// --- 検索欄のタグ入力(必須/任意) ---
+// --- 検索欄のタグ入力(必須/任意/本体のみ) ---
 const requiredTags = [];
 const optionalTags = [];
+const selfTags = [];
 
 function renderTagBox(boxId, tags, chipClass) {
   const box = document.getElementById(boxId);
@@ -707,11 +708,19 @@ function getFieldTerms(inputId, tags) {
 
 setupTagInput('searchRequiredBox', 'searchRequiredInput', requiredTags, 'required');
 setupTagInput('searchOptionalBox', 'searchOptionalInput', optionalTags, 'optional');
+setupTagInput('searchSelfBox', 'searchSelfInput', selfTags, 'self');
+
+function getSelfFactorNames(entry) {
+  return [...(entry.blue || []), ...(entry.red || []), ...(entry.green || []), ...(entry.white || [])]
+    .filter(f => f.self)
+    .map(f => f.name);
+}
 
 function renderEntries() {
   const requiredTerms = getFieldTerms('searchRequiredInput', requiredTags);
   const optionalTerms = getFieldTerms('searchOptionalInput', optionalTags);
-  const terms = [...requiredTerms, ...optionalTerms];
+  const selfTerms = getFieldTerms('searchSelfInput', selfTags);
+  const terms = [...requiredTerms, ...optionalTerms, ...selfTerms];
   const container = document.getElementById('entries');
   const emptyMsg = document.getElementById('emptyMsg');
   container.innerHTML = '';
@@ -724,7 +733,9 @@ function renderEntries() {
       .filter(Boolean).join(' ').toLowerCase();
     const requiredOk = requiredTerms.every(t => hay.includes(t));
     const optionalOk = !optionalTerms.length || optionalTerms.some(t => hay.includes(t));
-    return requiredOk && optionalOk;
+    const selfHay = getSelfFactorNames(e).join(' ').toLowerCase();
+    const selfOk = selfTerms.every(t => selfHay.includes(t));
+    return requiredOk && optionalOk && selfOk;
   });
 
   document.getElementById('countLabel').textContent = allEntries.length + ' 頭 登録';
