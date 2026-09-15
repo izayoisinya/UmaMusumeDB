@@ -104,9 +104,6 @@ async function fetchFactorsRaw() {
 }
 
 async function saveEntriesToGitHub(newEntries, commitMessage) {
-  const latest = await fetchFactorsRaw();
-  currentSha = latest.sha;
-
   const body = {
     message: commitMessage,
     content: encodeUtf8Base64(JSON.stringify(newEntries, null, 2)),
@@ -383,6 +380,8 @@ document.getElementById('entryForm').addEventListener('submit', async e => {
     ? allEntries.map(e => e.id === editingEntryId ? entry : e)
     : [entry, ...allEntries];
   setStatus(isEditing ? '更新しています…' : '保存しています…');
+  const saveBtn = document.getElementById('saveEntryBtn');
+  saveBtn.disabled = true;
   try {
     await saveEntriesToGitHub(updated, `${isEditing ? '因子編集' : '因子登録'}: ${character}`);
     allEntries = updated;
@@ -397,6 +396,8 @@ document.getElementById('entryForm').addEventListener('submit', async e => {
     } else {
       setStatus('保存中にエラーが発生しました: ' + err.message, true);
     }
+  } finally {
+    saveBtn.disabled = false;
   }
 });
 
@@ -414,11 +415,12 @@ async function loadEntries() {
   renderEntries();
 }
 
-async function deleteEntry(id) {
+async function deleteEntry(id, btn) {
   if (!config || !config.token) { setListStatus('削除にはPATが必要です。GitHub連携設定でPATを入力してください。', true); return; }
   const target = allEntries.find(e => e.id === id);
   const updated = allEntries.filter(e => e.id !== id);
   setListStatus('削除しています…');
+  if (btn) btn.disabled = true;
   try {
     await saveEntriesToGitHub(updated, `因子削除: ${target ? target.character : id}`);
     allEntries = updated;
@@ -431,6 +433,7 @@ async function deleteEntry(id) {
     } else {
       setListStatus('削除中にエラーが発生しました: ' + err.message, true);
     }
+    if (btn) btn.disabled = false;
   }
 }
 
@@ -590,7 +593,7 @@ function renderEntries() {
       ${entry.notes ? `<div class="entry-notes">${highlightMatches(entry.notes, terms)}</div>` : ''}
     `;
     row.querySelector('.entry-edit').addEventListener('click', () => startEditEntry(entry.id));
-    row.querySelector('.entry-del').addEventListener('click', () => deleteEntry(entry.id));
+    row.querySelector('.entry-del').addEventListener('click', e => deleteEntry(entry.id, e.currentTarget));
     container.appendChild(row);
   });
 }
