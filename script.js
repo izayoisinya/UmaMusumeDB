@@ -387,6 +387,25 @@ document.querySelectorAll('.modal-close-btn').forEach(btn => btn.addEventListene
 modalOverlay.addEventListener('click', e => { if (e.target === modalOverlay) closeModal(); });
 document.addEventListener('keydown', e => { if (e.key === 'Escape' && !modalOverlay.hidden) closeModal(); });
 
+let pendingDeleteId = null;
+let pendingDeleteBtn = null;
+
+function askDeleteConfirm(entry, btn) {
+  pendingDeleteId = entry.id;
+  pendingDeleteBtn = btn;
+  document.getElementById('confirmDeleteMessage').textContent = `「${entry.character}」を削除します。この操作は取り消せません。よろしいですか？`;
+  openModal('confirmDeleteModal');
+}
+
+document.getElementById('confirmDeleteBtn').addEventListener('click', () => {
+  const id = pendingDeleteId;
+  const btn = pendingDeleteBtn;
+  pendingDeleteId = null;
+  pendingDeleteBtn = null;
+  closeModal();
+  deleteEntry(id, btn);
+});
+
 document.getElementById('promptText').value = CLAUDE_PROMPT;
 
 // --- Claude出力の貼り付け読み込み ---
@@ -812,7 +831,7 @@ function renderEntries() {
       </div>
     `;
     row.querySelector('.entry-edit').addEventListener('click', () => startEditEntry(entry.id));
-    row.querySelector('.entry-del').addEventListener('click', e => deleteEntry(entry.id, e.currentTarget));
+    row.querySelector('.entry-del').addEventListener('click', e => askDeleteConfirm(entry, e.currentTarget));
     const thumb = row.querySelector('.entry-thumb');
     if (thumb) thumb.addEventListener('click', () => openLightbox(imageUrl));
     container.appendChild(row);

@@ -205,6 +205,13 @@
     <div class="status" id="promptStatus"></div>
     <button type="button" class="btn secondary modal-close-btn" data-modal="promptModal">閉じる</button>
   </div>
+
+  <div class="modal" id="confirmDeleteModal" role="dialog" aria-labelledby="confirmDeleteTitle" hidden>
+    <h2 id="confirmDeleteTitle">削除の確認</h2>
+    <p class="hint" id="confirmDeleteMessage"></p>
+    <button type="button" class="btn danger" id="confirmDeleteBtn">削除する</button>
+    <button type="button" class="btn secondary modal-close-btn" data-modal="confirmDeleteModal">キャンセル</button>
+  </div>
 </div>
 
 <div id="lightbox" hidden>

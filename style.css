@@ -216,6 +216,10 @@ button { touch-action: manipulation; }
   box-shadow: none;
 }
 .btn.secondary:hover { background: var(--surface-alt); }
+.btn.danger {
+  background: linear-gradient(135deg, #ff8a80, var(--danger));
+  box-shadow: 0 3px 8px rgba(239,83,80,0.35);
+}
 .btn.btn-inline {
   width: auto;
   margin-top: 0;
