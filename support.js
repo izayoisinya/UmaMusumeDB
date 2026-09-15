@@ -399,8 +399,73 @@ async function deleteCard(id, btn) {
 
 document.getElementById('refreshBtn').addEventListener('click', () => loadCards());
 
+// --- 検索欄のタグ入力(必須/任意) ---
+const requiredTags = [];
+const optionalTags = [];
+
+function renderTagBox(boxId, tags, chipClass) {
+  const box = document.getElementById(boxId);
+  box.querySelectorAll('.tag-chip').forEach(el => el.remove());
+  const input = box.querySelector('input');
+  tags.forEach((tag, i) => {
+    const chip = document.createElement('span');
+    chip.className = 'tag-chip' + (chipClass ? ' ' + chipClass : '');
+    chip.innerHTML = `${escapeHtml(tag)}<button type="button" class="tag-remove" aria-label="削除">×</button>`;
+    chip.querySelector('.tag-remove').addEventListener('click', () => {
+      tags.splice(i, 1);
+      renderTagBox(boxId, tags, chipClass);
+      renderCards();
+    });
+    box.insertBefore(chip, input);
+  });
+}
+
+function setupTagInput(boxId, inputId, tags, chipClass) {
+  const input = document.getElementById(inputId);
+  const commit = () => {
+    const val = input.value.trim();
+    if (val) {
+      tags.push(val);
+      input.value = '';
+      renderTagBox(boxId, tags, chipClass);
+    }
+    renderCards();
+  };
+  input.addEventListener('keydown', e => {
+    if (e.key === ' ' || e.key === 'Enter') {
+      e.preventDefault();
+      commit();
+    } else if (e.key === 'Backspace' && !input.value && tags.length) {
+      tags.pop();
+      renderTagBox(boxId, tags, chipClass);
+      renderCards();
+    }
+  });
+  input.addEventListener('blur', () => { if (input.value.trim()) commit(); });
+  input.addEventListener('input', renderCards);
+}
+
+function getFieldTerms(inputId, tags) {
+  const partial = document.getElementById(inputId).value.trim().toLowerCase();
+  const committed = tags.map(t => t.toLowerCase());
+  return partial ? [...committed, partial] : committed;
+}
+
+setupTagInput('searchRequiredBox', 'searchRequiredInput', requiredTags, 'required');
+setupTagInput('searchOptionalBox', 'searchOptionalInput', optionalTags, 'optional');
+
+// --- タイプ絞り込み ---
+document.querySelectorAll('.typeFilter').forEach(el => el.addEventListener('change', renderCards));
+function getSelectedTypeFilters() {
+  return Array.from(document.querySelectorAll('.typeFilter:checked')).map(el => el.value);
+}
+
 // --- 一覧表示 ---
 const TYPE_LABELS = { speed: 'スピード', stamina: 'スタミナ', power: 'パワー', guts: '根性', wisdom: '賢さ' };
+
+function cardSkillNames(card) {
+  return [...(card.skills || []), ...(card.eventSkills || [])].map(s => normalizeSkill(s).name);
+}
 
 function renderCards() {
   const container = document.getElementById('entries');
@@ -409,14 +474,29 @@ function renderCards() {
 
   document.getElementById('countLabel').textContent = allCards.length + ' 枚 登録';
 
-  if (!allCards.length) {
+  const requiredTerms = getFieldTerms('searchRequiredInput', requiredTags);
+  const optionalTerms = getFieldTerms('searchOptionalInput', optionalTags);
+  const typeFilters = getSelectedTypeFilters();
+
+  const filtered = allCards.filter(card => {
+    if (typeFilters.length && !(card.types || []).some(t => typeFilters.includes(t))) return false;
+    if (requiredTerms.length || optionalTerms.length) {
+      const hay = [card.name, ...cardSkillNames(card)].filter(Boolean).join(' ').toLowerCase();
+      const requiredOk = requiredTerms.every(t => hay.includes(t));
+      const optionalOk = !optionalTerms.length || optionalTerms.some(t => hay.includes(t));
+      if (!requiredOk || !optionalOk) return false;
+    }
+    return true;
+  });
+
+  if (!filtered.length) {
     emptyMsg.style.display = 'block';
-    emptyMsg.textContent = 'まだ登録がありません。「＋ サポカ登録」からClaudeの出力を貼り付けるか、手入力して保存してください。';
+    emptyMsg.textContent = allCards.length ? '該当する登録が見つかりません。' : 'まだ登録がありません。「＋ サポカ登録」からClaudeの出力を貼り付けるか、手入力して保存してください。';
     return;
   }
   emptyMsg.style.display = 'none';
 
-  allCards.forEach(card => {
+  filtered.forEach(card => {
     const row = document.createElement('div');
     row.className = 'entry';
     const typeChips = (card.types || [])

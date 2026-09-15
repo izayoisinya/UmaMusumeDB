@@ -41,6 +41,33 @@ window.PAGE_PROMPT = 'このサポートカードの詳細画面のスクリー�
         所有サポカ一覧
         <button type="button" class="btn secondary btn-inline" id="refreshBtn">更新</button>
       </h2>
+
+      <div class="count-filter-row">
+        <label>タイプで絞り込み（選択したもののいずれかを含む。未選択なら絞り込みなし）</label>
+        <div class="type-checkbox-row">
+          <label class="type-checkbox type-speed"><input type="checkbox" value="speed" class="typeFilter">スピード</label>
+          <label class="type-checkbox type-stamina"><input type="checkbox" value="stamina" class="typeFilter">スタミナ</label>
+          <label class="type-checkbox type-power"><input type="checkbox" value="power" class="typeFilter">パワー</label>
+          <label class="type-checkbox type-guts"><input type="checkbox" value="guts" class="typeFilter">根性</label>
+          <label class="type-checkbox type-wisdom"><input type="checkbox" value="wisdom" class="typeFilter">賢さ</label>
+        </div>
+      </div>
+
+      <div class="search-row">
+        <div class="search-field">
+          <label for="searchRequiredInput">スキル検索・必須（すべて含む）</label>
+          <div class="tag-input" id="searchRequiredBox">
+            <input type="text" id="searchRequiredInput" placeholder="入力してスペースで確定">
+          </div>
+        </div>
+        <div class="search-field">
+          <label for="searchOptionalInput">スキル検索・任意（いずれか含めばOK）</label>
+          <div class="tag-input" id="searchOptionalBox">
+            <input type="text" id="searchOptionalInput" placeholder="入力してスペースで確定">
+          </div>
+        </div>
+      </div>
+
       <div class="status" id="listStatus"></div>
       <div class="entries" id="entries"></div>
       <div class="empty" id="emptyMsg" style="display:none;">まだ登録がありません。「＋ サポカ登録」からClaudeの出力を貼り付けるか、手入力して保存してください。</div>
