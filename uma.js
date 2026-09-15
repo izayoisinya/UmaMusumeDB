@@ -503,9 +503,9 @@ function renderUmas() {
     row.innerHTML = `
       <div class="entry-main">
         <div class="entry-name-row">
+          ${imageUrl ? `<img class="uma-icon" src="${escapeHtml(imageUrl)}" alt="${escapeHtml(uma.name)}" loading="lazy">` : ''}
           <div class="entry-name">${escapeHtml(uma.name)}</div>
         </div>
-        ${imageUrl ? `<img class="uma-icon" src="${escapeHtml(imageUrl)}" alt="${escapeHtml(uma.name)}" loading="lazy">` : ''}
         <div class="apt-group">
           <span class="apt-group-label">コース</span>
           <div class="apt-row">
