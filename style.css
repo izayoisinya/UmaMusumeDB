@@ -363,21 +363,37 @@ input[type=text]:focus, input[type=number]:focus, textarea:focus {
   margin-bottom: 0;
   white-space: nowrap;
 }
-.count-filter-controls { display: flex; gap: 6px; align-items: center; }
-.count-filter-controls select,
+.count-filter-controls { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
 .count-filter-controls input[type=number] {
   font-family: 'M PLUS Rounded 1c', sans-serif;
   font-size: 13px;
-  padding: 7px 8px;
+  padding: 7px 6px;
   border: 1.5px solid var(--panel-line);
   border-radius: 10px;
   background: var(--surface);
   color: var(--ink);
-  width: auto;
+  width: 52px;
+  text-align: center;
 }
-.count-filter-controls input[type=number] { width: 80px; }
-.count-filter-controls select:focus,
 .count-filter-controls input[type=number]:focus { border-color: var(--blue); }
+.count-filter-checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  color: var(--ink-soft);
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  margin-bottom: 0;
+}
+.count-filter-checkbox input[type=checkbox] {
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  cursor: pointer;
+  accent-color: var(--green-dim);
+}
 
 .entries { display: flex; flex-direction: column; gap: 10px; }
 .entry {

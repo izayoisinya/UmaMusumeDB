@@ -60,15 +60,15 @@
       <div class="count-filter-row">
         <label>白因子数で絞り込み</label>
         <div class="count-filter-controls">
-          <select id="whiteCountTarget">
-            <option value="total">総数</option>
-            <option value="self">本体のみ</option>
-          </select>
-          <select id="whiteCountOp">
-            <option value="gte">以上</option>
-            <option value="lte">以下</option>
-          </select>
-          <input type="number" id="whiteCountInput" min="0" placeholder="数値">
+          <input type="number" id="whiteCountInput" min="0" max="999" placeholder="数値">
+          <label class="count-filter-checkbox">
+            <input type="checkbox" id="whiteCountSelfOnly">
+            本体のみ
+          </label>
+          <label class="count-filter-checkbox">
+            <input type="checkbox" id="whiteCountLte">
+            以下
+          </label>
         </div>
       </div>
       <div class="status" id="listStatus"></div>

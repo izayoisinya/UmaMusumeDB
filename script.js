@@ -720,10 +720,10 @@ function getWhiteSelfCount(entry) {
   return (entry.white || []).filter(f => f.self).length;
 }
 
-const whiteCountTarget = document.getElementById('whiteCountTarget');
-const whiteCountOp = document.getElementById('whiteCountOp');
+const whiteCountSelfOnly = document.getElementById('whiteCountSelfOnly');
+const whiteCountLte = document.getElementById('whiteCountLte');
 const whiteCountInput = document.getElementById('whiteCountInput');
-[whiteCountTarget, whiteCountOp, whiteCountInput].forEach(el => {
+[whiteCountSelfOnly, whiteCountLte, whiteCountInput].forEach(el => {
   el.addEventListener('input', renderEntries);
   el.addEventListener('change', renderEntries);
 });
@@ -755,8 +755,8 @@ function renderEntries() {
       ok = ok && requiredOk && optionalOk && selfOk;
     }
     if (countFilterActive) {
-      const value = whiteCountTarget.value === 'self' ? getWhiteSelfCount(e) : (e.white || []).length;
-      const countOk = whiteCountOp.value === 'gte' ? value >= countNum : value <= countNum;
+      const value = whiteCountSelfOnly.checked ? getWhiteSelfCount(e) : (e.white || []).length;
+      const countOk = whiteCountLte.checked ? value <= countNum : value >= countNum;
       ok = ok && countOk;
     }
     return ok;
