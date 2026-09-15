@@ -74,14 +74,19 @@ button { touch-action: manipulation; }
   top: 12px;
   z-index: 10;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 10px 14px;
+  flex-direction: column;
+  gap: 10px;
   background: linear-gradient(90deg, var(--header-a), var(--header-b));
   border-radius: 18px;
   padding: 16px 22px;
   box-shadow: 0 4px 14px rgba(139,195,74,0.35);
+}
+.masthead-top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px 14px;
+  flex-wrap: wrap;
 }
 .masthead h1 {
   font-family: 'M PLUS Rounded 1c', sans-serif;
@@ -99,16 +104,10 @@ button { touch-action: manipulation; }
   margin: 0;
   text-shadow: 0 1px 2px rgba(70,90,20,0.2);
 }
-.masthead-right {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-}
 .masthead-menu {
   display: flex;
   gap: 8px;
+  flex-wrap: wrap;
 }
 .masthead-btn {
   font-family: 'M PLUS Rounded 1c', sans-serif;
@@ -137,7 +136,6 @@ button { touch-action: manipulation; }
     gap: 8px 10px;
   }
   .masthead h1 { font-size: 22px; }
-  .masthead-right { width: 100%; justify-content: space-between; }
   .masthead-menu {
     width: 100%;
     overflow-x: auto;
