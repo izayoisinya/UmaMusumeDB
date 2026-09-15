@@ -53,92 +53,6 @@ async function fetchFactorsRaw() {
   return { sha: json.sha, entries };
 }
 
-function imageRawUrl(path) {
-  const owner = (config && config.owner) || DEFAULT_OWNER;
-  const repo = (config && config.repo) || DEFAULT_REPO;
-  const branch = (config && config.branch) || 'main';
-  return `https://raw.githubusercontent.com/${encodeURIComponent(owner)}/${encodeURIComponent(repo)}/${encodeURIComponent(branch)}/${path}`;
-}
-
-async function uploadImageToGitHub(path, dataUrl, commitMessage) {
-  const base64 = dataUrl.split(',')[1];
-  const owner = (config && config.owner) || DEFAULT_OWNER;
-  const repo = (config && config.repo) || DEFAULT_REPO;
-  const url = `https://api.github.com/repos/${encodeURIComponent(owner)}/${encodeURIComponent(repo)}/contents/${path}`;
-  const getUrl = (config && config.branch) ? `${url}?ref=${encodeURIComponent(config.branch)}` : url;
-
-  let sha;
-  const existing = await fetch(getUrl, { headers: authHeaders(), cache: 'no-store' });
-  if (existing.ok) {
-    sha = (await existing.json()).sha;
-  }
-
-  const body = { message: commitMessage, content: base64 };
-  if (config && config.branch) body.branch = config.branch;
-  if (sha) body.sha = sha;
-
-  const res = await fetch(url, {
-    method: 'PUT',
-    headers: { ...authHeaders(), 'Content-Type': 'application/json' },
-    body: JSON.stringify(body),
-  });
-  if (!res.ok) {
-    const errJson = await res.json().catch(() => ({}));
-    throw new Error(errJson.message || `画像アップロードエラー: ${res.status}`);
-  }
-}
-
-async function deleteImageFromGitHub(path, commitMessage) {
-  const owner = (config && config.owner) || DEFAULT_OWNER;
-  const repo = (config && config.repo) || DEFAULT_REPO;
-  const url = `https://api.github.com/repos/${encodeURIComponent(owner)}/${encodeURIComponent(repo)}/contents/${path}`;
-  const getUrl = (config && config.branch) ? `${url}?ref=${encodeURIComponent(config.branch)}` : url;
-  const existing = await fetch(getUrl, { headers: authHeaders(), cache: 'no-store' });
-  if (!existing.ok) return;
-  const sha = (await existing.json()).sha;
-  const body = { message: commitMessage, sha };
-  if (config && config.branch) body.branch = config.branch;
-  const res = await fetch(url, {
-    method: 'DELETE',
-    headers: { ...authHeaders(), 'Content-Type': 'application/json' },
-    body: JSON.stringify(body),
-  });
-  if (!res.ok) {
-    const errJson = await res.json().catch(() => ({}));
-    throw new Error(errJson.message || `画像削除エラー: ${res.status}`);
-  }
-}
-
-function resizeImageFile(file, maxDim, quality) {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.onload = () => {
-      const img = new Image();
-      img.onload = () => {
-        let { width, height } = img;
-        if (width > maxDim || height > maxDim) {
-          if (width > height) {
-            height = Math.round(height * maxDim / width);
-            width = maxDim;
-          } else {
-            width = Math.round(width * maxDim / height);
-            height = maxDim;
-          }
-        }
-        const canvas = document.createElement('canvas');
-        canvas.width = width;
-        canvas.height = height;
-        canvas.getContext('2d').drawImage(img, 0, 0, width, height);
-        resolve(canvas.toDataURL('image/jpeg', quality));
-      };
-      img.onerror = () => reject(new Error('画像の読み込みに失敗しました'));
-      img.src = reader.result;
-    };
-    reader.onerror = () => reject(new Error('ファイルの読み込みに失敗しました'));
-    reader.readAsDataURL(file);
-  });
-}
-
 async function saveEntriesToGitHub(newEntries, commitMessage) {
   const body = {
     message: commitMessage,
@@ -379,19 +293,6 @@ removeImageBtn.addEventListener('click', e => {
   if (currentImagePath) removeImageFlag = true;
   hideImagePreview();
 });
-
-const lightbox = document.getElementById('lightbox');
-const lightboxImg = document.getElementById('lightboxImg');
-function openLightbox(src) {
-  lightboxImg.src = src;
-  lightbox.hidden = false;
-}
-function closeLightbox() {
-  lightbox.hidden = true;
-  lightboxImg.src = '';
-}
-lightbox.addEventListener('click', closeLightbox);
-document.addEventListener('keydown', e => { if (e.key === 'Escape' && !lightbox.hidden) closeLightbox(); });
 
 function resetForm() {
   document.getElementById('entryForm').reset();

@@ -96,6 +96,18 @@ window.PAGE_PROMPT = 'この画像はウマ娘プリティーダービーの「�
       </div>
 
       <div>
+        <label for="fImage">キャラアイコン（任意）</label>
+        <div class="dropzone" id="imageDropzone">
+          <div id="imagePreviewWrap" hidden>
+            <img id="imagePreview" alt="">
+          </div>
+          <div id="imageDropzoneHint">タップして画像を選択</div>
+          <input type="file" id="fImage" accept="image/*">
+        </div>
+        <button type="button" class="btn secondary" id="removeImageBtn" hidden>画像を削除</button>
+      </div>
+
+      <div>
         <label for="skillTagInput">所持スキル（チップをタップで固有／金／通常を切り替え）</label>
         <div class="tag-input" id="skillTagBox">
           <input type="text" id="skillTagInput" placeholder="入力してスペースで確定">
@@ -206,6 +218,10 @@ window.PAGE_PROMPT = 'この画像はウマ娘プリティーダービーの「�
 
     <button type="button" class="btn secondary modal-close-btn" data-modal="settingsModal">閉じる</button>
   </div>
+</div>
+
+<div id="lightbox" hidden>
+  <img id="lightboxImg" alt="">
 </div>
 
 <script src="common.js"></script>

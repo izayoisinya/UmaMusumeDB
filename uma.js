@@ -172,6 +172,56 @@ skillTagInput.addEventListener('keydown', e => {
 });
 skillTagInput.addEventListener('blur', () => { if (skillTagInput.value.trim()) commitSkillTag(); });
 
+// --- 画像添付(キャラアイコン) ---
+const imageDropzone = document.getElementById('imageDropzone');
+const fImage = document.getElementById('fImage');
+const imagePreview = document.getElementById('imagePreview');
+const imagePreviewWrap = document.getElementById('imagePreviewWrap');
+const imageDropzoneHint = document.getElementById('imageDropzoneHint');
+const removeImageBtn = document.getElementById('removeImageBtn');
+
+let pendingImageDataUrl = null;
+let currentImagePath = null;
+let removeImageFlag = false;
+
+function showImagePreview(src) {
+  imagePreview.src = src;
+  imagePreviewWrap.hidden = false;
+  imageDropzoneHint.hidden = true;
+  removeImageBtn.hidden = false;
+}
+function hideImagePreview() {
+  imagePreview.src = '';
+  imagePreviewWrap.hidden = true;
+  imageDropzoneHint.hidden = false;
+  removeImageBtn.hidden = true;
+}
+
+imageDropzone.addEventListener('click', () => fImage.click());
+
+fImage.addEventListener('change', async () => {
+  const file = fImage.files[0];
+  if (!file) return;
+  try {
+    setStatus('画像を処理しています…');
+    pendingImageDataUrl = await resizeImageFile(file, 600, 0.85);
+    removeImageFlag = false;
+    showImagePreview(pendingImageDataUrl);
+    setStatus('');
+  } catch (err) {
+    console.error(err);
+    setStatus('画像の処理に失敗しました: ' + err.message, true);
+  }
+});
+
+removeImageBtn.addEventListener('click', e => {
+  e.stopPropagation();
+  pendingImageDataUrl = null;
+  fImage.value = '';
+  if (currentImagePath) removeImageFlag = true;
+  hideImagePreview();
+});
+
 // --- フォーム操作 ---
 function setUmaModalMode(isEditing) {
   editingUmaId = isEditing;
@@ -184,6 +234,10 @@ function resetForm() {
   skillTags.length = 0;
   renderSkillTags();
   document.getElementById('pasteJson').value = '';
+  pendingImageDataUrl = null;
+  currentImagePath = null;
+  removeImageFlag = false;
+  hideImagePreview();
   setStatus('');
   setUmaModalMode(null);
 }
@@ -248,6 +302,10 @@ function startEditUma(id) {
   setUmaModalMode(id);
   fillForm(uma);
   document.getElementById('fNotes').value = uma.notes || '';
+  if (uma.imagePath) {
+    currentImagePath = uma.imagePath;
+    showImagePreview(imageRawUrl(uma.imagePath));
+  }
   openModal('umaModal');
 }
 
@@ -258,9 +316,11 @@ document.getElementById('umaForm').addEventListener('submit', async e => {
   const name = document.getElementById('fName').value.trim();
   if (!name) { setStatus('名前を入力してください。', true); return; }
 
+  const umaId = editingUmaId || ('uma_' + Date.now() + '_' + Math.random().toString(36).slice(2, 7));
   const uma = {
-    id: editingUmaId || ('uma_' + Date.now() + '_' + Math.random().toString(36).slice(2, 7)),
+    id: umaId,
     name,
+    imagePath: removeImageFlag ? null : (currentImagePath || null),
     skills: skillTags.map(s => ({ name: s.name, type: s.type || 'normal' })),
     track: {
       turf: document.getElementById('fTurf').value,
@@ -297,6 +357,17 @@ document.getElementById('umaForm').addEventListener('submit', async e => {
   const saveBtn = document.getElementById('saveUmaBtn');
   saveBtn.disabled = true;
   try {
+    if (pendingImageDataUrl) {
+      setStatus('画像をアップロードしています…');
+      const imagePath = `images/${umaId}.jpg`;
+      await uploadImageToGitHub(imagePath, pendingImageDataUrl, `ウマ娘画像アップロード: ${name}`);
+      uma.imagePath = imagePath;
+    } else if (removeImageFlag && currentImagePath) {
+      setStatus('画像を削除しています…');
+      await deleteImageFromGitHub(currentImagePath, `ウマ娘画像削除: ${name}`);
+      uma.imagePath = null;
+    }
+    setStatus(isEditing ? '更新しています…' : '保存しています…');
     await saveUmasToGitHub(updated, `${isEditing ? 'ウマ娘編集' : 'ウマ娘登録'}: ${name}`);
     allUmas = sortByName(updated);
     renderUmas();
@@ -428,11 +499,13 @@ function renderUmas() {
       .map(([key, label]) => `<span class="growth-item">${label}+${uma.growth[key]}%</span>`)
       .join('');
     const growthText = growthItemsHtml ? `<span class="growth-item">成長率:</span>${growthItemsHtml}` : '';
+    const imageUrl = uma.imagePath ? imageRawUrl(uma.imagePath) : null;
     row.innerHTML = `
       <div class="entry-main">
         <div class="entry-name-row">
           <div class="entry-name">${escapeHtml(uma.name)}</div>
         </div>
+        ${imageUrl ? `<img class="uma-icon" src="${escapeHtml(imageUrl)}" alt="${escapeHtml(uma.name)}" loading="lazy">` : ''}
         <div class="apt-group">
           <span class="apt-group-label">コース</span>
           <div class="apt-row">
@@ -471,6 +544,8 @@ function renderUmas() {
     `;
     row.querySelector('.entry-edit').addEventListener('click', () => startEditUma(uma.id));
     row.querySelector('.entry-del').addEventListener('click', e => askDeleteConfirm(uma, e.currentTarget));
+    const icon = row.querySelector('.uma-icon');
+    if (icon) icon.addEventListener('click', () => openLightbox(imageUrl));
     container.appendChild(row);
   });
 }
