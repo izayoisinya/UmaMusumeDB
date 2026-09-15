@@ -766,10 +766,14 @@ function renderEntries() {
     const parents = [entry.parent1, entry.parent2].filter(Boolean).map(p => highlightMatches(p, terms)).join(' × ');
 
     const imageUrl = entry.imagePath ? imageRawUrl(entry.imagePath) : null;
+    const whiteCount = (entry.white || []).length;
 
     row.innerHTML = `
       <div class="entry-main">
-        <div class="entry-name">${highlightMatches(entry.character, terms)}</div>
+        <div class="entry-name-row">
+          <div class="entry-name">${highlightMatches(entry.character, terms)}</div>
+          <span class="white-count-badge">白因子 ${whiteCount}</span>
+        </div>
         ${parents ? `<div class="entry-parents">継承元: ${parents}</div>` : ''}
         <div class="chips">${chips.join('') || '<span style="color:var(--ink-soft);font-size:12px;">因子未登録</span>'}</div>
         ${entry.notes ? `<div class="entry-notes">${highlightMatches(entry.notes, terms)}</div>` : ''}
