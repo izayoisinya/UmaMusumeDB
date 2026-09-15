@@ -1,0 +1,91 @@
+[
+  {
+    "id": "support_1789514094685_iyvrs",
+    "name": "タップダンスシチー",
+    "types": [
+      "speed"
+    ],
+    "skills": [
+      {
+        "name": "集中力",
+        "type": "normal"
+      },
+      {
+        "name": "急ぎ足",
+        "type": "normal"
+      },
+      {
+        "name": "逃げ直線○",
+        "type": "normal"
+      },
+      {
+        "name": "逃げコーナー○",
+        "type": "normal"
+      },
+      {
+        "name": "危険回避",
+        "type": "normal"
+      },
+      {
+        "name": "先頭プライド",
+        "type": "normal"
+      },
+      {
+        "name": "しゃかりき",
+        "type": "normal"
+      },
+      {
+        "name": "一番乗り",
+        "type": "normal"
+      },
+      {
+        "name": "序盤巧者",
+        "type": "normal"
+      },
+      {
+        "name": "素直な一歩",
+        "type": "normal"
+      },
+      {
+        "name": "逃げ切り体勢",
+        "type": "normal"
+      },
+      {
+        "name": "追い風に乗って",
+        "type": "normal"
+      },
+      {
+        "name": "みなぎる闘志",
+        "type": "normal"
+      },
+      {
+        "name": "弾みをつけて",
+        "type": "normal"
+      }
+    ],
+    "eventSkills": [
+      {
+        "name": "逃げるが勝ち！",
+        "type": "normal"
+      },
+      {
+        "name": "先頭プライド",
+        "type": "normal"
+      },
+      {
+        "name": "コンセントレーション",
+        "type": "gold"
+      },
+      {
+        "name": "トップランナー",
+        "type": "gold"
+      },
+      {
+        "name": "飛竜乗雲",
+        "type": "gold"
+      }
+    ],
+    "notes": "",
+    "savedAt": "2026-09-15T23:14:54.685Z"
+  }
+]
