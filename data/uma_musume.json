@@ -1,5 +1,44 @@
 [
   {
+    "id": "uma_1789507425364_zcho6",
+    "name": "シュヴァルグラン",
+    "skills": [
+      "Tidebreaker",
+      "かっとばせ！",
+      "勝利に向かって",
+      "地道に重ねて",
+      "光明",
+      "思い切り",
+      "ショーダウン",
+      "勇気の一歩"
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "G",
+      "mile": "G",
+      "medium": "A",
+      "long": "A"
+    },
+    "style": {
+      "nige": "G",
+      "senko": "A",
+      "sashi": "B",
+      "oikomi": "F"
+    },
+    "growth": {
+      "speed": 0,
+      "stamina": 10,
+      "power": 0,
+      "guts": 20,
+      "wisdom": 0
+    },
+    "notes": "",
+    "savedAt": "2026-09-15T21:23:45.364Z"
+  },
+  {
     "id": "uma_1789508282654_jqgsg",
     "name": "セイウンスカイ",
     "skills": [
@@ -61,45 +100,6 @@
     },
     "notes": "",
     "savedAt": "2026-09-15T21:38:02.654Z"
-  },
-  {
-    "id": "uma_1789507425364_zcho6",
-    "name": "シュヴァルグラン",
-    "skills": [
-      "Tidebreaker",
-      "かっとばせ！",
-      "勝利に向かって",
-      "地道に重ねて",
-      "光明",
-      "思い切り",
-      "ショーダウン",
-      "勇気の一歩"
-    ],
-    "track": {
-      "turf": "A",
-      "dirt": "G"
-    },
-    "distance": {
-      "short": "G",
-      "mile": "G",
-      "medium": "A",
-      "long": "A"
-    },
-    "style": {
-      "nige": "G",
-      "senko": "A",
-      "sashi": "B",
-      "oikomi": "F"
-    },
-    "growth": {
-      "speed": 0,
-      "stamina": 10,
-      "power": 0,
-      "guts": 20,
-      "wisdom": 0
-    },
-    "notes": "",
-    "savedAt": "2026-09-15T21:23:45.364Z"
   },
   {
     "id": "uma_1789507386398_xpsma",
@@ -178,44 +178,5 @@
     },
     "notes": "",
     "savedAt": "2026-09-15T21:22:26.863Z"
-  },
-  {
-    "id": "uma_1789507304779_twpg1",
-    "name": "セイウンスカイ",
-    "skills": [
-      "アングリング×スキーミング",
-      "脱出術",
-      "急ぎ足",
-      "先行ためらい",
-      "先陣の心得",
-      "リードキープ",
-      "逃げのコツ○",
-      "尻尾上がり"
-    ],
-    "track": {
-      "turf": "A",
-      "dirt": "G"
-    },
-    "distance": {
-      "short": "G",
-      "mile": "C",
-      "medium": "A",
-      "long": "A"
-    },
-    "style": {
-      "nige": "A",
-      "senko": "B",
-      "sashi": "D",
-      "oikomi": "E"
-    },
-    "growth": {
-      "speed": 0,
-      "stamina": 10,
-      "power": 0,
-      "guts": 0,
-      "wisdom": 20
-    },
-    "notes": "",
-    "savedAt": "2026-09-15T21:21:44.779Z"
   }
 ]
