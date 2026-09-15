@@ -360,6 +360,10 @@ document.getElementById('refreshBtn').addEventListener('click', () => loadUmas()
 
 // --- 一覧表示 ---
 function aptLabel(v) { return v ? v : '-'; }
+function aptBadge(prefix, v) {
+  const rankClass = v ? 'rank-' + v : 'rank-none';
+  return `<span class="apt-badge ${rankClass}">${prefix}${aptLabel(v)}</span>`;
+}
 
 function renderUmas() {
   const container = document.getElementById('entries');
@@ -387,16 +391,16 @@ function renderUmas() {
           <div class="entry-name">${escapeHtml(uma.name)}</div>
         </div>
         <div class="apt-row">
-          <span class="apt-badge">芝${aptLabel(uma.track.turf)}</span>
-          <span class="apt-badge">ダ${aptLabel(uma.track.dirt)}</span>
-          <span class="apt-badge">短${aptLabel(uma.distance.short)}</span>
-          <span class="apt-badge">マ${aptLabel(uma.distance.mile)}</span>
-          <span class="apt-badge">中${aptLabel(uma.distance.medium)}</span>
-          <span class="apt-badge">長${aptLabel(uma.distance.long)}</span>
-          <span class="apt-badge">逃${aptLabel(uma.style.nige)}</span>
-          <span class="apt-badge">先${aptLabel(uma.style.senko)}</span>
-          <span class="apt-badge">差${aptLabel(uma.style.sashi)}</span>
-          <span class="apt-badge">追${aptLabel(uma.style.oikomi)}</span>
+          ${aptBadge('芝', uma.track.turf)}
+          ${aptBadge('ダ', uma.track.dirt)}
+          ${aptBadge('短', uma.distance.short)}
+          ${aptBadge('マ', uma.distance.mile)}
+          ${aptBadge('中', uma.distance.medium)}
+          ${aptBadge('長', uma.distance.long)}
+          ${aptBadge('逃', uma.style.nige)}
+          ${aptBadge('先', uma.style.senko)}
+          ${aptBadge('差', uma.style.sashi)}
+          ${aptBadge('追', uma.style.oikomi)}
         </div>
         <div class="growth-row">成長率: スピ+${uma.growth.speed}% スタ+${uma.growth.stamina}% パワ+${uma.growth.power}% 根性+${uma.growth.guts}% 賢さ+${uma.growth.wisdom}%</div>
         <div class="chips">${skillChips || '<span style="color:var(--ink-soft);font-size:12px;">スキル未登録</span>'}</div>
