@@ -2,6 +2,7 @@
   {
     "id": "support_1789514094685_iyvrs",
     "name": "タップダンスシチー",
+    "imagePath": "images/support_1789514094685_iyvrs.jpg",
     "types": [
       "speed"
     ],
@@ -86,6 +87,6 @@
       }
     ],
     "notes": "",
-    "savedAt": "2026-09-15T23:14:54.685Z"
+    "savedAt": "2026-09-15T23:25:37.583Z"
   }
 ]
