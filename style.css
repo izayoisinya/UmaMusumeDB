@@ -349,6 +349,36 @@ input[type=text]:focus, input[type=number]:focus, textarea:focus {
 }
 .tag-remove:hover { opacity: 0.7; }
 
+.count-filter-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: -6px 0 16px;
+}
+.count-filter-row > label {
+  font-size: 11px;
+  color: var(--ink-soft);
+  font-weight: 700;
+  margin-bottom: 0;
+  white-space: nowrap;
+}
+.count-filter-controls { display: flex; gap: 6px; align-items: center; }
+.count-filter-controls select,
+.count-filter-controls input[type=number] {
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  font-size: 13px;
+  padding: 7px 8px;
+  border: 1.5px solid var(--panel-line);
+  border-radius: 10px;
+  background: var(--surface);
+  color: var(--ink);
+  width: auto;
+}
+.count-filter-controls input[type=number] { width: 80px; }
+.count-filter-controls select:focus,
+.count-filter-controls input[type=number]:focus { border-color: var(--blue); }
+
 .entries { display: flex; flex-direction: column; gap: 10px; }
 .entry {
   border: 1.5px solid var(--panel-line);

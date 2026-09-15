@@ -716,6 +716,18 @@ function getSelfFactorNames(entry) {
     .map(f => f.name);
 }
 
+function getWhiteSelfCount(entry) {
+  return (entry.white || []).filter(f => f.self).length;
+}
+
+const whiteCountTarget = document.getElementById('whiteCountTarget');
+const whiteCountOp = document.getElementById('whiteCountOp');
+const whiteCountInput = document.getElementById('whiteCountInput');
+[whiteCountTarget, whiteCountOp, whiteCountInput].forEach(el => {
+  el.addEventListener('input', renderEntries);
+  el.addEventListener('change', renderEntries);
+});
+
 function renderEntries() {
   const requiredTerms = getFieldTerms('searchRequiredInput', requiredTags);
   const optionalTerms = getFieldTerms('searchOptionalInput', optionalTags);
@@ -725,17 +737,29 @@ function renderEntries() {
   const emptyMsg = document.getElementById('emptyMsg');
   container.innerHTML = '';
 
+  const countValRaw = whiteCountInput.value.trim();
+  const countFilterActive = countValRaw !== '' && !Number.isNaN(Number(countValRaw));
+  const countNum = countFilterActive ? Number(countValRaw) : null;
+
   const filtered = allEntries.filter(e => {
-    if (!terms.length) return true;
-    const hay = [e.character, e.parent1, e.parent2, e.notes,
-      ...(e.blue || []).map(f => f.name), ...(e.red || []).map(f => f.name),
-      ...(e.green || []).map(f => f.name), ...(e.white || []).map(f => f.name)]
-      .filter(Boolean).join(' ').toLowerCase();
-    const requiredOk = requiredTerms.every(t => hay.includes(t));
-    const optionalOk = !optionalTerms.length || optionalTerms.some(t => hay.includes(t));
-    const selfHay = getSelfFactorNames(e).join(' ').toLowerCase();
-    const selfOk = selfTerms.every(t => selfHay.includes(t));
-    return requiredOk && optionalOk && selfOk;
+    let ok = true;
+    if (terms.length) {
+      const hay = [e.character, e.parent1, e.parent2, e.notes,
+        ...(e.blue || []).map(f => f.name), ...(e.red || []).map(f => f.name),
+        ...(e.green || []).map(f => f.name), ...(e.white || []).map(f => f.name)]
+        .filter(Boolean).join(' ').toLowerCase();
+      const requiredOk = requiredTerms.every(t => hay.includes(t));
+      const optionalOk = !optionalTerms.length || optionalTerms.some(t => hay.includes(t));
+      const selfHay = getSelfFactorNames(e).join(' ').toLowerCase();
+      const selfOk = selfTerms.every(t => selfHay.includes(t));
+      ok = ok && requiredOk && optionalOk && selfOk;
+    }
+    if (countFilterActive) {
+      const value = whiteCountTarget.value === 'self' ? getWhiteSelfCount(e) : (e.white || []).length;
+      const countOk = whiteCountOp.value === 'gte' ? value >= countNum : value <= countNum;
+      ok = ok && countOk;
+    }
+    return ok;
   });
 
   document.getElementById('countLabel').textContent = allEntries.length + ' 頭 登録';
@@ -767,12 +791,13 @@ function renderEntries() {
 
     const imageUrl = entry.imagePath ? imageRawUrl(entry.imagePath) : null;
     const whiteCount = (entry.white || []).length;
+    const whiteSelfCount = getWhiteSelfCount(entry);
 
     row.innerHTML = `
       <div class="entry-main">
         <div class="entry-name-row">
           <div class="entry-name">${highlightMatches(entry.character, terms)}</div>
-          <span class="white-count-badge">白因子 ${whiteCount}</span>
+          <span class="white-count-badge">白因子 ${whiteCount}（本体${whiteSelfCount}）</span>
         </div>
         ${parents ? `<div class="entry-parents">継承元: ${parents}</div>` : ''}
         <div class="chips">${chips.join('') || '<span style="color:var(--ink-soft);font-size:12px;">因子未登録</span>'}</div>

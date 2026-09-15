@@ -56,6 +56,21 @@
           </div>
         </div>
       </div>
+
+      <div class="count-filter-row">
+        <label>白因子数で絞り込み</label>
+        <div class="count-filter-controls">
+          <select id="whiteCountTarget">
+            <option value="total">総数</option>
+            <option value="self">本体のみ</option>
+          </select>
+          <select id="whiteCountOp">
+            <option value="gte">以上</option>
+            <option value="lte">以下</option>
+          </select>
+          <input type="number" id="whiteCountInput" min="0" placeholder="数値">
+        </div>
+      </div>
       <div class="status" id="listStatus"></div>
       <div class="entries" id="entries"></div>
       <div class="empty" id="emptyMsg" style="display:none;">まだ登録がありません。「＋ 因子登録」からClaudeの出力を貼り付けるか、手入力して保存してください。</div>
