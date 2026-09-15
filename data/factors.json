@@ -929,7 +929,7 @@
       {
         "name": "コーナー巧者○",
         "self": true,
-        "parent1": false,
+        "parent1": true,
         "parent2": false
       },
       {
@@ -1081,12 +1081,6 @@
         "self": false,
         "parent1": true,
         "parent2": true
-      },
-      {
-        "name": "コーナー巧者○",
-        "self": false,
-        "parent1": true,
-        "parent2": false
       },
       {
         "name": "ペースアップ",
@@ -1282,7 +1276,8 @@
       }
     ],
     "notes": "",
-    "savedAt": "2026-09-14T21:14:09.319Z"
+    "imagePath": "images/factor_1789420449318_audqp.jpg",
+    "savedAt": "2026-09-15T15:05:44.410Z"
   },
   {
     "id": "factor_1789416604746_7dazw",
