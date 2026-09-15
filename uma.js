@@ -385,6 +385,11 @@ function renderUmas() {
       const skill = normalizeSkill(s);
       return `<span class="chip white skill-chip skill-${skill.type}">${escapeHtml(skill.name)}</span>`;
     }).join('');
+    const growthLabels = { speed: 'スピ', stamina: 'スタ', power: 'パワ', guts: '根性', wisdom: '賢さ' };
+    const growthParts = Object.entries(growthLabels)
+      .filter(([key]) => uma.growth[key])
+      .map(([key, label]) => `${label}+${uma.growth[key]}%`);
+    const growthText = growthParts.length ? '成長率: ' + growthParts.join(' ') : '';
     row.innerHTML = `
       <div class="entry-main">
         <div class="entry-name-row">
@@ -415,7 +420,7 @@ function renderUmas() {
             ${aptBadge('追', uma.style.oikomi)}
           </div>
         </div>
-        <div class="growth-row">成長率: スピ+${uma.growth.speed}% スタ+${uma.growth.stamina}% パワ+${uma.growth.power}% 根性+${uma.growth.guts}% 賢さ+${uma.growth.wisdom}%</div>
+        ${growthText ? `<div class="growth-row">${growthText}</div>` : ''}
         <div class="chips">${skillChips || '<span style="color:var(--ink-soft);font-size:12px;">スキル未登録</span>'}</div>
         ${uma.notes ? `<div class="entry-notes">${escapeHtml(uma.notes)}</div>` : ''}
       </div>
