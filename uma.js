@@ -390,17 +390,30 @@ function renderUmas() {
         <div class="entry-name-row">
           <div class="entry-name">${escapeHtml(uma.name)}</div>
         </div>
-        <div class="apt-row">
-          ${aptBadge('芝', uma.track.turf)}
-          ${aptBadge('ダ', uma.track.dirt)}
-          ${aptBadge('短', uma.distance.short)}
-          ${aptBadge('マ', uma.distance.mile)}
-          ${aptBadge('中', uma.distance.medium)}
-          ${aptBadge('長', uma.distance.long)}
-          ${aptBadge('逃', uma.style.nige)}
-          ${aptBadge('先', uma.style.senko)}
-          ${aptBadge('差', uma.style.sashi)}
-          ${aptBadge('追', uma.style.oikomi)}
+        <div class="apt-group">
+          <span class="apt-group-label">コース</span>
+          <div class="apt-row">
+            ${aptBadge('芝', uma.track.turf)}
+            ${aptBadge('ダ', uma.track.dirt)}
+          </div>
+        </div>
+        <div class="apt-group">
+          <span class="apt-group-label">距離</span>
+          <div class="apt-row">
+            ${aptBadge('短', uma.distance.short)}
+            ${aptBadge('マ', uma.distance.mile)}
+            ${aptBadge('中', uma.distance.medium)}
+            ${aptBadge('長', uma.distance.long)}
+          </div>
+        </div>
+        <div class="apt-group">
+          <span class="apt-group-label">脚質</span>
+          <div class="apt-row">
+            ${aptBadge('逃', uma.style.nige)}
+            ${aptBadge('先', uma.style.senko)}
+            ${aptBadge('差', uma.style.sashi)}
+            ${aptBadge('追', uma.style.oikomi)}
+          </div>
         </div>
         <div class="growth-row">成長率: スピ+${uma.growth.speed}% スタ+${uma.growth.stamina}% パワ+${uma.growth.power}% 根性+${uma.growth.guts}% 賢さ+${uma.growth.wisdom}%</div>
         <div class="chips">${skillChips || '<span style="color:var(--ink-soft);font-size:12px;">スキル未登録</span>'}</div>

@@ -322,7 +322,17 @@ input[type=text]:focus, input[type=number]:focus, textarea:focus, select:focus {
   font-weight: 700;
   margin-bottom: 2px;
 }
-.apt-row { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 6px; }
+.apt-group { display: flex; align-items: center; gap: 8px; margin-top: 4px; flex-wrap: wrap; }
+.apt-group-label {
+  font-size: 10px;
+  color: var(--ink-soft);
+  font-weight: 700;
+  min-width: 30px;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+.apt-row { display: flex; flex-wrap: wrap; gap: 5px; }
+.apt-group .apt-row { margin-top: 0; }
 .apt-badge {
   font-size: 11px;
   font-weight: 700;
