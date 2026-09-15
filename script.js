@@ -757,19 +757,19 @@ function renderEntries() {
     const imageUrl = entry.imagePath ? imageRawUrl(entry.imagePath) : null;
 
     row.innerHTML = `
-      <div class="entry-body">
-        <div class="entry-top">
-          <div class="entry-name">${highlightMatches(entry.character, terms)}</div>
-          <div class="entry-actions">
-            <button class="entry-edit" data-id="${entry.id}">編集</button>
-            <button class="entry-del" data-id="${entry.id}">削除</button>
-          </div>
-        </div>
+      <div class="entry-main">
+        <div class="entry-name">${highlightMatches(entry.character, terms)}</div>
         ${parents ? `<div class="entry-parents">継承元: ${parents}</div>` : ''}
         <div class="chips">${chips.join('') || '<span style="color:var(--ink-soft);font-size:12px;">因子未登録</span>'}</div>
         ${entry.notes ? `<div class="entry-notes">${highlightMatches(entry.notes, terms)}</div>` : ''}
       </div>
-      ${imageUrl ? `<div class="entry-image"><img class="entry-thumb" src="${escapeAttr(imageUrl)}" alt="${escapeAttr(entry.character)}の継承画面" loading="lazy"></div>` : ''}
+      <div class="entry-side">
+        <div class="entry-actions">
+          <button class="entry-edit" data-id="${entry.id}">編集</button>
+          <button class="entry-del" data-id="${entry.id}">削除</button>
+        </div>
+        ${imageUrl ? `<div class="entry-image"><img class="entry-thumb" src="${escapeAttr(imageUrl)}" alt="${escapeAttr(entry.character)}の継承画面" loading="lazy"></div>` : ''}
+      </div>
     `;
     row.querySelector('.entry-edit').addEventListener('click', () => startEditEntry(entry.id));
     row.querySelector('.entry-del').addEventListener('click', e => deleteEntry(entry.id, e.currentTarget));

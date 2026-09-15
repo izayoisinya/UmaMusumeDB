@@ -358,11 +358,20 @@ input[type=text]:focus, input[type=number]:focus, textarea:focus {
   gap: 14px;
   align-items: flex-start;
 }
-.entry-body { flex: 1; min-width: 0; }
-.entry-image { flex-shrink: 0; width: 96px; }
+.entry-main { flex: 1; min-width: 0; }
+.entry-side {
+  flex-shrink: 0;
+  width: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 8px;
+}
+.entry-side .entry-actions { flex-wrap: wrap; justify-content: flex-end; }
+.entry-image { width: 100%; }
 .entry-thumb {
-  width: 96px;
-  height: 96px;
+  width: 100%;
+  aspect-ratio: 9 / 16;
   object-fit: cover;
   object-position: top center;
   border-radius: 10px;
@@ -371,9 +380,7 @@ input[type=text]:focus, input[type=number]:focus, textarea:focus {
   display: block;
 }
 @media (max-width: 520px) {
-  .entry { flex-direction: column; }
-  .entry-image { width: 100%; }
-  .entry-thumb { width: 100%; height: auto; max-height: 220px; object-position: top center; }
+  .entry-side { width: 96px; }
 }
 .entry-top {
   display: flex;
