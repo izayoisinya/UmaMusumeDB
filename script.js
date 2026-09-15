@@ -1,7 +1,4 @@
-const CONFIG_KEY = 'umaFactorLedger:githubConfig';
 const DATA_PATH = 'data/factors.json';
-const DEFAULT_OWNER = 'izayoisinya';
-const DEFAULT_REPO = 'UmaMusumeDB';
 
 class ConflictError extends Error {
   constructor() {
@@ -10,50 +7,9 @@ class ConflictError extends Error {
   }
 }
 
-let config = loadConfig();
 let currentSha = null;
 let allEntries = [];
 let editingEntryId = null;
-
-const THEME_KEY = 'umaFactorLedger:theme';
-
-function applyTheme(theme) {
-  document.documentElement.setAttribute('data-theme', theme);
-  const btn = document.getElementById('themeToggleBtn');
-  if (btn) btn.textContent = theme === 'dark' ? '☀️ ライト' : '🌙 ダーク';
-}
-
-function initTheme() {
-  const stored = localStorage.getItem(THEME_KEY);
-  const theme = stored || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-  applyTheme(theme);
-}
-
-document.getElementById('themeToggleBtn').addEventListener('click', () => {
-  const current = document.documentElement.getAttribute('data-theme');
-  const next = current === 'dark' ? 'light' : 'dark';
-  localStorage.setItem(THEME_KEY, next);
-  applyTheme(next);
-});
-
-initTheme();
-
-const CLAUDE_PROMPT = 'この画像はウマ娘プリティーダービーの因子継承画面のスクリーンショットです。書かれている因子情報を読み取って、次のJSON形式だけを出力してください（説明や前置き、コードフェンスは不要です）。\n\n画面には「本人」「継承元1」「継承元2」の3つの因子ブロックが縦に並んでいます。青因子・赤（ピンク）因子・緑因子（固有）・白因子のすべてについて、3ブロック分を読み取ってください。\n\n同じ名前の因子が本人・継承元1・継承元2のいずれかに存在する場合は1つのエントリにまとめ、その因子が各ブロックに存在するかどうかをself(本人)/parent1(継承元1)/parent2(継承元2)にtrue/falseで入れてください。星の数を数える必要はありません。存在すればtrue、存在しなければfalseだけで構いません。\n\n各ブロックの青因子列・赤因子列は、一番上の色付き見出し（例:「根性」「逃げ」）もその列の1項目として含めてください。そこから下に続く項目も同じ列の色として全て含めてください（青列はblue_factors、ピンク/赤列はred_factorsに）。緑色で強調された項目は、その列の色分類ではなくgreen_factorsに入れてください。\n\n{"character": string, "blue_factors": [{"name": string, "self": boolean, "parent1": boolean, "parent2": boolean}], "red_factors": [同じ形式], "green_factors": [同じ形式], "white_factors": [同じ形式]}\n\ncharacterは本人のキャラ名のみ（継承元のキャラ名は含めない）。項目は省略せず全て出力してください。';
-
-function loadConfig() {
-  try {
-    const raw = localStorage.getItem(CONFIG_KEY);
-    return raw ? JSON.parse(raw) : null;
-  } catch {
-    return null;
-  }
-}
-function persistConfig(cfg) {
-  localStorage.setItem(CONFIG_KEY, JSON.stringify(cfg));
-}
-function clearStoredConfig() {
-  localStorage.removeItem(CONFIG_KEY);
-}
 
 function contentsApiUrl() {
   const owner = (config && config.owner) || DEFAULT_OWNER;
@@ -65,12 +21,6 @@ function contentsApiUrlForGet() {
   const branch = config && config.branch;
   return branch ? `${url}?ref=${encodeURIComponent(branch)}` : url;
 }
-function authHeaders() {
-  const headers = { 'Accept': 'application/vnd.github+json' };
-  if (config && config.token) headers['Authorization'] = `Bearer ${config.token}`;
-  return headers;
-}
-
 function decodeBase64Utf8(b64) {
   const binary = atob(b64.replace(/\n/g, ''));
   const bytes = Uint8Array.from(binary, c => c.charCodeAt(0));
@@ -214,55 +164,12 @@ async function saveEntriesToGitHub(newEntries, commitMessage) {
   currentSha = json.content ? json.content.sha : null;
 }
 
-// --- settings panel ---
-const cfgOwner = document.getElementById('cfgOwner');
-const cfgRepo = document.getElementById('cfgRepo');
-const cfgBranch = document.getElementById('cfgBranch');
-const cfgToken = document.getElementById('cfgToken');
-const cfgSaveBtn = document.getElementById('cfgSaveBtn');
-const cfgClearBtn = document.getElementById('cfgClearBtn');
-
-function fillConfigForm() {
-  cfgOwner.value = (config && config.owner) || DEFAULT_OWNER;
-  cfgRepo.value = (config && config.repo) || DEFAULT_REPO;
-  cfgBranch.value = (config && config.branch) || '';
-  cfgToken.value = (config && config.token) || '';
-}
-
-function setCfgStatus(msg, isError) {
-  const el = document.getElementById('cfgStatus');
-  el.textContent = msg;
-  el.className = 'status' + (isError ? ' error' : '');
-}
-
-cfgSaveBtn.addEventListener('click', async () => {
-  const owner = cfgOwner.value.trim();
-  const repo = cfgRepo.value.trim();
-  const branch = cfgBranch.value.trim();
-  const token = cfgToken.value.trim();
-  if (!owner || !repo) {
-    setCfgStatus('リポジトリ所有者・リポジトリ名は必須です。', true);
-    return;
-  }
-  config = { owner, repo, branch, token };
-  persistConfig(config);
-  setCfgStatus('保存しました。読み込んでいます…');
-  await loadEntries();
-  setCfgStatus(token ? '接続しました。' : '接続しました（閲覧のみ。保存・削除にはPATが必要です）。');
-});
-
-cfgClearBtn.addEventListener('click', () => {
-  config = null;
-  clearStoredConfig();
-  cfgOwner.value = '';
-  cfgRepo.value = '';
-  cfgBranch.value = '';
-  cfgToken.value = '';
+// common.jsのGitHub連携設定フォーム(保存/消去)から呼ばれるフック
+function onGithubConfigChanged() {
   allEntries = [];
   currentSha = null;
-  renderEntries();
-  setCfgStatus('設定を消去しました。');
-});
+  return loadEntries();
+}
 
 document.getElementById('refreshBtn').addEventListener('click', () => loadEntries());
 
@@ -338,17 +245,8 @@ function setListStatus(msg, isError) {
   el.className = 'status' + (isError ? ' error' : '');
 }
 
-// --- モーダル(GitHub連携設定 / Claudeプロンプト) ---
-const modalOverlay = document.getElementById('modalOverlay');
-
-function openModal(id) {
-  document.querySelectorAll('.modal').forEach(m => { m.hidden = m.id !== id; });
-  modalOverlay.hidden = false;
-}
-function closeModal() {
-  modalOverlay.hidden = true;
-  document.querySelectorAll('.modal').forEach(m => { m.hidden = true; });
-}
+// --- モーダル(因子登録) ---
+// openModal/closeModal/GitHub連携設定/プロンプトはcommon.jsで定義
 
 function setRegisterModalMode(isEditing) {
   editingEntryId = isEditing;
@@ -381,12 +279,6 @@ function startEditEntry(id) {
   }
   openModal('registerModal');
 }
-document.getElementById('openGithubModalBtn').addEventListener('click', () => openModal('githubModal'));
-document.getElementById('openPromptModalBtn').addEventListener('click', () => openModal('promptModal'));
-document.querySelectorAll('.modal-close-btn').forEach(btn => btn.addEventListener('click', closeModal));
-modalOverlay.addEventListener('click', e => { if (e.target === modalOverlay) closeModal(); });
-document.addEventListener('keydown', e => { if (e.key === 'Escape' && !modalOverlay.hidden) closeModal(); });
-
 let pendingDeleteId = null;
 let pendingDeleteBtn = null;
 
@@ -406,22 +298,7 @@ document.getElementById('confirmDeleteBtn').addEventListener('click', () => {
   deleteEntry(id, btn);
 });
 
-document.getElementById('promptText').value = CLAUDE_PROMPT;
-
 // --- Claude出力の貼り付け読み込み ---
-document.getElementById('copyPromptBtn').addEventListener('click', async () => {
-  const el = document.getElementById('promptStatus');
-  try {
-    await navigator.clipboard.writeText(CLAUDE_PROMPT);
-    el.textContent = 'プロンプトをコピーしました。Claudeにスクリーンショットと一緒に貼り付けてください。';
-    el.className = 'status';
-  } catch (err) {
-    console.error(err);
-    el.textContent = 'コピーに失敗しました。上のテキストを手動で選択してコピーしてください。';
-    el.className = 'status error';
-  }
-});
-
 document.getElementById('loadJsonBtn').addEventListener('click', () => {
   const raw = document.getElementById('pasteJson').value.trim();
   if (!raw) { setStatus('Claudeの出力を貼り付けてください。', true); return; }
@@ -838,7 +715,6 @@ function renderEntries() {
   });
 }
 
-fillConfigForm();
 resetForm();
 loadEntries();
 

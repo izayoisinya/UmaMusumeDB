@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>サポカ図鑑 - 因子台帳</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#8bc34a">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="因子台帳">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="ledger">
+  <div class="masthead">
+    <h1>サポカ図鑑</h1>
+    <div class="masthead-right">
+      <div class="masthead-menu">
+        <a href="index.html" class="masthead-btn masthead-nav">因子台帳</a>
+        <a href="uma.html" class="masthead-btn masthead-nav">ウマ娘</a>
+        <a href="support.html" class="masthead-btn masthead-nav">サポカ</a>
+        <button type="button" class="masthead-btn" id="openSettingsModalBtn">⚙ 設定</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="layout">
+    <div class="panel list-panel">
+      <h2>所有サポートカードデータベース</h2>
+      <div class="empty" style="display:block;">この機能は準備中です。名前・所持スキルを登録できるようにする予定です。</div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modalOverlay" hidden>
+  <div class="modal" id="settingsModal" role="dialog" aria-labelledby="settingsModalTitle" hidden>
+    <h2 id="settingsModalTitle">設定</h2>
+    <div class="settings-tabs">
+      <button type="button" class="settings-tab active" data-tab="display">表示</button>
+      <button type="button" class="settings-tab" data-tab="github">GitHub連携</button>
+      <button type="button" class="settings-tab" data-tab="prompt">プロンプト</button>
+    </div>
+
+    <div class="settings-pane" data-pane="display">
+      <p class="hint">アプリの見た目を切り替えます。</p>
+      <button type="button" class="btn secondary" id="themeToggleBtn">🌙 ダークモードに切り替え</button>
+    </div>
+
+    <div class="settings-pane" data-pane="github" hidden>
+      <p class="hint">このアプリのデータは、このリポジトリに保存されます。<strong>閲覧のみならPATなしでも見られます</strong>（リポジトリ所有者・リポジトリ名だけ入力）。保存・削除には Contents 権限を持つ個人アクセストークン(PAT)が必要です。</p>
+      <div class="form-grid">
+        <div>
+          <label for="cfgOwner">リポジトリ所有者</label>
+          <input type="text" id="cfgOwner" placeholder="例: izayoisinya">
+        </div>
+        <div>
+          <label for="cfgRepo">リポジトリ名</label>
+          <input type="text" id="cfgRepo" placeholder="例: UmaMusumeDB">
+        </div>
+        <div>
+          <label for="cfgBranch">ブランチ</label>
+          <input type="text" id="cfgBranch" placeholder="main">
+        </div>
+        <div>
+          <label for="cfgToken">個人アクセストークン (PAT・保存/削除する場合のみ)</label>
+          <input type="password" id="cfgToken" placeholder="閲覧だけなら空欄でOK" autocomplete="off">
+        </div>
+        <button type="button" class="btn" id="cfgSaveBtn">保存して読み込む</button>
+        <button type="button" class="btn secondary" id="cfgClearBtn">設定を消去</button>
+      </div>
+      <div class="status" id="cfgStatus"></div>
+    </div>
+
+    <div class="settings-pane" data-pane="prompt" hidden>
+      <p class="hint">このプロンプトをコピーして、継承画面のスクリーンショットと一緒にClaudeアプリ（claude.ai等）に送ってください。返ってきたJSONを台帳画面の「Claudeの出力を貼り付け」欄に貼り付けます。</p>
+      <textarea id="promptText" rows="10" readonly></textarea>
+      <button type="button" class="btn" id="copyPromptBtn">プロンプトをコピー</button>
+      <div class="status" id="promptStatus"></div>
+    </div>
+
+    <button type="button" class="btn secondary modal-close-btn" data-modal="settingsModal">閉じる</button>
+  </div>
+</div>
+
+<script src="common.js"></script>
+</body>
+</html>
