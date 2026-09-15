@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ウマ娘図鑑 - 因子台帳</title>
 <script>
-window.PAGE_PROMPT = 'この画像はウマ娘プリティーダービーの「育成ウマ娘詳細」画面のスクリーンショットです。書かれている情報を読み取って、次のJSON形式だけを出力してください（説明や前置き、コードフェンスは不要です）。\n\n{"name": string, "skills": [string], "track": {"turf": string, "dirt": string}, "distance": {"short": string, "mile": string, "medium": string, "long": string}, "style": {"nige": string, "senko": string, "sashi": string, "oikomi": string}, "growth": {"speed": number, "stamina": number, "power": number, "guts": number, "wisdom": number}}\n\n・nameは称号（[ ]で囲まれた部分）を除いたキャラ名のみ。\n・skillsは画面に表示されているスキル名をすべて含めてください（習得済み・ヒントの区別は不要、進化後のスキル名が表示されていればそちらを採用）。\n・track/distance/styleの各値はA〜Gのランク表記のみを文字列で入れてください（+やGなどの記号はそのまま、数値化しないでください）。\n・growthの各値は成長率のパーセント表記から数値だけを取り出してください（例: 「+15%」なら15）。\n\n項目は省略せず全て出力してください。';
+window.PAGE_PROMPT = 'この画像はウマ娘プリティーダービーの「育成ウマ娘詳細」画面のスクリーンショットです。書かれている情報を読み取って、次のJSON形式だけを出力してください（説明や前置き、コードフェンスは不要です）。\n\n{"name": string, "skills": [{"name": string, "type": "unique"|"gold"|"normal"}], "track": {"turf": string, "dirt": string}, "distance": {"short": string, "mile": string, "medium": string, "long": string}, "style": {"nige": string, "senko": string, "sashi": string, "oikomi": string}, "growth": {"speed": number, "stamina": number, "power": number, "guts": number, "wisdom": number}}\n\n・nameは称号（[ ]で囲まれた部分）を除いたキャラ名のみ。\n・skillsは画面に表示されているスキルをすべて含めてください（習得済み・ヒントの区別は不要、進化後のスキル名が表示されていればそちらを採用）。各スキルのtypeは次の基準で判定してください：アイコンが虹色（レインボーカラー）で縁取られているものはunique（キャラ固有スキル）、スキル名が書かれているエリアの背景色が黄色（金色）になっているものはgold（金スキル）、それ以外はすべてnormal。\n・track/distance/styleの各値はA〜Gのランク表記のみを文字列で入れてください（+やGなどの記号はそのまま、数値化しないでください）。\n・growthの各値は成長率のパーセント表記から数値だけを取り出してください（例: 「+15%」なら15）。\n\n項目は省略せず全て出力してください。';
 </script>
 
 <link rel="manifest" href="manifest.json">
@@ -71,7 +71,7 @@ window.PAGE_PROMPT = 'この画像はウマ娘プリティーダービーの「�
       </div>
 
       <div>
-        <label for="skillTagInput">所持スキル</label>
+        <label for="skillTagInput">所持スキル（チップをタップで固有／金／通常を切り替え）</label>
         <div class="tag-input" id="skillTagBox">
           <input type="text" id="skillTagInput" placeholder="入力してスペースで確定">
         </div>

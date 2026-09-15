@@ -117,17 +117,34 @@ function onGithubConfigChanged() {
 }
 
 // --- 所持スキルのタグ入力 ---
+// 各要素は { name: string, type: 'unique' | 'gold' | 'normal' }
 const skillTags = [];
+
+function nextSkillType(type) {
+  if (type === 'gold') return 'unique';
+  if (type === 'unique') return 'normal';
+  return 'gold';
+}
+
+function normalizeSkill(s) {
+  return typeof s === 'string' ? { name: s, type: 'normal' } : { name: s.name || '', type: s.type || 'normal' };
+}
 
 function renderSkillTags() {
   const box = document.getElementById('skillTagBox');
   box.querySelectorAll('.tag-chip').forEach(el => el.remove());
   const input = box.querySelector('input');
-  skillTags.forEach((tag, i) => {
+  skillTags.forEach((skill, i) => {
     const chip = document.createElement('span');
-    chip.className = 'tag-chip';
-    chip.innerHTML = `${escapeHtml(tag)}<button type="button" class="tag-remove" aria-label="削除">×</button>`;
-    chip.querySelector('.tag-remove').addEventListener('click', () => {
+    chip.className = 'tag-chip skill-chip skill-' + (skill.type || 'normal');
+    chip.innerHTML = `${escapeHtml(skill.name)}<button type="button" class="tag-remove" aria-label="削除">×</button>`;
+    chip.addEventListener('click', e => {
+      if (e.target.closest('.tag-remove')) return;
+      skill.type = nextSkillType(skill.type);
+      renderSkillTags();
+    });
+    chip.querySelector('.tag-remove').addEventListener('click', e => {
+      e.stopPropagation();
       skillTags.splice(i, 1);
       renderSkillTags();
     });
@@ -139,7 +156,7 @@ const skillTagInput = document.getElementById('skillTagInput');
 const commitSkillTag = () => {
   const val = skillTagInput.value.trim();
   if (val) {
-    skillTags.push(val);
+    skillTags.push({ name: val, type: 'normal' });
     skillTagInput.value = '';
     renderSkillTags();
   }
@@ -185,7 +202,7 @@ function setSelectValue(id, val) {
 function fillForm(parsed) {
   document.getElementById('fName').value = parsed.name || '';
   skillTags.length = 0;
-  (parsed.skills || []).forEach(s => skillTags.push(s));
+  (parsed.skills || []).forEach(s => skillTags.push(normalizeSkill(s)));
   renderSkillTags();
   const track = parsed.track || {};
   const distance = parsed.distance || {};
@@ -244,7 +261,7 @@ document.getElementById('umaForm').addEventListener('submit', async e => {
   const uma = {
     id: editingUmaId || ('uma_' + Date.now() + '_' + Math.random().toString(36).slice(2, 7)),
     name,
-    skills: skillTags.slice(),
+    skills: skillTags.map(s => ({ name: s.name, type: s.type || 'normal' })),
     track: {
       turf: document.getElementById('fTurf').value,
       dirt: document.getElementById('fDirt').value,
@@ -360,7 +377,10 @@ function renderUmas() {
   allUmas.forEach(uma => {
     const row = document.createElement('div');
     row.className = 'entry';
-    const skillChips = (uma.skills || []).map(s => `<span class="chip white">${escapeHtml(s)}</span>`).join('');
+    const skillChips = (uma.skills || []).map(s => {
+      const skill = normalizeSkill(s);
+      return `<span class="chip white skill-chip skill-${skill.type}">${escapeHtml(skill.name)}</span>`;
+    }).join('');
     row.innerHTML = `
       <div class="entry-main">
         <div class="entry-name-row">
