@@ -37,7 +37,7 @@ function encodeUtf8Base64(str) {
 }
 
 async function fetchUmasRaw() {
-  const res = await fetch(contentsApiUrlForGet(), { headers: authHeaders() });
+  const res = await fetch(contentsApiUrlForGet(), { headers: authHeaders(), cache: 'no-store' });
   if (res.status === 404) return { sha: null, entries: [] };
   if (!res.ok) {
     const errJson = await res.json().catch(() => ({}));

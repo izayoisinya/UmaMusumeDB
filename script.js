@@ -34,7 +34,7 @@ function encodeUtf8Base64(str) {
 }
 
 async function fetchFactorsRaw() {
-  const res = await fetch(contentsApiUrlForGet(), { headers: authHeaders() });
+  const res = await fetch(contentsApiUrlForGet(), { headers: authHeaders(), cache: 'no-store' });
   if (res.status === 404) {
     return { sha: null, entries: [] };
   }
@@ -68,7 +68,7 @@ async function uploadImageToGitHub(path, dataUrl, commitMessage) {
   const getUrl = (config && config.branch) ? `${url}?ref=${encodeURIComponent(config.branch)}` : url;
 
   let sha;
-  const existing = await fetch(getUrl, { headers: authHeaders() });
+  const existing = await fetch(getUrl, { headers: authHeaders(), cache: 'no-store' });
   if (existing.ok) {
     sha = (await existing.json()).sha;
   }
@@ -93,7 +93,7 @@ async function deleteImageFromGitHub(path, commitMessage) {
   const repo = (config && config.repo) || DEFAULT_REPO;
   const url = `https://api.github.com/repos/${encodeURIComponent(owner)}/${encodeURIComponent(repo)}/contents/${path}`;
   const getUrl = (config && config.branch) ? `${url}?ref=${encodeURIComponent(config.branch)}` : url;
-  const existing = await fetch(getUrl, { headers: authHeaders() });
+  const existing = await fetch(getUrl, { headers: authHeaders(), cache: 'no-store' });
   if (!existing.ok) return;
   const sha = (await existing.json()).sha;
   const body = { message: commitMessage, sha };
