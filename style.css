@@ -748,3 +748,37 @@ mark.search-hit {
   border-radius: 8px;
   box-shadow: 0 10px 40px rgba(0,0,0,0.5);
 }
+
+.type-checkbox-row { display: flex; flex-wrap: wrap; gap: 8px; }
+.type-checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1.5px solid var(--panel-line);
+  cursor: pointer;
+  background: var(--surface);
+  color: var(--ink-soft);
+}
+.type-checkbox input[type=checkbox] { width: auto; margin: 0; cursor: pointer; }
+.type-checkbox.type-speed { border-color: #4fc3f7; }
+.type-checkbox.type-stamina { border-color: #ff7043; }
+.type-checkbox.type-power { border-color: #ffa726; }
+.type-checkbox.type-guts { border-color: #ec407a; }
+.type-checkbox.type-wisdom { border-color: #66bb6a; }
+
+.apt-badge.type-badge-speed { color: #0288d1; border-color: #4fc3f7; background: rgba(79,195,247,0.15); }
+.apt-badge.type-badge-stamina { color: #e64a19; border-color: #ff7043; background: rgba(255,112,67,0.15); }
+.apt-badge.type-badge-power { color: #f57c00; border-color: #ffa726; background: rgba(255,167,38,0.15); }
+.apt-badge.type-badge-guts { color: #c2185b; border-color: #ec407a; background: rgba(236,64,122,0.15); }
+.apt-badge.type-badge-wisdom { color: #388e3c; border-color: #66bb6a; background: rgba(102,187,106,0.15); }
+
+.skill-group-label {
+  font-size: 11px;
+  color: var(--ink-soft);
+  font-weight: 700;
+  margin-top: 8px;
+}

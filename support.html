@@ -4,6 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>サポカ図鑑 - 因子台帳</title>
+<script>
+window.PAGE_PROMPT = 'このサポートカードの詳細画面のスクリーンショットから、次のJSON形式だけを出力してください（説明や前置き、コードフェンスは不要です）。複数枚の画像が送られている場合は、すべてを1枚のサポートカードの情報として統合してください。\n\n{"name": string, "types": ["speed"|"stamina"|"power"|"guts"|"wisdom"], "skills": [{"name": string, "type": "gold"|"normal"}], "eventSkills": [{"name": string, "type": "gold"|"normal"}]}\n\n・nameはカード名（人物名）のみ。称号（[ ]で囲まれた部分）は含めない。\n・typesはカードのタイプアイコン（靴=speed、ハート=stamina、拳=power、炎=guts、帽子=wisdom）から判定してください。複数のタイプが表示されている場合はすべて含めてください。\n・skillsは「所持スキル」タブに表示されているスキル名の一覧です。スキル名が書かれているエリアの背景色が黄色（金色）になっているものはtype:"gold"、それ以外はtype:"normal"としてください。\n・eventSkillsは「育成イベント」のポップアップで確認できる、そのカードから入手できるスキル名の一覧です。同様に背景が金色ならgold、それ以外はnormalとしてください。\n\n項目は省略せず全て出力してください。';
+</script>
+
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#8bc34a">
 <link rel="icon" href="icons/icon-192.png">
@@ -20,8 +24,10 @@
   <div class="masthead">
     <div class="masthead-top">
       <h1>サポカ図鑑</h1>
+      <p id="countLabel">0 枚 登録</p>
     </div>
     <div class="masthead-menu">
+      <button type="button" class="masthead-btn" id="openRegisterModalBtn">＋ サポカ登録</button>
       <a href="index.html" class="masthead-btn masthead-nav">因子台帳</a>
       <a href="uma.html" class="masthead-btn masthead-nav">ウマ娘</a>
       <a href="support.html" class="masthead-btn masthead-nav">サポカ</a>
@@ -31,13 +37,82 @@
 
   <div class="layout">
     <div class="panel list-panel">
-      <h2>所有サポートカードデータベース</h2>
-      <div class="empty" style="display:block;">この機能は準備中です。名前・所持スキルを登録できるようにする予定です。</div>
+      <h2>
+        所有サポカ一覧
+        <button type="button" class="btn secondary btn-inline" id="refreshBtn">更新</button>
+      </h2>
+      <div class="status" id="listStatus"></div>
+      <div class="entries" id="entries"></div>
+      <div class="empty" id="emptyMsg" style="display:none;">まだ登録がありません。「＋ サポカ登録」からClaudeの出力を貼り付けるか、手入力して保存してください。</div>
     </div>
   </div>
 </div>
 
 <div class="modal-overlay" id="modalOverlay" hidden>
+  <div class="modal" id="supportModal" role="dialog" aria-labelledby="supportModalTitle" hidden>
+    <h2 id="supportModalTitle">サポカを登録</h2>
+
+    <p class="hint">
+      サポートカード詳細画面のスクリーンショットをClaudeアプリに見せて抽出してもらったJSONを、下の欄に貼り付けてください（抽出用プロンプトは「設定」→「プロンプト」から確認・コピーできます）。
+    </p>
+    <div class="form-grid">
+      <div>
+        <label for="pasteJson">Claudeの出力を貼り付け</label>
+        <textarea id="pasteJson" rows="4" placeholder='{"name": "...", "types": ["speed"], "skills": [{"name":"...","type":"normal"}], "eventSkills": [{"name":"...","type":"gold"}]}'></textarea>
+      </div>
+      <button type="button" class="btn" id="loadJsonBtn">この内容をフォームに反映</button>
+    </div>
+    <div class="status" id="status"></div>
+
+    <form class="form-grid" id="supportForm">
+      <div>
+        <label for="fName">名前</label>
+        <input type="text" id="fName" placeholder="例: タップダンスシチー">
+      </div>
+
+      <div>
+        <label>タイプ（複数可）</label>
+        <div class="type-checkbox-row">
+          <label class="type-checkbox type-speed"><input type="checkbox" value="speed" class="fType">スピード</label>
+          <label class="type-checkbox type-stamina"><input type="checkbox" value="stamina" class="fType">スタミナ</label>
+          <label class="type-checkbox type-power"><input type="checkbox" value="power" class="fType">パワー</label>
+          <label class="type-checkbox type-guts"><input type="checkbox" value="guts" class="fType">根性</label>
+          <label class="type-checkbox type-wisdom"><input type="checkbox" value="wisdom" class="fType">賢さ</label>
+        </div>
+      </div>
+
+      <div>
+        <label for="skillTagInput">所持スキル（チップをタップで金／通常を切り替え）</label>
+        <div class="tag-input" id="skillTagBox">
+          <input type="text" id="skillTagInput" placeholder="入力してスペースで確定">
+        </div>
+      </div>
+
+      <div>
+        <label for="eventSkillTagInput">育成イベントスキル（チップをタップで金／通常を切り替え）</label>
+        <div class="tag-input" id="eventSkillTagBox">
+          <input type="text" id="eventSkillTagInput" placeholder="入力してスペースで確定">
+        </div>
+      </div>
+
+      <div>
+        <label for="fNotes">メモ</label>
+        <textarea id="fNotes" rows="2" placeholder="用途など"></textarea>
+      </div>
+
+      <button type="submit" class="btn" id="saveSupportBtn">この内容を保存</button>
+      <button type="button" class="btn secondary" id="clearBtn">フォームをクリア</button>
+    </form>
+    <button type="button" class="btn secondary modal-close-btn" data-modal="supportModal">閉じる</button>
+  </div>
+
+  <div class="modal" id="confirmDeleteModal" role="dialog" aria-labelledby="confirmDeleteTitle" hidden>
+    <h2 id="confirmDeleteTitle">削除の確認</h2>
+    <p class="hint" id="confirmDeleteMessage"></p>
+    <button type="button" class="btn danger" id="confirmDeleteBtn">削除する</button>
+    <button type="button" class="btn secondary modal-close-btn" data-modal="confirmDeleteModal">キャンセル</button>
+  </div>
+
   <div class="modal" id="settingsModal" role="dialog" aria-labelledby="settingsModalTitle" hidden>
     <h2 id="settingsModalTitle">設定</h2>
     <div class="settings-tabs">
@@ -88,5 +163,6 @@
 </div>
 
 <script src="common.js"></script>
+<script src="support.js"></script>
 </body>
 </html>
