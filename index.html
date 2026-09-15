@@ -131,6 +131,18 @@
         <textarea id="fNotes" rows="2" placeholder="用途など"></textarea>
       </div>
 
+      <div>
+        <label for="fImage">継承画面のスクリーンショット（任意）</label>
+        <div class="dropzone" id="imageDropzone">
+          <div id="imagePreviewWrap" hidden>
+            <img id="imagePreview" alt="">
+          </div>
+          <div id="imageDropzoneHint">タップして画像を選択</div>
+          <input type="file" id="fImage" accept="image/*">
+        </div>
+        <button type="button" class="btn secondary" id="removeImageBtn" hidden>画像を削除</button>
+      </div>
+
       <button type="submit" class="btn" id="saveEntryBtn">この内容を保存</button>
       <button type="button" class="btn secondary" id="clearBtn">フォームをクリア</button>
     </form>
@@ -172,6 +184,10 @@
     <div class="status" id="promptStatus"></div>
     <button type="button" class="btn secondary modal-close-btn" data-modal="promptModal">閉じる</button>
   </div>
+</div>
+
+<div id="lightbox" hidden>
+  <img id="lightboxImg" alt="">
 </div>
 
 <script src="script.js"></script>

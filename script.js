@@ -103,6 +103,92 @@ async function fetchFactorsRaw() {
   return { sha: json.sha, entries };
 }
 
+function imageRawUrl(path) {
+  const owner = (config && config.owner) || DEFAULT_OWNER;
+  const repo = (config && config.repo) || DEFAULT_REPO;
+  const branch = (config && config.branch) || 'main';
+  return `https://raw.githubusercontent.com/${encodeURIComponent(owner)}/${encodeURIComponent(repo)}/${encodeURIComponent(branch)}/${path}`;
+}
+
+async function uploadImageToGitHub(path, dataUrl, commitMessage) {
+  const base64 = dataUrl.split(',')[1];
+  const owner = (config && config.owner) || DEFAULT_OWNER;
+  const repo = (config && config.repo) || DEFAULT_REPO;
+  const url = `https://api.github.com/repos/${encodeURIComponent(owner)}/${encodeURIComponent(repo)}/contents/${path}`;
+  const getUrl = (config && config.branch) ? `${url}?ref=${encodeURIComponent(config.branch)}` : url;
+
+  let sha;
+  const existing = await fetch(getUrl, { headers: authHeaders() });
+  if (existing.ok) {
+    sha = (await existing.json()).sha;
+  }
+
+  const body = { message: commitMessage, content: base64 };
+  if (config && config.branch) body.branch = config.branch;
+  if (sha) body.sha = sha;
+
+  const res = await fetch(url, {
+    method: 'PUT',
+    headers: { ...authHeaders(), 'Content-Type': 'application/json' },
+    body: JSON.stringify(body),
+  });
+  if (!res.ok) {
+    const errJson = await res.json().catch(() => ({}));
+    throw new Error(errJson.message || `画像アップロードエラー: ${res.status}`);
+  }
+}
+
+async function deleteImageFromGitHub(path, commitMessage) {
+  const owner = (config && config.owner) || DEFAULT_OWNER;
+  const repo = (config && config.repo) || DEFAULT_REPO;
+  const url = `https://api.github.com/repos/${encodeURIComponent(owner)}/${encodeURIComponent(repo)}/contents/${path}`;
+  const getUrl = (config && config.branch) ? `${url}?ref=${encodeURIComponent(config.branch)}` : url;
+  const existing = await fetch(getUrl, { headers: authHeaders() });
+  if (!existing.ok) return;
+  const sha = (await existing.json()).sha;
+  const body = { message: commitMessage, sha };
+  if (config && config.branch) body.branch = config.branch;
+  const res = await fetch(url, {
+    method: 'DELETE',
+    headers: { ...authHeaders(), 'Content-Type': 'application/json' },
+    body: JSON.stringify(body),
+  });
+  if (!res.ok) {
+    const errJson = await res.json().catch(() => ({}));
+    throw new Error(errJson.message || `画像削除エラー: ${res.status}`);
+  }
+}
+
+function resizeImageFile(file, maxDim, quality) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      const img = new Image();
+      img.onload = () => {
+        let { width, height } = img;
+        if (width > maxDim || height > maxDim) {
+          if (width > height) {
+            height = Math.round(height * maxDim / width);
+            width = maxDim;
+          } else {
+            width = Math.round(width * maxDim / height);
+            height = maxDim;
+          }
+        }
+        const canvas = document.createElement('canvas');
+        canvas.width = width;
+        canvas.height = height;
+        canvas.getContext('2d').drawImage(img, 0, 0, width, height);
+        resolve(canvas.toDataURL('image/jpeg', quality));
+      };
+      img.onerror = () => reject(new Error('画像の読み込みに失敗しました'));
+      img.src = reader.result;
+    };
+    reader.onerror = () => reject(new Error('ファイルの読み込みに失敗しました'));
+    reader.readAsDataURL(file);
+  });
+}
+
 async function saveEntriesToGitHub(newEntries, commitMessage) {
   const body = {
     message: commitMessage,
@@ -289,6 +375,10 @@ function startEditEntry(id) {
   fillFactorList('greenList', entry.green);
   fillFactorList('whiteList', entry.white);
   document.getElementById('fNotes').value = entry.notes || '';
+  if (entry.imagePath) {
+    currentImagePath = entry.imagePath;
+    showImagePreview(imageRawUrl(entry.imagePath));
+  }
   openModal('registerModal');
 }
 document.getElementById('openGithubModalBtn').addEventListener('click', () => openModal('githubModal'));
@@ -344,6 +434,69 @@ function fillForm(parsed) {
 
 document.getElementById('clearBtn').addEventListener('click', resetForm);
 
+// --- 画像添付 ---
+const imageDropzone = document.getElementById('imageDropzone');
+const fImage = document.getElementById('fImage');
+const imagePreview = document.getElementById('imagePreview');
+const imagePreviewWrap = document.getElementById('imagePreviewWrap');
+const imageDropzoneHint = document.getElementById('imageDropzoneHint');
+const removeImageBtn = document.getElementById('removeImageBtn');
+
+let pendingImageDataUrl = null;
+let currentImagePath = null;
+let removeImageFlag = false;
+
+function showImagePreview(src) {
+  imagePreview.src = src;
+  imagePreviewWrap.hidden = false;
+  imageDropzoneHint.hidden = true;
+  removeImageBtn.hidden = false;
+}
+function hideImagePreview() {
+  imagePreview.src = '';
+  imagePreviewWrap.hidden = true;
+  imageDropzoneHint.hidden = false;
+  removeImageBtn.hidden = true;
+}
+
+imageDropzone.addEventListener('click', () => fImage.click());
+
+fImage.addEventListener('change', async () => {
+  const file = fImage.files[0];
+  if (!file) return;
+  try {
+    setStatus('画像を処理しています…');
+    pendingImageDataUrl = await resizeImageFile(file, 1400, 0.75);
+    removeImageFlag = false;
+    showImagePreview(pendingImageDataUrl);
+    setStatus('');
+  } catch (err) {
+    console.error(err);
+    setStatus('画像の処理に失敗しました: ' + err.message, true);
+  }
+});
+
+removeImageBtn.addEventListener('click', e => {
+  e.stopPropagation();
+  pendingImageDataUrl = null;
+  fImage.value = '';
+  if (currentImagePath) removeImageFlag = true;
+  hideImagePreview();
+});
+
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightboxImg');
+function openLightbox(src) {
+  lightboxImg.src = src;
+  lightbox.hidden = false;
+}
+function closeLightbox() {
+  lightbox.hidden = true;
+  lightboxImg.src = '';
+}
+lightbox.addEventListener('click', closeLightbox);
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && !lightbox.hidden) closeLightbox(); });
+
 function resetForm() {
   document.getElementById('entryForm').reset();
   Object.values(FACTOR_LIST_IDS).forEach(listId => {
@@ -351,6 +504,10 @@ function resetForm() {
     addFactorLine(listId, '', false, false, false);
   });
   document.getElementById('pasteJson').value = '';
+  pendingImageDataUrl = null;
+  currentImagePath = null;
+  removeImageFlag = false;
+  hideImagePreview();
   setStatus('');
   setRegisterModalMode(null);
 }
@@ -362,8 +519,9 @@ document.getElementById('entryForm').addEventListener('submit', async e => {
   const character = document.getElementById('fCharacter').value.trim();
   if (!character) { setStatus('キャラ名を入力してください。', true); return; }
 
+  const entryId = editingEntryId || ('factor_' + Date.now() + '_' + Math.random().toString(36).slice(2, 7));
   const entry = {
-    id: editingEntryId || ('factor_' + Date.now() + '_' + Math.random().toString(36).slice(2, 7)),
+    id: entryId,
     character,
     parent1: document.getElementById('fParent1').value.trim(),
     parent2: document.getElementById('fParent2').value.trim(),
@@ -372,6 +530,7 @@ document.getElementById('entryForm').addEventListener('submit', async e => {
     green: readListFactors('greenList'),
     white: readListFactors('whiteList'),
     notes: document.getElementById('fNotes').value.trim(),
+    imagePath: removeImageFlag ? null : (currentImagePath || null),
     savedAt: new Date().toISOString()
   };
 
@@ -383,6 +542,17 @@ document.getElementById('entryForm').addEventListener('submit', async e => {
   const saveBtn = document.getElementById('saveEntryBtn');
   saveBtn.disabled = true;
   try {
+    if (pendingImageDataUrl) {
+      setStatus('画像をアップロードしています…');
+      const imagePath = `images/${entryId}.jpg`;
+      await uploadImageToGitHub(imagePath, pendingImageDataUrl, `因子画像アップロード: ${character}`);
+      entry.imagePath = imagePath;
+    } else if (removeImageFlag && currentImagePath) {
+      setStatus('画像を削除しています…');
+      await deleteImageFromGitHub(currentImagePath, `因子画像削除: ${character}`);
+      entry.imagePath = null;
+    }
+    setStatus(isEditing ? '更新しています…' : '保存しています…');
     await saveEntriesToGitHub(updated, `${isEditing ? '因子編集' : '因子登録'}: ${character}`);
     allEntries = sortBySavedAtDesc(updated);
     renderEntries();
@@ -584,20 +754,27 @@ function renderEntries() {
 
     const parents = [entry.parent1, entry.parent2].filter(Boolean).map(p => highlightMatches(p, terms)).join(' × ');
 
+    const imageUrl = entry.imagePath ? imageRawUrl(entry.imagePath) : null;
+
     row.innerHTML = `
-      <div class="entry-top">
-        <div class="entry-name">${highlightMatches(entry.character, terms)}</div>
-        <div class="entry-actions">
-          <button class="entry-edit" data-id="${entry.id}">編集</button>
-          <button class="entry-del" data-id="${entry.id}">削除</button>
+      <div class="entry-body">
+        <div class="entry-top">
+          <div class="entry-name">${highlightMatches(entry.character, terms)}</div>
+          <div class="entry-actions">
+            <button class="entry-edit" data-id="${entry.id}">編集</button>
+            <button class="entry-del" data-id="${entry.id}">削除</button>
+          </div>
         </div>
+        ${parents ? `<div class="entry-parents">継承元: ${parents}</div>` : ''}
+        <div class="chips">${chips.join('') || '<span style="color:var(--ink-soft);font-size:12px;">因子未登録</span>'}</div>
+        ${entry.notes ? `<div class="entry-notes">${highlightMatches(entry.notes, terms)}</div>` : ''}
       </div>
-      ${parents ? `<div class="entry-parents">継承元: ${parents}</div>` : ''}
-      <div class="chips">${chips.join('') || '<span style="color:var(--ink-soft);font-size:12px;">因子未登録</span>'}</div>
-      ${entry.notes ? `<div class="entry-notes">${highlightMatches(entry.notes, terms)}</div>` : ''}
+      ${imageUrl ? `<div class="entry-image"><img class="entry-thumb" src="${escapeAttr(imageUrl)}" alt="${escapeAttr(entry.character)}の継承画面" loading="lazy"></div>` : ''}
     `;
     row.querySelector('.entry-edit').addEventListener('click', () => startEditEntry(entry.id));
     row.querySelector('.entry-del').addEventListener('click', e => deleteEntry(entry.id, e.currentTarget));
+    const thumb = row.querySelector('.entry-thumb');
+    if (thumb) thumb.addEventListener('click', () => openLightbox(imageUrl));
     container.appendChild(row);
   });
 }

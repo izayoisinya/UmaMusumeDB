@@ -354,6 +354,26 @@ input[type=text]:focus, input[type=number]:focus, textarea:focus {
   border-radius: 14px;
   background: var(--surface);
   padding: 14px 16px;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+.entry-body { flex: 1; min-width: 0; }
+.entry-image { flex-shrink: 0; width: 96px; }
+.entry-thumb {
+  width: 96px;
+  height: 96px;
+  object-fit: cover;
+  object-position: top center;
+  border-radius: 10px;
+  cursor: zoom-in;
+  border: 1.5px solid var(--panel-line);
+  display: block;
+}
+@media (max-width: 520px) {
+  .entry { flex-direction: column; }
+  .entry-image { width: 100%; }
+  .entry-thumb { width: 100%; height: auto; max-height: 220px; object-position: top center; }
 }
 .entry-top {
   display: flex;
@@ -481,4 +501,23 @@ mark.search-hit {
 .modal .btn:last-of-type,
 .modal .modal-close-btn {
   margin-top: 10px;
+}
+
+#lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  padding: 20px;
+  cursor: zoom-out;
+}
+#lightbox[hidden] { display: none; }
+#lightbox img {
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 8px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
 }
