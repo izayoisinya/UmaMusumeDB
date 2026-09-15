@@ -471,6 +471,16 @@ input[type=text]:focus, input[type=number]:focus, textarea:focus, select:focus {
   text-align: center;
 }
 .count-filter-controls input[type=number]:focus { border-color: var(--blue); }
+.count-filter-controls select {
+  width: auto;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  font-size: 13px;
+  padding: 7px 8px;
+  border: 1.5px solid var(--panel-line);
+  border-radius: 10px;
+  background: var(--surface);
+  color: var(--ink);
+}
 .count-filter-checkbox {
   display: inline-flex;
   align-items: center;

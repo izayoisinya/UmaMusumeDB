@@ -365,6 +365,19 @@ function aptBadge(prefix, v) {
   return `<span class="apt-badge ${rankClass}">${prefix}${aptLabel(v)}</span>`;
 }
 
+const RANK_ORDER = { S: 8, A: 7, B: 6, C: 5, D: 4, E: 3, F: 2, G: 1 };
+function rankValue(v) { return RANK_ORDER[v] || 0; }
+
+function getAptValue(uma, path) {
+  const [group, key] = path.split('.');
+  return uma[group] && uma[group][key];
+}
+
+const aptFilterField = document.getElementById('aptFilterField');
+const aptFilterRank = document.getElementById('aptFilterRank');
+const aptFilterLte = document.getElementById('aptFilterLte');
+[aptFilterField, aptFilterRank, aptFilterLte].forEach(el => el.addEventListener('change', renderUmas));
+
 function renderUmas() {
   const container = document.getElementById('entries');
   const emptyMsg = document.getElementById('emptyMsg');
@@ -372,13 +385,24 @@ function renderUmas() {
 
   document.getElementById('countLabel').textContent = allUmas.length + ' 頭 登録';
 
-  if (!allUmas.length) {
+  const field = aptFilterField.value;
+  const rank = aptFilterRank.value;
+  const filterActive = field && rank;
+  const filtered = allUmas.filter(uma => {
+    if (!filterActive) return true;
+    const val = getAptValue(uma, field);
+    if (!val) return false;
+    return aptFilterLte.checked ? rankValue(val) <= rankValue(rank) : rankValue(val) >= rankValue(rank);
+  });
+
+  if (!filtered.length) {
     emptyMsg.style.display = 'block';
+    emptyMsg.textContent = allUmas.length ? '該当する登録が見つかりません。' : 'まだ登録がありません。「＋ ウマ娘登録」からClaudeの出力を貼り付けるか、手入力して保存してください。';
     return;
   }
   emptyMsg.style.display = 'none';
 
-  allUmas.forEach(uma => {
+  filtered.forEach(uma => {
     const row = document.createElement('div');
     row.className = 'entry';
     const skillChips = (uma.skills || []).map(s => {

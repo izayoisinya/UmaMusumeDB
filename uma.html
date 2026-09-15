@@ -41,6 +41,41 @@ window.PAGE_PROMPT = 'この画像はウマ娘プリティーダービーの「�
         所有ウマ娘一覧
         <button type="button" class="btn secondary btn-inline" id="refreshBtn">更新</button>
       </h2>
+
+      <div class="count-filter-row">
+        <label>適性で絞り込み</label>
+        <div class="count-filter-controls">
+          <select id="aptFilterField">
+            <option value="">項目を選択</option>
+            <option value="track.turf">芝</option>
+            <option value="track.dirt">ダート</option>
+            <option value="distance.short">短距離</option>
+            <option value="distance.mile">マイル</option>
+            <option value="distance.medium">中距離</option>
+            <option value="distance.long">長距離</option>
+            <option value="style.nige">逃げ</option>
+            <option value="style.senko">先行</option>
+            <option value="style.sashi">差し</option>
+            <option value="style.oikomi">追込</option>
+          </select>
+          <select id="aptFilterRank">
+            <option value="">-</option>
+            <option>S</option>
+            <option>A</option>
+            <option>B</option>
+            <option>C</option>
+            <option>D</option>
+            <option>E</option>
+            <option>F</option>
+            <option>G</option>
+          </select>
+          <label class="count-filter-checkbox">
+            <input type="checkbox" id="aptFilterLte">
+            以下
+          </label>
+        </div>
+      </div>
+
       <div class="status" id="listStatus"></div>
       <div class="entries" id="entries"></div>
       <div class="empty" id="emptyMsg" style="display:none;">まだ登録がありません。「＋ ウマ娘登録」からClaudeの出力を貼り付けるか、手入力して保存してください。</div>
