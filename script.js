@@ -384,7 +384,7 @@ document.getElementById('entryForm').addEventListener('submit', async e => {
   saveBtn.disabled = true;
   try {
     await saveEntriesToGitHub(updated, `${isEditing ? '因子編集' : '因子登録'}: ${character}`);
-    allEntries = updated;
+    allEntries = sortBySavedAtDesc(updated);
     renderEntries();
     resetForm();
     setStatus(isEditing ? '更新しました。' : '保存しました。');
@@ -401,12 +401,16 @@ document.getElementById('entryForm').addEventListener('submit', async e => {
   }
 });
 
+function sortBySavedAtDesc(list) {
+  return list.slice().sort((a, b) => (b.savedAt || '').localeCompare(a.savedAt || ''));
+}
+
 async function loadEntries() {
   setListStatus('読み込み中…');
   try {
     const { sha, entries } = await fetchFactorsRaw();
     currentSha = sha;
-    allEntries = entries.slice().sort((a, b) => (b.savedAt || '').localeCompare(a.savedAt || ''));
+    allEntries = sortBySavedAtDesc(entries);
     setListStatus('');
   } catch (err) {
     console.error(err);
