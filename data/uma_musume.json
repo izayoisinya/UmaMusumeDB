@@ -1,39 +1,39 @@
 [
   {
-    "id": "uma_1789590051006_52itb",
-    "name": "ヴィルシーナ",
+    "id": "uma_1789590083783_ega8g",
+    "name": "ダイタクヘリオス",
     "imagePath": null,
     "skills": [
       {
-        "name": "Queen's Rebirth",
+        "name": "アゲてアゲてぶちょへんざ！",
         "type": "unique"
       },
       {
-        "name": "盤石の構え",
+        "name": "伏兵○",
+        "type": "normal"
+      },
+      {
+        "name": "マイル直線○",
+        "type": "normal"
+      },
+      {
+        "name": "ギアチェンジ",
         "type": "gold"
       },
       {
-        "name": "地固め",
+        "name": "ギアシフト",
         "type": "normal"
+      },
+      {
+        "name": "スリップストリーム",
+        "type": "normal"
+      },
+      {
+        "name": "遮二無二",
+        "type": "gold"
       },
       {
         "name": "向こう見ず",
-        "type": "normal"
-      },
-      {
-        "name": "心弾んで",
-        "type": "normal"
-      },
-      {
-        "name": "ネバーギブアップ",
-        "type": "gold"
-      },
-      {
-        "name": "折れない心",
-        "type": "normal"
-      },
-      {
-        "name": "後先恐れず",
         "type": "normal"
       }
     ],
@@ -42,26 +42,26 @@
       "dirt": "G"
     },
     "distance": {
-      "short": "D",
+      "short": "B",
       "mile": "A",
-      "medium": "A",
-      "long": "G"
+      "medium": "B",
+      "long": "E"
     },
     "style": {
       "nige": "A",
       "senko": "A",
-      "sashi": "E",
+      "sashi": "G",
       "oikomi": "G"
     },
     "growth": {
-      "speed": 0,
+      "speed": 15,
       "stamina": 0,
       "power": 15,
-      "guts": 15,
+      "guts": 0,
       "wisdom": 0
     },
     "notes": "",
-    "savedAt": "2026-09-16T20:20:51.006Z"
+    "savedAt": "2026-09-16T20:21:23.783Z"
   },
   {
     "id": "uma_1789589902759_sflaq",
@@ -190,6 +190,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T20:17:37.870Z"
+  },
+  {
+    "id": "uma_1789590051006_52itb",
+    "name": "ヴィルシーナ",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "Queen's Rebirth",
+        "type": "unique"
+      },
+      {
+        "name": "盤石の構え",
+        "type": "gold"
+      },
+      {
+        "name": "地固め",
+        "type": "normal"
+      },
+      {
+        "name": "向こう見ず",
+        "type": "normal"
+      },
+      {
+        "name": "心弾んで",
+        "type": "normal"
+      },
+      {
+        "name": "ネバーギブアップ",
+        "type": "gold"
+      },
+      {
+        "name": "折れない心",
+        "type": "normal"
+      },
+      {
+        "name": "後先恐れず",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "D",
+      "mile": "A",
+      "medium": "A",
+      "long": "G"
+    },
+    "style": {
+      "nige": "A",
+      "senko": "A",
+      "sashi": "E",
+      "oikomi": "G"
+    },
+    "growth": {
+      "speed": 0,
+      "stamina": 0,
+      "power": 15,
+      "guts": 15,
+      "wisdom": 0
+    },
+    "notes": "",
+    "savedAt": "2026-09-16T20:20:51.006Z"
   },
   {
     "id": "uma_1789589563588_92i5d",
