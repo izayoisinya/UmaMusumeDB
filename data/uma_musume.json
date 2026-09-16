@@ -105,15 +105,40 @@
   {
     "id": "uma_1789507346863_pg2yu",
     "name": "セイウンスカイ",
+    "imagePath": "images/uma_1789507346863_pg2yu.jpg",
     "skills": [
-      "Do Ya Breakin!",
-      "春ウマ娘○",
-      "先駆け",
-      "脱出術",
-      "急ぎ足",
-      "前途洋々",
-      "トップランナー",
-      "先頭プライド"
+      {
+        "name": "Do Ya Breakin!",
+        "type": "normal"
+      },
+      {
+        "name": "春ウマ娘○",
+        "type": "normal"
+      },
+      {
+        "name": "先駆け",
+        "type": "normal"
+      },
+      {
+        "name": "脱出術",
+        "type": "normal"
+      },
+      {
+        "name": "急ぎ足",
+        "type": "normal"
+      },
+      {
+        "name": "前途洋々",
+        "type": "normal"
+      },
+      {
+        "name": "トップランナー",
+        "type": "normal"
+      },
+      {
+        "name": "先頭プライド",
+        "type": "normal"
+      }
     ],
     "track": {
       "turf": "A",
@@ -139,6 +164,6 @@
       "wisdom": 0
     },
     "notes": "",
-    "savedAt": "2026-09-15T21:22:26.863Z"
+    "savedAt": "2026-09-16T19:55:47.934Z"
   }
 ]
