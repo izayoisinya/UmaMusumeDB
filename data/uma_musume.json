@@ -1,47 +1,39 @@
 [
   {
-    "id": "uma_1789590387845_vt9ps",
-    "name": "サイレンススズカ",
+    "id": "uma_1789590413607_1px69",
+    "name": "ダイワスカーレット",
     "imagePath": null,
     "skills": [
       {
-        "name": "先頭の景色は譲らない…！",
+        "name": "ブリリアント・レッドエース",
         "type": "unique"
       },
       {
-        "name": "左回りの鬼",
+        "name": "対抗意識○",
+        "type": "normal"
+      },
+      {
+        "name": "スタミナキープ",
+        "type": "normal"
+      },
+      {
+        "name": "レースプランナー",
         "type": "gold"
       },
       {
-        "name": "左回り○",
+        "name": "好位追走",
         "type": "normal"
       },
       {
-        "name": "コンセントレーション",
+        "name": "抜け出し準備",
+        "type": "normal"
+      },
+      {
+        "name": "キラーチューン",
         "type": "gold"
       },
       {
-        "name": "集中力",
-        "type": "normal"
-      },
-      {
-        "name": "急ぎ足",
-        "type": "normal"
-      },
-      {
-        "name": "逃亡者",
-        "type": "gold"
-      },
-      {
-        "name": "押し切り準備",
-        "type": "normal"
-      },
-      {
-        "name": "前途洋々",
-        "type": "normal"
-      },
-      {
-        "name": "星の煌き",
+        "name": "テンポアップ",
         "type": "normal"
       }
     ],
@@ -50,26 +42,26 @@
       "dirt": "G"
     },
     "distance": {
-      "short": "D",
+      "short": "F",
       "mile": "A",
       "medium": "A",
-      "long": "E"
+      "long": "B"
     },
     "style": {
       "nige": "A",
-      "senko": "C",
+      "senko": "A",
       "sashi": "E",
       "oikomi": "G"
     },
     "growth": {
-      "speed": 20,
+      "speed": 10,
       "stamina": 0,
       "power": 0,
-      "guts": 10,
+      "guts": 20,
       "wisdom": 0
     },
     "notes": "",
-    "savedAt": "2026-09-16T20:26:27.845Z"
+    "savedAt": "2026-09-16T20:26:53.607Z"
   },
   {
     "id": "uma_1789589902759_sflaq",
@@ -582,6 +574,78 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T20:09:43.322Z"
+  },
+  {
+    "id": "uma_1789590387845_vt9ps",
+    "name": "サイレンススズカ",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "先頭の景色は譲らない…！",
+        "type": "unique"
+      },
+      {
+        "name": "左回りの鬼",
+        "type": "gold"
+      },
+      {
+        "name": "左回り○",
+        "type": "normal"
+      },
+      {
+        "name": "コンセントレーション",
+        "type": "gold"
+      },
+      {
+        "name": "集中力",
+        "type": "normal"
+      },
+      {
+        "name": "急ぎ足",
+        "type": "normal"
+      },
+      {
+        "name": "逃亡者",
+        "type": "gold"
+      },
+      {
+        "name": "押し切り準備",
+        "type": "normal"
+      },
+      {
+        "name": "前途洋々",
+        "type": "normal"
+      },
+      {
+        "name": "星の煌き",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "D",
+      "mile": "A",
+      "medium": "A",
+      "long": "E"
+    },
+    "style": {
+      "nige": "A",
+      "senko": "C",
+      "sashi": "E",
+      "oikomi": "G"
+    },
+    "growth": {
+      "speed": 20,
+      "stamina": 0,
+      "power": 0,
+      "guts": 10,
+      "wisdom": 0
+    },
+    "notes": "",
+    "savedAt": "2026-09-16T20:26:27.845Z"
   },
   {
     "id": "uma_1789590013057_ykudd",
