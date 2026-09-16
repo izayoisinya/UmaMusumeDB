@@ -1,67 +1,67 @@
 [
   {
-    "id": "uma_1789590524368_1it9b",
-    "name": "タップダンスシチー",
+    "id": "uma_1789590549040_vccwv",
+    "name": "マルゼンスキー",
     "imagePath": null,
     "skills": [
       {
-        "name": "Romantic Horizon",
+        "name": "紅焔ギア/LP1211-M",
         "type": "unique"
       },
       {
-        "name": "中距離直線○",
+        "name": "直線巧者",
         "type": "normal"
       },
       {
-        "name": "出力1000%！",
+        "name": "集中力",
+        "type": "normal"
+      },
+      {
+        "name": "先駆け",
+        "type": "normal"
+      },
+      {
+        "name": "ギアチェンジ",
         "type": "gold"
       },
       {
-        "name": "しゃかりき",
+        "name": "ギアシフト",
         "type": "normal"
       },
       {
-        "name": "踏ませぬ影",
+        "name": "アクセル全開！",
         "type": "gold"
       },
       {
-        "name": "粘り腰",
-        "type": "normal"
-      },
-      {
-        "name": "一番乗り",
-        "type": "normal"
-      },
-      {
-        "name": "破天荒",
+        "name": "アクセラレーション",
         "type": "normal"
       }
     ],
     "track": {
       "turf": "A",
-      "dirt": "G"
+      "dirt": "D"
     },
     "distance": {
-      "short": "G",
-      "mile": "E",
-      "medium": "A",
-      "long": "A"
+      "short": "B",
+      "mile": "A",
+      "medium": "B",
+      "long": "C"
     },
     "style": {
       "nige": "A",
-      "senko": "B",
-      "sashi": "F",
+      "senko": "E",
+      "sashi": "G",
       "oikomi": "G"
     },
     "growth": {
       "speed": 10,
       "stamina": 0,
       "power": 0,
-      "guts": 20,
-      "wisdom": 0
+      "guts": 0,
+      "wisdom": 20
     },
     "notes": "",
-    "savedAt": "2026-09-16T20:28:44.368Z"
+    "savedAt": "2026-09-16T20:29:09.040Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -1350,6 +1350,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T20:26:53.607Z"
+  },
+  {
+    "id": "uma_1789590524368_1it9b",
+    "name": "タップダンスシチー",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "Romantic Horizon",
+        "type": "unique"
+      },
+      {
+        "name": "中距離直線○",
+        "type": "normal"
+      },
+      {
+        "name": "出力1000%！",
+        "type": "gold"
+      },
+      {
+        "name": "しゃかりき",
+        "type": "normal"
+      },
+      {
+        "name": "踏ませぬ影",
+        "type": "gold"
+      },
+      {
+        "name": "粘り腰",
+        "type": "normal"
+      },
+      {
+        "name": "一番乗り",
+        "type": "normal"
+      },
+      {
+        "name": "破天荒",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "G",
+      "mile": "E",
+      "medium": "A",
+      "long": "A"
+    },
+    "style": {
+      "nige": "A",
+      "senko": "B",
+      "sashi": "F",
+      "oikomi": "G"
+    },
+    "growth": {
+      "speed": 10,
+      "stamina": 0,
+      "power": 0,
+      "guts": 20,
+      "wisdom": 0
+    },
+    "notes": "",
+    "savedAt": "2026-09-16T20:28:44.368Z"
   },
   {
     "id": "uma_1789590495978_lfeso",
