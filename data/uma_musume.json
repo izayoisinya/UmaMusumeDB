@@ -1,67 +1,67 @@
 [
   {
-    "id": "uma_1789596789360_6f22k",
-    "name": "ライスシャワー",
+    "id": "uma_1789596803816_1iiui",
+    "name": "アグネスデジタル",
     "imagePath": null,
     "skills": [
       {
-        "name": "ブルーローズチェイサー",
+        "name": "萌到讓我活過來了！",
         "type": "unique"
       },
       {
-        "name": "クールダウン",
+        "name": "アガッてきた！",
         "type": "gold"
       },
       {
-        "name": "深呼吸",
+        "name": "ペースアップ",
         "type": "normal"
       },
       {
-        "name": "先行けん制",
+        "name": "上昇気流",
         "type": "normal"
       },
       {
-        "name": "決意の直滑降",
+        "name": "ウマ好み",
+        "type": "normal"
+      },
+      {
+        "name": "前列狙い",
+        "type": "normal"
+      },
+      {
+        "name": "捲土重来",
         "type": "gold"
       },
       {
-        "name": "直滑降",
-        "type": "normal"
-      },
-      {
-        "name": "栄養補給",
-        "type": "normal"
-      },
-      {
-        "name": "登山家",
+        "name": "盛り返し",
         "type": "normal"
       }
     ],
     "track": {
       "turf": "A",
-      "dirt": "G"
+      "dirt": "A"
     },
     "distance": {
-      "short": "E",
-      "mile": "C",
+      "short": "F",
+      "mile": "A",
       "medium": "A",
-      "long": "A"
+      "long": "G"
     },
     "style": {
-      "nige": "B",
+      "nige": "G",
       "senko": "A",
-      "sashi": "C",
-      "oikomi": "G"
+      "sashi": "A",
+      "oikomi": "B"
     },
     "growth": {
-      "speed": 0,
-      "stamina": 10,
-      "power": 0,
-      "guts": 20,
+      "speed": 7,
+      "stamina": 7,
+      "power": 8,
+      "guts": 8,
       "wisdom": 0
     },
     "notes": "",
-    "savedAt": "2026-09-16T22:13:09.360Z"
+    "savedAt": "2026-09-16T22:13:23.816Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -3534,5 +3534,69 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T20:25:11.095Z"
+  },
+  {
+    "id": "uma_1789596789360_6f22k",
+    "name": "ライスシャワー",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "ブルーローズチェイサー",
+        "type": "unique"
+      },
+      {
+        "name": "クールダウン",
+        "type": "gold"
+      },
+      {
+        "name": "深呼吸",
+        "type": "normal"
+      },
+      {
+        "name": "先行けん制",
+        "type": "normal"
+      },
+      {
+        "name": "決意の直滑降",
+        "type": "gold"
+      },
+      {
+        "name": "直滑降",
+        "type": "normal"
+      },
+      {
+        "name": "栄養補給",
+        "type": "normal"
+      },
+      {
+        "name": "登山家",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "E",
+      "mile": "C",
+      "medium": "A",
+      "long": "A"
+    },
+    "style": {
+      "nige": "B",
+      "senko": "A",
+      "sashi": "C",
+      "oikomi": "G"
+    },
+    "growth": {
+      "speed": 0,
+      "stamina": 10,
+      "power": 0,
+      "guts": 20,
+      "wisdom": 0
+    },
+    "notes": "",
+    "savedAt": "2026-09-16T22:13:09.360Z"
   }
 ]
