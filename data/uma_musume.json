@@ -1,39 +1,39 @@
 [
   {
-    "id": "uma_1789589618000_6ucz1",
+    "id": "uma_1789589677610_0gmu1",
     "name": "マヤノトップガン",
     "imagePath": null,
     "skills": [
       {
-        "name": "HOP STEP♪LOCK ON!",
+        "name": "フラワリー☆マニューバ",
         "type": "unique"
       },
       {
-        "name": "危険回避",
+        "name": "コーナー巧者○",
         "type": "normal"
       },
       {
-        "name": "地固め",
-        "type": "normal"
-      },
-      {
-        "name": "万里一空",
+        "name": "円弧のマエストロ",
         "type": "gold"
       },
       {
-        "name": "迷いなし",
+        "name": "コーナー回復○",
         "type": "normal"
       },
       {
-        "name": "早業",
+        "name": "集中力",
+        "type": "normal"
+      },
+      {
+        "name": "魅惑のささやき",
         "type": "gold"
       },
       {
-        "name": "目にも留まらず",
+        "name": "ささやき",
         "type": "normal"
       },
       {
-        "name": "気の向くままに",
+        "name": "巧みなステップ",
         "type": "normal"
       }
     ],
@@ -54,14 +54,14 @@
       "oikomi": "B"
     },
     "growth": {
-      "speed": 8,
-      "stamina": 15,
+      "speed": 10,
+      "stamina": 10,
       "power": 0,
       "guts": 0,
-      "wisdom": 7
+      "wisdom": 10
     },
     "notes": "",
-    "savedAt": "2026-09-16T20:13:38.000Z"
+    "savedAt": "2026-09-16T20:14:37.611Z"
   },
   {
     "id": "uma_1789589563588_92i5d",
@@ -446,5 +446,69 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T19:57:01.865Z"
+  },
+  {
+    "id": "uma_1789589618000_6ucz1",
+    "name": "マヤノトップガン",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "HOP STEP♪LOCK ON!",
+        "type": "unique"
+      },
+      {
+        "name": "危険回避",
+        "type": "normal"
+      },
+      {
+        "name": "地固め",
+        "type": "normal"
+      },
+      {
+        "name": "万里一空",
+        "type": "gold"
+      },
+      {
+        "name": "迷いなし",
+        "type": "normal"
+      },
+      {
+        "name": "早業",
+        "type": "gold"
+      },
+      {
+        "name": "目にも留まらず",
+        "type": "normal"
+      },
+      {
+        "name": "気の向くままに",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "E"
+    },
+    "distance": {
+      "short": "D",
+      "mile": "D",
+      "medium": "A",
+      "long": "A"
+    },
+    "style": {
+      "nige": "A",
+      "senko": "A",
+      "sashi": "B",
+      "oikomi": "B"
+    },
+    "growth": {
+      "speed": 8,
+      "stamina": 15,
+      "power": 0,
+      "guts": 0,
+      "wisdom": 7
+    },
+    "notes": "",
+    "savedAt": "2026-09-16T20:13:38.000Z"
   }
 ]
