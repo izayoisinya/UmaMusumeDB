@@ -1,67 +1,67 @@
 [
   {
-    "id": "uma_1789596348127_jtt1r",
-    "name": "アグネスタキオン",
+    "id": "uma_1789596364212_za8rl",
+    "name": "テイエムオペラオー",
     "imagePath": null,
     "skills": [
       {
-        "name": "超光速微粒子の可能性",
+        "name": "恵福バルカローレ",
         "type": "unique"
       },
       {
-        "name": "垂れウマ回避",
+        "name": "冬ウマ娘○",
         "type": "normal"
       },
       {
-        "name": "先行コーナー○",
+        "name": "内枠得意○",
         "type": "normal"
       },
       {
-        "name": "ウママニア",
+        "name": "円弧のマエストロ",
         "type": "gold"
       },
       {
-        "name": "ウマ好み",
+        "name": "コーナー回復○",
         "type": "normal"
       },
       {
-        "name": "自信家",
+        "name": "先行直線○",
         "type": "normal"
       },
       {
-        "name": "流星光底",
+        "name": "真打",
         "type": "gold"
       },
       {
-        "name": "飛躍の予感",
+        "name": "影打",
         "type": "normal"
       }
     ],
     "track": {
       "turf": "A",
-      "dirt": "G"
+      "dirt": "E"
     },
     "distance": {
       "short": "G",
-      "mile": "D",
+      "mile": "E",
       "medium": "A",
-      "long": "B"
+      "long": "A"
     },
     "style": {
-      "nige": "E",
+      "nige": "C",
       "senko": "A",
-      "sashi": "B",
-      "oikomi": "F"
+      "sashi": "A",
+      "oikomi": "G"
     },
     "growth": {
       "speed": 14,
-      "stamina": 0,
-      "power": 8,
+      "stamina": 8,
+      "power": 0,
       "guts": 0,
       "wisdom": 8
     },
     "notes": "",
-    "savedAt": "2026-09-16T22:05:48.127Z"
+    "savedAt": "2026-09-16T22:06:04.212Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -126,6 +126,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T20:27:49.435Z"
+  },
+  {
+    "id": "uma_1789596348127_jtt1r",
+    "name": "アグネスタキオン",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "超光速微粒子の可能性",
+        "type": "unique"
+      },
+      {
+        "name": "垂れウマ回避",
+        "type": "normal"
+      },
+      {
+        "name": "先行コーナー○",
+        "type": "normal"
+      },
+      {
+        "name": "ウママニア",
+        "type": "gold"
+      },
+      {
+        "name": "ウマ好み",
+        "type": "normal"
+      },
+      {
+        "name": "自信家",
+        "type": "normal"
+      },
+      {
+        "name": "流星光底",
+        "type": "gold"
+      },
+      {
+        "name": "飛躍の予感",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "G",
+      "mile": "D",
+      "medium": "A",
+      "long": "B"
+    },
+    "style": {
+      "nige": "E",
+      "senko": "A",
+      "sashi": "B",
+      "oikomi": "F"
+    },
+    "growth": {
+      "speed": 14,
+      "stamina": 0,
+      "power": 8,
+      "guts": 0,
+      "wisdom": 8
+    },
+    "notes": "",
+    "savedAt": "2026-09-16T22:05:48.127Z"
   },
   {
     "id": "uma_1789596332815_93tcm",
