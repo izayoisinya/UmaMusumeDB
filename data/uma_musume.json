@@ -1,39 +1,39 @@
 [
   {
-    "id": "uma_1789596574281_sf674",
-    "name": "スペシャルウィーク",
+    "id": "uma_1789596745789_32c2j",
+    "name": "サクラチヨノオー",
     "imagePath": null,
     "skills": [
       {
-        "name": "わやかわ♪マリンダイヴ",
+        "name": "憧れは桜を越える！",
         "type": "unique"
       },
       {
-        "name": "晴れの日○",
-        "type": "normal"
-      },
-      {
-        "name": "アガッてきた！",
+        "name": "春一番",
         "type": "gold"
       },
       {
-        "name": "ペースアップ",
+        "name": "春ウマ娘○",
         "type": "normal"
       },
       {
-        "name": "迅速果断",
+        "name": "コーナー加速○",
+        "type": "normal"
+      },
+      {
+        "name": "スピードスター",
         "type": "gold"
       },
       {
-        "name": "位置取り押し上げ",
+        "name": "抜け出し準備",
         "type": "normal"
       },
       {
-        "name": "イナズマステップ",
+        "name": "中距離コーナー○",
         "type": "normal"
       },
       {
-        "name": "尻尾上がり",
+        "name": "先行のコツ○",
         "type": "normal"
       }
     ],
@@ -42,26 +42,26 @@
       "dirt": "G"
     },
     "distance": {
-      "short": "F",
-      "mile": "C",
+      "short": "E",
+      "mile": "A",
       "medium": "A",
-      "long": "A"
+      "long": "E"
     },
     "style": {
-      "nige": "G",
+      "nige": "B",
       "senko": "A",
-      "sashi": "A",
-      "oikomi": "C"
+      "sashi": "F",
+      "oikomi": "G"
     },
     "growth": {
-      "speed": 0,
-      "stamina": 10,
-      "power": 10,
+      "speed": 10,
+      "stamina": 0,
+      "power": 0,
       "guts": 10,
-      "wisdom": 0
+      "wisdom": 10
     },
     "notes": "",
-    "savedAt": "2026-09-16T22:09:34.281Z"
+    "savedAt": "2026-09-16T22:12:25.789Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -1606,6 +1606,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T22:06:34.520Z"
+  },
+  {
+    "id": "uma_1789596574281_sf674",
+    "name": "スペシャルウィーク",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "わやかわ♪マリンダイヴ",
+        "type": "unique"
+      },
+      {
+        "name": "晴れの日○",
+        "type": "normal"
+      },
+      {
+        "name": "アガッてきた！",
+        "type": "gold"
+      },
+      {
+        "name": "ペースアップ",
+        "type": "normal"
+      },
+      {
+        "name": "迅速果断",
+        "type": "gold"
+      },
+      {
+        "name": "位置取り押し上げ",
+        "type": "normal"
+      },
+      {
+        "name": "イナズマステップ",
+        "type": "normal"
+      },
+      {
+        "name": "尻尾上がり",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "F",
+      "mile": "C",
+      "medium": "A",
+      "long": "A"
+    },
+    "style": {
+      "nige": "G",
+      "senko": "A",
+      "sashi": "A",
+      "oikomi": "C"
+    },
+    "growth": {
+      "speed": 0,
+      "stamina": 10,
+      "power": 10,
+      "guts": 10,
+      "wisdom": 0
+    },
+    "notes": "",
+    "savedAt": "2026-09-16T22:09:34.281Z"
   },
   {
     "id": "uma_1789596559981_o0qae",
