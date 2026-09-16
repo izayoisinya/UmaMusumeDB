@@ -1,67 +1,67 @@
 [
   {
-    "id": "uma_1789596517264_umkcd",
-    "name": "イクノディクタス",
+    "id": "uma_1789596531155_r7kbm",
+    "name": "カレンチャン",
     "imagePath": null,
     "skills": [
       {
-        "name": "百錬成鋼",
+        "name": "One True Color",
         "type": "unique"
       },
       {
-        "name": "夏ウマ娘○",
-        "type": "normal"
-      },
-      {
-        "name": "レースプランナー",
+        "name": "スプリントターボ",
         "type": "gold"
       },
       {
-        "name": "好位追走",
+        "name": "スプリントギア",
         "type": "normal"
       },
       {
-        "name": "ありったけ",
+        "name": "逃げためらい",
         "type": "normal"
       },
       {
-        "name": "勇往邁進",
+        "name": "悩殺術",
         "type": "gold"
       },
       {
-        "name": "フルスロットル",
+        "name": "後方釘付",
         "type": "normal"
       },
       {
-        "name": "自制心",
+        "name": "先行コーナー○",
+        "type": "normal"
+      },
+      {
+        "name": "先行のコツ○",
         "type": "normal"
       }
     ],
     "track": {
       "turf": "A",
-      "dirt": "G"
+      "dirt": "F"
     },
     "distance": {
-      "short": "D",
-      "mile": "A",
-      "medium": "A",
-      "long": "D"
+      "short": "A",
+      "mile": "D",
+      "medium": "G",
+      "long": "G"
     },
     "style": {
-      "nige": "D",
+      "nige": "B",
       "senko": "A",
-      "sashi": "A",
-      "oikomi": "D"
+      "sashi": "E",
+      "oikomi": "G"
     },
     "growth": {
-      "speed": 0,
+      "speed": 10,
       "stamina": 0,
-      "power": 0,
-      "guts": 20,
+      "power": 10,
+      "guts": 0,
       "wisdom": 10
     },
     "notes": "",
-    "savedAt": "2026-09-16T22:08:37.264Z"
+    "savedAt": "2026-09-16T22:08:51.155Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -446,6 +446,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T20:17:37.870Z"
+  },
+  {
+    "id": "uma_1789596517264_umkcd",
+    "name": "イクノディクタス",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "百錬成鋼",
+        "type": "unique"
+      },
+      {
+        "name": "夏ウマ娘○",
+        "type": "normal"
+      },
+      {
+        "name": "レースプランナー",
+        "type": "gold"
+      },
+      {
+        "name": "好位追走",
+        "type": "normal"
+      },
+      {
+        "name": "ありったけ",
+        "type": "normal"
+      },
+      {
+        "name": "勇往邁進",
+        "type": "gold"
+      },
+      {
+        "name": "フルスロットル",
+        "type": "normal"
+      },
+      {
+        "name": "自制心",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "D",
+      "mile": "A",
+      "medium": "A",
+      "long": "D"
+    },
+    "style": {
+      "nige": "D",
+      "senko": "A",
+      "sashi": "A",
+      "oikomi": "D"
+    },
+    "growth": {
+      "speed": 0,
+      "stamina": 0,
+      "power": 0,
+      "guts": 20,
+      "wisdom": 10
+    },
+    "notes": "",
+    "savedAt": "2026-09-16T22:08:37.264Z"
   },
   {
     "id": "uma_1789590051006_52itb",
