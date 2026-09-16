@@ -1,67 +1,67 @@
 [
   {
-    "id": "uma_1789597025571_4lrnl",
-    "name": "ライスシャワー",
+    "id": "uma_1789597038891_t8oi9",
+    "name": "メイショウドトウ",
     "imagePath": null,
     "skills": [
       {
-        "name": "Drain for rose",
+        "name": "I Never Goof Up!",
         "type": "unique"
       },
       {
-        "name": "コーナー回復○",
+        "name": "非根幹距離○",
         "type": "normal"
       },
       {
-        "name": "余裕綽々",
+        "name": "不屈の心",
         "type": "gold"
       },
       {
-        "name": "スタミナキープ",
+        "name": "ペースキープ",
         "type": "normal"
       },
       {
-        "name": "見惚れるトリック",
+        "name": "スピードスター",
         "type": "gold"
       },
       {
-        "name": "トリック（前）",
+        "name": "抜け出し準備",
         "type": "normal"
       },
       {
-        "name": "逃げためらい",
+        "name": "先行けん制",
         "type": "normal"
       },
       {
-        "name": "長距離直線○",
+        "name": "中距離コーナー○",
         "type": "normal"
       }
     ],
     "track": {
       "turf": "A",
-      "dirt": "G"
+      "dirt": "E"
     },
     "distance": {
-      "short": "E",
-      "mile": "C",
+      "short": "G",
+      "mile": "F",
       "medium": "A",
       "long": "A"
     },
     "style": {
-      "nige": "B",
+      "nige": "F",
       "senko": "A",
-      "sashi": "C",
-      "oikomi": "G"
+      "sashi": "B",
+      "oikomi": "E"
     },
     "growth": {
       "speed": 0,
-      "stamina": 15,
-      "power": 15,
-      "guts": 0,
+      "stamina": 20,
+      "power": 0,
+      "guts": 10,
       "wisdom": 0
     },
     "notes": "",
-    "savedAt": "2026-09-16T22:17:05.571Z"
+    "savedAt": "2026-09-16T22:17:18.891Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -3790,6 +3790,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T20:25:11.095Z"
+  },
+  {
+    "id": "uma_1789597025571_4lrnl",
+    "name": "ライスシャワー",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "Drain for rose",
+        "type": "unique"
+      },
+      {
+        "name": "コーナー回復○",
+        "type": "normal"
+      },
+      {
+        "name": "余裕綽々",
+        "type": "gold"
+      },
+      {
+        "name": "スタミナキープ",
+        "type": "normal"
+      },
+      {
+        "name": "見惚れるトリック",
+        "type": "gold"
+      },
+      {
+        "name": "トリック（前）",
+        "type": "normal"
+      },
+      {
+        "name": "逃げためらい",
+        "type": "normal"
+      },
+      {
+        "name": "長距離直線○",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "E",
+      "mile": "C",
+      "medium": "A",
+      "long": "A"
+    },
+    "style": {
+      "nige": "B",
+      "senko": "A",
+      "sashi": "C",
+      "oikomi": "G"
+    },
+    "growth": {
+      "speed": 0,
+      "stamina": 15,
+      "power": 15,
+      "guts": 0,
+      "wisdom": 0
+    },
+    "notes": "",
+    "savedAt": "2026-09-16T22:17:05.571Z"
   },
   {
     "id": "uma_1789596789360_6f22k",
