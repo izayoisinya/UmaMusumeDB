@@ -1,39 +1,39 @@
 [
   {
-    "id": "uma_1789589780850_1cwqu",
+    "id": "uma_1789589814348_ms0ke",
     "name": "ミホノブルボン",
     "imagePath": null,
     "skills": [
       {
-        "name": "G00 1st.F∞;",
+        "name": "オペレーション・Cacao",
         "type": "unique"
       },
       {
-        "name": "雨の日○",
-        "type": "normal"
-      },
-      {
-        "name": "先手必勝",
+        "name": "コンセントレーション",
         "type": "gold"
       },
       {
-        "name": "先駆け",
+        "name": "集中力",
         "type": "normal"
       },
       {
-        "name": "切り開く者",
+        "name": "脱出術",
         "type": "gold"
       },
       {
-        "name": "前途洋々",
+        "name": "急ぎ足",
         "type": "normal"
       },
       {
-        "name": "逃げ直線○",
+        "name": "別腹タンク",
         "type": "normal"
       },
       {
-        "name": "逃げコーナー○",
+        "name": "逃げのコツ○",
+        "type": "normal"
+      },
+      {
+        "name": "地固め",
         "type": "normal"
       }
     ],
@@ -54,14 +54,14 @@
       "oikomi": "G"
     },
     "growth": {
-      "speed": 0,
-      "stamina": 20,
+      "speed": 10,
+      "stamina": 10,
       "power": 10,
       "guts": 0,
       "wisdom": 0
     },
     "notes": "",
-    "savedAt": "2026-09-16T20:16:20.850Z"
+    "savedAt": "2026-09-16T20:16:54.348Z"
   },
   {
     "id": "uma_1789589563588_92i5d",
@@ -638,5 +638,69 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T20:13:38.000Z"
+  },
+  {
+    "id": "uma_1789589780850_1cwqu",
+    "name": "ミホノブルボン",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "G00 1st.F∞;",
+        "type": "unique"
+      },
+      {
+        "name": "雨の日○",
+        "type": "normal"
+      },
+      {
+        "name": "先手必勝",
+        "type": "gold"
+      },
+      {
+        "name": "先駆け",
+        "type": "normal"
+      },
+      {
+        "name": "切り開く者",
+        "type": "gold"
+      },
+      {
+        "name": "前途洋々",
+        "type": "normal"
+      },
+      {
+        "name": "逃げ直線○",
+        "type": "normal"
+      },
+      {
+        "name": "逃げコーナー○",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "C",
+      "mile": "B",
+      "medium": "A",
+      "long": "B"
+    },
+    "style": {
+      "nige": "A",
+      "senko": "E",
+      "sashi": "G",
+      "oikomi": "G"
+    },
+    "growth": {
+      "speed": 0,
+      "stamina": 20,
+      "power": 10,
+      "guts": 0,
+      "wisdom": 0
+    },
+    "notes": "",
+    "savedAt": "2026-09-16T20:16:20.850Z"
   }
 ]
