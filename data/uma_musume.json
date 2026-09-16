@@ -66,15 +66,40 @@
   {
     "id": "uma_1789507386398_xpsma",
     "name": "セイウンスカイ",
+    "imagePath": "images/uma_1789507386398_xpsma.jpg",
     "skills": [
-      "海風にまったり身を任せ",
-      "脱出術",
-      "急ぎ足",
-      "破天荒",
-      "急先鋒",
-      "先導者",
-      "奥の手",
-      "勝負勘"
+      {
+        "name": "海風にまったり身を任せ",
+        "type": "normal"
+      },
+      {
+        "name": "脱出術",
+        "type": "normal"
+      },
+      {
+        "name": "急ぎ足",
+        "type": "normal"
+      },
+      {
+        "name": "破天荒",
+        "type": "normal"
+      },
+      {
+        "name": "急先鋒",
+        "type": "normal"
+      },
+      {
+        "name": "先導者",
+        "type": "normal"
+      },
+      {
+        "name": "奥の手",
+        "type": "normal"
+      },
+      {
+        "name": "勝負勘",
+        "type": "normal"
+      }
     ],
     "track": {
       "turf": "A",
@@ -100,7 +125,7 @@
       "wisdom": 15
     },
     "notes": "",
-    "savedAt": "2026-09-15T21:23:06.398Z"
+    "savedAt": "2026-09-16T19:56:09.642Z"
   },
   {
     "id": "uma_1789507346863_pg2yu",
