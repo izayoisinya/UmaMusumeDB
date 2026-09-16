@@ -1,15 +1,15 @@
 [
   {
-    "id": "uma_1789596286336_wwp5b",
+    "id": "uma_1789596303101_ylzju",
     "name": "ファインモーション",
     "imagePath": null,
     "skills": [
       {
-        "name": "Fairy tale",
+        "name": "Best day ever",
         "type": "unique"
       },
       {
-        "name": "右回り○",
+        "name": "良バ場○",
         "type": "normal"
       },
       {
@@ -17,23 +17,23 @@
         "type": "normal"
       },
       {
-        "name": "スピードスター",
-        "type": "gold"
-      },
-      {
-        "name": "抜け出し準備",
+        "name": "マイルコーナー○",
         "type": "normal"
       },
       {
-        "name": "中距離コーナー○",
-        "type": "normal"
-      },
-      {
-        "name": "決意の直滑降",
+        "name": "ギアチェンジ",
         "type": "gold"
       },
       {
-        "name": "直滑降",
+        "name": "ギアシフト",
+        "type": "normal"
+      },
+      {
+        "name": "鍔迫り合い",
+        "type": "gold"
+      },
+      {
+        "name": "真っ向勝負",
         "type": "normal"
       }
     ],
@@ -56,12 +56,12 @@
     "growth": {
       "speed": 0,
       "stamina": 0,
-      "power": 15,
-      "guts": 0,
-      "wisdom": 15
+      "power": 0,
+      "guts": 10,
+      "wisdom": 20
     },
     "notes": "",
-    "savedAt": "2026-09-16T22:04:46.336Z"
+    "savedAt": "2026-09-16T22:05:03.101Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -1478,6 +1478,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T20:28:15.978Z"
+  },
+  {
+    "id": "uma_1789596286336_wwp5b",
+    "name": "ファインモーション",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "Fairy tale",
+        "type": "unique"
+      },
+      {
+        "name": "右回り○",
+        "type": "normal"
+      },
+      {
+        "name": "秋ウマ娘○",
+        "type": "normal"
+      },
+      {
+        "name": "スピードスター",
+        "type": "gold"
+      },
+      {
+        "name": "抜け出し準備",
+        "type": "normal"
+      },
+      {
+        "name": "中距離コーナー○",
+        "type": "normal"
+      },
+      {
+        "name": "決意の直滑降",
+        "type": "gold"
+      },
+      {
+        "name": "直滑降",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "F",
+      "mile": "A",
+      "medium": "A",
+      "long": "C"
+    },
+    "style": {
+      "nige": "D",
+      "senko": "A",
+      "sashi": "E",
+      "oikomi": "C"
+    },
+    "growth": {
+      "speed": 0,
+      "stamina": 0,
+      "power": 15,
+      "guts": 0,
+      "wisdom": 15
+    },
+    "notes": "",
+    "savedAt": "2026-09-16T22:04:46.336Z"
   },
   {
     "id": "uma_1789589755083_6hfld",
