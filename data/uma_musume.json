@@ -1,67 +1,67 @@
 [
   {
-    "id": "uma_1789596504094_gkcx6",
-    "name": "タイキシャトル",
+    "id": "uma_1789596517264_umkcd",
+    "name": "イクノディクタス",
     "imagePath": null,
     "skills": [
       {
-        "name": "ヴィクトリーショット！",
+        "name": "百錬成鋼",
         "type": "unique"
       },
       {
-        "name": "直線巧者",
+        "name": "夏ウマ娘○",
         "type": "normal"
       },
       {
-        "name": "マイルの支配者",
+        "name": "レースプランナー",
         "type": "gold"
       },
       {
-        "name": "積極策",
+        "name": "好位追走",
         "type": "normal"
       },
       {
-        "name": "マイル直線○",
+        "name": "ありったけ",
         "type": "normal"
       },
       {
-        "name": "ギアチェンジ",
+        "name": "勇往邁進",
         "type": "gold"
       },
       {
-        "name": "ギアシフト",
+        "name": "フルスロットル",
         "type": "normal"
       },
       {
-        "name": "先行のコツ○",
+        "name": "自制心",
         "type": "normal"
       }
     ],
     "track": {
       "turf": "A",
-      "dirt": "B"
+      "dirt": "G"
     },
     "distance": {
-      "short": "A",
+      "short": "D",
       "mile": "A",
-      "medium": "E",
-      "long": "G"
+      "medium": "A",
+      "long": "D"
     },
     "style": {
-      "nige": "C",
+      "nige": "D",
       "senko": "A",
-      "sashi": "E",
-      "oikomi": "G"
+      "sashi": "A",
+      "oikomi": "D"
     },
     "growth": {
-      "speed": 20,
+      "speed": 0,
       "stamina": 0,
       "power": 0,
-      "guts": 0,
+      "guts": 20,
       "wisdom": 10
     },
     "notes": "",
-    "savedAt": "2026-09-16T22:08:24.094Z"
+    "savedAt": "2026-09-16T22:08:37.264Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -1678,6 +1678,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T19:57:01.865Z"
+  },
+  {
+    "id": "uma_1789596504094_gkcx6",
+    "name": "タイキシャトル",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "ヴィクトリーショット！",
+        "type": "unique"
+      },
+      {
+        "name": "直線巧者",
+        "type": "normal"
+      },
+      {
+        "name": "マイルの支配者",
+        "type": "gold"
+      },
+      {
+        "name": "積極策",
+        "type": "normal"
+      },
+      {
+        "name": "マイル直線○",
+        "type": "normal"
+      },
+      {
+        "name": "ギアチェンジ",
+        "type": "gold"
+      },
+      {
+        "name": "ギアシフト",
+        "type": "normal"
+      },
+      {
+        "name": "先行のコツ○",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "B"
+    },
+    "distance": {
+      "short": "A",
+      "mile": "A",
+      "medium": "E",
+      "long": "G"
+    },
+    "style": {
+      "nige": "C",
+      "senko": "A",
+      "sashi": "E",
+      "oikomi": "G"
+    },
+    "growth": {
+      "speed": 20,
+      "stamina": 0,
+      "power": 0,
+      "guts": 0,
+      "wisdom": 10
+    },
+    "notes": "",
+    "savedAt": "2026-09-16T22:08:24.094Z"
   },
   {
     "id": "uma_1789590109163_opvxe",
