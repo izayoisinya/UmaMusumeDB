@@ -1,39 +1,39 @@
 [
   {
-    "id": "uma_1789597146791_xrb05",
-    "name": "ルーラーシップ",
+    "id": "uma_1789597158789_nbl9t",
+    "name": "ジェンティルドンナ",
     "imagePath": null,
     "skills": [
       {
-        "name": "冠絶タクティクス",
+        "name": "不凋なるCattleya",
         "type": "unique"
       },
       {
-        "name": "コンセントレーション",
+        "name": "突撃魂",
         "type": "gold"
       },
       {
-        "name": "集中力",
+        "name": "進出開始",
         "type": "normal"
       },
       {
-        "name": "込み上げる熱",
+        "name": "足がかり",
         "type": "normal"
       },
       {
-        "name": "千載一遇",
+        "name": "不断の鍛錬",
+        "type": "normal"
+      },
+      {
+        "name": "間隙を突いて",
+        "type": "normal"
+      },
+      {
+        "name": "闘争本能",
         "type": "gold"
       },
       {
-        "name": "好機を捉えて",
-        "type": "normal"
-      },
-      {
-        "name": "勝負を懸けて",
-        "type": "normal"
-      },
-      {
-        "name": "戦略家",
+        "name": "好戦的",
         "type": "normal"
       }
     ],
@@ -43,25 +43,25 @@
     },
     "distance": {
       "short": "G",
-      "mile": "B",
+      "mile": "A",
       "medium": "A",
-      "long": "B"
+      "long": "A"
     },
     "style": {
-      "nige": "G",
+      "nige": "E",
       "senko": "A",
       "sashi": "A",
-      "oikomi": "A"
+      "oikomi": "D"
     },
     "growth": {
       "speed": 0,
-      "stamina": 10,
+      "stamina": 0,
       "power": 10,
-      "guts": 0,
+      "guts": 10,
       "wisdom": 10
     },
     "notes": "",
-    "savedAt": "2026-09-16T22:19:06.791Z"
+    "savedAt": "2026-09-16T22:19:18.789Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -4370,5 +4370,69 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T22:13:09.360Z"
+  },
+  {
+    "id": "uma_1789597146791_xrb05",
+    "name": "ルーラーシップ",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "冠絶タクティクス",
+        "type": "unique"
+      },
+      {
+        "name": "コンセントレーション",
+        "type": "gold"
+      },
+      {
+        "name": "集中力",
+        "type": "normal"
+      },
+      {
+        "name": "込み上げる熱",
+        "type": "normal"
+      },
+      {
+        "name": "千載一遇",
+        "type": "gold"
+      },
+      {
+        "name": "好機を捉えて",
+        "type": "normal"
+      },
+      {
+        "name": "勝負を懸けて",
+        "type": "normal"
+      },
+      {
+        "name": "戦略家",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "G",
+      "mile": "B",
+      "medium": "A",
+      "long": "B"
+    },
+    "style": {
+      "nige": "G",
+      "senko": "A",
+      "sashi": "A",
+      "oikomi": "A"
+    },
+    "growth": {
+      "speed": 0,
+      "stamina": 10,
+      "power": 10,
+      "guts": 0,
+      "wisdom": 10
+    },
+    "notes": "",
+    "savedAt": "2026-09-16T22:19:06.791Z"
   }
 ]
