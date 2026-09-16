@@ -1,39 +1,39 @@
 [
   {
-    "id": "uma_1789589814348_ms0ke",
-    "name": "ミホノブルボン",
+    "id": "uma_1789589857870_on8fx",
+    "name": "アストンマーチャン",
     "imagePath": null,
     "skills": [
       {
-        "name": "オペレーション・Cacao",
+        "name": "Silent letter",
         "type": "unique"
       },
       {
-        "name": "コンセントレーション",
+        "name": "道悪○",
+        "type": "normal"
+      },
+      {
+        "name": "先手必勝",
         "type": "gold"
       },
       {
-        "name": "集中力",
+        "name": "先駆け",
         "type": "normal"
       },
       {
-        "name": "脱出術",
-        "type": "gold"
-      },
-      {
-        "name": "急ぎ足",
-        "type": "normal"
-      },
-      {
-        "name": "別腹タンク",
-        "type": "normal"
-      },
-      {
-        "name": "逃げのコツ○",
+        "name": "短距離コーナー○",
         "type": "normal"
       },
       {
         "name": "地固め",
+        "type": "normal"
+      },
+      {
+        "name": "意気衝天",
+        "type": "gold"
+      },
+      {
+        "name": "軽い足取り",
         "type": "normal"
       }
     ],
@@ -42,26 +42,26 @@
       "dirt": "G"
     },
     "distance": {
-      "short": "C",
+      "short": "A",
       "mile": "B",
-      "medium": "A",
-      "long": "B"
+      "medium": "G",
+      "long": "G"
     },
     "style": {
       "nige": "A",
-      "senko": "E",
+      "senko": "A",
       "sashi": "G",
       "oikomi": "G"
     },
     "growth": {
-      "speed": 10,
-      "stamina": 10,
-      "power": 10,
-      "guts": 0,
+      "speed": 20,
+      "stamina": 0,
+      "power": 0,
+      "guts": 10,
       "wisdom": 0
     },
     "notes": "",
-    "savedAt": "2026-09-16T20:16:54.348Z"
+    "savedAt": "2026-09-16T20:17:37.870Z"
   },
   {
     "id": "uma_1789589563588_92i5d",
@@ -638,6 +638,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T20:13:38.000Z"
+  },
+  {
+    "id": "uma_1789589814348_ms0ke",
+    "name": "ミホノブルボン",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "オペレーション・Cacao",
+        "type": "unique"
+      },
+      {
+        "name": "コンセントレーション",
+        "type": "gold"
+      },
+      {
+        "name": "集中力",
+        "type": "normal"
+      },
+      {
+        "name": "脱出術",
+        "type": "gold"
+      },
+      {
+        "name": "急ぎ足",
+        "type": "normal"
+      },
+      {
+        "name": "別腹タンク",
+        "type": "normal"
+      },
+      {
+        "name": "逃げのコツ○",
+        "type": "normal"
+      },
+      {
+        "name": "地固め",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "C",
+      "mile": "B",
+      "medium": "A",
+      "long": "B"
+    },
+    "style": {
+      "nige": "A",
+      "senko": "E",
+      "sashi": "G",
+      "oikomi": "G"
+    },
+    "growth": {
+      "speed": 10,
+      "stamina": 10,
+      "power": 10,
+      "guts": 0,
+      "wisdom": 0
+    },
+    "notes": "",
+    "savedAt": "2026-09-16T20:16:54.348Z"
   },
   {
     "id": "uma_1789589780850_1cwqu",
