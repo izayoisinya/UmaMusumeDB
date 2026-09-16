@@ -1,75 +1,67 @@
 [
   {
-    "id": "uma_1789596441065_zd3mg",
-    "name": "スペシャルウィーク",
+    "id": "uma_1789596461897_w387b",
+    "name": "オグリキャップ",
     "imagePath": null,
     "skills": [
       {
-        "name": "シューティングスター",
+        "name": "灰の光跡：シンデレラグレイ",
         "type": "unique"
       },
       {
-        "name": "道悪○",
-        "type": "normal"
-      },
-      {
-        "name": "全身全霊",
-        "type": "normal"
-      },
-      {
-        "name": "末脚",
-        "type": "normal"
-      },
-      {
-        "name": "外差し準備",
-        "type": "normal"
-      },
-      {
-        "name": "食い下がり",
-        "type": "normal"
-      },
-      {
-        "name": "食いしん坊",
+        "name": "怪物",
         "type": "gold"
       },
       {
-        "name": "栄養補給",
+        "name": "本領発揮",
         "type": "normal"
       },
       {
-        "name": "行雲流水",
+        "name": "努力の結実",
         "type": "gold"
       },
       {
-        "name": "星の煌き",
+        "name": "地道に重ねて",
+        "type": "normal"
+      },
+      {
+        "name": "勇気の一歩",
+        "type": "normal"
+      },
+      {
+        "name": "目覚めの時",
+        "type": "normal"
+      },
+      {
+        "name": "余勢を駆って",
         "type": "normal"
       }
     ],
     "track": {
       "turf": "A",
-      "dirt": "G"
+      "dirt": "B"
     },
     "distance": {
-      "short": "F",
-      "mile": "C",
-      "medium": "A",
+      "short": "E",
+      "mile": "A",
+      "medium": "B",
       "long": "A"
     },
     "style": {
-      "nige": "G",
+      "nige": "F",
       "senko": "A",
       "sashi": "A",
-      "oikomi": "C"
+      "oikomi": "D"
     },
     "growth": {
-      "speed": 0,
-      "stamina": 20,
-      "power": 0,
-      "guts": 0,
-      "wisdom": 10
+      "speed": 8,
+      "stamina": 0,
+      "power": 8,
+      "guts": 14,
+      "wisdom": 0
     },
     "notes": "",
-    "savedAt": "2026-09-16T22:07:21.065Z"
+    "savedAt": "2026-09-16T22:07:41.897Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -1230,6 +1222,78 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T22:06:34.520Z"
+  },
+  {
+    "id": "uma_1789596441065_zd3mg",
+    "name": "スペシャルウィーク",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "シューティングスター",
+        "type": "unique"
+      },
+      {
+        "name": "道悪○",
+        "type": "normal"
+      },
+      {
+        "name": "全身全霊",
+        "type": "normal"
+      },
+      {
+        "name": "末脚",
+        "type": "normal"
+      },
+      {
+        "name": "外差し準備",
+        "type": "normal"
+      },
+      {
+        "name": "食い下がり",
+        "type": "normal"
+      },
+      {
+        "name": "食いしん坊",
+        "type": "gold"
+      },
+      {
+        "name": "栄養補給",
+        "type": "normal"
+      },
+      {
+        "name": "行雲流水",
+        "type": "gold"
+      },
+      {
+        "name": "星の煌き",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "F",
+      "mile": "C",
+      "medium": "A",
+      "long": "A"
+    },
+    "style": {
+      "nige": "G",
+      "senko": "A",
+      "sashi": "A",
+      "oikomi": "C"
+    },
+    "growth": {
+      "speed": 0,
+      "stamina": 20,
+      "power": 0,
+      "guts": 0,
+      "wisdom": 10
+    },
+    "notes": "",
+    "savedAt": "2026-09-16T22:07:21.065Z"
   },
   {
     "id": "uma_1789508282654_jqgsg",
