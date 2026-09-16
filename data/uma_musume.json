@@ -1,67 +1,75 @@
 [
   {
-    "id": "uma_1789596421605_c69dr",
-    "name": "ニシノフラワー",
+    "id": "uma_1789596441065_zd3mg",
+    "name": "スペシャルウィーク",
     "imagePath": null,
     "skills": [
       {
-        "name": "つぼみ、ほころぶ時",
+        "name": "シューティングスター",
         "type": "unique"
       },
       {
-        "name": "ハヤテー文字",
+        "name": "道悪○",
+        "type": "normal"
+      },
+      {
+        "name": "全身全霊",
+        "type": "normal"
+      },
+      {
+        "name": "末脚",
+        "type": "normal"
+      },
+      {
+        "name": "外差し準備",
+        "type": "normal"
+      },
+      {
+        "name": "食い下がり",
+        "type": "normal"
+      },
+      {
+        "name": "食いしん坊",
         "type": "gold"
       },
       {
-        "name": "直線巧者",
+        "name": "栄養補給",
         "type": "normal"
       },
       {
-        "name": "スプリントギア",
-        "type": "normal"
-      },
-      {
-        "name": "アクセラレーション",
-        "type": "normal"
-      },
-      {
-        "name": "決意の直滑降",
+        "name": "行雲流水",
         "type": "gold"
       },
       {
-        "name": "直滑降",
-        "type": "normal"
-      },
-      {
-        "name": "差しコーナー○",
+        "name": "星の煌き",
         "type": "normal"
       }
     ],
     "track": {
       "turf": "A",
-      "dirt": "F"
+      "dirt": "G"
     },
     "distance": {
-      "short": "A",
-      "mile": "A",
-      "medium": "E",
-      "long": "G"
+      "short": "F",
+      "mile": "C",
+      "medium": "A",
+      "long": "A"
     },
     "style": {
-      "nige": "F",
+      "nige": "G",
       "senko": "A",
       "sashi": "A",
-      "oikomi": "G"
+      "oikomi": "C"
     },
     "growth": {
-      "speed": 15,
-      "stamina": 0,
-      "power": 15,
+      "speed": 0,
+      "stamina": 20,
+      "power": 0,
       "guts": 0,
-      "wisdom": 0
+      "wisdom": 10
     },
     "notes": "",
-    "savedAt": "2026-09-16T22:07:01.605Z"
+    "savedAt": "2026-09-16T22:07:21.065Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -1926,6 +1934,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T22:06:04.212Z"
+  },
+  {
+    "id": "uma_1789596421605_c69dr",
+    "name": "ニシノフラワー",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "つぼみ、ほころぶ時",
+        "type": "unique"
+      },
+      {
+        "name": "ハヤテー文字",
+        "type": "gold"
+      },
+      {
+        "name": "直線巧者",
+        "type": "normal"
+      },
+      {
+        "name": "スプリントギア",
+        "type": "normal"
+      },
+      {
+        "name": "アクセラレーション",
+        "type": "normal"
+      },
+      {
+        "name": "決意の直滑降",
+        "type": "gold"
+      },
+      {
+        "name": "直滑降",
+        "type": "normal"
+      },
+      {
+        "name": "差しコーナー○",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "F"
+    },
+    "distance": {
+      "short": "A",
+      "mile": "A",
+      "medium": "E",
+      "long": "G"
+    },
+    "style": {
+      "nige": "F",
+      "senko": "A",
+      "sashi": "A",
+      "oikomi": "G"
+    },
+    "growth": {
+      "speed": 15,
+      "stamina": 0,
+      "power": 15,
+      "guts": 0,
+      "wisdom": 0
+    },
+    "notes": "",
+    "savedAt": "2026-09-16T22:07:01.605Z"
   },
   {
     "id": "uma_1789596303101_ylzju",
