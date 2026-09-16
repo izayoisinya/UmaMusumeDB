@@ -1,39 +1,39 @@
 [
   {
-    "id": "uma_1789596489889_6jjo8",
-    "name": "オグリキャップ",
+    "id": "uma_1789596504094_gkcx6",
+    "name": "タイキシャトル",
     "imagePath": null,
     "skills": [
       {
-        "name": "勝利の鼓動",
+        "name": "ヴィクトリーショット！",
         "type": "unique"
       },
       {
-        "name": "曇りの日○",
+        "name": "直線巧者",
         "type": "normal"
       },
       {
-        "name": "曲線のソムリエ",
+        "name": "マイルの支配者",
         "type": "gold"
       },
       {
-        "name": "コーナー加速○",
+        "name": "積極策",
         "type": "normal"
       },
       {
-        "name": "垂れウマ回避",
+        "name": "マイル直線○",
         "type": "normal"
       },
       {
-        "name": "アクセラレーション",
-        "type": "normal"
-      },
-      {
-        "name": "食いしん坊",
+        "name": "ギアチェンジ",
         "type": "gold"
       },
       {
-        "name": "栄養補給",
+        "name": "ギアシフト",
+        "type": "normal"
+      },
+      {
+        "name": "先行のコツ○",
         "type": "normal"
       }
     ],
@@ -42,26 +42,26 @@
       "dirt": "B"
     },
     "distance": {
-      "short": "E",
+      "short": "A",
       "mile": "A",
-      "medium": "A",
-      "long": "B"
+      "medium": "E",
+      "long": "G"
     },
     "style": {
-      "nige": "F",
+      "nige": "C",
       "senko": "A",
-      "sashi": "A",
-      "oikomi": "D"
+      "sashi": "E",
+      "oikomi": "G"
     },
     "growth": {
       "speed": 20,
       "stamina": 0,
-      "power": 10,
+      "power": 0,
       "guts": 0,
-      "wisdom": 0
+      "wisdom": 10
     },
     "notes": "",
-    "savedAt": "2026-09-16T22:08:09.889Z"
+    "savedAt": "2026-09-16T22:08:24.094Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -510,6 +510,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T20:20:51.006Z"
+  },
+  {
+    "id": "uma_1789596489889_6jjo8",
+    "name": "オグリキャップ",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "勝利の鼓動",
+        "type": "unique"
+      },
+      {
+        "name": "曇りの日○",
+        "type": "normal"
+      },
+      {
+        "name": "曲線のソムリエ",
+        "type": "gold"
+      },
+      {
+        "name": "コーナー加速○",
+        "type": "normal"
+      },
+      {
+        "name": "垂れウマ回避",
+        "type": "normal"
+      },
+      {
+        "name": "アクセラレーション",
+        "type": "normal"
+      },
+      {
+        "name": "食いしん坊",
+        "type": "gold"
+      },
+      {
+        "name": "栄養補給",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "B"
+    },
+    "distance": {
+      "short": "E",
+      "mile": "A",
+      "medium": "A",
+      "long": "B"
+    },
+    "style": {
+      "nige": "F",
+      "senko": "A",
+      "sashi": "A",
+      "oikomi": "D"
+    },
+    "growth": {
+      "speed": 20,
+      "stamina": 0,
+      "power": 10,
+      "guts": 0,
+      "wisdom": 0
+    },
+    "notes": "",
+    "savedAt": "2026-09-16T22:08:09.889Z"
   },
   {
     "id": "uma_1789596474854_k4c9n",
