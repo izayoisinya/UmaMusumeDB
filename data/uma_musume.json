@@ -1,39 +1,39 @@
 [
   {
-    "id": "uma_1789590549040_vccwv",
+    "id": "uma_1789590572397_0shrg",
     "name": "マルゼンスキー",
     "imagePath": null,
     "skills": [
       {
-        "name": "紅焔ギア/LP1211-M",
+        "name": "グッときて♪Chu",
         "type": "unique"
       },
       {
-        "name": "直線巧者",
+        "name": "コーナー回復○",
         "type": "normal"
       },
       {
-        "name": "集中力",
-        "type": "normal"
-      },
-      {
-        "name": "先駆け",
-        "type": "normal"
-      },
-      {
-        "name": "ギアチェンジ",
+        "name": "マイルの支配者",
         "type": "gold"
       },
       {
-        "name": "ギアシフト",
+        "name": "積極策",
         "type": "normal"
       },
       {
-        "name": "アクセル全開！",
+        "name": "スピードイーター",
+        "type": "normal"
+      },
+      {
+        "name": "じゃじゃウマ娘",
         "type": "gold"
       },
       {
-        "name": "アクセラレーション",
+        "name": "勢い任せ",
+        "type": "normal"
+      },
+      {
+        "name": "スリーセブン",
         "type": "normal"
       }
     ],
@@ -54,14 +54,14 @@
       "oikomi": "G"
     },
     "growth": {
-      "speed": 10,
+      "speed": 15,
       "stamina": 0,
       "power": 0,
       "guts": 0,
-      "wisdom": 20
+      "wisdom": 15
     },
     "notes": "",
-    "savedAt": "2026-09-16T20:29:09.040Z"
+    "savedAt": "2026-09-16T20:29:32.397Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -1670,6 +1670,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T20:13:38.000Z"
+  },
+  {
+    "id": "uma_1789590549040_vccwv",
+    "name": "マルゼンスキー",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "紅焔ギア/LP1211-M",
+        "type": "unique"
+      },
+      {
+        "name": "直線巧者",
+        "type": "normal"
+      },
+      {
+        "name": "集中力",
+        "type": "normal"
+      },
+      {
+        "name": "先駆け",
+        "type": "normal"
+      },
+      {
+        "name": "ギアチェンジ",
+        "type": "gold"
+      },
+      {
+        "name": "ギアシフト",
+        "type": "normal"
+      },
+      {
+        "name": "アクセル全開！",
+        "type": "gold"
+      },
+      {
+        "name": "アクセラレーション",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "D"
+    },
+    "distance": {
+      "short": "B",
+      "mile": "A",
+      "medium": "B",
+      "long": "C"
+    },
+    "style": {
+      "nige": "A",
+      "senko": "E",
+      "sashi": "G",
+      "oikomi": "G"
+    },
+    "growth": {
+      "speed": 10,
+      "stamina": 0,
+      "power": 0,
+      "guts": 0,
+      "wisdom": 20
+    },
+    "notes": "",
+    "savedAt": "2026-09-16T20:29:09.040Z"
   },
   {
     "id": "uma_1789589814348_ms0ke",
