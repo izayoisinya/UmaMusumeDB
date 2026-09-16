@@ -1,67 +1,67 @@
 [
   {
-    "id": "uma_1789596380346_lyfdw",
-    "name": "テイエムオペラオー",
+    "id": "uma_1789596394520_b85wu",
+    "name": "シュヴァルグラン",
     "imagePath": null,
     "skills": [
       {
-        "name": "ヴィットーリアに捧ぐ舞踏",
+        "name": "Tidebreaker",
         "type": "unique"
       },
       {
-        "name": "非根幹距離○",
-        "type": "normal"
-      },
-      {
-        "name": "直線巧者",
-        "type": "normal"
-      },
-      {
-        "name": "スタミナキープ",
-        "type": "normal"
-      },
-      {
-        "name": "スピードスター",
+        "name": "かっとばせ！",
         "type": "gold"
       },
       {
-        "name": "抜け出し準備",
+        "name": "勝利に向かって",
         "type": "normal"
       },
       {
-        "name": "キラーチューン",
+        "name": "地道に重ねて",
+        "type": "normal"
+      },
+      {
+        "name": "光明",
+        "type": "normal"
+      },
+      {
+        "name": "思い切り",
+        "type": "normal"
+      },
+      {
+        "name": "ショーダウン",
         "type": "gold"
       },
       {
-        "name": "テンポアップ",
+        "name": "勇気の一歩",
         "type": "normal"
       }
     ],
     "track": {
       "turf": "A",
-      "dirt": "E"
+      "dirt": "G"
     },
     "distance": {
       "short": "G",
-      "mile": "E",
+      "mile": "G",
       "medium": "A",
       "long": "A"
     },
     "style": {
-      "nige": "C",
+      "nige": "G",
       "senko": "A",
-      "sashi": "A",
-      "oikomi": "G"
+      "sashi": "B",
+      "oikomi": "F"
     },
     "growth": {
       "speed": 0,
-      "stamina": 20,
+      "stamina": 10,
       "power": 0,
-      "guts": 0,
-      "wisdom": 10
+      "guts": 20,
+      "wisdom": 0
     },
     "notes": "",
-    "savedAt": "2026-09-16T22:06:20.346Z"
+    "savedAt": "2026-09-16T22:06:34.520Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -1670,6 +1670,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T20:28:15.978Z"
+  },
+  {
+    "id": "uma_1789596380346_lyfdw",
+    "name": "テイエムオペラオー",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "ヴィットーリアに捧ぐ舞踏",
+        "type": "unique"
+      },
+      {
+        "name": "非根幹距離○",
+        "type": "normal"
+      },
+      {
+        "name": "直線巧者",
+        "type": "normal"
+      },
+      {
+        "name": "スタミナキープ",
+        "type": "normal"
+      },
+      {
+        "name": "スピードスター",
+        "type": "gold"
+      },
+      {
+        "name": "抜け出し準備",
+        "type": "normal"
+      },
+      {
+        "name": "キラーチューン",
+        "type": "gold"
+      },
+      {
+        "name": "テンポアップ",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "E"
+    },
+    "distance": {
+      "short": "G",
+      "mile": "E",
+      "medium": "A",
+      "long": "A"
+    },
+    "style": {
+      "nige": "C",
+      "senko": "A",
+      "sashi": "A",
+      "oikomi": "G"
+    },
+    "growth": {
+      "speed": 0,
+      "stamina": 20,
+      "power": 0,
+      "guts": 0,
+      "wisdom": 10
+    },
+    "notes": "",
+    "savedAt": "2026-09-16T22:06:20.346Z"
   },
   {
     "id": "uma_1789596364212_za8rl",
