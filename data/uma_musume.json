@@ -1,39 +1,39 @@
 [
   {
-    "id": "uma_1789597133358_sdt9b",
-    "name": "マチカネタンホイザ",
+    "id": "uma_1789597146791_xrb05",
+    "name": "ルーラーシップ",
     "imagePath": null,
     "skills": [
       {
-        "name": "どんっ、パッ、むんっ",
+        "name": "冠絶タクティクス",
         "type": "unique"
       },
       {
-        "name": "どこ吹く風",
+        "name": "コンセントレーション",
         "type": "gold"
       },
       {
-        "name": "ウマ込み冷静",
+        "name": "集中力",
         "type": "normal"
       },
       {
-        "name": "末脚",
+        "name": "込み上げる熱",
         "type": "normal"
       },
       {
-        "name": "差し切り体勢",
-        "type": "normal"
-      },
-      {
-        "name": "怒涛の追い上げ",
+        "name": "千載一遇",
         "type": "gold"
       },
       {
-        "name": "追い上げ",
+        "name": "好機を捉えて",
         "type": "normal"
       },
       {
-        "name": "ふり絞り",
+        "name": "勝負を懸けて",
+        "type": "normal"
+      },
+      {
+        "name": "戦略家",
         "type": "normal"
       }
     ],
@@ -43,25 +43,25 @@
     },
     "distance": {
       "short": "G",
-      "mile": "D",
+      "mile": "B",
       "medium": "A",
-      "long": "A"
+      "long": "B"
     },
     "style": {
-      "nige": "F",
+      "nige": "G",
       "senko": "A",
       "sashi": "A",
-      "oikomi": "E"
+      "oikomi": "A"
     },
     "growth": {
       "speed": 0,
-      "stamina": 20,
-      "power": 0,
-      "guts": 10,
-      "wisdom": 0
+      "stamina": 10,
+      "power": 10,
+      "guts": 0,
+      "wisdom": 10
     },
     "notes": "",
-    "savedAt": "2026-09-16T22:18:53.358Z"
+    "savedAt": "2026-09-16T22:19:06.791Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -3474,6 +3474,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T22:14:00.550Z"
+  },
+  {
+    "id": "uma_1789597133358_sdt9b",
+    "name": "マチカネタンホイザ",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "どんっ、パッ、むんっ",
+        "type": "unique"
+      },
+      {
+        "name": "どこ吹く風",
+        "type": "gold"
+      },
+      {
+        "name": "ウマ込み冷静",
+        "type": "normal"
+      },
+      {
+        "name": "末脚",
+        "type": "normal"
+      },
+      {
+        "name": "差し切り体勢",
+        "type": "normal"
+      },
+      {
+        "name": "怒涛の追い上げ",
+        "type": "gold"
+      },
+      {
+        "name": "追い上げ",
+        "type": "normal"
+      },
+      {
+        "name": "ふり絞り",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "G",
+      "mile": "D",
+      "medium": "A",
+      "long": "A"
+    },
+    "style": {
+      "nige": "F",
+      "senko": "A",
+      "sashi": "A",
+      "oikomi": "E"
+    },
+    "growth": {
+      "speed": 0,
+      "stamina": 20,
+      "power": 0,
+      "guts": 10,
+      "wisdom": 0
+    },
+    "notes": "",
+    "savedAt": "2026-09-16T22:18:53.358Z"
   },
   {
     "id": "uma_1789589755083_6hfld",
