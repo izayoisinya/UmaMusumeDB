@@ -1,39 +1,39 @@
 [
   {
-    "id": "uma_1789590230317_yx6wv",
+    "id": "uma_1789590260799_xw00e",
     "name": "カツラギエース",
     "imagePath": null,
     "skills": [
       {
-        "name": "暁の御旗『葛城栄主』！",
+        "name": "決意一筆",
         "type": "unique"
       },
       {
-        "name": "東京レース場○",
+        "name": "しゃかりき",
         "type": "normal"
       },
       {
-        "name": "先手必勝",
+        "name": "イグニッション",
+        "type": "normal"
+      },
+      {
+        "name": "勝負はここから！",
         "type": "gold"
       },
       {
-        "name": "先駆け",
+        "name": "逃げ切り体勢",
         "type": "normal"
       },
       {
-        "name": "押し切り準備",
-        "type": "normal"
-      },
-      {
-        "name": "食い下がり",
-        "type": "normal"
-      },
-      {
-        "name": "踏ませぬ影",
+        "name": "英姿颯爽",
         "type": "gold"
       },
       {
-        "name": "粘り腰",
+        "name": "破天荒",
+        "type": "normal"
+      },
+      {
+        "name": "追い風に乗って",
         "type": "normal"
       }
     ],
@@ -54,14 +54,14 @@
       "oikomi": "G"
     },
     "growth": {
-      "speed": 10,
+      "speed": 5,
       "stamina": 0,
       "power": 10,
-      "guts": 10,
+      "guts": 15,
       "wisdom": 0
     },
     "notes": "",
-    "savedAt": "2026-09-16T20:23:50.317Z"
+    "savedAt": "2026-09-16T20:24:20.799Z"
   },
   {
     "id": "uma_1789589902759_sflaq",
@@ -254,6 +254,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T20:20:51.006Z"
+  },
+  {
+    "id": "uma_1789590230317_yx6wv",
+    "name": "カツラギエース",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "暁の御旗『葛城栄主』！",
+        "type": "unique"
+      },
+      {
+        "name": "東京レース場○",
+        "type": "normal"
+      },
+      {
+        "name": "先手必勝",
+        "type": "gold"
+      },
+      {
+        "name": "先駆け",
+        "type": "normal"
+      },
+      {
+        "name": "押し切り準備",
+        "type": "normal"
+      },
+      {
+        "name": "食い下がり",
+        "type": "normal"
+      },
+      {
+        "name": "踏ませぬ影",
+        "type": "gold"
+      },
+      {
+        "name": "粘り腰",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "E",
+      "mile": "B",
+      "medium": "A",
+      "long": "B"
+    },
+    "style": {
+      "nige": "A",
+      "senko": "A",
+      "sashi": "E",
+      "oikomi": "G"
+    },
+    "growth": {
+      "speed": 10,
+      "stamina": 0,
+      "power": 10,
+      "guts": 10,
+      "wisdom": 0
+    },
+    "notes": "",
+    "savedAt": "2026-09-16T20:23:50.317Z"
   },
   {
     "id": "uma_1789589563588_92i5d",
