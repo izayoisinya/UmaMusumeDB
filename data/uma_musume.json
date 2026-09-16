@@ -1,67 +1,67 @@
 [
   {
-    "id": "uma_1789589755083_6hfld",
-    "name": "マヤノトップガン",
+    "id": "uma_1789589780850_1cwqu",
+    "name": "ミホノブルボン",
     "imagePath": null,
     "skills": [
       {
-        "name": "ひらめき☆ランディング",
+        "name": "G00 1st.F∞;",
         "type": "unique"
       },
       {
-        "name": "好転一息",
+        "name": "雨の日○",
+        "type": "normal"
+      },
+      {
+        "name": "先手必勝",
         "type": "gold"
       },
       {
-        "name": "直線回復",
+        "name": "先駆け",
         "type": "normal"
       },
       {
-        "name": "ノンストップガール",
+        "name": "切り開く者",
         "type": "gold"
       },
       {
-        "name": "垂れウマ回避",
+        "name": "前途洋々",
         "type": "normal"
       },
       {
-        "name": "臨機応変",
+        "name": "逃げ直線○",
         "type": "normal"
       },
       {
-        "name": "深呼吸",
-        "type": "normal"
-      },
-      {
-        "name": "先頭プライド",
+        "name": "逃げコーナー○",
         "type": "normal"
       }
     ],
     "track": {
       "turf": "A",
-      "dirt": "E"
+      "dirt": "G"
     },
     "distance": {
-      "short": "D",
-      "mile": "D",
+      "short": "C",
+      "mile": "B",
       "medium": "A",
-      "long": "A"
+      "long": "B"
     },
     "style": {
       "nige": "A",
-      "senko": "A",
-      "sashi": "B",
-      "oikomi": "B"
+      "senko": "E",
+      "sashi": "G",
+      "oikomi": "G"
     },
     "growth": {
       "speed": 0,
       "stamina": 20,
-      "power": 0,
-      "guts": 10,
+      "power": 10,
+      "guts": 0,
       "wisdom": 0
     },
     "notes": "",
-    "savedAt": "2026-09-16T20:15:55.083Z"
+    "savedAt": "2026-09-16T20:16:20.850Z"
   },
   {
     "id": "uma_1789589563588_92i5d",
@@ -446,6 +446,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T19:57:01.865Z"
+  },
+  {
+    "id": "uma_1789589755083_6hfld",
+    "name": "マヤノトップガン",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "ひらめき☆ランディング",
+        "type": "unique"
+      },
+      {
+        "name": "好転一息",
+        "type": "gold"
+      },
+      {
+        "name": "直線回復",
+        "type": "normal"
+      },
+      {
+        "name": "ノンストップガール",
+        "type": "gold"
+      },
+      {
+        "name": "垂れウマ回避",
+        "type": "normal"
+      },
+      {
+        "name": "臨機応変",
+        "type": "normal"
+      },
+      {
+        "name": "深呼吸",
+        "type": "normal"
+      },
+      {
+        "name": "先頭プライド",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "E"
+    },
+    "distance": {
+      "short": "D",
+      "mile": "D",
+      "medium": "A",
+      "long": "A"
+    },
+    "style": {
+      "nige": "A",
+      "senko": "A",
+      "sashi": "B",
+      "oikomi": "B"
+    },
+    "growth": {
+      "speed": 0,
+      "stamina": 20,
+      "power": 0,
+      "guts": 10,
+      "wisdom": 0
+    },
+    "notes": "",
+    "savedAt": "2026-09-16T20:15:55.083Z"
   },
   {
     "id": "uma_1789589677610_0gmu1",
