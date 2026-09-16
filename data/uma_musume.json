@@ -1,39 +1,39 @@
 [
   {
-    "id": "uma_1789597158789_nbl9t",
+    "id": "uma_1789597176143_bckdm",
     "name": "ジェンティルドンナ",
     "imagePath": null,
     "skills": [
       {
-        "name": "不凋なるCattleya",
+        "name": "烈華の洗礼",
         "type": "unique"
       },
       {
-        "name": "突撃魂",
+        "name": "ノンストップガール",
         "type": "gold"
       },
       {
-        "name": "進出開始",
+        "name": "垂れウマ回避",
         "type": "normal"
       },
       {
-        "name": "足がかり",
+        "name": "先行コーナー○",
         "type": "normal"
       },
       {
-        "name": "不断の鍛錬",
+        "name": "飛躍の予感",
         "type": "normal"
       },
       {
-        "name": "間隙を突いて",
-        "type": "normal"
-      },
-      {
-        "name": "闘争本能",
+        "name": "強者の証",
         "type": "gold"
       },
       {
-        "name": "好戦的",
+        "name": "さらなる高みへ",
+        "type": "normal"
+      },
+      {
+        "name": "決定打",
         "type": "normal"
       }
     ],
@@ -54,14 +54,14 @@
       "oikomi": "D"
     },
     "growth": {
-      "speed": 0,
-      "stamina": 0,
+      "speed": 10,
+      "stamina": 10,
       "power": 10,
-      "guts": 10,
-      "wisdom": 10
+      "guts": 0,
+      "wisdom": 0
     },
     "notes": "",
-    "savedAt": "2026-09-16T22:19:18.789Z"
+    "savedAt": "2026-09-16T22:19:36.143Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -1994,6 +1994,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T20:18:59.435Z"
+  },
+  {
+    "id": "uma_1789597158789_nbl9t",
+    "name": "ジェンティルドンナ",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "不凋なるCattleya",
+        "type": "unique"
+      },
+      {
+        "name": "突撃魂",
+        "type": "gold"
+      },
+      {
+        "name": "進出開始",
+        "type": "normal"
+      },
+      {
+        "name": "足がかり",
+        "type": "normal"
+      },
+      {
+        "name": "不断の鍛錬",
+        "type": "normal"
+      },
+      {
+        "name": "間隙を突いて",
+        "type": "normal"
+      },
+      {
+        "name": "闘争本能",
+        "type": "gold"
+      },
+      {
+        "name": "好戦的",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "G",
+      "mile": "A",
+      "medium": "A",
+      "long": "A"
+    },
+    "style": {
+      "nige": "E",
+      "senko": "A",
+      "sashi": "A",
+      "oikomi": "D"
+    },
+    "growth": {
+      "speed": 0,
+      "stamina": 0,
+      "power": 10,
+      "guts": 10,
+      "wisdom": 10
+    },
+    "notes": "",
+    "savedAt": "2026-09-16T22:19:18.789Z"
   },
   {
     "id": "uma_1789596408725_9enh0",
