@@ -1,15 +1,15 @@
 [
   {
-    "id": "uma_1789590109163_opvxe",
-    "name": "ダイタクヘリオス",
+    "id": "uma_1789590230317_yx6wv",
+    "name": "カツラギエース",
     "imagePath": null,
     "skills": [
       {
-        "name": "ノッてけ、マッシュアップ！",
+        "name": "暁の御旗『葛城栄主』！",
         "type": "unique"
       },
       {
-        "name": "対抗意識○",
+        "name": "東京レース場○",
         "type": "normal"
       },
       {
@@ -21,19 +21,19 @@
         "type": "normal"
       },
       {
-        "name": "マイルの支配者",
+        "name": "押し切り準備",
+        "type": "normal"
+      },
+      {
+        "name": "食い下がり",
+        "type": "normal"
+      },
+      {
+        "name": "踏ませぬ影",
         "type": "gold"
       },
       {
-        "name": "積極策",
-        "type": "normal"
-      },
-      {
-        "name": "逃げ直線○",
-        "type": "normal"
-      },
-      {
-        "name": "地固め",
+        "name": "粘り腰",
         "type": "normal"
       }
     ],
@@ -42,26 +42,26 @@
       "dirt": "G"
     },
     "distance": {
-      "short": "B",
-      "mile": "A",
-      "medium": "B",
-      "long": "E"
+      "short": "E",
+      "mile": "B",
+      "medium": "A",
+      "long": "B"
     },
     "style": {
       "nige": "A",
       "senko": "A",
-      "sashi": "G",
+      "sashi": "E",
       "oikomi": "G"
     },
     "growth": {
-      "speed": 8,
+      "speed": 10,
       "stamina": 0,
-      "power": 14,
-      "guts": 8,
+      "power": 10,
+      "guts": 10,
       "wisdom": 0
     },
     "notes": "",
-    "savedAt": "2026-09-16T20:21:49.163Z"
+    "savedAt": "2026-09-16T20:23:50.317Z"
   },
   {
     "id": "uma_1789589902759_sflaq",
@@ -830,6 +830,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T19:57:01.865Z"
+  },
+  {
+    "id": "uma_1789590109163_opvxe",
+    "name": "ダイタクヘリオス",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "ノッてけ、マッシュアップ！",
+        "type": "unique"
+      },
+      {
+        "name": "対抗意識○",
+        "type": "normal"
+      },
+      {
+        "name": "先手必勝",
+        "type": "gold"
+      },
+      {
+        "name": "先駆け",
+        "type": "normal"
+      },
+      {
+        "name": "マイルの支配者",
+        "type": "gold"
+      },
+      {
+        "name": "積極策",
+        "type": "normal"
+      },
+      {
+        "name": "逃げ直線○",
+        "type": "normal"
+      },
+      {
+        "name": "地固め",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "B",
+      "mile": "A",
+      "medium": "B",
+      "long": "E"
+    },
+    "style": {
+      "nige": "A",
+      "senko": "A",
+      "sashi": "G",
+      "oikomi": "G"
+    },
+    "growth": {
+      "speed": 8,
+      "stamina": 0,
+      "power": 14,
+      "guts": 8,
+      "wisdom": 0
+    },
+    "notes": "",
+    "savedAt": "2026-09-16T20:21:49.163Z"
   },
   {
     "id": "uma_1789590083783_ega8g",
