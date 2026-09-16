@@ -1,67 +1,67 @@
 [
   {
-    "id": "uma_1789597009620_m0ngc",
-    "name": "フジキセキ",
+    "id": "uma_1789597025571_4lrnl",
+    "name": "ライスシャワー",
     "imagePath": null,
     "skills": [
       {
-        "name": "煌星のヴォードヴィル",
+        "name": "Drain for rose",
         "type": "unique"
       },
       {
-        "name": "レースプランナー",
+        "name": "コーナー回復○",
+        "type": "normal"
+      },
+      {
+        "name": "余裕綽々",
         "type": "gold"
       },
       {
-        "name": "好位追走",
+        "name": "スタミナキープ",
         "type": "normal"
+      },
+      {
+        "name": "見惚れるトリック",
+        "type": "gold"
       },
       {
         "name": "トリック（前）",
         "type": "normal"
       },
       {
-        "name": "マイルコーナー○",
+        "name": "逃げためらい",
         "type": "normal"
       },
       {
-        "name": "ギアシフト",
-        "type": "normal"
-      },
-      {
-        "name": "姉御肌",
-        "type": "gold"
-      },
-      {
-        "name": "負けん気",
+        "name": "長距離直線○",
         "type": "normal"
       }
     ],
     "track": {
       "turf": "A",
-      "dirt": "F"
+      "dirt": "G"
     },
     "distance": {
-      "short": "B",
-      "mile": "A",
-      "medium": "B",
-      "long": "E"
+      "short": "E",
+      "mile": "C",
+      "medium": "A",
+      "long": "A"
     },
     "style": {
-      "nige": "C",
+      "nige": "B",
       "senko": "A",
       "sashi": "C",
       "oikomi": "G"
     },
     "growth": {
       "speed": 0,
-      "stamina": 0,
-      "power": 20,
+      "stamina": 15,
+      "power": 15,
       "guts": 0,
-      "wisdom": 10
+      "wisdom": 0
     },
     "notes": "",
-    "savedAt": "2026-09-16T22:16:49.620Z"
+    "savedAt": "2026-09-16T22:17:05.571Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -3086,6 +3086,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T22:04:46.336Z"
+  },
+  {
+    "id": "uma_1789597009620_m0ngc",
+    "name": "フジキセキ",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "煌星のヴォードヴィル",
+        "type": "unique"
+      },
+      {
+        "name": "レースプランナー",
+        "type": "gold"
+      },
+      {
+        "name": "好位追走",
+        "type": "normal"
+      },
+      {
+        "name": "トリック（前）",
+        "type": "normal"
+      },
+      {
+        "name": "マイルコーナー○",
+        "type": "normal"
+      },
+      {
+        "name": "ギアシフト",
+        "type": "normal"
+      },
+      {
+        "name": "姉御肌",
+        "type": "gold"
+      },
+      {
+        "name": "負けん気",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "F"
+    },
+    "distance": {
+      "short": "B",
+      "mile": "A",
+      "medium": "B",
+      "long": "E"
+    },
+    "style": {
+      "nige": "C",
+      "senko": "A",
+      "sashi": "C",
+      "oikomi": "G"
+    },
+    "growth": {
+      "speed": 0,
+      "stamina": 0,
+      "power": 20,
+      "guts": 0,
+      "wisdom": 10
+    },
+    "notes": "",
+    "savedAt": "2026-09-16T22:16:49.620Z"
   },
   {
     "id": "uma_1789596840550_m3my1",
