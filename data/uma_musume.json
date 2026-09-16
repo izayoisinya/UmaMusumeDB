@@ -1,67 +1,67 @@
 [
   {
-    "id": "uma_1789597121492_eg9gz",
-    "name": "メイショウドトウ",
+    "id": "uma_1789597133358_sdt9b",
+    "name": "マチカネタンホイザ",
     "imagePath": null,
     "skills": [
       {
-        "name": "Spooky-Scary-Happy",
+        "name": "どんっ、パッ、むんっ",
         "type": "unique"
       },
       {
-        "name": "右回り○",
-        "type": "normal"
-      },
-      {
-        "name": "円弧のマエストロ",
+        "name": "どこ吹く風",
         "type": "gold"
       },
       {
-        "name": "コーナー回復○",
+        "name": "ウマ込み冷静",
         "type": "normal"
       },
       {
-        "name": "中距離直線○",
+        "name": "末脚",
         "type": "normal"
       },
       {
-        "name": "鍔迫り合い",
+        "name": "差し切り体勢",
+        "type": "normal"
+      },
+      {
+        "name": "怒涛の追い上げ",
         "type": "gold"
       },
       {
-        "name": "真っ向勝負",
+        "name": "追い上げ",
         "type": "normal"
       },
       {
-        "name": "攻めの姿勢",
+        "name": "ふり絞り",
         "type": "normal"
       }
     ],
     "track": {
       "turf": "A",
-      "dirt": "E"
+      "dirt": "G"
     },
     "distance": {
       "short": "G",
-      "mile": "F",
+      "mile": "D",
       "medium": "A",
       "long": "A"
     },
     "style": {
       "nige": "F",
       "senko": "A",
-      "sashi": "B",
+      "sashi": "A",
       "oikomi": "E"
     },
     "growth": {
       "speed": 0,
-      "stamina": 0,
-      "power": 15,
-      "guts": 0,
-      "wisdom": 15
+      "stamina": 20,
+      "power": 0,
+      "guts": 10,
+      "wisdom": 0
     },
     "notes": "",
-    "savedAt": "2026-09-16T22:18:41.492Z"
+    "savedAt": "2026-09-16T22:18:53.358Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -3986,6 +3986,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T20:16:20.850Z"
+  },
+  {
+    "id": "uma_1789597121492_eg9gz",
+    "name": "メイショウドトウ",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "Spooky-Scary-Happy",
+        "type": "unique"
+      },
+      {
+        "name": "右回り○",
+        "type": "normal"
+      },
+      {
+        "name": "円弧のマエストロ",
+        "type": "gold"
+      },
+      {
+        "name": "コーナー回復○",
+        "type": "normal"
+      },
+      {
+        "name": "中距離直線○",
+        "type": "normal"
+      },
+      {
+        "name": "鍔迫り合い",
+        "type": "gold"
+      },
+      {
+        "name": "真っ向勝負",
+        "type": "normal"
+      },
+      {
+        "name": "攻めの姿勢",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "E"
+    },
+    "distance": {
+      "short": "G",
+      "mile": "F",
+      "medium": "A",
+      "long": "A"
+    },
+    "style": {
+      "nige": "F",
+      "senko": "A",
+      "sashi": "B",
+      "oikomi": "E"
+    },
+    "growth": {
+      "speed": 0,
+      "stamina": 0,
+      "power": 15,
+      "guts": 0,
+      "wisdom": 15
+    },
+    "notes": "",
+    "savedAt": "2026-09-16T22:18:41.492Z"
   },
   {
     "id": "uma_1789597038891_t8oi9",
