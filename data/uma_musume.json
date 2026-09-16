@@ -1,5 +1,69 @@
 [
   {
+    "id": "uma_1789589383322_s288u",
+    "name": "キタサンブラック",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "勝ち関ワッショイ！",
+        "type": "unique"
+      },
+      {
+        "name": "集中力",
+        "type": "normal"
+      },
+      {
+        "name": "先手必勝",
+        "type": "gold"
+      },
+      {
+        "name": "先駆け",
+        "type": "normal"
+      },
+      {
+        "name": "中距離直線○",
+        "type": "normal"
+      },
+      {
+        "name": "烈風一閃",
+        "type": "gold"
+      },
+      {
+        "name": "長距離直線○",
+        "type": "normal"
+      },
+      {
+        "name": "先頭プライド",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "E",
+      "mile": "C",
+      "medium": "A",
+      "long": "A"
+    },
+    "style": {
+      "nige": "A",
+      "senko": "B",
+      "sashi": "C",
+      "oikomi": "G"
+    },
+    "growth": {
+      "speed": 20,
+      "stamina": 10,
+      "power": 0,
+      "guts": 0,
+      "wisdom": 0
+    },
+    "notes": "",
+    "savedAt": "2026-09-16T20:09:43.322Z"
+  },
+  {
     "id": "uma_1789508282654_jqgsg",
     "name": "セイウンスカイ",
     "imagePath": "images/uma_1789508282654_jqgsg.jpg",
