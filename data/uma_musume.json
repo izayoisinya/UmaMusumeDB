@@ -1,71 +1,67 @@
 [
   {
-    "id": "uma_1789597092288_9wmtw",
-    "name": "エルコンドルパサー",
+    "id": "uma_1789597109348_p6w4u",
+    "name": "ゼンノロブロイ",
     "imagePath": null,
     "skills": [
       {
-        "name": "プランチャ☆ガナドール",
+        "name": "掲げよ、己が魂の剣を！",
         "type": "unique"
       },
       {
-        "name": "直線巧者",
+        "name": "秋ウマ娘○",
         "type": "normal"
       },
       {
-        "name": "余裕綽々",
+        "name": "レースプランナー",
         "type": "gold"
       },
       {
-        "name": "スタミナキープ",
+        "name": "好位追走",
         "type": "normal"
       },
       {
-        "name": "テンポアップ",
-        "type": "normal"
-      },
-      {
-        "name": "千里眼",
+        "name": "光芒円刃",
         "type": "gold"
       },
       {
-        "name": "ホークアイ",
+        "name": "中距離コーナー○",
         "type": "normal"
       },
       {
-        "name": "先行直線○",
+        "name": "長距離直線○",
         "type": "normal"
       },
       {
-        "name": "星の煌き",
+        "name": "先行コーナー○",
         "type": "normal"
       }
     ],
     "track": {
       "turf": "A",
-      "dirt": "B"
+      "dirt": "G"
     },
     "distance": {
-      "short": "F",
-      "mile": "A",
+      "short": "G",
+      "mile": "E",
       "medium": "A",
-      "long": "B"
+      "long": "A"
     },
     "style": {
-      "nige": "E",
+      "nige": "G",
       "senko": "A",
       "sashi": "A",
-      "oikomi": "C"
+      "oikomi": "E"
     },
     "growth": {
-      "speed": 20,
-      "stamina": 0,
+      "speed": 0,
+      "stamina": 10,
       "power": 0,
       "guts": 0,
-      "wisdom": 10
+      "wisdom": 20
     },
     "notes": "",
-    "savedAt": "2026-09-16T22:18:12.288Z"
+    "savedAt": "2026-09-16T22:18:29.348Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -706,6 +702,74 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T20:20:51.006Z"
+  },
+  {
+    "id": "uma_1789597092288_9wmtw",
+    "name": "エルコンドルパサー",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "プランチャ☆ガナドール",
+        "type": "unique"
+      },
+      {
+        "name": "直線巧者",
+        "type": "normal"
+      },
+      {
+        "name": "余裕綽々",
+        "type": "gold"
+      },
+      {
+        "name": "スタミナキープ",
+        "type": "normal"
+      },
+      {
+        "name": "テンポアップ",
+        "type": "normal"
+      },
+      {
+        "name": "千里眼",
+        "type": "gold"
+      },
+      {
+        "name": "ホークアイ",
+        "type": "normal"
+      },
+      {
+        "name": "先行直線○",
+        "type": "normal"
+      },
+      {
+        "name": "星の煌き",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "B"
+    },
+    "distance": {
+      "short": "F",
+      "mile": "A",
+      "medium": "A",
+      "long": "B"
+    },
+    "style": {
+      "nige": "E",
+      "senko": "A",
+      "sashi": "A",
+      "oikomi": "C"
+    },
+    "growth": {
+      "speed": 20,
+      "stamina": 0,
+      "power": 0,
+      "guts": 0,
+      "wisdom": 10
+    },
+    "notes": "",
+    "savedAt": "2026-09-16T22:18:12.288Z"
   },
   {
     "id": "uma_1789597068075_xp0ak",
