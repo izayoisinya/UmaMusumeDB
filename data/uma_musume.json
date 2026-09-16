@@ -1,39 +1,39 @@
 [
   {
-    "id": "uma_1789596461897_w387b",
+    "id": "uma_1789596474854_k4c9n",
     "name": "オグリキャップ",
     "imagePath": null,
     "skills": [
       {
-        "name": "灰の光跡：シンデレラグレイ",
+        "name": "聖夜のミラクルラン！",
         "type": "unique"
       },
       {
-        "name": "怪物",
+        "name": "内的体験",
         "type": "gold"
       },
       {
-        "name": "本領発揮",
+        "name": "内弁慶",
         "type": "normal"
       },
       {
-        "name": "努力の結実",
+        "name": "食いしん坊",
         "type": "gold"
       },
       {
-        "name": "地道に重ねて",
+        "name": "栄養補給",
         "type": "normal"
       },
       {
-        "name": "勇気の一歩",
+        "name": "小休憩",
         "type": "normal"
       },
       {
-        "name": "目覚めの時",
+        "name": "スリーセブン",
         "type": "normal"
       },
       {
-        "name": "余勢を駆って",
+        "name": "ふり絞り",
         "type": "normal"
       }
     ],
@@ -44,8 +44,8 @@
     "distance": {
       "short": "E",
       "mile": "A",
-      "medium": "B",
-      "long": "A"
+      "medium": "A",
+      "long": "B"
     },
     "style": {
       "nige": "F",
@@ -54,14 +54,14 @@
       "oikomi": "D"
     },
     "growth": {
-      "speed": 8,
-      "stamina": 0,
-      "power": 8,
-      "guts": 14,
+      "speed": 15,
+      "stamina": 15,
+      "power": 0,
+      "guts": 0,
       "wisdom": 0
     },
     "notes": "",
-    "savedAt": "2026-09-16T22:07:41.897Z"
+    "savedAt": "2026-09-16T22:07:54.854Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -510,6 +510,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T20:20:51.006Z"
+  },
+  {
+    "id": "uma_1789596461897_w387b",
+    "name": "オグリキャップ",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "灰の光跡：シンデレラグレイ",
+        "type": "unique"
+      },
+      {
+        "name": "怪物",
+        "type": "gold"
+      },
+      {
+        "name": "本領発揮",
+        "type": "normal"
+      },
+      {
+        "name": "努力の結実",
+        "type": "gold"
+      },
+      {
+        "name": "地道に重ねて",
+        "type": "normal"
+      },
+      {
+        "name": "勇気の一歩",
+        "type": "normal"
+      },
+      {
+        "name": "目覚めの時",
+        "type": "normal"
+      },
+      {
+        "name": "余勢を駆って",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "B"
+    },
+    "distance": {
+      "short": "E",
+      "mile": "A",
+      "medium": "B",
+      "long": "A"
+    },
+    "style": {
+      "nige": "F",
+      "senko": "A",
+      "sashi": "A",
+      "oikomi": "D"
+    },
+    "growth": {
+      "speed": 8,
+      "stamina": 0,
+      "power": 8,
+      "guts": 14,
+      "wisdom": 0
+    },
+    "notes": "",
+    "savedAt": "2026-09-16T22:07:41.897Z"
   },
   {
     "id": "uma_1789590260799_xw00e",
