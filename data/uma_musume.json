@@ -1,39 +1,39 @@
 [
   {
-    "id": "uma_1789590013057_ykudd",
-    "name": "サクラバクシンオー",
+    "id": "uma_1789590051006_52itb",
+    "name": "ヴィルシーナ",
     "imagePath": null,
     "skills": [
       {
-        "name": "桜吹雪くスプリントバースト",
+        "name": "Queen's Rebirth",
         "type": "unique"
       },
       {
-        "name": "閃く雷光",
+        "name": "盤石の構え",
         "type": "gold"
       },
       {
-        "name": "弾ける足取り",
+        "name": "地固め",
         "type": "normal"
       },
       {
-        "name": "待ったなし",
+        "name": "向こう見ず",
         "type": "normal"
       },
       {
-        "name": "シビれる走り",
+        "name": "心弾んで",
         "type": "normal"
       },
       {
-        "name": "猪突猛進",
+        "name": "ネバーギブアップ",
         "type": "gold"
       },
       {
-        "name": "押しの一手",
+        "name": "折れない心",
         "type": "normal"
       },
       {
-        "name": "押せ押せムード",
+        "name": "後先恐れず",
         "type": "normal"
       }
     ],
@@ -42,26 +42,26 @@
       "dirt": "G"
     },
     "distance": {
-      "short": "A",
-      "mile": "B",
-      "medium": "G",
+      "short": "D",
+      "mile": "A",
+      "medium": "A",
       "long": "G"
     },
     "style": {
       "nige": "A",
       "senko": "A",
-      "sashi": "F",
+      "sashi": "E",
       "oikomi": "G"
     },
     "growth": {
-      "speed": 10,
+      "speed": 0,
       "stamina": 0,
       "power": 15,
-      "guts": 0,
-      "wisdom": 5
+      "guts": 15,
+      "wisdom": 0
     },
     "notes": "",
-    "savedAt": "2026-09-16T20:20:13.057Z"
+    "savedAt": "2026-09-16T20:20:51.006Z"
   },
   {
     "id": "uma_1789589902759_sflaq",
@@ -382,6 +382,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T20:09:43.322Z"
+  },
+  {
+    "id": "uma_1789590013057_ykudd",
+    "name": "サクラバクシンオー",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "桜吹雪くスプリントバースト",
+        "type": "unique"
+      },
+      {
+        "name": "閃く雷光",
+        "type": "gold"
+      },
+      {
+        "name": "弾ける足取り",
+        "type": "normal"
+      },
+      {
+        "name": "待ったなし",
+        "type": "normal"
+      },
+      {
+        "name": "シビれる走り",
+        "type": "normal"
+      },
+      {
+        "name": "猪突猛進",
+        "type": "gold"
+      },
+      {
+        "name": "押しの一手",
+        "type": "normal"
+      },
+      {
+        "name": "押せ押せムード",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "A",
+      "mile": "B",
+      "medium": "G",
+      "long": "G"
+    },
+    "style": {
+      "nige": "A",
+      "senko": "A",
+      "sashi": "F",
+      "oikomi": "G"
+    },
+    "growth": {
+      "speed": 10,
+      "stamina": 0,
+      "power": 15,
+      "guts": 0,
+      "wisdom": 5
+    },
+    "notes": "",
+    "savedAt": "2026-09-16T20:20:13.057Z"
   },
   {
     "id": "uma_1789589966990_g0q0q",
