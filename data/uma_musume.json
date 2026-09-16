@@ -1,39 +1,39 @@
 [
   {
-    "id": "uma_1789590572397_0shrg",
+    "id": "uma_1789590629371_fhlg6",
     "name": "マルゼンスキー",
     "imagePath": null,
     "skills": [
       {
-        "name": "グッときて♪Chu",
+        "name": "霊験灼然チョベリグ神託",
         "type": "unique"
-      },
-      {
-        "name": "コーナー回復○",
-        "type": "normal"
-      },
-      {
-        "name": "マイルの支配者",
-        "type": "gold"
       },
       {
         "name": "積極策",
         "type": "normal"
       },
       {
-        "name": "スピードイーター",
+        "name": "マイル直線○",
         "type": "normal"
       },
       {
-        "name": "じゃじゃウマ娘",
+        "name": "ギアシフト",
+        "type": "normal"
+      },
+      {
+        "name": "姉御肌",
         "type": "gold"
       },
       {
-        "name": "勢い任せ",
+        "name": "負けん気",
         "type": "normal"
       },
       {
-        "name": "スリーセブン",
+        "name": "傑出",
+        "type": "gold"
+      },
+      {
+        "name": "抜きん出る一歩",
         "type": "normal"
       }
     ],
@@ -56,12 +56,12 @@
     "growth": {
       "speed": 15,
       "stamina": 0,
-      "power": 0,
+      "power": 15,
       "guts": 0,
-      "wisdom": 15
+      "wisdom": 0
     },
     "notes": "",
-    "savedAt": "2026-09-16T20:29:32.397Z"
+    "savedAt": "2026-09-16T20:30:29.371Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -1670,6 +1670,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T20:13:38.000Z"
+  },
+  {
+    "id": "uma_1789590572397_0shrg",
+    "name": "マルゼンスキー",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "グッときて♪Chu",
+        "type": "unique"
+      },
+      {
+        "name": "コーナー回復○",
+        "type": "normal"
+      },
+      {
+        "name": "マイルの支配者",
+        "type": "gold"
+      },
+      {
+        "name": "積極策",
+        "type": "normal"
+      },
+      {
+        "name": "スピードイーター",
+        "type": "normal"
+      },
+      {
+        "name": "じゃじゃウマ娘",
+        "type": "gold"
+      },
+      {
+        "name": "勢い任せ",
+        "type": "normal"
+      },
+      {
+        "name": "スリーセブン",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "D"
+    },
+    "distance": {
+      "short": "B",
+      "mile": "A",
+      "medium": "B",
+      "long": "C"
+    },
+    "style": {
+      "nige": "A",
+      "senko": "E",
+      "sashi": "G",
+      "oikomi": "G"
+    },
+    "growth": {
+      "speed": 15,
+      "stamina": 0,
+      "power": 0,
+      "guts": 0,
+      "wisdom": 15
+    },
+    "notes": "",
+    "savedAt": "2026-09-16T20:29:32.397Z"
   },
   {
     "id": "uma_1789590549040_vccwv",
