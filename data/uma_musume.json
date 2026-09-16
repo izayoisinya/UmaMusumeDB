@@ -1,67 +1,67 @@
 [
   {
-    "id": "uma_1789597054365_20rau",
-    "name": "ゴールドシチー",
+    "id": "uma_1789597068075_xp0ak",
+    "name": "エルコンドルパサー",
     "imagePath": null,
     "skills": [
       {
-        "name": "KEEP IT REAL.",
+        "name": "コンドル猛撃波",
         "type": "unique"
       },
       {
-        "name": "阪神レース場○",
+        "name": "末脚",
         "type": "normal"
       },
       {
-        "name": "乗り換え上手",
+        "name": "昇り龍",
         "type": "gold"
       },
       {
-        "name": "差し切り体勢",
+        "name": "外差し準備",
         "type": "normal"
       },
       {
-        "name": "慧眼",
+        "name": "豪脚",
         "type": "gold"
       },
       {
-        "name": "展開窺い",
+        "name": "上昇気流",
         "type": "normal"
       },
       {
-        "name": "アクセラレーション",
+        "name": "負けん気",
         "type": "normal"
       },
       {
-        "name": "スリップストリーム",
+        "name": "十万バリキ",
         "type": "normal"
       }
     ],
     "track": {
       "turf": "A",
-      "dirt": "D"
+      "dirt": "B"
     },
     "distance": {
       "short": "F",
       "mile": "A",
-      "medium": "B",
+      "medium": "A",
       "long": "B"
     },
     "style": {
-      "nige": "F",
+      "nige": "E",
       "senko": "A",
       "sashi": "A",
-      "oikomi": "F"
+      "oikomi": "C"
     },
     "growth": {
-      "speed": 0,
+      "speed": 15,
       "stamina": 0,
-      "power": 10,
-      "guts": 20,
+      "power": 0,
+      "guts": 15,
       "wisdom": 0
     },
     "notes": "",
-    "savedAt": "2026-09-16T22:17:34.365Z"
+    "savedAt": "2026-09-16T22:17:48.075Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -1406,6 +1406,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T22:12:56.211Z"
+  },
+  {
+    "id": "uma_1789597054365_20rau",
+    "name": "ゴールドシチー",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "KEEP IT REAL.",
+        "type": "unique"
+      },
+      {
+        "name": "阪神レース場○",
+        "type": "normal"
+      },
+      {
+        "name": "乗り換え上手",
+        "type": "gold"
+      },
+      {
+        "name": "差し切り体勢",
+        "type": "normal"
+      },
+      {
+        "name": "慧眼",
+        "type": "gold"
+      },
+      {
+        "name": "展開窺い",
+        "type": "normal"
+      },
+      {
+        "name": "アクセラレーション",
+        "type": "normal"
+      },
+      {
+        "name": "スリップストリーム",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "D"
+    },
+    "distance": {
+      "short": "F",
+      "mile": "A",
+      "medium": "B",
+      "long": "B"
+    },
+    "style": {
+      "nige": "F",
+      "senko": "A",
+      "sashi": "A",
+      "oikomi": "F"
+    },
+    "growth": {
+      "speed": 0,
+      "stamina": 0,
+      "power": 10,
+      "guts": 20,
+      "wisdom": 0
+    },
+    "notes": "",
+    "savedAt": "2026-09-16T22:17:34.365Z"
   },
   {
     "id": "uma_1789590387845_vt9ps",
