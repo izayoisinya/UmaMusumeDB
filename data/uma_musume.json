@@ -1,5 +1,69 @@
 [
   {
+    "id": "uma_1789589563588_92i5d",
+    "name": "キタサンブラック",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "ミンナノアタシへ！",
+        "type": "unique"
+      },
+      {
+        "name": "右回り○",
+        "type": "normal"
+      },
+      {
+        "name": "先駆け",
+        "type": "normal"
+      },
+      {
+        "name": "尻尾上がり",
+        "type": "normal"
+      },
+      {
+        "name": "画竜点睛",
+        "type": "gold"
+      },
+      {
+        "name": "大詰め",
+        "type": "normal"
+      },
+      {
+        "name": "万里一空",
+        "type": "gold"
+      },
+      {
+        "name": "迷いなし",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "E",
+      "mile": "C",
+      "medium": "A",
+      "long": "A"
+    },
+    "style": {
+      "nige": "A",
+      "senko": "B",
+      "sashi": "C",
+      "oikomi": "G"
+    },
+    "growth": {
+      "speed": 10,
+      "stamina": 0,
+      "power": 0,
+      "guts": 20,
+      "wisdom": 0
+    },
+    "notes": "",
+    "savedAt": "2026-09-16T20:12:43.588Z"
+  },
+  {
     "id": "uma_1789589419069_syoa2",
     "name": "キタサンブラック",
     "imagePath": null,
