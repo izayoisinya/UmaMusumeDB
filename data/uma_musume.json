@@ -1,39 +1,39 @@
 [
   {
-    "id": "uma_1789589966990_g0q0q",
+    "id": "uma_1789590013057_ykudd",
     "name": "サクラバクシンオー",
     "imagePath": null,
     "skills": [
       {
-        "name": "CHERRY☆スクランブル",
+        "name": "桜吹雪くスプリントバースト",
         "type": "unique"
       },
       {
-        "name": "先駆け",
-        "type": "normal"
-      },
-      {
-        "name": "急ぎ足",
-        "type": "normal"
-      },
-      {
-        "name": "紫電一閃",
+        "name": "閃く雷光",
         "type": "gold"
       },
       {
-        "name": "短距離直線○",
+        "name": "弾ける足取り",
         "type": "normal"
       },
       {
-        "name": "逃げのコツ○",
+        "name": "待ったなし",
         "type": "normal"
       },
       {
-        "name": "意気衝天",
+        "name": "シビれる走り",
+        "type": "normal"
+      },
+      {
+        "name": "猪突猛進",
         "type": "gold"
       },
       {
-        "name": "軽い足取り",
+        "name": "押しの一手",
+        "type": "normal"
+      },
+      {
+        "name": "押せ押せムード",
         "type": "normal"
       }
     ],
@@ -54,14 +54,14 @@
       "oikomi": "G"
     },
     "growth": {
-      "speed": 14,
+      "speed": 10,
       "stamina": 0,
-      "power": 8,
+      "power": 15,
       "guts": 0,
-      "wisdom": 8
+      "wisdom": 5
     },
     "notes": "",
-    "savedAt": "2026-09-16T20:19:26.990Z"
+    "savedAt": "2026-09-16T20:20:13.057Z"
   },
   {
     "id": "uma_1789589902759_sflaq",
@@ -382,6 +382,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T20:09:43.322Z"
+  },
+  {
+    "id": "uma_1789589966990_g0q0q",
+    "name": "サクラバクシンオー",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "CHERRY☆スクランブル",
+        "type": "unique"
+      },
+      {
+        "name": "先駆け",
+        "type": "normal"
+      },
+      {
+        "name": "急ぎ足",
+        "type": "normal"
+      },
+      {
+        "name": "紫電一閃",
+        "type": "gold"
+      },
+      {
+        "name": "短距離直線○",
+        "type": "normal"
+      },
+      {
+        "name": "逃げのコツ○",
+        "type": "normal"
+      },
+      {
+        "name": "意気衝天",
+        "type": "gold"
+      },
+      {
+        "name": "軽い足取り",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "A",
+      "mile": "B",
+      "medium": "G",
+      "long": "G"
+    },
+    "style": {
+      "nige": "A",
+      "senko": "A",
+      "sashi": "F",
+      "oikomi": "G"
+    },
+    "growth": {
+      "speed": 14,
+      "stamina": 0,
+      "power": 8,
+      "guts": 0,
+      "wisdom": 8
+    },
+    "notes": "",
+    "savedAt": "2026-09-16T20:19:26.990Z"
   },
   {
     "id": "uma_1789589939435_cd1zi",
