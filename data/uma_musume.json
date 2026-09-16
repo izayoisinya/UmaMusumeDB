@@ -1,5 +1,69 @@
 [
   {
+    "id": "uma_1789589939435_cd1zi",
+    "name": "サクラバクシンオー",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "優等生×バクシン＝大勝利ッ",
+        "type": "unique"
+      },
+      {
+        "name": "スプリントターボ",
+        "type": "gold"
+      },
+      {
+        "name": "スプリントギア",
+        "type": "normal"
+      },
+      {
+        "name": "逃げ焦り",
+        "type": "normal"
+      },
+      {
+        "name": "圧倒的リード",
+        "type": "gold"
+      },
+      {
+        "name": "大きなリード",
+        "type": "normal"
+      },
+      {
+        "name": "善後策",
+        "type": "normal"
+      },
+      {
+        "name": "先行直線○",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "A",
+      "mile": "B",
+      "medium": "G",
+      "long": "G"
+    },
+    "style": {
+      "nige": "A",
+      "senko": "A",
+      "sashi": "F",
+      "oikomi": "G"
+    },
+    "growth": {
+      "speed": 20,
+      "stamina": 0,
+      "power": 0,
+      "guts": 0,
+      "wisdom": 10
+    },
+    "notes": "",
+    "savedAt": "2026-09-16T20:18:59.435Z"
+  },
+  {
     "id": "uma_1789589902759_sflaq",
     "name": "アストンマーチャン",
     "imagePath": null,
