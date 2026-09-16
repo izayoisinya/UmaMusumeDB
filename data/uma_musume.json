@@ -1,67 +1,67 @@
 [
   {
-    "id": "uma_1789596408725_9enh0",
-    "name": "シュヴァルグラン",
+    "id": "uma_1789596421605_c69dr",
+    "name": "ニシノフラワー",
     "imagePath": null,
     "skills": [
       {
-        "name": "Celeste Oath",
+        "name": "つぼみ、ほころぶ時",
         "type": "unique"
       },
       {
-        "name": "全身全霊",
+        "name": "ハヤテー文字",
         "type": "gold"
       },
       {
-        "name": "末脚",
+        "name": "直線巧者",
         "type": "normal"
       },
       {
-        "name": "栄養補給",
+        "name": "スプリントギア",
         "type": "normal"
       },
       {
-        "name": "尻尾上がり",
+        "name": "アクセラレーション",
         "type": "normal"
       },
       {
-        "name": "スリップストリーム",
-        "type": "normal"
-      },
-      {
-        "name": "快進撃",
+        "name": "決意の直滑降",
         "type": "gold"
       },
       {
-        "name": "確かな足取り",
+        "name": "直滑降",
+        "type": "normal"
+      },
+      {
+        "name": "差しコーナー○",
         "type": "normal"
       }
     ],
     "track": {
       "turf": "A",
-      "dirt": "G"
+      "dirt": "F"
     },
     "distance": {
-      "short": "G",
-      "mile": "G",
-      "medium": "A",
-      "long": "A"
+      "short": "A",
+      "mile": "A",
+      "medium": "E",
+      "long": "G"
     },
     "style": {
-      "nige": "G",
+      "nige": "F",
       "senko": "A",
-      "sashi": "B",
-      "oikomi": "F"
+      "sashi": "A",
+      "oikomi": "G"
     },
     "growth": {
-      "speed": 0,
-      "stamina": 10,
-      "power": 0,
-      "guts": 10,
-      "wisdom": 10
+      "speed": 15,
+      "stamina": 0,
+      "power": 15,
+      "guts": 0,
+      "wisdom": 0
     },
     "notes": "",
-    "savedAt": "2026-09-16T22:06:48.725Z"
+    "savedAt": "2026-09-16T22:07:01.605Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -1094,6 +1094,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T20:18:59.435Z"
+  },
+  {
+    "id": "uma_1789596408725_9enh0",
+    "name": "シュヴァルグラン",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "Celeste Oath",
+        "type": "unique"
+      },
+      {
+        "name": "全身全霊",
+        "type": "gold"
+      },
+      {
+        "name": "末脚",
+        "type": "normal"
+      },
+      {
+        "name": "栄養補給",
+        "type": "normal"
+      },
+      {
+        "name": "尻尾上がり",
+        "type": "normal"
+      },
+      {
+        "name": "スリップストリーム",
+        "type": "normal"
+      },
+      {
+        "name": "快進撃",
+        "type": "gold"
+      },
+      {
+        "name": "確かな足取り",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "G",
+      "mile": "G",
+      "medium": "A",
+      "long": "A"
+    },
+    "style": {
+      "nige": "G",
+      "senko": "A",
+      "sashi": "B",
+      "oikomi": "F"
+    },
+    "growth": {
+      "speed": 0,
+      "stamina": 10,
+      "power": 0,
+      "guts": 10,
+      "wisdom": 10
+    },
+    "notes": "",
+    "savedAt": "2026-09-16T22:06:48.725Z"
   },
   {
     "id": "uma_1789596394520_b85wu",
