@@ -1,19 +1,19 @@
 [
   {
-    "id": "uma_1789590443082_tbe0p",
-    "name": "ダイワスカーレット",
+    "id": "uma_1789590469435_fqwgt",
+    "name": "アイネスフウジン",
     "imagePath": null,
     "skills": [
       {
-        "name": "Queen's Lumination",
+        "name": "チャージ完了！全速前進！",
         "type": "unique"
       },
       {
-        "name": "長距離直線○",
+        "name": "東京レース場○",
         "type": "normal"
       },
       {
-        "name": "長距離コーナー○",
+        "name": "スピードイーター",
         "type": "normal"
       },
       {
@@ -25,15 +25,15 @@
         "type": "normal"
       },
       {
-        "name": "影打",
+        "name": "スリップストリーム",
         "type": "normal"
       },
       {
-        "name": "踏ませぬ影",
+        "name": "荒ぶる旋風",
         "type": "gold"
       },
       {
-        "name": "粘り腰",
+        "name": "気迫を込めて",
         "type": "normal"
       }
     ],
@@ -42,26 +42,26 @@
       "dirt": "G"
     },
     "distance": {
-      "short": "F",
-      "mile": "B",
+      "short": "G",
+      "mile": "A",
       "medium": "A",
-      "long": "A"
+      "long": "C"
     },
     "style": {
       "nige": "A",
-      "senko": "A",
-      "sashi": "E",
+      "senko": "C",
+      "sashi": "G",
       "oikomi": "G"
     },
     "growth": {
-      "speed": 20,
+      "speed": 15,
       "stamina": 0,
       "power": 0,
-      "guts": 0,
-      "wisdom": 10
+      "guts": 15,
+      "wisdom": 0
     },
     "notes": "",
-    "savedAt": "2026-09-16T20:27:23.082Z"
+    "savedAt": "2026-09-16T20:27:49.435Z"
   },
   {
     "id": "uma_1789589902759_sflaq",
@@ -1158,6 +1158,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T20:21:23.783Z"
+  },
+  {
+    "id": "uma_1789590443082_tbe0p",
+    "name": "ダイワスカーレット",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "Queen's Lumination",
+        "type": "unique"
+      },
+      {
+        "name": "長距離直線○",
+        "type": "normal"
+      },
+      {
+        "name": "長距離コーナー○",
+        "type": "normal"
+      },
+      {
+        "name": "じゃじゃウマ娘",
+        "type": "gold"
+      },
+      {
+        "name": "勢い任せ",
+        "type": "normal"
+      },
+      {
+        "name": "影打",
+        "type": "normal"
+      },
+      {
+        "name": "踏ませぬ影",
+        "type": "gold"
+      },
+      {
+        "name": "粘り腰",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "F",
+      "mile": "B",
+      "medium": "A",
+      "long": "A"
+    },
+    "style": {
+      "nige": "A",
+      "senko": "A",
+      "sashi": "E",
+      "oikomi": "G"
+    },
+    "growth": {
+      "speed": 20,
+      "stamina": 0,
+      "power": 0,
+      "guts": 0,
+      "wisdom": 10
+    },
+    "notes": "",
+    "savedAt": "2026-09-16T20:27:23.082Z"
   },
   {
     "id": "uma_1789590413607_1px69",
