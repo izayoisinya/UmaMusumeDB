@@ -1,5 +1,69 @@
 [
   {
+    "id": "uma_1789589419069_syoa2",
+    "name": "キタサンブラック",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "あっぱれ大盤振る舞い！",
+        "type": "unique"
+      },
+      {
+        "name": "先手必勝",
+        "type": "gold"
+      },
+      {
+        "name": "先駆け",
+        "type": "normal"
+      },
+      {
+        "name": "脱出術",
+        "type": "gold"
+      },
+      {
+        "name": "急ぎ足",
+        "type": "normal"
+      },
+      {
+        "name": "前途洋々",
+        "type": "normal"
+      },
+      {
+        "name": "危険回避",
+        "type": "normal"
+      },
+      {
+        "name": "地固め",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "E",
+      "mile": "C",
+      "medium": "A",
+      "long": "A"
+    },
+    "style": {
+      "nige": "A",
+      "senko": "B",
+      "sashi": "C",
+      "oikomi": "G"
+    },
+    "growth": {
+      "speed": 10,
+      "stamina": 0,
+      "power": 10,
+      "guts": 0,
+      "wisdom": 10
+    },
+    "notes": "",
+    "savedAt": "2026-09-16T20:10:19.070Z"
+  },
+  {
     "id": "uma_1789589383322_s288u",
     "name": "キタサンブラック",
     "imagePath": null,
