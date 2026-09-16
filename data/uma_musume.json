@@ -1,39 +1,39 @@
 [
   {
-    "id": "uma_1789590083783_ega8g",
+    "id": "uma_1789590109163_opvxe",
     "name": "ダイタクヘリオス",
     "imagePath": null,
     "skills": [
       {
-        "name": "アゲてアゲてぶちょへんざ！",
+        "name": "ノッてけ、マッシュアップ！",
         "type": "unique"
       },
       {
-        "name": "伏兵○",
+        "name": "対抗意識○",
         "type": "normal"
       },
       {
-        "name": "マイル直線○",
-        "type": "normal"
-      },
-      {
-        "name": "ギアチェンジ",
+        "name": "先手必勝",
         "type": "gold"
       },
       {
-        "name": "ギアシフト",
+        "name": "先駆け",
         "type": "normal"
       },
       {
-        "name": "スリップストリーム",
-        "type": "normal"
-      },
-      {
-        "name": "遮二無二",
+        "name": "マイルの支配者",
         "type": "gold"
       },
       {
-        "name": "向こう見ず",
+        "name": "積極策",
+        "type": "normal"
+      },
+      {
+        "name": "逃げ直線○",
+        "type": "normal"
+      },
+      {
+        "name": "地固め",
         "type": "normal"
       }
     ],
@@ -54,14 +54,14 @@
       "oikomi": "G"
     },
     "growth": {
-      "speed": 15,
+      "speed": 8,
       "stamina": 0,
-      "power": 15,
-      "guts": 0,
+      "power": 14,
+      "guts": 8,
       "wisdom": 0
     },
     "notes": "",
-    "savedAt": "2026-09-16T20:21:23.783Z"
+    "savedAt": "2026-09-16T20:21:49.163Z"
   },
   {
     "id": "uma_1789589902759_sflaq",
@@ -830,6 +830,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T19:57:01.865Z"
+  },
+  {
+    "id": "uma_1789590083783_ega8g",
+    "name": "ダイタクヘリオス",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "アゲてアゲてぶちょへんざ！",
+        "type": "unique"
+      },
+      {
+        "name": "伏兵○",
+        "type": "normal"
+      },
+      {
+        "name": "マイル直線○",
+        "type": "normal"
+      },
+      {
+        "name": "ギアチェンジ",
+        "type": "gold"
+      },
+      {
+        "name": "ギアシフト",
+        "type": "normal"
+      },
+      {
+        "name": "スリップストリーム",
+        "type": "normal"
+      },
+      {
+        "name": "遮二無二",
+        "type": "gold"
+      },
+      {
+        "name": "向こう見ず",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "B",
+      "mile": "A",
+      "medium": "B",
+      "long": "E"
+    },
+    "style": {
+      "nige": "A",
+      "senko": "A",
+      "sashi": "G",
+      "oikomi": "G"
+    },
+    "growth": {
+      "speed": 15,
+      "stamina": 0,
+      "power": 15,
+      "guts": 0,
+      "wisdom": 0
+    },
+    "notes": "",
+    "savedAt": "2026-09-16T20:21:23.783Z"
   },
   {
     "id": "uma_1789589755083_6hfld",
