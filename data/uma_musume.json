@@ -1,39 +1,39 @@
 [
   {
-    "id": "uma_1789590260799_xw00e",
-    "name": "カツラギエース",
+    "id": "uma_1789590311095_tqh9m",
+    "name": "メジロパーマー",
     "imagePath": null,
     "skills": [
       {
-        "name": "決意一筆",
+        "name": "ぶっちぎりロード",
         "type": "unique"
       },
       {
-        "name": "しゃかりき",
+        "name": "伏兵○",
         "type": "normal"
       },
       {
-        "name": "イグニッション",
+        "name": "先駆け",
         "type": "normal"
       },
       {
-        "name": "勝負はここから！",
+        "name": "先陣の心得",
         "type": "gold"
       },
       {
-        "name": "逃げ切り体勢",
+        "name": "リードキープ",
         "type": "normal"
       },
       {
-        "name": "英姿颯爽",
+        "name": "逃げ直線○",
+        "type": "normal"
+      },
+      {
+        "name": "お先に失礼っ！",
         "type": "gold"
       },
       {
-        "name": "破天荒",
-        "type": "normal"
-      },
-      {
-        "name": "追い風に乗って",
+        "name": "遊びはおしまいっ！",
         "type": "normal"
       }
     ],
@@ -42,26 +42,26 @@
       "dirt": "G"
     },
     "distance": {
-      "short": "E",
-      "mile": "B",
+      "short": "G",
+      "mile": "F",
       "medium": "A",
-      "long": "B"
+      "long": "A"
     },
     "style": {
       "nige": "A",
-      "senko": "A",
-      "sashi": "E",
+      "senko": "E",
+      "sashi": "F",
       "oikomi": "G"
     },
     "growth": {
-      "speed": 5,
-      "stamina": 0,
-      "power": 10,
-      "guts": 15,
+      "speed": 10,
+      "stamina": 10,
+      "power": 0,
+      "guts": 10,
       "wisdom": 0
     },
     "notes": "",
-    "savedAt": "2026-09-16T20:24:20.799Z"
+    "savedAt": "2026-09-16T20:25:11.095Z"
   },
   {
     "id": "uma_1789589902759_sflaq",
@@ -254,6 +254,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T20:20:51.006Z"
+  },
+  {
+    "id": "uma_1789590260799_xw00e",
+    "name": "カツラギエース",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "決意一筆",
+        "type": "unique"
+      },
+      {
+        "name": "しゃかりき",
+        "type": "normal"
+      },
+      {
+        "name": "イグニッション",
+        "type": "normal"
+      },
+      {
+        "name": "勝負はここから！",
+        "type": "gold"
+      },
+      {
+        "name": "逃げ切り体勢",
+        "type": "normal"
+      },
+      {
+        "name": "英姿颯爽",
+        "type": "gold"
+      },
+      {
+        "name": "破天荒",
+        "type": "normal"
+      },
+      {
+        "name": "追い風に乗って",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "E",
+      "mile": "B",
+      "medium": "A",
+      "long": "B"
+    },
+    "style": {
+      "nige": "A",
+      "senko": "A",
+      "sashi": "E",
+      "oikomi": "G"
+    },
+    "growth": {
+      "speed": 5,
+      "stamina": 0,
+      "power": 10,
+      "guts": 15,
+      "wisdom": 0
+    },
+    "notes": "",
+    "savedAt": "2026-09-16T20:24:20.799Z"
   },
   {
     "id": "uma_1789590230317_yx6wv",
