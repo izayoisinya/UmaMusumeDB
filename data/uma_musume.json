@@ -1,67 +1,67 @@
 [
   {
-    "id": "uma_1789597038891_t8oi9",
-    "name": "メイショウドトウ",
+    "id": "uma_1789597054365_20rau",
+    "name": "ゴールドシチー",
     "imagePath": null,
     "skills": [
       {
-        "name": "I Never Goof Up!",
+        "name": "KEEP IT REAL.",
         "type": "unique"
       },
       {
-        "name": "非根幹距離○",
+        "name": "阪神レース場○",
         "type": "normal"
       },
       {
-        "name": "不屈の心",
+        "name": "乗り換え上手",
         "type": "gold"
       },
       {
-        "name": "ペースキープ",
+        "name": "差し切り体勢",
         "type": "normal"
       },
       {
-        "name": "スピードスター",
+        "name": "慧眼",
         "type": "gold"
       },
       {
-        "name": "抜け出し準備",
+        "name": "展開窺い",
         "type": "normal"
       },
       {
-        "name": "先行けん制",
+        "name": "アクセラレーション",
         "type": "normal"
       },
       {
-        "name": "中距離コーナー○",
+        "name": "スリップストリーム",
         "type": "normal"
       }
     ],
     "track": {
       "turf": "A",
-      "dirt": "E"
+      "dirt": "D"
     },
     "distance": {
-      "short": "G",
-      "mile": "F",
-      "medium": "A",
-      "long": "A"
+      "short": "F",
+      "mile": "A",
+      "medium": "B",
+      "long": "B"
     },
     "style": {
       "nige": "F",
       "senko": "A",
-      "sashi": "B",
-      "oikomi": "E"
+      "sashi": "A",
+      "oikomi": "F"
     },
     "growth": {
       "speed": 0,
-      "stamina": 20,
-      "power": 0,
-      "guts": 10,
+      "stamina": 0,
+      "power": 10,
+      "guts": 20,
       "wisdom": 0
     },
     "notes": "",
-    "savedAt": "2026-09-16T22:17:18.891Z"
+    "savedAt": "2026-09-16T22:17:34.365Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -3726,6 +3726,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T20:16:20.850Z"
+  },
+  {
+    "id": "uma_1789597038891_t8oi9",
+    "name": "メイショウドトウ",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "I Never Goof Up!",
+        "type": "unique"
+      },
+      {
+        "name": "非根幹距離○",
+        "type": "normal"
+      },
+      {
+        "name": "不屈の心",
+        "type": "gold"
+      },
+      {
+        "name": "ペースキープ",
+        "type": "normal"
+      },
+      {
+        "name": "スピードスター",
+        "type": "gold"
+      },
+      {
+        "name": "抜け出し準備",
+        "type": "normal"
+      },
+      {
+        "name": "先行けん制",
+        "type": "normal"
+      },
+      {
+        "name": "中距離コーナー○",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "E"
+    },
+    "distance": {
+      "short": "G",
+      "mile": "F",
+      "medium": "A",
+      "long": "A"
+    },
+    "style": {
+      "nige": "F",
+      "senko": "A",
+      "sashi": "B",
+      "oikomi": "E"
+    },
+    "growth": {
+      "speed": 0,
+      "stamina": 20,
+      "power": 0,
+      "guts": 10,
+      "wisdom": 0
+    },
+    "notes": "",
+    "savedAt": "2026-09-16T22:17:18.891Z"
   },
   {
     "id": "uma_1789590311095_tqh9m",
