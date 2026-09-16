@@ -1,67 +1,67 @@
 [
   {
-    "id": "uma_1789597109348_p6w4u",
-    "name": "ゼンノロブロイ",
+    "id": "uma_1789597121492_eg9gz",
+    "name": "メイショウドトウ",
     "imagePath": null,
     "skills": [
       {
-        "name": "掲げよ、己が魂の剣を！",
+        "name": "Spooky-Scary-Happy",
         "type": "unique"
       },
       {
-        "name": "秋ウマ娘○",
+        "name": "右回り○",
         "type": "normal"
       },
       {
-        "name": "レースプランナー",
+        "name": "円弧のマエストロ",
         "type": "gold"
       },
       {
-        "name": "好位追走",
+        "name": "コーナー回復○",
         "type": "normal"
       },
       {
-        "name": "光芒円刃",
+        "name": "中距離直線○",
+        "type": "normal"
+      },
+      {
+        "name": "鍔迫り合い",
         "type": "gold"
       },
       {
-        "name": "中距離コーナー○",
+        "name": "真っ向勝負",
         "type": "normal"
       },
       {
-        "name": "長距離直線○",
-        "type": "normal"
-      },
-      {
-        "name": "先行コーナー○",
+        "name": "攻めの姿勢",
         "type": "normal"
       }
     ],
     "track": {
       "turf": "A",
-      "dirt": "G"
+      "dirt": "E"
     },
     "distance": {
       "short": "G",
-      "mile": "E",
+      "mile": "F",
       "medium": "A",
       "long": "A"
     },
     "style": {
-      "nige": "G",
+      "nige": "F",
       "senko": "A",
-      "sashi": "A",
+      "sashi": "B",
       "oikomi": "E"
     },
     "growth": {
       "speed": 0,
-      "stamina": 10,
-      "power": 0,
+      "stamina": 0,
+      "power": 15,
       "guts": 0,
-      "wisdom": 20
+      "wisdom": 15
     },
     "notes": "",
-    "savedAt": "2026-09-16T22:18:29.348Z"
+    "savedAt": "2026-09-16T22:18:41.492Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -2514,6 +2514,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T19:57:01.865Z"
+  },
+  {
+    "id": "uma_1789597109348_p6w4u",
+    "name": "ゼンノロブロイ",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "掲げよ、己が魂の剣を！",
+        "type": "unique"
+      },
+      {
+        "name": "秋ウマ娘○",
+        "type": "normal"
+      },
+      {
+        "name": "レースプランナー",
+        "type": "gold"
+      },
+      {
+        "name": "好位追走",
+        "type": "normal"
+      },
+      {
+        "name": "光芒円刃",
+        "type": "gold"
+      },
+      {
+        "name": "中距離コーナー○",
+        "type": "normal"
+      },
+      {
+        "name": "長距離直線○",
+        "type": "normal"
+      },
+      {
+        "name": "先行コーナー○",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "G",
+      "mile": "E",
+      "medium": "A",
+      "long": "A"
+    },
+    "style": {
+      "nige": "G",
+      "senko": "A",
+      "sashi": "A",
+      "oikomi": "E"
+    },
+    "growth": {
+      "speed": 0,
+      "stamina": 10,
+      "power": 0,
+      "guts": 0,
+      "wisdom": 20
+    },
+    "notes": "",
+    "savedAt": "2026-09-16T22:18:29.348Z"
   },
   {
     "id": "uma_1789596504094_gkcx6",
