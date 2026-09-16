@@ -1,39 +1,47 @@
 [
   {
-    "id": "uma_1789590311095_tqh9m",
-    "name": "メジロパーマー",
+    "id": "uma_1789590387845_vt9ps",
+    "name": "サイレンススズカ",
     "imagePath": null,
     "skills": [
       {
-        "name": "ぶっちぎりロード",
+        "name": "先頭の景色は譲らない…！",
         "type": "unique"
       },
       {
-        "name": "伏兵○",
-        "type": "normal"
-      },
-      {
-        "name": "先駆け",
-        "type": "normal"
-      },
-      {
-        "name": "先陣の心得",
+        "name": "左回りの鬼",
         "type": "gold"
       },
       {
-        "name": "リードキープ",
+        "name": "左回り○",
         "type": "normal"
       },
       {
-        "name": "逃げ直線○",
-        "type": "normal"
-      },
-      {
-        "name": "お先に失礼っ！",
+        "name": "コンセントレーション",
         "type": "gold"
       },
       {
-        "name": "遊びはおしまいっ！",
+        "name": "集中力",
+        "type": "normal"
+      },
+      {
+        "name": "急ぎ足",
+        "type": "normal"
+      },
+      {
+        "name": "逃亡者",
+        "type": "gold"
+      },
+      {
+        "name": "押し切り準備",
+        "type": "normal"
+      },
+      {
+        "name": "前途洋々",
+        "type": "normal"
+      },
+      {
+        "name": "星の煌き",
         "type": "normal"
       }
     ],
@@ -42,26 +50,26 @@
       "dirt": "G"
     },
     "distance": {
-      "short": "G",
-      "mile": "F",
+      "short": "D",
+      "mile": "A",
       "medium": "A",
-      "long": "A"
+      "long": "E"
     },
     "style": {
       "nige": "A",
-      "senko": "E",
-      "sashi": "F",
+      "senko": "C",
+      "sashi": "E",
       "oikomi": "G"
     },
     "growth": {
-      "speed": 10,
-      "stamina": 10,
+      "speed": 20,
+      "stamina": 0,
       "power": 0,
       "guts": 10,
       "wisdom": 0
     },
     "notes": "",
-    "savedAt": "2026-09-16T20:25:11.095Z"
+    "savedAt": "2026-09-16T20:26:27.845Z"
   },
   {
     "id": "uma_1789589902759_sflaq",
@@ -1406,5 +1414,69 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T20:16:20.850Z"
+  },
+  {
+    "id": "uma_1789590311095_tqh9m",
+    "name": "メジロパーマー",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "ぶっちぎりロード",
+        "type": "unique"
+      },
+      {
+        "name": "伏兵○",
+        "type": "normal"
+      },
+      {
+        "name": "先駆け",
+        "type": "normal"
+      },
+      {
+        "name": "先陣の心得",
+        "type": "gold"
+      },
+      {
+        "name": "リードキープ",
+        "type": "normal"
+      },
+      {
+        "name": "逃げ直線○",
+        "type": "normal"
+      },
+      {
+        "name": "お先に失礼っ！",
+        "type": "gold"
+      },
+      {
+        "name": "遊びはおしまいっ！",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "G",
+      "mile": "F",
+      "medium": "A",
+      "long": "A"
+    },
+    "style": {
+      "nige": "A",
+      "senko": "E",
+      "sashi": "F",
+      "oikomi": "G"
+    },
+    "growth": {
+      "speed": 10,
+      "stamina": 10,
+      "power": 0,
+      "guts": 10,
+      "wisdom": 0
+    },
+    "notes": "",
+    "savedAt": "2026-09-16T20:25:11.095Z"
   }
 ]
