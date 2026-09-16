@@ -1,39 +1,39 @@
 [
   {
-    "id": "uma_1789596394520_b85wu",
+    "id": "uma_1789596408725_9enh0",
     "name": "シュヴァルグラン",
     "imagePath": null,
     "skills": [
       {
-        "name": "Tidebreaker",
+        "name": "Celeste Oath",
         "type": "unique"
       },
       {
-        "name": "かっとばせ！",
+        "name": "全身全霊",
         "type": "gold"
       },
       {
-        "name": "勝利に向かって",
+        "name": "末脚",
         "type": "normal"
       },
       {
-        "name": "地道に重ねて",
+        "name": "栄養補給",
         "type": "normal"
       },
       {
-        "name": "光明",
+        "name": "尻尾上がり",
         "type": "normal"
       },
       {
-        "name": "思い切り",
+        "name": "スリップストリーム",
         "type": "normal"
       },
       {
-        "name": "ショーダウン",
+        "name": "快進撃",
         "type": "gold"
       },
       {
-        "name": "勇気の一歩",
+        "name": "確かな足取り",
         "type": "normal"
       }
     ],
@@ -57,11 +57,11 @@
       "speed": 0,
       "stamina": 10,
       "power": 0,
-      "guts": 20,
-      "wisdom": 0
+      "guts": 10,
+      "wisdom": 10
     },
     "notes": "",
-    "savedAt": "2026-09-16T22:06:34.520Z"
+    "savedAt": "2026-09-16T22:06:48.725Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -1094,6 +1094,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T20:18:59.435Z"
+  },
+  {
+    "id": "uma_1789596394520_b85wu",
+    "name": "シュヴァルグラン",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "Tidebreaker",
+        "type": "unique"
+      },
+      {
+        "name": "かっとばせ！",
+        "type": "gold"
+      },
+      {
+        "name": "勝利に向かって",
+        "type": "normal"
+      },
+      {
+        "name": "地道に重ねて",
+        "type": "normal"
+      },
+      {
+        "name": "光明",
+        "type": "normal"
+      },
+      {
+        "name": "思い切り",
+        "type": "normal"
+      },
+      {
+        "name": "ショーダウン",
+        "type": "gold"
+      },
+      {
+        "name": "勇気の一歩",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "G",
+      "mile": "G",
+      "medium": "A",
+      "long": "A"
+    },
+    "style": {
+      "nige": "G",
+      "senko": "A",
+      "sashi": "B",
+      "oikomi": "F"
+    },
+    "growth": {
+      "speed": 0,
+      "stamina": 10,
+      "power": 0,
+      "guts": 20,
+      "wisdom": 0
+    },
+    "notes": "",
+    "savedAt": "2026-09-16T22:06:34.520Z"
   },
   {
     "id": "uma_1789508282654_jqgsg",
