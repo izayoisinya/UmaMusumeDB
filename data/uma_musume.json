@@ -1,39 +1,39 @@
 [
   {
-    "id": "uma_1789596776211_4oepk",
-    "name": "ケイエスミラクル",
+    "id": "uma_1789596789360_6f22k",
+    "name": "ライスシャワー",
     "imagePath": null,
     "skills": [
       {
-        "name": "きせき・おもい・かなで",
+        "name": "ブルーローズチェイサー",
         "type": "unique"
       },
       {
-        "name": "秋ウマ娘○",
-        "type": "normal"
-      },
-      {
-        "name": "真っ向勝負",
-        "type": "normal"
-      },
-      {
-        "name": "胸の高鳴り",
-        "type": "normal"
-      },
-      {
-        "name": "影従打破",
+        "name": "クールダウン",
         "type": "gold"
       },
       {
-        "name": "アグレッシブ",
+        "name": "深呼吸",
         "type": "normal"
       },
       {
-        "name": "閃く雷光",
+        "name": "先行けん制",
+        "type": "normal"
+      },
+      {
+        "name": "決意の直滑降",
         "type": "gold"
       },
       {
-        "name": "弾ける足取り",
+        "name": "直滑降",
+        "type": "normal"
+      },
+      {
+        "name": "栄養補給",
+        "type": "normal"
+      },
+      {
+        "name": "登山家",
         "type": "normal"
       }
     ],
@@ -42,26 +42,26 @@
       "dirt": "G"
     },
     "distance": {
-      "short": "A",
-      "mile": "B",
-      "medium": "G",
-      "long": "G"
+      "short": "E",
+      "mile": "C",
+      "medium": "A",
+      "long": "A"
     },
     "style": {
-      "nige": "E",
+      "nige": "B",
       "senko": "A",
-      "sashi": "B",
-      "oikomi": "C"
+      "sashi": "C",
+      "oikomi": "G"
     },
     "growth": {
-      "speed": 15,
-      "stamina": 0,
-      "power": 15,
-      "guts": 0,
+      "speed": 0,
+      "stamina": 10,
+      "power": 0,
+      "guts": 20,
       "wisdom": 0
     },
     "notes": "",
-    "savedAt": "2026-09-16T22:12:56.211Z"
+    "savedAt": "2026-09-16T22:13:09.360Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -1214,6 +1214,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T20:09:43.322Z"
+  },
+  {
+    "id": "uma_1789596776211_4oepk",
+    "name": "ケイエスミラクル",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "きせき・おもい・かなで",
+        "type": "unique"
+      },
+      {
+        "name": "秋ウマ娘○",
+        "type": "normal"
+      },
+      {
+        "name": "真っ向勝負",
+        "type": "normal"
+      },
+      {
+        "name": "胸の高鳴り",
+        "type": "normal"
+      },
+      {
+        "name": "影従打破",
+        "type": "gold"
+      },
+      {
+        "name": "アグレッシブ",
+        "type": "normal"
+      },
+      {
+        "name": "閃く雷光",
+        "type": "gold"
+      },
+      {
+        "name": "弾ける足取り",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "A",
+      "mile": "B",
+      "medium": "G",
+      "long": "G"
+    },
+    "style": {
+      "nige": "E",
+      "senko": "A",
+      "sashi": "B",
+      "oikomi": "C"
+    },
+    "growth": {
+      "speed": 15,
+      "stamina": 0,
+      "power": 15,
+      "guts": 0,
+      "wisdom": 0
+    },
+    "notes": "",
+    "savedAt": "2026-09-16T22:12:56.211Z"
   },
   {
     "id": "uma_1789590387845_vt9ps",
