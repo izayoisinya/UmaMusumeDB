@@ -1,39 +1,39 @@
 [
   {
-    "id": "uma_1789596745789_32c2j",
+    "id": "uma_1789596762687_w0tdv",
     "name": "サクラチヨノオー",
     "imagePath": null,
     "skills": [
       {
-        "name": "憧れは桜を越える！",
+        "name": "咲け咲け！私！",
         "type": "unique"
       },
       {
-        "name": "春一番",
+        "name": "ハヤテー文字",
         "type": "gold"
       },
       {
-        "name": "春ウマ娘○",
+        "name": "直線巧者",
         "type": "normal"
       },
       {
-        "name": "コーナー加速○",
+        "name": "積極策",
         "type": "normal"
       },
       {
-        "name": "スピードスター",
+        "name": "食い下がり",
+        "type": "normal"
+      },
+      {
+        "name": "先行コーナー○",
+        "type": "normal"
+      },
+      {
+        "name": "気炎万丈",
         "type": "gold"
       },
       {
-        "name": "抜け出し準備",
-        "type": "normal"
-      },
-      {
-        "name": "中距離コーナー○",
-        "type": "normal"
-      },
-      {
-        "name": "先行のコツ○",
+        "name": "闘争心",
         "type": "normal"
       }
     ],
@@ -54,14 +54,14 @@
       "oikomi": "G"
     },
     "growth": {
-      "speed": 10,
+      "speed": 8,
       "stamina": 0,
-      "power": 0,
-      "guts": 10,
-      "wisdom": 10
+      "power": 14,
+      "guts": 0,
+      "wisdom": 8
     },
     "notes": "",
-    "savedAt": "2026-09-16T22:12:25.789Z"
+    "savedAt": "2026-09-16T22:12:42.687Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -1286,6 +1286,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T20:26:27.845Z"
+  },
+  {
+    "id": "uma_1789596745789_32c2j",
+    "name": "サクラチヨノオー",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "憧れは桜を越える！",
+        "type": "unique"
+      },
+      {
+        "name": "春一番",
+        "type": "gold"
+      },
+      {
+        "name": "春ウマ娘○",
+        "type": "normal"
+      },
+      {
+        "name": "コーナー加速○",
+        "type": "normal"
+      },
+      {
+        "name": "スピードスター",
+        "type": "gold"
+      },
+      {
+        "name": "抜け出し準備",
+        "type": "normal"
+      },
+      {
+        "name": "中距離コーナー○",
+        "type": "normal"
+      },
+      {
+        "name": "先行のコツ○",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "E",
+      "mile": "A",
+      "medium": "A",
+      "long": "E"
+    },
+    "style": {
+      "nige": "B",
+      "senko": "A",
+      "sashi": "F",
+      "oikomi": "G"
+    },
+    "growth": {
+      "speed": 10,
+      "stamina": 0,
+      "power": 0,
+      "guts": 10,
+      "wisdom": 10
+    },
+    "notes": "",
+    "savedAt": "2026-09-16T22:12:25.789Z"
   },
   {
     "id": "uma_1789590013057_ykudd",
