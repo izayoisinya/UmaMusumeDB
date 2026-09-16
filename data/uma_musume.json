@@ -1,23 +1,23 @@
 [
   {
-    "id": "uma_1789596531155_r7kbm",
+    "id": "uma_1789596544289_inzgs",
     "name": "カレンチャン",
     "imagePath": null,
     "skills": [
       {
-        "name": "One True Color",
+        "name": "#LookatCurren",
         "type": "unique"
       },
       {
-        "name": "スプリントターボ",
-        "type": "gold"
-      },
-      {
-        "name": "スプリントギア",
+        "name": "ペースアップ",
         "type": "normal"
       },
       {
-        "name": "逃げためらい",
+        "name": "抜け出し準備",
+        "type": "normal"
+      },
+      {
+        "name": "仕掛け準備",
         "type": "normal"
       },
       {
@@ -29,11 +29,11 @@
         "type": "normal"
       },
       {
-        "name": "先行コーナー○",
-        "type": "normal"
+        "name": "幻惑のかく乱",
+        "type": "gold"
       },
       {
-        "name": "先行のコツ○",
+        "name": "かく乱",
         "type": "normal"
       }
     ],
@@ -56,12 +56,12 @@
     "growth": {
       "speed": 10,
       "stamina": 0,
-      "power": 10,
+      "power": 20,
       "guts": 0,
-      "wisdom": 10
+      "wisdom": 0
     },
     "notes": "",
-    "savedAt": "2026-09-16T22:08:51.155Z"
+    "savedAt": "2026-09-16T22:09:04.289Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -894,6 +894,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T20:23:50.317Z"
+  },
+  {
+    "id": "uma_1789596531155_r7kbm",
+    "name": "カレンチャン",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "One True Color",
+        "type": "unique"
+      },
+      {
+        "name": "スプリントターボ",
+        "type": "gold"
+      },
+      {
+        "name": "スプリントギア",
+        "type": "normal"
+      },
+      {
+        "name": "逃げためらい",
+        "type": "normal"
+      },
+      {
+        "name": "悩殺術",
+        "type": "gold"
+      },
+      {
+        "name": "後方釘付",
+        "type": "normal"
+      },
+      {
+        "name": "先行コーナー○",
+        "type": "normal"
+      },
+      {
+        "name": "先行のコツ○",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "F"
+    },
+    "distance": {
+      "short": "A",
+      "mile": "D",
+      "medium": "G",
+      "long": "G"
+    },
+    "style": {
+      "nige": "B",
+      "senko": "A",
+      "sashi": "E",
+      "oikomi": "G"
+    },
+    "growth": {
+      "speed": 10,
+      "stamina": 0,
+      "power": 10,
+      "guts": 0,
+      "wisdom": 10
+    },
+    "notes": "",
+    "savedAt": "2026-09-16T22:08:51.155Z"
   },
   {
     "id": "uma_1789589563588_92i5d",
