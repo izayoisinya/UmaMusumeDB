@@ -1,39 +1,39 @@
 [
   {
-    "id": "uma_1789596803816_1iiui",
+    "id": "uma_1789596816180_r4wb3",
     "name": "アグネスデジタル",
     "imagePath": null,
     "skills": [
       {
-        "name": "萌到讓我活過來了！",
+        "name": "尊み☆ラストスパ゚ー(ﾟ∀ﾟ)ー!!",
         "type": "unique"
       },
       {
-        "name": "アガッてきた！",
+        "name": "道悪○",
+        "type": "normal"
+      },
+      {
+        "name": "中距離直線○",
+        "type": "normal"
+      },
+      {
+        "name": "差し直線○",
+        "type": "normal"
+      },
+      {
+        "name": "ウママニア",
         "type": "gold"
-      },
-      {
-        "name": "ペースアップ",
-        "type": "normal"
-      },
-      {
-        "name": "上昇気流",
-        "type": "normal"
       },
       {
         "name": "ウマ好み",
         "type": "normal"
       },
       {
-        "name": "前列狙い",
-        "type": "normal"
-      },
-      {
-        "name": "捲土重来",
+        "name": "狙うは最前列！",
         "type": "gold"
       },
       {
-        "name": "盛り返し",
+        "name": "前列狙い",
         "type": "normal"
       }
     ],
@@ -54,14 +54,14 @@
       "oikomi": "B"
     },
     "growth": {
-      "speed": 7,
-      "stamina": 7,
-      "power": 8,
-      "guts": 8,
-      "wisdom": 0
+      "speed": 8,
+      "stamina": 8,
+      "power": 7,
+      "guts": 0,
+      "wisdom": 7
     },
     "notes": "",
-    "savedAt": "2026-09-16T22:13:23.816Z"
+    "savedAt": "2026-09-16T22:13:36.180Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -318,6 +318,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T22:05:19.008Z"
+  },
+  {
+    "id": "uma_1789596803816_1iiui",
+    "name": "アグネスデジタル",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "萌到讓我活過來了！",
+        "type": "unique"
+      },
+      {
+        "name": "アガッてきた！",
+        "type": "gold"
+      },
+      {
+        "name": "ペースアップ",
+        "type": "normal"
+      },
+      {
+        "name": "上昇気流",
+        "type": "normal"
+      },
+      {
+        "name": "ウマ好み",
+        "type": "normal"
+      },
+      {
+        "name": "前列狙い",
+        "type": "normal"
+      },
+      {
+        "name": "捲土重来",
+        "type": "gold"
+      },
+      {
+        "name": "盛り返し",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "A"
+    },
+    "distance": {
+      "short": "F",
+      "mile": "A",
+      "medium": "A",
+      "long": "G"
+    },
+    "style": {
+      "nige": "G",
+      "senko": "A",
+      "sashi": "A",
+      "oikomi": "B"
+    },
+    "growth": {
+      "speed": 7,
+      "stamina": 7,
+      "power": 8,
+      "guts": 8,
+      "wisdom": 0
+    },
+    "notes": "",
+    "savedAt": "2026-09-16T22:13:23.816Z"
   },
   {
     "id": "uma_1789589902759_sflaq",
