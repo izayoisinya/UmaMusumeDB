@@ -1,39 +1,39 @@
 [
   {
-    "id": "uma_1789589677610_0gmu1",
+    "id": "uma_1789589755083_6hfld",
     "name": "マヤノトップガン",
     "imagePath": null,
     "skills": [
       {
-        "name": "フラワリー☆マニューバ",
+        "name": "ひらめき☆ランディング",
         "type": "unique"
       },
       {
-        "name": "コーナー巧者○",
-        "type": "normal"
-      },
-      {
-        "name": "円弧のマエストロ",
+        "name": "好転一息",
         "type": "gold"
       },
       {
-        "name": "コーナー回復○",
+        "name": "直線回復",
         "type": "normal"
       },
       {
-        "name": "集中力",
-        "type": "normal"
-      },
-      {
-        "name": "魅惑のささやき",
+        "name": "ノンストップガール",
         "type": "gold"
       },
       {
-        "name": "ささやき",
+        "name": "垂れウマ回避",
         "type": "normal"
       },
       {
-        "name": "巧みなステップ",
+        "name": "臨機応変",
+        "type": "normal"
+      },
+      {
+        "name": "深呼吸",
+        "type": "normal"
+      },
+      {
+        "name": "先頭プライド",
         "type": "normal"
       }
     ],
@@ -54,14 +54,14 @@
       "oikomi": "B"
     },
     "growth": {
-      "speed": 10,
-      "stamina": 10,
+      "speed": 0,
+      "stamina": 20,
       "power": 0,
-      "guts": 0,
-      "wisdom": 10
+      "guts": 10,
+      "wisdom": 0
     },
     "notes": "",
-    "savedAt": "2026-09-16T20:14:37.611Z"
+    "savedAt": "2026-09-16T20:15:55.083Z"
   },
   {
     "id": "uma_1789589563588_92i5d",
@@ -446,6 +446,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T19:57:01.865Z"
+  },
+  {
+    "id": "uma_1789589677610_0gmu1",
+    "name": "マヤノトップガン",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "フラワリー☆マニューバ",
+        "type": "unique"
+      },
+      {
+        "name": "コーナー巧者○",
+        "type": "normal"
+      },
+      {
+        "name": "円弧のマエストロ",
+        "type": "gold"
+      },
+      {
+        "name": "コーナー回復○",
+        "type": "normal"
+      },
+      {
+        "name": "集中力",
+        "type": "normal"
+      },
+      {
+        "name": "魅惑のささやき",
+        "type": "gold"
+      },
+      {
+        "name": "ささやき",
+        "type": "normal"
+      },
+      {
+        "name": "巧みなステップ",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "E"
+    },
+    "distance": {
+      "short": "D",
+      "mile": "D",
+      "medium": "A",
+      "long": "A"
+    },
+    "style": {
+      "nige": "A",
+      "senko": "A",
+      "sashi": "B",
+      "oikomi": "B"
+    },
+    "growth": {
+      "speed": 10,
+      "stamina": 10,
+      "power": 0,
+      "guts": 0,
+      "wisdom": 10
+    },
+    "notes": "",
+    "savedAt": "2026-09-16T20:14:37.611Z"
   },
   {
     "id": "uma_1789589618000_6ucz1",
