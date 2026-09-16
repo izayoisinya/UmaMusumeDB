@@ -1,67 +1,67 @@
 [
   {
-    "id": "uma_1789590629371_fhlg6",
-    "name": "マルゼンスキー",
+    "id": "uma_1789596286336_wwp5b",
+    "name": "ファインモーション",
     "imagePath": null,
     "skills": [
       {
-        "name": "霊験灼然チョベリグ神託",
+        "name": "Fairy tale",
         "type": "unique"
       },
       {
-        "name": "積極策",
+        "name": "右回り○",
         "type": "normal"
       },
       {
-        "name": "マイル直線○",
+        "name": "秋ウマ娘○",
         "type": "normal"
       },
       {
-        "name": "ギアシフト",
-        "type": "normal"
-      },
-      {
-        "name": "姉御肌",
+        "name": "スピードスター",
         "type": "gold"
       },
       {
-        "name": "負けん気",
+        "name": "抜け出し準備",
         "type": "normal"
       },
       {
-        "name": "傑出",
+        "name": "中距離コーナー○",
+        "type": "normal"
+      },
+      {
+        "name": "決意の直滑降",
         "type": "gold"
       },
       {
-        "name": "抜きん出る一歩",
+        "name": "直滑降",
         "type": "normal"
       }
     ],
     "track": {
       "turf": "A",
-      "dirt": "D"
+      "dirt": "G"
     },
     "distance": {
-      "short": "B",
+      "short": "F",
       "mile": "A",
-      "medium": "B",
+      "medium": "A",
       "long": "C"
     },
     "style": {
-      "nige": "A",
-      "senko": "E",
-      "sashi": "G",
-      "oikomi": "G"
+      "nige": "D",
+      "senko": "A",
+      "sashi": "E",
+      "oikomi": "C"
     },
     "growth": {
-      "speed": 15,
+      "speed": 0,
       "stamina": 0,
       "power": 15,
       "guts": 0,
-      "wisdom": 0
+      "wisdom": 15
     },
     "notes": "",
-    "savedAt": "2026-09-16T20:30:29.371Z"
+    "savedAt": "2026-09-16T22:04:46.336Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -1670,6 +1670,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T20:13:38.000Z"
+  },
+  {
+    "id": "uma_1789590629371_fhlg6",
+    "name": "マルゼンスキー",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "霊験灼然チョベリグ神託",
+        "type": "unique"
+      },
+      {
+        "name": "積極策",
+        "type": "normal"
+      },
+      {
+        "name": "マイル直線○",
+        "type": "normal"
+      },
+      {
+        "name": "ギアシフト",
+        "type": "normal"
+      },
+      {
+        "name": "姉御肌",
+        "type": "gold"
+      },
+      {
+        "name": "負けん気",
+        "type": "normal"
+      },
+      {
+        "name": "傑出",
+        "type": "gold"
+      },
+      {
+        "name": "抜きん出る一歩",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "D"
+    },
+    "distance": {
+      "short": "B",
+      "mile": "A",
+      "medium": "B",
+      "long": "C"
+    },
+    "style": {
+      "nige": "A",
+      "senko": "E",
+      "sashi": "G",
+      "oikomi": "G"
+    },
+    "growth": {
+      "speed": 15,
+      "stamina": 0,
+      "power": 15,
+      "guts": 0,
+      "wisdom": 0
+    },
+    "notes": "",
+    "savedAt": "2026-09-16T20:30:29.371Z"
   },
   {
     "id": "uma_1789590572397_0shrg",
