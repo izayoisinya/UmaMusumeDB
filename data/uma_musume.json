@@ -1,39 +1,39 @@
 [
   {
-    "id": "uma_1789596303101_ylzju",
-    "name": "ファインモーション",
+    "id": "uma_1789596319008_ysw81",
+    "name": "アグネスタキオン",
     "imagePath": null,
     "skills": [
       {
-        "name": "Best day ever",
+        "name": "U=ma2",
         "type": "unique"
       },
       {
-        "name": "良バ場○",
+        "name": "根幹距離○",
         "type": "normal"
       },
       {
-        "name": "秋ウマ娘○",
-        "type": "normal"
-      },
-      {
-        "name": "マイルコーナー○",
-        "type": "normal"
-      },
-      {
-        "name": "ギアチェンジ",
+        "name": "レースプランナー",
         "type": "gold"
       },
       {
-        "name": "ギアシフト",
+        "name": "好位追走",
         "type": "normal"
       },
       {
-        "name": "鍔迫り合い",
+        "name": "中距離直線○",
+        "type": "normal"
+      },
+      {
+        "name": "中距離コーナー○",
+        "type": "normal"
+      },
+      {
+        "name": "独占力",
         "type": "gold"
       },
       {
-        "name": "真っ向勝負",
+        "name": "束縛",
         "type": "normal"
       }
     ],
@@ -42,26 +42,26 @@
       "dirt": "G"
     },
     "distance": {
-      "short": "F",
-      "mile": "A",
+      "short": "G",
+      "mile": "D",
       "medium": "A",
-      "long": "C"
+      "long": "B"
     },
     "style": {
-      "nige": "D",
+      "nige": "E",
       "senko": "A",
-      "sashi": "E",
-      "oikomi": "C"
+      "sashi": "B",
+      "oikomi": "F"
     },
     "growth": {
-      "speed": 0,
+      "speed": 20,
       "stamina": 0,
       "power": 0,
       "guts": 10,
-      "wisdom": 20
+      "wisdom": 0
     },
     "notes": "",
-    "savedAt": "2026-09-16T22:05:03.101Z"
+    "savedAt": "2026-09-16T22:05:19.008Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -1478,6 +1478,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T20:28:15.978Z"
+  },
+  {
+    "id": "uma_1789596303101_ylzju",
+    "name": "ファインモーション",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "Best day ever",
+        "type": "unique"
+      },
+      {
+        "name": "良バ場○",
+        "type": "normal"
+      },
+      {
+        "name": "秋ウマ娘○",
+        "type": "normal"
+      },
+      {
+        "name": "マイルコーナー○",
+        "type": "normal"
+      },
+      {
+        "name": "ギアチェンジ",
+        "type": "gold"
+      },
+      {
+        "name": "ギアシフト",
+        "type": "normal"
+      },
+      {
+        "name": "鍔迫り合い",
+        "type": "gold"
+      },
+      {
+        "name": "真っ向勝負",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "F",
+      "mile": "A",
+      "medium": "A",
+      "long": "C"
+    },
+    "style": {
+      "nige": "D",
+      "senko": "A",
+      "sashi": "E",
+      "oikomi": "C"
+    },
+    "growth": {
+      "speed": 0,
+      "stamina": 0,
+      "power": 0,
+      "guts": 10,
+      "wisdom": 20
+    },
+    "notes": "",
+    "savedAt": "2026-09-16T22:05:03.101Z"
   },
   {
     "id": "uma_1789596286336_wwp5b",
