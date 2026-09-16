@@ -134,7 +134,7 @@
     "skills": [
       {
         "name": "Do Ya Breakin!",
-        "type": "normal"
+        "type": "unique"
       },
       {
         "name": "春ウマ娘○",
@@ -146,7 +146,7 @@
       },
       {
         "name": "脱出術",
-        "type": "normal"
+        "type": "gold"
       },
       {
         "name": "急ぎ足",
@@ -158,7 +158,7 @@
       },
       {
         "name": "トップランナー",
-        "type": "normal"
+        "type": "gold"
       },
       {
         "name": "先頭プライド",
@@ -189,6 +189,6 @@
       "wisdom": 0
     },
     "notes": "",
-    "savedAt": "2026-09-16T19:55:47.934Z"
+    "savedAt": "2026-09-16T19:57:01.865Z"
   }
 ]
