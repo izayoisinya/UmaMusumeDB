@@ -1,39 +1,39 @@
 [
   {
-    "id": "uma_1789596364212_za8rl",
+    "id": "uma_1789596380346_lyfdw",
     "name": "テイエムオペラオー",
     "imagePath": null,
     "skills": [
       {
-        "name": "恵福バルカローレ",
+        "name": "ヴィットーリアに捧ぐ舞踏",
         "type": "unique"
       },
       {
-        "name": "冬ウマ娘○",
+        "name": "非根幹距離○",
         "type": "normal"
       },
       {
-        "name": "内枠得意○",
+        "name": "直線巧者",
         "type": "normal"
       },
       {
-        "name": "円弧のマエストロ",
+        "name": "スタミナキープ",
+        "type": "normal"
+      },
+      {
+        "name": "スピードスター",
         "type": "gold"
       },
       {
-        "name": "コーナー回復○",
+        "name": "抜け出し準備",
         "type": "normal"
       },
       {
-        "name": "先行直線○",
-        "type": "normal"
-      },
-      {
-        "name": "真打",
+        "name": "キラーチューン",
         "type": "gold"
       },
       {
-        "name": "影打",
+        "name": "テンポアップ",
         "type": "normal"
       }
     ],
@@ -54,14 +54,14 @@
       "oikomi": "G"
     },
     "growth": {
-      "speed": 14,
-      "stamina": 8,
+      "speed": 0,
+      "stamina": 20,
       "power": 0,
       "guts": 0,
-      "wisdom": 8
+      "wisdom": 10
     },
     "notes": "",
-    "savedAt": "2026-09-16T22:06:04.212Z"
+    "savedAt": "2026-09-16T22:06:20.346Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -1670,6 +1670,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T20:28:15.978Z"
+  },
+  {
+    "id": "uma_1789596364212_za8rl",
+    "name": "テイエムオペラオー",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "恵福バルカローレ",
+        "type": "unique"
+      },
+      {
+        "name": "冬ウマ娘○",
+        "type": "normal"
+      },
+      {
+        "name": "内枠得意○",
+        "type": "normal"
+      },
+      {
+        "name": "円弧のマエストロ",
+        "type": "gold"
+      },
+      {
+        "name": "コーナー回復○",
+        "type": "normal"
+      },
+      {
+        "name": "先行直線○",
+        "type": "normal"
+      },
+      {
+        "name": "真打",
+        "type": "gold"
+      },
+      {
+        "name": "影打",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "E"
+    },
+    "distance": {
+      "short": "G",
+      "mile": "E",
+      "medium": "A",
+      "long": "A"
+    },
+    "style": {
+      "nige": "C",
+      "senko": "A",
+      "sashi": "A",
+      "oikomi": "G"
+    },
+    "growth": {
+      "speed": 14,
+      "stamina": 8,
+      "power": 0,
+      "guts": 0,
+      "wisdom": 8
+    },
+    "notes": "",
+    "savedAt": "2026-09-16T22:06:04.212Z"
   },
   {
     "id": "uma_1789596303101_ylzju",
