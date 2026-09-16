@@ -1,5 +1,69 @@
 [
   {
+    "id": "uma_1789590495978_lfeso",
+    "name": "ツインターボ",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "エンジン全開！大噴射！",
+        "type": "unique"
+      },
+      {
+        "name": "集中力",
+        "type": "normal"
+      },
+      {
+        "name": "先手必勝",
+        "type": "gold"
+      },
+      {
+        "name": "先駆け",
+        "type": "normal"
+      },
+      {
+        "name": "逃げコーナー○",
+        "type": "normal"
+      },
+      {
+        "name": "勢い任せ",
+        "type": "normal"
+      },
+      {
+        "name": "出力1000%！",
+        "type": "gold"
+      },
+      {
+        "name": "しゃかりき",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "F"
+    },
+    "distance": {
+      "short": "G",
+      "mile": "A",
+      "medium": "A",
+      "long": "E"
+    },
+    "style": {
+      "nige": "A",
+      "senko": "G",
+      "sashi": "G",
+      "oikomi": "G"
+    },
+    "growth": {
+      "speed": 30,
+      "stamina": 0,
+      "power": 0,
+      "guts": 0,
+      "wisdom": 0
+    },
+    "notes": "",
+    "savedAt": "2026-09-16T20:28:15.978Z"
+  },
+  {
     "id": "uma_1789590469435_fqwgt",
     "name": "アイネスフウジン",
     "imagePath": null,
