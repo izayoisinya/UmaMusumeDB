@@ -70,11 +70,11 @@
     "skills": [
       {
         "name": "海風にまったり身を任せ",
-        "type": "normal"
+        "type": "unique"
       },
       {
         "name": "脱出術",
-        "type": "normal"
+        "type": "gold"
       },
       {
         "name": "急ぎ足",
@@ -86,7 +86,7 @@
       },
       {
         "name": "急先鋒",
-        "type": "normal"
+        "type": "gold"
       },
       {
         "name": "先導者",
@@ -125,7 +125,7 @@
       "wisdom": 15
     },
     "notes": "",
-    "savedAt": "2026-09-16T19:56:09.642Z"
+    "savedAt": "2026-09-16T19:58:24.579Z"
   },
   {
     "id": "uma_1789507346863_pg2yu",
