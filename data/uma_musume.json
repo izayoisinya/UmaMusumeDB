@@ -1,67 +1,67 @@
 [
   {
-    "id": "uma_1789596544289_inzgs",
-    "name": "カレンチャン",
+    "id": "uma_1789596559981_o0qae",
+    "name": "スペシャルウィーク",
     "imagePath": null,
     "skills": [
       {
-        "name": "#LookatCurren",
+        "name": "威風堂々、夢錦！",
         "type": "unique"
       },
       {
-        "name": "ペースアップ",
+        "name": "コーナー巧者○",
         "type": "normal"
       },
       {
-        "name": "抜け出し準備",
+        "name": "外差し準備",
         "type": "normal"
       },
       {
-        "name": "仕掛け準備",
+        "name": "長距離直線○",
         "type": "normal"
       },
       {
-        "name": "悩殺術",
+        "name": "長距離コーナー○",
+        "type": "normal"
+      },
+      {
+        "name": "怒涛の追い上げ",
         "type": "gold"
       },
       {
-        "name": "後方釘付",
+        "name": "追い上げ",
         "type": "normal"
       },
       {
-        "name": "幻惑のかく乱",
+        "name": "日本一のウマ娘",
         "type": "gold"
-      },
-      {
-        "name": "かく乱",
-        "type": "normal"
       }
     ],
     "track": {
       "turf": "A",
-      "dirt": "F"
+      "dirt": "G"
     },
     "distance": {
-      "short": "A",
-      "mile": "D",
-      "medium": "G",
-      "long": "G"
+      "short": "F",
+      "mile": "C",
+      "medium": "A",
+      "long": "A"
     },
     "style": {
-      "nige": "B",
+      "nige": "G",
       "senko": "A",
-      "sashi": "E",
-      "oikomi": "G"
+      "sashi": "A",
+      "oikomi": "C"
     },
     "growth": {
       "speed": 10,
-      "stamina": 0,
-      "power": 20,
+      "stamina": 10,
+      "power": 0,
       "guts": 0,
-      "wisdom": 0
+      "wisdom": 10
     },
     "notes": "",
-    "savedAt": "2026-09-16T22:09:04.289Z"
+    "savedAt": "2026-09-16T22:09:19.981Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -894,6 +894,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T20:23:50.317Z"
+  },
+  {
+    "id": "uma_1789596544289_inzgs",
+    "name": "カレンチャン",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "#LookatCurren",
+        "type": "unique"
+      },
+      {
+        "name": "ペースアップ",
+        "type": "normal"
+      },
+      {
+        "name": "抜け出し準備",
+        "type": "normal"
+      },
+      {
+        "name": "仕掛け準備",
+        "type": "normal"
+      },
+      {
+        "name": "悩殺術",
+        "type": "gold"
+      },
+      {
+        "name": "後方釘付",
+        "type": "normal"
+      },
+      {
+        "name": "幻惑のかく乱",
+        "type": "gold"
+      },
+      {
+        "name": "かく乱",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "F"
+    },
+    "distance": {
+      "short": "A",
+      "mile": "D",
+      "medium": "G",
+      "long": "G"
+    },
+    "style": {
+      "nige": "B",
+      "senko": "A",
+      "sashi": "E",
+      "oikomi": "G"
+    },
+    "growth": {
+      "speed": 10,
+      "stamina": 0,
+      "power": 20,
+      "guts": 0,
+      "wisdom": 0
+    },
+    "notes": "",
+    "savedAt": "2026-09-16T22:09:04.289Z"
   },
   {
     "id": "uma_1789596531155_r7kbm",
