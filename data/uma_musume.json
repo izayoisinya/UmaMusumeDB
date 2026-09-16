@@ -1,5 +1,69 @@
 [
   {
+    "id": "uma_1789589902759_sflaq",
+    "name": "アストンマーチャン",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "ふわもこアワー",
+        "type": "unique"
+      },
+      {
+        "name": "ポジションセンス",
+        "type": "normal"
+      },
+      {
+        "name": "後方釘付",
+        "type": "normal"
+      },
+      {
+        "name": "自制心",
+        "type": "normal"
+      },
+      {
+        "name": "早業",
+        "type": "gold"
+      },
+      {
+        "name": "目にも留まらず",
+        "type": "normal"
+      },
+      {
+        "name": "イニシアチブ",
+        "type": "gold"
+      },
+      {
+        "name": "譲れぬ一歩",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "A",
+      "mile": "B",
+      "medium": "G",
+      "long": "G"
+    },
+    "style": {
+      "nige": "A",
+      "senko": "A",
+      "sashi": "G",
+      "oikomi": "G"
+    },
+    "growth": {
+      "speed": 10,
+      "stamina": 0,
+      "power": 10,
+      "guts": 10,
+      "wisdom": 0
+    },
+    "notes": "",
+    "savedAt": "2026-09-16T20:18:22.759Z"
+  },
+  {
     "id": "uma_1789589857870_on8fx",
     "name": "アストンマーチャン",
     "imagePath": null,
