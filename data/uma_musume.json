@@ -1,39 +1,39 @@
 [
   {
-    "id": "uma_1789596319008_ysw81",
+    "id": "uma_1789596332815_93tcm",
     "name": "アグネスタキオン",
     "imagePath": null,
     "skills": [
       {
-        "name": "U=ma2",
+        "name": "夏空ハレーション",
         "type": "unique"
       },
       {
-        "name": "根幹距離○",
+        "name": "夏ウマ娘○",
         "type": "normal"
       },
       {
-        "name": "レースプランナー",
+        "name": "ありったけ",
+        "type": "normal"
+      },
+      {
+        "name": "真っ向勝負",
+        "type": "normal"
+      },
+      {
+        "name": "アンストッパブル",
         "type": "gold"
       },
       {
-        "name": "好位追走",
+        "name": "攻めの姿勢",
         "type": "normal"
       },
       {
-        "name": "中距離直線○",
-        "type": "normal"
-      },
-      {
-        "name": "中距離コーナー○",
-        "type": "normal"
-      },
-      {
-        "name": "独占力",
+        "name": "シンギュラリティ",
         "type": "gold"
       },
       {
-        "name": "束縛",
+        "name": "探求心",
         "type": "normal"
       }
     ],
@@ -54,14 +54,14 @@
       "oikomi": "F"
     },
     "growth": {
-      "speed": 20,
+      "speed": 8,
       "stamina": 0,
-      "power": 0,
-      "guts": 10,
-      "wisdom": 0
+      "power": 8,
+      "guts": 0,
+      "wisdom": 14
     },
     "notes": "",
-    "savedAt": "2026-09-16T22:05:19.008Z"
+    "savedAt": "2026-09-16T22:05:32.815Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -126,6 +126,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T20:27:49.435Z"
+  },
+  {
+    "id": "uma_1789596319008_ysw81",
+    "name": "アグネスタキオン",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "U=ma2",
+        "type": "unique"
+      },
+      {
+        "name": "根幹距離○",
+        "type": "normal"
+      },
+      {
+        "name": "レースプランナー",
+        "type": "gold"
+      },
+      {
+        "name": "好位追走",
+        "type": "normal"
+      },
+      {
+        "name": "中距離直線○",
+        "type": "normal"
+      },
+      {
+        "name": "中距離コーナー○",
+        "type": "normal"
+      },
+      {
+        "name": "独占力",
+        "type": "gold"
+      },
+      {
+        "name": "束縛",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "G",
+      "mile": "D",
+      "medium": "A",
+      "long": "B"
+    },
+    "style": {
+      "nige": "E",
+      "senko": "A",
+      "sashi": "B",
+      "oikomi": "F"
+    },
+    "growth": {
+      "speed": 20,
+      "stamina": 0,
+      "power": 0,
+      "guts": 10,
+      "wisdom": 0
+    },
+    "notes": "",
+    "savedAt": "2026-09-16T22:05:19.008Z"
   },
   {
     "id": "uma_1789589902759_sflaq",
