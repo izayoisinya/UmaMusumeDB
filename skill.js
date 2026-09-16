@@ -1,0 +1,352 @@
+// skill.js — スキルブックページ固有ロジック
+
+const DATA_PATH = 'data/skills.json';
+
+class ConflictError extends Error {
+  constructor() {
+    super('conflict');
+    this.name = 'ConflictError';
+  }
+}
+
+let currentSha = null;
+let allSkills = [];
+let editingSkillId = null;
+
+function contentsApiUrl() {
+  const owner = (config && config.owner) || DEFAULT_OWNER;
+  const repo = (config && config.repo) || DEFAULT_REPO;
+  return `https://api.github.com/repos/${encodeURIComponent(owner)}/${encodeURIComponent(repo)}/contents/${DATA_PATH}`;
+}
+function contentsApiUrlForGet() {
+  const url = contentsApiUrl();
+  const branch = config && config.branch;
+  return branch ? `${url}?ref=${encodeURIComponent(branch)}` : url;
+}
+
+function decodeBase64Utf8(b64) {
+  const binary = atob(b64.replace(/\n/g, ''));
+  const bytes = Uint8Array.from(binary, c => c.charCodeAt(0));
+  return new TextDecoder('utf-8').decode(bytes);
+}
+function encodeUtf8Base64(str) {
+  const bytes = new TextEncoder().encode(str);
+  let binary = '';
+  bytes.forEach(b => { binary += String.fromCharCode(b); });
+  return btoa(binary);
+}
+
+async function fetchSkillsRaw() {
+  const res = await fetch(contentsApiUrlForGet(), { headers: authHeaders(), cache: 'no-store' });
+  if (res.status === 404) return { sha: null, entries: [] };
+  if (!res.ok) {
+    const errJson = await res.json().catch(() => ({}));
+    throw new Error(errJson.message || `GitHub APIエラー: ${res.status}`);
+  }
+  const json = await res.json();
+  let entries = [];
+  try {
+    entries = JSON.parse(decodeBase64Utf8(json.content));
+    if (!Array.isArray(entries)) entries = [];
+  } catch {
+    entries = [];
+  }
+  return { sha: json.sha, entries };
+}
+
+async function saveSkillsToGitHub(newEntries, commitMessage) {
+  const body = {
+    message: commitMessage,
+    content: encodeUtf8Base64(JSON.stringify(newEntries, null, 2)),
+  };
+  if (config && config.branch) body.branch = config.branch;
+  if (currentSha) body.sha = currentSha;
+
+  const res = await fetch(contentsApiUrl(), {
+    method: 'PUT',
+    headers: { ...authHeaders(), 'Content-Type': 'application/json' },
+    body: JSON.stringify(body),
+  });
+  if (res.status === 409) throw new ConflictError();
+  if (!res.ok) {
+    const errJson = await res.json().catch(() => ({}));
+    throw new Error(errJson.message || `GitHub APIエラー: ${res.status}`);
+  }
+  const json = await res.json();
+  currentSha = json.content ? json.content.sha : null;
+}
+
+function sortByName(list) {
+  return list.slice().sort((a, b) => (a.name || '').localeCompare(b.name || '', 'ja'));
+}
+
+function setListStatus(msg, isError) {
+  const el = document.getElementById('listStatus');
+  el.textContent = msg;
+  el.className = 'status' + (isError ? ' error' : '');
+}
+function setStatus(msg, isError) {
+  const el = document.getElementById('status');
+  el.textContent = msg;
+  el.className = 'status' + (isError ? ' error' : '');
+}
+
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+}
+
+async function loadSkills() {
+  setListStatus('読み込み中…');
+  try {
+    const { sha, entries } = await fetchSkillsRaw();
+    currentSha = sha;
+    allSkills = sortByName(entries);
+    setListStatus('');
+  } catch (err) {
+    console.error(err);
+    setListStatus('読み込みに失敗しました: ' + err.message, true);
+  }
+  renderSkills();
+}
+
+// common.jsのGitHub連携設定フォーム(保存/消去)から呼ばれるフック
+function onGithubConfigChanged() {
+  allSkills = [];
+  currentSha = null;
+  return loadSkills();
+}
+
+// --- 種別・属性の選択取得/反映 ---
+function getSelectedCategory() {
+  const el = document.querySelector('input[name=fCategory]:checked');
+  return el ? el.value : '';
+}
+function setSelectedCategory(category) {
+  document.querySelectorAll('input[name=fCategory]').forEach(el => { el.checked = el.value === category; });
+}
+function getCheckedValues(selector) {
+  return Array.from(document.querySelectorAll(selector + ':checked')).map(el => el.value);
+}
+function setCheckedValues(selector, values) {
+  const set = new Set(values || []);
+  document.querySelectorAll(selector).forEach(el => { el.checked = set.has(el.value); });
+}
+
+// --- フォーム操作 ---
+function setSkillModalMode(isEditing) {
+  editingSkillId = isEditing;
+  document.getElementById('skillModalTitle').textContent = isEditing ? 'スキルを編集' : 'スキルを登録';
+  document.getElementById('saveSkillBtn').textContent = isEditing ? 'この内容で更新' : 'この内容を保存';
+}
+
+function resetForm() {
+  document.getElementById('skillForm').reset();
+  document.getElementById('pasteJson').value = '';
+  setStatus('');
+  setSkillModalMode(null);
+}
+
+document.getElementById('openRegisterModalBtn').addEventListener('click', () => {
+  resetForm();
+  setSkillModalMode(null);
+  openModal('skillModal');
+});
+
+function fillForm(parsed) {
+  document.getElementById('fName').value = parsed.name || '';
+  document.getElementById('fEffect').value = parsed.effect || '';
+}
+
+document.getElementById('loadJsonBtn').addEventListener('click', () => {
+  const raw = document.getElementById('pasteJson').value.trim();
+  if (!raw) { setStatus('Claudeの出力を貼り付けてください。', true); return; }
+  try {
+    const clean = raw.replace(/```json|```/g, '').trim();
+    const parsed = JSON.parse(clean);
+    fillForm(parsed);
+    setStatus('読み込み完了。種別・レアリティ・脚質・距離を選んで保存してください。');
+  } catch (err) {
+    console.error(err);
+    setStatus('JSONの解析に失敗しました。Claudeの出力をそのまま貼り付けているか確認してください。', true);
+  }
+});
+
+document.getElementById('clearBtn').addEventListener('click', resetForm);
+
+function startEditSkill(id) {
+  const skill = allSkills.find(s => s.id === id);
+  if (!skill) return;
+  resetForm();
+  setSkillModalMode(id);
+  fillForm(skill);
+  setSelectedCategory(skill.category || '');
+  setCheckedValues('.fRarity', skill.rarities);
+  setCheckedValues('.fStyle', skill.styles);
+  setCheckedValues('.fDistance', skill.distances);
+  document.getElementById('fNotes').value = skill.notes || '';
+  openModal('skillModal');
+}
+
+// --- 保存 ---
+document.getElementById('skillForm').addEventListener('submit', async e => {
+  e.preventDefault();
+  if (!config || !config.token) { setStatus('保存にはPATが必要です。設定でPATを入力してください。', true); return; }
+  const name = document.getElementById('fName').value.trim();
+  if (!name) { setStatus('名前を入力してください。', true); return; }
+
+  const skillId = editingSkillId || ('skill_' + Date.now() + '_' + Math.random().toString(36).slice(2, 7));
+  const skill = {
+    id: skillId,
+    name,
+    effect: document.getElementById('fEffect').value.trim(),
+    category: getSelectedCategory(),
+    rarities: getCheckedValues('.fRarity'),
+    styles: getCheckedValues('.fStyle'),
+    distances: getCheckedValues('.fDistance'),
+    notes: document.getElementById('fNotes').value.trim(),
+    savedAt: new Date().toISOString(),
+  };
+
+  const isEditing = !!editingSkillId;
+  const updated = isEditing
+    ? allSkills.map(s => s.id === editingSkillId ? skill : s)
+    : [skill, ...allSkills];
+  setStatus(isEditing ? '更新しています…' : '保存しています…');
+  const saveBtn = document.getElementById('saveSkillBtn');
+  saveBtn.disabled = true;
+  try {
+    await saveSkillsToGitHub(updated, `${isEditing ? 'スキル編集' : 'スキル登録'}: ${name}`);
+    allSkills = sortByName(updated);
+    renderSkills();
+    resetForm();
+    setStatus(isEditing ? '更新しました。' : '保存しました。');
+    setTimeout(closeModal, 700);
+  } catch (err) {
+    console.error(err);
+    if (err instanceof ConflictError) {
+      setStatus('他の端末で更新されています。「更新」ボタンで最新を取得してからもう一度保存してください。', true);
+    } else {
+      setStatus('保存中にエラーが発生しました: ' + err.message, true);
+    }
+  } finally {
+    saveBtn.disabled = false;
+  }
+});
+
+let pendingDeleteId = null;
+let pendingDeleteBtn = null;
+
+function askDeleteConfirm(skill, btn) {
+  pendingDeleteId = skill.id;
+  pendingDeleteBtn = btn;
+  document.getElementById('confirmDeleteMessage').textContent = `「${skill.name}」を削除します。この操作は取り消せません。よろしいですか？`;
+  openModal('confirmDeleteModal');
+}
+
+document.getElementById('confirmDeleteBtn').addEventListener('click', () => {
+  const id = pendingDeleteId;
+  const btn = pendingDeleteBtn;
+  pendingDeleteId = null;
+  pendingDeleteBtn = null;
+  closeModal();
+  deleteSkill(id, btn);
+});
+
+async function deleteSkill(id, btn) {
+  if (!config || !config.token) { setListStatus('削除にはPATが必要です。設定でPATを入力してください。', true); return; }
+  const target = allSkills.find(s => s.id === id);
+  const updated = allSkills.filter(s => s.id !== id);
+  setListStatus('削除しています…');
+  if (btn) btn.disabled = true;
+  try {
+    await saveSkillsToGitHub(updated, `スキル削除: ${target ? target.name : id}`);
+    allSkills = updated;
+    setListStatus('');
+    renderSkills();
+  } catch (err) {
+    console.error(err);
+    if (err instanceof ConflictError) {
+      setListStatus('他の端末で更新されています。「更新」ボタンで最新を取得してからもう一度削除してください。', true);
+    } else {
+      setListStatus('削除中にエラーが発生しました: ' + err.message, true);
+    }
+    if (btn) btn.disabled = false;
+  }
+}
+
+document.getElementById('refreshBtn').addEventListener('click', () => loadSkills());
+
+// --- 検索・絞り込み ---
+document.getElementById('searchNameInput').addEventListener('input', renderSkills);
+document.querySelectorAll('.categoryFilter, .rarityFilter, .styleFilter, .distanceFilter').forEach(el => el.addEventListener('change', renderSkills));
+
+// --- 一覧表示 ---
+const CATEGORY_LABELS = { green: '緑スキル', heal: '回復スキル', debuff: 'デバフスキル', speed: '速度スキル', accel: '加速スキル' };
+const STYLE_LABELS = { nige: '逃げ', senko: '先行', sashi: '差し', oikomi: '追込' };
+const DISTANCE_LABELS = { short: '短距離', mile: 'マイル', medium: '中距離', long: '長距離' };
+
+function renderSkills() {
+  const container = document.getElementById('entries');
+  const emptyMsg = document.getElementById('emptyMsg');
+  container.innerHTML = '';
+
+  document.getElementById('countLabel').textContent = allSkills.length + ' 件 登録';
+
+  const keyword = document.getElementById('searchNameInput').value.trim().toLowerCase();
+  const categoryFilters = getCheckedValues('.categoryFilter');
+  const rarityFilters = getCheckedValues('.rarityFilter');
+  const styleFilters = getCheckedValues('.styleFilter');
+  const distanceFilters = getCheckedValues('.distanceFilter');
+
+  const filtered = allSkills.filter(skill => {
+    if (keyword) {
+      const hay = [skill.name, skill.effect].filter(Boolean).join(' ').toLowerCase();
+      if (!hay.includes(keyword)) return false;
+    }
+    if (categoryFilters.length && !categoryFilters.includes(skill.category)) return false;
+    if (rarityFilters.length && !(skill.rarities || []).some(r => rarityFilters.includes(r))) return false;
+    if (styleFilters.length && !(skill.styles || []).some(s => styleFilters.includes(s))) return false;
+    if (distanceFilters.length && !(skill.distances || []).some(d => distanceFilters.includes(d))) return false;
+    return true;
+  });
+
+  if (!filtered.length) {
+    emptyMsg.style.display = 'block';
+    emptyMsg.textContent = allSkills.length ? '該当する登録が見つかりません。' : 'まだ登録がありません。「＋ スキル登録」からClaudeの出力を貼り付けるか、手入力して保存してください。';
+    return;
+  }
+  emptyMsg.style.display = 'none';
+
+  filtered.forEach(skill => {
+    const row = document.createElement('div');
+    row.className = 'entry';
+    const categoryBadge = skill.category
+      ? `<span class="apt-badge category-badge-${skill.category}">${CATEGORY_LABELS[skill.category] || skill.category}</span>`
+      : '';
+    const rarityChips = (skill.rarities || []).map(r => `<span class="apt-badge">${r}</span>`).join('');
+    const styleChips = (skill.styles || []).map(s => `<span class="apt-badge">${STYLE_LABELS[s] || s}</span>`).join('');
+    const distanceChips = (skill.distances || []).map(d => `<span class="apt-badge">${DISTANCE_LABELS[d] || d}</span>`).join('');
+    row.innerHTML = `
+      <div class="entry-main">
+        <div class="entry-name-row">
+          <div class="entry-name">${escapeHtml(skill.name)}</div>
+        </div>
+        <div class="apt-row">${categoryBadge}${rarityChips}${styleChips}${distanceChips}</div>
+        ${skill.effect ? `<div class="entry-notes">${escapeHtml(skill.effect)}</div>` : ''}
+        ${skill.notes ? `<div class="entry-notes">${escapeHtml(skill.notes)}</div>` : ''}
+      </div>
+      <div class="entry-side">
+        <div class="entry-actions">
+          <button class="entry-edit" data-id="${skill.id}">編集</button>
+          <button class="entry-del" data-id="${skill.id}">削除</button>
+        </div>
+      </div>
+    `;
+    row.querySelector('.entry-edit').addEventListener('click', () => startEditSkill(skill.id));
+    row.querySelector('.entry-del').addEventListener('click', e => askDeleteConfirm(skill, e.currentTarget));
+    container.appendChild(row);
+  });
+}
+
+resetForm();
+loadSkills();

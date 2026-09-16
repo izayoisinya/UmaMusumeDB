@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>スキルブック - 因子台帳</title>
+<script>
+window.PAGE_PROMPT = 'このスキル詳細のスクリーンショットから、次のJSON形式だけを出力してください（説明や前置き、コードフェンスは不要です）。\n\n{"name": string, "effect": string}\n\n・nameはスキル名のみ（進化後のスキル名が表示されていればそちらを採用）。\n・effectはスキルの効果説明文をそのまま書き写してください。\n\n項目は省略せず出力してください。';
+</script>
+
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#8bc34a">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="因子台帳">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="ledger">
+  <div class="masthead">
+    <div class="masthead-top">
+      <h1>スキルブック</h1>
+      <p id="countLabel">0 件 登録</p>
+    </div>
+    <div class="masthead-menu">
+      <button type="button" class="masthead-btn" id="openRegisterModalBtn">＋ スキル登録</button>
+      <a href="index.html" class="masthead-btn masthead-nav">因子台帳</a>
+      <a href="uma.html" class="masthead-btn masthead-nav">ウマ娘</a>
+      <a href="support.html" class="masthead-btn masthead-nav">サポカ</a>
+      <a href="skill.html" class="masthead-btn masthead-nav">スキル</a>
+      <button type="button" class="masthead-btn" id="openSettingsModalBtn">⚙ 設定</button>
+    </div>
+  </div>
+
+  <div class="layout">
+    <div class="panel list-panel">
+      <h2>
+        スキル一覧
+        <button type="button" class="btn secondary btn-inline" id="refreshBtn">更新</button>
+      </h2>
+
+      <div class="search-row">
+        <div class="search-field">
+          <label for="searchNameInput">名前・効果で検索</label>
+          <input type="text" id="searchNameInput" placeholder="スキル名や効果の一部を入力">
+        </div>
+      </div>
+
+      <div class="count-filter-row">
+        <label>スキル種別で絞り込み（いずれかを含む。未選択なら絞り込みなし）</label>
+        <div class="type-checkbox-row">
+          <label class="type-checkbox category-green"><input type="checkbox" value="green" class="categoryFilter">緑スキル</label>
+          <label class="type-checkbox category-heal"><input type="checkbox" value="heal" class="categoryFilter">回復スキル</label>
+          <label class="type-checkbox category-debuff"><input type="checkbox" value="debuff" class="categoryFilter">デバフスキル</label>
+          <label class="type-checkbox category-speed"><input type="checkbox" value="speed" class="categoryFilter">速度スキル</label>
+          <label class="type-checkbox category-accel"><input type="checkbox" value="accel" class="categoryFilter">加速スキル</label>
+        </div>
+      </div>
+
+      <div class="count-filter-row">
+        <label>レアリティで絞り込み</label>
+        <div class="type-checkbox-row">
+          <label class="type-checkbox"><input type="checkbox" value="R" class="rarityFilter">R</label>
+          <label class="type-checkbox"><input type="checkbox" value="SR" class="rarityFilter">SR</label>
+          <label class="type-checkbox"><input type="checkbox" value="SSR" class="rarityFilter">SSR</label>
+          <label class="type-checkbox"><input type="checkbox" value="UR" class="rarityFilter">UR</label>
+        </div>
+      </div>
+
+      <div class="count-filter-row">
+        <label>脚質で絞り込み</label>
+        <div class="type-checkbox-row">
+          <label class="type-checkbox"><input type="checkbox" value="nige" class="styleFilter">逃げ</label>
+          <label class="type-checkbox"><input type="checkbox" value="senko" class="styleFilter">先行</label>
+          <label class="type-checkbox"><input type="checkbox" value="sashi" class="styleFilter">差し</label>
+          <label class="type-checkbox"><input type="checkbox" value="oikomi" class="styleFilter">追込</label>
+        </div>
+      </div>
+
+      <div class="count-filter-row">
+        <label>距離で絞り込み</label>
+        <div class="type-checkbox-row">
+          <label class="type-checkbox"><input type="checkbox" value="short" class="distanceFilter">短距離</label>
+          <label class="type-checkbox"><input type="checkbox" value="mile" class="distanceFilter">マイル</label>
+          <label class="type-checkbox"><input type="checkbox" value="medium" class="distanceFilter">中距離</label>
+          <label class="type-checkbox"><input type="checkbox" value="long" class="distanceFilter">長距離</label>
+        </div>
+      </div>
+
+      <div class="status" id="listStatus"></div>
+      <div class="entries" id="entries"></div>
+      <div class="empty" id="emptyMsg" style="display:none;">まだ登録がありません。「＋ スキル登録」からClaudeの出力を貼り付けるか、手入力して保存してください。</div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modalOverlay" hidden>
+  <div class="modal" id="skillModal" role="dialog" aria-labelledby="skillModalTitle" hidden>
+    <h2 id="skillModalTitle">スキルを登録</h2>
+
+    <p class="hint">
+      スキル詳細画面のスクリーンショットをClaudeアプリに見せて抽出してもらったJSONを、下の欄に貼り付けてください（抽出用プロンプトは「設定」→「プロンプト」から確認・コピーできます）。種別・レアリティ・脚質・距離は手動で選択してください。
+    </p>
+    <div class="form-grid">
+      <div>
+        <label for="pasteJson">Claudeの出力を貼り付け</label>
+        <textarea id="pasteJson" rows="4" placeholder='{"name": "...", "effect": "..."}'></textarea>
+      </div>
+      <button type="button" class="btn" id="loadJsonBtn">この内容をフォームに反映</button>
+    </div>
+    <div class="status" id="status"></div>
+
+    <form class="form-grid" id="skillForm">
+      <div>
+        <label for="fName">名前</label>
+        <input type="text" id="fName" placeholder="例: 直線一気">
+      </div>
+
+      <div>
+        <label for="fEffect">効果</label>
+        <textarea id="fEffect" rows="3" placeholder="スキルの効果説明"></textarea>
+      </div>
+
+      <div>
+        <label>スキル種別（1つ選択）</label>
+        <div class="type-checkbox-row">
+          <label class="type-checkbox category-green"><input type="radio" name="fCategory" value="green">緑スキル</label>
+          <label class="type-checkbox category-heal"><input type="radio" name="fCategory" value="heal">回復スキル</label>
+          <label class="type-checkbox category-debuff"><input type="radio" name="fCategory" value="debuff">デバフスキル</label>
+          <label class="type-checkbox category-speed"><input type="radio" name="fCategory" value="speed">速度スキル</label>
+          <label class="type-checkbox category-accel"><input type="radio" name="fCategory" value="accel">加速スキル</label>
+        </div>
+      </div>
+
+      <div>
+        <label>レアリティ（複数可）</label>
+        <div class="type-checkbox-row">
+          <label class="type-checkbox"><input type="checkbox" value="R" class="fRarity">R</label>
+          <label class="type-checkbox"><input type="checkbox" value="SR" class="fRarity">SR</label>
+          <label class="type-checkbox"><input type="checkbox" value="SSR" class="fRarity">SSR</label>
+          <label class="type-checkbox"><input type="checkbox" value="UR" class="fRarity">UR</label>
+        </div>
+      </div>
+
+      <div>
+        <label>脚質（複数可）</label>
+        <div class="type-checkbox-row">
+          <label class="type-checkbox"><input type="checkbox" value="nige" class="fStyle">逃げ</label>
+          <label class="type-checkbox"><input type="checkbox" value="senko" class="fStyle">先行</label>
+          <label class="type-checkbox"><input type="checkbox" value="sashi" class="fStyle">差し</label>
+          <label class="type-checkbox"><input type="checkbox" value="oikomi" class="fStyle">追込</label>
+        </div>
+      </div>
+
+      <div>
+        <label>距離（複数可）</label>
+        <div class="type-checkbox-row">
+          <label class="type-checkbox"><input type="checkbox" value="short" class="fDistance">短距離</label>
+          <label class="type-checkbox"><input type="checkbox" value="mile" class="fDistance">マイル</label>
+          <label class="type-checkbox"><input type="checkbox" value="medium" class="fDistance">中距離</label>
+          <label class="type-checkbox"><input type="checkbox" value="long" class="fDistance">長距離</label>
+        </div>
+      </div>
+
+      <div>
+        <label for="fNotes">メモ</label>
+        <textarea id="fNotes" rows="2" placeholder="入手元など"></textarea>
+      </div>
+
+      <button type="submit" class="btn" id="saveSkillBtn">この内容を保存</button>
+      <button type="button" class="btn secondary" id="clearBtn">フォームをクリア</button>
+    </form>
+    <button type="button" class="btn secondary modal-close-btn" data-modal="skillModal">閉じる</button>
+  </div>
+
+  <div class="modal" id="confirmDeleteModal" role="dialog" aria-labelledby="confirmDeleteTitle" hidden>
+    <h2 id="confirmDeleteTitle">削除の確認</h2>
+    <p class="hint" id="confirmDeleteMessage"></p>
+    <button type="button" class="btn danger" id="confirmDeleteBtn">削除する</button>
+    <button type="button" class="btn secondary modal-close-btn" data-modal="confirmDeleteModal">キャンセル</button>
+  </div>
+
+  <div class="modal" id="settingsModal" role="dialog" aria-labelledby="settingsModalTitle" hidden>
+    <h2 id="settingsModalTitle">設定</h2>
+    <div class="settings-tabs">
+      <button type="button" class="settings-tab active" data-tab="display">表示</button>
+      <button type="button" class="settings-tab" data-tab="github">GitHub連携</button>
+      <button type="button" class="settings-tab" data-tab="prompt">プロンプト</button>
+    </div>
+
+    <div class="settings-pane" data-pane="display">
+      <p class="hint">アプリの見た目を切り替えます。</p>
+      <button type="button" class="btn secondary" id="themeToggleBtn">🌙 ダークモードに切り替え</button>
+    </div>
+
+    <div class="settings-pane" data-pane="github" hidden>
+      <p class="hint">このアプリのデータは、このリポジトリに保存されます。<strong>閲覧のみならPATなしでも見られます</strong>（リポジトリ所有者・リポジトリ名だけ入力）。保存・削除には Contents 権限を持つ個人アクセストークン(PAT)が必要です。</p>
+      <div class="form-grid">
+        <div>
+          <label for="cfgOwner">リポジトリ所有者</label>
+          <input type="text" id="cfgOwner" placeholder="例: izayoisinya">
+        </div>
+        <div>
+          <label for="cfgRepo">リポジトリ名</label>
+          <input type="text" id="cfgRepo" placeholder="例: UmaMusumeDB">
+        </div>
+        <div>
+          <label for="cfgBranch">ブランチ</label>
+          <input type="text" id="cfgBranch" placeholder="main">
+        </div>
+        <div>
+          <label for="cfgToken">個人アクセストークン (PAT・保存/削除する場合のみ)</label>
+          <input type="password" id="cfgToken" placeholder="閲覧だけなら空欄でOK" autocomplete="off">
+        </div>
+        <button type="button" class="btn" id="cfgSaveBtn">保存して読み込む</button>
+        <button type="button" class="btn secondary" id="cfgClearBtn">設定を消去</button>
+      </div>
+      <div class="status" id="cfgStatus"></div>
+    </div>
+
+    <div class="settings-pane" data-pane="prompt" hidden>
+      <p class="hint">このプロンプトをコピーして、スキル詳細画面のスクリーンショットと一緒にClaudeアプリ（claude.ai等）に送ってください。返ってきたJSONを台帳画面の「Claudeの出力を貼り付け」欄に貼り付けます。</p>
+      <textarea id="promptText" rows="10" readonly></textarea>
+      <button type="button" class="btn" id="copyPromptBtn">プロンプトをコピー</button>
+      <div class="status" id="promptStatus"></div>
+    </div>
+
+    <button type="button" class="btn secondary modal-close-btn" data-modal="settingsModal">閉じる</button>
+  </div>
+</div>
+
+<script src="common.js"></script>
+<script src="skill.js"></script>
+</body>
+</html>
