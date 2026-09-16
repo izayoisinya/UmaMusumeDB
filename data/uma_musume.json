@@ -1,67 +1,67 @@
 [
   {
-    "id": "uma_1789597176143_bckdm",
-    "name": "ジェンティルドンナ",
+    "id": "uma_1789597192548_hpseg",
+    "name": "ゴールドシチー",
     "imagePath": null,
     "skills": [
       {
-        "name": "烈華の洗礼",
+        "name": "GET DOWN",
         "type": "unique"
       },
       {
-        "name": "ノンストップガール",
+        "name": "雨の日○",
+        "type": "normal"
+      },
+      {
+        "name": "布陣",
         "type": "gold"
       },
       {
-        "name": "垂れウマ回避",
+        "name": "布石",
         "type": "normal"
       },
       {
-        "name": "先行コーナー○",
+        "name": "差しコーナー○",
         "type": "normal"
       },
       {
-        "name": "飛躍の予感",
+        "name": "差しのコツ○",
         "type": "normal"
       },
       {
-        "name": "強者の証",
+        "name": "潜伏態勢",
         "type": "gold"
       },
       {
-        "name": "さらなる高みへ",
-        "type": "normal"
-      },
-      {
-        "name": "決定打",
+        "name": "静かな呼吸",
         "type": "normal"
       }
     ],
     "track": {
       "turf": "A",
-      "dirt": "G"
+      "dirt": "D"
     },
     "distance": {
-      "short": "G",
+      "short": "F",
       "mile": "A",
-      "medium": "A",
-      "long": "A"
+      "medium": "B",
+      "long": "B"
     },
     "style": {
-      "nige": "E",
+      "nige": "F",
       "senko": "A",
       "sashi": "A",
-      "oikomi": "D"
+      "oikomi": "F"
     },
     "growth": {
-      "speed": 10,
-      "stamina": 10,
-      "power": 10,
+      "speed": 8,
+      "stamina": 0,
+      "power": 8,
       "guts": 0,
-      "wisdom": 0
+      "wisdom": 14
     },
     "notes": "",
-    "savedAt": "2026-09-16T22:19:36.143Z"
+    "savedAt": "2026-09-16T22:19:52.548Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -1994,6 +1994,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T20:18:59.435Z"
+  },
+  {
+    "id": "uma_1789597176143_bckdm",
+    "name": "ジェンティルドンナ",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "烈華の洗礼",
+        "type": "unique"
+      },
+      {
+        "name": "ノンストップガール",
+        "type": "gold"
+      },
+      {
+        "name": "垂れウマ回避",
+        "type": "normal"
+      },
+      {
+        "name": "先行コーナー○",
+        "type": "normal"
+      },
+      {
+        "name": "飛躍の予感",
+        "type": "normal"
+      },
+      {
+        "name": "強者の証",
+        "type": "gold"
+      },
+      {
+        "name": "さらなる高みへ",
+        "type": "normal"
+      },
+      {
+        "name": "決定打",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "G",
+      "mile": "A",
+      "medium": "A",
+      "long": "A"
+    },
+    "style": {
+      "nige": "E",
+      "senko": "A",
+      "sashi": "A",
+      "oikomi": "D"
+    },
+    "growth": {
+      "speed": 10,
+      "stamina": 10,
+      "power": 10,
+      "guts": 0,
+      "wisdom": 0
+    },
+    "notes": "",
+    "savedAt": "2026-09-16T22:19:36.143Z"
   },
   {
     "id": "uma_1789597158789_nbl9t",
