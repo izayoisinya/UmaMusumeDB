@@ -1,67 +1,67 @@
 [
   {
-    "id": "uma_1789596816180_r4wb3",
-    "name": "アグネスデジタル",
+    "id": "uma_1789596840550_m3my1",
+    "name": "フジキセキ",
     "imagePath": null,
     "skills": [
       {
-        "name": "尊み☆ラストスパ゚ー(ﾟ∀ﾟ)ー!!",
+        "name": "Ravissant",
         "type": "unique"
       },
       {
-        "name": "道悪○",
-        "type": "normal"
-      },
-      {
-        "name": "中距離直線○",
-        "type": "normal"
-      },
-      {
-        "name": "差し直線○",
-        "type": "normal"
-      },
-      {
-        "name": "ウママニア",
+        "name": "スピードスター",
         "type": "gold"
       },
       {
-        "name": "ウマ好み",
+        "name": "抜け出し準備",
         "type": "normal"
       },
       {
-        "name": "狙うは最前列！",
+        "name": "見惚れるトリック",
         "type": "gold"
       },
       {
-        "name": "前列狙い",
+        "name": "トリック（前）",
+        "type": "normal"
+      },
+      {
+        "name": "マイルコーナー○",
+        "type": "normal"
+      },
+      {
+        "name": "巧みなステップ",
+        "type": "normal"
+      },
+      {
+        "name": "真っ向勝負",
         "type": "normal"
       }
     ],
     "track": {
       "turf": "A",
-      "dirt": "A"
+      "dirt": "F"
     },
     "distance": {
-      "short": "F",
+      "short": "B",
       "mile": "A",
-      "medium": "A",
-      "long": "G"
+      "medium": "B",
+      "long": "E"
     },
     "style": {
-      "nige": "G",
+      "nige": "C",
       "senko": "A",
-      "sashi": "A",
-      "oikomi": "B"
+      "sashi": "C",
+      "oikomi": "G"
     },
     "growth": {
       "speed": 8,
-      "stamina": 8,
-      "power": 7,
+      "stamina": 0,
+      "power": 14,
       "guts": 0,
-      "wisdom": 7
+      "wisdom": 8
     },
     "notes": "",
-    "savedAt": "2026-09-16T22:13:36.180Z"
+    "savedAt": "2026-09-16T22:14:00.550Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -318,6 +318,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T22:05:19.008Z"
+  },
+  {
+    "id": "uma_1789596816180_r4wb3",
+    "name": "アグネスデジタル",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "尊み☆ラストスパ゚ー(ﾟ∀ﾟ)ー!!",
+        "type": "unique"
+      },
+      {
+        "name": "道悪○",
+        "type": "normal"
+      },
+      {
+        "name": "中距離直線○",
+        "type": "normal"
+      },
+      {
+        "name": "差し直線○",
+        "type": "normal"
+      },
+      {
+        "name": "ウママニア",
+        "type": "gold"
+      },
+      {
+        "name": "ウマ好み",
+        "type": "normal"
+      },
+      {
+        "name": "狙うは最前列！",
+        "type": "gold"
+      },
+      {
+        "name": "前列狙い",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "A"
+    },
+    "distance": {
+      "short": "F",
+      "mile": "A",
+      "medium": "A",
+      "long": "G"
+    },
+    "style": {
+      "nige": "G",
+      "senko": "A",
+      "sashi": "A",
+      "oikomi": "B"
+    },
+    "growth": {
+      "speed": 8,
+      "stamina": 8,
+      "power": 7,
+      "guts": 0,
+      "wisdom": 7
+    },
+    "notes": "",
+    "savedAt": "2026-09-16T22:13:36.180Z"
   },
   {
     "id": "uma_1789596803816_1iiui",
