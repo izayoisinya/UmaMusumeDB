@@ -1,39 +1,43 @@
 [
   {
-    "id": "uma_1789597068075_xp0ak",
+    "id": "uma_1789597092288_9wmtw",
     "name": "エルコンドルパサー",
     "imagePath": null,
     "skills": [
       {
-        "name": "コンドル猛撃波",
+        "name": "プランチャ☆ガナドール",
         "type": "unique"
       },
       {
-        "name": "末脚",
+        "name": "直線巧者",
         "type": "normal"
       },
       {
-        "name": "昇り龍",
+        "name": "余裕綽々",
         "type": "gold"
       },
       {
-        "name": "外差し準備",
+        "name": "スタミナキープ",
         "type": "normal"
       },
       {
-        "name": "豪脚",
+        "name": "テンポアップ",
+        "type": "normal"
+      },
+      {
+        "name": "千里眼",
         "type": "gold"
       },
       {
-        "name": "上昇気流",
+        "name": "ホークアイ",
         "type": "normal"
       },
       {
-        "name": "負けん気",
+        "name": "先行直線○",
         "type": "normal"
       },
       {
-        "name": "十万バリキ",
+        "name": "星の煌き",
         "type": "normal"
       }
     ],
@@ -54,14 +58,14 @@
       "oikomi": "C"
     },
     "growth": {
-      "speed": 15,
+      "speed": 20,
       "stamina": 0,
       "power": 0,
-      "guts": 15,
-      "wisdom": 0
+      "guts": 0,
+      "wisdom": 10
     },
     "notes": "",
-    "savedAt": "2026-09-16T22:17:48.075Z"
+    "savedAt": "2026-09-16T22:18:12.288Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -702,6 +706,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T20:20:51.006Z"
+  },
+  {
+    "id": "uma_1789597068075_xp0ak",
+    "name": "エルコンドルパサー",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "コンドル猛撃波",
+        "type": "unique"
+      },
+      {
+        "name": "末脚",
+        "type": "normal"
+      },
+      {
+        "name": "昇り龍",
+        "type": "gold"
+      },
+      {
+        "name": "外差し準備",
+        "type": "normal"
+      },
+      {
+        "name": "豪脚",
+        "type": "gold"
+      },
+      {
+        "name": "上昇気流",
+        "type": "normal"
+      },
+      {
+        "name": "負けん気",
+        "type": "normal"
+      },
+      {
+        "name": "十万バリキ",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "B"
+    },
+    "distance": {
+      "short": "F",
+      "mile": "A",
+      "medium": "A",
+      "long": "B"
+    },
+    "style": {
+      "nige": "E",
+      "senko": "A",
+      "sashi": "A",
+      "oikomi": "C"
+    },
+    "growth": {
+      "speed": 15,
+      "stamina": 0,
+      "power": 0,
+      "guts": 15,
+      "wisdom": 0
+    },
+    "notes": "",
+    "savedAt": "2026-09-16T22:17:48.075Z"
   },
   {
     "id": "uma_1789596489889_6jjo8",
