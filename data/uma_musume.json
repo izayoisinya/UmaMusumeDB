@@ -1,40 +1,40 @@
 [
   {
-    "id": "uma_1789596559981_o0qae",
+    "id": "uma_1789596574281_sf674",
     "name": "スペシャルウィーク",
     "imagePath": null,
     "skills": [
       {
-        "name": "威風堂々、夢錦！",
+        "name": "わやかわ♪マリンダイヴ",
         "type": "unique"
       },
       {
-        "name": "コーナー巧者○",
+        "name": "晴れの日○",
         "type": "normal"
       },
       {
-        "name": "外差し準備",
-        "type": "normal"
-      },
-      {
-        "name": "長距離直線○",
-        "type": "normal"
-      },
-      {
-        "name": "長距離コーナー○",
-        "type": "normal"
-      },
-      {
-        "name": "怒涛の追い上げ",
+        "name": "アガッてきた！",
         "type": "gold"
       },
       {
-        "name": "追い上げ",
+        "name": "ペースアップ",
         "type": "normal"
       },
       {
-        "name": "日本一のウマ娘",
+        "name": "迅速果断",
         "type": "gold"
+      },
+      {
+        "name": "位置取り押し上げ",
+        "type": "normal"
+      },
+      {
+        "name": "イナズマステップ",
+        "type": "normal"
+      },
+      {
+        "name": "尻尾上がり",
+        "type": "normal"
       }
     ],
     "track": {
@@ -54,14 +54,14 @@
       "oikomi": "C"
     },
     "growth": {
-      "speed": 10,
+      "speed": 0,
       "stamina": 10,
-      "power": 0,
-      "guts": 0,
-      "wisdom": 10
+      "power": 10,
+      "guts": 10,
+      "wisdom": 0
     },
     "notes": "",
-    "savedAt": "2026-09-16T22:09:19.981Z"
+    "savedAt": "2026-09-16T22:09:34.281Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -1606,6 +1606,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T22:06:34.520Z"
+  },
+  {
+    "id": "uma_1789596559981_o0qae",
+    "name": "スペシャルウィーク",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "威風堂々、夢錦！",
+        "type": "unique"
+      },
+      {
+        "name": "コーナー巧者○",
+        "type": "normal"
+      },
+      {
+        "name": "外差し準備",
+        "type": "normal"
+      },
+      {
+        "name": "長距離直線○",
+        "type": "normal"
+      },
+      {
+        "name": "長距離コーナー○",
+        "type": "normal"
+      },
+      {
+        "name": "怒涛の追い上げ",
+        "type": "gold"
+      },
+      {
+        "name": "追い上げ",
+        "type": "normal"
+      },
+      {
+        "name": "日本一のウマ娘",
+        "type": "gold"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "F",
+      "mile": "C",
+      "medium": "A",
+      "long": "A"
+    },
+    "style": {
+      "nige": "G",
+      "senko": "A",
+      "sashi": "A",
+      "oikomi": "C"
+    },
+    "growth": {
+      "speed": 10,
+      "stamina": 10,
+      "power": 0,
+      "guts": 0,
+      "wisdom": 10
+    },
+    "notes": "",
+    "savedAt": "2026-09-16T22:09:19.981Z"
   },
   {
     "id": "uma_1789596441065_zd3mg",
