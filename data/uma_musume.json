@@ -1,24 +1,20 @@
 [
   {
-    "id": "uma_1789596840550_m3my1",
+    "id": "uma_1789597009620_m0ngc",
     "name": "フジキセキ",
     "imagePath": null,
     "skills": [
       {
-        "name": "Ravissant",
+        "name": "煌星のヴォードヴィル",
         "type": "unique"
       },
       {
-        "name": "スピードスター",
+        "name": "レースプランナー",
         "type": "gold"
       },
       {
-        "name": "抜け出し準備",
+        "name": "好位追走",
         "type": "normal"
-      },
-      {
-        "name": "見惚れるトリック",
-        "type": "gold"
       },
       {
         "name": "トリック（前）",
@@ -29,11 +25,15 @@
         "type": "normal"
       },
       {
-        "name": "巧みなステップ",
+        "name": "ギアシフト",
         "type": "normal"
       },
       {
-        "name": "真っ向勝負",
+        "name": "姉御肌",
+        "type": "gold"
+      },
+      {
+        "name": "負けん気",
         "type": "normal"
       }
     ],
@@ -54,14 +54,14 @@
       "oikomi": "G"
     },
     "growth": {
-      "speed": 8,
+      "speed": 0,
       "stamina": 0,
-      "power": 14,
+      "power": 20,
       "guts": 0,
-      "wisdom": 8
+      "wisdom": 10
     },
     "notes": "",
-    "savedAt": "2026-09-16T22:14:00.550Z"
+    "savedAt": "2026-09-16T22:16:49.620Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -3086,6 +3086,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T22:04:46.336Z"
+  },
+  {
+    "id": "uma_1789596840550_m3my1",
+    "name": "フジキセキ",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "Ravissant",
+        "type": "unique"
+      },
+      {
+        "name": "スピードスター",
+        "type": "gold"
+      },
+      {
+        "name": "抜け出し準備",
+        "type": "normal"
+      },
+      {
+        "name": "見惚れるトリック",
+        "type": "gold"
+      },
+      {
+        "name": "トリック（前）",
+        "type": "normal"
+      },
+      {
+        "name": "マイルコーナー○",
+        "type": "normal"
+      },
+      {
+        "name": "巧みなステップ",
+        "type": "normal"
+      },
+      {
+        "name": "真っ向勝負",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "F"
+    },
+    "distance": {
+      "short": "B",
+      "mile": "A",
+      "medium": "B",
+      "long": "E"
+    },
+    "style": {
+      "nige": "C",
+      "senko": "A",
+      "sashi": "C",
+      "oikomi": "G"
+    },
+    "growth": {
+      "speed": 8,
+      "stamina": 0,
+      "power": 14,
+      "guts": 0,
+      "wisdom": 8
+    },
+    "notes": "",
+    "savedAt": "2026-09-16T22:14:00.550Z"
   },
   {
     "id": "uma_1789589755083_6hfld",
