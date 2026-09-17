@@ -1,39 +1,39 @@
 [
   {
-    "id": "uma_1789669517470_gjoc8",
-    "name": "ルーラーシップ",
+    "id": "uma_1789669529901_vk9z4",
+    "name": "ドリームジャーニー",
     "imagePath": null,
     "skills": [
       {
-        "name": "冠絶タクティクス",
+        "name": "『それでは、よき旅を』",
         "type": "unique"
       },
       {
-        "name": "コンセントレーション",
+        "name": "右回りの鬼",
         "type": "gold"
       },
       {
-        "name": "集中力",
+        "name": "右回り○",
         "type": "normal"
       },
       {
-        "name": "込み上げる熱",
+        "name": "垂れウマ回避",
         "type": "normal"
       },
       {
-        "name": "千載一遇",
+        "name": "ごぼう抜き",
+        "type": "normal"
+      },
+      {
+        "name": "影踏み",
+        "type": "normal"
+      },
+      {
+        "name": "掌握",
         "type": "gold"
       },
       {
-        "name": "好機を捉えて",
-        "type": "normal"
-      },
-      {
-        "name": "勝負を懸けて",
-        "type": "normal"
-      },
-      {
-        "name": "戦略家",
+        "name": "手練手管",
         "type": "normal"
       }
     ],
@@ -42,14 +42,14 @@
       "dirt": "G"
     },
     "distance": {
-      "short": "G",
-      "mile": "B",
+      "short": "F",
+      "mile": "C",
       "medium": "A",
-      "long": "B"
+      "long": "A"
     },
     "style": {
       "nige": "G",
-      "senko": "A",
+      "senko": "G",
       "sashi": "A",
       "oikomi": "A"
     },
@@ -61,7 +61,7 @@
       "wisdom": 10
     },
     "notes": "",
-    "savedAt": "2026-09-17T18:25:17.470Z"
+    "savedAt": "2026-09-17T18:25:29.901Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -7454,6 +7454,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-17T14:38:37.068Z"
+  },
+  {
+    "id": "uma_1789669517470_gjoc8",
+    "name": "ルーラーシップ",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "冠絶タクティクス",
+        "type": "unique"
+      },
+      {
+        "name": "コンセントレーション",
+        "type": "gold"
+      },
+      {
+        "name": "集中力",
+        "type": "normal"
+      },
+      {
+        "name": "込み上げる熱",
+        "type": "normal"
+      },
+      {
+        "name": "千載一遇",
+        "type": "gold"
+      },
+      {
+        "name": "好機を捉えて",
+        "type": "normal"
+      },
+      {
+        "name": "勝負を懸けて",
+        "type": "normal"
+      },
+      {
+        "name": "戦略家",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "G",
+      "mile": "B",
+      "medium": "A",
+      "long": "B"
+    },
+    "style": {
+      "nige": "G",
+      "senko": "A",
+      "sashi": "A",
+      "oikomi": "A"
+    },
+    "growth": {
+      "speed": 0,
+      "stamina": 10,
+      "power": 10,
+      "guts": 0,
+      "wisdom": 10
+    },
+    "notes": "",
+    "savedAt": "2026-09-17T18:25:17.470Z"
   },
   {
     "id": "uma_1789597146791_xrb05",
