@@ -1,39 +1,39 @@
 [
   {
-    "id": "uma_1789671020300_ptkwm",
-    "name": "サウンズオブアース",
+    "id": "uma_1789671031495_y1v09",
+    "name": "キングヘイロー",
     "imagePath": null,
     "skills": [
       {
-        "name": "ヴィヴァーチェ・ヴォラーレ",
+        "name": "理想へのwinding road",
         "type": "unique"
       },
       {
-        "name": "好転一息",
+        "name": "コーナー加速○",
+        "type": "normal"
+      },
+      {
+        "name": "ペースアップ",
+        "type": "normal"
+      },
+      {
+        "name": "豪脚",
         "type": "gold"
       },
       {
-        "name": "直線回復",
+        "name": "上昇気流",
         "type": "normal"
       },
       {
-        "name": "ウマ好み",
+        "name": "短距離コーナー○",
         "type": "normal"
       },
       {
-        "name": "スリップストリーム",
-        "type": "normal"
-      },
-      {
-        "name": "遊びはおしまいっ！",
-        "type": "normal"
-      },
-      {
-        "name": "威風堂々",
+        "name": "気骨稜稜",
         "type": "gold"
       },
       {
-        "name": "プレッシャー",
+        "name": "ひたむき前進",
         "type": "normal"
       }
     ],
@@ -42,26 +42,26 @@
       "dirt": "G"
     },
     "distance": {
-      "short": "G",
-      "mile": "F",
-      "medium": "A",
-      "long": "A"
+      "short": "A",
+      "mile": "A",
+      "medium": "B",
+      "long": "C"
     },
     "style": {
       "nige": "G",
       "senko": "B",
       "sashi": "A",
-      "oikomi": "E"
+      "oikomi": "D"
     },
     "growth": {
       "speed": 0,
-      "stamina": 10,
+      "stamina": 0,
       "power": 10,
       "guts": 10,
-      "wisdom": 0
+      "wisdom": 10
     },
     "notes": "",
-    "savedAt": "2026-09-17T18:50:20.300Z"
+    "savedAt": "2026-09-17T18:50:31.495Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -2890,6 +2890,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T20:26:27.845Z"
+  },
+  {
+    "id": "uma_1789671020300_ptkwm",
+    "name": "サウンズオブアース",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "ヴィヴァーチェ・ヴォラーレ",
+        "type": "unique"
+      },
+      {
+        "name": "好転一息",
+        "type": "gold"
+      },
+      {
+        "name": "直線回復",
+        "type": "normal"
+      },
+      {
+        "name": "ウマ好み",
+        "type": "normal"
+      },
+      {
+        "name": "スリップストリーム",
+        "type": "normal"
+      },
+      {
+        "name": "遊びはおしまいっ！",
+        "type": "normal"
+      },
+      {
+        "name": "威風堂々",
+        "type": "gold"
+      },
+      {
+        "name": "プレッシャー",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "G",
+      "mile": "F",
+      "medium": "A",
+      "long": "A"
+    },
+    "style": {
+      "nige": "G",
+      "senko": "B",
+      "sashi": "A",
+      "oikomi": "E"
+    },
+    "growth": {
+      "speed": 0,
+      "stamina": 10,
+      "power": 10,
+      "guts": 10,
+      "wisdom": 0
+    },
+    "notes": "",
+    "savedAt": "2026-09-17T18:50:20.300Z"
   },
   {
     "id": "uma_1789596762687_w0tdv",
