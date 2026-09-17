@@ -1,67 +1,67 @@
 [
   {
-    "id": "uma_1789671237019_xlity",
-    "name": "マチカネフクキタル",
+    "id": "uma_1789671249902_nd031",
+    "name": "ヒシミラクル",
     "imagePath": null,
     "skills": [
       {
-        "name": "来ます来てます来させます！",
+        "name": "小さな奇跡、フォーユー♪",
         "type": "unique"
       },
       {
-        "name": "トリック（後）",
+        "name": "右回り○",
         "type": "normal"
       },
       {
-        "name": "奇術師",
+        "name": "差しコーナー○",
+        "type": "normal"
+      },
+      {
+        "name": "いいとこ入った！",
         "type": "gold"
       },
       {
-        "name": "目くらまし",
+        "name": "スリップストリーム",
         "type": "normal"
       },
       {
-        "name": "小休憩",
-        "type": "normal"
-      },
-      {
-        "name": "スーパーラッキーセブン",
+        "name": "起死回生",
         "type": "gold"
       },
       {
-        "name": "ラッキーセブン",
+        "name": "ワンチャンス",
         "type": "normal"
       },
       {
-        "name": "スリーセブン",
+        "name": "足がかり",
         "type": "normal"
       }
     ],
     "track": {
       "turf": "A",
-      "dirt": "F"
+      "dirt": "G"
     },
     "distance": {
-      "short": "F",
-      "mile": "C",
+      "short": "G",
+      "mile": "G",
       "medium": "A",
       "long": "A"
     },
     "style": {
       "nige": "G",
-      "senko": "B",
+      "senko": "C",
       "sashi": "A",
-      "oikomi": "F"
+      "oikomi": "B"
     },
     "growth": {
       "speed": 0,
-      "stamina": 20,
-      "power": 10,
-      "guts": 0,
+      "stamina": 14,
+      "power": 8,
+      "guts": 8,
       "wisdom": 0
     },
     "notes": "",
-    "savedAt": "2026-09-17T18:53:57.019Z"
+    "savedAt": "2026-09-17T18:54:09.902Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -7966,6 +7966,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T22:18:53.358Z"
+  },
+  {
+    "id": "uma_1789671237019_xlity",
+    "name": "マチカネフクキタル",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "来ます来てます来させます！",
+        "type": "unique"
+      },
+      {
+        "name": "トリック（後）",
+        "type": "normal"
+      },
+      {
+        "name": "奇術師",
+        "type": "gold"
+      },
+      {
+        "name": "目くらまし",
+        "type": "normal"
+      },
+      {
+        "name": "小休憩",
+        "type": "normal"
+      },
+      {
+        "name": "スーパーラッキーセブン",
+        "type": "gold"
+      },
+      {
+        "name": "ラッキーセブン",
+        "type": "normal"
+      },
+      {
+        "name": "スリーセブン",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "F"
+    },
+    "distance": {
+      "short": "F",
+      "mile": "C",
+      "medium": "A",
+      "long": "A"
+    },
+    "style": {
+      "nige": "G",
+      "senko": "B",
+      "sashi": "A",
+      "oikomi": "F"
+    },
+    "growth": {
+      "speed": 0,
+      "stamina": 20,
+      "power": 10,
+      "guts": 0,
+      "wisdom": 0
+    },
+    "notes": "",
+    "savedAt": "2026-09-17T18:53:57.019Z"
   },
   {
     "id": "uma_1789671226746_pigq8",
