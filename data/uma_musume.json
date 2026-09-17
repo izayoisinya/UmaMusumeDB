@@ -1,15 +1,31 @@
 [
   {
-    "id": "uma_1789655917068_j8jnj",
-    "name": "ラインクラフト",
+    "id": "uma_1789655930104_rbak3",
+    "name": "ユキノビジン",
     "imagePath": null,
     "skills": [
       {
-        "name": "ずっとずっと輝いて",
+        "name": "ゆきあかり、おいかけて",
         "type": "unique"
       },
       {
-        "name": "右回り○",
+        "name": "雪の日○",
+        "type": "normal"
+      },
+      {
+        "name": "ノンストップガール",
+        "type": "gold"
+      },
+      {
+        "name": "垂れウマ回避",
+        "type": "normal"
+      },
+      {
+        "name": "中距離直線○",
+        "type": "normal"
+      },
+      {
+        "name": "先行コーナー○",
         "type": "normal"
       },
       {
@@ -19,49 +35,33 @@
       {
         "name": "直滑降",
         "type": "normal"
-      },
-      {
-        "name": "地固め",
-        "type": "normal"
-      },
-      {
-        "name": "品行方正",
-        "type": "normal"
-      },
-      {
-        "name": "素直な一歩",
-        "type": "normal"
-      },
-      {
-        "name": "この手に掴んだ未来",
-        "type": "gold"
       }
     ],
     "track": {
       "turf": "A",
-      "dirt": "G"
+      "dirt": "B"
     },
     "distance": {
-      "short": "B",
+      "short": "D",
       "mile": "A",
       "medium": "A",
-      "long": "G"
+      "long": "E"
     },
     "style": {
-      "nige": "E",
+      "nige": "C",
       "senko": "A",
-      "sashi": "C",
+      "sashi": "F",
       "oikomi": "G"
     },
     "growth": {
-      "speed": 5,
+      "speed": 10,
       "stamina": 0,
-      "power": 15,
-      "guts": 0,
-      "wisdom": 10
+      "power": 0,
+      "guts": 20,
+      "wisdom": 0
     },
     "notes": "",
-    "savedAt": "2026-09-17T14:38:37.068Z"
+    "savedAt": "2026-09-17T14:38:50.104Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -5714,6 +5714,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T22:13:09.360Z"
+  },
+  {
+    "id": "uma_1789655917068_j8jnj",
+    "name": "ラインクラフト",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "ずっとずっと輝いて",
+        "type": "unique"
+      },
+      {
+        "name": "右回り○",
+        "type": "normal"
+      },
+      {
+        "name": "決意の直滑降",
+        "type": "gold"
+      },
+      {
+        "name": "直滑降",
+        "type": "normal"
+      },
+      {
+        "name": "地固め",
+        "type": "normal"
+      },
+      {
+        "name": "品行方正",
+        "type": "normal"
+      },
+      {
+        "name": "素直な一歩",
+        "type": "normal"
+      },
+      {
+        "name": "この手に掴んだ未来",
+        "type": "gold"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "B",
+      "mile": "A",
+      "medium": "A",
+      "long": "G"
+    },
+    "style": {
+      "nige": "E",
+      "senko": "A",
+      "sashi": "C",
+      "oikomi": "G"
+    },
+    "growth": {
+      "speed": 5,
+      "stamina": 0,
+      "power": 15,
+      "guts": 0,
+      "wisdom": 10
+    },
+    "notes": "",
+    "savedAt": "2026-09-17T14:38:37.068Z"
   },
   {
     "id": "uma_1789597146791_xrb05",
