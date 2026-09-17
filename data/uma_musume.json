@@ -1,67 +1,67 @@
 [
   {
-    "id": "uma_1789656227549_btfd7",
-    "name": "スーパークリーク",
+    "id": "uma_1789656242170_g7zj4",
+    "name": "タマモクロス",
     "imagePath": null,
     "skills": [
       {
-        "name": "ピュリティオブハート",
+        "name": "白い稲妻、見せたるで！",
         "type": "unique"
       },
       {
-        "name": "円弧のマエストロ",
+        "name": "好位追走",
+        "type": "normal"
+      },
+      {
+        "name": "迅速果断",
         "type": "gold"
       },
       {
-        "name": "コーナー回復○",
+        "name": "位置取り押し上げ",
         "type": "normal"
       },
       {
-        "name": "ベースアップ",
+        "name": "直線一気",
         "type": "normal"
       },
       {
-        "name": "深呼吸",
+        "name": "イナズマステップ",
         "type": "normal"
       },
       {
-        "name": "先行ためらい",
-        "type": "normal"
-      },
-      {
-        "name": "幻惑のかく乱",
+        "name": "尻尾の滝登り",
         "type": "gold"
       },
       {
-        "name": "かく乱",
+        "name": "尻尾上がり",
         "type": "normal"
       }
     ],
     "track": {
       "turf": "A",
-      "dirt": "G"
+      "dirt": "F"
     },
     "distance": {
       "short": "G",
-      "mile": "G",
+      "mile": "E",
       "medium": "A",
       "long": "A"
     },
     "style": {
-      "nige": "D",
+      "nige": "G",
       "senko": "A",
-      "sashi": "B",
-      "oikomi": "G"
+      "sashi": "A",
+      "oikomi": "A"
     },
     "growth": {
       "speed": 0,
-      "stamina": 10,
-      "power": 0,
+      "stamina": 20,
+      "power": 10,
       "guts": 0,
-      "wisdom": 20
+      "wisdom": 0
     },
     "notes": "",
-    "savedAt": "2026-09-17T14:43:47.549Z"
+    "savedAt": "2026-09-17T14:44:02.170Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -2762,6 +2762,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-17T14:36:21.491Z"
+  },
+  {
+    "id": "uma_1789656227549_btfd7",
+    "name": "スーパークリーク",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "ピュリティオブハート",
+        "type": "unique"
+      },
+      {
+        "name": "円弧のマエストロ",
+        "type": "gold"
+      },
+      {
+        "name": "コーナー回復○",
+        "type": "normal"
+      },
+      {
+        "name": "ベースアップ",
+        "type": "normal"
+      },
+      {
+        "name": "深呼吸",
+        "type": "normal"
+      },
+      {
+        "name": "先行ためらい",
+        "type": "normal"
+      },
+      {
+        "name": "幻惑のかく乱",
+        "type": "gold"
+      },
+      {
+        "name": "かく乱",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "G",
+      "mile": "G",
+      "medium": "A",
+      "long": "A"
+    },
+    "style": {
+      "nige": "D",
+      "senko": "A",
+      "sashi": "B",
+      "oikomi": "G"
+    },
+    "growth": {
+      "speed": 0,
+      "stamina": 10,
+      "power": 0,
+      "guts": 0,
+      "wisdom": 20
+    },
+    "notes": "",
+    "savedAt": "2026-09-17T14:43:47.549Z"
   },
   {
     "id": "uma_1789656215469_d9ikh",
