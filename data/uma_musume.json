@@ -1,67 +1,67 @@
 [
   {
-    "id": "uma_1789655902935_6qoc1",
-    "name": "ヒシアケボノ",
+    "id": "uma_1789655917068_j8jnj",
+    "name": "ラインクラフト",
     "imagePath": null,
     "skills": [
       {
-        "name": "I'M☆FULL☆SPEED!!",
+        "name": "ずっとずっと輝いて",
         "type": "unique"
       },
       {
-        "name": "晴れの日○",
+        "name": "右回り○",
         "type": "normal"
       },
       {
-        "name": "準備万全！",
+        "name": "決意の直滑降",
         "type": "gold"
       },
       {
-        "name": "仕掛け準備",
+        "name": "直滑降",
         "type": "normal"
       },
       {
-        "name": "後方釘付",
+        "name": "地固め",
         "type": "normal"
       },
       {
-        "name": "食いしん坊",
+        "name": "品行方正",
+        "type": "normal"
+      },
+      {
+        "name": "素直な一歩",
+        "type": "normal"
+      },
+      {
+        "name": "この手に掴んだ未来",
         "type": "gold"
-      },
-      {
-        "name": "栄養補給",
-        "type": "normal"
-      },
-      {
-        "name": "まき直し",
-        "type": "normal"
       }
     ],
     "track": {
       "turf": "A",
-      "dirt": "F"
+      "dirt": "G"
     },
     "distance": {
-      "short": "A",
-      "mile": "B",
-      "medium": "F",
+      "short": "B",
+      "mile": "A",
+      "medium": "A",
       "long": "G"
     },
     "style": {
-      "nige": "B",
+      "nige": "E",
       "senko": "A",
       "sashi": "C",
       "oikomi": "G"
     },
     "growth": {
-      "speed": 0,
+      "speed": 5,
       "stamina": 0,
-      "power": 20,
-      "guts": 10,
-      "wisdom": 0
+      "power": 15,
+      "guts": 0,
+      "wisdom": 10
     },
     "notes": "",
-    "savedAt": "2026-09-17T14:38:22.935Z"
+    "savedAt": "2026-09-17T14:38:37.068Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -3922,6 +3922,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T22:07:01.605Z"
+  },
+  {
+    "id": "uma_1789655902935_6qoc1",
+    "name": "ヒシアケボノ",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "I'M☆FULL☆SPEED!!",
+        "type": "unique"
+      },
+      {
+        "name": "晴れの日○",
+        "type": "normal"
+      },
+      {
+        "name": "準備万全！",
+        "type": "gold"
+      },
+      {
+        "name": "仕掛け準備",
+        "type": "normal"
+      },
+      {
+        "name": "後方釘付",
+        "type": "normal"
+      },
+      {
+        "name": "食いしん坊",
+        "type": "gold"
+      },
+      {
+        "name": "栄養補給",
+        "type": "normal"
+      },
+      {
+        "name": "まき直し",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "F"
+    },
+    "distance": {
+      "short": "A",
+      "mile": "B",
+      "medium": "F",
+      "long": "G"
+    },
+    "style": {
+      "nige": "B",
+      "senko": "A",
+      "sashi": "C",
+      "oikomi": "G"
+    },
+    "growth": {
+      "speed": 0,
+      "stamina": 0,
+      "power": 20,
+      "guts": 10,
+      "wisdom": 0
+    },
+    "notes": "",
+    "savedAt": "2026-09-17T14:38:22.935Z"
   },
   {
     "id": "uma_1789655862800_bpwo1",
