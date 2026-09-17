@@ -1,67 +1,67 @@
 [
   {
-    "id": "uma_1789656280335_1y964",
-    "name": "マーベラスサンデー",
+    "id": "uma_1789656302001_f79nw",
+    "name": "ヤマニンゼファー",
     "imagePath": null,
     "skills": [
       {
-        "name": "万彩☆マーベラス★世界",
+        "name": "風光る",
         "type": "unique"
       },
       {
-        "name": "ノンストップガール",
+        "name": "伏兵○",
+        "type": "normal"
+      },
+      {
+        "name": "コーナー加速○",
+        "type": "normal"
+      },
+      {
+        "name": "マイルコーナー○",
+        "type": "normal"
+      },
+      {
+        "name": "ギアチェンジ",
         "type": "gold"
       },
       {
-        "name": "垂れウマ回避",
+        "name": "ギアシフト",
         "type": "normal"
       },
       {
-        "name": "差しのコツ○",
-        "type": "normal"
-      },
-      {
-        "name": "ありったけ",
-        "type": "normal"
-      },
-      {
-        "name": "高揚感",
+        "name": "風雲の志",
         "type": "gold"
       },
       {
-        "name": "前のめり",
-        "type": "normal"
-      },
-      {
-        "name": "がむしゃら",
+        "name": "向上心",
         "type": "normal"
       }
     ],
     "track": {
       "turf": "A",
-      "dirt": "F"
+      "dirt": "D"
     },
     "distance": {
-      "short": "G",
-      "mile": "C",
+      "short": "B",
+      "mile": "A",
       "medium": "A",
-      "long": "B"
+      "long": "G"
     },
     "style": {
-      "nige": "G",
+      "nige": "E",
       "senko": "A",
-      "sashi": "A",
-      "oikomi": "C"
+      "sashi": "C",
+      "oikomi": "G"
     },
     "growth": {
-      "speed": 0,
+      "speed": 10,
       "stamina": 0,
-      "power": 15,
-      "guts": 0,
-      "wisdom": 15
+      "power": 0,
+      "guts": 10,
+      "wisdom": 10
     },
     "notes": "",
-    "savedAt": "2026-09-17T14:44:40.335Z"
+    "savedAt": "2026-09-17T14:45:02.001Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -4882,6 +4882,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T22:14:00.550Z"
+  },
+  {
+    "id": "uma_1789656280335_1y964",
+    "name": "マーベラスサンデー",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "万彩☆マーベラス★世界",
+        "type": "unique"
+      },
+      {
+        "name": "ノンストップガール",
+        "type": "gold"
+      },
+      {
+        "name": "垂れウマ回避",
+        "type": "normal"
+      },
+      {
+        "name": "差しのコツ○",
+        "type": "normal"
+      },
+      {
+        "name": "ありったけ",
+        "type": "normal"
+      },
+      {
+        "name": "高揚感",
+        "type": "gold"
+      },
+      {
+        "name": "前のめり",
+        "type": "normal"
+      },
+      {
+        "name": "がむしゃら",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "F"
+    },
+    "distance": {
+      "short": "G",
+      "mile": "C",
+      "medium": "A",
+      "long": "B"
+    },
+    "style": {
+      "nige": "G",
+      "senko": "A",
+      "sashi": "A",
+      "oikomi": "C"
+    },
+    "growth": {
+      "speed": 0,
+      "stamina": 0,
+      "power": 15,
+      "guts": 0,
+      "wisdom": 15
+    },
+    "notes": "",
+    "savedAt": "2026-09-17T14:44:40.335Z"
   },
   {
     "id": "uma_1789655663653_1oylc",
