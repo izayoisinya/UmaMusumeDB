@@ -43,6 +43,28 @@ window.PAGE_PROMPT = 'この画像はウマ娘プリティーダービーの「�
         <button type="button" class="btn secondary btn-inline" id="refreshBtn">更新</button>
       </h2>
 
+      <div class="search-row">
+        <div class="search-field">
+          <label for="searchNameInput">名前で検索</label>
+          <input type="text" id="searchNameInput" placeholder="ウマ娘名の一部を入力">
+        </div>
+        <div class="search-field">
+          <label for="searchSkillInput">スキルで検索</label>
+          <input type="text" id="searchSkillInput" placeholder="スキル名の一部を入力">
+        </div>
+      </div>
+
+      <div class="count-filter-row">
+        <label>成長率の補正で絞り込み</label>
+        <div class="count-filter-controls">
+          <select id="filterGrowthCorrection">
+            <option value="">-</option>
+            <option value="yes">補正あり</option>
+            <option value="no">補正なし</option>
+          </select>
+        </div>
+      </div>
+
       <div class="count-filter-row apt-search">
         <label>適性で絞り込み（指定した項目だけAND条件で判定。空欄は無視）</label>
         <label class="count-filter-checkbox apt-search-lte">

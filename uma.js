@@ -460,6 +460,17 @@ const aptSearchLte = document.getElementById('aptSearchLte');
 APT_FILTER_FIELDS.forEach(f => document.getElementById(f.id).addEventListener('change', renderUmas));
 aptSearchLte.addEventListener('change', renderUmas);
 
+const searchNameInput = document.getElementById('searchNameInput');
+const searchSkillInput = document.getElementById('searchSkillInput');
+const filterGrowthCorrection = document.getElementById('filterGrowthCorrection');
+searchNameInput.addEventListener('input', renderUmas);
+searchSkillInput.addEventListener('input', renderUmas);
+filterGrowthCorrection.addEventListener('change', renderUmas);
+
+function hasGrowthCorrection(uma) {
+  return Object.values(uma.growth || {}).some(v => v);
+}
+
 function renderUmas() {
   const container = document.getElementById('entries');
   const emptyMsg = document.getElementById('emptyMsg');
@@ -467,11 +478,18 @@ function renderUmas() {
 
   document.getElementById('countLabel').textContent = allUmas.length + ' 頭 登録';
 
+  const nameKeyword = searchNameInput.value.trim().toLowerCase();
+  const skillKeyword = searchSkillInput.value.trim().toLowerCase();
+  const growthFilter = filterGrowthCorrection.value;
   const activeFilters = APT_FILTER_FIELDS
     .map(f => ({ path: f.path, rank: document.getElementById(f.id).value }))
     .filter(f => f.rank);
   const lte = aptSearchLte.checked;
   const filtered = allUmas.filter(uma => {
+    if (nameKeyword && !(uma.name || '').toLowerCase().includes(nameKeyword)) return false;
+    if (skillKeyword && !(uma.skills || []).some(s => normalizeSkill(s).name.toLowerCase().includes(skillKeyword))) return false;
+    if (growthFilter === 'yes' && !hasGrowthCorrection(uma)) return false;
+    if (growthFilter === 'no' && hasGrowthCorrection(uma)) return false;
     return activeFilters.every(f => {
       const val = getAptValue(uma, f.path);
       if (!val) return false;
