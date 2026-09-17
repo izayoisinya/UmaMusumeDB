@@ -1,69 +1,5 @@
 [
   {
-    "id": "uma_1789655941555_4w3cd",
-    "name": "グラスワンダー",
-    "imagePath": null,
-    "skills": [
-      {
-        "name": "精神一到何事か成らざらん",
-        "type": "unique"
-      },
-      {
-        "name": "末脚",
-        "type": "normal"
-      },
-      {
-        "name": "位置取り押し上げ",
-        "type": "normal"
-      },
-      {
-        "name": "乗り換え上手",
-        "type": "gold"
-      },
-      {
-        "name": "差し切り体勢",
-        "type": "normal"
-      },
-      {
-        "name": "先行焦り",
-        "type": "normal"
-      },
-      {
-        "name": "独占力",
-        "type": "gold"
-      },
-      {
-        "name": "束縛",
-        "type": "normal"
-      }
-    ],
-    "track": {
-      "turf": "A",
-      "dirt": "G"
-    },
-    "distance": {
-      "short": "G",
-      "mile": "A",
-      "medium": "B",
-      "long": "A"
-    },
-    "style": {
-      "nige": "F",
-      "senko": "A",
-      "sashi": "A",
-      "oikomi": "F"
-    },
-    "growth": {
-      "speed": 20,
-      "stamina": 0,
-      "power": 10,
-      "guts": 0,
-      "wisdom": 0
-    },
-    "notes": "",
-    "savedAt": "2026-09-17T14:39:01.555Z"
-  },
-  {
     "id": "uma_1789590469435_fqwgt",
     "name": "アイネスフウジン",
     "imagePath": null,
@@ -830,70 +766,6 @@
     },
     "notes": "",
     "savedAt": "2026-09-17T14:37:03.584Z"
-  },
-  {
-    "id": "uma_1789655808634_7xcxm",
-    "name": "エピファネイア",
-    "imagePath": null,
-    "skills": [
-      {
-        "name": "光れ！弾けろ！超新星爆発！",
-        "type": "unique"
-      },
-      {
-        "name": "流星光底",
-        "type": "gold"
-      },
-      {
-        "name": "飛躍の予感",
-        "type": "normal"
-      },
-      {
-        "name": "意地っ張り",
-        "type": "normal"
-      },
-      {
-        "name": "憂いなし",
-        "type": "normal"
-      },
-      {
-        "name": "流れに任せて",
-        "type": "normal"
-      },
-      {
-        "name": "超然",
-        "type": "gold"
-      },
-      {
-        "name": "存在感",
-        "type": "normal"
-      }
-    ],
-    "track": {
-      "turf": "A",
-      "dirt": "G"
-    },
-    "distance": {
-      "short": "G",
-      "mile": "E",
-      "medium": "A",
-      "long": "A"
-    },
-    "style": {
-      "nige": "D",
-      "senko": "A",
-      "sashi": "B",
-      "oikomi": "G"
-    },
-    "growth": {
-      "speed": 0,
-      "stamina": 10,
-      "power": 10,
-      "guts": 0,
-      "wisdom": 10
-    },
-    "notes": "",
-    "savedAt": "2026-09-17T14:36:48.634Z"
   },
   {
     "id": "uma_1789597092288_9wmtw",
@@ -1666,6 +1538,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T20:09:43.322Z"
+  },
+  {
+    "id": "uma_1789655941555_4w3cd",
+    "name": "グラスワンダー",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "精神一到何事か成らざらん",
+        "type": "unique"
+      },
+      {
+        "name": "末脚",
+        "type": "normal"
+      },
+      {
+        "name": "位置取り押し上げ",
+        "type": "normal"
+      },
+      {
+        "name": "乗り換え上手",
+        "type": "gold"
+      },
+      {
+        "name": "差し切り体勢",
+        "type": "normal"
+      },
+      {
+        "name": "先行焦り",
+        "type": "normal"
+      },
+      {
+        "name": "独占力",
+        "type": "gold"
+      },
+      {
+        "name": "束縛",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "G",
+      "mile": "A",
+      "medium": "B",
+      "long": "A"
+    },
+    "style": {
+      "nige": "F",
+      "senko": "A",
+      "sashi": "A",
+      "oikomi": "F"
+    },
+    "growth": {
+      "speed": 20,
+      "stamina": 0,
+      "power": 10,
+      "guts": 0,
+      "wisdom": 0
+    },
+    "notes": "",
+    "savedAt": "2026-09-17T14:39:01.555Z"
   },
   {
     "id": "uma_1789596776211_4oepk",
