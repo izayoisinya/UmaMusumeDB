@@ -1,67 +1,67 @@
 [
   {
-    "id": "uma_1789669457759_ailcm",
-    "name": "デュランダル",
+    "id": "uma_1789669470082_ca7ix",
+    "name": "タニノギムレット",
     "imagePath": null,
     "skills": [
       {
-        "name": "Lame de vent",
+        "name": "霹靂のアウフヘーベン",
         "type": "unique"
       },
       {
-        "name": "秋ウマ娘○",
+        "name": "東京レース場○",
         "type": "normal"
       },
       {
-        "name": "追込コーナー○",
+        "name": "直線巧者",
         "type": "normal"
       },
       {
-        "name": "電光石火",
+        "name": "疾風怒濤",
         "type": "gold"
       },
       {
-        "name": "一足飛び",
+        "name": "仕掛け抜群",
         "type": "normal"
       },
       {
-        "name": "一心不乱",
+        "name": "直線一気",
+        "type": "normal"
+      },
+      {
+        "name": "雲蒸竜変",
         "type": "gold"
       },
       {
-        "name": "惜しみなし",
-        "type": "normal"
-      },
-      {
-        "name": "影踏み",
+        "name": "自信家",
         "type": "normal"
       }
     ],
     "track": {
       "turf": "A",
-      "dirt": "G"
+      "dirt": "F"
     },
     "distance": {
-      "short": "A",
+      "short": "F",
       "mile": "A",
-      "medium": "F",
-      "long": "G"
+      "medium": "A",
+      "long": "F"
     },
     "style": {
       "nige": "G",
-      "senko": "G",
-      "sashi": "C",
+      "senko": "D",
+      "sashi": "A",
       "oikomi": "A"
     },
     "growth": {
-      "speed": 20,
+      "speed": 0,
       "stamina": 0,
-      "power": 10,
+      "power": 30,
       "guts": 0,
       "wisdom": 0
     },
     "notes": "",
-    "savedAt": "2026-09-17T18:24:17.759Z"
+    "savedAt": "2026-09-17T18:24:30.082Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -4242,6 +4242,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T22:06:04.212Z"
+  },
+  {
+    "id": "uma_1789669457759_ailcm",
+    "name": "デュランダル",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "Lame de vent",
+        "type": "unique"
+      },
+      {
+        "name": "秋ウマ娘○",
+        "type": "normal"
+      },
+      {
+        "name": "追込コーナー○",
+        "type": "normal"
+      },
+      {
+        "name": "電光石火",
+        "type": "gold"
+      },
+      {
+        "name": "一足飛び",
+        "type": "normal"
+      },
+      {
+        "name": "一心不乱",
+        "type": "gold"
+      },
+      {
+        "name": "惜しみなし",
+        "type": "normal"
+      },
+      {
+        "name": "影踏み",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "A",
+      "mile": "A",
+      "medium": "F",
+      "long": "G"
+    },
+    "style": {
+      "nige": "G",
+      "senko": "G",
+      "sashi": "C",
+      "oikomi": "A"
+    },
+    "growth": {
+      "speed": 20,
+      "stamina": 0,
+      "power": 10,
+      "guts": 0,
+      "wisdom": 0
+    },
+    "notes": "",
+    "savedAt": "2026-09-17T18:24:17.759Z"
   },
   {
     "id": "uma_1789656329402_jsuhj",
