@@ -1,67 +1,67 @@
 [
   {
-    "id": "uma_1789655726542_qdm79",
-    "name": "ナリタトップロード",
+    "id": "uma_1789655739047_d037m",
+    "name": "メジロアルダン",
     "imagePath": null,
     "skills": [
       {
-        "name": "Joy to the World",
+        "name": "一期の夢、刹那の飛翔",
         "type": "unique"
+      },
+      {
+        "name": "左回り○",
+        "type": "normal"
+      },
+      {
+        "name": "レースプランナー",
+        "type": "gold"
+      },
+      {
+        "name": "好位追走",
+        "type": "normal"
+      },
+      {
+        "name": "軽やかステップ",
+        "type": "normal"
       },
       {
         "name": "先行コーナー○",
         "type": "normal"
       },
       {
-        "name": "ウマ好み",
-        "type": "normal"
-      },
-      {
-        "name": "一意専心",
+        "name": "決死の覚悟",
         "type": "gold"
       },
       {
-        "name": "抜かりなし",
-        "type": "normal"
-      },
-      {
-        "name": "攻めの姿勢",
-        "type": "normal"
-      },
-      {
-        "name": "影従打破",
-        "type": "gold"
-      },
-      {
-        "name": "アグレッシブ",
+        "name": "ありったけ",
         "type": "normal"
       }
     ],
     "track": {
       "turf": "A",
-      "dirt": "G"
+      "dirt": "F"
     },
     "distance": {
-      "short": "G",
-      "mile": "C",
+      "short": "E",
+      "mile": "B",
       "medium": "A",
-      "long": "A"
+      "long": "D"
     },
     "style": {
-      "nige": "F",
+      "nige": "C",
       "senko": "A",
-      "sashi": "B",
-      "oikomi": "D"
+      "sashi": "D",
+      "oikomi": "G"
     },
     "growth": {
-      "speed": 0,
-      "stamina": 10,
-      "power": 20,
+      "speed": 10,
+      "stamina": 0,
+      "power": 0,
       "guts": 0,
-      "wisdom": 0
+      "wisdom": 20
     },
     "notes": "",
-    "savedAt": "2026-09-17T14:35:26.542Z"
+    "savedAt": "2026-09-17T14:35:39.047Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -3410,6 +3410,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T22:06:04.212Z"
+  },
+  {
+    "id": "uma_1789655726542_qdm79",
+    "name": "ナリタトップロード",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "Joy to the World",
+        "type": "unique"
+      },
+      {
+        "name": "先行コーナー○",
+        "type": "normal"
+      },
+      {
+        "name": "ウマ好み",
+        "type": "normal"
+      },
+      {
+        "name": "一意専心",
+        "type": "gold"
+      },
+      {
+        "name": "抜かりなし",
+        "type": "normal"
+      },
+      {
+        "name": "攻めの姿勢",
+        "type": "normal"
+      },
+      {
+        "name": "影従打破",
+        "type": "gold"
+      },
+      {
+        "name": "アグレッシブ",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "G",
+      "mile": "C",
+      "medium": "A",
+      "long": "A"
+    },
+    "style": {
+      "nige": "F",
+      "senko": "A",
+      "sashi": "B",
+      "oikomi": "D"
+    },
+    "growth": {
+      "speed": 0,
+      "stamina": 10,
+      "power": 20,
+      "guts": 0,
+      "wisdom": 0
+    },
+    "notes": "",
+    "savedAt": "2026-09-17T14:35:26.542Z"
   },
   {
     "id": "uma_1789596421605_c69dr",
