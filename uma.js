@@ -462,8 +462,8 @@ aptSearchLte.addEventListener('change', renderUmas);
 
 const searchNameInput = document.getElementById('searchNameInput');
 const searchSkillInput = document.getElementById('searchSkillInput');
-searchNameInput.addEventListener('input', renderUmas);
-searchSkillInput.addEventListener('input', renderUmas);
+searchNameInput.addEventListener('input', debounce(renderUmas, 150));
+searchSkillInput.addEventListener('input', debounce(renderUmas, 150));
 
 const GROWTH_FILTER_FIELDS = [
   { id: 'filterGrowthSpeed', key: 'speed' },
@@ -483,10 +483,30 @@ document.getElementById('resetSearchBtn').addEventListener('click', () => {
   renderUmas();
 });
 
+function debounce(fn, delay) {
+  let timer;
+  return (...args) => {
+    clearTimeout(timer);
+    timer = setTimeout(() => fn(...args), delay);
+  };
+}
+
+document.getElementById('entries').addEventListener('click', e => {
+  const editBtn = e.target.closest('.entry-edit');
+  if (editBtn) { startEditUma(editBtn.dataset.id); return; }
+  const delBtn = e.target.closest('.entry-del');
+  if (delBtn) {
+    const uma = allUmas.find(u => u.id === delBtn.dataset.id);
+    if (uma) askDeleteConfirm(uma, delBtn);
+    return;
+  }
+  const icon = e.target.closest('.uma-icon');
+  if (icon) openLightbox(icon.dataset.imageUrl);
+});
+
 function renderUmas() {
   const container = document.getElementById('entries');
   const emptyMsg = document.getElementById('emptyMsg');
-  container.innerHTML = '';
 
   document.getElementById('countLabel').textContent = allUmas.length + ' 頭 登録';
 
@@ -514,12 +534,14 @@ function renderUmas() {
   });
 
   if (!filtered.length) {
+    container.innerHTML = '';
     emptyMsg.style.display = 'block';
     emptyMsg.textContent = allUmas.length ? '該当する登録が見つかりません。' : 'まだ登録がありません。「＋ ウマ娘登録」からClaudeの出力を貼り付けるか、手入力して保存してください。';
     return;
   }
   emptyMsg.style.display = 'none';
 
+  const fragment = document.createDocumentFragment();
   filtered.forEach(uma => {
     const row = document.createElement('div');
     row.className = 'entry';
@@ -537,7 +559,7 @@ function renderUmas() {
     row.innerHTML = `
       <div class="entry-main">
         <div class="entry-name-row">
-          ${imageUrl ? `<img class="uma-icon" src="${escapeHtml(imageUrl)}" alt="${escapeHtml(uma.name)}" loading="lazy">` : ''}
+          ${imageUrl ? `<img class="uma-icon" src="${escapeHtml(imageUrl)}" data-image-url="${escapeHtml(imageUrl)}" alt="${escapeHtml(uma.name)}" loading="lazy">` : ''}
           <div class="entry-name">${escapeHtml(uma.name)}</div>
         </div>
         <div class="apt-group">
@@ -576,12 +598,10 @@ function renderUmas() {
         </div>
       </div>
     `;
-    row.querySelector('.entry-edit').addEventListener('click', () => startEditUma(uma.id));
-    row.querySelector('.entry-del').addEventListener('click', e => askDeleteConfirm(uma, e.currentTarget));
-    const icon = row.querySelector('.uma-icon');
-    if (icon) icon.addEventListener('click', () => openLightbox(imageUrl));
-    container.appendChild(row);
+    fragment.appendChild(row);
   });
+  container.innerHTML = '';
+  container.appendChild(fragment);
 }
 
 resetForm();
