@@ -1,39 +1,39 @@
 [
   {
-    "id": "uma_1789671044008_wyhgj",
-    "name": "キングヘイロー",
+    "id": "uma_1789671055909_3ffip",
+    "name": "ナイスネイチャ",
     "imagePath": null,
     "skills": [
       {
-        "name": "轟！トレセン応援団！！",
+        "name": "もちっと・ハレハレ",
         "type": "unique"
       },
       {
-        "name": "春一番",
+        "name": "良バ場○",
+        "type": "normal"
+      },
+      {
+        "name": "乗り換え上手",
         "type": "gold"
       },
       {
-        "name": "春ウマ娘○",
-        "type": "normal"
-      },
-      {
-        "name": "昇り龍",
-        "type": "gold"
-      },
-      {
-        "name": "外差し準備",
-        "type": "normal"
-      },
-      {
-        "name": "詰め寄り",
-        "type": "normal"
-      },
-      {
-        "name": "展開窺い",
+        "name": "差し切り体勢",
         "type": "normal"
       },
       {
         "name": "差し直線○",
+        "type": "normal"
+      },
+      {
+        "name": "いいとこ入った！",
+        "type": "gold"
+      },
+      {
+        "name": "スリップストリーム",
+        "type": "normal"
+      },
+      {
+        "name": "自制心",
         "type": "normal"
       }
     ],
@@ -42,26 +42,26 @@
       "dirt": "G"
     },
     "distance": {
-      "short": "A",
-      "mile": "B",
-      "medium": "B",
-      "long": "C"
+      "short": "G",
+      "mile": "C",
+      "medium": "A",
+      "long": "A"
     },
     "style": {
-      "nige": "G",
+      "nige": "F",
       "senko": "B",
       "sashi": "A",
       "oikomi": "D"
     },
     "growth": {
-      "speed": 10,
+      "speed": 14,
       "stamina": 0,
-      "power": 10,
-      "guts": 10,
-      "wisdom": 0
+      "power": 8,
+      "guts": 0,
+      "wisdom": 8
     },
     "notes": "",
-    "savedAt": "2026-09-17T18:50:44.008Z"
+    "savedAt": "2026-09-17T18:50:55.909Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -2306,6 +2306,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T20:09:43.322Z"
+  },
+  {
+    "id": "uma_1789671044008_wyhgj",
+    "name": "キングヘイロー",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "轟！トレセン応援団！！",
+        "type": "unique"
+      },
+      {
+        "name": "春一番",
+        "type": "gold"
+      },
+      {
+        "name": "春ウマ娘○",
+        "type": "normal"
+      },
+      {
+        "name": "昇り龍",
+        "type": "gold"
+      },
+      {
+        "name": "外差し準備",
+        "type": "normal"
+      },
+      {
+        "name": "詰め寄り",
+        "type": "normal"
+      },
+      {
+        "name": "展開窺い",
+        "type": "normal"
+      },
+      {
+        "name": "差し直線○",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "A",
+      "mile": "B",
+      "medium": "B",
+      "long": "C"
+    },
+    "style": {
+      "nige": "G",
+      "senko": "B",
+      "sashi": "A",
+      "oikomi": "D"
+    },
+    "growth": {
+      "speed": 10,
+      "stamina": 0,
+      "power": 10,
+      "guts": 10,
+      "wisdom": 0
+    },
+    "notes": "",
+    "savedAt": "2026-09-17T18:50:44.008Z"
   },
   {
     "id": "uma_1789671031495_y1v09",
