@@ -1,69 +1,5 @@
 [
   {
-    "id": "uma_1789671817672_scss2",
-    "name": "ハルウララ",
-    "imagePath": null,
-    "skills": [
-      {
-        "name": "113転び114起き",
-        "type": "unique"
-      },
-      {
-        "name": "雪の日○",
-        "type": "normal"
-      },
-      {
-        "name": "注目の踊り子",
-        "type": "gold"
-      },
-      {
-        "name": "ポジションセンス",
-        "type": "normal"
-      },
-      {
-        "name": "負けん気",
-        "type": "normal"
-      },
-      {
-        "name": "努力家",
-        "type": "gold"
-      },
-      {
-        "name": "がんばり屋",
-        "type": "normal"
-      },
-      {
-        "name": "ふり紋り",
-        "type": "normal"
-      }
-    ],
-    "track": {
-      "turf": "G",
-      "dirt": "A"
-    },
-    "distance": {
-      "short": "A",
-      "mile": "A",
-      "medium": "G",
-      "long": "G"
-    },
-    "style": {
-      "nige": "G",
-      "senko": "G",
-      "sashi": "A",
-      "oikomi": "B"
-    },
-    "growth": {
-      "speed": 0,
-      "stamina": 0,
-      "power": 20,
-      "guts": 10,
-      "wisdom": 0
-    },
-    "notes": "",
-    "savedAt": "2026-09-17T19:03:37.672Z"
-  },
-  {
     "id": "uma_1789590469435_fqwgt",
     "name": "アイネスフウジン",
     "imagePath": null,
@@ -5716,70 +5652,6 @@
     "savedAt": "2026-09-17T18:28:01.473Z"
   },
   {
-    "id": "uma_1789656242170_g7zj4",
-    "name": "タマモクロス",
-    "imagePath": null,
-    "skills": [
-      {
-        "name": "白い稲妻、見せたるで！",
-        "type": "unique"
-      },
-      {
-        "name": "好位追走",
-        "type": "normal"
-      },
-      {
-        "name": "迅速果断",
-        "type": "gold"
-      },
-      {
-        "name": "位置取り押し上げ",
-        "type": "normal"
-      },
-      {
-        "name": "直線一気",
-        "type": "normal"
-      },
-      {
-        "name": "イナズマステップ",
-        "type": "normal"
-      },
-      {
-        "name": "尻尾の滝登り",
-        "type": "gold"
-      },
-      {
-        "name": "尻尾上がり",
-        "type": "normal"
-      }
-    ],
-    "track": {
-      "turf": "A",
-      "dirt": "F"
-    },
-    "distance": {
-      "short": "G",
-      "mile": "E",
-      "medium": "A",
-      "long": "A"
-    },
-    "style": {
-      "nige": "G",
-      "senko": "A",
-      "sashi": "A",
-      "oikomi": "A"
-    },
-    "growth": {
-      "speed": 0,
-      "stamina": 20,
-      "power": 10,
-      "guts": 0,
-      "wisdom": 0
-    },
-    "notes": "",
-    "savedAt": "2026-09-17T14:44:02.170Z"
-  },
-  {
     "id": "uma_1789590495978_lfeso",
     "name": "ツインターボ",
     "imagePath": null,
@@ -7262,6 +7134,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-17T14:43:20.787Z"
+  },
+  {
+    "id": "uma_1789671817672_scss2",
+    "name": "ハルウララ",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "113転び114起き",
+        "type": "unique"
+      },
+      {
+        "name": "雪の日○",
+        "type": "normal"
+      },
+      {
+        "name": "注目の踊り子",
+        "type": "gold"
+      },
+      {
+        "name": "ポジションセンス",
+        "type": "normal"
+      },
+      {
+        "name": "負けん気",
+        "type": "normal"
+      },
+      {
+        "name": "努力家",
+        "type": "gold"
+      },
+      {
+        "name": "がんばり屋",
+        "type": "normal"
+      },
+      {
+        "name": "ふり紋り",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "G",
+      "dirt": "A"
+    },
+    "distance": {
+      "short": "A",
+      "mile": "A",
+      "medium": "G",
+      "long": "G"
+    },
+    "style": {
+      "nige": "G",
+      "senko": "G",
+      "sashi": "A",
+      "oikomi": "B"
+    },
+    "growth": {
+      "speed": 0,
+      "stamina": 0,
+      "power": 20,
+      "guts": 10,
+      "wisdom": 0
+    },
+    "notes": "",
+    "savedAt": "2026-09-17T19:03:37.672Z"
   },
   {
     "id": "uma_1789671695204_hdj9i",
