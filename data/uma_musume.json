@@ -1,27 +1,19 @@
 [
   {
-    "id": "uma_1789671183388_0u1yy",
-    "name": "メジロドーベル",
+    "id": "uma_1789671194764_fvocw",
+    "name": "マンハッタンカフェ",
     "imagePath": null,
     "skills": [
       {
-        "name": "彼方、その先へ…",
+        "name": "迷える時も、幽かなる時も",
         "type": "unique"
       },
       {
-        "name": "淀の申し子",
+        "name": "内的体験",
         "type": "gold"
       },
       {
-        "name": "京都レース場○",
-        "type": "normal"
-      },
-      {
-        "name": "テンポアップ",
-        "type": "normal"
-      },
-      {
-        "name": "軽やかステップ",
+        "name": "内弁慶",
         "type": "normal"
       },
       {
@@ -29,11 +21,19 @@
         "type": "normal"
       },
       {
-        "name": "八方にらみ",
+        "name": "進出開始",
+        "type": "normal"
+      },
+      {
+        "name": "絶塵",
         "type": "gold"
       },
       {
-        "name": "鋭い眼光",
+        "name": "影より速く",
+        "type": "normal"
+      },
+      {
+        "name": "追尾",
         "type": "normal"
       }
     ],
@@ -42,26 +42,26 @@
       "dirt": "G"
     },
     "distance": {
-      "short": "E",
-      "mile": "A",
-      "medium": "A",
-      "long": "F"
+      "short": "G",
+      "mile": "F",
+      "medium": "B",
+      "long": "A"
     },
     "style": {
-      "nige": "C",
-      "senko": "B",
+      "nige": "G",
+      "senko": "C",
       "sashi": "A",
-      "oikomi": "G"
+      "oikomi": "C"
     },
     "growth": {
-      "speed": 10,
-      "stamina": 0,
-      "power": 0,
-      "guts": 0,
-      "wisdom": 20
+      "speed": 0,
+      "stamina": 5,
+      "power": 10,
+      "guts": 5,
+      "wisdom": 10
     },
     "notes": "",
-    "savedAt": "2026-09-17T18:53:03.388Z"
+    "savedAt": "2026-09-17T18:53:14.764Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -8862,6 +8862,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-17T14:35:39.047Z"
+  },
+  {
+    "id": "uma_1789671183388_0u1yy",
+    "name": "メジロドーベル",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "彼方、その先へ…",
+        "type": "unique"
+      },
+      {
+        "name": "淀の申し子",
+        "type": "gold"
+      },
+      {
+        "name": "京都レース場○",
+        "type": "normal"
+      },
+      {
+        "name": "テンポアップ",
+        "type": "normal"
+      },
+      {
+        "name": "軽やかステップ",
+        "type": "normal"
+      },
+      {
+        "name": "差し直線○",
+        "type": "normal"
+      },
+      {
+        "name": "八方にらみ",
+        "type": "gold"
+      },
+      {
+        "name": "鋭い眼光",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "E",
+      "mile": "A",
+      "medium": "A",
+      "long": "F"
+    },
+    "style": {
+      "nige": "C",
+      "senko": "B",
+      "sashi": "A",
+      "oikomi": "G"
+    },
+    "growth": {
+      "speed": 10,
+      "stamina": 0,
+      "power": 0,
+      "guts": 0,
+      "wisdom": 20
+    },
+    "notes": "",
+    "savedAt": "2026-09-17T18:53:03.388Z"
   },
   {
     "id": "uma_1789590311095_tqh9m",
