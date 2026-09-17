@@ -1,39 +1,39 @@
 [
   {
-    "id": "uma_1789656468692_888xi",
-    "name": "ナカヤマフェスタ",
+    "id": "uma_1789669418573_0x2nv",
+    "name": "ウインバリアシオン",
     "imagePath": null,
     "skills": [
       {
-        "name": "運否、聖夜の星に賭ける",
+        "name": "鋭気のアレグロ",
         "type": "unique"
       },
       {
-        "name": "トップギア",
+        "name": "徹底マーク○",
+        "type": "normal"
+      },
+      {
+        "name": "まなざし",
+        "type": "normal"
+      },
+      {
+        "name": "ネバーギブアップ",
         "type": "gold"
       },
       {
-        "name": "キレる脚",
+        "name": "折れない心",
         "type": "normal"
       },
       {
-        "name": "型破り",
+        "name": "推力十分",
         "type": "normal"
       },
       {
-        "name": "一張一弛",
+        "name": "肉薄",
         "type": "gold"
       },
       {
-        "name": "切り替え上手",
-        "type": "normal"
-      },
-      {
-        "name": "急襲",
-        "type": "normal"
-      },
-      {
-        "name": "躍動",
+        "name": "影踏み",
         "type": "normal"
       }
     ],
@@ -43,15 +43,15 @@
     },
     "distance": {
       "short": "G",
-      "mile": "C",
+      "mile": "E",
       "medium": "A",
-      "long": "B"
+      "long": "A"
     },
     "style": {
       "nige": "G",
-      "senko": "A",
+      "senko": "E",
       "sashi": "A",
-      "oikomi": "D"
+      "oikomi": "A"
     },
     "growth": {
       "speed": 10,
@@ -61,7 +61,7 @@
       "wisdom": 0
     },
     "notes": "",
-    "savedAt": "2026-09-17T14:47:48.692Z"
+    "savedAt": "2026-09-17T18:23:38.573Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -4314,6 +4314,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-17T14:47:36.681Z"
+  },
+  {
+    "id": "uma_1789656468692_888xi",
+    "name": "ナカヤマフェスタ",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "運否、聖夜の星に賭ける",
+        "type": "unique"
+      },
+      {
+        "name": "トップギア",
+        "type": "gold"
+      },
+      {
+        "name": "キレる脚",
+        "type": "normal"
+      },
+      {
+        "name": "型破り",
+        "type": "normal"
+      },
+      {
+        "name": "一張一弛",
+        "type": "gold"
+      },
+      {
+        "name": "切り替え上手",
+        "type": "normal"
+      },
+      {
+        "name": "急襲",
+        "type": "normal"
+      },
+      {
+        "name": "躍動",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "G",
+      "mile": "C",
+      "medium": "A",
+      "long": "B"
+    },
+    "style": {
+      "nige": "G",
+      "senko": "A",
+      "sashi": "A",
+      "oikomi": "D"
+    },
+    "growth": {
+      "speed": 10,
+      "stamina": 0,
+      "power": 10,
+      "guts": 10,
+      "wisdom": 0
+    },
+    "notes": "",
+    "savedAt": "2026-09-17T14:47:48.692Z"
   },
   {
     "id": "uma_1789656398505_jusgv",
