@@ -454,6 +454,10 @@ function getFieldTerms(inputId, tags) {
 setupTagInput('searchRequiredBox', 'searchRequiredInput', requiredTags, 'required');
 setupTagInput('searchOptionalBox', 'searchOptionalInput', optionalTags, 'optional');
 
+// --- 名前検索 ---
+const searchNameInput = document.getElementById('searchNameInput');
+searchNameInput.addEventListener('input', renderCards);
+
 // --- タイプ絞り込み ---
 document.querySelectorAll('.typeFilter').forEach(el => el.addEventListener('change', renderCards));
 function getSelectedTypeFilters() {
@@ -474,11 +478,13 @@ function renderCards() {
 
   document.getElementById('countLabel').textContent = allCards.length + ' 枚 登録';
 
+  const nameKeyword = searchNameInput.value.trim().toLowerCase();
   const requiredTerms = getFieldTerms('searchRequiredInput', requiredTags);
   const optionalTerms = getFieldTerms('searchOptionalInput', optionalTags);
   const typeFilters = getSelectedTypeFilters();
 
   const filtered = allCards.filter(card => {
+    if (nameKeyword && !(card.name || '').toLowerCase().includes(nameKeyword)) return false;
     if (typeFilters.length && !(card.types || []).some(t => typeFilters.includes(t))) return false;
     if (requiredTerms.length || optionalTerms.length) {
       const hay = [card.name, ...cardSkillNames(card)].filter(Boolean).join(' ').toLowerCase();
