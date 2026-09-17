@@ -1,11 +1,11 @@
 [
   {
-    "id": "uma_1789656375724_yevyi",
-    "name": "ツルマルツヨシ",
+    "id": "uma_1789656398505_jusgv",
+    "name": "ナカヤマフェスタ",
     "imagePath": null,
     "skills": [
       {
-        "name": "燃え盛るは絶対の意志",
+        "name": "剣ヶ峰より、狂気に嗤え",
         "type": "unique"
       },
       {
@@ -13,55 +13,59 @@
         "type": "normal"
       },
       {
-        "name": "光芒円刃",
+        "name": "差し直線○",
+        "type": "normal"
+      },
+      {
+        "name": "ありったけ",
+        "type": "normal"
+      },
+      {
+        "name": "博打うち",
         "type": "gold"
       },
       {
-        "name": "中距離コーナー○",
+        "name": "あやしげな作戦",
         "type": "normal"
       },
       {
-        "name": "先行直線○",
-        "type": "normal"
-      },
-      {
-        "name": "勇迅円刃",
+        "name": "勝負師",
         "type": "gold"
       },
       {
-        "name": "先行コーナー○",
+        "name": "やまっけ",
         "type": "normal"
       },
       {
-        "name": "躍動",
+        "name": "星の煌き",
         "type": "normal"
       }
     ],
     "track": {
       "turf": "A",
-      "dirt": "F"
+      "dirt": "G"
     },
     "distance": {
-      "short": "F",
-      "mile": "D",
+      "short": "G",
+      "mile": "C",
       "medium": "A",
-      "long": "C"
+      "long": "B"
     },
     "style": {
       "nige": "G",
       "senko": "A",
       "sashi": "A",
-      "oikomi": "E"
+      "oikomi": "D"
     },
     "growth": {
-      "speed": 0,
-      "stamina": 0,
-      "power": 20,
-      "guts": 10,
+      "speed": 10,
+      "stamina": 10,
+      "power": 10,
+      "guts": 0,
       "wisdom": 0
     },
     "notes": "",
-    "savedAt": "2026-09-17T14:46:15.724Z"
+    "savedAt": "2026-09-17T14:46:38.505Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -3922,6 +3926,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T20:28:15.978Z"
+  },
+  {
+    "id": "uma_1789656375724_yevyi",
+    "name": "ツルマルツヨシ",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "燃え盛るは絶対の意志",
+        "type": "unique"
+      },
+      {
+        "name": "中距離直線○",
+        "type": "normal"
+      },
+      {
+        "name": "光芒円刃",
+        "type": "gold"
+      },
+      {
+        "name": "中距離コーナー○",
+        "type": "normal"
+      },
+      {
+        "name": "先行直線○",
+        "type": "normal"
+      },
+      {
+        "name": "勇迅円刃",
+        "type": "gold"
+      },
+      {
+        "name": "先行コーナー○",
+        "type": "normal"
+      },
+      {
+        "name": "躍動",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "F"
+    },
+    "distance": {
+      "short": "F",
+      "mile": "D",
+      "medium": "A",
+      "long": "C"
+    },
+    "style": {
+      "nige": "G",
+      "senko": "A",
+      "sashi": "A",
+      "oikomi": "E"
+    },
+    "growth": {
+      "speed": 0,
+      "stamina": 0,
+      "power": 20,
+      "guts": 10,
+      "wisdom": 0
+    },
+    "notes": "",
+    "savedAt": "2026-09-17T14:46:15.724Z"
   },
   {
     "id": "uma_1789596380346_lyfdw",
