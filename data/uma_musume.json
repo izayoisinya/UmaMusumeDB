@@ -1,39 +1,39 @@
 [
   {
-    "id": "uma_1789670954458_u5foq",
-    "name": "カワカミプリンセス",
+    "id": "uma_1789670969401_a365y",
+    "name": "エイシンフラッシュ",
     "imagePath": null,
     "skills": [
       {
-        "name": "姫たるもの、勝利をこの手に",
+        "name": "潮風のGeschenk",
         "type": "unique"
       },
       {
-        "name": "根幹距離○",
-        "type": "normal"
-      },
-      {
-        "name": "ノンストップガール",
+        "name": "府中の申し子",
         "type": "gold"
       },
       {
-        "name": "垂れウマ回避",
-        "type": "normal"
-      },
-      {
-        "name": "昇り龍",
-        "type": "gold"
-      },
-      {
-        "name": "外差し準備",
-        "type": "normal"
-      },
-      {
-        "name": "負けん気",
+        "name": "東京レース場○",
         "type": "normal"
       },
       {
         "name": "差し直線○",
+        "type": "normal"
+      },
+      {
+        "name": "勇往邁進",
+        "type": "gold"
+      },
+      {
+        "name": "フルスロットル",
+        "type": "normal"
+      },
+      {
+        "name": "キレる脚",
+        "type": "normal"
+      },
+      {
+        "name": "進出開始",
         "type": "normal"
       }
     ],
@@ -42,26 +42,26 @@
       "dirt": "G"
     },
     "distance": {
-      "short": "D",
-      "mile": "B",
+      "short": "G",
+      "mile": "F",
       "medium": "A",
-      "long": "F"
+      "long": "A"
     },
     "style": {
       "nige": "G",
-      "senko": "C",
+      "senko": "B",
       "sashi": "A",
-      "oikomi": "D"
+      "oikomi": "C"
     },
     "growth": {
       "speed": 0,
-      "stamina": 0,
-      "power": 10,
-      "guts": 20,
-      "wisdom": 0
+      "stamina": 10,
+      "power": 0,
+      "guts": 10,
+      "wisdom": 10
     },
     "notes": "",
-    "savedAt": "2026-09-17T18:49:14.458Z"
+    "savedAt": "2026-09-17T18:49:29.401Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -1858,6 +1858,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T22:08:51.155Z"
+  },
+  {
+    "id": "uma_1789670954458_u5foq",
+    "name": "カワカミプリンセス",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "姫たるもの、勝利をこの手に",
+        "type": "unique"
+      },
+      {
+        "name": "根幹距離○",
+        "type": "normal"
+      },
+      {
+        "name": "ノンストップガール",
+        "type": "gold"
+      },
+      {
+        "name": "垂れウマ回避",
+        "type": "normal"
+      },
+      {
+        "name": "昇り龍",
+        "type": "gold"
+      },
+      {
+        "name": "外差し準備",
+        "type": "normal"
+      },
+      {
+        "name": "負けん気",
+        "type": "normal"
+      },
+      {
+        "name": "差し直線○",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "D",
+      "mile": "B",
+      "medium": "A",
+      "long": "F"
+    },
+    "style": {
+      "nige": "G",
+      "senko": "C",
+      "sashi": "A",
+      "oikomi": "D"
+    },
+    "growth": {
+      "speed": 0,
+      "stamina": 0,
+      "power": 10,
+      "guts": 20,
+      "wisdom": 0
+    },
+    "notes": "",
+    "savedAt": "2026-09-17T18:49:14.458Z"
   },
   {
     "id": "uma_1789670943313_qb9ah",
