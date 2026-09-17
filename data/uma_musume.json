@@ -1,67 +1,67 @@
 [
   {
-    "id": "uma_1789656414369_lpg2z",
-    "name": "クロノジェネシス",
+    "id": "uma_1789656427137_tqi5t",
+    "name": "ヤエノムテキ",
     "imagePath": null,
     "skills": [
       {
-        "name": "Weaving History",
+        "name": "烈火繚乱、無敵之舞",
         "type": "unique"
       },
       {
-        "name": "先行直線○",
+        "name": "コーナー加速○",
         "type": "normal"
       },
       {
-        "name": "食らいつき",
-        "type": "normal"
-      },
-      {
-        "name": "流星光底",
+        "name": "アガッてきた！",
         "type": "gold"
       },
       {
-        "name": "飛躍の予感",
+        "name": "ベースアップ",
         "type": "normal"
       },
       {
-        "name": "夢の舞台へ",
+        "name": "勝利への執念",
         "type": "gold"
       },
       {
-        "name": "憧れを越えて",
+        "name": "食い下がり",
         "type": "normal"
       },
       {
-        "name": "光明",
+        "name": "先行コーナー○",
+        "type": "normal"
+      },
+      {
+        "name": "闘争心",
         "type": "normal"
       }
     ],
     "track": {
       "turf": "A",
-      "dirt": "G"
+      "dirt": "E"
     },
     "distance": {
       "short": "G",
       "mile": "B",
       "medium": "A",
-      "long": "A"
+      "long": "E"
     },
     "style": {
-      "nige": "G",
+      "nige": "F",
       "senko": "A",
-      "sashi": "C",
-      "oikomi": "E"
+      "sashi": "A",
+      "oikomi": "G"
     },
     "growth": {
-      "speed": 10,
-      "stamina": 10,
-      "power": 0,
+      "speed": 0,
+      "stamina": 0,
+      "power": 20,
       "guts": 10,
       "wisdom": 0
     },
     "notes": "",
-    "savedAt": "2026-09-17T14:46:54.369Z"
+    "savedAt": "2026-09-17T14:47:07.137Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -1666,6 +1666,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-17T14:39:01.555Z"
+  },
+  {
+    "id": "uma_1789656414369_lpg2z",
+    "name": "クロノジェネシス",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "Weaving History",
+        "type": "unique"
+      },
+      {
+        "name": "先行直線○",
+        "type": "normal"
+      },
+      {
+        "name": "食らいつき",
+        "type": "normal"
+      },
+      {
+        "name": "流星光底",
+        "type": "gold"
+      },
+      {
+        "name": "飛躍の予感",
+        "type": "normal"
+      },
+      {
+        "name": "夢の舞台へ",
+        "type": "gold"
+      },
+      {
+        "name": "憧れを越えて",
+        "type": "normal"
+      },
+      {
+        "name": "光明",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "G",
+      "mile": "B",
+      "medium": "A",
+      "long": "A"
+    },
+    "style": {
+      "nige": "G",
+      "senko": "A",
+      "sashi": "C",
+      "oikomi": "E"
+    },
+    "growth": {
+      "speed": 10,
+      "stamina": 10,
+      "power": 0,
+      "guts": 10,
+      "wisdom": 0
+    },
+    "notes": "",
+    "savedAt": "2026-09-17T14:46:54.369Z"
   },
   {
     "id": "uma_1789596776211_4oepk",
