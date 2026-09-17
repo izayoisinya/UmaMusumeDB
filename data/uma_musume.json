@@ -1,67 +1,67 @@
 [
   {
-    "id": "uma_1789656427137_tqi5t",
-    "name": "ヤエノムテキ",
+    "id": "uma_1789656442492_v2ruc",
+    "name": "メジロラモーヌ",
     "imagePath": null,
     "skills": [
       {
-        "name": "烈火繚乱、無敵之舞",
+        "name": "解けぬ結い目",
         "type": "unique"
       },
       {
-        "name": "コーナー加速○",
-        "type": "normal"
-      },
-      {
-        "name": "アガッてきた！",
+        "name": "マイルの支配者",
         "type": "gold"
       },
       {
-        "name": "ベースアップ",
+        "name": "積極策",
         "type": "normal"
       },
       {
-        "name": "勝利への執念",
+        "name": "真っ向勝負",
+        "type": "normal"
+      },
+      {
+        "name": "アンストッパブル",
         "type": "gold"
       },
       {
-        "name": "食い下がり",
+        "name": "攻めの姿勢",
         "type": "normal"
       },
       {
-        "name": "先行コーナー○",
+        "name": "アグレッシブ",
         "type": "normal"
       },
       {
-        "name": "闘争心",
+        "name": "己を信じて",
         "type": "normal"
       }
     ],
     "track": {
       "turf": "A",
-      "dirt": "E"
+      "dirt": "F"
     },
     "distance": {
-      "short": "G",
-      "mile": "B",
+      "short": "B",
+      "mile": "A",
       "medium": "A",
       "long": "E"
     },
     "style": {
-      "nige": "F",
+      "nige": "G",
       "senko": "A",
       "sashi": "A",
-      "oikomi": "G"
+      "oikomi": "F"
     },
     "growth": {
       "speed": 0,
       "stamina": 0,
-      "power": 20,
-      "guts": 10,
-      "wisdom": 0
+      "power": 15,
+      "guts": 5,
+      "wisdom": 10
     },
     "notes": "",
-    "savedAt": "2026-09-17T14:47:07.137Z"
+    "savedAt": "2026-09-17T14:47:22.492Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -6494,6 +6494,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-17T14:35:04.198Z"
+  },
+  {
+    "id": "uma_1789656427137_tqi5t",
+    "name": "ヤエノムテキ",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "烈火繚乱、無敵之舞",
+        "type": "unique"
+      },
+      {
+        "name": "コーナー加速○",
+        "type": "normal"
+      },
+      {
+        "name": "アガッてきた！",
+        "type": "gold"
+      },
+      {
+        "name": "ベースアップ",
+        "type": "normal"
+      },
+      {
+        "name": "勝利への執念",
+        "type": "gold"
+      },
+      {
+        "name": "食い下がり",
+        "type": "normal"
+      },
+      {
+        "name": "先行コーナー○",
+        "type": "normal"
+      },
+      {
+        "name": "闘争心",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "E"
+    },
+    "distance": {
+      "short": "G",
+      "mile": "B",
+      "medium": "A",
+      "long": "E"
+    },
+    "style": {
+      "nige": "F",
+      "senko": "A",
+      "sashi": "A",
+      "oikomi": "G"
+    },
+    "growth": {
+      "speed": 0,
+      "stamina": 0,
+      "power": 20,
+      "guts": 10,
+      "wisdom": 0
+    },
+    "notes": "",
+    "savedAt": "2026-09-17T14:47:07.137Z"
   },
   {
     "id": "uma_1789656302001_f79nw",
