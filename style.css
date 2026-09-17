@@ -869,3 +869,12 @@ mark.search-hit {
 .search-popup #searchPanel .count-filter-row:first-child {
   margin-top: 0;
 }
+
+@media (orientation: landscape) {
+  .uma-page .entries {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    align-items: start;
+  }
+}
