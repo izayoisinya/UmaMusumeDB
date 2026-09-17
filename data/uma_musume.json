@@ -1,39 +1,39 @@
 [
   {
-    "id": "uma_1789656215469_d9ikh",
+    "id": "uma_1789656227549_btfd7",
     "name": "スーパークリーク",
     "imagePath": null,
     "skills": [
       {
-        "name": "ぐるぐるマミートリック♡",
+        "name": "ピュリティオブハート",
         "type": "unique"
       },
       {
-        "name": "弧線のプロフェッサー",
+        "name": "円弧のマエストロ",
         "type": "gold"
       },
       {
-        "name": "コーナー巧者○",
+        "name": "コーナー回復○",
         "type": "normal"
       },
       {
-        "name": "中距離直線○",
+        "name": "ベースアップ",
         "type": "normal"
       },
       {
-        "name": "魅惑のささやき",
+        "name": "深呼吸",
+        "type": "normal"
+      },
+      {
+        "name": "先行ためらい",
+        "type": "normal"
+      },
+      {
+        "name": "幻惑のかく乱",
         "type": "gold"
       },
       {
-        "name": "ささやき",
-        "type": "normal"
-      },
-      {
-        "name": "先行コーナー○",
-        "type": "normal"
-      },
-      {
-        "name": "栄養補給",
+        "name": "かく乱",
         "type": "normal"
       }
     ],
@@ -54,14 +54,14 @@
       "oikomi": "G"
     },
     "growth": {
-      "speed": 14,
-      "stamina": 8,
+      "speed": 0,
+      "stamina": 10,
       "power": 0,
-      "guts": 8,
-      "wisdom": 0
+      "guts": 0,
+      "wisdom": 20
     },
     "notes": "",
-    "savedAt": "2026-09-17T14:43:35.469Z"
+    "savedAt": "2026-09-17T14:43:47.549Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -2762,6 +2762,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-17T14:36:21.491Z"
+  },
+  {
+    "id": "uma_1789656215469_d9ikh",
+    "name": "スーパークリーク",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "ぐるぐるマミートリック♡",
+        "type": "unique"
+      },
+      {
+        "name": "弧線のプロフェッサー",
+        "type": "gold"
+      },
+      {
+        "name": "コーナー巧者○",
+        "type": "normal"
+      },
+      {
+        "name": "中距離直線○",
+        "type": "normal"
+      },
+      {
+        "name": "魅惑のささやき",
+        "type": "gold"
+      },
+      {
+        "name": "ささやき",
+        "type": "normal"
+      },
+      {
+        "name": "先行コーナー○",
+        "type": "normal"
+      },
+      {
+        "name": "栄養補給",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "G",
+      "mile": "G",
+      "medium": "A",
+      "long": "A"
+    },
+    "style": {
+      "nige": "D",
+      "senko": "A",
+      "sashi": "B",
+      "oikomi": "G"
+    },
+    "growth": {
+      "speed": 14,
+      "stamina": 8,
+      "power": 0,
+      "guts": 8,
+      "wisdom": 0
+    },
+    "notes": "",
+    "savedAt": "2026-09-17T14:43:35.469Z"
   },
   {
     "id": "uma_1789596574281_sf674",
