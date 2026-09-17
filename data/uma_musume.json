@@ -1,5 +1,69 @@
 [
   {
+    "id": "uma_1789656168925_e1y6s",
+    "name": "ファレノプシス",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "烈々と咲く",
+        "type": "unique"
+      },
+      {
+        "name": "右回り○",
+        "type": "normal"
+      },
+      {
+        "name": "至高のダウンヒラー",
+        "type": "gold"
+      },
+      {
+        "name": "下り坂巧者",
+        "type": "normal"
+      },
+      {
+        "name": "大立ち回り",
+        "type": "normal"
+      },
+      {
+        "name": "流れに任せて",
+        "type": "normal"
+      },
+      {
+        "name": "剣抜弩張",
+        "type": "gold"
+      },
+      {
+        "name": "立ち合い",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "F"
+    },
+    "distance": {
+      "short": "D",
+      "mile": "A",
+      "medium": "A",
+      "long": "F"
+    },
+    "style": {
+      "nige": "G",
+      "senko": "A",
+      "sashi": "A",
+      "oikomi": "C"
+    },
+    "growth": {
+      "speed": 0,
+      "stamina": 10,
+      "power": 10,
+      "guts": 10,
+      "wisdom": 0
+    },
+    "notes": "",
+    "savedAt": "2026-09-17T14:42:48.925Z"
+  },
+  {
     "id": "uma_1789590469435_fqwgt",
     "name": "アイネスフウジン",
     "imagePath": null,
