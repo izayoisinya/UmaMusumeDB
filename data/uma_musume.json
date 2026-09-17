@@ -1,67 +1,67 @@
 [
   {
-    "id": "uma_1789655678464_ym87y",
-    "name": "シーキングサパール",
+    "id": "uma_1789655691111_ti3zk",
+    "name": "メジロマックイーン",
     "imagePath": null,
     "skills": [
       {
-        "name": "Oh!bento-magic☆",
+        "name": "貴顕の使命を果たすべく",
         "type": "unique"
       },
       {
-        "name": "一陣の風",
+        "name": "春ウマ娘○",
+        "type": "normal"
+      },
+      {
+        "name": "余裕綽々",
         "type": "gold"
       },
       {
-        "name": "直線加速",
+        "name": "スタミナキープ",
         "type": "normal"
       },
       {
-        "name": "負けん気",
+        "name": "長距離コーナー○",
         "type": "normal"
       },
       {
-        "name": "食らいつき",
-        "type": "normal"
-      },
-      {
-        "name": "心弾んで",
-        "type": "normal"
-      },
-      {
-        "name": "ネバーギブアップ",
+        "name": "先陣の心得",
         "type": "gold"
       },
       {
-        "name": "折れない心",
+        "name": "リードキープ",
+        "type": "normal"
+      },
+      {
+        "name": "栄養補給",
         "type": "normal"
       }
     ],
     "track": {
       "turf": "A",
-      "dirt": "F"
+      "dirt": "E"
     },
     "distance": {
-      "short": "A",
-      "mile": "A",
-      "medium": "E",
-      "long": "G"
+      "short": "G",
+      "mile": "F",
+      "medium": "A",
+      "long": "A"
     },
     "style": {
-      "nige": "C",
+      "nige": "B",
       "senko": "A",
-      "sashi": "A",
-      "oikomi": "B"
+      "sashi": "D",
+      "oikomi": "F"
     },
     "growth": {
-      "speed": 10,
-      "stamina": 0,
-      "power": 13,
+      "speed": 0,
+      "stamina": 20,
+      "power": 0,
       "guts": 0,
-      "wisdom": 7
+      "wisdom": 10
     },
     "notes": "",
-    "savedAt": "2026-09-17T14:34:38.464Z"
+    "savedAt": "2026-09-17T14:34:51.111Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -2058,6 +2058,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T20:18:59.435Z"
+  },
+  {
+    "id": "uma_1789655678464_ym87y",
+    "name": "シーキングサパール",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "Oh!bento-magic☆",
+        "type": "unique"
+      },
+      {
+        "name": "一陣の風",
+        "type": "gold"
+      },
+      {
+        "name": "直線加速",
+        "type": "normal"
+      },
+      {
+        "name": "負けん気",
+        "type": "normal"
+      },
+      {
+        "name": "食らいつき",
+        "type": "normal"
+      },
+      {
+        "name": "心弾んで",
+        "type": "normal"
+      },
+      {
+        "name": "ネバーギブアップ",
+        "type": "gold"
+      },
+      {
+        "name": "折れない心",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "F"
+    },
+    "distance": {
+      "short": "A",
+      "mile": "A",
+      "medium": "E",
+      "long": "G"
+    },
+    "style": {
+      "nige": "C",
+      "senko": "A",
+      "sashi": "A",
+      "oikomi": "B"
+    },
+    "growth": {
+      "speed": 10,
+      "stamina": 0,
+      "power": 13,
+      "guts": 0,
+      "wisdom": 7
+    },
+    "notes": "",
+    "savedAt": "2026-09-17T14:34:38.464Z"
   },
   {
     "id": "uma_1789597176143_bckdm",
