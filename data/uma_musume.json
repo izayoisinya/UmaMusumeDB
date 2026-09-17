@@ -1,57 +1,57 @@
 [
   {
-    "id": "uma_1789671122075_1sax7",
-    "name": "ビコーペガサス",
+    "id": "uma_1789671131367_10mm8",
+    "name": "バンブーメモリー",
     "imagePath": null,
     "skills": [
       {
-        "name": "疾風爆走ペガサスダッシュ！",
+        "name": "熱血！！風紀アタック",
         "type": "unique"
       },
       {
-        "name": "迅速果断",
+        "name": "ペースアップ",
+        "type": "normal"
+      },
+      {
+        "name": "昇り龍",
         "type": "gold"
       },
       {
-        "name": "位置取り押し上げ",
+        "name": "外差し準備",
         "type": "normal"
       },
       {
-        "name": "スプリントギア",
+        "name": "短距離コーナー○",
         "type": "normal"
       },
       {
-        "name": "電撃の煌めき",
+        "name": "破竹の勢い",
         "type": "gold"
       },
       {
-        "name": "詰め寄り",
+        "name": "気合十分",
         "type": "normal"
       },
       {
-        "name": "仕掛け準備",
-        "type": "normal"
-      },
-      {
-        "name": "差し直線○",
+        "name": "恐れぬ心",
         "type": "normal"
       }
     ],
     "track": {
       "turf": "A",
-      "dirt": "E"
+      "dirt": "D"
     },
     "distance": {
       "short": "A",
-      "mile": "B",
-      "medium": "G",
+      "mile": "A",
+      "medium": "C",
       "long": "G"
     },
     "style": {
       "nige": "G",
       "senko": "E",
       "sashi": "A",
-      "oikomi": "B"
+      "oikomi": "C"
     },
     "growth": {
       "speed": 10,
@@ -61,7 +61,7 @@
       "wisdom": 0
     },
     "notes": "",
-    "savedAt": "2026-09-17T18:52:02.075Z"
+    "savedAt": "2026-09-17T18:52:11.367Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -6942,6 +6942,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-17T14:43:20.787Z"
+  },
+  {
+    "id": "uma_1789671122075_1sax7",
+    "name": "ビコーペガサス",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "疾風爆走ペガサスダッシュ！",
+        "type": "unique"
+      },
+      {
+        "name": "迅速果断",
+        "type": "gold"
+      },
+      {
+        "name": "位置取り押し上げ",
+        "type": "normal"
+      },
+      {
+        "name": "スプリントギア",
+        "type": "normal"
+      },
+      {
+        "name": "電撃の煌めき",
+        "type": "gold"
+      },
+      {
+        "name": "詰め寄り",
+        "type": "normal"
+      },
+      {
+        "name": "仕掛け準備",
+        "type": "normal"
+      },
+      {
+        "name": "差し直線○",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "E"
+    },
+    "distance": {
+      "short": "A",
+      "mile": "B",
+      "medium": "G",
+      "long": "G"
+    },
+    "style": {
+      "nige": "G",
+      "senko": "E",
+      "sashi": "A",
+      "oikomi": "B"
+    },
+    "growth": {
+      "speed": 10,
+      "stamina": 0,
+      "power": 10,
+      "guts": 10,
+      "wisdom": 0
+    },
+    "notes": "",
+    "savedAt": "2026-09-17T18:52:02.075Z"
   },
   {
     "id": "uma_1789655902935_6qoc1",
