@@ -1,32 +1,12 @@
 [
   {
-    "id": "uma_1789671764701_8fgud",
-    "name": "ワンダーアキュート",
+    "id": "uma_1789671778234_p43qs",
+    "name": "ホッコータルマエ",
     "imagePath": null,
     "skills": [
       {
-        "name": "Never Say Never",
+        "name": "とびだせ☆ポッピングシェル",
         "type": "unique"
-      },
-      {
-        "name": "マイル直線○",
-        "type": "normal"
-      },
-      {
-        "name": "姉御肌",
-        "type": "gold"
-      },
-      {
-        "name": "負けん気",
-        "type": "normal"
-      },
-      {
-        "name": "先行のコツ○",
-        "type": "normal"
-      },
-      {
-        "name": "優雅な砂浴び",
-        "type": "gold"
       },
       {
         "name": "砂浴び○",
@@ -35,6 +15,26 @@
       {
         "name": "踏み込み上手",
         "type": "normal"
+      },
+      {
+        "name": "コール&レスポンス",
+        "type": "gold"
+      },
+      {
+        "name": "二段構え",
+        "type": "normal"
+      },
+      {
+        "name": "踏みしめる大地",
+        "type": "gold"
+      },
+      {
+        "name": "力の限り",
+        "type": "normal"
+      },
+      {
+        "name": "ダート直線○",
+        "type": "normal"
       }
     ],
     "track": {
@@ -42,26 +42,26 @@
       "dirt": "A"
     },
     "distance": {
-      "short": "D",
+      "short": "F",
       "mile": "A",
       "medium": "A",
       "long": "E"
     },
     "style": {
-      "nige": "C",
+      "nige": "B",
       "senko": "A",
-      "sashi": "C",
-      "oikomi": "E"
+      "sashi": "G",
+      "oikomi": "G"
     },
     "growth": {
-      "speed": 0,
-      "stamina": 0,
+      "speed": 15,
+      "stamina": 10,
       "power": 0,
-      "guts": 15,
-      "wisdom": 15
+      "guts": 0,
+      "wisdom": 5
     },
     "notes": "",
-    "savedAt": "2026-09-17T19:02:44.701Z"
+    "savedAt": "2026-09-17T19:02:58.234Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -10910,5 +10910,69 @@
     },
     "notes": "",
     "savedAt": "2026-09-17T14:44:13.579Z"
+  },
+  {
+    "id": "uma_1789671764701_8fgud",
+    "name": "ワンダーアキュート",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "Never Say Never",
+        "type": "unique"
+      },
+      {
+        "name": "マイル直線○",
+        "type": "normal"
+      },
+      {
+        "name": "姉御肌",
+        "type": "gold"
+      },
+      {
+        "name": "負けん気",
+        "type": "normal"
+      },
+      {
+        "name": "先行のコツ○",
+        "type": "normal"
+      },
+      {
+        "name": "優雅な砂浴び",
+        "type": "gold"
+      },
+      {
+        "name": "砂浴び○",
+        "type": "normal"
+      },
+      {
+        "name": "踏み込み上手",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "G",
+      "dirt": "A"
+    },
+    "distance": {
+      "short": "D",
+      "mile": "A",
+      "medium": "A",
+      "long": "E"
+    },
+    "style": {
+      "nige": "C",
+      "senko": "A",
+      "sashi": "C",
+      "oikomi": "E"
+    },
+    "growth": {
+      "speed": 0,
+      "stamina": 0,
+      "power": 0,
+      "guts": 15,
+      "wisdom": 15
+    },
+    "notes": "",
+    "savedAt": "2026-09-17T19:02:44.701Z"
   }
 ]
