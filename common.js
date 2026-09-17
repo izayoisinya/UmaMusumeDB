@@ -180,6 +180,38 @@ if (lightbox) {
   document.addEventListener('keydown', e => { if (e.key === 'Escape' && !lightbox.hidden) closeLightbox(); });
 }
 
+// --- 検索ポップアップ・スクロールFAB(一覧が長いページ用) ---
+const searchPanel = document.getElementById('searchPanel');
+const searchPanelAnchor = document.getElementById('searchPanelAnchor');
+const searchPopupOverlay = document.getElementById('searchPopupOverlay');
+const searchPopupBody = document.getElementById('searchPopupBody');
+
+function openSearchPopup() {
+  if (!searchPanel || !searchPopupBody || !searchPopupOverlay) return;
+  searchPopupBody.appendChild(searchPanel);
+  searchPopupOverlay.hidden = false;
+}
+function closeSearchPopup() {
+  if (!searchPanel || !searchPanelAnchor || !searchPopupOverlay) return;
+  searchPanelAnchor.parentNode.insertBefore(searchPanel, searchPanelAnchor);
+  searchPopupOverlay.hidden = true;
+}
+const searchToggleBtn = document.getElementById('searchToggleBtn');
+if (searchToggleBtn) searchToggleBtn.addEventListener('click', openSearchPopup);
+const searchPopupCloseBtn = document.getElementById('searchPopupCloseBtn');
+if (searchPopupCloseBtn) searchPopupCloseBtn.addEventListener('click', closeSearchPopup);
+if (searchPopupOverlay) {
+  searchPopupOverlay.addEventListener('click', e => { if (e.target === searchPopupOverlay) closeSearchPopup(); });
+}
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && searchPopupOverlay && !searchPopupOverlay.hidden) closeSearchPopup();
+});
+
+const scrollTopBtn = document.getElementById('scrollTopBtn');
+const scrollBottomBtn = document.getElementById('scrollBottomBtn');
+if (scrollTopBtn) scrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+if (scrollBottomBtn) scrollBottomBtn.addEventListener('click', () => window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' }));
+
 // --- 汎用モーダル制御 ---
 function openModal(id) {
   document.querySelectorAll('.modal').forEach(m => { m.hidden = m.id !== id; });

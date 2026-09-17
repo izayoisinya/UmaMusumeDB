@@ -43,6 +43,7 @@ window.PAGE_PROMPT = 'この画像はウマ娘プリティーダービーの「�
         <button type="button" class="btn secondary btn-inline" id="refreshBtn">更新</button>
       </h2>
 
+      <div class="search-panel" id="searchPanel">
       <div class="search-row">
         <div class="search-field">
           <label for="searchNameInput">名前で検索</label>
@@ -92,11 +93,29 @@ window.PAGE_PROMPT = 'この画像はウマ娘プリティーダービーの「�
       <div class="count-filter-row">
         <button type="button" class="btn secondary btn-inline" id="resetSearchBtn">検索条件をリセット</button>
       </div>
+      </div>
+      <div id="searchPanelAnchor" hidden></div>
 
       <div class="status" id="listStatus"></div>
       <div class="entries" id="entries"></div>
       <div class="empty" id="emptyMsg" style="display:none;">まだ登録がありません。「＋ ウマ娘登録」からClaudeの出力を貼り付けるか、手入力して保存してください。</div>
     </div>
+  </div>
+</div>
+
+<div class="scroll-fab-group" id="scrollFabGroup">
+  <button type="button" class="scroll-fab search-fab" id="searchToggleBtn" aria-label="検索・絞り込み">🔍</button>
+  <button type="button" class="scroll-fab" id="scrollTopBtn" aria-label="一番上へ">↑</button>
+  <button type="button" class="scroll-fab" id="scrollBottomBtn" aria-label="一番下へ">↓</button>
+</div>
+
+<div class="search-popup-overlay" id="searchPopupOverlay" hidden>
+  <div class="search-popup" id="searchPopup">
+    <div class="search-popup-header">
+      <h2>検索・絞り込み</h2>
+      <button type="button" class="search-popup-close" id="searchPopupCloseBtn" aria-label="閉じる">×</button>
+    </div>
+    <div id="searchPopupBody"></div>
   </div>
 </div>
 
