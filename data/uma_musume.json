@@ -1,39 +1,39 @@
 [
   {
-    "id": "uma_1789670930851_3ya0f",
-    "name": "キングヘイロー",
+    "id": "uma_1789670943313_qb9ah",
+    "name": "カワカミプリンセス",
     "imagePath": null,
     "skills": [
       {
-        "name": "Pride of KING",
+        "name": "快なる剛力",
         "type": "unique"
       },
       {
-        "name": "外枠得意○",
+        "name": "中距離コーナー○",
         "type": "normal"
       },
       {
-        "name": "電撃の煌めき",
+        "name": "前のめり",
+        "type": "normal"
+      },
+      {
+        "name": "至高のダウンヒラー",
         "type": "gold"
       },
       {
-        "name": "詰め寄り",
+        "name": "下り坂巧者",
         "type": "normal"
       },
       {
-        "name": "負けん気",
-        "type": "normal"
-      },
-      {
-        "name": "軽やかステップ",
-        "type": "normal"
-      },
-      {
-        "name": "大局観",
+        "name": "トップギア",
         "type": "gold"
       },
       {
-        "name": "読解力",
+        "name": "キレる脚",
+        "type": "normal"
+      },
+      {
+        "name": "食らいつき",
         "type": "normal"
       }
     ],
@@ -42,26 +42,26 @@
       "dirt": "G"
     },
     "distance": {
-      "short": "A",
+      "short": "D",
       "mile": "B",
-      "medium": "B",
-      "long": "C"
+      "medium": "A",
+      "long": "F"
     },
     "style": {
       "nige": "G",
-      "senko": "B",
+      "senko": "C",
       "sashi": "A",
       "oikomi": "D"
     },
     "growth": {
       "speed": 0,
-      "stamina": 0,
-      "power": 20,
-      "guts": 10,
+      "stamina": 8,
+      "power": 8,
+      "guts": 14,
       "wisdom": 0
     },
     "notes": "",
-    "savedAt": "2026-09-17T18:48:50.851Z"
+    "savedAt": "2026-09-17T18:49:03.313Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -2050,6 +2050,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T20:09:43.322Z"
+  },
+  {
+    "id": "uma_1789670930851_3ya0f",
+    "name": "キングヘイロー",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "Pride of KING",
+        "type": "unique"
+      },
+      {
+        "name": "外枠得意○",
+        "type": "normal"
+      },
+      {
+        "name": "電撃の煌めき",
+        "type": "gold"
+      },
+      {
+        "name": "詰め寄り",
+        "type": "normal"
+      },
+      {
+        "name": "負けん気",
+        "type": "normal"
+      },
+      {
+        "name": "軽やかステップ",
+        "type": "normal"
+      },
+      {
+        "name": "大局観",
+        "type": "gold"
+      },
+      {
+        "name": "読解力",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "A",
+      "mile": "B",
+      "medium": "B",
+      "long": "C"
+    },
+    "style": {
+      "nige": "G",
+      "senko": "B",
+      "sashi": "A",
+      "oikomi": "D"
+    },
+    "growth": {
+      "speed": 0,
+      "stamina": 0,
+      "power": 20,
+      "guts": 10,
+      "wisdom": 0
+    },
+    "notes": "",
+    "savedAt": "2026-09-17T18:48:50.851Z"
   },
   {
     "id": "uma_1789655941555_4w3cd",
