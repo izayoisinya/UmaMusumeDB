@@ -1,67 +1,67 @@
 [
   {
-    "id": "uma_1789671695204_hdj9i",
-    "name": "ハルウララ",
+    "id": "uma_1789671716093_ne4p7",
+    "name": "トランセンド",
     "imagePath": null,
     "skills": [
       {
-        "name": "ワクワククライマックス",
+        "name": "地熱解放オーヴァードライブ",
         "type": "unique"
       },
       {
-        "name": "伏兵○",
+        "name": "ポジションセンス",
         "type": "normal"
       },
       {
-        "name": "鋼の意志",
+        "name": "盤石の構え",
         "type": "gold"
       },
       {
-        "name": "隠れ蓑",
+        "name": "地固め",
         "type": "normal"
       },
       {
-        "name": "不屈の心",
+        "name": "ダート直線○",
+        "type": "normal"
+      },
+      {
+        "name": "なりふり構わす",
+        "type": "normal"
+      },
+      {
+        "name": "勇壮活発",
         "type": "gold"
       },
       {
-        "name": "ペースキープ",
-        "type": "normal"
-      },
-      {
-        "name": "スプリントギア",
-        "type": "normal"
-      },
-      {
-        "name": "十万バリキ",
+        "name": "バイタリティ",
         "type": "normal"
       }
     ],
     "track": {
-      "turf": "G",
+      "turf": "F",
       "dirt": "A"
     },
     "distance": {
-      "short": "A",
-      "mile": "B",
-      "medium": "G",
+      "short": "G",
+      "mile": "A",
+      "medium": "A",
       "long": "G"
     },
     "style": {
-      "nige": "G",
-      "senko": "G",
-      "sashi": "A",
-      "oikomi": "B"
+      "nige": "A",
+      "senko": "B",
+      "sashi": "F",
+      "oikomi": "G"
     },
     "growth": {
       "speed": 0,
       "stamina": 0,
-      "power": 10,
-      "guts": 20,
-      "wisdom": 0
+      "power": 15,
+      "guts": 0,
+      "wisdom": 15
     },
     "notes": "",
-    "savedAt": "2026-09-17T19:01:35.204Z"
+    "savedAt": "2026-09-17T19:01:56.093Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -7006,6 +7006,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-17T14:43:20.787Z"
+  },
+  {
+    "id": "uma_1789671695204_hdj9i",
+    "name": "ハルウララ",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "ワクワククライマックス",
+        "type": "unique"
+      },
+      {
+        "name": "伏兵○",
+        "type": "normal"
+      },
+      {
+        "name": "鋼の意志",
+        "type": "gold"
+      },
+      {
+        "name": "隠れ蓑",
+        "type": "normal"
+      },
+      {
+        "name": "不屈の心",
+        "type": "gold"
+      },
+      {
+        "name": "ペースキープ",
+        "type": "normal"
+      },
+      {
+        "name": "スプリントギア",
+        "type": "normal"
+      },
+      {
+        "name": "十万バリキ",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "G",
+      "dirt": "A"
+    },
+    "distance": {
+      "short": "A",
+      "mile": "B",
+      "medium": "G",
+      "long": "G"
+    },
+    "style": {
+      "nige": "G",
+      "senko": "G",
+      "sashi": "A",
+      "oikomi": "B"
+    },
+    "growth": {
+      "speed": 0,
+      "stamina": 0,
+      "power": 10,
+      "guts": 20,
+      "wisdom": 0
+    },
+    "notes": "",
+    "savedAt": "2026-09-17T19:01:35.204Z"
   },
   {
     "id": "uma_1789671131367_10mm8",
