@@ -1,67 +1,67 @@
 [
   {
-    "id": "uma_1789671131367_10mm8",
-    "name": "バンブーメモリー",
+    "id": "uma_1789671183388_0u1yy",
+    "name": "メジロドーベル",
     "imagePath": null,
     "skills": [
       {
-        "name": "熱血！！風紀アタック",
+        "name": "彼方、その先へ…",
         "type": "unique"
       },
       {
-        "name": "ペースアップ",
-        "type": "normal"
-      },
-      {
-        "name": "昇り龍",
+        "name": "淀の申し子",
         "type": "gold"
       },
       {
-        "name": "外差し準備",
+        "name": "京都レース場○",
         "type": "normal"
       },
       {
-        "name": "短距離コーナー○",
+        "name": "テンポアップ",
         "type": "normal"
       },
       {
-        "name": "破竹の勢い",
+        "name": "軽やかステップ",
+        "type": "normal"
+      },
+      {
+        "name": "差し直線○",
+        "type": "normal"
+      },
+      {
+        "name": "八方にらみ",
         "type": "gold"
       },
       {
-        "name": "気合十分",
-        "type": "normal"
-      },
-      {
-        "name": "恐れぬ心",
+        "name": "鋭い眼光",
         "type": "normal"
       }
     ],
     "track": {
       "turf": "A",
-      "dirt": "D"
+      "dirt": "G"
     },
     "distance": {
-      "short": "A",
+      "short": "E",
       "mile": "A",
-      "medium": "C",
-      "long": "G"
+      "medium": "A",
+      "long": "F"
     },
     "style": {
-      "nige": "G",
-      "senko": "E",
+      "nige": "C",
+      "senko": "B",
       "sashi": "A",
-      "oikomi": "C"
+      "oikomi": "G"
     },
     "growth": {
       "speed": 10,
       "stamina": 0,
-      "power": 10,
-      "guts": 10,
-      "wisdom": 0
+      "power": 0,
+      "guts": 0,
+      "wisdom": 20
     },
     "notes": "",
-    "savedAt": "2026-09-17T18:52:11.367Z"
+    "savedAt": "2026-09-17T18:53:03.388Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -6942,6 +6942,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-17T14:43:20.787Z"
+  },
+  {
+    "id": "uma_1789671131367_10mm8",
+    "name": "バンブーメモリー",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "熱血！！風紀アタック",
+        "type": "unique"
+      },
+      {
+        "name": "ペースアップ",
+        "type": "normal"
+      },
+      {
+        "name": "昇り龍",
+        "type": "gold"
+      },
+      {
+        "name": "外差し準備",
+        "type": "normal"
+      },
+      {
+        "name": "短距離コーナー○",
+        "type": "normal"
+      },
+      {
+        "name": "破竹の勢い",
+        "type": "gold"
+      },
+      {
+        "name": "気合十分",
+        "type": "normal"
+      },
+      {
+        "name": "恐れぬ心",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "D"
+    },
+    "distance": {
+      "short": "A",
+      "mile": "A",
+      "medium": "C",
+      "long": "G"
+    },
+    "style": {
+      "nige": "G",
+      "senko": "E",
+      "sashi": "A",
+      "oikomi": "C"
+    },
+    "growth": {
+      "speed": 10,
+      "stamina": 0,
+      "power": 10,
+      "guts": 10,
+      "wisdom": 0
+    },
+    "notes": "",
+    "savedAt": "2026-09-17T18:52:11.367Z"
   },
   {
     "id": "uma_1789671122075_1sax7",
