@@ -1,67 +1,67 @@
 [
   {
-    "id": "uma_1789671729679_gwu10",
-    "name": "トランセンド",
+    "id": "uma_1789671739528_zh2aj",
+    "name": "スマートファルコン",
     "imagePath": null,
     "skills": [
       {
-        "name": "Info: Acquired",
+        "name": "α-star*",
         "type": "unique"
       },
       {
-        "name": "ポジションセンス",
+        "name": "逃げコーナー○",
         "type": "normal"
       },
       {
-        "name": "先駆け",
-        "type": "normal"
-      },
-      {
-        "name": "マイル直線○",
-        "type": "normal"
-      },
-      {
-        "name": "盤石の構え",
+        "name": "チャート急上昇！",
         "type": "gold"
       },
       {
-        "name": "地固め",
+        "name": "レコメンド",
         "type": "normal"
       },
       {
-        "name": "砂の開拓者",
+        "name": "気迫を込めて",
+        "type": "normal"
+      },
+      {
+        "name": "目指せセンター！",
         "type": "gold"
       },
       {
-        "name": "パイオニア",
+        "name": "意気込み十分",
+        "type": "normal"
+      },
+      {
+        "name": "土煙",
         "type": "normal"
       }
     ],
     "track": {
-      "turf": "F",
+      "turf": "E",
       "dirt": "A"
     },
     "distance": {
-      "short": "G",
+      "short": "B",
       "mile": "A",
       "medium": "A",
-      "long": "G"
+      "long": "E"
     },
     "style": {
       "nige": "A",
-      "senko": "B",
-      "sashi": "F",
+      "senko": "D",
+      "sashi": "G",
       "oikomi": "G"
     },
     "growth": {
-      "speed": 10,
+      "speed": 20,
       "stamina": 0,
-      "power": 10,
-      "guts": 0,
-      "wisdom": 10
+      "power": 0,
+      "guts": 10,
+      "wisdom": 0
     },
     "notes": "",
-    "savedAt": "2026-09-17T19:02:09.679Z"
+    "savedAt": "2026-09-17T19:02:19.528Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -6106,6 +6106,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-17T14:47:36.681Z"
+  },
+  {
+    "id": "uma_1789671729679_gwu10",
+    "name": "トランセンド",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "Info: Acquired",
+        "type": "unique"
+      },
+      {
+        "name": "ポジションセンス",
+        "type": "normal"
+      },
+      {
+        "name": "先駆け",
+        "type": "normal"
+      },
+      {
+        "name": "マイル直線○",
+        "type": "normal"
+      },
+      {
+        "name": "盤石の構え",
+        "type": "gold"
+      },
+      {
+        "name": "地固め",
+        "type": "normal"
+      },
+      {
+        "name": "砂の開拓者",
+        "type": "gold"
+      },
+      {
+        "name": "パイオニア",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "F",
+      "dirt": "A"
+    },
+    "distance": {
+      "short": "G",
+      "mile": "A",
+      "medium": "A",
+      "long": "G"
+    },
+    "style": {
+      "nige": "A",
+      "senko": "B",
+      "sashi": "F",
+      "oikomi": "G"
+    },
+    "growth": {
+      "speed": 10,
+      "stamina": 0,
+      "power": 10,
+      "guts": 0,
+      "wisdom": 10
+    },
+    "notes": "",
+    "savedAt": "2026-09-17T19:02:09.679Z"
   },
   {
     "id": "uma_1789671716093_ne4p7",
