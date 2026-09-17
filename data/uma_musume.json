@@ -1,15 +1,23 @@
 [
   {
-    "id": "uma_1789669493499_24u4h",
+    "id": "uma_1789669505763_6wtcf",
     "name": "ダイイチルビー",
     "imagePath": null,
     "skills": [
       {
-        "name": "蒼炎",
+        "name": "至上であれ",
         "type": "unique"
       },
       {
-        "name": "尻尾上がり",
+        "name": "臨機応変",
+        "type": "normal"
+      },
+      {
+        "name": "逃げためらい",
+        "type": "normal"
+      },
+      {
+        "name": "差しコーナー○",
         "type": "normal"
       },
       {
@@ -21,19 +29,11 @@
         "type": "normal"
       },
       {
-        "name": "溢れる情熱",
-        "type": "normal"
-      },
-      {
-        "name": "進出開始",
-        "type": "normal"
-      },
-      {
-        "name": "熱情",
+        "name": "威風堂々",
         "type": "gold"
       },
       {
-        "name": "滾る想い",
+        "name": "プレッシャー",
         "type": "normal"
       }
     ],
@@ -54,14 +54,14 @@
       "oikomi": "A"
     },
     "growth": {
-      "speed": 6,
+      "speed": 0,
       "stamina": 0,
-      "power": 12,
+      "power": 20,
       "guts": 0,
-      "wisdom": 12
+      "wisdom": 10
     },
     "notes": "",
-    "savedAt": "2026-09-17T18:24:53.499Z"
+    "savedAt": "2026-09-17T18:25:05.763Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -3538,6 +3538,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T22:18:29.348Z"
+  },
+  {
+    "id": "uma_1789669493499_24u4h",
+    "name": "ダイイチルビー",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "蒼炎",
+        "type": "unique"
+      },
+      {
+        "name": "尻尾上がり",
+        "type": "normal"
+      },
+      {
+        "name": "電光石火",
+        "type": "gold"
+      },
+      {
+        "name": "一足飛び",
+        "type": "normal"
+      },
+      {
+        "name": "溢れる情熱",
+        "type": "normal"
+      },
+      {
+        "name": "進出開始",
+        "type": "normal"
+      },
+      {
+        "name": "熱情",
+        "type": "gold"
+      },
+      {
+        "name": "滾る想い",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "A",
+      "mile": "A",
+      "medium": "C",
+      "long": "G"
+    },
+    "style": {
+      "nige": "E",
+      "senko": "B",
+      "sashi": "A",
+      "oikomi": "A"
+    },
+    "growth": {
+      "speed": 6,
+      "stamina": 0,
+      "power": 12,
+      "guts": 0,
+      "wisdom": 12
+    },
+    "notes": "",
+    "savedAt": "2026-09-17T18:24:53.499Z"
   },
   {
     "id": "uma_1789596504094_gkcx6",
