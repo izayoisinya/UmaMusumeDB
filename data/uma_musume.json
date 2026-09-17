@@ -1,67 +1,67 @@
 [
   {
-    "id": "uma_1789671291136_sh82v",
-    "name": "ヒシミラクル",
+    "id": "uma_1789671674533_pfon3",
+    "name": "コパノリッキー",
     "imagePath": null,
     "skills": [
       {
-        "name": "Bang☆ミラクるわせ！",
+        "name": "理運開かりて翔る",
         "type": "unique"
       },
       {
-        "name": "伏兵○",
+        "name": "交流重賞○",
         "type": "normal"
       },
       {
-        "name": "京都レース場○",
+        "name": "中距離コーナー○",
         "type": "normal"
       },
       {
-        "name": "差し直線○",
+        "name": "先行のコツ○",
         "type": "normal"
       },
       {
-        "name": "リラックス",
+        "name": "勝利の機運",
         "type": "gold"
       },
       {
-        "name": "小休憩",
+        "name": "明るい兆し",
         "type": "normal"
       },
       {
-        "name": "千里の道",
+        "name": "抜群の踏み込み",
         "type": "gold"
       },
       {
-        "name": "一歩から",
+        "name": "踏み込み上手",
         "type": "normal"
       }
     ],
     "track": {
-      "turf": "A",
-      "dirt": "G"
+      "turf": "F",
+      "dirt": "A"
     },
     "distance": {
-      "short": "G",
-      "mile": "G",
+      "short": "C",
+      "mile": "A",
       "medium": "A",
-      "long": "A"
+      "long": "G"
     },
     "style": {
-      "nige": "G",
-      "senko": "C",
-      "sashi": "A",
-      "oikomi": "B"
+      "nige": "A",
+      "senko": "A",
+      "sashi": "C",
+      "oikomi": "G"
     },
     "growth": {
-      "speed": 7,
-      "stamina": 8,
-      "power": 7,
-      "guts": 8,
-      "wisdom": 0
+      "speed": 0,
+      "stamina": 0,
+      "power": 10,
+      "guts": 0,
+      "wisdom": 20
     },
     "notes": "",
-    "savedAt": "2026-09-17T18:54:51.136Z"
+    "savedAt": "2026-09-17T19:01:14.534Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -7198,6 +7198,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-17T18:29:01.913Z"
+  },
+  {
+    "id": "uma_1789671291136_sh82v",
+    "name": "ヒシミラクル",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "Bang☆ミラクるわせ！",
+        "type": "unique"
+      },
+      {
+        "name": "伏兵○",
+        "type": "normal"
+      },
+      {
+        "name": "京都レース場○",
+        "type": "normal"
+      },
+      {
+        "name": "差し直線○",
+        "type": "normal"
+      },
+      {
+        "name": "リラックス",
+        "type": "gold"
+      },
+      {
+        "name": "小休憩",
+        "type": "normal"
+      },
+      {
+        "name": "千里の道",
+        "type": "gold"
+      },
+      {
+        "name": "一歩から",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "G",
+      "mile": "G",
+      "medium": "A",
+      "long": "A"
+    },
+    "style": {
+      "nige": "G",
+      "senko": "C",
+      "sashi": "A",
+      "oikomi": "B"
+    },
+    "growth": {
+      "speed": 7,
+      "stamina": 8,
+      "power": 7,
+      "guts": 8,
+      "wisdom": 0
+    },
+    "notes": "",
+    "savedAt": "2026-09-17T18:54:51.136Z"
   },
   {
     "id": "uma_1789671249902_nd031",
