@@ -1,47 +1,39 @@
 [
   {
-    "id": "uma_1789656329402_jsuhj",
-    "name": "トウカイテイオー",
+    "id": "uma_1789656356545_15j6m",
+    "name": "ネオユニヴァース",
     "imagePath": null,
     "skills": [
       {
-        "name": "究極テイオーステップ",
+        "name": "Encounter with U",
         "type": "unique"
       },
       {
-        "name": "ポジションセンス",
+        "name": "根幹距離○",
         "type": "normal"
       },
       {
-        "name": "臨機応変",
-        "type": "normal"
-      },
-      {
-        "name": "ライトニングステップ",
+        "name": "コネクト",
         "type": "gold"
       },
       {
-        "name": "イナズマステップ",
+        "name": "シンパシー",
         "type": "normal"
       },
       {
-        "name": "軽やかステップ",
+        "name": "ワンチャンス",
         "type": "normal"
       },
       {
-        "name": "技巧派",
+        "name": "しとやかな足取り",
+        "type": "normal"
+      },
+      {
+        "name": "ルミネセンス",
         "type": "gold"
       },
       {
-        "name": "巧みなステップ",
-        "type": "normal"
-      },
-      {
-        "name": "夢の舞台へ",
-        "type": "gold"
-      },
-      {
-        "name": "星の煌き",
+        "name": "イグニッション",
         "type": "normal"
       }
     ],
@@ -51,25 +43,25 @@
     },
     "distance": {
       "short": "F",
-      "mile": "E",
+      "mile": "B",
       "medium": "A",
       "long": "B"
     },
     "style": {
-      "nige": "D",
+      "nige": "F",
       "senko": "A",
-      "sashi": "C",
-      "oikomi": "E"
+      "sashi": "A",
+      "oikomi": "C"
     },
     "growth": {
-      "speed": 20,
-      "stamina": 10,
-      "power": 0,
-      "guts": 0,
-      "wisdom": 0
+      "speed": 0,
+      "stamina": 0,
+      "power": 7,
+      "guts": 10,
+      "wisdom": 13
     },
     "notes": "",
-    "savedAt": "2026-09-17T14:45:29.402Z"
+    "savedAt": "2026-09-17T14:45:56.545Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -4058,6 +4050,78 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T22:06:04.212Z"
+  },
+  {
+    "id": "uma_1789656329402_jsuhj",
+    "name": "トウカイテイオー",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "究極テイオーステップ",
+        "type": "unique"
+      },
+      {
+        "name": "ポジションセンス",
+        "type": "normal"
+      },
+      {
+        "name": "臨機応変",
+        "type": "normal"
+      },
+      {
+        "name": "ライトニングステップ",
+        "type": "gold"
+      },
+      {
+        "name": "イナズマステップ",
+        "type": "normal"
+      },
+      {
+        "name": "軽やかステップ",
+        "type": "normal"
+      },
+      {
+        "name": "技巧派",
+        "type": "gold"
+      },
+      {
+        "name": "巧みなステップ",
+        "type": "normal"
+      },
+      {
+        "name": "夢の舞台へ",
+        "type": "gold"
+      },
+      {
+        "name": "星の煌き",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "F",
+      "mile": "E",
+      "medium": "A",
+      "long": "B"
+    },
+    "style": {
+      "nige": "D",
+      "senko": "A",
+      "sashi": "C",
+      "oikomi": "E"
+    },
+    "growth": {
+      "speed": 20,
+      "stamina": 10,
+      "power": 0,
+      "guts": 0,
+      "wisdom": 0
+    },
+    "notes": "",
+    "savedAt": "2026-09-17T14:45:29.402Z"
   },
   {
     "id": "uma_1789655726542_qdm79",
