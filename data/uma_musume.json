@@ -1,15 +1,23 @@
 [
   {
-    "id": "uma_1789669671322_wj6nn",
-    "name": "イナリワン",
+    "id": "uma_1789669681473_zxzn3",
+    "name": "タマモクロス",
     "imagePath": null,
     "skills": [
       {
-        "name": "快走かな、快走かな！",
+        "name": "白い稲妻、見せたるで！",
         "type": "unique"
       },
       {
-        "name": "冬ウマ娘○",
+        "name": "好位追走",
+        "type": "normal"
+      },
+      {
+        "name": "迅速果断",
+        "type": "gold"
+      },
+      {
+        "name": "位置取り押し上げ",
         "type": "normal"
       },
       {
@@ -17,7 +25,7 @@
         "type": "normal"
       },
       {
-        "name": "追込直線○",
+        "name": "イナズマステップ",
         "type": "normal"
       },
       {
@@ -27,41 +35,33 @@
       {
         "name": "尻尾上がり",
         "type": "normal"
-      },
-      {
-        "name": "砂の玄人",
-        "type": "gold"
-      },
-      {
-        "name": "砂塵慣れ",
-        "type": "normal"
       }
     ],
     "track": {
       "turf": "A",
-      "dirt": "A"
+      "dirt": "F"
     },
     "distance": {
-      "short": "F",
-      "mile": "B",
+      "short": "G",
+      "mile": "E",
       "medium": "A",
       "long": "A"
     },
     "style": {
       "nige": "G",
-      "senko": "B",
-      "sashi": "B",
+      "senko": "A",
+      "sashi": "A",
       "oikomi": "A"
     },
     "growth": {
       "speed": 0,
-      "stamina": 10,
-      "power": 20,
+      "stamina": 20,
+      "power": 10,
       "guts": 0,
       "wisdom": 0
     },
     "notes": "",
-    "savedAt": "2026-09-17T18:27:51.322Z"
+    "savedAt": "2026-09-17T18:28:01.473Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -702,6 +702,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T22:08:37.264Z"
+  },
+  {
+    "id": "uma_1789669671322_wj6nn",
+    "name": "イナリワン",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "快走かな、快走かな！",
+        "type": "unique"
+      },
+      {
+        "name": "冬ウマ娘○",
+        "type": "normal"
+      },
+      {
+        "name": "直線一気",
+        "type": "normal"
+      },
+      {
+        "name": "追込直線○",
+        "type": "normal"
+      },
+      {
+        "name": "尻尾の滝登り",
+        "type": "gold"
+      },
+      {
+        "name": "尻尾上がり",
+        "type": "normal"
+      },
+      {
+        "name": "砂の玄人",
+        "type": "gold"
+      },
+      {
+        "name": "砂塵慣れ",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "A"
+    },
+    "distance": {
+      "short": "F",
+      "mile": "B",
+      "medium": "A",
+      "long": "A"
+    },
+    "style": {
+      "nige": "G",
+      "senko": "B",
+      "sashi": "B",
+      "oikomi": "A"
+    },
+    "growth": {
+      "speed": 0,
+      "stamina": 10,
+      "power": 20,
+      "guts": 0,
+      "wisdom": 0
+    },
+    "notes": "",
+    "savedAt": "2026-09-17T18:27:51.322Z"
   },
   {
     "id": "uma_1789590051006_52itb",
