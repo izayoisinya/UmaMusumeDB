@@ -1,39 +1,39 @@
 [
   {
-    "id": "uma_1789671055909_3ffip",
+    "id": "uma_1789671076502_agvt0",
     "name": "ナイスネイチャ",
     "imagePath": null,
     "skills": [
       {
-        "name": "もちっと・ハレハレ",
+        "name": "きっとその先へ…！",
         "type": "unique"
       },
       {
-        "name": "良バ場○",
+        "name": "小倉レース場○",
         "type": "normal"
       },
       {
-        "name": "乗り換え上手",
+        "name": "差しためらい",
+        "type": "normal"
+      },
+      {
+        "name": "魅惑のささやき",
         "type": "gold"
       },
       {
-        "name": "差し切り体勢",
+        "name": "ささやき",
         "type": "normal"
       },
       {
-        "name": "差し直線○",
+        "name": "小休憩",
         "type": "normal"
       },
       {
-        "name": "いいとこ入った！",
+        "name": "八方にらみ",
         "type": "gold"
       },
       {
-        "name": "スリップストリーム",
-        "type": "normal"
-      },
-      {
-        "name": "自制心",
+        "name": "鋭い眼光",
         "type": "normal"
       }
     ],
@@ -54,14 +54,14 @@
       "oikomi": "D"
     },
     "growth": {
-      "speed": 14,
+      "speed": 0,
       "stamina": 0,
-      "power": 8,
+      "power": 20,
       "guts": 0,
-      "wisdom": 8
+      "wisdom": 10
     },
     "notes": "",
-    "savedAt": "2026-09-17T18:50:55.909Z"
+    "savedAt": "2026-09-17T18:51:16.502Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -5914,6 +5914,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-17T18:25:29.901Z"
+  },
+  {
+    "id": "uma_1789671055909_3ffip",
+    "name": "ナイスネイチャ",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "もちっと・ハレハレ",
+        "type": "unique"
+      },
+      {
+        "name": "良バ場○",
+        "type": "normal"
+      },
+      {
+        "name": "乗り換え上手",
+        "type": "gold"
+      },
+      {
+        "name": "差し切り体勢",
+        "type": "normal"
+      },
+      {
+        "name": "差し直線○",
+        "type": "normal"
+      },
+      {
+        "name": "いいとこ入った！",
+        "type": "gold"
+      },
+      {
+        "name": "スリップストリーム",
+        "type": "normal"
+      },
+      {
+        "name": "自制心",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "G",
+      "mile": "C",
+      "medium": "A",
+      "long": "A"
+    },
+    "style": {
+      "nige": "F",
+      "senko": "B",
+      "sashi": "A",
+      "oikomi": "D"
+    },
+    "growth": {
+      "speed": 14,
+      "stamina": 0,
+      "power": 8,
+      "guts": 0,
+      "wisdom": 8
+    },
+    "notes": "",
+    "savedAt": "2026-09-17T18:50:55.909Z"
   },
   {
     "id": "uma_1789656468692_888xi",
