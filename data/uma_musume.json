@@ -1,39 +1,47 @@
 [
   {
-    "id": "uma_1789656317508_9p4ok",
-    "name": "スティルインラブ",
+    "id": "uma_1789656329402_jsuhj",
+    "name": "トウカイテイオー",
     "imagePath": null,
     "skills": [
       {
-        "name": "スカーレットリリィの高揚",
+        "name": "究極テイオーステップ",
         "type": "unique"
       },
       {
-        "name": "衝動",
+        "name": "ポジションセンス",
         "type": "normal"
       },
       {
-        "name": "闘争本能",
+        "name": "臨機応変",
+        "type": "normal"
+      },
+      {
+        "name": "ライトニングステップ",
         "type": "gold"
       },
       {
-        "name": "好戦的",
+        "name": "イナズマステップ",
         "type": "normal"
       },
       {
-        "name": "解き放つ情念",
+        "name": "軽やかステップ",
+        "type": "normal"
+      },
+      {
+        "name": "技巧派",
         "type": "gold"
       },
       {
-        "name": "想い焦がれて",
+        "name": "巧みなステップ",
         "type": "normal"
       },
       {
-        "name": "精神力",
-        "type": "normal"
+        "name": "夢の舞台へ",
+        "type": "gold"
       },
       {
-        "name": "内なる獣",
+        "name": "星の煌き",
         "type": "normal"
       }
     ],
@@ -42,26 +50,26 @@
       "dirt": "G"
     },
     "distance": {
-      "short": "C",
-      "mile": "A",
+      "short": "F",
+      "mile": "E",
       "medium": "A",
-      "long": "G"
+      "long": "B"
     },
     "style": {
-      "nige": "G",
+      "nige": "D",
       "senko": "A",
-      "sashi": "A",
-      "oikomi": "F"
+      "sashi": "C",
+      "oikomi": "E"
     },
     "growth": {
-      "speed": 0,
+      "speed": 20,
       "stamina": 10,
-      "power": 10,
-      "guts": 10,
+      "power": 0,
+      "guts": 0,
       "wisdom": 0
     },
     "notes": "",
-    "savedAt": "2026-09-17T14:45:17.508Z"
+    "savedAt": "2026-09-17T14:45:29.402Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -2890,6 +2898,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-17T14:43:35.469Z"
+  },
+  {
+    "id": "uma_1789656317508_9p4ok",
+    "name": "スティルインラブ",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "スカーレットリリィの高揚",
+        "type": "unique"
+      },
+      {
+        "name": "衝動",
+        "type": "normal"
+      },
+      {
+        "name": "闘争本能",
+        "type": "gold"
+      },
+      {
+        "name": "好戦的",
+        "type": "normal"
+      },
+      {
+        "name": "解き放つ情念",
+        "type": "gold"
+      },
+      {
+        "name": "想い焦がれて",
+        "type": "normal"
+      },
+      {
+        "name": "精神力",
+        "type": "normal"
+      },
+      {
+        "name": "内なる獣",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "C",
+      "mile": "A",
+      "medium": "A",
+      "long": "G"
+    },
+    "style": {
+      "nige": "G",
+      "senko": "A",
+      "sashi": "A",
+      "oikomi": "F"
+    },
+    "growth": {
+      "speed": 0,
+      "stamina": 10,
+      "power": 10,
+      "guts": 10,
+      "wisdom": 0
+    },
+    "notes": "",
+    "savedAt": "2026-09-17T14:45:17.508Z"
   },
   {
     "id": "uma_1789596574281_sf674",
