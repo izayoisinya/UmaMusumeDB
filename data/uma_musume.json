@@ -1,39 +1,39 @@
 [
   {
-    "id": "uma_1789669597879_dznwb",
+    "id": "uma_1789669610837_sdqkc",
     "name": "ナリタタイシン",
     "imagePath": null,
     "skills": [
       {
-        "name": "Overdrive Speed",
+        "name": "Nemesis",
         "type": "unique"
+      },
+      {
+        "name": "眠れる獅子",
+        "type": "gold"
+      },
+      {
+        "name": "後方待機",
+        "type": "normal"
+      },
+      {
+        "name": "迫る影",
+        "type": "gold"
+      },
+      {
+        "name": "直線一気",
+        "type": "normal"
+      },
+      {
+        "name": "ささやき",
+        "type": "normal"
       },
       {
         "name": "追込直線○",
         "type": "normal"
       },
       {
-        "name": "完全燃焼",
-        "type": "gold"
-      },
-      {
-        "name": "たぎる血潮",
-        "type": "normal"
-      },
-      {
-        "name": "飛翔脚",
-        "type": "gold"
-      },
-      {
-        "name": "推力十分",
-        "type": "normal"
-      },
-      {
-        "name": "惜しみなし",
-        "type": "normal"
-      },
-      {
-        "name": "影踏み",
+        "name": "一匹狼",
         "type": "normal"
       }
     ],
@@ -54,14 +54,14 @@
       "oikomi": "A"
     },
     "growth": {
-      "speed": 0,
+      "speed": 10,
       "stamina": 0,
-      "power": 20,
-      "guts": 0,
-      "wisdom": 10
+      "power": 0,
+      "guts": 20,
+      "wisdom": 0
     },
     "notes": "",
-    "savedAt": "2026-09-17T18:26:37.879Z"
+    "savedAt": "2026-09-17T18:26:50.837Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -4958,6 +4958,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-17T14:46:38.505Z"
+  },
+  {
+    "id": "uma_1789669597879_dznwb",
+    "name": "ナリタタイシン",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "Overdrive Speed",
+        "type": "unique"
+      },
+      {
+        "name": "追込直線○",
+        "type": "normal"
+      },
+      {
+        "name": "完全燃焼",
+        "type": "gold"
+      },
+      {
+        "name": "たぎる血潮",
+        "type": "normal"
+      },
+      {
+        "name": "飛翔脚",
+        "type": "gold"
+      },
+      {
+        "name": "推力十分",
+        "type": "normal"
+      },
+      {
+        "name": "惜しみなし",
+        "type": "normal"
+      },
+      {
+        "name": "影踏み",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "F",
+      "mile": "D",
+      "medium": "A",
+      "long": "A"
+    },
+    "style": {
+      "nige": "G",
+      "senko": "F",
+      "sashi": "B",
+      "oikomi": "A"
+    },
+    "growth": {
+      "speed": 0,
+      "stamina": 0,
+      "power": 20,
+      "guts": 0,
+      "wisdom": 10
+    },
+    "notes": "",
+    "savedAt": "2026-09-17T18:26:37.879Z"
   },
   {
     "id": "uma_1789655726542_qdm79",
