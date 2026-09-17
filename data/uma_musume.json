@@ -1,31 +1,27 @@
 [
   {
-    "id": "uma_1789669621856_w3xk5",
+    "id": "uma_1789669634282_63jhp",
     "name": "メジロブライト",
     "imagePath": null,
     "skills": [
       {
-        "name": "夕凪のリトリート・メモリー",
+        "name": "Illuminate you",
         "type": "unique"
       },
       {
-        "name": "右回り○",
+        "name": "道悪○",
         "type": "normal"
       },
       {
-        "name": "一発必中",
-        "type": "gold"
-      },
-      {
-        "name": "ロックオン",
+        "name": "冬ウマ娘○",
         "type": "normal"
       },
       {
-        "name": "一気呵成",
+        "name": "怒涛の追い上げ",
         "type": "gold"
       },
       {
-        "name": "大急ぎ",
+        "name": "追い上げ",
         "type": "normal"
       },
       {
@@ -33,7 +29,11 @@
         "type": "normal"
       },
       {
-        "name": "急襲",
+        "name": "千里の道",
+        "type": "gold"
+      },
+      {
+        "name": "一歩から",
         "type": "normal"
       }
     ],
@@ -54,14 +54,14 @@
       "oikomi": "A"
     },
     "growth": {
-      "speed": 5,
-      "stamina": 10,
+      "speed": 0,
+      "stamina": 20,
       "power": 0,
-      "guts": 5,
+      "guts": 0,
       "wisdom": 10
     },
     "notes": "",
-    "savedAt": "2026-09-17T18:27:01.856Z"
+    "savedAt": "2026-09-17T18:27:14.282Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -7198,6 +7198,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T20:25:11.095Z"
+  },
+  {
+    "id": "uma_1789669621856_w3xk5",
+    "name": "メジロブライト",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "夕凪のリトリート・メモリー",
+        "type": "unique"
+      },
+      {
+        "name": "右回り○",
+        "type": "normal"
+      },
+      {
+        "name": "一発必中",
+        "type": "gold"
+      },
+      {
+        "name": "ロックオン",
+        "type": "normal"
+      },
+      {
+        "name": "一気呵成",
+        "type": "gold"
+      },
+      {
+        "name": "大急ぎ",
+        "type": "normal"
+      },
+      {
+        "name": "進出開始",
+        "type": "normal"
+      },
+      {
+        "name": "急襲",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "F",
+      "mile": "C",
+      "medium": "A",
+      "long": "A"
+    },
+    "style": {
+      "nige": "G",
+      "senko": "D",
+      "sashi": "A",
+      "oikomi": "A"
+    },
+    "growth": {
+      "speed": 5,
+      "stamina": 10,
+      "power": 0,
+      "guts": 5,
+      "wisdom": 10
+    },
+    "notes": "",
+    "savedAt": "2026-09-17T18:27:01.856Z"
   },
   {
     "id": "uma_1789655766789_bzi8p",
