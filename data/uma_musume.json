@@ -1,45 +1,45 @@
 [
   {
-    "id": "uma_1789670993498_uo3pz",
-    "name": "サトノダイヤモンド",
+    "id": "uma_1789671004805_2es32",
+    "name": "サクラローレル",
     "imagePath": null,
     "skills": [
       {
-        "name": "晦冥を照らせ永遠の耀き",
+        "name": "花開き、世界",
         "type": "unique"
       },
       {
-        "name": "右回りの鬼",
+        "name": "差し直線○",
+        "type": "normal"
+      },
+      {
+        "name": "尻尾上がり",
+        "type": "normal"
+      },
+      {
+        "name": "勇往邁進",
         "type": "gold"
       },
       {
-        "name": "右回り○",
+        "name": "フルスロットル",
         "type": "normal"
       },
       {
-        "name": "良バ場○",
+        "name": "食らいつき",
         "type": "normal"
       },
       {
-        "name": "中距離直線○",
-        "type": "normal"
-      },
-      {
-        "name": "潜伏態勢",
+        "name": "一気呵成",
         "type": "gold"
       },
       {
-        "name": "静かな呼吸",
-        "type": "normal"
-      },
-      {
-        "name": "影打",
+        "name": "大急ぎ",
         "type": "normal"
       }
     ],
     "track": {
       "turf": "A",
-      "dirt": "G"
+      "dirt": "E"
     },
     "distance": {
       "short": "G",
@@ -51,17 +51,17 @@
       "nige": "G",
       "senko": "B",
       "sashi": "A",
-      "oikomi": "D"
+      "oikomi": "B"
     },
     "growth": {
       "speed": 0,
-      "stamina": 15,
-      "power": 0,
+      "stamina": 20,
+      "power": 10,
       "guts": 0,
-      "wisdom": 15
+      "wisdom": 0
     },
     "notes": "",
-    "savedAt": "2026-09-17T18:49:53.498Z"
+    "savedAt": "2026-09-17T18:50:04.805Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -3210,6 +3210,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T20:18:59.435Z"
+  },
+  {
+    "id": "uma_1789670993498_uo3pz",
+    "name": "サトノダイヤモンド",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "晦冥を照らせ永遠の耀き",
+        "type": "unique"
+      },
+      {
+        "name": "右回りの鬼",
+        "type": "gold"
+      },
+      {
+        "name": "右回り○",
+        "type": "normal"
+      },
+      {
+        "name": "良バ場○",
+        "type": "normal"
+      },
+      {
+        "name": "中距離直線○",
+        "type": "normal"
+      },
+      {
+        "name": "潜伏態勢",
+        "type": "gold"
+      },
+      {
+        "name": "静かな呼吸",
+        "type": "normal"
+      },
+      {
+        "name": "影打",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "G",
+      "mile": "C",
+      "medium": "A",
+      "long": "A"
+    },
+    "style": {
+      "nige": "G",
+      "senko": "B",
+      "sashi": "A",
+      "oikomi": "D"
+    },
+    "growth": {
+      "speed": 0,
+      "stamina": 15,
+      "power": 0,
+      "guts": 0,
+      "wisdom": 15
+    },
+    "notes": "",
+    "savedAt": "2026-09-17T18:49:53.498Z"
   },
   {
     "id": "uma_1789655678464_ym87y",
