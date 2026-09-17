@@ -1,39 +1,39 @@
 [
   {
-    "id": "uma_1789655852241_ezszh",
+    "id": "uma_1789655862800_bpwo1",
     "name": "ビワハヤヒデ",
     "imagePath": null,
     "skills": [
       {
-        "name": "Presents from X",
+        "name": "∴win Q.E.D.",
         "type": "unique"
       },
       {
-        "name": "全身全霊",
+        "name": "道悪○",
+        "type": "normal"
+      },
+      {
+        "name": "外枠得意○",
+        "type": "normal"
+      },
+      {
+        "name": "余裕綽々",
         "type": "gold"
       },
       {
-        "name": "末脚",
+        "name": "スタミナキープ",
         "type": "normal"
       },
       {
-        "name": "好位追走",
-        "type": "normal"
-      },
-      {
-        "name": "VIP顔パス",
+        "name": "クールダウン",
         "type": "gold"
       },
       {
-        "name": "パス上手",
+        "name": "深呼吸",
         "type": "normal"
       },
       {
-        "name": "先行直線○",
-        "type": "normal"
-      },
-      {
-        "name": "先行のコツ○",
+        "name": "追込駆け引き",
         "type": "normal"
       }
     ],
@@ -55,13 +55,13 @@
     },
     "growth": {
       "speed": 0,
-      "stamina": 12,
-      "power": 12,
-      "guts": 0,
-      "wisdom": 6
+      "stamina": 0,
+      "power": 0,
+      "guts": 10,
+      "wisdom": 20
     },
     "notes": "",
-    "savedAt": "2026-09-17T14:37:32.241Z"
+    "savedAt": "2026-09-17T14:37:42.800Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -3794,6 +3794,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T22:07:01.605Z"
+  },
+  {
+    "id": "uma_1789655852241_ezszh",
+    "name": "ビワハヤヒデ",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "Presents from X",
+        "type": "unique"
+      },
+      {
+        "name": "全身全霊",
+        "type": "gold"
+      },
+      {
+        "name": "末脚",
+        "type": "normal"
+      },
+      {
+        "name": "好位追走",
+        "type": "normal"
+      },
+      {
+        "name": "VIP顔パス",
+        "type": "gold"
+      },
+      {
+        "name": "パス上手",
+        "type": "normal"
+      },
+      {
+        "name": "先行直線○",
+        "type": "normal"
+      },
+      {
+        "name": "先行のコツ○",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "F"
+    },
+    "distance": {
+      "short": "F",
+      "mile": "C",
+      "medium": "A",
+      "long": "A"
+    },
+    "style": {
+      "nige": "E",
+      "senko": "A",
+      "sashi": "B",
+      "oikomi": "E"
+    },
+    "growth": {
+      "speed": 0,
+      "stamina": 12,
+      "power": 12,
+      "guts": 0,
+      "wisdom": 6
+    },
+    "notes": "",
+    "savedAt": "2026-09-17T14:37:32.241Z"
   },
   {
     "id": "uma_1789655841511_st7f8",
