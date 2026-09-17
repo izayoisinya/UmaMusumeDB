@@ -1,39 +1,39 @@
 [
   {
-    "id": "uma_1789669610837_sdqkc",
-    "name": "ナリタタイシン",
+    "id": "uma_1789669621856_w3xk5",
+    "name": "メジロブライト",
     "imagePath": null,
     "skills": [
       {
-        "name": "Nemesis",
+        "name": "夕凪のリトリート・メモリー",
         "type": "unique"
       },
       {
-        "name": "眠れる獅子",
+        "name": "右回り○",
+        "type": "normal"
+      },
+      {
+        "name": "一発必中",
         "type": "gold"
       },
       {
-        "name": "後方待機",
+        "name": "ロックオン",
         "type": "normal"
       },
       {
-        "name": "迫る影",
+        "name": "一気呵成",
         "type": "gold"
       },
       {
-        "name": "直線一気",
+        "name": "大急ぎ",
         "type": "normal"
       },
       {
-        "name": "ささやき",
+        "name": "進出開始",
         "type": "normal"
       },
       {
-        "name": "追込直線○",
-        "type": "normal"
-      },
-      {
-        "name": "一匹狼",
+        "name": "急襲",
         "type": "normal"
       }
     ],
@@ -43,25 +43,25 @@
     },
     "distance": {
       "short": "F",
-      "mile": "D",
+      "mile": "C",
       "medium": "A",
       "long": "A"
     },
     "style": {
       "nige": "G",
-      "senko": "F",
-      "sashi": "B",
+      "senko": "D",
+      "sashi": "A",
       "oikomi": "A"
     },
     "growth": {
-      "speed": 10,
-      "stamina": 0,
+      "speed": 5,
+      "stamina": 10,
       "power": 0,
-      "guts": 20,
-      "wisdom": 0
+      "guts": 5,
+      "wisdom": 10
     },
     "notes": "",
-    "savedAt": "2026-09-17T18:26:50.837Z"
+    "savedAt": "2026-09-17T18:27:01.856Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -4958,6 +4958,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-17T14:46:38.505Z"
+  },
+  {
+    "id": "uma_1789669610837_sdqkc",
+    "name": "ナリタタイシン",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "Nemesis",
+        "type": "unique"
+      },
+      {
+        "name": "眠れる獅子",
+        "type": "gold"
+      },
+      {
+        "name": "後方待機",
+        "type": "normal"
+      },
+      {
+        "name": "迫る影",
+        "type": "gold"
+      },
+      {
+        "name": "直線一気",
+        "type": "normal"
+      },
+      {
+        "name": "ささやき",
+        "type": "normal"
+      },
+      {
+        "name": "追込直線○",
+        "type": "normal"
+      },
+      {
+        "name": "一匹狼",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "F",
+      "mile": "D",
+      "medium": "A",
+      "long": "A"
+    },
+    "style": {
+      "nige": "G",
+      "senko": "F",
+      "sashi": "B",
+      "oikomi": "A"
+    },
+    "growth": {
+      "speed": 10,
+      "stamina": 0,
+      "power": 0,
+      "guts": 20,
+      "wisdom": 0
+    },
+    "notes": "",
+    "savedAt": "2026-09-17T18:26:50.837Z"
   },
   {
     "id": "uma_1789669597879_dznwb",
