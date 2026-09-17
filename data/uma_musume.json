@@ -1,67 +1,67 @@
 [
   {
-    "id": "uma_1789656356545_15j6m",
-    "name": "ネオユニヴァース",
+    "id": "uma_1789656375724_yevyi",
+    "name": "ツルマルツヨシ",
     "imagePath": null,
     "skills": [
       {
-        "name": "Encounter with U",
+        "name": "燃え盛るは絶対の意志",
         "type": "unique"
       },
       {
-        "name": "根幹距離○",
+        "name": "中距離直線○",
         "type": "normal"
       },
       {
-        "name": "コネクト",
+        "name": "光芒円刃",
         "type": "gold"
       },
       {
-        "name": "シンパシー",
+        "name": "中距離コーナー○",
         "type": "normal"
       },
       {
-        "name": "ワンチャンス",
+        "name": "先行直線○",
         "type": "normal"
       },
       {
-        "name": "しとやかな足取り",
-        "type": "normal"
-      },
-      {
-        "name": "ルミネセンス",
+        "name": "勇迅円刃",
         "type": "gold"
       },
       {
-        "name": "イグニッション",
+        "name": "先行コーナー○",
+        "type": "normal"
+      },
+      {
+        "name": "躍動",
         "type": "normal"
       }
     ],
     "track": {
       "turf": "A",
-      "dirt": "G"
+      "dirt": "F"
     },
     "distance": {
       "short": "F",
-      "mile": "B",
+      "mile": "D",
       "medium": "A",
-      "long": "B"
+      "long": "C"
     },
     "style": {
-      "nige": "F",
+      "nige": "G",
       "senko": "A",
       "sashi": "A",
-      "oikomi": "C"
+      "oikomi": "E"
     },
     "growth": {
       "speed": 0,
       "stamina": 0,
-      "power": 7,
+      "power": 20,
       "guts": 10,
-      "wisdom": 13
+      "wisdom": 0
     },
     "notes": "",
-    "savedAt": "2026-09-17T14:45:56.545Z"
+    "savedAt": "2026-09-17T14:46:15.724Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -4314,6 +4314,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T22:07:01.605Z"
+  },
+  {
+    "id": "uma_1789656356545_15j6m",
+    "name": "ネオユニヴァース",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "Encounter with U",
+        "type": "unique"
+      },
+      {
+        "name": "根幹距離○",
+        "type": "normal"
+      },
+      {
+        "name": "コネクト",
+        "type": "gold"
+      },
+      {
+        "name": "シンパシー",
+        "type": "normal"
+      },
+      {
+        "name": "ワンチャンス",
+        "type": "normal"
+      },
+      {
+        "name": "しとやかな足取り",
+        "type": "normal"
+      },
+      {
+        "name": "ルミネセンス",
+        "type": "gold"
+      },
+      {
+        "name": "イグニッション",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "F",
+      "mile": "B",
+      "medium": "A",
+      "long": "B"
+    },
+    "style": {
+      "nige": "F",
+      "senko": "A",
+      "sashi": "A",
+      "oikomi": "C"
+    },
+    "growth": {
+      "speed": 0,
+      "stamina": 0,
+      "power": 7,
+      "guts": 10,
+      "wisdom": 13
+    },
+    "notes": "",
+    "savedAt": "2026-09-17T14:45:56.545Z"
   },
   {
     "id": "uma_1789656267507_xaoke",
