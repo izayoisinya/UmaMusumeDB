@@ -1,39 +1,39 @@
 [
   {
-    "id": "uma_1789656186262_2tr5r",
-    "name": "シンボリクリスエス",
+    "id": "uma_1789656200787_tuwy2",
+    "name": "ノースフライト",
     "imagePath": null,
     "skills": [
       {
-        "name": "Mission: Triumph",
+        "name": "煌めき華やぐアローライン",
         "type": "unique"
       },
       {
-        "name": "中山レース場○",
-        "type": "normal"
-      },
-      {
-        "name": "位置取り押し上げ",
-        "type": "normal"
-      },
-      {
-        "name": "静かな呼吸",
-        "type": "normal"
-      },
-      {
-        "name": "無我夢中",
+        "name": "抜群の切れ味",
         "type": "gold"
       },
       {
-        "name": "がむしゃら",
+        "name": "切れ味",
         "type": "normal"
       },
       {
-        "name": "一発必中",
+        "name": "熱情",
         "type": "gold"
       },
       {
-        "name": "ロックオン",
+        "name": "滾る想い",
+        "type": "normal"
+      },
+      {
+        "name": "胸の高鳴り",
+        "type": "normal"
+      },
+      {
+        "name": "追駆",
+        "type": "normal"
+      },
+      {
+        "name": "溌剌",
         "type": "normal"
       }
     ],
@@ -42,26 +42,26 @@
       "dirt": "G"
     },
     "distance": {
-      "short": "G",
-      "mile": "E",
-      "medium": "A",
-      "long": "A"
+      "short": "C",
+      "mile": "A",
+      "medium": "B",
+      "long": "G"
     },
     "style": {
-      "nige": "G",
+      "nige": "D",
       "senko": "A",
-      "sashi": "A",
-      "oikomi": "D"
+      "sashi": "D",
+      "oikomi": "A"
     },
     "growth": {
-      "speed": 0,
-      "stamina": 15,
-      "power": 15,
+      "speed": 15,
+      "stamina": 0,
+      "power": 0,
       "guts": 0,
-      "wisdom": 0
+      "wisdom": 15
     },
     "notes": "",
-    "savedAt": "2026-09-17T14:43:06.262Z"
+    "savedAt": "2026-09-17T14:43:20.787Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -2570,6 +2570,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T22:06:34.520Z"
+  },
+  {
+    "id": "uma_1789656186262_2tr5r",
+    "name": "シンボリクリスエス",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "Mission: Triumph",
+        "type": "unique"
+      },
+      {
+        "name": "中山レース場○",
+        "type": "normal"
+      },
+      {
+        "name": "位置取り押し上げ",
+        "type": "normal"
+      },
+      {
+        "name": "静かな呼吸",
+        "type": "normal"
+      },
+      {
+        "name": "無我夢中",
+        "type": "gold"
+      },
+      {
+        "name": "がむしゃら",
+        "type": "normal"
+      },
+      {
+        "name": "一発必中",
+        "type": "gold"
+      },
+      {
+        "name": "ロックオン",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "G",
+      "mile": "E",
+      "medium": "A",
+      "long": "A"
+    },
+    "style": {
+      "nige": "G",
+      "senko": "A",
+      "sashi": "A",
+      "oikomi": "D"
+    },
+    "growth": {
+      "speed": 0,
+      "stamina": 15,
+      "power": 15,
+      "guts": 0,
+      "wisdom": 0
+    },
+    "notes": "",
+    "savedAt": "2026-09-17T14:43:06.262Z"
   },
   {
     "id": "uma_1789655793446_hga1b",
