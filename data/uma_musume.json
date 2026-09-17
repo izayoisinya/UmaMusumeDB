@@ -1,67 +1,67 @@
 [
   {
-    "id": "uma_1789656302001_f79nw",
-    "name": "ヤマニンゼファー",
+    "id": "uma_1789656317508_9p4ok",
+    "name": "スティルインラブ",
     "imagePath": null,
     "skills": [
       {
-        "name": "風光る",
+        "name": "スカーレットリリィの高揚",
         "type": "unique"
       },
       {
-        "name": "伏兵○",
+        "name": "衝動",
         "type": "normal"
       },
       {
-        "name": "コーナー加速○",
-        "type": "normal"
-      },
-      {
-        "name": "マイルコーナー○",
-        "type": "normal"
-      },
-      {
-        "name": "ギアチェンジ",
+        "name": "闘争本能",
         "type": "gold"
       },
       {
-        "name": "ギアシフト",
+        "name": "好戦的",
         "type": "normal"
       },
       {
-        "name": "風雲の志",
+        "name": "解き放つ情念",
         "type": "gold"
       },
       {
-        "name": "向上心",
+        "name": "想い焦がれて",
+        "type": "normal"
+      },
+      {
+        "name": "精神力",
+        "type": "normal"
+      },
+      {
+        "name": "内なる獣",
         "type": "normal"
       }
     ],
     "track": {
       "turf": "A",
-      "dirt": "D"
+      "dirt": "G"
     },
     "distance": {
-      "short": "B",
+      "short": "C",
       "mile": "A",
       "medium": "A",
       "long": "G"
     },
     "style": {
-      "nige": "E",
+      "nige": "G",
       "senko": "A",
-      "sashi": "C",
-      "oikomi": "G"
+      "sashi": "A",
+      "oikomi": "F"
     },
     "growth": {
-      "speed": 10,
-      "stamina": 0,
-      "power": 0,
+      "speed": 0,
+      "stamina": 10,
+      "power": 10,
       "guts": 10,
-      "wisdom": 10
+      "wisdom": 0
     },
     "notes": "",
-    "savedAt": "2026-09-17T14:45:02.001Z"
+    "savedAt": "2026-09-17T14:45:17.508Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -6098,6 +6098,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-17T14:35:04.198Z"
+  },
+  {
+    "id": "uma_1789656302001_f79nw",
+    "name": "ヤマニンゼファー",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "風光る",
+        "type": "unique"
+      },
+      {
+        "name": "伏兵○",
+        "type": "normal"
+      },
+      {
+        "name": "コーナー加速○",
+        "type": "normal"
+      },
+      {
+        "name": "マイルコーナー○",
+        "type": "normal"
+      },
+      {
+        "name": "ギアチェンジ",
+        "type": "gold"
+      },
+      {
+        "name": "ギアシフト",
+        "type": "normal"
+      },
+      {
+        "name": "風雲の志",
+        "type": "gold"
+      },
+      {
+        "name": "向上心",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "D"
+    },
+    "distance": {
+      "short": "B",
+      "mile": "A",
+      "medium": "A",
+      "long": "G"
+    },
+    "style": {
+      "nige": "E",
+      "senko": "A",
+      "sashi": "C",
+      "oikomi": "G"
+    },
+    "growth": {
+      "speed": 10,
+      "stamina": 0,
+      "power": 0,
+      "guts": 10,
+      "wisdom": 10
+    },
+    "notes": "",
+    "savedAt": "2026-09-17T14:45:02.001Z"
   },
   {
     "id": "uma_1789655930104_rbak3",
