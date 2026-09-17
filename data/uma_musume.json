@@ -1,39 +1,39 @@
 [
   {
-    "id": "uma_1789670943313_qb9ah",
+    "id": "uma_1789670954458_u5foq",
     "name": "カワカミプリンセス",
     "imagePath": null,
     "skills": [
       {
-        "name": "快なる剛力",
+        "name": "姫たるもの、勝利をこの手に",
         "type": "unique"
       },
       {
-        "name": "中距離コーナー○",
+        "name": "根幹距離○",
         "type": "normal"
       },
       {
-        "name": "前のめり",
-        "type": "normal"
-      },
-      {
-        "name": "至高のダウンヒラー",
+        "name": "ノンストップガール",
         "type": "gold"
       },
       {
-        "name": "下り坂巧者",
+        "name": "垂れウマ回避",
         "type": "normal"
       },
       {
-        "name": "トップギア",
+        "name": "昇り龍",
         "type": "gold"
       },
       {
-        "name": "キレる脚",
+        "name": "外差し準備",
         "type": "normal"
       },
       {
-        "name": "食らいつき",
+        "name": "負けん気",
+        "type": "normal"
+      },
+      {
+        "name": "差し直線○",
         "type": "normal"
       }
     ],
@@ -55,13 +55,13 @@
     },
     "growth": {
       "speed": 0,
-      "stamina": 8,
-      "power": 8,
-      "guts": 14,
+      "stamina": 0,
+      "power": 10,
+      "guts": 20,
       "wisdom": 0
     },
     "notes": "",
-    "savedAt": "2026-09-17T18:49:03.313Z"
+    "savedAt": "2026-09-17T18:49:14.458Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -1858,6 +1858,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T22:08:51.155Z"
+  },
+  {
+    "id": "uma_1789670943313_qb9ah",
+    "name": "カワカミプリンセス",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "快なる剛力",
+        "type": "unique"
+      },
+      {
+        "name": "中距離コーナー○",
+        "type": "normal"
+      },
+      {
+        "name": "前のめり",
+        "type": "normal"
+      },
+      {
+        "name": "至高のダウンヒラー",
+        "type": "gold"
+      },
+      {
+        "name": "下り坂巧者",
+        "type": "normal"
+      },
+      {
+        "name": "トップギア",
+        "type": "gold"
+      },
+      {
+        "name": "キレる脚",
+        "type": "normal"
+      },
+      {
+        "name": "食らいつき",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "D",
+      "mile": "B",
+      "medium": "A",
+      "long": "F"
+    },
+    "style": {
+      "nige": "G",
+      "senko": "C",
+      "sashi": "A",
+      "oikomi": "D"
+    },
+    "growth": {
+      "speed": 0,
+      "stamina": 8,
+      "power": 8,
+      "guts": 14,
+      "wisdom": 0
+    },
+    "notes": "",
+    "savedAt": "2026-09-17T18:49:03.313Z"
   },
   {
     "id": "uma_1789589563588_92i5d",
