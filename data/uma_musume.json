@@ -1,49 +1,49 @@
 [
   {
-    "id": "uma_1789671004805_2es32",
-    "name": "サクラローレル",
+    "id": "uma_1789671020300_ptkwm",
+    "name": "サウンズオブアース",
     "imagePath": null,
     "skills": [
       {
-        "name": "花開き、世界",
+        "name": "ヴィヴァーチェ・ヴォラーレ",
         "type": "unique"
       },
       {
-        "name": "差し直線○",
-        "type": "normal"
-      },
-      {
-        "name": "尻尾上がり",
-        "type": "normal"
-      },
-      {
-        "name": "勇往邁進",
+        "name": "好転一息",
         "type": "gold"
       },
       {
-        "name": "フルスロットル",
+        "name": "直線回復",
         "type": "normal"
       },
       {
-        "name": "食らいつき",
+        "name": "ウマ好み",
         "type": "normal"
       },
       {
-        "name": "一気呵成",
+        "name": "スリップストリーム",
+        "type": "normal"
+      },
+      {
+        "name": "遊びはおしまいっ！",
+        "type": "normal"
+      },
+      {
+        "name": "威風堂々",
         "type": "gold"
       },
       {
-        "name": "大急ぎ",
+        "name": "プレッシャー",
         "type": "normal"
       }
     ],
     "track": {
       "turf": "A",
-      "dirt": "E"
+      "dirt": "G"
     },
     "distance": {
       "short": "G",
-      "mile": "C",
+      "mile": "F",
       "medium": "A",
       "long": "A"
     },
@@ -51,17 +51,17 @@
       "nige": "G",
       "senko": "B",
       "sashi": "A",
-      "oikomi": "B"
+      "oikomi": "E"
     },
     "growth": {
       "speed": 0,
-      "stamina": 20,
+      "stamina": 10,
       "power": 10,
-      "guts": 0,
+      "guts": 10,
       "wisdom": 0
     },
     "notes": "",
-    "savedAt": "2026-09-17T18:50:04.805Z"
+    "savedAt": "2026-09-17T18:50:20.300Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -3210,6 +3210,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T20:18:59.435Z"
+  },
+  {
+    "id": "uma_1789671004805_2es32",
+    "name": "サクラローレル",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "花開き、世界",
+        "type": "unique"
+      },
+      {
+        "name": "差し直線○",
+        "type": "normal"
+      },
+      {
+        "name": "尻尾上がり",
+        "type": "normal"
+      },
+      {
+        "name": "勇往邁進",
+        "type": "gold"
+      },
+      {
+        "name": "フルスロットル",
+        "type": "normal"
+      },
+      {
+        "name": "食らいつき",
+        "type": "normal"
+      },
+      {
+        "name": "一気呵成",
+        "type": "gold"
+      },
+      {
+        "name": "大急ぎ",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "E"
+    },
+    "distance": {
+      "short": "G",
+      "mile": "C",
+      "medium": "A",
+      "long": "A"
+    },
+    "style": {
+      "nige": "G",
+      "senko": "B",
+      "sashi": "A",
+      "oikomi": "B"
+    },
+    "growth": {
+      "speed": 0,
+      "stamina": 20,
+      "power": 10,
+      "guts": 0,
+      "wisdom": 0
+    },
+    "notes": "",
+    "savedAt": "2026-09-17T18:50:04.805Z"
   },
   {
     "id": "uma_1789670993498_uo3pz",
