@@ -1,15 +1,27 @@
 [
   {
-    "id": "uma_1789655752569_ohmg6",
+    "id": "uma_1789655766789_bzi8p",
     "name": "メジロマックイーン",
     "imagePath": null,
     "skills": [
       {
-        "name": "きらめくは海、まばゆきは君",
+        "name": "最強の名を懸けて",
         "type": "unique"
       },
       {
-        "name": "集中力",
+        "name": "秋ウマ娘○",
+        "type": "normal"
+      },
+      {
+        "name": "ハヤテー文字",
+        "type": "gold"
+      },
+      {
+        "name": "直線巧者",
+        "type": "normal"
+      },
+      {
+        "name": "ペースアップ",
         "type": "normal"
       },
       {
@@ -17,23 +29,11 @@
         "type": "normal"
       },
       {
-        "name": "先行のコツ○",
-        "type": "normal"
-      },
-      {
-        "name": "真打",
+        "name": "クールダウン",
         "type": "gold"
       },
       {
-        "name": "影打",
-        "type": "normal"
-      },
-      {
-        "name": "一意専心",
-        "type": "gold"
-      },
-      {
-        "name": "抜かりなし",
+        "name": "深呼吸",
         "type": "normal"
       }
     ],
@@ -54,14 +54,14 @@
       "oikomi": "F"
     },
     "growth": {
-      "speed": 8,
-      "stamina": 8,
-      "power": 0,
+      "speed": 0,
+      "stamina": 10,
+      "power": 10,
       "guts": 0,
-      "wisdom": 14
+      "wisdom": 10
     },
     "notes": "",
-    "savedAt": "2026-09-17T14:35:52.569Z"
+    "savedAt": "2026-09-17T14:36:06.789Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -4690,6 +4690,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T20:25:11.095Z"
+  },
+  {
+    "id": "uma_1789655752569_ohmg6",
+    "name": "メジロマックイーン",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "きらめくは海、まばゆきは君",
+        "type": "unique"
+      },
+      {
+        "name": "集中力",
+        "type": "normal"
+      },
+      {
+        "name": "スタミナキープ",
+        "type": "normal"
+      },
+      {
+        "name": "先行のコツ○",
+        "type": "normal"
+      },
+      {
+        "name": "真打",
+        "type": "gold"
+      },
+      {
+        "name": "影打",
+        "type": "normal"
+      },
+      {
+        "name": "一意専心",
+        "type": "gold"
+      },
+      {
+        "name": "抜かりなし",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "E"
+    },
+    "distance": {
+      "short": "G",
+      "mile": "F",
+      "medium": "A",
+      "long": "A"
+    },
+    "style": {
+      "nige": "B",
+      "senko": "A",
+      "sashi": "D",
+      "oikomi": "F"
+    },
+    "growth": {
+      "speed": 8,
+      "stamina": 8,
+      "power": 0,
+      "guts": 0,
+      "wisdom": 14
+    },
+    "notes": "",
+    "savedAt": "2026-09-17T14:35:52.569Z"
   },
   {
     "id": "uma_1789655691111_ti3zk",
