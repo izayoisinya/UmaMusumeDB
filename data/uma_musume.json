@@ -1,54 +1,54 @@
 [
   {
-    "id": "uma_1789656267507_xaoke",
-    "name": "ネオユニヴァース",
+    "id": "uma_1789656280335_1y964",
+    "name": "マーベラスサンデー",
     "imagePath": null,
     "skills": [
       {
-        "name": "アド・アストラ",
+        "name": "万彩☆マーベラス★世界",
         "type": "unique"
       },
       {
-        "name": "春ウマ娘○",
-        "type": "normal"
-      },
-      {
-        "name": "スリップストリーム",
-        "type": "normal"
-      },
-      {
-        "name": "決死の覚悟",
+        "name": "ノンストップガール",
         "type": "gold"
+      },
+      {
+        "name": "垂れウマ回避",
+        "type": "normal"
+      },
+      {
+        "name": "差しのコツ○",
+        "type": "normal"
       },
       {
         "name": "ありったけ",
         "type": "normal"
       },
       {
-        "name": "自制心",
-        "type": "normal"
-      },
-      {
-        "name": "ルミネセンス",
+        "name": "高揚感",
         "type": "gold"
       },
       {
-        "name": "イグニッション",
+        "name": "前のめり",
+        "type": "normal"
+      },
+      {
+        "name": "がむしゃら",
         "type": "normal"
       }
     ],
     "track": {
       "turf": "A",
-      "dirt": "G"
+      "dirt": "F"
     },
     "distance": {
-      "short": "F",
-      "mile": "B",
+      "short": "G",
+      "mile": "C",
       "medium": "A",
       "long": "B"
     },
     "style": {
-      "nige": "F",
+      "nige": "G",
       "senko": "A",
       "sashi": "A",
       "oikomi": "C"
@@ -56,12 +56,12 @@
     "growth": {
       "speed": 0,
       "stamina": 0,
-      "power": 0,
+      "power": 15,
       "guts": 0,
-      "wisdom": 30
+      "wisdom": 15
     },
     "notes": "",
-    "savedAt": "2026-09-17T14:44:27.507Z"
+    "savedAt": "2026-09-17T14:44:40.335Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -4178,6 +4178,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T22:07:01.605Z"
+  },
+  {
+    "id": "uma_1789656267507_xaoke",
+    "name": "ネオユニヴァース",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "アド・アストラ",
+        "type": "unique"
+      },
+      {
+        "name": "春ウマ娘○",
+        "type": "normal"
+      },
+      {
+        "name": "スリップストリーム",
+        "type": "normal"
+      },
+      {
+        "name": "決死の覚悟",
+        "type": "gold"
+      },
+      {
+        "name": "ありったけ",
+        "type": "normal"
+      },
+      {
+        "name": "自制心",
+        "type": "normal"
+      },
+      {
+        "name": "ルミネセンス",
+        "type": "gold"
+      },
+      {
+        "name": "イグニッション",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "F",
+      "mile": "B",
+      "medium": "A",
+      "long": "B"
+    },
+    "style": {
+      "nige": "F",
+      "senko": "A",
+      "sashi": "A",
+      "oikomi": "C"
+    },
+    "growth": {
+      "speed": 0,
+      "stamina": 0,
+      "power": 0,
+      "guts": 0,
+      "wisdom": 30
+    },
+    "notes": "",
+    "savedAt": "2026-09-17T14:44:27.507Z"
   },
   {
     "id": "uma_1789656200787_tuwy2",
