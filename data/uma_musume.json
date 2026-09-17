@@ -1,39 +1,39 @@
 [
   {
-    "id": "uma_1789671802001_o5khq",
-    "name": "フリオーソ",
+    "id": "uma_1789671817672_scss2",
+    "name": "ハルウララ",
     "imagePath": null,
     "skills": [
       {
-        "name": "『船橋最強！』",
+        "name": "113転び114起き",
         "type": "unique"
       },
       {
-        "name": "交流重賞○",
+        "name": "雪の日○",
         "type": "normal"
       },
       {
-        "name": "優位形成",
+        "name": "注目の踊り子",
         "type": "gold"
       },
       {
-        "name": "しとやかな足取り",
+        "name": "ポジションセンス",
         "type": "normal"
       },
       {
-        "name": "力の限り",
+        "name": "負けん気",
         "type": "normal"
       },
       {
-        "name": "ダート直線○",
-        "type": "normal"
-      },
-      {
-        "name": "猛烈激走",
+        "name": "努力家",
         "type": "gold"
       },
       {
-        "name": "みなぎる闘志",
+        "name": "がんばり屋",
+        "type": "normal"
+      },
+      {
+        "name": "ふり紋り",
         "type": "normal"
       }
     ],
@@ -42,26 +42,26 @@
       "dirt": "A"
     },
     "distance": {
-      "short": "F",
+      "short": "A",
       "mile": "A",
-      "medium": "A",
-      "long": "F"
+      "medium": "G",
+      "long": "G"
     },
     "style": {
-      "nige": "A",
-      "senko": "A",
-      "sashi": "E",
-      "oikomi": "G"
+      "nige": "G",
+      "senko": "G",
+      "sashi": "A",
+      "oikomi": "B"
     },
     "growth": {
-      "speed": 20,
+      "speed": 0,
       "stamina": 0,
-      "power": 0,
+      "power": 20,
       "guts": 10,
       "wisdom": 0
     },
     "notes": "",
-    "savedAt": "2026-09-17T19:03:22.001Z"
+    "savedAt": "2026-09-17T19:03:37.672Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -8286,6 +8286,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T22:14:00.550Z"
+  },
+  {
+    "id": "uma_1789671802001_o5khq",
+    "name": "フリオーソ",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "『船橋最強！』",
+        "type": "unique"
+      },
+      {
+        "name": "交流重賞○",
+        "type": "normal"
+      },
+      {
+        "name": "優位形成",
+        "type": "gold"
+      },
+      {
+        "name": "しとやかな足取り",
+        "type": "normal"
+      },
+      {
+        "name": "力の限り",
+        "type": "normal"
+      },
+      {
+        "name": "ダート直線○",
+        "type": "normal"
+      },
+      {
+        "name": "猛烈激走",
+        "type": "gold"
+      },
+      {
+        "name": "みなぎる闘志",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "G",
+      "dirt": "A"
+    },
+    "distance": {
+      "short": "F",
+      "mile": "A",
+      "medium": "A",
+      "long": "F"
+    },
+    "style": {
+      "nige": "A",
+      "senko": "A",
+      "sashi": "E",
+      "oikomi": "G"
+    },
+    "growth": {
+      "speed": 20,
+      "stamina": 0,
+      "power": 0,
+      "guts": 10,
+      "wisdom": 0
+    },
+    "notes": "",
+    "savedAt": "2026-09-17T19:03:22.001Z"
   },
   {
     "id": "uma_1789671791622_51lqi",
