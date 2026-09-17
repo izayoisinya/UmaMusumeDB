@@ -1,39 +1,39 @@
 [
   {
-    "id": "uma_1789670907527_yzz79",
-    "name": "ウオッカ",
+    "id": "uma_1789670930851_3ya0f",
+    "name": "キングヘイロー",
     "imagePath": null,
     "skills": [
       {
-        "name": "カッティング×DRIVE！",
+        "name": "Pride of KING",
         "type": "unique"
       },
       {
-        "name": "直線加速",
+        "name": "外枠得意○",
         "type": "normal"
       },
       {
-        "name": "好転一息",
+        "name": "電撃の煌めき",
         "type": "gold"
       },
       {
-        "name": "直線回復",
+        "name": "詰め寄り",
         "type": "normal"
       },
       {
-        "name": "差し切り体勢",
+        "name": "負けん気",
         "type": "normal"
       },
       {
-        "name": "豪脚",
+        "name": "軽やかステップ",
+        "type": "normal"
+      },
+      {
+        "name": "大局観",
         "type": "gold"
       },
       {
-        "name": "上昇気流",
-        "type": "normal"
-      },
-      {
-        "name": "マイル直線○",
+        "name": "読解力",
         "type": "normal"
       }
     ],
@@ -42,26 +42,26 @@
       "dirt": "G"
     },
     "distance": {
-      "short": "F",
-      "mile": "A",
-      "medium": "A",
-      "long": "F"
+      "short": "A",
+      "mile": "B",
+      "medium": "B",
+      "long": "C"
     },
     "style": {
-      "nige": "C",
+      "nige": "G",
       "senko": "B",
       "sashi": "A",
-      "oikomi": "F"
+      "oikomi": "D"
     },
     "growth": {
-      "speed": 10,
+      "speed": 0,
       "stamina": 0,
       "power": 20,
-      "guts": 0,
+      "guts": 10,
       "wisdom": 0
     },
     "notes": "",
-    "savedAt": "2026-09-17T18:48:27.527Z"
+    "savedAt": "2026-09-17T18:48:50.851Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -1022,6 +1022,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-17T18:23:38.573Z"
+  },
+  {
+    "id": "uma_1789670907527_yzz79",
+    "name": "ウオッカ",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "カッティング×DRIVE！",
+        "type": "unique"
+      },
+      {
+        "name": "直線加速",
+        "type": "normal"
+      },
+      {
+        "name": "好転一息",
+        "type": "gold"
+      },
+      {
+        "name": "直線回復",
+        "type": "normal"
+      },
+      {
+        "name": "差し切り体勢",
+        "type": "normal"
+      },
+      {
+        "name": "豪脚",
+        "type": "gold"
+      },
+      {
+        "name": "上昇気流",
+        "type": "normal"
+      },
+      {
+        "name": "マイル直線○",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "F",
+      "mile": "A",
+      "medium": "A",
+      "long": "F"
+    },
+    "style": {
+      "nige": "C",
+      "senko": "B",
+      "sashi": "A",
+      "oikomi": "F"
+    },
+    "growth": {
+      "speed": 10,
+      "stamina": 0,
+      "power": 20,
+      "guts": 0,
+      "wisdom": 0
+    },
+    "notes": "",
+    "savedAt": "2026-09-17T18:48:27.527Z"
   },
   {
     "id": "uma_1789655889020_g5vlo",
