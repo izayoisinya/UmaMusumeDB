@@ -1,67 +1,67 @@
 [
   {
-    "id": "uma_1789671215669_qxuyn",
-    "name": "マンハッタンカフェ",
+    "id": "uma_1789671226746_pigq8",
+    "name": "マチカネフクキタル",
     "imagePath": null,
     "skills": [
       {
-        "name": "アナタヲ・オイカケテ",
+        "name": "禾スナハチ登ル",
         "type": "unique"
       },
       {
-        "name": "雨の日○",
+        "name": "右回り○",
         "type": "normal"
       },
       {
-        "name": "バス上手",
+        "name": "京都レース場○",
         "type": "normal"
       },
       {
-        "name": "スタミナグリード",
+        "name": "差し切り体勢",
+        "type": "normal"
+      },
+      {
+        "name": "内的体験",
         "type": "gold"
       },
       {
-        "name": "スタミナイーター",
+        "name": "内弁慶",
         "type": "normal"
       },
       {
-        "name": "リラックス",
+        "name": "怒涛の追い上げ",
         "type": "gold"
       },
       {
-        "name": "小休憩",
-        "type": "normal"
-      },
-      {
-        "name": "登山家",
+        "name": "追い上げ",
         "type": "normal"
       }
     ],
     "track": {
       "turf": "A",
-      "dirt": "G"
+      "dirt": "F"
     },
     "distance": {
-      "short": "G",
-      "mile": "F",
-      "medium": "B",
+      "short": "F",
+      "mile": "C",
+      "medium": "A",
       "long": "A"
     },
     "style": {
       "nige": "G",
-      "senko": "C",
+      "senko": "B",
       "sashi": "A",
-      "oikomi": "C"
+      "oikomi": "F"
     },
     "growth": {
       "speed": 0,
-      "stamina": 30,
+      "stamina": 10,
       "power": 0,
-      "guts": 0,
-      "wisdom": 0
+      "guts": 10,
+      "wisdom": 10
     },
     "notes": "",
-    "savedAt": "2026-09-17T18:53:35.669Z"
+    "savedAt": "2026-09-17T18:53:46.746Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -8350,6 +8350,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T20:29:09.040Z"
+  },
+  {
+    "id": "uma_1789671215669_qxuyn",
+    "name": "マンハッタンカフェ",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "アナタヲ・オイカケテ",
+        "type": "unique"
+      },
+      {
+        "name": "雨の日○",
+        "type": "normal"
+      },
+      {
+        "name": "バス上手",
+        "type": "normal"
+      },
+      {
+        "name": "スタミナグリード",
+        "type": "gold"
+      },
+      {
+        "name": "スタミナイーター",
+        "type": "normal"
+      },
+      {
+        "name": "リラックス",
+        "type": "gold"
+      },
+      {
+        "name": "小休憩",
+        "type": "normal"
+      },
+      {
+        "name": "登山家",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "G",
+      "mile": "F",
+      "medium": "B",
+      "long": "A"
+    },
+    "style": {
+      "nige": "G",
+      "senko": "C",
+      "sashi": "A",
+      "oikomi": "C"
+    },
+    "growth": {
+      "speed": 0,
+      "stamina": 30,
+      "power": 0,
+      "guts": 0,
+      "wisdom": 0
+    },
+    "notes": "",
+    "savedAt": "2026-09-17T18:53:35.669Z"
   },
   {
     "id": "uma_1789671205104_gwvyq",
