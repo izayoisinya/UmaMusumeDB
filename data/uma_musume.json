@@ -1,67 +1,67 @@
 [
   {
-    "id": "uma_1789655862800_bpwo1",
-    "name": "ビワハヤヒデ",
+    "id": "uma_1789655875770_5gagq",
+    "name": "ナリタブライアン",
     "imagePath": null,
     "skills": [
       {
-        "name": "∴win Q.E.D.",
+        "name": "Shadow Break",
         "type": "unique"
       },
       {
-        "name": "道悪○",
-        "type": "normal"
-      },
-      {
-        "name": "外枠得意○",
-        "type": "normal"
-      },
-      {
-        "name": "余裕綽々",
+        "name": "ハヤテー文字",
         "type": "gold"
       },
       {
-        "name": "スタミナキープ",
+        "name": "直線巧者",
         "type": "normal"
       },
       {
-        "name": "クールダウン",
+        "name": "全身全霊",
         "type": "gold"
       },
       {
-        "name": "深呼吸",
+        "name": "末脚",
         "type": "normal"
       },
       {
-        "name": "追込駆け引き",
+        "name": "好位追走",
+        "type": "normal"
+      },
+      {
+        "name": "中距離直線○",
+        "type": "normal"
+      },
+      {
+        "name": "一匹狼",
         "type": "normal"
       }
     ],
     "track": {
       "turf": "A",
-      "dirt": "F"
+      "dirt": "G"
     },
     "distance": {
       "short": "F",
-      "mile": "C",
+      "mile": "B",
       "medium": "A",
       "long": "A"
     },
     "style": {
-      "nige": "E",
+      "nige": "G",
       "senko": "A",
-      "sashi": "B",
-      "oikomi": "E"
+      "sashi": "A",
+      "oikomi": "D"
     },
     "growth": {
-      "speed": 0,
-      "stamina": 0,
+      "speed": 10,
+      "stamina": 20,
       "power": 0,
-      "guts": 10,
-      "wisdom": 20
+      "guts": 0,
+      "wisdom": 0
     },
     "notes": "",
-    "savedAt": "2026-09-17T14:37:42.800Z"
+    "savedAt": "2026-09-17T14:37:55.770Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -3794,6 +3794,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T22:07:01.605Z"
+  },
+  {
+    "id": "uma_1789655862800_bpwo1",
+    "name": "ビワハヤヒデ",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "∴win Q.E.D.",
+        "type": "unique"
+      },
+      {
+        "name": "道悪○",
+        "type": "normal"
+      },
+      {
+        "name": "外枠得意○",
+        "type": "normal"
+      },
+      {
+        "name": "余裕綽々",
+        "type": "gold"
+      },
+      {
+        "name": "スタミナキープ",
+        "type": "normal"
+      },
+      {
+        "name": "クールダウン",
+        "type": "gold"
+      },
+      {
+        "name": "深呼吸",
+        "type": "normal"
+      },
+      {
+        "name": "追込駆け引き",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "F"
+    },
+    "distance": {
+      "short": "F",
+      "mile": "C",
+      "medium": "A",
+      "long": "A"
+    },
+    "style": {
+      "nige": "E",
+      "senko": "A",
+      "sashi": "B",
+      "oikomi": "E"
+    },
+    "growth": {
+      "speed": 0,
+      "stamina": 0,
+      "power": 0,
+      "guts": 10,
+      "wisdom": 20
+    },
+    "notes": "",
+    "savedAt": "2026-09-17T14:37:42.800Z"
   },
   {
     "id": "uma_1789655852241_ezszh",
