@@ -1,39 +1,39 @@
 [
   {
-    "id": "uma_1789671031495_y1v09",
+    "id": "uma_1789671044008_wyhgj",
     "name": "キングヘイロー",
     "imagePath": null,
     "skills": [
       {
-        "name": "理想へのwinding road",
+        "name": "轟！トレセン応援団！！",
         "type": "unique"
       },
       {
-        "name": "コーナー加速○",
-        "type": "normal"
-      },
-      {
-        "name": "ペースアップ",
-        "type": "normal"
-      },
-      {
-        "name": "豪脚",
+        "name": "春一番",
         "type": "gold"
       },
       {
-        "name": "上昇気流",
+        "name": "春ウマ娘○",
         "type": "normal"
       },
       {
-        "name": "短距離コーナー○",
-        "type": "normal"
-      },
-      {
-        "name": "気骨稜稜",
+        "name": "昇り龍",
         "type": "gold"
       },
       {
-        "name": "ひたむき前進",
+        "name": "外差し準備",
+        "type": "normal"
+      },
+      {
+        "name": "詰め寄り",
+        "type": "normal"
+      },
+      {
+        "name": "展開窺い",
+        "type": "normal"
+      },
+      {
+        "name": "差し直線○",
         "type": "normal"
       }
     ],
@@ -43,7 +43,7 @@
     },
     "distance": {
       "short": "A",
-      "mile": "A",
+      "mile": "B",
       "medium": "B",
       "long": "C"
     },
@@ -54,14 +54,14 @@
       "oikomi": "D"
     },
     "growth": {
-      "speed": 0,
+      "speed": 10,
       "stamina": 0,
       "power": 10,
       "guts": 10,
-      "wisdom": 10
+      "wisdom": 0
     },
     "notes": "",
-    "savedAt": "2026-09-17T18:50:31.495Z"
+    "savedAt": "2026-09-17T18:50:44.008Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -2306,6 +2306,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T20:09:43.322Z"
+  },
+  {
+    "id": "uma_1789671031495_y1v09",
+    "name": "キングヘイロー",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "理想へのwinding road",
+        "type": "unique"
+      },
+      {
+        "name": "コーナー加速○",
+        "type": "normal"
+      },
+      {
+        "name": "ペースアップ",
+        "type": "normal"
+      },
+      {
+        "name": "豪脚",
+        "type": "gold"
+      },
+      {
+        "name": "上昇気流",
+        "type": "normal"
+      },
+      {
+        "name": "短距離コーナー○",
+        "type": "normal"
+      },
+      {
+        "name": "気骨稜稜",
+        "type": "gold"
+      },
+      {
+        "name": "ひたむき前進",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "A",
+      "mile": "A",
+      "medium": "B",
+      "long": "C"
+    },
+    "style": {
+      "nige": "G",
+      "senko": "B",
+      "sashi": "A",
+      "oikomi": "D"
+    },
+    "growth": {
+      "speed": 0,
+      "stamina": 0,
+      "power": 10,
+      "guts": 10,
+      "wisdom": 10
+    },
+    "notes": "",
+    "savedAt": "2026-09-17T18:50:31.495Z"
   },
   {
     "id": "uma_1789670930851_3ya0f",
