@@ -1,67 +1,67 @@
 [
   {
-    "id": "uma_1789655823584_jy9tb",
-    "name": "エピファネイア",
+    "id": "uma_1789655841511_st7f8",
+    "name": "ビワハヤヒデ",
     "imagePath": null,
     "skills": [
       {
-        "name": "光れ！弾けろ！超新星爆発！",
+        "name": "勝利へ至ル累積",
         "type": "unique"
       },
       {
-        "name": "流星光底",
+        "name": "右回り○",
+        "type": "normal"
+      },
+      {
+        "name": "長距離直線○",
+        "type": "normal"
+      },
+      {
+        "name": "脱兎の先へ",
         "type": "gold"
       },
       {
-        "name": "飛躍の予感",
+        "name": "脇目も振らず",
         "type": "normal"
       },
       {
-        "name": "意地っ張り",
-        "type": "normal"
-      },
-      {
-        "name": "憂いなし",
-        "type": "normal"
-      },
-      {
-        "name": "流れに任せて",
-        "type": "normal"
-      },
-      {
-        "name": "超然",
+        "name": "一点集中",
         "type": "gold"
       },
       {
-        "name": "存在感",
+        "name": "狙いを定めて",
+        "type": "normal"
+      },
+      {
+        "name": "決定打",
         "type": "normal"
       }
     ],
     "track": {
       "turf": "A",
-      "dirt": "G"
+      "dirt": "F"
     },
     "distance": {
-      "short": "G",
-      "mile": "E",
+      "short": "F",
+      "mile": "C",
       "medium": "A",
       "long": "A"
     },
     "style": {
-      "nige": "D",
+      "nige": "E",
       "senko": "A",
       "sashi": "B",
-      "oikomi": "G"
+      "oikomi": "E"
     },
     "growth": {
       "speed": 0,
       "stamina": 10,
       "power": 10,
-      "guts": 0,
-      "wisdom": 10
+      "guts": 10,
+      "wisdom": 0
     },
     "notes": "",
-    "savedAt": "2026-09-17T14:37:03.584Z"
+    "savedAt": "2026-09-17T14:37:21.511Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -702,6 +702,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T20:20:51.006Z"
+  },
+  {
+    "id": "uma_1789655823584_jy9tb",
+    "name": "エピファネイア",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "光れ！弾けろ！超新星爆発！",
+        "type": "unique"
+      },
+      {
+        "name": "流星光底",
+        "type": "gold"
+      },
+      {
+        "name": "飛躍の予感",
+        "type": "normal"
+      },
+      {
+        "name": "意地っ張り",
+        "type": "normal"
+      },
+      {
+        "name": "憂いなし",
+        "type": "normal"
+      },
+      {
+        "name": "流れに任せて",
+        "type": "normal"
+      },
+      {
+        "name": "超然",
+        "type": "gold"
+      },
+      {
+        "name": "存在感",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "G",
+      "mile": "E",
+      "medium": "A",
+      "long": "A"
+    },
+    "style": {
+      "nige": "D",
+      "senko": "A",
+      "sashi": "B",
+      "oikomi": "G"
+    },
+    "growth": {
+      "speed": 0,
+      "stamina": 10,
+      "power": 10,
+      "guts": 0,
+      "wisdom": 10
+    },
+    "notes": "",
+    "savedAt": "2026-09-17T14:37:03.584Z"
   },
   {
     "id": "uma_1789655808634_7xcxm",
