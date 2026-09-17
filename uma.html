@@ -55,14 +55,14 @@ window.PAGE_PROMPT = 'この画像はウマ娘プリティーダービーの「�
         </div>
       </div>
 
-      <div class="count-filter-row">
-        <label>成長率の補正で絞り込み</label>
-        <div class="count-filter-controls">
-          <select id="filterGrowthCorrection">
-            <option value="">-</option>
-            <option value="yes">補正あり</option>
-            <option value="no">補正なし</option>
-          </select>
+      <div class="count-filter-row apt-search">
+        <label>成長率の補正で絞り込み（指定した項目だけAND条件で判定。空欄は無視）</label>
+        <div class="apt-select-row">
+          <div><span>スピード</span><select id="filterGrowthSpeed" class="growth-filter-select"><option value="">-</option><option value="yes">あり</option><option value="no">なし</option></select></div>
+          <div><span>スタミナ</span><select id="filterGrowthStamina" class="growth-filter-select"><option value="">-</option><option value="yes">あり</option><option value="no">なし</option></select></div>
+          <div><span>パワー</span><select id="filterGrowthPower" class="growth-filter-select"><option value="">-</option><option value="yes">あり</option><option value="no">なし</option></select></div>
+          <div><span>根性</span><select id="filterGrowthGuts" class="growth-filter-select"><option value="">-</option><option value="yes">あり</option><option value="no">なし</option></select></div>
+          <div><span>賢さ</span><select id="filterGrowthWisdom" class="growth-filter-select"><option value="">-</option><option value="yes">あり</option><option value="no">なし</option></select></div>
         </div>
       </div>
 

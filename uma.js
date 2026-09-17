@@ -462,23 +462,26 @@ aptSearchLte.addEventListener('change', renderUmas);
 
 const searchNameInput = document.getElementById('searchNameInput');
 const searchSkillInput = document.getElementById('searchSkillInput');
-const filterGrowthCorrection = document.getElementById('filterGrowthCorrection');
 searchNameInput.addEventListener('input', renderUmas);
 searchSkillInput.addEventListener('input', renderUmas);
-filterGrowthCorrection.addEventListener('change', renderUmas);
+
+const GROWTH_FILTER_FIELDS = [
+  { id: 'filterGrowthSpeed', key: 'speed' },
+  { id: 'filterGrowthStamina', key: 'stamina' },
+  { id: 'filterGrowthPower', key: 'power' },
+  { id: 'filterGrowthGuts', key: 'guts' },
+  { id: 'filterGrowthWisdom', key: 'wisdom' },
+];
+GROWTH_FILTER_FIELDS.forEach(f => document.getElementById(f.id).addEventListener('change', renderUmas));
 
 document.getElementById('resetSearchBtn').addEventListener('click', () => {
   searchNameInput.value = '';
   searchSkillInput.value = '';
-  filterGrowthCorrection.value = '';
   aptSearchLte.checked = false;
   APT_FILTER_FIELDS.forEach(f => { document.getElementById(f.id).value = ''; });
+  GROWTH_FILTER_FIELDS.forEach(f => { document.getElementById(f.id).value = ''; });
   renderUmas();
 });
-
-function hasGrowthCorrection(uma) {
-  return Object.values(uma.growth || {}).some(v => v);
-}
 
 function renderUmas() {
   const container = document.getElementById('entries');
@@ -489,7 +492,9 @@ function renderUmas() {
 
   const nameKeyword = searchNameInput.value.trim().toLowerCase();
   const skillKeyword = searchSkillInput.value.trim().toLowerCase();
-  const growthFilter = filterGrowthCorrection.value;
+  const activeGrowthFilters = GROWTH_FILTER_FIELDS
+    .map(f => ({ key: f.key, val: document.getElementById(f.id).value }))
+    .filter(f => f.val);
   const activeFilters = APT_FILTER_FIELDS
     .map(f => ({ path: f.path, rank: document.getElementById(f.id).value }))
     .filter(f => f.rank);
@@ -497,8 +502,10 @@ function renderUmas() {
   const filtered = allUmas.filter(uma => {
     if (nameKeyword && !(uma.name || '').toLowerCase().includes(nameKeyword)) return false;
     if (skillKeyword && !(uma.skills || []).some(s => normalizeSkill(s).name.toLowerCase().includes(skillKeyword))) return false;
-    if (growthFilter === 'yes' && !hasGrowthCorrection(uma)) return false;
-    if (growthFilter === 'no' && hasGrowthCorrection(uma)) return false;
+    if (!activeGrowthFilters.every(f => {
+      const hasBonus = !!(uma.growth && uma.growth[f.key]);
+      return f.val === 'yes' ? hasBonus : !hasBonus;
+    })) return false;
     return activeFilters.every(f => {
       const val = getAptValue(uma, f.path);
       if (!val) return false;
