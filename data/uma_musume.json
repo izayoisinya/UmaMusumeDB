@@ -1,39 +1,39 @@
 [
   {
-    "id": "uma_1789671205104_gwvyq",
+    "id": "uma_1789671215669_qxuyn",
     "name": "マンハッタンカフェ",
     "imagePath": null,
     "skills": [
       {
-        "name": "心からのおもてにゃし",
+        "name": "アナタヲ・オイカケテ",
         "type": "unique"
       },
       {
-        "name": "非根幹距離○",
+        "name": "雨の日○",
         "type": "normal"
       },
       {
-        "name": "迫る影",
+        "name": "バス上手",
+        "type": "normal"
+      },
+      {
+        "name": "スタミナグリード",
         "type": "gold"
       },
       {
-        "name": "直線一気",
+        "name": "スタミナイーター",
         "type": "normal"
       },
       {
-        "name": "深呼吸",
-        "type": "normal"
-      },
-      {
-        "name": "ロックオン",
-        "type": "normal"
-      },
-      {
-        "name": "一網打尽",
+        "name": "リラックス",
         "type": "gold"
       },
       {
-        "name": "ごぼう抜き",
+        "name": "小休憩",
+        "type": "normal"
+      },
+      {
+        "name": "登山家",
         "type": "normal"
       }
     ],
@@ -51,17 +51,17 @@
       "nige": "G",
       "senko": "C",
       "sashi": "A",
-      "oikomi": "A"
+      "oikomi": "C"
     },
     "growth": {
       "speed": 0,
-      "stamina": 20,
-      "power": 10,
+      "stamina": 30,
+      "power": 0,
       "guts": 0,
       "wisdom": 0
     },
     "notes": "",
-    "savedAt": "2026-09-17T18:53:25.104Z"
+    "savedAt": "2026-09-17T18:53:35.669Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -8350,6 +8350,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T20:29:09.040Z"
+  },
+  {
+    "id": "uma_1789671205104_gwvyq",
+    "name": "マンハッタンカフェ",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "心からのおもてにゃし",
+        "type": "unique"
+      },
+      {
+        "name": "非根幹距離○",
+        "type": "normal"
+      },
+      {
+        "name": "迫る影",
+        "type": "gold"
+      },
+      {
+        "name": "直線一気",
+        "type": "normal"
+      },
+      {
+        "name": "深呼吸",
+        "type": "normal"
+      },
+      {
+        "name": "ロックオン",
+        "type": "normal"
+      },
+      {
+        "name": "一網打尽",
+        "type": "gold"
+      },
+      {
+        "name": "ごぼう抜き",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "G",
+      "mile": "F",
+      "medium": "B",
+      "long": "A"
+    },
+    "style": {
+      "nige": "G",
+      "senko": "C",
+      "sashi": "A",
+      "oikomi": "A"
+    },
+    "growth": {
+      "speed": 0,
+      "stamina": 20,
+      "power": 10,
+      "guts": 0,
+      "wisdom": 0
+    },
+    "notes": "",
+    "savedAt": "2026-09-17T18:53:25.104Z"
   },
   {
     "id": "uma_1789671194764_fvocw",
