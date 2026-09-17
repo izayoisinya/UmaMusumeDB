@@ -1,39 +1,39 @@
 [
   {
-    "id": "uma_1789669760939_mx2n2",
-    "name": "エアシャカール",
+    "id": "uma_1789670864679_t3adb",
+    "name": "ウイニングチケット",
     "imagePath": null,
     "skills": [
       {
-        "name": "trigger:BEAT",
+        "name": "勝利のチケットを、君にッ！",
         "type": "unique"
       },
       {
-        "name": "ペースアップ",
+        "name": "良バ場○",
         "type": "normal"
       },
       {
-        "name": "月影一閃",
+        "name": "迅速果断",
         "type": "gold"
       },
       {
-        "name": "追込直線○",
+        "name": "位置取り押し上げ",
         "type": "normal"
       },
       {
-        "name": "冷静",
+        "name": "食い下がり",
         "type": "normal"
       },
       {
-        "name": "策士",
+        "name": "差しコーナー○",
         "type": "normal"
       },
       {
-        "name": "高揚感",
+        "name": "努力家",
         "type": "gold"
       },
       {
-        "name": "前のめり",
+        "name": "がんばり屋",
         "type": "normal"
       }
     ],
@@ -43,25 +43,25 @@
     },
     "distance": {
       "short": "G",
-      "mile": "E",
+      "mile": "F",
       "medium": "A",
-      "long": "A"
+      "long": "B"
     },
     "style": {
       "nige": "G",
-      "senko": "C",
+      "senko": "B",
       "sashi": "A",
-      "oikomi": "A"
+      "oikomi": "G"
     },
     "growth": {
       "speed": 0,
-      "stamina": 0,
-      "power": 0,
+      "stamina": 10,
+      "power": 20,
       "guts": 0,
-      "wisdom": 30
+      "wisdom": 0
     },
     "notes": "",
-    "savedAt": "2026-09-17T18:29:20.939Z"
+    "savedAt": "2026-09-17T18:47:44.679Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -958,6 +958,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-17T14:38:09.020Z"
+  },
+  {
+    "id": "uma_1789669760939_mx2n2",
+    "name": "エアシャカール",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "trigger:BEAT",
+        "type": "unique"
+      },
+      {
+        "name": "ペースアップ",
+        "type": "normal"
+      },
+      {
+        "name": "月影一閃",
+        "type": "gold"
+      },
+      {
+        "name": "追込直線○",
+        "type": "normal"
+      },
+      {
+        "name": "冷静",
+        "type": "normal"
+      },
+      {
+        "name": "策士",
+        "type": "normal"
+      },
+      {
+        "name": "高揚感",
+        "type": "gold"
+      },
+      {
+        "name": "前のめり",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "G",
+      "mile": "E",
+      "medium": "A",
+      "long": "A"
+    },
+    "style": {
+      "nige": "G",
+      "senko": "C",
+      "sashi": "A",
+      "oikomi": "A"
+    },
+    "growth": {
+      "speed": 0,
+      "stamina": 0,
+      "power": 0,
+      "guts": 0,
+      "wisdom": 30
+    },
+    "notes": "",
+    "savedAt": "2026-09-17T18:29:20.939Z"
   },
   {
     "id": "uma_1789655823584_jy9tb",
