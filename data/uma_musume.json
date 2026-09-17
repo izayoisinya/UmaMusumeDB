@@ -1,67 +1,67 @@
 [
   {
-    "id": "uma_1789655930104_rbak3",
-    "name": "ユキノビジン",
+    "id": "uma_1789655941555_4w3cd",
+    "name": "グラスワンダー",
     "imagePath": null,
     "skills": [
       {
-        "name": "ゆきあかり、おいかけて",
+        "name": "精神一到何事か成らざらん",
         "type": "unique"
       },
       {
-        "name": "雪の日○",
+        "name": "末脚",
         "type": "normal"
       },
       {
-        "name": "ノンストップガール",
+        "name": "位置取り押し上げ",
+        "type": "normal"
+      },
+      {
+        "name": "乗り換え上手",
         "type": "gold"
       },
       {
-        "name": "垂れウマ回避",
+        "name": "差し切り体勢",
         "type": "normal"
       },
       {
-        "name": "中距離直線○",
+        "name": "先行焦り",
         "type": "normal"
       },
       {
-        "name": "先行コーナー○",
-        "type": "normal"
-      },
-      {
-        "name": "決意の直滑降",
+        "name": "独占力",
         "type": "gold"
       },
       {
-        "name": "直滑降",
+        "name": "束縛",
         "type": "normal"
       }
     ],
     "track": {
       "turf": "A",
-      "dirt": "B"
+      "dirt": "G"
     },
     "distance": {
-      "short": "D",
+      "short": "G",
       "mile": "A",
-      "medium": "A",
-      "long": "E"
+      "medium": "B",
+      "long": "A"
     },
     "style": {
-      "nige": "C",
+      "nige": "F",
       "senko": "A",
-      "sashi": "F",
-      "oikomi": "G"
+      "sashi": "A",
+      "oikomi": "F"
     },
     "growth": {
-      "speed": 10,
+      "speed": 20,
       "stamina": 0,
-      "power": 0,
-      "guts": 20,
+      "power": 10,
+      "guts": 0,
       "wisdom": 0
     },
     "notes": "",
-    "savedAt": "2026-09-17T14:38:50.104Z"
+    "savedAt": "2026-09-17T14:39:01.555Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -5586,6 +5586,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-17T14:35:04.198Z"
+  },
+  {
+    "id": "uma_1789655930104_rbak3",
+    "name": "ユキノビジン",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "ゆきあかり、おいかけて",
+        "type": "unique"
+      },
+      {
+        "name": "雪の日○",
+        "type": "normal"
+      },
+      {
+        "name": "ノンストップガール",
+        "type": "gold"
+      },
+      {
+        "name": "垂れウマ回避",
+        "type": "normal"
+      },
+      {
+        "name": "中距離直線○",
+        "type": "normal"
+      },
+      {
+        "name": "先行コーナー○",
+        "type": "normal"
+      },
+      {
+        "name": "決意の直滑降",
+        "type": "gold"
+      },
+      {
+        "name": "直滑降",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "B"
+    },
+    "distance": {
+      "short": "D",
+      "mile": "A",
+      "medium": "A",
+      "long": "E"
+    },
+    "style": {
+      "nige": "C",
+      "senko": "A",
+      "sashi": "F",
+      "oikomi": "G"
+    },
+    "growth": {
+      "speed": 10,
+      "stamina": 0,
+      "power": 0,
+      "guts": 20,
+      "wisdom": 0
+    },
+    "notes": "",
+    "savedAt": "2026-09-17T14:38:50.104Z"
   },
   {
     "id": "uma_1789597025571_4lrnl",
