@@ -1,31 +1,19 @@
 [
   {
-    "id": "uma_1789597192548_hpseg",
-    "name": "ゴールドシチー",
+    "id": "uma_1789655663653_1oylc",
+    "name": "マチカネタンホイザ",
     "imagePath": null,
     "skills": [
       {
-        "name": "GET DOWN",
+        "name": "ごろりん！？パワードライブ",
         "type": "unique"
       },
       {
-        "name": "雨の日○",
+        "name": "差し切り体勢",
         "type": "normal"
       },
       {
-        "name": "布陣",
-        "type": "gold"
-      },
-      {
-        "name": "布石",
-        "type": "normal"
-      },
-      {
-        "name": "差しコーナー○",
-        "type": "normal"
-      },
-      {
-        "name": "差しのコツ○",
+        "name": "中距離コーナー○",
         "type": "normal"
       },
       {
@@ -35,33 +23,45 @@
       {
         "name": "静かな呼吸",
         "type": "normal"
+      },
+      {
+        "name": "起死回生",
+        "type": "gold"
+      },
+      {
+        "name": "ワンチャンス",
+        "type": "normal"
+      },
+      {
+        "name": "進出開始",
+        "type": "normal"
       }
     ],
     "track": {
       "turf": "A",
-      "dirt": "D"
+      "dirt": "G"
     },
     "distance": {
-      "short": "F",
-      "mile": "A",
-      "medium": "B",
-      "long": "B"
+      "short": "G",
+      "mile": "D",
+      "medium": "A",
+      "long": "A"
     },
     "style": {
       "nige": "F",
       "senko": "A",
       "sashi": "A",
-      "oikomi": "F"
+      "oikomi": "E"
     },
     "growth": {
-      "speed": 8,
+      "speed": 10,
       "stamina": 0,
-      "power": 8,
+      "power": 20,
       "guts": 0,
-      "wisdom": 14
+      "wisdom": 0
     },
     "notes": "",
-    "savedAt": "2026-09-16T22:19:52.548Z"
+    "savedAt": "2026-09-17T14:34:23.653Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -1538,6 +1538,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T22:12:56.211Z"
+  },
+  {
+    "id": "uma_1789597192548_hpseg",
+    "name": "ゴールドシチー",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "GET DOWN",
+        "type": "unique"
+      },
+      {
+        "name": "雨の日○",
+        "type": "normal"
+      },
+      {
+        "name": "布陣",
+        "type": "gold"
+      },
+      {
+        "name": "布石",
+        "type": "normal"
+      },
+      {
+        "name": "差しコーナー○",
+        "type": "normal"
+      },
+      {
+        "name": "差しのコツ○",
+        "type": "normal"
+      },
+      {
+        "name": "潜伏態勢",
+        "type": "gold"
+      },
+      {
+        "name": "静かな呼吸",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "D"
+    },
+    "distance": {
+      "short": "F",
+      "mile": "A",
+      "medium": "B",
+      "long": "B"
+    },
+    "style": {
+      "nige": "F",
+      "senko": "A",
+      "sashi": "A",
+      "oikomi": "F"
+    },
+    "growth": {
+      "speed": 8,
+      "stamina": 0,
+      "power": 8,
+      "guts": 0,
+      "wisdom": 14
+    },
+    "notes": "",
+    "savedAt": "2026-09-16T22:19:52.548Z"
   },
   {
     "id": "uma_1789597054365_20rau",
