@@ -1,39 +1,39 @@
 [
   {
-    "id": "uma_1789669529901_vk9z4",
-    "name": "ドリームジャーニー",
+    "id": "uma_1789669541780_0wjps",
+    "name": "ゴールドシップ",
     "imagePath": null,
     "skills": [
       {
-        "name": "『それでは、よき旅を』",
+        "name": "Adventure of 564",
         "type": "unique"
       },
       {
-        "name": "右回りの鬼",
+        "name": "内的体験",
         "type": "gold"
       },
       {
-        "name": "右回り○",
+        "name": "内弁慶",
         "type": "normal"
       },
       {
-        "name": "垂れウマ回避",
+        "name": "下校の楽しみ",
         "type": "normal"
       },
       {
-        "name": "ごぼう抜き",
+        "name": "ラッキーセブン",
         "type": "normal"
       },
       {
-        "name": "影踏み",
+        "name": "あやしげな作戦",
         "type": "normal"
       },
       {
-        "name": "掌握",
+        "name": "高揚感",
         "type": "gold"
       },
       {
-        "name": "手練手管",
+        "name": "前のめり",
         "type": "normal"
       }
     ],
@@ -42,26 +42,26 @@
       "dirt": "G"
     },
     "distance": {
-      "short": "F",
+      "short": "G",
       "mile": "C",
       "medium": "A",
       "long": "A"
     },
     "style": {
       "nige": "G",
-      "senko": "G",
-      "sashi": "A",
+      "senko": "B",
+      "sashi": "B",
       "oikomi": "A"
     },
     "growth": {
       "speed": 0,
-      "stamina": 10,
-      "power": 10,
+      "stamina": 0,
+      "power": 20,
       "guts": 0,
       "wisdom": 10
     },
     "notes": "",
-    "savedAt": "2026-09-17T18:25:29.901Z"
+    "savedAt": "2026-09-17T18:25:41.780Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -4634,6 +4634,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-17T14:47:36.681Z"
+  },
+  {
+    "id": "uma_1789669529901_vk9z4",
+    "name": "ドリームジャーニー",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "『それでは、よき旅を』",
+        "type": "unique"
+      },
+      {
+        "name": "右回りの鬼",
+        "type": "gold"
+      },
+      {
+        "name": "右回り○",
+        "type": "normal"
+      },
+      {
+        "name": "垂れウマ回避",
+        "type": "normal"
+      },
+      {
+        "name": "ごぼう抜き",
+        "type": "normal"
+      },
+      {
+        "name": "影踏み",
+        "type": "normal"
+      },
+      {
+        "name": "掌握",
+        "type": "gold"
+      },
+      {
+        "name": "手練手管",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "F",
+      "mile": "C",
+      "medium": "A",
+      "long": "A"
+    },
+    "style": {
+      "nige": "G",
+      "senko": "G",
+      "sashi": "A",
+      "oikomi": "A"
+    },
+    "growth": {
+      "speed": 0,
+      "stamina": 10,
+      "power": 10,
+      "guts": 0,
+      "wisdom": 10
+    },
+    "notes": "",
+    "savedAt": "2026-09-17T18:25:29.901Z"
   },
   {
     "id": "uma_1789656468692_888xi",
