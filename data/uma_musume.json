@@ -1,39 +1,39 @@
 [
   {
-    "id": "uma_1789655875770_5gagq",
-    "name": "ナリタブライアン",
+    "id": "uma_1789655889020_g5vlo",
+    "name": "エアグルーヴ",
     "imagePath": null,
     "skills": [
       {
-        "name": "Shadow Break",
+        "name": "ブレイズ・オブ・プライド",
         "type": "unique"
       },
       {
-        "name": "ハヤテー文字",
+        "name": "レーンの魔術師",
         "type": "gold"
       },
       {
-        "name": "直線巧者",
+        "name": "臨機応変",
         "type": "normal"
       },
       {
-        "name": "全身全霊",
+        "name": "テンポアップ",
+        "type": "normal"
+      },
+      {
+        "name": "追込焦り",
+        "type": "normal"
+      },
+      {
+        "name": "追込ためらい",
+        "type": "normal"
+      },
+      {
+        "name": "幻惑のかく乱",
         "type": "gold"
       },
       {
-        "name": "末脚",
-        "type": "normal"
-      },
-      {
-        "name": "好位追走",
-        "type": "normal"
-      },
-      {
-        "name": "中距離直線○",
-        "type": "normal"
-      },
-      {
-        "name": "一匹狼",
+        "name": "かく乱",
         "type": "normal"
       }
     ],
@@ -42,26 +42,26 @@
       "dirt": "G"
     },
     "distance": {
-      "short": "F",
+      "short": "C",
       "mile": "B",
       "medium": "A",
-      "long": "A"
+      "long": "E"
     },
     "style": {
-      "nige": "G",
+      "nige": "D",
       "senko": "A",
       "sashi": "A",
-      "oikomi": "D"
+      "oikomi": "G"
     },
     "growth": {
       "speed": 10,
-      "stamina": 20,
-      "power": 0,
+      "stamina": 0,
+      "power": 20,
       "guts": 0,
       "wisdom": 0
     },
     "notes": "",
-    "savedAt": "2026-09-17T14:37:55.770Z"
+    "savedAt": "2026-09-17T14:38:09.020Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -3730,6 +3730,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-17T14:35:26.542Z"
+  },
+  {
+    "id": "uma_1789655875770_5gagq",
+    "name": "ナリタブライアン",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "Shadow Break",
+        "type": "unique"
+      },
+      {
+        "name": "ハヤテー文字",
+        "type": "gold"
+      },
+      {
+        "name": "直線巧者",
+        "type": "normal"
+      },
+      {
+        "name": "全身全霊",
+        "type": "gold"
+      },
+      {
+        "name": "末脚",
+        "type": "normal"
+      },
+      {
+        "name": "好位追走",
+        "type": "normal"
+      },
+      {
+        "name": "中距離直線○",
+        "type": "normal"
+      },
+      {
+        "name": "一匹狼",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "F",
+      "mile": "B",
+      "medium": "A",
+      "long": "A"
+    },
+    "style": {
+      "nige": "G",
+      "senko": "A",
+      "sashi": "A",
+      "oikomi": "D"
+    },
+    "growth": {
+      "speed": 10,
+      "stamina": 20,
+      "power": 0,
+      "guts": 0,
+      "wisdom": 0
+    },
+    "notes": "",
+    "savedAt": "2026-09-17T14:37:55.770Z"
   },
   {
     "id": "uma_1789596421605_c69dr",
