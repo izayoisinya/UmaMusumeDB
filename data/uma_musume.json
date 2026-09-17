@@ -1,39 +1,39 @@
 [
   {
-    "id": "uma_1789669554093_l8kqv",
-    "name": "ゴールドシップ",
+    "id": "uma_1789669570952_id6rz",
+    "name": "ミスターシービー",
     "imagePath": null,
     "skills": [
       {
-        "name": "不沈艦、抜錨オッ！",
+        "name": "燗然闊歩",
         "type": "unique"
       },
       {
-        "name": "後方待機",
-        "type": "normal"
-      },
-      {
-        "name": "追い上げ",
-        "type": "normal"
-      },
-      {
-        "name": "視界良好！異常なし！",
-        "type": "gold"
-      },
-      {
-        "name": "お見通し",
-        "type": "normal"
-      },
-      {
-        "name": "下校後のスペシャリスト",
-        "type": "gold"
-      },
-      {
-        "name": "下校の楽しみ",
-        "type": "normal"
-      },
-      {
         "name": "ウマ好み",
+        "type": "normal"
+      },
+      {
+        "name": "天衣無縫",
+        "type": "gold"
+      },
+      {
+        "name": "型破り",
+        "type": "normal"
+      },
+      {
+        "name": "不動の心",
+        "type": "normal"
+      },
+      {
+        "name": "影踏み",
+        "type": "normal"
+      },
+      {
+        "name": "千載一遇",
+        "type": "gold"
+      },
+      {
+        "name": "好機を捉えて",
         "type": "normal"
       }
     ],
@@ -43,25 +43,25 @@
     },
     "distance": {
       "short": "G",
-      "mile": "C",
+      "mile": "B",
       "medium": "A",
       "long": "A"
     },
     "style": {
       "nige": "G",
-      "senko": "B",
-      "sashi": "B",
+      "senko": "E",
+      "sashi": "A",
       "oikomi": "A"
     },
     "growth": {
-      "speed": 0,
-      "stamina": 20,
+      "speed": 20,
+      "stamina": 0,
       "power": 10,
       "guts": 0,
       "wisdom": 0
     },
     "notes": "",
-    "savedAt": "2026-09-17T18:25:54.093Z"
+    "savedAt": "2026-09-17T18:26:10.952Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -1986,6 +1986,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T22:17:34.365Z"
+  },
+  {
+    "id": "uma_1789669554093_l8kqv",
+    "name": "ゴールドシップ",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "不沈艦、抜錨オッ！",
+        "type": "unique"
+      },
+      {
+        "name": "後方待機",
+        "type": "normal"
+      },
+      {
+        "name": "追い上げ",
+        "type": "normal"
+      },
+      {
+        "name": "視界良好！異常なし！",
+        "type": "gold"
+      },
+      {
+        "name": "お見通し",
+        "type": "normal"
+      },
+      {
+        "name": "下校後のスペシャリスト",
+        "type": "gold"
+      },
+      {
+        "name": "下校の楽しみ",
+        "type": "normal"
+      },
+      {
+        "name": "ウマ好み",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "G",
+      "mile": "C",
+      "medium": "A",
+      "long": "A"
+    },
+    "style": {
+      "nige": "G",
+      "senko": "B",
+      "sashi": "B",
+      "oikomi": "A"
+    },
+    "growth": {
+      "speed": 0,
+      "stamina": 20,
+      "power": 10,
+      "guts": 0,
+      "wisdom": 0
+    },
+    "notes": "",
+    "savedAt": "2026-09-17T18:25:54.093Z"
   },
   {
     "id": "uma_1789669541780_0wjps",
