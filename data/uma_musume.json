@@ -1,67 +1,67 @@
 [
   {
-    "id": "uma_1789669470082_ca7ix",
-    "name": "タニノギムレット",
+    "id": "uma_1789669480851_nc9rh",
+    "name": "マンハッタンカフェ",
     "imagePath": null,
     "skills": [
       {
-        "name": "霹靂のアウフヘーベン",
+        "name": "心からのおもてにゃし",
         "type": "unique"
       },
       {
-        "name": "東京レース場○",
+        "name": "非根幹距離○",
         "type": "normal"
       },
       {
-        "name": "直線巧者",
-        "type": "normal"
-      },
-      {
-        "name": "疾風怒濤",
+        "name": "迫る影",
         "type": "gold"
-      },
-      {
-        "name": "仕掛け抜群",
-        "type": "normal"
       },
       {
         "name": "直線一気",
         "type": "normal"
       },
       {
-        "name": "雲蒸竜変",
+        "name": "深呼吸",
+        "type": "normal"
+      },
+      {
+        "name": "ロックオン",
+        "type": "normal"
+      },
+      {
+        "name": "一網打尽",
         "type": "gold"
       },
       {
-        "name": "自信家",
+        "name": "ごぼう抜き",
         "type": "normal"
       }
     ],
     "track": {
       "turf": "A",
-      "dirt": "F"
+      "dirt": "G"
     },
     "distance": {
-      "short": "F",
-      "mile": "A",
-      "medium": "A",
-      "long": "F"
+      "short": "G",
+      "mile": "F",
+      "medium": "B",
+      "long": "A"
     },
     "style": {
       "nige": "G",
-      "senko": "D",
+      "senko": "C",
       "sashi": "A",
       "oikomi": "A"
     },
     "growth": {
       "speed": 0,
-      "stamina": 0,
-      "power": 30,
+      "stamina": 20,
+      "power": 10,
       "guts": 0,
       "wisdom": 0
     },
     "notes": "",
-    "savedAt": "2026-09-17T18:24:30.082Z"
+    "savedAt": "2026-09-17T18:24:40.851Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -3922,6 +3922,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T20:28:44.368Z"
+  },
+  {
+    "id": "uma_1789669470082_ca7ix",
+    "name": "タニノギムレット",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "霹靂のアウフヘーベン",
+        "type": "unique"
+      },
+      {
+        "name": "東京レース場○",
+        "type": "normal"
+      },
+      {
+        "name": "直線巧者",
+        "type": "normal"
+      },
+      {
+        "name": "疾風怒濤",
+        "type": "gold"
+      },
+      {
+        "name": "仕掛け抜群",
+        "type": "normal"
+      },
+      {
+        "name": "直線一気",
+        "type": "normal"
+      },
+      {
+        "name": "雲蒸竜変",
+        "type": "gold"
+      },
+      {
+        "name": "自信家",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "F"
+    },
+    "distance": {
+      "short": "F",
+      "mile": "A",
+      "medium": "A",
+      "long": "F"
+    },
+    "style": {
+      "nige": "G",
+      "senko": "D",
+      "sashi": "A",
+      "oikomi": "A"
+    },
+    "growth": {
+      "speed": 0,
+      "stamina": 0,
+      "power": 30,
+      "guts": 0,
+      "wisdom": 0
+    },
+    "notes": "",
+    "savedAt": "2026-09-17T18:24:30.082Z"
   },
   {
     "id": "uma_1789656242170_g7zj4",
