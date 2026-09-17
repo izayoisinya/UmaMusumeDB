@@ -1,67 +1,67 @@
 [
   {
-    "id": "uma_1789669741913_hfav2",
-    "name": "ヒシアマゾン",
+    "id": "uma_1789669760939_mx2n2",
+    "name": "エアシャカール",
     "imagePath": null,
     "skills": [
       {
-        "name": "タイマン！デッドヒート！",
+        "name": "trigger:BEAT",
         "type": "unique"
       },
       {
-        "name": "臨機応変",
+        "name": "ペースアップ",
         "type": "normal"
       },
       {
-        "name": "疾風怒濤",
+        "name": "月影一閃",
         "type": "gold"
-      },
-      {
-        "name": "仕掛け抜群",
-        "type": "normal"
-      },
-      {
-        "name": "勝利への執念",
-        "type": "gold"
-      },
-      {
-        "name": "食い下がり",
-        "type": "normal"
       },
       {
         "name": "追込直線○",
         "type": "normal"
       },
       {
-        "name": "追込コーナー○",
+        "name": "冷静",
+        "type": "normal"
+      },
+      {
+        "name": "策士",
+        "type": "normal"
+      },
+      {
+        "name": "高揚感",
+        "type": "gold"
+      },
+      {
+        "name": "前のめり",
         "type": "normal"
       }
     ],
     "track": {
       "turf": "A",
-      "dirt": "E"
+      "dirt": "G"
     },
     "distance": {
-      "short": "D",
-      "mile": "A",
+      "short": "G",
+      "mile": "E",
       "medium": "A",
-      "long": "B"
+      "long": "A"
     },
     "style": {
       "nige": "G",
-      "senko": "B",
-      "sashi": "C",
+      "senko": "C",
+      "sashi": "A",
       "oikomi": "A"
     },
     "growth": {
       "speed": 0,
       "stamina": 0,
-      "power": 20,
-      "guts": 10,
-      "wisdom": 0
+      "power": 0,
+      "guts": 0,
+      "wisdom": 30
     },
     "notes": "",
-    "savedAt": "2026-09-17T18:29:01.913Z"
+    "savedAt": "2026-09-17T18:29:20.939Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -5790,6 +5790,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-17T14:38:22.935Z"
+  },
+  {
+    "id": "uma_1789669741913_hfav2",
+    "name": "ヒシアマゾン",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "タイマン！デッドヒート！",
+        "type": "unique"
+      },
+      {
+        "name": "臨機応変",
+        "type": "normal"
+      },
+      {
+        "name": "疾風怒濤",
+        "type": "gold"
+      },
+      {
+        "name": "仕掛け抜群",
+        "type": "normal"
+      },
+      {
+        "name": "勝利への執念",
+        "type": "gold"
+      },
+      {
+        "name": "食い下がり",
+        "type": "normal"
+      },
+      {
+        "name": "追込直線○",
+        "type": "normal"
+      },
+      {
+        "name": "追込コーナー○",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "E"
+    },
+    "distance": {
+      "short": "D",
+      "mile": "A",
+      "medium": "A",
+      "long": "B"
+    },
+    "style": {
+      "nige": "G",
+      "senko": "B",
+      "sashi": "C",
+      "oikomi": "A"
+    },
+    "growth": {
+      "speed": 0,
+      "stamina": 0,
+      "power": 20,
+      "guts": 10,
+      "wisdom": 0
+    },
+    "notes": "",
+    "savedAt": "2026-09-17T18:29:01.913Z"
   },
   {
     "id": "uma_1789655862800_bpwo1",
