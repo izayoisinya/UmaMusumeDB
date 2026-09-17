@@ -1,39 +1,39 @@
 [
   {
-    "id": "uma_1789671194764_fvocw",
+    "id": "uma_1789671205104_gwvyq",
     "name": "マンハッタンカフェ",
     "imagePath": null,
     "skills": [
       {
-        "name": "迷える時も、幽かなる時も",
+        "name": "心からのおもてにゃし",
         "type": "unique"
       },
       {
-        "name": "内的体験",
+        "name": "非根幹距離○",
+        "type": "normal"
+      },
+      {
+        "name": "迫る影",
         "type": "gold"
       },
       {
-        "name": "内弁慶",
+        "name": "直線一気",
         "type": "normal"
       },
       {
-        "name": "差し直線○",
+        "name": "深呼吸",
         "type": "normal"
       },
       {
-        "name": "進出開始",
+        "name": "ロックオン",
         "type": "normal"
       },
       {
-        "name": "絶塵",
+        "name": "一網打尽",
         "type": "gold"
       },
       {
-        "name": "影より速く",
-        "type": "normal"
-      },
-      {
-        "name": "追尾",
+        "name": "ごぼう抜き",
         "type": "normal"
       }
     ],
@@ -51,17 +51,17 @@
       "nige": "G",
       "senko": "C",
       "sashi": "A",
-      "oikomi": "C"
+      "oikomi": "A"
     },
     "growth": {
       "speed": 0,
-      "stamina": 5,
+      "stamina": 20,
       "power": 10,
-      "guts": 5,
-      "wisdom": 10
+      "guts": 0,
+      "wisdom": 0
     },
     "notes": "",
-    "savedAt": "2026-09-17T18:53:14.764Z"
+    "savedAt": "2026-09-17T18:53:25.104Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -8350,6 +8350,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T20:29:09.040Z"
+  },
+  {
+    "id": "uma_1789671194764_fvocw",
+    "name": "マンハッタンカフェ",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "迷える時も、幽かなる時も",
+        "type": "unique"
+      },
+      {
+        "name": "内的体験",
+        "type": "gold"
+      },
+      {
+        "name": "内弁慶",
+        "type": "normal"
+      },
+      {
+        "name": "差し直線○",
+        "type": "normal"
+      },
+      {
+        "name": "進出開始",
+        "type": "normal"
+      },
+      {
+        "name": "絶塵",
+        "type": "gold"
+      },
+      {
+        "name": "影より速く",
+        "type": "normal"
+      },
+      {
+        "name": "追尾",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "G",
+      "mile": "F",
+      "medium": "B",
+      "long": "A"
+    },
+    "style": {
+      "nige": "G",
+      "senko": "C",
+      "sashi": "A",
+      "oikomi": "C"
+    },
+    "growth": {
+      "speed": 0,
+      "stamina": 5,
+      "power": 10,
+      "guts": 5,
+      "wisdom": 10
+    },
+    "notes": "",
+    "savedAt": "2026-09-17T18:53:14.764Z"
   },
   {
     "id": "uma_1789669480851_nc9rh",
