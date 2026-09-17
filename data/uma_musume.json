@@ -1,39 +1,39 @@
 [
   {
-    "id": "uma_1789656456681_4ow17",
-    "name": "トーセンジョーダン",
+    "id": "uma_1789656468692_888xi",
+    "name": "ナカヤマフェスタ",
     "imagePath": null,
     "skills": [
       {
-        "name": "YEAH☆VIVID TIME!",
+        "name": "運否、聖夜の星に賭ける",
         "type": "unique"
       },
       {
-        "name": "伏兵○",
-        "type": "normal"
-      },
-      {
-        "name": "レースプランナー",
+        "name": "トップギア",
         "type": "gold"
       },
       {
-        "name": "好位追走",
+        "name": "キレる脚",
         "type": "normal"
       },
       {
-        "name": "乗り換え上手",
+        "name": "型破り",
+        "type": "normal"
+      },
+      {
+        "name": "一張一弛",
         "type": "gold"
       },
       {
-        "name": "差し切り体勢",
+        "name": "切り替え上手",
         "type": "normal"
       },
       {
-        "name": "中距離直線○",
+        "name": "急襲",
         "type": "normal"
       },
       {
-        "name": "ありったけ",
+        "name": "躍動",
         "type": "normal"
       }
     ],
@@ -43,15 +43,15 @@
     },
     "distance": {
       "short": "G",
-      "mile": "F",
+      "mile": "C",
       "medium": "A",
       "long": "B"
     },
     "style": {
-      "nige": "C",
+      "nige": "G",
       "senko": "A",
-      "sashi": "B",
-      "oikomi": "G"
+      "sashi": "A",
+      "oikomi": "D"
     },
     "growth": {
       "speed": 10,
@@ -61,7 +61,7 @@
       "wisdom": 0
     },
     "notes": "",
-    "savedAt": "2026-09-17T14:47:36.681Z"
+    "savedAt": "2026-09-17T14:47:48.692Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -4250,6 +4250,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-17T14:45:29.402Z"
+  },
+  {
+    "id": "uma_1789656456681_4ow17",
+    "name": "トーセンジョーダン",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "YEAH☆VIVID TIME!",
+        "type": "unique"
+      },
+      {
+        "name": "伏兵○",
+        "type": "normal"
+      },
+      {
+        "name": "レースプランナー",
+        "type": "gold"
+      },
+      {
+        "name": "好位追走",
+        "type": "normal"
+      },
+      {
+        "name": "乗り換え上手",
+        "type": "gold"
+      },
+      {
+        "name": "差し切り体勢",
+        "type": "normal"
+      },
+      {
+        "name": "中距離直線○",
+        "type": "normal"
+      },
+      {
+        "name": "ありったけ",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "G",
+      "mile": "F",
+      "medium": "A",
+      "long": "B"
+    },
+    "style": {
+      "nige": "C",
+      "senko": "A",
+      "sashi": "B",
+      "oikomi": "G"
+    },
+    "growth": {
+      "speed": 10,
+      "stamina": 0,
+      "power": 10,
+      "guts": 10,
+      "wisdom": 0
+    },
+    "notes": "",
+    "savedAt": "2026-09-17T14:47:36.681Z"
   },
   {
     "id": "uma_1789656398505_jusgv",
