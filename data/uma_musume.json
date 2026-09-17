@@ -1,43 +1,39 @@
 [
   {
-    "id": "uma_1789656398505_jusgv",
-    "name": "ナカヤマフェスタ",
+    "id": "uma_1789656414369_lpg2z",
+    "name": "クロノジェネシス",
     "imagePath": null,
     "skills": [
       {
-        "name": "剣ヶ峰より、狂気に嗤え",
+        "name": "Weaving History",
         "type": "unique"
       },
       {
-        "name": "中距離直線○",
+        "name": "先行直線○",
         "type": "normal"
       },
       {
-        "name": "差し直線○",
+        "name": "食らいつき",
         "type": "normal"
       },
       {
-        "name": "ありったけ",
-        "type": "normal"
-      },
-      {
-        "name": "博打うち",
+        "name": "流星光底",
         "type": "gold"
       },
       {
-        "name": "あやしげな作戦",
+        "name": "飛躍の予感",
         "type": "normal"
       },
       {
-        "name": "勝負師",
+        "name": "夢の舞台へ",
         "type": "gold"
       },
       {
-        "name": "やまっけ",
+        "name": "憧れを越えて",
         "type": "normal"
       },
       {
-        "name": "星の煌き",
+        "name": "光明",
         "type": "normal"
       }
     ],
@@ -47,25 +43,25 @@
     },
     "distance": {
       "short": "G",
-      "mile": "C",
+      "mile": "B",
       "medium": "A",
-      "long": "B"
+      "long": "A"
     },
     "style": {
       "nige": "G",
       "senko": "A",
-      "sashi": "A",
-      "oikomi": "D"
+      "sashi": "C",
+      "oikomi": "E"
     },
     "growth": {
       "speed": 10,
       "stamina": 10,
-      "power": 10,
-      "guts": 0,
+      "power": 0,
+      "guts": 10,
       "wisdom": 0
     },
     "notes": "",
-    "savedAt": "2026-09-17T14:46:38.505Z"
+    "savedAt": "2026-09-17T14:46:54.369Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -4190,6 +4186,74 @@
     },
     "notes": "",
     "savedAt": "2026-09-17T14:45:29.402Z"
+  },
+  {
+    "id": "uma_1789656398505_jusgv",
+    "name": "ナカヤマフェスタ",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "剣ヶ峰より、狂気に嗤え",
+        "type": "unique"
+      },
+      {
+        "name": "中距離直線○",
+        "type": "normal"
+      },
+      {
+        "name": "差し直線○",
+        "type": "normal"
+      },
+      {
+        "name": "ありったけ",
+        "type": "normal"
+      },
+      {
+        "name": "博打うち",
+        "type": "gold"
+      },
+      {
+        "name": "あやしげな作戦",
+        "type": "normal"
+      },
+      {
+        "name": "勝負師",
+        "type": "gold"
+      },
+      {
+        "name": "やまっけ",
+        "type": "normal"
+      },
+      {
+        "name": "星の煌き",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "G",
+      "mile": "C",
+      "medium": "A",
+      "long": "B"
+    },
+    "style": {
+      "nige": "G",
+      "senko": "A",
+      "sashi": "A",
+      "oikomi": "D"
+    },
+    "growth": {
+      "speed": 10,
+      "stamina": 10,
+      "power": 10,
+      "guts": 0,
+      "wisdom": 0
+    },
+    "notes": "",
+    "savedAt": "2026-09-17T14:46:38.505Z"
   },
   {
     "id": "uma_1789655726542_qdm79",
