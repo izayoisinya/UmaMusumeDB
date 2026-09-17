@@ -1,39 +1,39 @@
 [
   {
-    "id": "uma_1789670864679_t3adb",
-    "name": "ウイニングチケット",
+    "id": "uma_1789670889558_ep51r",
+    "name": "ヴィブロス",
     "imagePath": null,
     "skills": [
       {
-        "name": "勝利のチケットを、君にッ！",
+        "name": "ジュ・テーム☆バカンス！",
         "type": "unique"
       },
       {
-        "name": "良バ場○",
+        "name": "フルスロットル",
         "type": "normal"
       },
       {
-        "name": "迅速果断",
+        "name": "千里の道",
         "type": "gold"
       },
       {
-        "name": "位置取り押し上げ",
+        "name": "一歩から",
         "type": "normal"
       },
       {
-        "name": "食い下がり",
+        "name": "駆け降り",
         "type": "normal"
       },
       {
-        "name": "差しコーナー○",
-        "type": "normal"
-      },
-      {
-        "name": "努力家",
+        "name": "才気煥発",
         "type": "gold"
       },
       {
-        "name": "がんばり屋",
+        "name": "躍動",
+        "type": "normal"
+      },
+      {
+        "name": "夢への挑戦",
         "type": "normal"
       }
     ],
@@ -42,26 +42,26 @@
       "dirt": "G"
     },
     "distance": {
-      "short": "G",
-      "mile": "F",
+      "short": "E",
+      "mile": "A",
       "medium": "A",
-      "long": "B"
+      "long": "G"
     },
     "style": {
       "nige": "G",
-      "senko": "B",
+      "senko": "D",
       "sashi": "A",
-      "oikomi": "G"
+      "oikomi": "C"
     },
     "growth": {
-      "speed": 0,
-      "stamina": 10,
-      "power": 20,
-      "guts": 0,
-      "wisdom": 0
+      "speed": 10,
+      "stamina": 0,
+      "power": 0,
+      "guts": 10,
+      "wisdom": 10
     },
     "notes": "",
-    "savedAt": "2026-09-17T18:47:44.679Z"
+    "savedAt": "2026-09-17T18:48:09.558Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -766,6 +766,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-17T18:27:51.322Z"
+  },
+  {
+    "id": "uma_1789670864679_t3adb",
+    "name": "ウイニングチケット",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "勝利のチケットを、君にッ！",
+        "type": "unique"
+      },
+      {
+        "name": "良バ場○",
+        "type": "normal"
+      },
+      {
+        "name": "迅速果断",
+        "type": "gold"
+      },
+      {
+        "name": "位置取り押し上げ",
+        "type": "normal"
+      },
+      {
+        "name": "食い下がり",
+        "type": "normal"
+      },
+      {
+        "name": "差しコーナー○",
+        "type": "normal"
+      },
+      {
+        "name": "努力家",
+        "type": "gold"
+      },
+      {
+        "name": "がんばり屋",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "G",
+      "mile": "F",
+      "medium": "A",
+      "long": "B"
+    },
+    "style": {
+      "nige": "G",
+      "senko": "B",
+      "sashi": "A",
+      "oikomi": "G"
+    },
+    "growth": {
+      "speed": 0,
+      "stamina": 10,
+      "power": 20,
+      "guts": 0,
+      "wisdom": 0
+    },
+    "notes": "",
+    "savedAt": "2026-09-17T18:47:44.679Z"
   },
   {
     "id": "uma_1789590051006_52itb",
