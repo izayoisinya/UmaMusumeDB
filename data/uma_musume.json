@@ -1,36 +1,36 @@
 [
   {
-    "id": "uma_1789669418573_0x2nv",
-    "name": "ウインバリアシオン",
+    "id": "uma_1789669457759_ailcm",
+    "name": "デュランダル",
     "imagePath": null,
     "skills": [
       {
-        "name": "鋭気のアレグロ",
+        "name": "Lame de vent",
         "type": "unique"
       },
       {
-        "name": "徹底マーク○",
+        "name": "秋ウマ娘○",
         "type": "normal"
       },
       {
-        "name": "まなざし",
+        "name": "追込コーナー○",
         "type": "normal"
       },
       {
-        "name": "ネバーギブアップ",
+        "name": "電光石火",
         "type": "gold"
       },
       {
-        "name": "折れない心",
+        "name": "一足飛び",
         "type": "normal"
       },
       {
-        "name": "推力十分",
-        "type": "normal"
-      },
-      {
-        "name": "肉薄",
+        "name": "一心不乱",
         "type": "gold"
+      },
+      {
+        "name": "惜しみなし",
+        "type": "normal"
       },
       {
         "name": "影踏み",
@@ -42,26 +42,26 @@
       "dirt": "G"
     },
     "distance": {
-      "short": "G",
-      "mile": "E",
-      "medium": "A",
-      "long": "A"
+      "short": "A",
+      "mile": "A",
+      "medium": "F",
+      "long": "G"
     },
     "style": {
       "nige": "G",
-      "senko": "E",
-      "sashi": "A",
+      "senko": "G",
+      "sashi": "C",
       "oikomi": "A"
     },
     "growth": {
-      "speed": 10,
+      "speed": 20,
       "stamina": 0,
       "power": 10,
-      "guts": 10,
+      "guts": 0,
       "wisdom": 0
     },
     "notes": "",
-    "savedAt": "2026-09-17T18:23:38.573Z"
+    "savedAt": "2026-09-17T18:24:17.759Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -702,6 +702,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T20:20:51.006Z"
+  },
+  {
+    "id": "uma_1789669418573_0x2nv",
+    "name": "ウインバリアシオン",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "鋭気のアレグロ",
+        "type": "unique"
+      },
+      {
+        "name": "徹底マーク○",
+        "type": "normal"
+      },
+      {
+        "name": "まなざし",
+        "type": "normal"
+      },
+      {
+        "name": "ネバーギブアップ",
+        "type": "gold"
+      },
+      {
+        "name": "折れない心",
+        "type": "normal"
+      },
+      {
+        "name": "推力十分",
+        "type": "normal"
+      },
+      {
+        "name": "肉薄",
+        "type": "gold"
+      },
+      {
+        "name": "影踏み",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "G",
+      "mile": "E",
+      "medium": "A",
+      "long": "A"
+    },
+    "style": {
+      "nige": "G",
+      "senko": "E",
+      "sashi": "A",
+      "oikomi": "A"
+    },
+    "growth": {
+      "speed": 10,
+      "stamina": 0,
+      "power": 10,
+      "guts": 10,
+      "wisdom": 0
+    },
+    "notes": "",
+    "savedAt": "2026-09-17T18:23:38.573Z"
   },
   {
     "id": "uma_1789655889020_g5vlo",
