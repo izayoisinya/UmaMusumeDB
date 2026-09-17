@@ -1,39 +1,39 @@
 [
   {
-    "id": "uma_1789669480851_nc9rh",
-    "name": "マンハッタンカフェ",
+    "id": "uma_1789669493499_24u4h",
+    "name": "ダイイチルビー",
     "imagePath": null,
     "skills": [
       {
-        "name": "心からのおもてにゃし",
+        "name": "蒼炎",
         "type": "unique"
       },
       {
-        "name": "非根幹距離○",
+        "name": "尻尾上がり",
         "type": "normal"
       },
       {
-        "name": "迫る影",
+        "name": "電光石火",
         "type": "gold"
       },
       {
-        "name": "直線一気",
+        "name": "一足飛び",
         "type": "normal"
       },
       {
-        "name": "深呼吸",
+        "name": "溢れる情熱",
         "type": "normal"
       },
       {
-        "name": "ロックオン",
+        "name": "進出開始",
         "type": "normal"
       },
       {
-        "name": "一網打尽",
+        "name": "熱情",
         "type": "gold"
       },
       {
-        "name": "ごぼう抜き",
+        "name": "滾る想い",
         "type": "normal"
       }
     ],
@@ -42,26 +42,26 @@
       "dirt": "G"
     },
     "distance": {
-      "short": "G",
-      "mile": "F",
-      "medium": "B",
-      "long": "A"
+      "short": "A",
+      "mile": "A",
+      "medium": "C",
+      "long": "G"
     },
     "style": {
-      "nige": "G",
-      "senko": "C",
+      "nige": "E",
+      "senko": "B",
       "sashi": "A",
       "oikomi": "A"
     },
     "growth": {
-      "speed": 0,
-      "stamina": 20,
-      "power": 10,
+      "speed": 6,
+      "stamina": 0,
+      "power": 12,
       "guts": 0,
-      "wisdom": 0
+      "wisdom": 12
     },
     "notes": "",
-    "savedAt": "2026-09-17T18:24:40.851Z"
+    "savedAt": "2026-09-17T18:24:53.499Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -6174,6 +6174,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T20:29:09.040Z"
+  },
+  {
+    "id": "uma_1789669480851_nc9rh",
+    "name": "マンハッタンカフェ",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "心からのおもてにゃし",
+        "type": "unique"
+      },
+      {
+        "name": "非根幹距離○",
+        "type": "normal"
+      },
+      {
+        "name": "迫る影",
+        "type": "gold"
+      },
+      {
+        "name": "直線一気",
+        "type": "normal"
+      },
+      {
+        "name": "深呼吸",
+        "type": "normal"
+      },
+      {
+        "name": "ロックオン",
+        "type": "normal"
+      },
+      {
+        "name": "一網打尽",
+        "type": "gold"
+      },
+      {
+        "name": "ごぼう抜き",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "G",
+      "mile": "F",
+      "medium": "B",
+      "long": "A"
+    },
+    "style": {
+      "nige": "G",
+      "senko": "C",
+      "sashi": "A",
+      "oikomi": "A"
+    },
+    "growth": {
+      "speed": 0,
+      "stamina": 20,
+      "power": 10,
+      "guts": 0,
+      "wisdom": 0
+    },
+    "notes": "",
+    "savedAt": "2026-09-17T18:24:40.851Z"
   },
   {
     "id": "uma_1789589814348_ms0ke",
