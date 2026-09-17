@@ -1,39 +1,39 @@
 [
   {
-    "id": "uma_1789671791622_51lqi",
-    "name": "ホッコータルマエ",
+    "id": "uma_1789671802001_o5khq",
+    "name": "フリオーソ",
     "imagePath": null,
     "skills": [
       {
-        "name": "かがやけ☆とまこまい",
+        "name": "『船橋最強！』",
         "type": "unique"
       },
       {
-        "name": "川崎レース場○",
+        "name": "交流重賞○",
         "type": "normal"
       },
       {
-        "name": "余裕綽々",
+        "name": "優位形成",
         "type": "gold"
       },
       {
-        "name": "スタミナキープ",
+        "name": "しとやかな足取り",
         "type": "normal"
       },
       {
-        "name": "先行けん制",
+        "name": "力の限り",
         "type": "normal"
       },
       {
-        "name": "巧みなステップ",
+        "name": "ダート直線○",
         "type": "normal"
       },
       {
-        "name": "チャート急上昇！",
+        "name": "猛烈激走",
         "type": "gold"
       },
       {
-        "name": "レコメンド",
+        "name": "みなぎる闘志",
         "type": "normal"
       }
     ],
@@ -45,23 +45,23 @@
       "short": "F",
       "mile": "A",
       "medium": "A",
-      "long": "E"
+      "long": "F"
     },
     "style": {
-      "nige": "B",
+      "nige": "A",
       "senko": "A",
-      "sashi": "G",
+      "sashi": "E",
       "oikomi": "G"
     },
     "growth": {
-      "speed": 10,
-      "stamina": 10,
+      "speed": 20,
+      "stamina": 0,
       "power": 0,
-      "guts": 0,
-      "wisdom": 10
+      "guts": 10,
+      "wisdom": 0
     },
     "notes": "",
-    "savedAt": "2026-09-17T19:03:11.622Z"
+    "savedAt": "2026-09-17T19:03:22.001Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -8286,6 +8286,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T22:14:00.550Z"
+  },
+  {
+    "id": "uma_1789671791622_51lqi",
+    "name": "ホッコータルマエ",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "かがやけ☆とまこまい",
+        "type": "unique"
+      },
+      {
+        "name": "川崎レース場○",
+        "type": "normal"
+      },
+      {
+        "name": "余裕綽々",
+        "type": "gold"
+      },
+      {
+        "name": "スタミナキープ",
+        "type": "normal"
+      },
+      {
+        "name": "先行けん制",
+        "type": "normal"
+      },
+      {
+        "name": "巧みなステップ",
+        "type": "normal"
+      },
+      {
+        "name": "チャート急上昇！",
+        "type": "gold"
+      },
+      {
+        "name": "レコメンド",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "G",
+      "dirt": "A"
+    },
+    "distance": {
+      "short": "F",
+      "mile": "A",
+      "medium": "A",
+      "long": "E"
+    },
+    "style": {
+      "nige": "B",
+      "senko": "A",
+      "sashi": "G",
+      "oikomi": "G"
+    },
+    "growth": {
+      "speed": 10,
+      "stamina": 10,
+      "power": 0,
+      "guts": 0,
+      "wisdom": 10
+    },
+    "notes": "",
+    "savedAt": "2026-09-17T19:03:11.622Z"
   },
   {
     "id": "uma_1789671778234_p43qs",
