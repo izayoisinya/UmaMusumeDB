@@ -1,39 +1,39 @@
 [
   {
-    "id": "uma_1789669634282_63jhp",
+    "id": "uma_1789669647740_hwnd9",
     "name": "メジロブライト",
     "imagePath": null,
     "skills": [
       {
-        "name": "Illuminate you",
+        "name": "麗しき花信風",
         "type": "unique"
       },
       {
-        "name": "道悪○",
-        "type": "normal"
-      },
-      {
-        "name": "冬ウマ娘○",
-        "type": "normal"
-      },
-      {
-        "name": "怒涛の追い上げ",
+        "name": "不屈の心",
         "type": "gold"
+      },
+      {
+        "name": "ペースキープ",
+        "type": "normal"
       },
       {
         "name": "追い上げ",
         "type": "normal"
       },
       {
-        "name": "進出開始",
+        "name": "スタミナイーター",
         "type": "normal"
       },
       {
-        "name": "千里の道",
+        "name": "追込コーナー○",
+        "type": "normal"
+      },
+      {
+        "name": "泰然自若",
         "type": "gold"
       },
       {
-        "name": "一歩から",
+        "name": "マイペース",
         "type": "normal"
       }
     ],
@@ -55,13 +55,13 @@
     },
     "growth": {
       "speed": 0,
-      "stamina": 20,
+      "stamina": 14,
       "power": 0,
-      "guts": 0,
-      "wisdom": 10
+      "guts": 8,
+      "wisdom": 8
     },
     "notes": "",
-    "savedAt": "2026-09-17T18:27:14.282Z"
+    "savedAt": "2026-09-17T18:27:27.740Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -7198,6 +7198,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T20:25:11.095Z"
+  },
+  {
+    "id": "uma_1789669634282_63jhp",
+    "name": "メジロブライト",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "Illuminate you",
+        "type": "unique"
+      },
+      {
+        "name": "道悪○",
+        "type": "normal"
+      },
+      {
+        "name": "冬ウマ娘○",
+        "type": "normal"
+      },
+      {
+        "name": "怒涛の追い上げ",
+        "type": "gold"
+      },
+      {
+        "name": "追い上げ",
+        "type": "normal"
+      },
+      {
+        "name": "進出開始",
+        "type": "normal"
+      },
+      {
+        "name": "千里の道",
+        "type": "gold"
+      },
+      {
+        "name": "一歩から",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "F",
+      "mile": "C",
+      "medium": "A",
+      "long": "A"
+    },
+    "style": {
+      "nige": "G",
+      "senko": "D",
+      "sashi": "A",
+      "oikomi": "A"
+    },
+    "growth": {
+      "speed": 0,
+      "stamina": 20,
+      "power": 0,
+      "guts": 0,
+      "wisdom": 10
+    },
+    "notes": "",
+    "savedAt": "2026-09-17T18:27:14.282Z"
   },
   {
     "id": "uma_1789669621856_w3xk5",
