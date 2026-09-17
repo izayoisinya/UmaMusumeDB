@@ -1,39 +1,39 @@
 [
   {
-    "id": "uma_1789656200787_tuwy2",
-    "name": "ノースフライト",
+    "id": "uma_1789656215469_d9ikh",
+    "name": "スーパークリーク",
     "imagePath": null,
     "skills": [
       {
-        "name": "煌めき華やぐアローライン",
+        "name": "ぐるぐるマミートリック♡",
         "type": "unique"
       },
       {
-        "name": "抜群の切れ味",
+        "name": "弧線のプロフェッサー",
         "type": "gold"
       },
       {
-        "name": "切れ味",
+        "name": "コーナー巧者○",
         "type": "normal"
       },
       {
-        "name": "熱情",
+        "name": "中距離直線○",
+        "type": "normal"
+      },
+      {
+        "name": "魅惑のささやき",
         "type": "gold"
       },
       {
-        "name": "滾る想い",
+        "name": "ささやき",
         "type": "normal"
       },
       {
-        "name": "胸の高鳴り",
+        "name": "先行コーナー○",
         "type": "normal"
       },
       {
-        "name": "追駆",
-        "type": "normal"
-      },
-      {
-        "name": "溌剌",
+        "name": "栄養補給",
         "type": "normal"
       }
     ],
@@ -42,26 +42,26 @@
       "dirt": "G"
     },
     "distance": {
-      "short": "C",
-      "mile": "A",
-      "medium": "B",
-      "long": "G"
+      "short": "G",
+      "mile": "G",
+      "medium": "A",
+      "long": "A"
     },
     "style": {
       "nige": "D",
       "senko": "A",
-      "sashi": "D",
-      "oikomi": "A"
+      "sashi": "B",
+      "oikomi": "G"
     },
     "growth": {
-      "speed": 15,
-      "stamina": 0,
+      "speed": 14,
+      "stamina": 8,
       "power": 0,
-      "guts": 0,
-      "wisdom": 15
+      "guts": 8,
+      "wisdom": 0
     },
     "notes": "",
-    "savedAt": "2026-09-17T14:43:20.787Z"
+    "savedAt": "2026-09-17T14:43:35.469Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -3986,6 +3986,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T22:07:01.605Z"
+  },
+  {
+    "id": "uma_1789656200787_tuwy2",
+    "name": "ノースフライト",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "煌めき華やぐアローライン",
+        "type": "unique"
+      },
+      {
+        "name": "抜群の切れ味",
+        "type": "gold"
+      },
+      {
+        "name": "切れ味",
+        "type": "normal"
+      },
+      {
+        "name": "熱情",
+        "type": "gold"
+      },
+      {
+        "name": "滾る想い",
+        "type": "normal"
+      },
+      {
+        "name": "胸の高鳴り",
+        "type": "normal"
+      },
+      {
+        "name": "追駆",
+        "type": "normal"
+      },
+      {
+        "name": "溌剌",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "C",
+      "mile": "A",
+      "medium": "B",
+      "long": "G"
+    },
+    "style": {
+      "nige": "D",
+      "senko": "A",
+      "sashi": "D",
+      "oikomi": "A"
+    },
+    "growth": {
+      "speed": 15,
+      "stamina": 0,
+      "power": 0,
+      "guts": 0,
+      "wisdom": 15
+    },
+    "notes": "",
+    "savedAt": "2026-09-17T14:43:20.787Z"
   },
   {
     "id": "uma_1789655902935_6qoc1",
