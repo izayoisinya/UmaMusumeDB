@@ -1,39 +1,39 @@
 [
   {
-    "id": "uma_1789655841511_st7f8",
+    "id": "uma_1789655852241_ezszh",
     "name": "ビワハヤヒデ",
     "imagePath": null,
     "skills": [
       {
-        "name": "勝利へ至ル累積",
+        "name": "Presents from X",
         "type": "unique"
       },
       {
-        "name": "右回り○",
-        "type": "normal"
-      },
-      {
-        "name": "長距離直線○",
-        "type": "normal"
-      },
-      {
-        "name": "脱兎の先へ",
+        "name": "全身全霊",
         "type": "gold"
       },
       {
-        "name": "脇目も振らず",
+        "name": "末脚",
         "type": "normal"
       },
       {
-        "name": "一点集中",
+        "name": "好位追走",
+        "type": "normal"
+      },
+      {
+        "name": "VIP顔パス",
         "type": "gold"
       },
       {
-        "name": "狙いを定めて",
+        "name": "パス上手",
         "type": "normal"
       },
       {
-        "name": "決定打",
+        "name": "先行直線○",
+        "type": "normal"
+      },
+      {
+        "name": "先行のコツ○",
         "type": "normal"
       }
     ],
@@ -55,13 +55,13 @@
     },
     "growth": {
       "speed": 0,
-      "stamina": 10,
-      "power": 10,
-      "guts": 10,
-      "wisdom": 0
+      "stamina": 12,
+      "power": 12,
+      "guts": 0,
+      "wisdom": 6
     },
     "notes": "",
-    "savedAt": "2026-09-17T14:37:21.511Z"
+    "savedAt": "2026-09-17T14:37:32.241Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -3794,6 +3794,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T22:07:01.605Z"
+  },
+  {
+    "id": "uma_1789655841511_st7f8",
+    "name": "ビワハヤヒデ",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "勝利へ至ル累積",
+        "type": "unique"
+      },
+      {
+        "name": "右回り○",
+        "type": "normal"
+      },
+      {
+        "name": "長距離直線○",
+        "type": "normal"
+      },
+      {
+        "name": "脱兎の先へ",
+        "type": "gold"
+      },
+      {
+        "name": "脇目も振らず",
+        "type": "normal"
+      },
+      {
+        "name": "一点集中",
+        "type": "gold"
+      },
+      {
+        "name": "狙いを定めて",
+        "type": "normal"
+      },
+      {
+        "name": "決定打",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "F"
+    },
+    "distance": {
+      "short": "F",
+      "mile": "C",
+      "medium": "A",
+      "long": "A"
+    },
+    "style": {
+      "nige": "E",
+      "senko": "A",
+      "sashi": "B",
+      "oikomi": "E"
+    },
+    "growth": {
+      "speed": 0,
+      "stamina": 10,
+      "power": 10,
+      "guts": 10,
+      "wisdom": 0
+    },
+    "notes": "",
+    "savedAt": "2026-09-17T14:37:21.511Z"
   },
   {
     "id": "uma_1789596303101_ylzju",
