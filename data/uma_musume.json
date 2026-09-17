@@ -1,39 +1,39 @@
 [
   {
-    "id": "uma_1789656253579_ugedn",
-    "name": "ロイスアンドロイス",
+    "id": "uma_1789656267507_xaoke",
+    "name": "ネオユニヴァース",
     "imagePath": null,
     "skills": [
       {
-        "name": "絶対最強☆アピール宣言！",
+        "name": "アド・アストラ",
         "type": "unique"
       },
       {
-        "name": "中距離直線○",
+        "name": "春ウマ娘○",
         "type": "normal"
       },
       {
-        "name": "中距離コーナー○",
+        "name": "スリップストリーム",
         "type": "normal"
       },
       {
-        "name": "技巧派",
+        "name": "決死の覚悟",
         "type": "gold"
       },
       {
-        "name": "巧みなステップ",
+        "name": "ありったけ",
         "type": "normal"
       },
       {
-        "name": "探求心",
+        "name": "自制心",
         "type": "normal"
       },
       {
-        "name": "大車輪",
+        "name": "ルミネセンス",
         "type": "gold"
       },
       {
-        "name": "余勢を駆って",
+        "name": "イグニッション",
         "type": "normal"
       }
     ],
@@ -42,26 +42,26 @@
       "dirt": "G"
     },
     "distance": {
-      "short": "G",
+      "short": "F",
       "mile": "B",
       "medium": "A",
-      "long": "E"
+      "long": "B"
     },
     "style": {
-      "nige": "E",
+      "nige": "F",
       "senko": "A",
       "sashi": "A",
-      "oikomi": "G"
+      "oikomi": "C"
     },
     "growth": {
       "speed": 0,
       "stamina": 0,
-      "power": 10,
+      "power": 0,
       "guts": 0,
-      "wisdom": 20
+      "wisdom": 30
     },
     "notes": "",
-    "savedAt": "2026-09-17T14:44:13.579Z"
+    "savedAt": "2026-09-17T14:44:27.507Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -6290,5 +6290,69 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T22:19:06.791Z"
+  },
+  {
+    "id": "uma_1789656253579_ugedn",
+    "name": "ロイスアンドロイス",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "絶対最強☆アピール宣言！",
+        "type": "unique"
+      },
+      {
+        "name": "中距離直線○",
+        "type": "normal"
+      },
+      {
+        "name": "中距離コーナー○",
+        "type": "normal"
+      },
+      {
+        "name": "技巧派",
+        "type": "gold"
+      },
+      {
+        "name": "巧みなステップ",
+        "type": "normal"
+      },
+      {
+        "name": "探求心",
+        "type": "normal"
+      },
+      {
+        "name": "大車輪",
+        "type": "gold"
+      },
+      {
+        "name": "余勢を駆って",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "G",
+      "mile": "B",
+      "medium": "A",
+      "long": "E"
+    },
+    "style": {
+      "nige": "E",
+      "senko": "A",
+      "sashi": "A",
+      "oikomi": "G"
+    },
+    "growth": {
+      "speed": 0,
+      "stamina": 0,
+      "power": 10,
+      "guts": 0,
+      "wisdom": 20
+    },
+    "notes": "",
+    "savedAt": "2026-09-17T14:44:13.579Z"
   }
 ]
