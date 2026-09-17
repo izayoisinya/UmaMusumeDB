@@ -1,39 +1,39 @@
 [
   {
-    "id": "uma_1789670969401_a365y",
+    "id": "uma_1789670982223_anm0f",
     "name": "エイシンフラッシュ",
     "imagePath": null,
     "skills": [
       {
-        "name": "潮風のGeschenk",
+        "name": "Schwarzes Schwert",
         "type": "unique"
       },
       {
-        "name": "府中の申し子",
+        "name": "集中力",
+        "type": "normal"
+      },
+      {
+        "name": "レーンの魔術師",
         "type": "gold"
       },
       {
-        "name": "東京レース場○",
+        "name": "臨機応変",
         "type": "normal"
       },
       {
-        "name": "差し直線○",
-        "type": "normal"
-      },
-      {
-        "name": "勇往邁進",
+        "name": "全身全霊",
         "type": "gold"
       },
       {
-        "name": "フルスロットル",
+        "name": "末脚",
         "type": "normal"
       },
       {
-        "name": "キレる脚",
+        "name": "中距離コーナー○",
         "type": "normal"
       },
       {
-        "name": "進出開始",
+        "name": "差しのコツ○",
         "type": "normal"
       }
     ],
@@ -55,13 +55,13 @@
     },
     "growth": {
       "speed": 0,
-      "stamina": 10,
-      "power": 0,
-      "guts": 10,
-      "wisdom": 10
+      "stamina": 0,
+      "power": 10,
+      "guts": 0,
+      "wisdom": 20
     },
     "notes": "",
-    "savedAt": "2026-09-17T18:49:29.401Z"
+    "savedAt": "2026-09-17T18:49:42.223Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -1214,6 +1214,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-17T18:29:20.939Z"
+  },
+  {
+    "id": "uma_1789670969401_a365y",
+    "name": "エイシンフラッシュ",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "潮風のGeschenk",
+        "type": "unique"
+      },
+      {
+        "name": "府中の申し子",
+        "type": "gold"
+      },
+      {
+        "name": "東京レース場○",
+        "type": "normal"
+      },
+      {
+        "name": "差し直線○",
+        "type": "normal"
+      },
+      {
+        "name": "勇往邁進",
+        "type": "gold"
+      },
+      {
+        "name": "フルスロットル",
+        "type": "normal"
+      },
+      {
+        "name": "キレる脚",
+        "type": "normal"
+      },
+      {
+        "name": "進出開始",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "G",
+      "mile": "F",
+      "medium": "A",
+      "long": "A"
+    },
+    "style": {
+      "nige": "G",
+      "senko": "B",
+      "sashi": "A",
+      "oikomi": "C"
+    },
+    "growth": {
+      "speed": 0,
+      "stamina": 10,
+      "power": 0,
+      "guts": 10,
+      "wisdom": 10
+    },
+    "notes": "",
+    "savedAt": "2026-09-17T18:49:29.401Z"
   },
   {
     "id": "uma_1789655823584_jy9tb",
