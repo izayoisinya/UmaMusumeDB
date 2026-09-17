@@ -1,39 +1,39 @@
 [
   {
-    "id": "uma_1789670982223_anm0f",
-    "name": "エイシンフラッシュ",
+    "id": "uma_1789670993498_uo3pz",
+    "name": "サトノダイヤモンド",
     "imagePath": null,
     "skills": [
       {
-        "name": "Schwarzes Schwert",
+        "name": "晦冥を照らせ永遠の耀き",
         "type": "unique"
       },
       {
-        "name": "集中力",
-        "type": "normal"
-      },
-      {
-        "name": "レーンの魔術師",
+        "name": "右回りの鬼",
         "type": "gold"
       },
       {
-        "name": "臨機応変",
+        "name": "右回り○",
         "type": "normal"
       },
       {
-        "name": "全身全霊",
+        "name": "良バ場○",
+        "type": "normal"
+      },
+      {
+        "name": "中距離直線○",
+        "type": "normal"
+      },
+      {
+        "name": "潜伏態勢",
         "type": "gold"
       },
       {
-        "name": "末脚",
+        "name": "静かな呼吸",
         "type": "normal"
       },
       {
-        "name": "中距離コーナー○",
-        "type": "normal"
-      },
-      {
-        "name": "差しのコツ○",
+        "name": "影打",
         "type": "normal"
       }
     ],
@@ -43,7 +43,7 @@
     },
     "distance": {
       "short": "G",
-      "mile": "F",
+      "mile": "C",
       "medium": "A",
       "long": "A"
     },
@@ -51,17 +51,17 @@
       "nige": "G",
       "senko": "B",
       "sashi": "A",
-      "oikomi": "C"
+      "oikomi": "D"
     },
     "growth": {
       "speed": 0,
-      "stamina": 0,
-      "power": 10,
+      "stamina": 15,
+      "power": 0,
       "guts": 0,
-      "wisdom": 20
+      "wisdom": 15
     },
     "notes": "",
-    "savedAt": "2026-09-17T18:49:42.223Z"
+    "savedAt": "2026-09-17T18:49:53.498Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -1214,6 +1214,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-17T18:29:20.939Z"
+  },
+  {
+    "id": "uma_1789670982223_anm0f",
+    "name": "エイシンフラッシュ",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "Schwarzes Schwert",
+        "type": "unique"
+      },
+      {
+        "name": "集中力",
+        "type": "normal"
+      },
+      {
+        "name": "レーンの魔術師",
+        "type": "gold"
+      },
+      {
+        "name": "臨機応変",
+        "type": "normal"
+      },
+      {
+        "name": "全身全霊",
+        "type": "gold"
+      },
+      {
+        "name": "末脚",
+        "type": "normal"
+      },
+      {
+        "name": "中距離コーナー○",
+        "type": "normal"
+      },
+      {
+        "name": "差しのコツ○",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "G",
+      "mile": "F",
+      "medium": "A",
+      "long": "A"
+    },
+    "style": {
+      "nige": "G",
+      "senko": "B",
+      "sashi": "A",
+      "oikomi": "C"
+    },
+    "growth": {
+      "speed": 0,
+      "stamina": 0,
+      "power": 10,
+      "guts": 0,
+      "wisdom": 20
+    },
+    "notes": "",
+    "savedAt": "2026-09-17T18:49:42.223Z"
   },
   {
     "id": "uma_1789670969401_a365y",
