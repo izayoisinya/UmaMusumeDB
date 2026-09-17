@@ -1,39 +1,39 @@
 [
   {
-    "id": "uma_1789655781491_7ucbh",
+    "id": "uma_1789655793446_hga1b",
     "name": "シンボリルドルフ",
     "imagePath": null,
     "skills": [
       {
-        "name": "汝、皇帝の神威を見よ",
+        "name": "翳り退く、さざめきの矢",
         "type": "unique"
       },
       {
-        "name": "弧線のプロフェッサー",
+        "name": "初嵐",
         "type": "gold"
       },
       {
-        "name": "コーナー巧者○",
+        "name": "秋ウマ娘○",
         "type": "normal"
       },
       {
-        "name": "好位追走",
-        "type": "normal"
-      },
-      {
-        "name": "差しけん制",
-        "type": "normal"
-      },
-      {
-        "name": "独占力",
+        "name": "余裕綽々",
         "type": "gold"
       },
       {
-        "name": "束縛",
+        "name": "スタミナキープ",
         "type": "normal"
       },
       {
-        "name": "先行コーナー○",
+        "name": "内弁慶",
+        "type": "normal"
+      },
+      {
+        "name": "先行直線○",
+        "type": "normal"
+      },
+      {
+        "name": "直滑降",
         "type": "normal"
       }
     ],
@@ -54,14 +54,14 @@
       "oikomi": "C"
     },
     "growth": {
-      "speed": 0,
-      "stamina": 20,
+      "speed": 8,
+      "stamina": 14,
       "power": 0,
-      "guts": 10,
-      "wisdom": 0
+      "guts": 0,
+      "wisdom": 8
     },
     "notes": "",
-    "savedAt": "2026-09-17T14:36:21.491Z"
+    "savedAt": "2026-09-17T14:36:33.446Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -2378,6 +2378,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T22:06:34.520Z"
+  },
+  {
+    "id": "uma_1789655781491_7ucbh",
+    "name": "シンボリルドルフ",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "汝、皇帝の神威を見よ",
+        "type": "unique"
+      },
+      {
+        "name": "弧線のプロフェッサー",
+        "type": "gold"
+      },
+      {
+        "name": "コーナー巧者○",
+        "type": "normal"
+      },
+      {
+        "name": "好位追走",
+        "type": "normal"
+      },
+      {
+        "name": "差しけん制",
+        "type": "normal"
+      },
+      {
+        "name": "独占力",
+        "type": "gold"
+      },
+      {
+        "name": "束縛",
+        "type": "normal"
+      },
+      {
+        "name": "先行コーナー○",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "E",
+      "mile": "C",
+      "medium": "A",
+      "long": "A"
+    },
+    "style": {
+      "nige": "B",
+      "senko": "A",
+      "sashi": "A",
+      "oikomi": "C"
+    },
+    "growth": {
+      "speed": 0,
+      "stamina": 20,
+      "power": 0,
+      "guts": 10,
+      "wisdom": 0
+    },
+    "notes": "",
+    "savedAt": "2026-09-17T14:36:21.491Z"
   },
   {
     "id": "uma_1789596574281_sf674",
