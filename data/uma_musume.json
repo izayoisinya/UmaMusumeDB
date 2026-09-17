@@ -1,39 +1,39 @@
 [
   {
-    "id": "uma_1789655704198_c40qj",
-    "name": "メジロライアン",
+    "id": "uma_1789655726542_qdm79",
+    "name": "ナリタトップロード",
     "imagePath": null,
     "skills": [
       {
-        "name": "レッツ・アナボリック！",
+        "name": "Joy to the World",
         "type": "unique"
       },
       {
-        "name": "雨の日○",
+        "name": "先行コーナー○",
         "type": "normal"
       },
       {
-        "name": "ペースキープ",
+        "name": "ウマ好み",
         "type": "normal"
       },
       {
-        "name": "昇り龍",
+        "name": "一意専心",
         "type": "gold"
       },
       {
-        "name": "外差し準備",
+        "name": "抜かりなし",
         "type": "normal"
       },
       {
-        "name": "キラーチューン",
+        "name": "攻めの姿勢",
+        "type": "normal"
+      },
+      {
+        "name": "影従打破",
         "type": "gold"
       },
       {
-        "name": "テンポアップ",
-        "type": "normal"
-      },
-      {
-        "name": "中距離直線○",
+        "name": "アグレッシブ",
         "type": "normal"
       }
     ],
@@ -42,26 +42,26 @@
       "dirt": "G"
     },
     "distance": {
-      "short": "E",
+      "short": "G",
       "mile": "C",
       "medium": "A",
-      "long": "B"
+      "long": "A"
     },
     "style": {
       "nige": "F",
       "senko": "A",
-      "sashi": "A",
-      "oikomi": "F"
+      "sashi": "B",
+      "oikomi": "D"
     },
     "growth": {
       "speed": 0,
-      "stamina": 0,
+      "stamina": 10,
       "power": 20,
       "guts": 0,
-      "wisdom": 10
+      "wisdom": 0
     },
     "notes": "",
-    "savedAt": "2026-09-17T14:35:04.198Z"
+    "savedAt": "2026-09-17T14:35:26.542Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -4626,6 +4626,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-17T14:34:51.111Z"
+  },
+  {
+    "id": "uma_1789655704198_c40qj",
+    "name": "メジロライアン",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "レッツ・アナボリック！",
+        "type": "unique"
+      },
+      {
+        "name": "雨の日○",
+        "type": "normal"
+      },
+      {
+        "name": "ペースキープ",
+        "type": "normal"
+      },
+      {
+        "name": "昇り龍",
+        "type": "gold"
+      },
+      {
+        "name": "外差し準備",
+        "type": "normal"
+      },
+      {
+        "name": "キラーチューン",
+        "type": "gold"
+      },
+      {
+        "name": "テンポアップ",
+        "type": "normal"
+      },
+      {
+        "name": "中距離直線○",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "E",
+      "mile": "C",
+      "medium": "A",
+      "long": "B"
+    },
+    "style": {
+      "nige": "F",
+      "senko": "A",
+      "sashi": "A",
+      "oikomi": "F"
+    },
+    "growth": {
+      "speed": 0,
+      "stamina": 0,
+      "power": 20,
+      "guts": 0,
+      "wisdom": 10
+    },
+    "notes": "",
+    "savedAt": "2026-09-17T14:35:04.198Z"
   },
   {
     "id": "uma_1789597025571_4lrnl",
