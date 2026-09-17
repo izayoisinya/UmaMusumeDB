@@ -1,67 +1,67 @@
 [
   {
-    "id": "uma_1789655739047_d037m",
-    "name": "メジロアルダン",
+    "id": "uma_1789655752569_ohmg6",
+    "name": "メジロマックイーン",
     "imagePath": null,
     "skills": [
       {
-        "name": "一期の夢、刹那の飛翔",
+        "name": "きらめくは海、まばゆきは君",
         "type": "unique"
       },
       {
-        "name": "左回り○",
+        "name": "集中力",
         "type": "normal"
       },
       {
-        "name": "レースプランナー",
+        "name": "スタミナキープ",
+        "type": "normal"
+      },
+      {
+        "name": "先行のコツ○",
+        "type": "normal"
+      },
+      {
+        "name": "真打",
         "type": "gold"
       },
       {
-        "name": "好位追走",
+        "name": "影打",
         "type": "normal"
       },
       {
-        "name": "軽やかステップ",
-        "type": "normal"
-      },
-      {
-        "name": "先行コーナー○",
-        "type": "normal"
-      },
-      {
-        "name": "決死の覚悟",
+        "name": "一意専心",
         "type": "gold"
       },
       {
-        "name": "ありったけ",
+        "name": "抜かりなし",
         "type": "normal"
       }
     ],
     "track": {
       "turf": "A",
-      "dirt": "F"
+      "dirt": "E"
     },
     "distance": {
-      "short": "E",
-      "mile": "B",
+      "short": "G",
+      "mile": "F",
       "medium": "A",
-      "long": "D"
+      "long": "A"
     },
     "style": {
-      "nige": "C",
+      "nige": "B",
       "senko": "A",
       "sashi": "D",
-      "oikomi": "G"
+      "oikomi": "F"
     },
     "growth": {
-      "speed": 10,
-      "stamina": 0,
+      "speed": 8,
+      "stamina": 8,
       "power": 0,
       "guts": 0,
-      "wisdom": 20
+      "wisdom": 14
     },
     "notes": "",
-    "savedAt": "2026-09-17T14:35:39.047Z"
+    "savedAt": "2026-09-17T14:35:52.569Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -4562,6 +4562,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T22:17:18.891Z"
+  },
+  {
+    "id": "uma_1789655739047_d037m",
+    "name": "メジロアルダン",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "一期の夢、刹那の飛翔",
+        "type": "unique"
+      },
+      {
+        "name": "左回り○",
+        "type": "normal"
+      },
+      {
+        "name": "レースプランナー",
+        "type": "gold"
+      },
+      {
+        "name": "好位追走",
+        "type": "normal"
+      },
+      {
+        "name": "軽やかステップ",
+        "type": "normal"
+      },
+      {
+        "name": "先行コーナー○",
+        "type": "normal"
+      },
+      {
+        "name": "決死の覚悟",
+        "type": "gold"
+      },
+      {
+        "name": "ありったけ",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "F"
+    },
+    "distance": {
+      "short": "E",
+      "mile": "B",
+      "medium": "A",
+      "long": "D"
+    },
+    "style": {
+      "nige": "C",
+      "senko": "A",
+      "sashi": "D",
+      "oikomi": "G"
+    },
+    "growth": {
+      "speed": 10,
+      "stamina": 0,
+      "power": 0,
+      "guts": 0,
+      "wisdom": 20
+    },
+    "notes": "",
+    "savedAt": "2026-09-17T14:35:39.047Z"
   },
   {
     "id": "uma_1789590311095_tqh9m",
