@@ -1,39 +1,39 @@
 [
   {
-    "id": "uma_1789669541780_0wjps",
+    "id": "uma_1789669554093_l8kqv",
     "name": "ゴールドシップ",
     "imagePath": null,
     "skills": [
       {
-        "name": "Adventure of 564",
+        "name": "不沈艦、抜錨オッ！",
         "type": "unique"
       },
       {
-        "name": "内的体験",
+        "name": "後方待機",
+        "type": "normal"
+      },
+      {
+        "name": "追い上げ",
+        "type": "normal"
+      },
+      {
+        "name": "視界良好！異常なし！",
         "type": "gold"
       },
       {
-        "name": "内弁慶",
+        "name": "お見通し",
         "type": "normal"
+      },
+      {
+        "name": "下校後のスペシャリスト",
+        "type": "gold"
       },
       {
         "name": "下校の楽しみ",
         "type": "normal"
       },
       {
-        "name": "ラッキーセブン",
-        "type": "normal"
-      },
-      {
-        "name": "あやしげな作戦",
-        "type": "normal"
-      },
-      {
-        "name": "高揚感",
-        "type": "gold"
-      },
-      {
-        "name": "前のめり",
+        "name": "ウマ好み",
         "type": "normal"
       }
     ],
@@ -55,13 +55,13 @@
     },
     "growth": {
       "speed": 0,
-      "stamina": 0,
-      "power": 20,
+      "stamina": 20,
+      "power": 10,
       "guts": 0,
-      "wisdom": 10
+      "wisdom": 0
     },
     "notes": "",
-    "savedAt": "2026-09-17T18:25:41.780Z"
+    "savedAt": "2026-09-17T18:25:54.093Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -1986,6 +1986,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T22:17:34.365Z"
+  },
+  {
+    "id": "uma_1789669541780_0wjps",
+    "name": "ゴールドシップ",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "Adventure of 564",
+        "type": "unique"
+      },
+      {
+        "name": "内的体験",
+        "type": "gold"
+      },
+      {
+        "name": "内弁慶",
+        "type": "normal"
+      },
+      {
+        "name": "下校の楽しみ",
+        "type": "normal"
+      },
+      {
+        "name": "ラッキーセブン",
+        "type": "normal"
+      },
+      {
+        "name": "あやしげな作戦",
+        "type": "normal"
+      },
+      {
+        "name": "高揚感",
+        "type": "gold"
+      },
+      {
+        "name": "前のめり",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "G",
+      "mile": "C",
+      "medium": "A",
+      "long": "A"
+    },
+    "style": {
+      "nige": "G",
+      "senko": "B",
+      "sashi": "B",
+      "oikomi": "A"
+    },
+    "growth": {
+      "speed": 0,
+      "stamina": 0,
+      "power": 20,
+      "guts": 0,
+      "wisdom": 10
+    },
+    "notes": "",
+    "savedAt": "2026-09-17T18:25:41.780Z"
   },
   {
     "id": "uma_1789590387845_vt9ps",
