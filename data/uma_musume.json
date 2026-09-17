@@ -1,39 +1,39 @@
 [
   {
-    "id": "uma_1789669681473_zxzn3",
-    "name": "タマモクロス",
+    "id": "uma_1789669715372_n3i65",
+    "name": "ブエナビスタ",
     "imagePath": null,
     "skills": [
       {
-        "name": "白い稲妻、見せたるで！",
+        "name": "To Our Vista",
         "type": "unique"
       },
       {
-        "name": "好位追走",
+        "name": "追込コーナー○",
         "type": "normal"
       },
       {
-        "name": "迅速果断",
+        "name": "君臨",
         "type": "gold"
       },
       {
-        "name": "位置取り押し上げ",
+        "name": "渾身の足取り",
         "type": "normal"
       },
       {
-        "name": "直線一気",
+        "name": "登竜門",
         "type": "normal"
       },
       {
-        "name": "イナズマステップ",
+        "name": "好戦的",
         "type": "normal"
       },
       {
-        "name": "尻尾の滝登り",
+        "name": "勇気凛々",
         "type": "gold"
       },
       {
-        "name": "尻尾上がり",
+        "name": "凛然と",
         "type": "normal"
       }
     ],
@@ -43,25 +43,25 @@
     },
     "distance": {
       "short": "G",
-      "mile": "E",
+      "mile": "A",
       "medium": "A",
-      "long": "A"
+      "long": "C"
     },
     "style": {
       "nige": "G",
-      "senko": "A",
+      "senko": "B",
       "sashi": "A",
       "oikomi": "A"
     },
     "growth": {
-      "speed": 0,
-      "stamina": 20,
+      "speed": 10,
+      "stamina": 0,
       "power": 10,
       "guts": 0,
-      "wisdom": 0
+      "wisdom": 10
     },
     "notes": "",
-    "savedAt": "2026-09-17T18:28:01.473Z"
+    "savedAt": "2026-09-17T18:28:35.372Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -4370,6 +4370,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-17T18:24:30.082Z"
+  },
+  {
+    "id": "uma_1789669681473_zxzn3",
+    "name": "タマモクロス",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "白い稲妻、見せたるで！",
+        "type": "unique"
+      },
+      {
+        "name": "好位追走",
+        "type": "normal"
+      },
+      {
+        "name": "迅速果断",
+        "type": "gold"
+      },
+      {
+        "name": "位置取り押し上げ",
+        "type": "normal"
+      },
+      {
+        "name": "直線一気",
+        "type": "normal"
+      },
+      {
+        "name": "イナズマステップ",
+        "type": "normal"
+      },
+      {
+        "name": "尻尾の滝登り",
+        "type": "gold"
+      },
+      {
+        "name": "尻尾上がり",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "F"
+    },
+    "distance": {
+      "short": "G",
+      "mile": "E",
+      "medium": "A",
+      "long": "A"
+    },
+    "style": {
+      "nige": "G",
+      "senko": "A",
+      "sashi": "A",
+      "oikomi": "A"
+    },
+    "growth": {
+      "speed": 0,
+      "stamina": 20,
+      "power": 10,
+      "guts": 0,
+      "wisdom": 0
+    },
+    "notes": "",
+    "savedAt": "2026-09-17T18:28:01.473Z"
   },
   {
     "id": "uma_1789656242170_g7zj4",
