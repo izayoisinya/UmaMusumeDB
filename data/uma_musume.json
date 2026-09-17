@@ -1,39 +1,39 @@
 [
   {
-    "id": "uma_1789669585754_iejvf",
-    "name": "ミスターシービー",
+    "id": "uma_1789669597879_dznwb",
+    "name": "ナリタタイシン",
     "imagePath": null,
     "skills": [
       {
-        "name": "叙情、旅路の果てに",
+        "name": "Overdrive Speed",
         "type": "unique"
       },
       {
-        "name": "雨の日○",
+        "name": "追込直線○",
         "type": "normal"
       },
       {
-        "name": "迫る影",
+        "name": "完全燃焼",
         "type": "gold"
       },
       {
-        "name": "直線一気",
+        "name": "たぎる血潮",
         "type": "normal"
       },
       {
-        "name": "軽やかステップ",
-        "type": "normal"
-      },
-      {
-        "name": "ウマ好み",
-        "type": "normal"
-      },
-      {
-        "name": "天衣無縫",
+        "name": "飛翔脚",
         "type": "gold"
       },
       {
-        "name": "型破り",
+        "name": "推力十分",
+        "type": "normal"
+      },
+      {
+        "name": "惜しみなし",
+        "type": "normal"
+      },
+      {
+        "name": "影踏み",
         "type": "normal"
       }
     ],
@@ -42,26 +42,26 @@
       "dirt": "G"
     },
     "distance": {
-      "short": "G",
-      "mile": "B",
+      "short": "F",
+      "mile": "D",
       "medium": "A",
       "long": "A"
     },
     "style": {
       "nige": "G",
-      "senko": "E",
-      "sashi": "A",
+      "senko": "F",
+      "sashi": "B",
       "oikomi": "A"
     },
     "growth": {
-      "speed": 10,
-      "stamina": 10,
-      "power": 0,
+      "speed": 0,
+      "stamina": 0,
+      "power": 20,
       "guts": 0,
       "wisdom": 10
     },
     "notes": "",
-    "savedAt": "2026-09-17T18:26:25.754Z"
+    "savedAt": "2026-09-17T18:26:37.879Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -6558,6 +6558,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-17T18:24:40.851Z"
+  },
+  {
+    "id": "uma_1789669585754_iejvf",
+    "name": "ミスターシービー",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "叙情、旅路の果てに",
+        "type": "unique"
+      },
+      {
+        "name": "雨の日○",
+        "type": "normal"
+      },
+      {
+        "name": "迫る影",
+        "type": "gold"
+      },
+      {
+        "name": "直線一気",
+        "type": "normal"
+      },
+      {
+        "name": "軽やかステップ",
+        "type": "normal"
+      },
+      {
+        "name": "ウマ好み",
+        "type": "normal"
+      },
+      {
+        "name": "天衣無縫",
+        "type": "gold"
+      },
+      {
+        "name": "型破り",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "G",
+      "mile": "B",
+      "medium": "A",
+      "long": "A"
+    },
+    "style": {
+      "nige": "G",
+      "senko": "E",
+      "sashi": "A",
+      "oikomi": "A"
+    },
+    "growth": {
+      "speed": 10,
+      "stamina": 10,
+      "power": 0,
+      "guts": 0,
+      "wisdom": 10
+    },
+    "notes": "",
+    "savedAt": "2026-09-17T18:26:25.754Z"
   },
   {
     "id": "uma_1789669570952_id6rz",
