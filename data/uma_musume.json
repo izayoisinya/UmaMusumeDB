@@ -1,39 +1,39 @@
 [
   {
-    "id": "uma_1789671076502_agvt0",
-    "name": "ナイスネイチャ",
+    "id": "uma_1789671088073_mf959",
+    "name": "ステイゴールド",
     "imagePath": null,
     "skills": [
       {
-        "name": "きっとその先へ…！",
+        "name": "黄金を訪ねて",
         "type": "unique"
       },
       {
-        "name": "小倉レース場○",
+        "name": "ウマ好み",
         "type": "normal"
       },
       {
-        "name": "差しためらい",
+        "name": "快速",
         "type": "normal"
       },
       {
-        "name": "魅惑のささやき",
+        "name": "比類なき",
+        "type": "normal"
+      },
+      {
+        "name": "好奇心",
         "type": "gold"
       },
       {
-        "name": "ささやき",
+        "name": "心惹かれて",
         "type": "normal"
       },
       {
-        "name": "小休憩",
-        "type": "normal"
-      },
-      {
-        "name": "八方にらみ",
+        "name": "遥か先へ",
         "type": "gold"
       },
       {
-        "name": "鋭い眼光",
+        "name": "勝負を懸けて",
         "type": "normal"
       }
     ],
@@ -43,25 +43,25 @@
     },
     "distance": {
       "short": "G",
-      "mile": "C",
+      "mile": "G",
       "medium": "A",
       "long": "A"
     },
     "style": {
-      "nige": "F",
+      "nige": "G",
       "senko": "B",
       "sashi": "A",
-      "oikomi": "D"
+      "oikomi": "C"
     },
     "growth": {
       "speed": 0,
-      "stamina": 0,
-      "power": 20,
-      "guts": 0,
-      "wisdom": 10
+      "stamina": 10,
+      "power": 0,
+      "guts": 20,
+      "wisdom": 0
     },
     "notes": "",
-    "savedAt": "2026-09-17T18:51:16.502Z"
+    "savedAt": "2026-09-17T18:51:28.073Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -5914,6 +5914,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-17T18:25:29.901Z"
+  },
+  {
+    "id": "uma_1789671076502_agvt0",
+    "name": "ナイスネイチャ",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "きっとその先へ…！",
+        "type": "unique"
+      },
+      {
+        "name": "小倉レース場○",
+        "type": "normal"
+      },
+      {
+        "name": "差しためらい",
+        "type": "normal"
+      },
+      {
+        "name": "魅惑のささやき",
+        "type": "gold"
+      },
+      {
+        "name": "ささやき",
+        "type": "normal"
+      },
+      {
+        "name": "小休憩",
+        "type": "normal"
+      },
+      {
+        "name": "八方にらみ",
+        "type": "gold"
+      },
+      {
+        "name": "鋭い眼光",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "G",
+      "mile": "C",
+      "medium": "A",
+      "long": "A"
+    },
+    "style": {
+      "nige": "F",
+      "senko": "B",
+      "sashi": "A",
+      "oikomi": "D"
+    },
+    "growth": {
+      "speed": 0,
+      "stamina": 0,
+      "power": 20,
+      "guts": 0,
+      "wisdom": 10
+    },
+    "notes": "",
+    "savedAt": "2026-09-17T18:51:16.502Z"
   },
   {
     "id": "uma_1789671055909_3ffip",
