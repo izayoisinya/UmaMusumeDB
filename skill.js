@@ -280,6 +280,12 @@ document.getElementById('refreshBtn').addEventListener('click', () => loadSkills
 document.getElementById('searchNameInput').addEventListener('input', renderSkills);
 document.querySelectorAll('.categoryFilter, .rarityFilter, .styleFilter, .distanceFilter').forEach(el => el.addEventListener('change', renderSkills));
 
+document.getElementById('resetSearchBtn').addEventListener('click', () => {
+  document.getElementById('searchNameInput').value = '';
+  document.querySelectorAll('.categoryFilter, .rarityFilter, .styleFilter, .distanceFilter').forEach(el => { el.checked = false; });
+  renderSkills();
+});
+
 // --- 一覧表示 ---
 const CATEGORY_LABELS = { green: '緑スキル', heal: '回復スキル', debuff: 'デバフスキル', speed: '速度スキル', accel: '加速スキル' };
 const STYLE_LABELS = { nige: '逃げ', senko: '先行', sashi: '差し', oikomi: '追込' };

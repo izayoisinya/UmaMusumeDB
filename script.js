@@ -525,6 +525,22 @@ const whiteCountInput = document.getElementById('whiteCountInput');
   el.addEventListener('change', renderEntries);
 });
 
+document.getElementById('resetSearchBtn').addEventListener('click', () => {
+  requiredTags.length = 0;
+  optionalTags.length = 0;
+  selfTags.length = 0;
+  renderTagBox('searchRequiredBox', requiredTags, 'required');
+  renderTagBox('searchOptionalBox', optionalTags, 'optional');
+  renderTagBox('searchSelfBox', selfTags, 'self');
+  document.getElementById('searchRequiredInput').value = '';
+  document.getElementById('searchOptionalInput').value = '';
+  document.getElementById('searchSelfInput').value = '';
+  whiteCountInput.value = '';
+  whiteCountSelfOnly.checked = false;
+  whiteCountLte.checked = false;
+  renderEntries();
+});
+
 function renderEntries() {
   const requiredTerms = getFieldTerms('searchRequiredInput', requiredTags);
   const optionalTerms = getFieldTerms('searchOptionalInput', optionalTags);

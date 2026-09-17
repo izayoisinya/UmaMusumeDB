@@ -467,6 +467,15 @@ searchNameInput.addEventListener('input', renderUmas);
 searchSkillInput.addEventListener('input', renderUmas);
 filterGrowthCorrection.addEventListener('change', renderUmas);
 
+document.getElementById('resetSearchBtn').addEventListener('click', () => {
+  searchNameInput.value = '';
+  searchSkillInput.value = '';
+  filterGrowthCorrection.value = '';
+  aptSearchLte.checked = false;
+  APT_FILTER_FIELDS.forEach(f => { document.getElementById(f.id).value = ''; });
+  renderUmas();
+});
+
 function hasGrowthCorrection(uma) {
   return Object.values(uma.growth || {}).some(v => v);
 }

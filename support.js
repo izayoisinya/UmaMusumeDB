@@ -460,6 +460,18 @@ searchNameInput.addEventListener('input', renderCards);
 
 // --- タイプ絞り込み ---
 document.querySelectorAll('.typeFilter').forEach(el => el.addEventListener('change', renderCards));
+
+document.getElementById('resetSearchBtn').addEventListener('click', () => {
+  searchNameInput.value = '';
+  document.querySelectorAll('.typeFilter').forEach(el => { el.checked = false; });
+  requiredTags.length = 0;
+  optionalTags.length = 0;
+  renderTagBox('searchRequiredBox', requiredTags, 'required');
+  renderTagBox('searchOptionalBox', optionalTags, 'optional');
+  document.getElementById('searchRequiredInput').value = '';
+  document.getElementById('searchOptionalInput').value = '';
+  renderCards();
+});
 function getSelectedTypeFilters() {
   return Array.from(document.querySelectorAll('.typeFilter:checked')).map(el => el.value);
 }
