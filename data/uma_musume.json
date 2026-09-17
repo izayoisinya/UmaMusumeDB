@@ -1,39 +1,39 @@
 [
   {
-    "id": "uma_1789670889558_ep51r",
-    "name": "ヴィブロス",
+    "id": "uma_1789670907527_yzz79",
+    "name": "ウオッカ",
     "imagePath": null,
     "skills": [
       {
-        "name": "ジュ・テーム☆バカンス！",
+        "name": "カッティング×DRIVE！",
         "type": "unique"
       },
       {
-        "name": "フルスロットル",
+        "name": "直線加速",
         "type": "normal"
       },
       {
-        "name": "千里の道",
+        "name": "好転一息",
         "type": "gold"
       },
       {
-        "name": "一歩から",
+        "name": "直線回復",
         "type": "normal"
       },
       {
-        "name": "駆け降り",
+        "name": "差し切り体勢",
         "type": "normal"
       },
       {
-        "name": "才気煥発",
+        "name": "豪脚",
         "type": "gold"
       },
       {
-        "name": "躍動",
+        "name": "上昇気流",
         "type": "normal"
       },
       {
-        "name": "夢への挑戦",
+        "name": "マイル直線○",
         "type": "normal"
       }
     ],
@@ -42,26 +42,26 @@
       "dirt": "G"
     },
     "distance": {
-      "short": "E",
+      "short": "F",
       "mile": "A",
       "medium": "A",
-      "long": "G"
+      "long": "F"
     },
     "style": {
-      "nige": "G",
-      "senko": "D",
+      "nige": "C",
+      "senko": "B",
       "sashi": "A",
-      "oikomi": "C"
+      "oikomi": "F"
     },
     "growth": {
       "speed": 10,
       "stamina": 0,
-      "power": 0,
-      "guts": 10,
-      "wisdom": 10
+      "power": 20,
+      "guts": 0,
+      "wisdom": 0
     },
     "notes": "",
-    "savedAt": "2026-09-17T18:48:09.558Z"
+    "savedAt": "2026-09-17T18:48:27.527Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -830,6 +830,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-17T18:47:44.679Z"
+  },
+  {
+    "id": "uma_1789670889558_ep51r",
+    "name": "ヴィブロス",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "ジュ・テーム☆バカンス！",
+        "type": "unique"
+      },
+      {
+        "name": "フルスロットル",
+        "type": "normal"
+      },
+      {
+        "name": "千里の道",
+        "type": "gold"
+      },
+      {
+        "name": "一歩から",
+        "type": "normal"
+      },
+      {
+        "name": "駆け降り",
+        "type": "normal"
+      },
+      {
+        "name": "才気煥発",
+        "type": "gold"
+      },
+      {
+        "name": "躍動",
+        "type": "normal"
+      },
+      {
+        "name": "夢への挑戦",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "E",
+      "mile": "A",
+      "medium": "A",
+      "long": "G"
+    },
+    "style": {
+      "nige": "G",
+      "senko": "D",
+      "sashi": "A",
+      "oikomi": "C"
+    },
+    "growth": {
+      "speed": 10,
+      "stamina": 0,
+      "power": 0,
+      "guts": 10,
+      "wisdom": 10
+    },
+    "notes": "",
+    "savedAt": "2026-09-17T18:48:09.558Z"
   },
   {
     "id": "uma_1789590051006_52itb",
