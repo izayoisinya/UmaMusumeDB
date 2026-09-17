@@ -1,39 +1,39 @@
 [
   {
-    "id": "uma_1789671778234_p43qs",
+    "id": "uma_1789671791622_51lqi",
     "name": "ホッコータルマエ",
     "imagePath": null,
     "skills": [
       {
-        "name": "とびだせ☆ポッピングシェル",
+        "name": "かがやけ☆とまこまい",
         "type": "unique"
       },
       {
-        "name": "砂浴び○",
+        "name": "川崎レース場○",
         "type": "normal"
       },
       {
-        "name": "踏み込み上手",
-        "type": "normal"
-      },
-      {
-        "name": "コール&レスポンス",
+        "name": "余裕綽々",
         "type": "gold"
       },
       {
-        "name": "二段構え",
+        "name": "スタミナキープ",
         "type": "normal"
       },
       {
-        "name": "踏みしめる大地",
+        "name": "先行けん制",
+        "type": "normal"
+      },
+      {
+        "name": "巧みなステップ",
+        "type": "normal"
+      },
+      {
+        "name": "チャート急上昇！",
         "type": "gold"
       },
       {
-        "name": "力の限り",
-        "type": "normal"
-      },
-      {
-        "name": "ダート直線○",
+        "name": "レコメンド",
         "type": "normal"
       }
     ],
@@ -54,14 +54,14 @@
       "oikomi": "G"
     },
     "growth": {
-      "speed": 15,
+      "speed": 10,
       "stamina": 10,
       "power": 0,
       "guts": 0,
-      "wisdom": 5
+      "wisdom": 10
     },
     "notes": "",
-    "savedAt": "2026-09-17T19:02:58.234Z"
+    "savedAt": "2026-09-17T19:03:11.622Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -8286,6 +8286,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T22:14:00.550Z"
+  },
+  {
+    "id": "uma_1789671778234_p43qs",
+    "name": "ホッコータルマエ",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "とびだせ☆ポッピングシェル",
+        "type": "unique"
+      },
+      {
+        "name": "砂浴び○",
+        "type": "normal"
+      },
+      {
+        "name": "踏み込み上手",
+        "type": "normal"
+      },
+      {
+        "name": "コール&レスポンス",
+        "type": "gold"
+      },
+      {
+        "name": "二段構え",
+        "type": "normal"
+      },
+      {
+        "name": "踏みしめる大地",
+        "type": "gold"
+      },
+      {
+        "name": "力の限り",
+        "type": "normal"
+      },
+      {
+        "name": "ダート直線○",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "G",
+      "dirt": "A"
+    },
+    "distance": {
+      "short": "F",
+      "mile": "A",
+      "medium": "A",
+      "long": "E"
+    },
+    "style": {
+      "nige": "B",
+      "senko": "A",
+      "sashi": "G",
+      "oikomi": "G"
+    },
+    "growth": {
+      "speed": 15,
+      "stamina": 10,
+      "power": 0,
+      "guts": 0,
+      "wisdom": 5
+    },
+    "notes": "",
+    "savedAt": "2026-09-17T19:02:58.234Z"
   },
   {
     "id": "uma_1789656280335_1y964",
