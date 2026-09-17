@@ -1,67 +1,67 @@
 [
   {
-    "id": "uma_1789671739528_zh2aj",
-    "name": "スマートファルコン",
+    "id": "uma_1789671750710_thx6a",
+    "name": "シンコウウインディ",
     "imagePath": null,
     "skills": [
       {
-        "name": "α-star*",
+        "name": "Ding Dong Boo",
         "type": "unique"
       },
       {
-        "name": "逃げコーナー○",
+        "name": "道悪○",
         "type": "normal"
       },
       {
-        "name": "チャート急上昇！",
+        "name": "ギアシフト",
+        "type": "normal"
+      },
+      {
+        "name": "負けん気",
+        "type": "normal"
+      },
+      {
+        "name": "全速前進！",
         "type": "gold"
       },
       {
-        "name": "レコメンド",
+        "name": "まっしぐら",
         "type": "normal"
       },
       {
-        "name": "気迫を込めて",
-        "type": "normal"
-      },
-      {
-        "name": "目指せセンター！",
+        "name": "泥んこマイスター",
         "type": "gold"
       },
       {
-        "name": "意気込み十分",
-        "type": "normal"
-      },
-      {
-        "name": "土煙",
+        "name": "泥遊び○",
         "type": "normal"
       }
     ],
     "track": {
-      "turf": "E",
+      "turf": "F",
       "dirt": "A"
     },
     "distance": {
-      "short": "B",
+      "short": "C",
       "mile": "A",
-      "medium": "A",
-      "long": "E"
+      "medium": "B",
+      "long": "G"
     },
     "style": {
-      "nige": "A",
-      "senko": "D",
-      "sashi": "G",
-      "oikomi": "G"
+      "nige": "G",
+      "senko": "A",
+      "sashi": "B",
+      "oikomi": "F"
     },
     "growth": {
-      "speed": 20,
+      "speed": 10,
       "stamina": 0,
-      "power": 0,
+      "power": 10,
       "guts": 10,
       "wisdom": 0
     },
     "notes": "",
-    "savedAt": "2026-09-17T19:02:19.528Z"
+    "savedAt": "2026-09-17T19:02:30.710Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -4690,6 +4690,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T22:07:21.065Z"
+  },
+  {
+    "id": "uma_1789671739528_zh2aj",
+    "name": "スマートファルコン",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "α-star*",
+        "type": "unique"
+      },
+      {
+        "name": "逃げコーナー○",
+        "type": "normal"
+      },
+      {
+        "name": "チャート急上昇！",
+        "type": "gold"
+      },
+      {
+        "name": "レコメンド",
+        "type": "normal"
+      },
+      {
+        "name": "気迫を込めて",
+        "type": "normal"
+      },
+      {
+        "name": "目指せセンター！",
+        "type": "gold"
+      },
+      {
+        "name": "意気込み十分",
+        "type": "normal"
+      },
+      {
+        "name": "土煙",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "E",
+      "dirt": "A"
+    },
+    "distance": {
+      "short": "B",
+      "mile": "A",
+      "medium": "A",
+      "long": "E"
+    },
+    "style": {
+      "nige": "A",
+      "senko": "D",
+      "sashi": "G",
+      "oikomi": "G"
+    },
+    "growth": {
+      "speed": 20,
+      "stamina": 0,
+      "power": 0,
+      "guts": 10,
+      "wisdom": 0
+    },
+    "notes": "",
+    "savedAt": "2026-09-17T19:02:19.528Z"
   },
   {
     "id": "uma_1789508282654_jqgsg",
