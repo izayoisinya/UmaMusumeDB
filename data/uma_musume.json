@@ -1,67 +1,67 @@
 [
   {
-    "id": "uma_1789669715372_n3i65",
-    "name": "ブエナビスタ",
+    "id": "uma_1789669727483_r6y3s",
+    "name": "ノースフライト",
     "imagePath": null,
     "skills": [
       {
-        "name": "To Our Vista",
+        "name": "煌めき華やぐアローライン",
         "type": "unique"
       },
       {
-        "name": "追込コーナー○",
-        "type": "normal"
-      },
-      {
-        "name": "君臨",
+        "name": "抜群の切れ味",
         "type": "gold"
       },
       {
-        "name": "渾身の足取り",
+        "name": "切れ味",
         "type": "normal"
       },
       {
-        "name": "登竜門",
-        "type": "normal"
-      },
-      {
-        "name": "好戦的",
-        "type": "normal"
-      },
-      {
-        "name": "勇気凛々",
+        "name": "熱情",
         "type": "gold"
       },
       {
-        "name": "凛然と",
+        "name": "滾る想い",
+        "type": "normal"
+      },
+      {
+        "name": "胸の高鳴り",
+        "type": "normal"
+      },
+      {
+        "name": "追駆",
+        "type": "normal"
+      },
+      {
+        "name": "溌剌",
         "type": "normal"
       }
     ],
     "track": {
       "turf": "A",
-      "dirt": "F"
+      "dirt": "G"
     },
     "distance": {
-      "short": "G",
+      "short": "C",
       "mile": "A",
-      "medium": "A",
-      "long": "C"
+      "medium": "B",
+      "long": "G"
     },
     "style": {
-      "nige": "G",
-      "senko": "B",
-      "sashi": "A",
+      "nige": "D",
+      "senko": "A",
+      "sashi": "D",
       "oikomi": "A"
     },
     "growth": {
-      "speed": 10,
+      "speed": 15,
       "stamina": 0,
-      "power": 10,
+      "power": 0,
       "guts": 0,
-      "wisdom": 10
+      "wisdom": 15
     },
     "notes": "",
-    "savedAt": "2026-09-17T18:28:35.372Z"
+    "savedAt": "2026-09-17T18:28:47.483Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -6110,6 +6110,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-17T14:42:48.925Z"
+  },
+  {
+    "id": "uma_1789669715372_n3i65",
+    "name": "ブエナビスタ",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "To Our Vista",
+        "type": "unique"
+      },
+      {
+        "name": "追込コーナー○",
+        "type": "normal"
+      },
+      {
+        "name": "君臨",
+        "type": "gold"
+      },
+      {
+        "name": "渾身の足取り",
+        "type": "normal"
+      },
+      {
+        "name": "登竜門",
+        "type": "normal"
+      },
+      {
+        "name": "好戦的",
+        "type": "normal"
+      },
+      {
+        "name": "勇気凛々",
+        "type": "gold"
+      },
+      {
+        "name": "凛然と",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "F"
+    },
+    "distance": {
+      "short": "G",
+      "mile": "A",
+      "medium": "A",
+      "long": "C"
+    },
+    "style": {
+      "nige": "G",
+      "senko": "B",
+      "sashi": "A",
+      "oikomi": "A"
+    },
+    "growth": {
+      "speed": 10,
+      "stamina": 0,
+      "power": 10,
+      "guts": 0,
+      "wisdom": 10
+    },
+    "notes": "",
+    "savedAt": "2026-09-17T18:28:35.372Z"
   },
   {
     "id": "uma_1789597009620_m0ngc",
