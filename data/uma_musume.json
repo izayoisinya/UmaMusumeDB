@@ -1,67 +1,67 @@
 [
   {
-    "id": "uma_1789669659838_brmui",
-    "name": "アドマイヤベガ",
+    "id": "uma_1789669671322_wj6nn",
+    "name": "イナリワン",
     "imagePath": null,
     "skills": [
       {
-        "name": "ディオスクロイの流星",
+        "name": "快走かな、快走かな！",
         "type": "unique"
       },
       {
-        "name": "垂れウマ回避",
+        "name": "冬ウマ娘○",
         "type": "normal"
       },
       {
-        "name": "疾風怒濤",
+        "name": "直線一気",
+        "type": "normal"
+      },
+      {
+        "name": "追込直線○",
+        "type": "normal"
+      },
+      {
+        "name": "尻尾の滝登り",
         "type": "gold"
       },
       {
-        "name": "仕掛け抜群",
+        "name": "尻尾上がり",
         "type": "normal"
       },
       {
-        "name": "先行けん制",
-        "type": "normal"
-      },
-      {
-        "name": "束縛",
-        "type": "normal"
-      },
-      {
-        "name": "冷静沈着",
+        "name": "砂の玄人",
         "type": "gold"
       },
       {
-        "name": "冷静",
+        "name": "砂塵慣れ",
         "type": "normal"
       }
     ],
     "track": {
       "turf": "A",
-      "dirt": "G"
+      "dirt": "A"
     },
     "distance": {
       "short": "F",
-      "mile": "C",
+      "mile": "B",
       "medium": "A",
-      "long": "C"
+      "long": "A"
     },
     "style": {
       "nige": "G",
-      "senko": "G",
+      "senko": "B",
       "sashi": "B",
       "oikomi": "A"
     },
     "growth": {
-      "speed": 10,
-      "stamina": 0,
+      "speed": 0,
+      "stamina": 10,
       "power": 20,
       "guts": 0,
       "wisdom": 0
     },
     "notes": "",
-    "savedAt": "2026-09-17T18:27:39.838Z"
+    "savedAt": "2026-09-17T18:27:51.322Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -574,6 +574,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T20:17:37.870Z"
+  },
+  {
+    "id": "uma_1789669659838_brmui",
+    "name": "アドマイヤベガ",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "ディオスクロイの流星",
+        "type": "unique"
+      },
+      {
+        "name": "垂れウマ回避",
+        "type": "normal"
+      },
+      {
+        "name": "疾風怒濤",
+        "type": "gold"
+      },
+      {
+        "name": "仕掛け抜群",
+        "type": "normal"
+      },
+      {
+        "name": "先行けん制",
+        "type": "normal"
+      },
+      {
+        "name": "束縛",
+        "type": "normal"
+      },
+      {
+        "name": "冷静沈着",
+        "type": "gold"
+      },
+      {
+        "name": "冷静",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "F",
+      "mile": "C",
+      "medium": "A",
+      "long": "C"
+    },
+    "style": {
+      "nige": "G",
+      "senko": "G",
+      "sashi": "B",
+      "oikomi": "A"
+    },
+    "growth": {
+      "speed": 10,
+      "stamina": 0,
+      "power": 20,
+      "guts": 0,
+      "wisdom": 0
+    },
+    "notes": "",
+    "savedAt": "2026-09-17T18:27:39.838Z"
   },
   {
     "id": "uma_1789596517264_umkcd",
