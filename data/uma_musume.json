@@ -1,67 +1,67 @@
 [
   {
-    "id": "uma_1789655663653_1oylc",
-    "name": "マチカネタンホイザ",
+    "id": "uma_1789655678464_ym87y",
+    "name": "シーキングサパール",
     "imagePath": null,
     "skills": [
       {
-        "name": "ごろりん！？パワードライブ",
+        "name": "Oh!bento-magic☆",
         "type": "unique"
       },
       {
-        "name": "差し切り体勢",
-        "type": "normal"
-      },
-      {
-        "name": "中距離コーナー○",
-        "type": "normal"
-      },
-      {
-        "name": "潜伏態勢",
+        "name": "一陣の風",
         "type": "gold"
       },
       {
-        "name": "静かな呼吸",
+        "name": "直線加速",
         "type": "normal"
       },
       {
-        "name": "起死回生",
+        "name": "負けん気",
+        "type": "normal"
+      },
+      {
+        "name": "食らいつき",
+        "type": "normal"
+      },
+      {
+        "name": "心弾んで",
+        "type": "normal"
+      },
+      {
+        "name": "ネバーギブアップ",
         "type": "gold"
       },
       {
-        "name": "ワンチャンス",
-        "type": "normal"
-      },
-      {
-        "name": "進出開始",
+        "name": "折れない心",
         "type": "normal"
       }
     ],
     "track": {
       "turf": "A",
-      "dirt": "G"
+      "dirt": "F"
     },
     "distance": {
-      "short": "G",
-      "mile": "D",
-      "medium": "A",
-      "long": "A"
+      "short": "A",
+      "mile": "A",
+      "medium": "E",
+      "long": "G"
     },
     "style": {
-      "nige": "F",
+      "nige": "C",
       "senko": "A",
       "sashi": "A",
-      "oikomi": "E"
+      "oikomi": "B"
     },
     "growth": {
       "speed": 10,
       "stamina": 0,
-      "power": 20,
+      "power": 13,
       "guts": 0,
-      "wisdom": 0
+      "wisdom": 7
     },
     "notes": "",
-    "savedAt": "2026-09-17T14:34:23.653Z"
+    "savedAt": "2026-09-17T14:34:38.464Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -3666,6 +3666,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T22:14:00.550Z"
+  },
+  {
+    "id": "uma_1789655663653_1oylc",
+    "name": "マチカネタンホイザ",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "ごろりん！？パワードライブ",
+        "type": "unique"
+      },
+      {
+        "name": "差し切り体勢",
+        "type": "normal"
+      },
+      {
+        "name": "中距離コーナー○",
+        "type": "normal"
+      },
+      {
+        "name": "潜伏態勢",
+        "type": "gold"
+      },
+      {
+        "name": "静かな呼吸",
+        "type": "normal"
+      },
+      {
+        "name": "起死回生",
+        "type": "gold"
+      },
+      {
+        "name": "ワンチャンス",
+        "type": "normal"
+      },
+      {
+        "name": "進出開始",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "G",
+      "mile": "D",
+      "medium": "A",
+      "long": "A"
+    },
+    "style": {
+      "nige": "F",
+      "senko": "A",
+      "sashi": "A",
+      "oikomi": "E"
+    },
+    "growth": {
+      "speed": 10,
+      "stamina": 0,
+      "power": 20,
+      "guts": 0,
+      "wisdom": 0
+    },
+    "notes": "",
+    "savedAt": "2026-09-17T14:34:23.653Z"
   },
   {
     "id": "uma_1789597133358_sdt9b",
