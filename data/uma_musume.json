@@ -1,67 +1,67 @@
 [
   {
-    "id": "uma_1789671111347_h8283",
-    "name": "サトノダイヤモンド",
+    "id": "uma_1789671122075_1sax7",
+    "name": "ビコーペガサス",
     "imagePath": null,
     "skills": [
       {
-        "name": "玄雲散らす、黄金甲矢",
+        "name": "疾風爆走ペガサスダッシュ！",
         "type": "unique"
       },
       {
-        "name": "スタミナグリード",
+        "name": "迅速果断",
         "type": "gold"
       },
       {
-        "name": "スタミナイーター",
+        "name": "位置取り押し上げ",
+        "type": "normal"
+      },
+      {
+        "name": "スプリントギア",
+        "type": "normal"
+      },
+      {
+        "name": "電撃の煌めき",
+        "type": "gold"
+      },
+      {
+        "name": "詰め寄り",
+        "type": "normal"
+      },
+      {
+        "name": "仕掛け準備",
         "type": "normal"
       },
       {
         "name": "差し直線○",
         "type": "normal"
-      },
-      {
-        "name": "恐れぬ心",
-        "type": "normal"
-      },
-      {
-        "name": "無我夢中",
-        "type": "gold"
-      },
-      {
-        "name": "がむしゃら",
-        "type": "normal"
-      },
-      {
-        "name": "キレる脚",
-        "type": "normal"
       }
     ],
     "track": {
       "turf": "A",
-      "dirt": "G"
+      "dirt": "E"
     },
     "distance": {
-      "short": "G",
-      "mile": "C",
-      "medium": "A",
-      "long": "A"
+      "short": "A",
+      "mile": "B",
+      "medium": "G",
+      "long": "G"
     },
     "style": {
       "nige": "G",
-      "senko": "B",
+      "senko": "E",
       "sashi": "A",
-      "oikomi": "D"
+      "oikomi": "B"
     },
     "growth": {
-      "speed": 15,
-      "stamina": 15,
-      "power": 0,
-      "guts": 0,
+      "speed": 10,
+      "stamina": 0,
+      "power": 10,
+      "guts": 10,
       "wisdom": 0
     },
     "notes": "",
-    "savedAt": "2026-09-17T18:51:51.347Z"
+    "savedAt": "2026-09-17T18:52:02.075Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -3466,6 +3466,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-17T18:50:04.805Z"
+  },
+  {
+    "id": "uma_1789671111347_h8283",
+    "name": "サトノダイヤモンド",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "玄雲散らす、黄金甲矢",
+        "type": "unique"
+      },
+      {
+        "name": "スタミナグリード",
+        "type": "gold"
+      },
+      {
+        "name": "スタミナイーター",
+        "type": "normal"
+      },
+      {
+        "name": "差し直線○",
+        "type": "normal"
+      },
+      {
+        "name": "恐れぬ心",
+        "type": "normal"
+      },
+      {
+        "name": "無我夢中",
+        "type": "gold"
+      },
+      {
+        "name": "がむしゃら",
+        "type": "normal"
+      },
+      {
+        "name": "キレる脚",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "G",
+      "mile": "C",
+      "medium": "A",
+      "long": "A"
+    },
+    "style": {
+      "nige": "G",
+      "senko": "B",
+      "sashi": "A",
+      "oikomi": "D"
+    },
+    "growth": {
+      "speed": 15,
+      "stamina": 15,
+      "power": 0,
+      "guts": 0,
+      "wisdom": 0
+    },
+    "notes": "",
+    "savedAt": "2026-09-17T18:51:51.347Z"
   },
   {
     "id": "uma_1789671100470_iorj0",
