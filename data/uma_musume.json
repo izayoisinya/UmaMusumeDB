@@ -1,67 +1,67 @@
 [
   {
-    "id": "uma_1789655889020_g5vlo",
-    "name": "エアグルーヴ",
+    "id": "uma_1789655902935_6qoc1",
+    "name": "ヒシアケボノ",
     "imagePath": null,
     "skills": [
       {
-        "name": "ブレイズ・オブ・プライド",
+        "name": "I'M☆FULL☆SPEED!!",
         "type": "unique"
       },
       {
-        "name": "レーンの魔術師",
+        "name": "晴れの日○",
+        "type": "normal"
+      },
+      {
+        "name": "準備万全！",
         "type": "gold"
       },
       {
-        "name": "臨機応変",
+        "name": "仕掛け準備",
         "type": "normal"
       },
       {
-        "name": "テンポアップ",
+        "name": "後方釘付",
         "type": "normal"
       },
       {
-        "name": "追込焦り",
-        "type": "normal"
-      },
-      {
-        "name": "追込ためらい",
-        "type": "normal"
-      },
-      {
-        "name": "幻惑のかく乱",
+        "name": "食いしん坊",
         "type": "gold"
       },
       {
-        "name": "かく乱",
+        "name": "栄養補給",
+        "type": "normal"
+      },
+      {
+        "name": "まき直し",
         "type": "normal"
       }
     ],
     "track": {
       "turf": "A",
-      "dirt": "G"
+      "dirt": "F"
     },
     "distance": {
-      "short": "C",
+      "short": "A",
       "mile": "B",
-      "medium": "A",
-      "long": "E"
+      "medium": "F",
+      "long": "G"
     },
     "style": {
-      "nige": "D",
+      "nige": "B",
       "senko": "A",
-      "sashi": "A",
+      "sashi": "C",
       "oikomi": "G"
     },
     "growth": {
-      "speed": 10,
+      "speed": 0,
       "stamina": 0,
       "power": 20,
-      "guts": 0,
+      "guts": 10,
       "wisdom": 0
     },
     "notes": "",
-    "savedAt": "2026-09-17T14:38:09.020Z"
+    "savedAt": "2026-09-17T14:38:22.935Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -702,6 +702,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T20:20:51.006Z"
+  },
+  {
+    "id": "uma_1789655889020_g5vlo",
+    "name": "エアグルーヴ",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "ブレイズ・オブ・プライド",
+        "type": "unique"
+      },
+      {
+        "name": "レーンの魔術師",
+        "type": "gold"
+      },
+      {
+        "name": "臨機応変",
+        "type": "normal"
+      },
+      {
+        "name": "テンポアップ",
+        "type": "normal"
+      },
+      {
+        "name": "追込焦り",
+        "type": "normal"
+      },
+      {
+        "name": "追込ためらい",
+        "type": "normal"
+      },
+      {
+        "name": "幻惑のかく乱",
+        "type": "gold"
+      },
+      {
+        "name": "かく乱",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "C",
+      "mile": "B",
+      "medium": "A",
+      "long": "E"
+    },
+    "style": {
+      "nige": "D",
+      "senko": "A",
+      "sashi": "A",
+      "oikomi": "G"
+    },
+    "growth": {
+      "speed": 10,
+      "stamina": 0,
+      "power": 20,
+      "guts": 0,
+      "wisdom": 0
+    },
+    "notes": "",
+    "savedAt": "2026-09-17T14:38:09.020Z"
   },
   {
     "id": "uma_1789655823584_jy9tb",
