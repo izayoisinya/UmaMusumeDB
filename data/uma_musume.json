@@ -1,39 +1,39 @@
 [
   {
-    "id": "uma_1789669647740_hwnd9",
-    "name": "メジロブライト",
+    "id": "uma_1789669659838_brmui",
+    "name": "アドマイヤベガ",
     "imagePath": null,
     "skills": [
       {
-        "name": "麗しき花信風",
+        "name": "ディオスクロイの流星",
         "type": "unique"
       },
       {
-        "name": "不屈の心",
+        "name": "垂れウマ回避",
+        "type": "normal"
+      },
+      {
+        "name": "疾風怒濤",
         "type": "gold"
       },
       {
-        "name": "ペースキープ",
+        "name": "仕掛け抜群",
         "type": "normal"
       },
       {
-        "name": "追い上げ",
+        "name": "先行けん制",
         "type": "normal"
       },
       {
-        "name": "スタミナイーター",
+        "name": "束縛",
         "type": "normal"
       },
       {
-        "name": "追込コーナー○",
-        "type": "normal"
-      },
-      {
-        "name": "泰然自若",
+        "name": "冷静沈着",
         "type": "gold"
       },
       {
-        "name": "マイペース",
+        "name": "冷静",
         "type": "normal"
       }
     ],
@@ -45,23 +45,23 @@
       "short": "F",
       "mile": "C",
       "medium": "A",
-      "long": "A"
+      "long": "C"
     },
     "style": {
       "nige": "G",
-      "senko": "D",
-      "sashi": "A",
+      "senko": "G",
+      "sashi": "B",
       "oikomi": "A"
     },
     "growth": {
-      "speed": 0,
-      "stamina": 14,
-      "power": 0,
-      "guts": 8,
-      "wisdom": 8
+      "speed": 10,
+      "stamina": 0,
+      "power": 20,
+      "guts": 0,
+      "wisdom": 0
     },
     "notes": "",
-    "savedAt": "2026-09-17T18:27:27.740Z"
+    "savedAt": "2026-09-17T18:27:39.838Z"
   },
   {
     "id": "uma_1789590469435_fqwgt",
@@ -7198,6 +7198,70 @@
     },
     "notes": "",
     "savedAt": "2026-09-16T20:25:11.095Z"
+  },
+  {
+    "id": "uma_1789669647740_hwnd9",
+    "name": "メジロブライト",
+    "imagePath": null,
+    "skills": [
+      {
+        "name": "麗しき花信風",
+        "type": "unique"
+      },
+      {
+        "name": "不屈の心",
+        "type": "gold"
+      },
+      {
+        "name": "ペースキープ",
+        "type": "normal"
+      },
+      {
+        "name": "追い上げ",
+        "type": "normal"
+      },
+      {
+        "name": "スタミナイーター",
+        "type": "normal"
+      },
+      {
+        "name": "追込コーナー○",
+        "type": "normal"
+      },
+      {
+        "name": "泰然自若",
+        "type": "gold"
+      },
+      {
+        "name": "マイペース",
+        "type": "normal"
+      }
+    ],
+    "track": {
+      "turf": "A",
+      "dirt": "G"
+    },
+    "distance": {
+      "short": "F",
+      "mile": "C",
+      "medium": "A",
+      "long": "A"
+    },
+    "style": {
+      "nige": "G",
+      "senko": "D",
+      "sashi": "A",
+      "oikomi": "A"
+    },
+    "growth": {
+      "speed": 0,
+      "stamina": 14,
+      "power": 0,
+      "guts": 8,
+      "wisdom": 8
+    },
+    "notes": "",
+    "savedAt": "2026-09-17T18:27:27.740Z"
   },
   {
     "id": "uma_1789669634282_63jhp",
