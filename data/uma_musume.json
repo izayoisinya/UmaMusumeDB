@@ -578,7 +578,7 @@
   {
     "id": "uma_1789596517264_umkcd",
     "name": "イクノディクタス",
-    "imagePath": null,
+    "imagePath": "images/uma_1789596517264_umkcd.jpg",
     "skills": [
       {
         "name": "百錬成鋼",
@@ -637,7 +637,7 @@
       "wisdom": 10
     },
     "notes": "",
-    "savedAt": "2026-09-16T22:08:37.264Z"
+    "savedAt": "2026-09-18T22:01:41.569Z"
   },
   {
     "id": "uma_1789669671322_wj6nn",
