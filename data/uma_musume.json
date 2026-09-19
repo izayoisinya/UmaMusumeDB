@@ -10850,7 +10850,7 @@
   {
     "id": "uma_1789671764701_8fgud",
     "name": "ワンダーアキュート",
-    "imagePath": null,
+    "imagePath": "images/uma_1789671764701_8fgud.jpg",
     "skills": [
       {
         "name": "Never Say Never",
@@ -10909,6 +10909,6 @@
       "wisdom": 15
     },
     "notes": "",
-    "savedAt": "2026-09-17T19:02:44.701Z"
+    "savedAt": "2026-09-19T14:23:08.169Z"
   }
 ]
