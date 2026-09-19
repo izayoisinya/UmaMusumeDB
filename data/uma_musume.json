@@ -514,7 +514,7 @@
   {
     "id": "uma_1789669659838_brmui",
     "name": "アドマイヤベガ",
-    "imagePath": null,
+    "imagePath": "images/uma_1789669659838_brmui.jpg",
     "skills": [
       {
         "name": "ディオスクロイの流星",
@@ -573,7 +573,7 @@
       "wisdom": 0
     },
     "notes": "",
-    "savedAt": "2026-09-17T18:27:39.838Z"
+    "savedAt": "2026-09-19T13:40:52.058Z"
   },
   {
     "id": "uma_1789596517264_umkcd",
