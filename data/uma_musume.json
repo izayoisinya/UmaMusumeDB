@@ -2630,7 +2630,7 @@
   {
     "id": "uma_1789597192548_hpseg",
     "name": "ゴールドシチー",
-    "imagePath": null,
+    "imagePath": "images/uma_1789597192548_hpseg.jpg",
     "skills": [
       {
         "name": "GET DOWN",
@@ -2689,7 +2689,7 @@
       "wisdom": 14
     },
     "notes": "",
-    "savedAt": "2026-09-16T22:19:52.548Z"
+    "savedAt": "2026-09-19T13:05:44.506Z"
   },
   {
     "id": "uma_1789597054365_20rau",
