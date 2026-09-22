@@ -1,85 +1,81 @@
 [
   {
-    "id": "support_1790101987978_pfoze",
-    "name": "ステイゴールド",
+    "id": "support_1790102065371_x9q7g",
+    "name": "ダイワスカーレット",
     "imagePath": null,
     "types": [
-      "guts"
+      "wisdom"
     ],
     "skills": [
-      {
-        "name": "コーナー巧者○",
-        "type": "normal"
-      },
-      {
-        "name": "ウマ好み",
-        "type": "normal"
-      },
-      {
-        "name": "地固め",
-        "type": "normal"
-      },
-      {
-        "name": "スリップストリーム",
-        "type": "normal"
-      },
-      {
-        "name": "しとやかな足取り",
-        "type": "normal"
-      },
-      {
-        "name": "イグニッション",
-        "type": "normal"
-      },
-      {
-        "name": "折れない心",
-        "type": "normal"
-      },
-      {
-        "name": "一歩すつ前へ",
-        "type": "normal"
-      },
-      {
-        "name": "比類なき",
-        "type": "normal"
-      },
-      {
-        "name": "夢への挑戦",
-        "type": "normal"
-      },
-      {
-        "name": "心惹かれて",
-        "type": "normal"
-      },
-      {
-        "name": "気ままな足取り",
-        "type": "normal"
-      }
-    ],
-    "eventSkills": [
       {
         "name": "直線巧者",
         "type": "normal"
       },
       {
-        "name": "比類なき",
+        "name": "逃げコーナー○",
         "type": "normal"
       },
       {
-        "name": "ネバーギブアップ",
+        "name": "危険回避",
+        "type": "normal"
+      },
+      {
+        "name": "先頭プライド",
+        "type": "normal"
+      },
+      {
+        "name": "遊びはおしまいっ！",
+        "type": "normal"
+      },
+      {
+        "name": "序盤巧者",
+        "type": "normal"
+      },
+      {
+        "name": "大詰め",
+        "type": "normal"
+      },
+      {
+        "name": "迷いなし",
+        "type": "normal"
+      },
+      {
+        "name": "覚悟を決めて",
+        "type": "normal"
+      },
+      {
+        "name": "切り込み隊長",
+        "type": "normal"
+      }
+    ],
+    "eventSkills": [
+      {
+        "name": "スタミナキープ",
+        "type": "normal"
+      },
+      {
+        "name": "逃げ直線○",
+        "type": "normal"
+      },
+      {
+        "name": "影打",
+        "type": "normal"
+      },
+      {
+        "name": "急ぎ足",
+        "type": "normal"
+      },
+      {
+        "name": "万里一空",
         "type": "gold"
       },
       {
-        "name": "好奇心",
-        "type": "gold"
-      },
-      {
-        "name": "自由奔放",
+        "name": "トップランナー",
         "type": "gold"
       }
     ],
     "notes": "",
-    "savedAt": "2026-09-22T18:33:07.978Z"
+    "savedAt": "2026-09-22T18:34:25.371Z"
   },
   {
     "id": "support_1790100920203_0fsaz",
@@ -856,6 +852,88 @@
     ],
     "notes": "",
     "savedAt": "2026-09-22T18:17:43.063Z"
+  },
+  {
+    "id": "support_1790101987978_pfoze",
+    "name": "ステイゴールド",
+    "imagePath": null,
+    "types": [
+      "guts"
+    ],
+    "skills": [
+      {
+        "name": "コーナー巧者○",
+        "type": "normal"
+      },
+      {
+        "name": "ウマ好み",
+        "type": "normal"
+      },
+      {
+        "name": "地固め",
+        "type": "normal"
+      },
+      {
+        "name": "スリップストリーム",
+        "type": "normal"
+      },
+      {
+        "name": "しとやかな足取り",
+        "type": "normal"
+      },
+      {
+        "name": "イグニッション",
+        "type": "normal"
+      },
+      {
+        "name": "折れない心",
+        "type": "normal"
+      },
+      {
+        "name": "一歩すつ前へ",
+        "type": "normal"
+      },
+      {
+        "name": "比類なき",
+        "type": "normal"
+      },
+      {
+        "name": "夢への挑戦",
+        "type": "normal"
+      },
+      {
+        "name": "心惹かれて",
+        "type": "normal"
+      },
+      {
+        "name": "気ままな足取り",
+        "type": "normal"
+      }
+    ],
+    "eventSkills": [
+      {
+        "name": "直線巧者",
+        "type": "normal"
+      },
+      {
+        "name": "比類なき",
+        "type": "normal"
+      },
+      {
+        "name": "ネバーギブアップ",
+        "type": "gold"
+      },
+      {
+        "name": "好奇心",
+        "type": "gold"
+      },
+      {
+        "name": "自由奔放",
+        "type": "gold"
+      }
+    ],
+    "notes": "",
+    "savedAt": "2026-09-22T18:33:07.978Z"
   },
   {
     "id": "support_1790101549038_gw6l2",
