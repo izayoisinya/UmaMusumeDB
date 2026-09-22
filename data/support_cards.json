@@ -1,73 +1,65 @@
 [
   {
-    "id": "support_1790102130135_rz6bn",
-    "name": "シンボリルドルフ",
+    "id": "support_1790102177928_8qdws",
+    "name": "ミホノブルボン",
     "imagePath": null,
     "types": [
       "wisdom"
     ],
     "skills": [
       {
-        "name": "中距離直線○",
+        "name": "左回り○",
         "type": "normal"
       },
       {
-        "name": "ウマ好み",
+        "name": "良バ場○",
         "type": "normal"
       },
       {
-        "name": "尻尾上がり",
+        "name": "道悪○",
         "type": "normal"
       },
       {
-        "name": "スリップストリーム",
+        "name": "先駆け",
         "type": "normal"
       },
       {
-        "name": "下り坂巧者",
+        "name": "急ぎ足",
         "type": "normal"
       },
       {
-        "name": "快速",
+        "name": "押し切り準備",
         "type": "normal"
       },
       {
-        "name": "会心の一歩",
+        "name": "二の矢",
         "type": "normal"
       },
       {
-        "name": "序盤巧者",
+        "name": "登山家",
         "type": "normal"
       },
       {
-        "name": "躍動",
+        "name": "地固め",
         "type": "normal"
       }
     ],
     "eventSkills": [
       {
-        "name": "雨の日○",
+        "name": "集中力",
         "type": "normal"
       },
       {
-        "name": "会心の一歩",
+        "name": "逃げのコツ○",
         "type": "normal"
       },
       {
-        "name": "スリップストリーム",
-        "type": "normal"
-      },
-      {
-        "name": "王手",
-        "type": "gold"
-      },
-      {
-        "name": "いいとこ入った！",
+        "name": "盤石の構え",
         "type": "gold"
       }
     ],
     "notes": "",
-    "savedAt": "2026-09-22T18:35:30.135Z"
+    "savedAt": "2026-09-22T18:36:17.928Z"
   },
   {
     "id": "support_1790100920203_0fsaz",
@@ -844,6 +836,76 @@
     ],
     "notes": "",
     "savedAt": "2026-09-22T18:17:43.063Z"
+  },
+  {
+    "id": "support_1790102130135_rz6bn",
+    "name": "シンボリルドルフ",
+    "imagePath": null,
+    "types": [
+      "wisdom"
+    ],
+    "skills": [
+      {
+        "name": "中距離直線○",
+        "type": "normal"
+      },
+      {
+        "name": "ウマ好み",
+        "type": "normal"
+      },
+      {
+        "name": "尻尾上がり",
+        "type": "normal"
+      },
+      {
+        "name": "スリップストリーム",
+        "type": "normal"
+      },
+      {
+        "name": "下り坂巧者",
+        "type": "normal"
+      },
+      {
+        "name": "快速",
+        "type": "normal"
+      },
+      {
+        "name": "会心の一歩",
+        "type": "normal"
+      },
+      {
+        "name": "序盤巧者",
+        "type": "normal"
+      },
+      {
+        "name": "躍動",
+        "type": "normal"
+      }
+    ],
+    "eventSkills": [
+      {
+        "name": "雨の日○",
+        "type": "normal"
+      },
+      {
+        "name": "会心の一歩",
+        "type": "normal"
+      },
+      {
+        "name": "スリップストリーム",
+        "type": "normal"
+      },
+      {
+        "name": "王手",
+        "type": "gold"
+      },
+      {
+        "name": "いいとこ入った！",
+        "type": "gold"
+      }
+    ],
+    "notes": "",
+    "savedAt": "2026-09-22T18:35:30.135Z"
   },
   {
     "id": "support_1790101987978_pfoze",
