@@ -1,57 +1,73 @@
 [
   {
-    "id": "support_1790101549038_gw6l2",
-    "name": "セイウンスカイ",
+    "id": "support_1790101585749_k65jf",
+    "name": "タマモクロス",
     "imagePath": null,
     "types": [
       "power"
     ],
     "skills": [
       {
-        "name": "右回り○",
+        "name": "垂れウマ回避",
         "type": "normal"
       },
       {
-        "name": "中距離コーナー○",
+        "name": "末脚",
         "type": "normal"
       },
       {
-        "name": "逃げ直線○",
+        "name": "尻尾上がり",
         "type": "normal"
       },
       {
-        "name": "危険回避",
+        "name": "型破り",
         "type": "normal"
       },
       {
-        "name": "先頭プライド",
+        "name": "快速",
         "type": "normal"
       },
       {
-        "name": "気迫を込めて",
+        "name": "一歩すつ前へ",
         "type": "normal"
       },
       {
-        "name": "粘り腰",
+        "name": "比類なき",
+        "type": "normal"
+      },
+      {
+        "name": "健脚",
         "type": "normal"
       }
     ],
     "eventSkills": [
       {
-        "name": "リードキープ",
+        "name": "ウマ込み冷静",
         "type": "normal"
       },
       {
-        "name": "一番乗り",
+        "name": "スリップストリーム",
         "type": "normal"
       },
       {
-        "name": "誰より前へ！",
+        "name": "序盤巧者",
+        "type": "normal"
+      },
+      {
+        "name": "神速",
+        "type": "gold"
+      },
+      {
+        "name": "真骨頂",
+        "type": "gold"
+      },
+      {
+        "name": "悠久走破",
         "type": "gold"
       }
     ],
     "notes": "",
-    "savedAt": "2026-09-22T18:25:49.038Z"
+    "savedAt": "2026-09-22T18:26:25.750Z"
   },
   {
     "id": "support_1790100920203_0fsaz",
@@ -606,6 +622,60 @@
     ],
     "notes": "",
     "savedAt": "2026-09-22T18:17:43.063Z"
+  },
+  {
+    "id": "support_1790101549038_gw6l2",
+    "name": "セイウンスカイ",
+    "imagePath": null,
+    "types": [
+      "power"
+    ],
+    "skills": [
+      {
+        "name": "右回り○",
+        "type": "normal"
+      },
+      {
+        "name": "中距離コーナー○",
+        "type": "normal"
+      },
+      {
+        "name": "逃げ直線○",
+        "type": "normal"
+      },
+      {
+        "name": "危険回避",
+        "type": "normal"
+      },
+      {
+        "name": "先頭プライド",
+        "type": "normal"
+      },
+      {
+        "name": "気迫を込めて",
+        "type": "normal"
+      },
+      {
+        "name": "粘り腰",
+        "type": "normal"
+      }
+    ],
+    "eventSkills": [
+      {
+        "name": "リードキープ",
+        "type": "normal"
+      },
+      {
+        "name": "一番乗り",
+        "type": "normal"
+      },
+      {
+        "name": "誰より前へ！",
+        "type": "gold"
+      }
+    ],
+    "notes": "",
+    "savedAt": "2026-09-22T18:25:49.038Z"
   },
   {
     "id": "support_1789514094685_iyvrs",
