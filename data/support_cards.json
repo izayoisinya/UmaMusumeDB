@@ -1,61 +1,53 @@
 [
   {
-    "id": "support_1790101063063_fmcpe",
-    "name": "シュヴァルグラン",
+    "id": "support_1790101122262_ppya4",
+    "name": "ホッコータルマエ",
     "imagePath": null,
     "types": [
       "stamina"
     ],
     "skills": [
       {
-        "name": "スタミナキープ",
+        "name": "前列狙い",
         "type": "normal"
       },
       {
-        "name": "抜け出し準備",
+        "name": "明るい兆し",
         "type": "normal"
       },
       {
-        "name": "内弁慶",
+        "name": "まっしぐら",
         "type": "normal"
       },
       {
-        "name": "長距離直線○",
+        "name": "意気込み十分",
         "type": "normal"
       },
       {
-        "name": "長距離コーナー○",
+        "name": "二段構え",
         "type": "normal"
       },
       {
-        "name": "先行直線○",
-        "type": "normal"
-      },
-      {
-        "name": "攻めの姿勢",
-        "type": "normal"
-      },
-      {
-        "name": "本領発揮",
+        "name": "砂払い",
         "type": "normal"
       }
     ],
     "eventSkills": [
       {
-        "name": "勝利に向かって",
+        "name": "レコメンド",
         "type": "normal"
       },
       {
-        "name": "真打",
+        "name": "真っ向勝負",
+        "type": "normal"
+      },
+      {
+        "name": "コール&レスポンス",
         "type": "gold"
-      },
-      {
-        "name": "影打",
-        "type": "normal"
       }
     ],
     "notes": "",
-    "savedAt": "2026-09-22T18:17:43.063Z"
+    "savedAt": "2026-09-22T18:18:42.263Z"
   },
   {
     "id": "support_1790100920203_0fsaz",
@@ -384,6 +376,64 @@
     ],
     "notes": "",
     "savedAt": "2026-09-22T18:07:36.891Z"
+  },
+  {
+    "id": "support_1790101063063_fmcpe",
+    "name": "シュヴァルグラン",
+    "imagePath": null,
+    "types": [
+      "stamina"
+    ],
+    "skills": [
+      {
+        "name": "スタミナキープ",
+        "type": "normal"
+      },
+      {
+        "name": "抜け出し準備",
+        "type": "normal"
+      },
+      {
+        "name": "内弁慶",
+        "type": "normal"
+      },
+      {
+        "name": "長距離直線○",
+        "type": "normal"
+      },
+      {
+        "name": "長距離コーナー○",
+        "type": "normal"
+      },
+      {
+        "name": "先行直線○",
+        "type": "normal"
+      },
+      {
+        "name": "攻めの姿勢",
+        "type": "normal"
+      },
+      {
+        "name": "本領発揮",
+        "type": "normal"
+      }
+    ],
+    "eventSkills": [
+      {
+        "name": "勝利に向かって",
+        "type": "normal"
+      },
+      {
+        "name": "真打",
+        "type": "gold"
+      },
+      {
+        "name": "影打",
+        "type": "normal"
+      }
+    ],
+    "notes": "",
+    "savedAt": "2026-09-22T18:17:43.063Z"
   },
   {
     "id": "support_1789514094685_iyvrs",
