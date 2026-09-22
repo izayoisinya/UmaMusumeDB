@@ -1,57 +1,87 @@
 [
   {
-    "id": "support_1790101211164_qh6kp",
-    "name": "ヒシミラクル",
+    "id": "support_1790101276997_bv9yj",
+    "name": "キセキ",
     "imagePath": null,
     "types": [
-      "stamina"
+      "stamina",
+      "guts",
+      "wisdom"
     ],
     "skills": [
       {
-        "name": "差し切り体勢",
+        "name": "コーナー回復○",
         "type": "normal"
       },
       {
-        "name": "深呼吸",
+        "name": "ポジションセンス",
         "type": "normal"
       },
       {
-        "name": "スタミナイーター",
+        "name": "先駆け",
         "type": "normal"
       },
       {
-        "name": "小休憩",
+        "name": "地固め",
         "type": "normal"
       },
       {
-        "name": "ロックオン",
+        "name": "影打",
         "type": "normal"
       },
       {
-        "name": "大急ぎ",
+        "name": "バイブス上昇",
         "type": "normal"
       },
       {
-        "name": "進出開始",
+        "name": "大詰め",
+        "type": "normal"
+      },
+      {
+        "name": "迷いなし",
+        "type": "normal"
+      },
+      {
+        "name": "光明",
+        "type": "normal"
+      },
+      {
+        "name": "逃げるが勝ち！",
+        "type": "normal"
+      },
+      {
+        "name": "筆に任せて",
+        "type": "normal"
+      },
+      {
+        "name": "ポイントマン",
         "type": "normal"
       }
     ],
     "eventSkills": [
       {
-        "name": "マイペース",
+        "name": "道悪○",
         "type": "normal"
       },
       {
-        "name": "ロックオン",
+        "name": "覚悟を決めて",
         "type": "normal"
       },
       {
-        "name": "一発必中",
+        "name": "万里一空",
+        "type": "gold"
+      },
+      {
+        "name": "レースメイカー",
+        "type": "gold"
+      },
+      {
+        "name": "ブチ☆アゲ↑バイブス",
         "type": "gold"
       }
     ],
     "notes": "",
-    "savedAt": "2026-09-22T18:20:11.164Z"
+    "savedAt": "2026-09-22T18:21:16.997Z"
   },
   {
     "id": "support_1790100920203_0fsaz",
@@ -528,6 +558,60 @@
     ],
     "notes": "",
     "savedAt": "2026-09-15T23:25:37.583Z"
+  },
+  {
+    "id": "support_1790101211164_qh6kp",
+    "name": "ヒシミラクル",
+    "imagePath": null,
+    "types": [
+      "stamina"
+    ],
+    "skills": [
+      {
+        "name": "差し切り体勢",
+        "type": "normal"
+      },
+      {
+        "name": "深呼吸",
+        "type": "normal"
+      },
+      {
+        "name": "スタミナイーター",
+        "type": "normal"
+      },
+      {
+        "name": "小休憩",
+        "type": "normal"
+      },
+      {
+        "name": "ロックオン",
+        "type": "normal"
+      },
+      {
+        "name": "大急ぎ",
+        "type": "normal"
+      },
+      {
+        "name": "進出開始",
+        "type": "normal"
+      }
+    ],
+    "eventSkills": [
+      {
+        "name": "マイペース",
+        "type": "normal"
+      },
+      {
+        "name": "ロックオン",
+        "type": "normal"
+      },
+      {
+        "name": "一発必中",
+        "type": "gold"
+      }
+    ],
+    "notes": "",
+    "savedAt": "2026-09-22T18:20:11.164Z"
   },
   {
     "id": "support_1790101122262_ppya4",
