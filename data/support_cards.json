@@ -1,18 +1,14 @@
 [
   {
-    "id": "support_1790101794915_7p6qw",
-    "name": "カレンチャン",
+    "id": "support_1790101854348_gqftx",
+    "name": "アストンマーチャン",
     "imagePath": null,
     "types": [
       "guts"
     ],
     "skills": [
       {
-        "name": "集中力",
-        "type": "normal"
-      },
-      {
-        "name": "スプリントギア",
+        "name": "秋ウマ娘○",
         "type": "normal"
       },
       {
@@ -24,7 +20,7 @@
         "type": "normal"
       },
       {
-        "name": "地固め",
+        "name": "後方釘付",
         "type": "normal"
       },
       {
@@ -40,30 +36,70 @@
         "type": "normal"
       },
       {
+        "name": "譲れぬ一歩",
+        "type": "normal"
+      },
+      {
         "name": "火花散らして",
+        "type": "normal"
+      },
+      {
+        "name": "弾ける足取り",
+        "type": "normal"
+      },
+      {
+        "name": "押しの一手",
+        "type": "normal"
+      },
+      {
+        "name": "急旋回",
+        "type": "normal"
+      },
+      {
+        "name": "猛プッシュ",
+        "type": "normal"
+      },
+      {
+        "name": "押せ押せムード",
         "type": "normal"
       }
     ],
     "eventSkills": [
       {
-        "name": "後方釘付",
+        "name": "軽い足取り",
         "type": "normal"
       },
       {
-        "name": "序盤巧者",
+        "name": "危険回避",
         "type": "normal"
       },
       {
-        "name": "丁々発止",
+        "name": "スプリントギア",
+        "type": "normal"
+      },
+      {
+        "name": "匠のステアリング",
         "type": "gold"
       },
       {
-        "name": "コンセントレーション",
+        "name": "圧倒",
         "type": "gold"
+      },
+      {
+        "name": "押せ押せムード",
+        "type": "normal"
+      },
+      {
+        "name": "海の加護",
+        "type": "normal"
+      },
+      {
+        "name": "いつまでも健やかに",
+        "type": "normal"
       }
     ],
     "notes": "",
-    "savedAt": "2026-09-22T18:29:54.916Z"
+    "savedAt": "2026-09-22T18:30:54.348Z"
   },
   {
     "id": "support_1790100920203_0fsaz",
@@ -392,6 +428,72 @@
     ],
     "notes": "",
     "savedAt": "2026-09-22T18:10:25.375Z"
+  },
+  {
+    "id": "support_1790101794915_7p6qw",
+    "name": "カレンチャン",
+    "imagePath": null,
+    "types": [
+      "guts"
+    ],
+    "skills": [
+      {
+        "name": "集中力",
+        "type": "normal"
+      },
+      {
+        "name": "スプリントギア",
+        "type": "normal"
+      },
+      {
+        "name": "短距離直線○",
+        "type": "normal"
+      },
+      {
+        "name": "短距離コーナー○",
+        "type": "normal"
+      },
+      {
+        "name": "地固め",
+        "type": "normal"
+      },
+      {
+        "name": "軽い足取り",
+        "type": "normal"
+      },
+      {
+        "name": "急発進",
+        "type": "normal"
+      },
+      {
+        "name": "瞬発力",
+        "type": "normal"
+      },
+      {
+        "name": "火花散らして",
+        "type": "normal"
+      }
+    ],
+    "eventSkills": [
+      {
+        "name": "後方釘付",
+        "type": "normal"
+      },
+      {
+        "name": "序盤巧者",
+        "type": "normal"
+      },
+      {
+        "name": "丁々発止",
+        "type": "gold"
+      },
+      {
+        "name": "コンセントレーション",
+        "type": "gold"
+      }
+    ],
+    "notes": "",
+    "savedAt": "2026-09-22T18:29:54.916Z"
   },
   {
     "id": "support_1790101276997_bv9yj",
