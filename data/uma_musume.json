@@ -3093,7 +3093,7 @@
         "type": "unique"
       },
       {
-        "name": "ハヤテー文字",
+        "name": "ハヤテ一文字",
         "type": "gold"
       },
       {
@@ -6761,7 +6761,7 @@
         "type": "unique"
       },
       {
-        "name": "ハヤテー文字",
+        "name": "ハヤテ一文字",
         "type": "gold"
       },
       {
@@ -6825,7 +6825,7 @@
         "type": "unique"
       },
       {
-        "name": "ハヤテー文字",
+        "name": "ハヤテ一文字",
         "type": "gold"
       },
       {
@@ -7105,7 +7105,7 @@
         "type": "normal"
       },
       {
-        "name": "ふり紋り",
+        "name": "ふり絞り",
         "type": "normal"
       }
     ],
@@ -10029,7 +10029,7 @@
         "type": "normal"
       },
       {
-        "name": "ハヤテー文字",
+        "name": "ハヤテ一文字",
         "type": "gold"
       },
       {

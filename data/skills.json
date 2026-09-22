@@ -1001,19 +1001,6 @@
     "savedAt": "2026-09-22T18:54:52.617Z"
   },
   {
-    "id": "skill_1790103292615_f2r7p",
-    "name": "ハヤテー文字",
-    "effect": "",
-    "category": "",
-    "rarities": [
-      "SR"
-    ],
-    "styles": [],
-    "distances": [],
-    "notes": "ウマ娘・サポカから自動抽出",
-    "savedAt": "2026-09-22T18:54:52.615Z"
-  },
-  {
     "id": "skill_1790103292617_464av",
     "name": "ハヤテ一文字",
     "effect": "",
@@ -1064,19 +1051,6 @@
     "distances": [],
     "notes": "ウマ娘・サポカから自動抽出",
     "savedAt": "2026-09-22T18:54:52.614Z"
-  },
-  {
-    "id": "skill_1790103292616_hs544",
-    "name": "ふり紋り",
-    "effect": "",
-    "category": "",
-    "rarities": [
-      "R"
-    ],
-    "styles": [],
-    "distances": [],
-    "notes": "ウマ娘・サポカから自動抽出",
-    "savedAt": "2026-09-22T18:54:52.616Z"
   },
   {
     "id": "skill_1790103292613_w29nc",
