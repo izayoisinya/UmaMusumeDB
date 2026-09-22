@@ -1,5 +1,59 @@
 [
   {
+    "id": "support_1790101549038_gw6l2",
+    "name": "セイウンスカイ",
+    "imagePath": null,
+    "types": [
+      "power"
+    ],
+    "skills": [
+      {
+        "name": "右回り○",
+        "type": "normal"
+      },
+      {
+        "name": "中距離コーナー○",
+        "type": "normal"
+      },
+      {
+        "name": "逃げ直線○",
+        "type": "normal"
+      },
+      {
+        "name": "危険回避",
+        "type": "normal"
+      },
+      {
+        "name": "先頭プライド",
+        "type": "normal"
+      },
+      {
+        "name": "気迫を込めて",
+        "type": "normal"
+      },
+      {
+        "name": "粘り腰",
+        "type": "normal"
+      }
+    ],
+    "eventSkills": [
+      {
+        "name": "リードキープ",
+        "type": "normal"
+      },
+      {
+        "name": "一番乗り",
+        "type": "normal"
+      },
+      {
+        "name": "誰より前へ！",
+        "type": "gold"
+      }
+    ],
+    "notes": "",
+    "savedAt": "2026-09-22T18:25:49.038Z"
+  },
+  {
     "id": "support_1790100920203_0fsaz",
     "name": "アーモンドアイ",
     "imagePath": null,
