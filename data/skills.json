@@ -6740,11 +6740,13 @@
     "id": "skill_1790103292617_tq39p",
     "name": "抜きん出る一歩",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "R"
     ],
-    "styles": [],
+    "styles": [
+      "nige"
+    ],
     "distances": [],
     "notes": "ウマ娘・サポカから自動抽出",
     "savedAt": "2026-09-22T18:54:52.617Z"
@@ -6753,11 +6755,13 @@
     "id": "skill_1790103292614_rnfgr",
     "name": "抜け出し準備",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "R"
     ],
-    "styles": [],
+    "styles": [
+      "senko"
+    ],
     "distances": [],
     "notes": "ウマ娘・サポカから自動抽出",
     "savedAt": "2026-09-22T18:54:52.614Z"
@@ -6779,7 +6783,7 @@
     "id": "skill_1790103292615_n0gor",
     "name": "抜群の踏み込み",
     "effect": "",
-    "category": "",
+    "category": "green",
     "rarities": [
       "SR"
     ],
@@ -6792,7 +6796,7 @@
     "id": "skill_1790103292613_c2v84",
     "name": "盤石の構え",
     "effect": "",
-    "category": "",
+    "category": "accel",
     "rarities": [
       "SR"
     ],
@@ -6818,7 +6822,7 @@
     "id": "skill_1790103292616_6nc6f",
     "name": "非根幹距離○",
     "effect": "",
-    "category": "",
+    "category": "green",
     "rarities": [
       "R"
     ],
@@ -6831,11 +6835,13 @@
     "id": "skill_1790103292613_omd4g",
     "name": "飛躍の予感",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "R"
     ],
-    "styles": [],
+    "styles": [
+      "senko"
+    ],
     "distances": [],
     "notes": "ウマ娘・サポカから自動抽出",
     "savedAt": "2026-09-22T18:54:52.613Z"
@@ -6844,12 +6850,16 @@
     "id": "skill_1790103292618_lwsyl",
     "name": "飛竜乗雲",
     "effect": "",
-    "category": "",
+    "category": "accel",
     "rarities": [
       "SR"
     ],
-    "styles": [],
-    "distances": [],
+    "styles": [
+      "nige"
+    ],
+    "distances": [
+      "medium"
+    ],
     "notes": "ウマ娘・サポカから自動抽出",
     "savedAt": "2026-09-22T18:54:52.618Z"
   },
@@ -6857,7 +6867,7 @@
     "id": "skill_1790103292616_go7kp",
     "name": "飛翔脚",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "SR"
     ],
@@ -6870,11 +6880,13 @@
     "id": "skill_1790103292618_xboaf",
     "name": "筆に任せて",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "R"
     ],
-    "styles": [],
+    "styles": [
+      "nige"
+    ],
     "distances": [],
     "notes": "ウマ娘・サポカから自動抽出",
     "savedAt": "2026-09-22T18:54:52.618Z"
@@ -6896,7 +6908,7 @@
     "id": "skill_1790103292616_bga4a",
     "name": "不屈の心",
     "effect": "",
-    "category": "",
+    "category": "heal",
     "rarities": [
       "SR"
     ],
@@ -6909,7 +6921,7 @@
     "id": "skill_1790103292615_681b4",
     "name": "不断の鍛錬",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "R"
     ],
@@ -6922,7 +6934,7 @@
     "id": "skill_1790103292617_w25h0",
     "name": "不動の心",
     "effect": "",
-    "category": "",
+    "category": "heal",
     "rarities": [
       "R"
     ],
@@ -6935,7 +6947,7 @@
     "id": "skill_1790103292614_sxm77",
     "name": "布陣",
     "effect": "",
-    "category": "",
+    "category": "debuff",
     "rarities": [
       "SR"
     ],
@@ -6948,12 +6960,14 @@
     "id": "skill_1790103292614_ewbr6",
     "name": "布石",
     "effect": "",
-    "category": "",
+    "category": "debuff",
     "rarities": [
       "R"
     ],
     "styles": [],
-    "distances": [],
+    "distances": [
+      "mile"
+    ],
     "notes": "ウマ娘・サポカから自動抽出",
     "savedAt": "2026-09-22T18:54:52.614Z"
   },
@@ -6961,7 +6975,7 @@
     "id": "skill_1790103292614_7o77g",
     "name": "府中の申し子",
     "effect": "",
-    "category": "",
+    "category": "green",
     "rarities": [
       "SR"
     ],
@@ -6974,12 +6988,14 @@
     "id": "skill_1790103292614_stn8l",
     "name": "負けん気",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "R"
     ],
     "styles": [],
-    "distances": [],
+    "distances": [
+      "mile"
+    ],
     "notes": "ウマ娘・サポカから自動抽出",
     "savedAt": "2026-09-22T18:54:52.614Z"
   },
@@ -6987,11 +7003,13 @@
     "id": "skill_1790103292617_gpzo6",
     "name": "風雲の志",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "SR"
     ],
-    "styles": [],
+    "styles": [
+      "senko"
+    ],
     "distances": [],
     "notes": "ウマ娘・サポカから自動抽出",
     "savedAt": "2026-09-22T18:54:52.617Z"
@@ -7000,12 +7018,14 @@
     "id": "skill_1790103292618_py16d",
     "name": "風切り",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "R"
     ],
     "styles": [],
-    "distances": [],
+    "distances": [
+      "mile"
+    ],
     "notes": "ウマ娘・サポカから自動抽出",
     "savedAt": "2026-09-22T18:54:52.618Z"
   },
