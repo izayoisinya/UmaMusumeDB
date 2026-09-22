@@ -2421,12 +2421,16 @@
     "id": "skill_1790103292617_c4s2r",
     "name": "気の向くままに",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "R"
     ],
-    "styles": [],
-    "distances": [],
+    "styles": [
+      "nige"
+    ],
+    "distances": [
+      "long"
+    ],
     "notes": "ウマ娘・サポカから自動抽出",
     "savedAt": "2026-09-22T18:54:52.617Z"
   },
@@ -2460,12 +2464,14 @@
     "id": "skill_1790103292617_gw8c8",
     "name": "気合十分",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "R"
     ],
     "styles": [],
-    "distances": [],
+    "distances": [
+      "mile"
+    ],
     "notes": "ウマ娘・サポカから自動抽出",
     "savedAt": "2026-09-22T18:54:52.617Z"
   },
@@ -2542,7 +2548,7 @@
     "id": "skill_1790103292616_du2ev",
     "name": "技巧派",
     "effect": "",
-    "category": "",
+    "category": "accel",
     "rarities": [
       "SR"
     ],
@@ -2583,7 +2589,7 @@
     "id": "skill_1790103292618_0977e",
     "name": "急降下",
     "effect": "",
-    "category": "",
+    "category": "accel",
     "rarities": [
       "R"
     ],
@@ -2657,7 +2663,7 @@
     "id": "skill_1790103292617_wdexg",
     "name": "巨歩",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "R"
     ],
@@ -3312,12 +3318,14 @@
     "id": "skill_1790103292614_kk5c0",
     "name": "高揚感",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "SR"
     ],
     "styles": [],
-    "distances": [],
+    "distances": [
+      "medium"
+    ],
     "notes": "ウマ娘・サポカから自動抽出",
     "savedAt": "2026-09-22T18:54:52.614Z"
   },
@@ -3325,12 +3333,14 @@
     "id": "skill_1790103292613_s2hey",
     "name": "豪脚",
     "effect": "",
-    "category": "",
+    "category": "accel",
     "rarities": [
       "SR"
     ],
     "styles": [],
-    "distances": [],
+    "distances": [
+      "mile"
+    ],
     "notes": "ウマ娘・サポカから自動抽出",
     "savedAt": "2026-09-22T18:54:52.613Z"
   },
@@ -3393,7 +3403,7 @@
     "id": "skill_1790103292616_2nwfv",
     "name": "差しけん制",
     "effect": "",
-    "category": "",
+    "category": "debuff",
     "rarities": [
       "R"
     ],
@@ -3490,7 +3500,7 @@
     "id": "skill_1790103292613_okacp",
     "name": "砂の玄人",
     "effect": "",
-    "category": "",
+    "category": "heal",
     "rarities": [
       "SR"
     ],
@@ -3598,12 +3608,14 @@
     "id": "skill_1790103292614_ox03b",
     "name": "仕掛け準備",
     "effect": "",
-    "category": "",
+    "category": "accel",
     "rarities": [
       "R"
     ],
     "styles": [],
-    "distances": [],
+    "distances": [
+      "short"
+    ],
     "notes": "ウマ娘・サポカから自動抽出",
     "savedAt": "2026-09-22T18:54:52.614Z"
   },
@@ -3849,7 +3861,7 @@
     "id": "skill_1790103292616_59ci6",
     "name": "出力1000%！",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "SR"
     ],
@@ -4058,7 +4070,7 @@
     "id": "skill_1790103292615_z350r",
     "name": "勝利の機運",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "SR"
     ],
@@ -4104,11 +4116,13 @@
     "id": "skill_1790103292614_2fufy",
     "name": "小休憩",
     "effect": "",
-    "category": "",
+    "category": "heal",
     "rarities": [
       "R"
     ],
-    "styles": [],
+    "styles": [
+      "sashi"
+    ],
     "distances": [],
     "notes": "ウマ娘・サポカから自動抽出",
     "savedAt": "2026-09-22T18:54:52.614Z"
@@ -4372,7 +4386,7 @@
     "id": "skill_1790103292618_17l1e",
     "name": "神速",
     "effect": "",
-    "category": "",
+    "category": "heal",
     "rarities": [
       "SR"
     ],
@@ -4428,11 +4442,13 @@
     "id": "skill_1790103292613_5bs1n",
     "name": "推力十分",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "R"
     ],
-    "styles": [],
+    "styles": [
+      "oikomi"
+    ],
     "distances": [],
     "notes": "ウマ娘・サポカから自動抽出",
     "savedAt": "2026-09-22T18:54:52.613Z"
@@ -4441,11 +4457,13 @@
     "id": "skill_1790103292612_264q7",
     "name": "勢い任せ",
     "effect": "",
-    "category": "",
+    "category": "green",
     "rarities": [
       "R"
     ],
-    "styles": [],
+    "styles": [
+      "nige"
+    ],
     "distances": [],
     "notes": "ウマ娘・サポカから自動抽出",
     "savedAt": "2026-09-22T18:54:52.612Z"
@@ -4493,7 +4511,7 @@
     "id": "skill_1790103292613_biy1s",
     "name": "盛り返し",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "R"
     ],
@@ -4536,7 +4554,7 @@
     "id": "skill_1790103292618_fobwh",
     "name": "静かな熱",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "R"
     ],
@@ -4549,11 +4567,13 @@
     "id": "skill_1790103292616_o7m0p",
     "name": "惜しみなし",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "R"
     ],
-    "styles": [],
+    "styles": [
+      "oikomi"
+    ],
     "distances": [],
     "notes": "ウマ娘・サポカから自動抽出",
     "savedAt": "2026-09-22T18:54:52.616Z"
@@ -4620,7 +4640,7 @@
     "id": "skill_1790103292616_pw95p",
     "name": "切れ味",
     "effect": "",
-    "category": "",
+    "category": "accel",
     "rarities": [
       "R"
     ],
@@ -4659,11 +4679,13 @@
     "id": "skill_1790103292617_r0z3r",
     "name": "絶塵",
     "effect": "",
-    "category": "",
+    "category": "accel",
     "rarities": [
       "SR"
     ],
-    "styles": [],
+    "styles": [
+      "sashi"
+    ],
     "distances": [],
     "notes": "ウマ娘・サポカから自動抽出",
     "savedAt": "2026-09-22T18:54:52.617Z"
@@ -4687,7 +4709,7 @@
     "id": "skill_1790103292613_qhpes",
     "name": "先行けん制",
     "effect": "",
-    "category": "",
+    "category": "debuff",
     "rarities": [
       "R"
     ],
@@ -4741,7 +4763,7 @@
     "id": "skill_1790103292614_puivp",
     "name": "先行焦り",
     "effect": "",
-    "category": "",
+    "category": "debuff",
     "rarities": [
       "R"
     ],
@@ -4754,11 +4776,13 @@
     "id": "skill_1790103292614_kye1a",
     "name": "先行直線○",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "R"
     ],
-    "styles": [],
+    "styles": [
+      "senko"
+    ],
     "distances": [],
     "notes": "ウマ娘・サポカから自動抽出",
     "savedAt": "2026-09-22T18:54:52.614Z"
@@ -4782,12 +4806,14 @@
     "id": "skill_1790103292616_t9rm9",
     "name": "先陣の心得",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "SR"
     ],
     "styles": [],
-    "distances": [],
+    "distances": [
+      "long"
+    ],
     "notes": "ウマ娘・サポカから自動抽出",
     "savedAt": "2026-09-22T18:54:52.616Z"
   },
@@ -4795,11 +4821,13 @@
     "id": "skill_1790103292614_bnsk8",
     "name": "先頭プライド",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "R"
     ],
-    "styles": [],
+    "styles": [
+      "nige"
+    ],
     "distances": [],
     "notes": "ウマ娘・サポカから自動抽出",
     "savedAt": "2026-09-22T18:54:52.614Z"
