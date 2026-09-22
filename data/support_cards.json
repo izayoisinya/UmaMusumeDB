@@ -1,5 +1,100 @@
 [
   {
+    "id": "support_1790100583667_wxipb",
+    "name": "エフフォーリア",
+    "imagePath": null,
+    "types": [
+      "speed",
+      "power"
+    ],
+    "skills": [
+      {
+        "name": "右回り○",
+        "type": "normal"
+      },
+      {
+        "name": "コーナー巧者○",
+        "type": "normal"
+      },
+      {
+        "name": "直線巧者",
+        "type": "normal"
+      },
+      {
+        "name": "先行直線○",
+        "type": "normal"
+      },
+      {
+        "name": "先行コーナー○",
+        "type": "normal"
+      },
+      {
+        "name": "込み上げる熱",
+        "type": "normal"
+      },
+      {
+        "name": "夢への挑戦",
+        "type": "normal"
+      },
+      {
+        "name": "気ままな足取り",
+        "type": "normal"
+      },
+      {
+        "name": "力業",
+        "type": "normal"
+      },
+      {
+        "name": "戦略家",
+        "type": "normal"
+      },
+      {
+        "name": "ただその先へ",
+        "type": "normal"
+      },
+      {
+        "name": "突き抜ける走り",
+        "type": "normal"
+      }
+    ],
+    "eventSkills": [
+      {
+        "name": "流れに任せて",
+        "type": "normal"
+      },
+      {
+        "name": "気持ちを乗せて",
+        "type": "normal"
+      },
+      {
+        "name": "清麗高雅",
+        "type": "gold"
+      },
+      {
+        "name": "華麗な踏み込み",
+        "type": "normal"
+      },
+      {
+        "name": "素質の証明",
+        "type": "gold"
+      },
+      {
+        "name": "純真無垢",
+        "type": "gold"
+      },
+      {
+        "name": "ショーダウン",
+        "type": "gold"
+      },
+      {
+        "name": "勇気の一歩",
+        "type": "normal"
+      }
+    ],
+    "notes": "",
+    "savedAt": "2026-09-22T18:09:43.667Z"
+  },
+  {
     "id": "support_1790100456891_903qd",
     "name": "サトノダイヤモンド",
     "imagePath": null,
