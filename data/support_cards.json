@@ -1,73 +1,101 @@
 [
   {
-    "id": "support_1790101585749_k65jf",
-    "name": "タマモクロス",
+    "id": "support_1790101632293_wzdoj",
+    "name": "ファインモーション",
     "imagePath": null,
     "types": [
       "power"
     ],
     "skills": [
       {
-        "name": "垂れウマ回避",
+        "name": "冬ウマ娘○",
         "type": "normal"
       },
       {
-        "name": "末脚",
+        "name": "直線巧者",
         "type": "normal"
       },
       {
-        "name": "尻尾上がり",
+        "name": "直滑降",
         "type": "normal"
       },
       {
-        "name": "型破り",
+        "name": "下り坂巧者",
         "type": "normal"
       },
       {
-        "name": "快速",
+        "name": "探求心",
         "type": "normal"
       },
       {
-        "name": "一歩すつ前へ",
+        "name": "品行方正",
         "type": "normal"
       },
       {
-        "name": "比類なき",
+        "name": "勝利に向かって",
         "type": "normal"
       },
       {
-        "name": "健脚",
+        "name": "飛躍の予感",
+        "type": "normal"
+      },
+      {
+        "name": "素直な一歩",
+        "type": "normal"
+      },
+      {
+        "name": "アグレッシブ",
+        "type": "normal"
+      },
+      {
+        "name": "灯を胸に",
+        "type": "normal"
+      },
+      {
+        "name": "気持ちを乗せて",
+        "type": "normal"
+      },
+      {
+        "name": "余勢を駆って",
+        "type": "normal"
+      },
+      {
+        "name": "押しの一手",
         "type": "normal"
       }
     ],
     "eventSkills": [
       {
-        "name": "ウマ込み冷静",
+        "name": "コーナー巧者○",
         "type": "normal"
       },
       {
-        "name": "スリップストリーム",
+        "name": "素直な一歩",
         "type": "normal"
       },
       {
-        "name": "序盤巧者",
+        "name": "かっとばせ！",
+        "type": "gold"
+      },
+      {
+        "name": "順風満帆",
+        "type": "gold"
+      },
+      {
+        "name": "気持ちを乗せて",
         "type": "normal"
       },
       {
-        "name": "神速",
-        "type": "gold"
+        "name": "レースの真髄・体",
+        "type": "normal"
       },
       {
-        "name": "真骨頂",
-        "type": "gold"
-      },
-      {
-        "name": "悠久走破",
-        "type": "gold"
+        "name": "陽の加護",
+        "type": "normal"
       }
     ],
     "notes": "",
-    "savedAt": "2026-09-22T18:26:25.750Z"
+    "savedAt": "2026-09-22T18:27:12.293Z"
   },
   {
     "id": "support_1790100920203_0fsaz",
@@ -766,6 +794,76 @@
     ],
     "notes": "",
     "savedAt": "2026-09-15T23:25:37.583Z"
+  },
+  {
+    "id": "support_1790101585749_k65jf",
+    "name": "タマモクロス",
+    "imagePath": null,
+    "types": [
+      "power"
+    ],
+    "skills": [
+      {
+        "name": "垂れウマ回避",
+        "type": "normal"
+      },
+      {
+        "name": "末脚",
+        "type": "normal"
+      },
+      {
+        "name": "尻尾上がり",
+        "type": "normal"
+      },
+      {
+        "name": "型破り",
+        "type": "normal"
+      },
+      {
+        "name": "快速",
+        "type": "normal"
+      },
+      {
+        "name": "一歩すつ前へ",
+        "type": "normal"
+      },
+      {
+        "name": "比類なき",
+        "type": "normal"
+      },
+      {
+        "name": "健脚",
+        "type": "normal"
+      }
+    ],
+    "eventSkills": [
+      {
+        "name": "ウマ込み冷静",
+        "type": "normal"
+      },
+      {
+        "name": "スリップストリーム",
+        "type": "normal"
+      },
+      {
+        "name": "序盤巧者",
+        "type": "normal"
+      },
+      {
+        "name": "神速",
+        "type": "gold"
+      },
+      {
+        "name": "真骨頂",
+        "type": "gold"
+      },
+      {
+        "name": "悠久走破",
+        "type": "gold"
+      }
+    ],
+    "notes": "",
+    "savedAt": "2026-09-22T18:26:25.750Z"
   },
   {
     "id": "support_1790101211164_qh6kp",
