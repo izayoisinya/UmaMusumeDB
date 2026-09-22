@@ -1,5 +1,91 @@
 [
   {
+    "id": "support_1790100456891_903qd",
+    "name": "サトノダイヤモンド",
+    "imagePath": null,
+    "types": [
+      "speed"
+    ],
+    "skills": [
+      {
+        "name": "直線回復",
+        "type": "normal"
+      },
+      {
+        "name": "内弁慶",
+        "type": "normal"
+      },
+      {
+        "name": "長距離直線○",
+        "type": "normal"
+      },
+      {
+        "name": "長距離コーナー○",
+        "type": "normal"
+      },
+      {
+        "name": "ロックオン",
+        "type": "normal"
+      },
+      {
+        "name": "端緒",
+        "type": "normal"
+      },
+      {
+        "name": "覇気十分",
+        "type": "normal"
+      },
+      {
+        "name": "奮闘",
+        "type": "normal"
+      },
+      {
+        "name": "臆せぬ心",
+        "type": "normal"
+      },
+      {
+        "name": "ここ一番",
+        "type": "normal"
+      },
+      {
+        "name": "戦略家",
+        "type": "normal"
+      },
+      {
+        "name": "超長距離回復○",
+        "type": "normal"
+      },
+      {
+        "name": "輝きを放って",
+        "type": "normal"
+      }
+    ],
+    "eventSkills": [
+      {
+        "name": "逃げためらい",
+        "type": "normal"
+      },
+      {
+        "name": "がむしゃら",
+        "type": "normal"
+      },
+      {
+        "name": "連鎖反応",
+        "type": "gold"
+      },
+      {
+        "name": "一所懸命",
+        "type": "gold"
+      },
+      {
+        "name": "光輝燦然",
+        "type": "gold"
+      }
+    ],
+    "notes": "",
+    "savedAt": "2026-09-22T18:07:36.891Z"
+  },
+  {
     "id": "support_1789514094685_iyvrs",
     "name": "タップダンスシチー",
     "imagePath": "images/support_1789514094685_iyvrs.jpg",
