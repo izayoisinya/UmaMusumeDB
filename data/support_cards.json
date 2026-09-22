@@ -1,30 +1,38 @@
 [
   {
-    "id": "support_1790102065371_x9q7g",
-    "name": "ダイワスカーレット",
+    "id": "support_1790102130135_rz6bn",
+    "name": "シンボリルドルフ",
     "imagePath": null,
     "types": [
       "wisdom"
     ],
     "skills": [
       {
-        "name": "直線巧者",
+        "name": "中距離直線○",
         "type": "normal"
       },
       {
-        "name": "逃げコーナー○",
+        "name": "ウマ好み",
         "type": "normal"
       },
       {
-        "name": "危険回避",
+        "name": "尻尾上がり",
         "type": "normal"
       },
       {
-        "name": "先頭プライド",
+        "name": "スリップストリーム",
         "type": "normal"
       },
       {
-        "name": "遊びはおしまいっ！",
+        "name": "下り坂巧者",
+        "type": "normal"
+      },
+      {
+        "name": "快速",
+        "type": "normal"
+      },
+      {
+        "name": "会心の一歩",
         "type": "normal"
       },
       {
@@ -32,50 +40,34 @@
         "type": "normal"
       },
       {
-        "name": "大詰め",
-        "type": "normal"
-      },
-      {
-        "name": "迷いなし",
-        "type": "normal"
-      },
-      {
-        "name": "覚悟を決めて",
-        "type": "normal"
-      },
-      {
-        "name": "切り込み隊長",
+        "name": "躍動",
         "type": "normal"
       }
     ],
     "eventSkills": [
       {
-        "name": "スタミナキープ",
+        "name": "雨の日○",
         "type": "normal"
       },
       {
-        "name": "逃げ直線○",
+        "name": "会心の一歩",
         "type": "normal"
       },
       {
-        "name": "影打",
+        "name": "スリップストリーム",
         "type": "normal"
       },
       {
-        "name": "急ぎ足",
-        "type": "normal"
-      },
-      {
-        "name": "万里一空",
+        "name": "王手",
         "type": "gold"
       },
       {
-        "name": "トップランナー",
+        "name": "いいとこ入った！",
         "type": "gold"
       }
     ],
     "notes": "",
-    "savedAt": "2026-09-22T18:34:25.371Z"
+    "savedAt": "2026-09-22T18:35:30.135Z"
   },
   {
     "id": "support_1790100920203_0fsaz",
@@ -988,6 +980,84 @@
     ],
     "notes": "",
     "savedAt": "2026-09-22T18:25:49.038Z"
+  },
+  {
+    "id": "support_1790102065371_x9q7g",
+    "name": "ダイワスカーレット",
+    "imagePath": null,
+    "types": [
+      "wisdom"
+    ],
+    "skills": [
+      {
+        "name": "直線巧者",
+        "type": "normal"
+      },
+      {
+        "name": "逃げコーナー○",
+        "type": "normal"
+      },
+      {
+        "name": "危険回避",
+        "type": "normal"
+      },
+      {
+        "name": "先頭プライド",
+        "type": "normal"
+      },
+      {
+        "name": "遊びはおしまいっ！",
+        "type": "normal"
+      },
+      {
+        "name": "序盤巧者",
+        "type": "normal"
+      },
+      {
+        "name": "大詰め",
+        "type": "normal"
+      },
+      {
+        "name": "迷いなし",
+        "type": "normal"
+      },
+      {
+        "name": "覚悟を決めて",
+        "type": "normal"
+      },
+      {
+        "name": "切り込み隊長",
+        "type": "normal"
+      }
+    ],
+    "eventSkills": [
+      {
+        "name": "スタミナキープ",
+        "type": "normal"
+      },
+      {
+        "name": "逃げ直線○",
+        "type": "normal"
+      },
+      {
+        "name": "影打",
+        "type": "normal"
+      },
+      {
+        "name": "急ぎ足",
+        "type": "normal"
+      },
+      {
+        "name": "万里一空",
+        "type": "gold"
+      },
+      {
+        "name": "トップランナー",
+        "type": "gold"
+      }
+    ],
+    "notes": "",
+    "savedAt": "2026-09-22T18:34:25.371Z"
   },
   {
     "id": "support_1789514094685_iyvrs",
