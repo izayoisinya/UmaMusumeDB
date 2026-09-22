@@ -4,8 +4,7 @@
     "name": "エフフォーリア",
     "imagePath": null,
     "types": [
-      "speed",
-      "power"
+      "speed"
     ],
     "skills": [
       {
@@ -92,7 +91,7 @@
       }
     ],
     "notes": "",
-    "savedAt": "2026-09-22T18:09:43.667Z"
+    "savedAt": "2026-09-22T18:10:25.375Z"
   },
   {
     "id": "support_1790100456891_903qd",
