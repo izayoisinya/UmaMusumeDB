@@ -1,69 +1,85 @@
 [
   {
-    "id": "support_1790100958585_pshhp",
-    "name": "ラインクラフト",
+    "id": "support_1790101015582_aj21z",
+    "name": "メイショウドトウ",
     "imagePath": null,
     "types": [
-      "speed"
+      "stamina"
     ],
     "skills": [
       {
-        "name": "積極策",
+        "name": "コーナー巧者○",
         "type": "normal"
       },
       {
-        "name": "マイル直線○",
+        "name": "コーナー回復○",
         "type": "normal"
       },
       {
-        "name": "ギアシフト",
+        "name": "ウマ好み",
         "type": "normal"
       },
       {
-        "name": "スピードイーター",
+        "name": "スリップストリーム",
         "type": "normal"
       },
       {
-        "name": "地固め",
+        "name": "影打",
         "type": "normal"
       },
       {
-        "name": "一足飛び",
+        "name": "下り坂巧者",
         "type": "normal"
       },
       {
-        "name": "心弾んで",
+        "name": "イグニッション",
         "type": "normal"
       },
       {
-        "name": "風切り",
+        "name": "光明",
         "type": "normal"
       },
       {
-        "name": "素直な一歩",
+        "name": "活路を拓く！",
         "type": "normal"
       },
       {
-        "name": "みなぎる闘志",
+        "name": "息抜き上手",
+        "type": "normal"
+      },
+      {
+        "name": "奮い立つ心",
         "type": "normal"
       }
     ],
     "eventSkills": [
       {
-        "name": "マイルコーナー○",
+        "name": "先行コーナー○",
         "type": "normal"
       },
       {
-        "name": "ギアチェンジ",
+        "name": "ウマ好み",
+        "type": "normal"
+      },
+      {
+        "name": "弧線のプロフェッサー",
         "type": "gold"
       },
       {
-        "name": "ハイボルテージ",
+        "name": "パスファインダー",
+        "type": "gold"
+      },
+      {
+        "name": "曙光",
+        "type": "gold"
+      },
+      {
+        "name": "悠々自適",
         "type": "gold"
       }
     ],
     "notes": "",
-    "savedAt": "2026-09-22T18:15:58.585Z"
+    "savedAt": "2026-09-22T18:16:55.583Z"
   },
   {
     "id": "support_1790100920203_0fsaz",
@@ -584,5 +600,71 @@
     ],
     "notes": "",
     "savedAt": "2026-09-22T18:12:36.616Z"
+  },
+  {
+    "id": "support_1790100958585_pshhp",
+    "name": "ラインクラフト",
+    "imagePath": null,
+    "types": [
+      "speed"
+    ],
+    "skills": [
+      {
+        "name": "積極策",
+        "type": "normal"
+      },
+      {
+        "name": "マイル直線○",
+        "type": "normal"
+      },
+      {
+        "name": "ギアシフト",
+        "type": "normal"
+      },
+      {
+        "name": "スピードイーター",
+        "type": "normal"
+      },
+      {
+        "name": "地固め",
+        "type": "normal"
+      },
+      {
+        "name": "一足飛び",
+        "type": "normal"
+      },
+      {
+        "name": "心弾んで",
+        "type": "normal"
+      },
+      {
+        "name": "風切り",
+        "type": "normal"
+      },
+      {
+        "name": "素直な一歩",
+        "type": "normal"
+      },
+      {
+        "name": "みなぎる闘志",
+        "type": "normal"
+      }
+    ],
+    "eventSkills": [
+      {
+        "name": "マイルコーナー○",
+        "type": "normal"
+      },
+      {
+        "name": "ギアチェンジ",
+        "type": "gold"
+      },
+      {
+        "name": "ハイボルテージ",
+        "type": "gold"
+      }
+    ],
+    "notes": "",
+    "savedAt": "2026-09-22T18:15:58.585Z"
   }
 ]
