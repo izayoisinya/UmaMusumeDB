@@ -885,7 +885,7 @@
   },
   {
     "id": "skill_1790103292616_0ig54",
-    "name": "なりふり構わす",
+    "name": "なりふり構わず",
     "effect": "",
     "category": "",
     "rarities": [
@@ -5216,19 +5216,6 @@
   {
     "id": "skill_1790103292618_7sbqh",
     "name": "潮目を掴んで",
-    "effect": "",
-    "category": "",
-    "rarities": [
-      "R"
-    ],
-    "styles": [],
-    "distances": [],
-    "notes": "ウマ娘・サポカから自動抽出",
-    "savedAt": "2026-09-22T18:54:52.618Z"
-  },
-  {
-    "id": "skill_1790103292618_rg7ai",
-    "name": "聴せぬ心",
     "effect": "",
     "category": "",
     "rarities": [
