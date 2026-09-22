@@ -278,7 +278,7 @@
     "id": "skill_1790103292614_hk7ft",
     "name": "かく乱",
     "effect": "",
-    "category": "",
+    "category": "debuff",
     "rarities": [
       "R"
     ],
@@ -371,7 +371,7 @@
     "id": "skill_1790103292614_jyb8o",
     "name": "キレる脚",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "R"
     ],
@@ -543,12 +543,15 @@
     "id": "skill_1790103292616_ki7d8",
     "name": "しとやかな足取り",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "R"
     ],
     "styles": [],
-    "distances": [],
+    "distances": [
+      "mile",
+      "medium"
+    ],
     "notes": "ウマ娘・サポカから自動抽出",
     "savedAt": "2026-09-22T18:54:52.616Z"
   },
@@ -569,7 +572,7 @@
     "id": "skill_1790103292614_k8mnn",
     "name": "しゃかりき",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "R"
     ],
@@ -595,11 +598,13 @@
     "id": "skill_1790103292615_cxq0a",
     "name": "ショーダウン",
     "effect": "",
-    "category": "",
+    "category": "accel",
     "rarities": [
       "SR"
     ],
-    "styles": [],
+    "styles": [
+      "oikomi"
+    ],
     "distances": [],
     "notes": "ウマ娘・サポカから自動抽出",
     "savedAt": "2026-09-22T18:54:52.615Z"
@@ -746,7 +751,7 @@
     "id": "skill_1790103292614_wwimr",
     "name": "スリーセブン",
     "effect": "",
-    "category": "",
+    "category": "heal",
     "rarities": [
       "R"
     ],
@@ -1294,7 +1299,7 @@
     "id": "skill_1790103292616_s42ie",
     "name": "ライトニングステップ",
     "effect": "",
-    "category": "",
+    "category": "accel",
     "rarities": [
       "SR"
     ],
@@ -1385,11 +1390,13 @@
     "id": "skill_1790103292618_1i1ih",
     "name": "レースメイカー",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "SR"
     ],
-    "styles": [],
+    "styles": [
+      "nige"
+    ],
     "distances": [],
     "notes": "ウマ娘・サポカから自動抽出",
     "savedAt": "2026-09-22T18:54:52.618Z"
@@ -1508,7 +1515,7 @@
     "id": "skill_1790103292616_18y52",
     "name": "意気込み十分",
     "effect": "",
-    "category": "",
+    "category": "accel",
     "rarities": [
       "R"
     ],
@@ -1679,7 +1686,7 @@
     "id": "skill_1790103292615_js7il",
     "name": "一発必中",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "SR"
     ],
@@ -1720,7 +1727,7 @@
     "id": "skill_1790103292613_5d80f",
     "name": "一歩から",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "R"
     ],
@@ -1785,7 +1792,7 @@
     "id": "skill_1790103292616_seflu",
     "name": "隠れ蓑",
     "effect": "",
-    "category": "",
+    "category": "heal",
     "rarities": [
       "R"
     ],
@@ -1798,7 +1805,7 @@
     "id": "skill_1790103292614_cpr0w",
     "name": "右回り○",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "R"
     ],
@@ -1920,7 +1927,7 @@
     "id": "skill_1790103292614_up9dx",
     "name": "英姿颯爽",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "SR"
     ],
@@ -2030,7 +2037,7 @@
     "id": "skill_1790103292618_jvdxm",
     "name": "王手",
     "effect": "",
-    "category": "",
+    "category": "accel",
     "rarities": [
       "SR"
     ],
@@ -2108,12 +2115,16 @@
     "id": "skill_1790103292618_yba4j",
     "name": "火花散らして",
     "effect": "",
-    "category": "",
+    "category": "accel",
     "rarities": [
       "R"
     ],
-    "styles": [],
-    "distances": [],
+    "styles": [
+      "senko"
+    ],
+    "distances": [
+      "short"
+    ],
     "notes": "ウマ娘・サポカから自動抽出",
     "savedAt": "2026-09-22T18:54:52.618Z"
   },
@@ -2147,7 +2158,7 @@
     "id": "skill_1790103292618_bvx5z",
     "name": "会心の一歩",
     "effect": "",
-    "category": "",
+    "category": "accel",
     "rarities": [
       "R"
     ],
@@ -2160,12 +2171,15 @@
     "id": "skill_1790103292616_ctmbu",
     "name": "解き放つ情念",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "SR"
     ],
     "styles": [],
-    "distances": [],
+    "distances": [
+      "mile",
+      "medium"
+    ],
     "notes": "ウマ娘・サポカから自動抽出",
     "savedAt": "2026-09-22T18:54:52.616Z"
   },
@@ -2212,7 +2226,7 @@
     "id": "skill_1790103292618_wvaca",
     "name": "海の加護",
     "effect": "",
-    "category": "",
+    "category": "accel",
     "rarities": [
       "R"
     ],
@@ -2238,7 +2252,7 @@
     "id": "skill_1790103292614_1r54j",
     "name": "外枠得意○",
     "effect": "",
-    "category": "",
+    "category": "green",
     "rarities": [
       "R"
     ],
@@ -2290,11 +2304,13 @@
     "id": "skill_1790103292616_lex9n",
     "name": "完全燃焼",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "SR"
     ],
-    "styles": [],
+    "styles": [
+      "oikomi"
+    ],
     "distances": [],
     "notes": "ウマ娘・サポカから自動抽出",
     "savedAt": "2026-09-22T18:54:52.616Z"
@@ -2329,12 +2345,17 @@
     "id": "skill_1790103292617_6u2qr",
     "name": "奇術師",
     "effect": "",
-    "category": "",
+    "category": "debuff",
     "rarities": [
       "SR"
     ],
-    "styles": [],
-    "distances": [],
+    "styles": [
+      "sashi",
+      "oikomi"
+    ],
+    "distances": [
+      "long"
+    ],
     "notes": "ウマ娘・サポカから自動抽出",
     "savedAt": "2026-09-22T18:54:52.617Z"
   },
@@ -2355,7 +2376,7 @@
     "id": "skill_1790103292618_yrpxb",
     "name": "気ままな足取り",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "R"
     ],
@@ -2407,7 +2428,7 @@
     "id": "skill_1790103292618_c5nv9",
     "name": "気持ちを乗せて",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "R"
     ],
@@ -2420,12 +2441,14 @@
     "id": "skill_1790103292612_av045",
     "name": "気迫を込めて",
     "effect": "",
-    "category": "",
+    "category": "debuff",
     "rarities": [
       "R"
     ],
     "styles": [],
-    "distances": [],
+    "distances": [
+      "medium"
+    ],
     "notes": "ウマ娘・サポカから自動抽出",
     "savedAt": "2026-09-22T18:54:52.612Z"
   },
@@ -2433,7 +2456,7 @@
     "id": "skill_1790103292615_zlg00",
     "name": "起死回生",
     "effect": "",
-    "category": "",
+    "category": "accel",
     "rarities": [
       "SR"
     ],
@@ -2446,7 +2469,7 @@
     "id": "skill_1790103292618_l96ec",
     "name": "輝きを放って",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "R"
     ],
