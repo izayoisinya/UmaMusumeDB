@@ -1079,19 +1079,6 @@
     "savedAt": "2026-09-22T18:54:52.615Z"
   },
   {
-    "id": "skill_1790103292616_6y69h",
-    "name": "ベースアップ",
-    "effect": "",
-    "category": "",
-    "rarities": [
-      "R"
-    ],
-    "styles": [],
-    "distances": [],
-    "notes": "ウマ娘・サポカから自動抽出",
-    "savedAt": "2026-09-22T18:54:52.616Z"
-  },
-  {
     "id": "skill_1790103292613_fhuqy",
     "name": "ペースアップ",
     "effect": "",
@@ -1701,19 +1688,6 @@
     "distances": [],
     "notes": "ウマ娘・サポカから自動抽出",
     "savedAt": "2026-09-22T18:54:52.613Z"
-  },
-  {
-    "id": "skill_1790103292618_ujqbh",
-    "name": "一歩すつ前へ",
-    "effect": "",
-    "category": "",
-    "rarities": [
-      "R"
-    ],
-    "styles": [],
-    "distances": [],
-    "notes": "ウマ娘・サポカから自動抽出",
-    "savedAt": "2026-09-22T18:54:52.618Z"
   },
   {
     "id": "skill_1790103292617_1sb5u",
