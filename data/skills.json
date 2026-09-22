@@ -7033,7 +7033,7 @@
     "id": "skill_1790103292616_srpu6",
     "name": "伏兵○",
     "effect": "",
-    "category": "",
+    "category": "green",
     "rarities": [
       "R"
     ],
@@ -7046,12 +7046,15 @@
     "id": "skill_1790103292619_egnf2",
     "name": "奮い立つ心",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "R"
     ],
     "styles": [],
-    "distances": [],
+    "distances": [
+      "medium",
+      "long"
+    ],
     "notes": "ウマ娘・サポカから自動抽出",
     "savedAt": "2026-09-22T18:54:52.619Z"
   },
@@ -7059,12 +7062,14 @@
     "id": "skill_1790103292618_8hbsh",
     "name": "奮闘",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "R"
     ],
     "styles": [],
-    "distances": [],
+    "distances": [
+      "long"
+    ],
     "notes": "ウマ娘・サポカから自動抽出",
     "savedAt": "2026-09-22T18:54:52.618Z"
   },
@@ -7072,12 +7077,14 @@
     "id": "skill_1790103292617_whskz",
     "name": "別腹タンク",
     "effect": "",
-    "category": "",
+    "category": "heal",
     "rarities": [
       "R"
     ],
     "styles": [],
-    "distances": [],
+    "distances": [
+      "long"
+    ],
     "notes": "ウマ娘・サポカから自動抽出",
     "savedAt": "2026-09-22T18:54:52.617Z"
   },
@@ -7085,11 +7092,13 @@
     "id": "skill_1790103292618_p26hr",
     "name": "捕捉",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "R"
     ],
-    "styles": [],
+    "styles": [
+      "nige"
+    ],
     "distances": [],
     "notes": "ウマ娘・サポカから自動抽出",
     "savedAt": "2026-09-22T18:54:52.618Z"
@@ -7098,12 +7107,16 @@
     "id": "skill_1790103292614_kkbde",
     "name": "本領発揮",
     "effect": "",
-    "category": "",
+    "category": "accel",
     "rarities": [
       "R"
     ],
-    "styles": [],
-    "distances": [],
+    "styles": [
+      "senko"
+    ],
+    "distances": [
+      "long"
+    ],
     "notes": "ウマ娘・サポカから自動抽出",
     "savedAt": "2026-09-22T18:54:52.614Z"
   },
@@ -7111,11 +7124,13 @@
     "id": "skill_1790103292619_th09i",
     "name": "幕引き",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "SR"
     ],
-    "styles": [],
+    "styles": [
+      "senko"
+    ],
     "distances": [],
     "notes": "ウマ娘・サポカから自動抽出",
     "savedAt": "2026-09-22T18:54:52.619Z"
@@ -7124,7 +7139,7 @@
     "id": "skill_1790103292614_kpz7k",
     "name": "末脚",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "R"
     ],
@@ -7137,12 +7152,16 @@
     "id": "skill_1790103292614_rcx6f",
     "name": "万里一空",
     "effect": "",
-    "category": "",
+    "category": "accel",
     "rarities": [
       "SR"
     ],
-    "styles": [],
-    "distances": [],
+    "styles": [
+      "nige"
+    ],
+    "distances": [
+      "long"
+    ],
     "notes": "ウマ娘・サポカから自動抽出",
     "savedAt": "2026-09-22T18:54:52.614Z"
   },
@@ -7150,7 +7169,7 @@
     "id": "skill_1790103292616_jmli1",
     "name": "魅惑のささやき",
     "effect": "",
-    "category": "",
+    "category": "debuff",
     "rarities": [
       "SR"
     ],
@@ -7163,11 +7182,13 @@
     "id": "skill_1790103292616_3a3su",
     "name": "眠れる獅子",
     "effect": "",
-    "category": "",
+    "category": "heal",
     "rarities": [
       "SR"
     ],
-    "styles": [],
+    "styles": [
+      "oikomi"
+    ],
     "distances": [],
     "notes": "ウマ娘・サポカから自動抽出",
     "savedAt": "2026-09-22T18:54:52.616Z"
@@ -7176,12 +7197,16 @@
     "id": "skill_1790103292614_l80su",
     "name": "夢の舞台へ",
     "effect": "",
-    "category": "",
+    "category": "accel",
     "rarities": [
       "SR"
     ],
-    "styles": [],
-    "distances": [],
+    "styles": [
+      "senko"
+    ],
+    "distances": [
+      "medium"
+    ],
     "notes": "ウマ娘・サポカから自動抽出",
     "savedAt": "2026-09-22T18:54:52.614Z"
   },
@@ -7189,12 +7214,14 @@
     "id": "skill_1790103292613_fwmxd",
     "name": "夢への挑戦",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "R"
     ],
     "styles": [],
-    "distances": [],
+    "distances": [
+      "medium"
+    ],
     "notes": "ウマ娘・サポカから自動抽出",
     "savedAt": "2026-09-22T18:54:52.613Z"
   },
@@ -7202,12 +7229,16 @@
     "id": "skill_1790103292615_ggwvb",
     "name": "無我夢中",
     "effect": "",
-    "category": "",
+    "category": "accel",
     "rarities": [
       "SR"
     ],
-    "styles": [],
-    "distances": [],
+    "styles": [
+      "sashi"
+    ],
+    "distances": [
+      "long"
+    ],
     "notes": "ウマ娘・サポカから自動抽出",
     "savedAt": "2026-09-22T18:54:52.615Z"
   },
@@ -7215,11 +7246,14 @@
     "id": "skill_1790103292615_lw5pz",
     "name": "明るい兆し",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "R"
     ],
-    "styles": [],
+    "styles": [
+      "nige",
+      "senko"
+    ],
     "distances": [],
     "notes": "ウマ娘・サポカから自動抽出",
     "savedAt": "2026-09-22T18:54:52.615Z"
@@ -7228,11 +7262,13 @@
     "id": "skill_1790103292614_kft4e",
     "name": "迷いなし",
     "effect": "",
-    "category": "",
+    "category": "accel",
     "rarities": [
       "R"
     ],
-    "styles": [],
+    "styles": [
+      "oikomi"
+    ],
     "distances": [],
     "notes": "ウマ娘・サポカから自動抽出",
     "savedAt": "2026-09-22T18:54:52.614Z"
@@ -7241,7 +7277,7 @@
     "id": "skill_1790103292618_vhxqp",
     "name": "猛プッシュ",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "R"
     ],
@@ -7267,7 +7303,7 @@
     "id": "skill_1790103292617_5p1ml",
     "name": "目くらまし",
     "effect": "",
-    "category": "",
+    "category": "debuff",
     "rarities": [
       "R"
     ],
@@ -7280,11 +7316,13 @@
     "id": "skill_1790103292613_z6pod",
     "name": "目にも留まらず",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "R"
     ],
-    "styles": [],
+    "styles": [
+      "nige"
+    ],
     "distances": [],
     "notes": "ウマ娘・サポカから自動抽出",
     "savedAt": "2026-09-22T18:54:52.613Z"
