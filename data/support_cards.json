@@ -1,101 +1,81 @@
 [
   {
-    "id": "support_1790101632293_wzdoj",
-    "name": "ファインモーション",
+    "id": "support_1790101692068_s9qkl",
+    "name": "ミホノブルボン",
     "imagePath": null,
     "types": [
       "power"
     ],
     "skills": [
       {
-        "name": "冬ウマ娘○",
+        "name": "根幹距離○",
         "type": "normal"
       },
       {
-        "name": "直線巧者",
+        "name": "ポジションセンス",
         "type": "normal"
       },
       {
-        "name": "直滑降",
+        "name": "先駆け",
         "type": "normal"
       },
       {
-        "name": "下り坂巧者",
+        "name": "急ぎ足",
         "type": "normal"
       },
       {
-        "name": "探求心",
+        "name": "逃げ直線○",
         "type": "normal"
       },
       {
-        "name": "品行方正",
+        "name": "逃げコーナー○",
         "type": "normal"
       },
       {
-        "name": "勝利に向かって",
+        "name": "先頭プライド",
         "type": "normal"
       },
       {
-        "name": "飛躍の予感",
+        "name": "地固め",
         "type": "normal"
       },
       {
-        "name": "素直な一歩",
+        "name": "自制心",
         "type": "normal"
       },
       {
-        "name": "アグレッシブ",
+        "name": "切り込み隊長",
         "type": "normal"
       },
       {
-        "name": "灯を胸に",
+        "name": "抜きん出る一歩",
         "type": "normal"
       },
       {
-        "name": "気持ちを乗せて",
-        "type": "normal"
-      },
-      {
-        "name": "余勢を駆って",
-        "type": "normal"
-      },
-      {
-        "name": "押しの一手",
+        "name": "逃げるが勝ち！",
         "type": "normal"
       }
     ],
     "eventSkills": [
       {
-        "name": "コーナー巧者○",
+        "name": "集中力",
         "type": "normal"
       },
       {
-        "name": "素直な一歩",
+        "name": "ポジションセンス",
         "type": "normal"
       },
       {
-        "name": "かっとばせ！",
+        "name": "先手必勝",
         "type": "gold"
       },
       {
-        "name": "順風満帆",
+        "name": "傑出",
         "type": "gold"
-      },
-      {
-        "name": "気持ちを乗せて",
-        "type": "normal"
-      },
-      {
-        "name": "レースの真髄・体",
-        "type": "normal"
-      },
-      {
-        "name": "陽の加護",
-        "type": "normal"
       }
     ],
     "notes": "",
-    "savedAt": "2026-09-22T18:27:12.293Z"
+    "savedAt": "2026-09-22T18:28:12.068Z"
   },
   {
     "id": "support_1790100920203_0fsaz",
@@ -918,6 +898,104 @@
     ],
     "notes": "",
     "savedAt": "2026-09-22T18:20:11.164Z"
+  },
+  {
+    "id": "support_1790101632293_wzdoj",
+    "name": "ファインモーション",
+    "imagePath": null,
+    "types": [
+      "power"
+    ],
+    "skills": [
+      {
+        "name": "冬ウマ娘○",
+        "type": "normal"
+      },
+      {
+        "name": "直線巧者",
+        "type": "normal"
+      },
+      {
+        "name": "直滑降",
+        "type": "normal"
+      },
+      {
+        "name": "下り坂巧者",
+        "type": "normal"
+      },
+      {
+        "name": "探求心",
+        "type": "normal"
+      },
+      {
+        "name": "品行方正",
+        "type": "normal"
+      },
+      {
+        "name": "勝利に向かって",
+        "type": "normal"
+      },
+      {
+        "name": "飛躍の予感",
+        "type": "normal"
+      },
+      {
+        "name": "素直な一歩",
+        "type": "normal"
+      },
+      {
+        "name": "アグレッシブ",
+        "type": "normal"
+      },
+      {
+        "name": "灯を胸に",
+        "type": "normal"
+      },
+      {
+        "name": "気持ちを乗せて",
+        "type": "normal"
+      },
+      {
+        "name": "余勢を駆って",
+        "type": "normal"
+      },
+      {
+        "name": "押しの一手",
+        "type": "normal"
+      }
+    ],
+    "eventSkills": [
+      {
+        "name": "コーナー巧者○",
+        "type": "normal"
+      },
+      {
+        "name": "素直な一歩",
+        "type": "normal"
+      },
+      {
+        "name": "かっとばせ！",
+        "type": "gold"
+      },
+      {
+        "name": "順風満帆",
+        "type": "gold"
+      },
+      {
+        "name": "気持ちを乗せて",
+        "type": "normal"
+      },
+      {
+        "name": "レースの真髄・体",
+        "type": "normal"
+      },
+      {
+        "name": "陽の加護",
+        "type": "normal"
+      }
+    ],
+    "notes": "",
+    "savedAt": "2026-09-22T18:27:12.293Z"
   },
   {
     "id": "support_1790101122262_ppya4",
