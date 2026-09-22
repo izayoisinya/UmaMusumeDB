@@ -1,69 +1,77 @@
 [
   {
-    "id": "support_1790102311512_kwdcr",
-    "name": "メジロラモーヌ",
+    "id": "support_1790102397611_tmx7w",
+    "name": "ウインバリアシオン",
     "imagePath": null,
     "types": [
       "wisdom"
     ],
     "skills": [
       {
-        "name": "直線巧者",
+        "name": "右回り○",
         "type": "normal"
       },
       {
-        "name": "集中力",
+        "name": "夏ウマ娘○",
         "type": "normal"
       },
       {
-        "name": "マイル直線○",
+        "name": "直線回復",
         "type": "normal"
       },
       {
-        "name": "マイルコーナー○",
+        "name": "内弁慶",
         "type": "normal"
       },
       {
-        "name": "ギアシフト",
+        "name": "長距離直線○",
         "type": "normal"
       },
       {
-        "name": "中距離直線○",
+        "name": "脇目も振らず",
         "type": "normal"
       },
       {
-        "name": "ありったけ",
+        "name": "ごぼう抜き",
         "type": "normal"
       },
       {
-        "name": "確かな足取り",
+        "name": "奮闘",
         "type": "normal"
       },
       {
-        "name": "しとやかな足取り",
+        "name": "活路を拓く！",
+        "type": "normal"
+      },
+      {
+        "name": "張り切り",
+        "type": "normal"
+      },
+      {
+        "name": "聴せぬ心",
         "type": "normal"
       }
     ],
     "eventSkills": [
       {
-        "name": "中距離コーナー○",
+        "name": "長距離コーナー○",
         "type": "normal"
       },
       {
-        "name": "負けん気",
+        "name": "比類なき",
         "type": "normal"
       },
       {
-        "name": "闘争心",
-        "type": "normal"
+        "name": "内的体験",
+        "type": "gold"
       },
       {
-        "name": "優位形成",
+        "name": "エネルギッシュ",
         "type": "gold"
       }
     ],
     "notes": "",
-    "savedAt": "2026-09-22T18:38:31.513Z"
+    "savedAt": "2026-09-22T18:39:57.611Z"
   },
   {
     "id": "support_1790100920203_0fsaz",
@@ -2000,6 +2008,72 @@
     ],
     "notes": "",
     "savedAt": "2026-09-22T18:29:08.717Z"
+  },
+  {
+    "id": "support_1790102311512_kwdcr",
+    "name": "メジロラモーヌ",
+    "imagePath": null,
+    "types": [
+      "wisdom"
+    ],
+    "skills": [
+      {
+        "name": "直線巧者",
+        "type": "normal"
+      },
+      {
+        "name": "集中力",
+        "type": "normal"
+      },
+      {
+        "name": "マイル直線○",
+        "type": "normal"
+      },
+      {
+        "name": "マイルコーナー○",
+        "type": "normal"
+      },
+      {
+        "name": "ギアシフト",
+        "type": "normal"
+      },
+      {
+        "name": "中距離直線○",
+        "type": "normal"
+      },
+      {
+        "name": "ありったけ",
+        "type": "normal"
+      },
+      {
+        "name": "確かな足取り",
+        "type": "normal"
+      },
+      {
+        "name": "しとやかな足取り",
+        "type": "normal"
+      }
+    ],
+    "eventSkills": [
+      {
+        "name": "中距離コーナー○",
+        "type": "normal"
+      },
+      {
+        "name": "負けん気",
+        "type": "normal"
+      },
+      {
+        "name": "闘争心",
+        "type": "normal"
+      },
+      {
+        "name": "優位形成",
+        "type": "gold"
+      }
+    ],
+    "notes": "",
+    "savedAt": "2026-09-22T18:38:31.513Z"
   },
   {
     "id": "support_1790100958585_pshhp",
