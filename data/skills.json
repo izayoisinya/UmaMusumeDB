@@ -29,7 +29,7 @@
     "id": "skill_1790103292614_splu1",
     "name": "アクセラレーション",
     "effect": "",
-    "category": "",
+    "category": "accel",
     "rarities": [
       "R"
     ],
@@ -42,7 +42,7 @@
     "id": "skill_1790103292617_m3p24",
     "name": "アクセル全開！",
     "effect": "",
-    "category": "",
+    "category": "accel",
     "rarities": [
       "SR"
     ],
@@ -55,7 +55,7 @@
     "id": "skill_1790103292614_eqmkl",
     "name": "アグレッシブ",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "R"
     ],
@@ -81,7 +81,7 @@
     "id": "skill_1790103292615_uyyec",
     "name": "あやしげな作戦",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "R"
     ],
@@ -107,7 +107,7 @@
     "id": "skill_1790103292613_xosru",
     "name": "アンストッパブル",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "SR"
     ],
@@ -159,7 +159,7 @@
     "id": "skill_1790103292616_zpa02",
     "name": "イナズマステップ",
     "effect": "",
-    "category": "",
+    "category": "accel",
     "rarities": [
       "R"
     ],
@@ -185,7 +185,7 @@
     "id": "skill_1790103292617_kzt9e",
     "name": "イノベーション",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "SR"
     ],
@@ -198,7 +198,7 @@
     "id": "skill_1790103292612_gr981",
     "name": "ウママニア",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "SR"
     ],
@@ -211,7 +211,7 @@
     "id": "skill_1790103292612_qbr2c",
     "name": "ウマ好み",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "R"
     ],
@@ -224,7 +224,7 @@
     "id": "skill_1790103292617_bl7n9",
     "name": "ウマ込み冷静",
     "effect": "",
-    "category": "",
+    "category": "heal",
     "rarities": [
       "R"
     ],
@@ -237,7 +237,7 @@
     "id": "skill_1790103292618_y3jvf",
     "name": "エネルギッシュ",
     "effect": "",
-    "category": "",
+    "category": "heal",
     "rarities": [
       "SR"
     ],
@@ -263,7 +263,7 @@
     "id": "skill_1790103292617_cfvsl",
     "name": "お先に失礼っ！",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "SR"
     ],
@@ -315,7 +315,7 @@
     "id": "skill_1790103292613_sp6ik",
     "name": "がんばり屋",
     "effect": "",
-    "category": "",
+    "category": "accel",
     "rarities": [
       "R"
     ],
@@ -328,7 +328,7 @@
     "id": "skill_1790103292615_hsfgd",
     "name": "ギアシフト",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "R"
     ],
@@ -341,7 +341,7 @@
     "id": "skill_1790103292616_rk987",
     "name": "ギアチェンジ",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "SR"
     ],
@@ -354,7 +354,7 @@
     "id": "skill_1790103292616_1o9z4",
     "name": "キラーチューン",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "SR"
     ],
@@ -393,7 +393,7 @@
     "id": "skill_1790103292614_t3htj",
     "name": "コーナー加速○",
     "effect": "",
-    "category": "",
+    "category": "accel",
     "rarities": [
       "R"
     ],
@@ -406,7 +406,7 @@
     "id": "skill_1790103292616_zk1lb",
     "name": "コーナー回復○",
     "effect": "",
-    "category": "",
+    "category": "heal",
     "rarities": [
       "R"
     ],
@@ -419,7 +419,7 @@
     "id": "skill_1790103292616_767td",
     "name": "コーナー巧者○",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "R"
     ],
@@ -432,7 +432,7 @@
     "id": "skill_1790103292617_1cxmr",
     "name": "コール&レスポンス",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "SR"
     ],
@@ -484,7 +484,7 @@
     "id": "skill_1790103292616_upxh7",
     "name": "ごぼう抜き",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "R"
     ],
@@ -523,7 +523,7 @@
     "id": "skill_1790103292615_k8vmy",
     "name": "さらなる高みへ",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "R"
     ],
@@ -601,7 +601,7 @@
     "id": "skill_1790103292613_r4509",
     "name": "シンギュラリティ",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "SR"
     ],
@@ -614,7 +614,7 @@
     "id": "skill_1790103292616_beh6o",
     "name": "シンパシー",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "R"
     ],
@@ -653,7 +653,7 @@
     "id": "skill_1790103292614_0na9x",
     "name": "スタミナキープ",
     "effect": "",
-    "category": "",
+    "category": "heal",
     "rarities": [
       "R"
     ],
@@ -666,7 +666,7 @@
     "id": "skill_1790103292615_rkm7w",
     "name": "スタミナグリード",
     "effect": "",
-    "category": "",
+    "category": "debuff",
     "rarities": [
       "SR"
     ],
@@ -679,7 +679,7 @@
     "id": "skill_1790103292612_uqj7q",
     "name": "スピードイーター",
     "effect": "",
-    "category": "",
+    "category": "debuff",
     "rarities": [
       "R"
     ],
@@ -744,7 +744,7 @@
     "id": "skill_1790103292612_lhrpd",
     "name": "スリップストリーム",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "R"
     ],
@@ -770,7 +770,7 @@
     "id": "skill_1790103292616_79pkc",
     "name": "たぎる血潮",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "R"
     ],
@@ -809,7 +809,7 @@
     "id": "skill_1790103292613_klbgz",
     "name": "テンポアップ",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "R"
     ],
@@ -835,7 +835,7 @@
     "id": "skill_1790103292614_sl08q",
     "name": "トップギア",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "SR"
     ],
@@ -848,7 +848,7 @@
     "id": "skill_1790103292616_lumok",
     "name": "トップランナー",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "SR"
     ],
@@ -861,7 +861,7 @@
     "id": "skill_1790103292617_n4227",
     "name": "トリック（後）",
     "effect": "",
-    "category": "",
+    "category": "debuff",
     "rarities": [
       "R"
     ],
@@ -874,7 +874,7 @@
     "id": "skill_1790103292617_djq4v",
     "name": "トリック（前）",
     "effect": "",
-    "category": "",
+    "category": "debuff",
     "rarities": [
       "R"
     ],
@@ -887,7 +887,7 @@
     "id": "skill_1790103292616_0ig54",
     "name": "なりふり構わず",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "R"
     ],
@@ -900,7 +900,7 @@
     "id": "skill_1790103292613_u5hm1",
     "name": "ネバーギブアップ",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "SR"
     ],
@@ -913,7 +913,7 @@
     "id": "skill_1790103292614_d5nwk",
     "name": "ノンストップガール",
     "effect": "",
-    "category": "",
+    "category": "accel",
     "rarities": [
       "SR"
     ],
@@ -952,7 +952,7 @@
     "id": "skill_1790103292618_4hwkm",
     "name": "バイブス上昇",
     "effect": "",
-    "category": "",
+    "category": "heal",
     "rarities": [
       "R"
     ],
@@ -965,7 +965,7 @@
     "id": "skill_1790103292619_q6r73",
     "name": "ハイボルテージ",
     "effect": "",
-    "category": "",
+    "category": "accel",
     "rarities": [
       "SR"
     ],
@@ -978,7 +978,7 @@
     "id": "skill_1790103292619_c1zva",
     "name": "パスファインダー",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "SR"
     ],
@@ -991,7 +991,7 @@
     "id": "skill_1790103292617_jvfzr",
     "name": "パス上手",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "R"
     ],
@@ -1004,7 +1004,7 @@
     "id": "skill_1790103292617_464av",
     "name": "ハヤテ一文字",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "SR"
     ],
@@ -1043,7 +1043,7 @@
     "id": "skill_1790103292614_33d8m",
     "name": "ふり絞り",
     "effect": "",
-    "category": "",
+    "category": "heal",
     "rarities": [
       "R"
     ],
@@ -1069,7 +1069,7 @@
     "id": "skill_1790103292615_2g6ov",
     "name": "プレッシャー",
     "effect": "",
-    "category": "",
+    "category": "debuff",
     "rarities": [
       "R"
     ],
@@ -1082,7 +1082,7 @@
     "id": "skill_1790103292613_fhuqy",
     "name": "ペースアップ",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "R"
     ],
@@ -1095,7 +1095,7 @@
     "id": "skill_1790103292617_352zf",
     "name": "ペースキープ",
     "effect": "",
-    "category": "",
+    "category": "heal",
     "rarities": [
       "R"
     ],
@@ -1108,7 +1108,7 @@
     "id": "skill_1790103292618_x0ktu",
     "name": "ポイントマン",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "R"
     ],
@@ -1160,7 +1160,7 @@
     "id": "skill_1790103292617_77h8p",
     "name": "マイルコーナー○",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "R"
     ],
@@ -1173,7 +1173,7 @@
     "id": "skill_1790103292616_wmytr",
     "name": "マイルの支配者",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "SR"
     ],
@@ -1186,7 +1186,7 @@
     "id": "skill_1790103292613_3jy4h",
     "name": "マイル直線○",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "R"
     ],
@@ -1251,7 +1251,7 @@
     "id": "skill_1790103292617_ovkdi",
     "name": "もう一踏ん張り",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "R"
     ],
@@ -1290,7 +1290,7 @@
     "id": "skill_1790103292615_5svsq",
     "name": "ラッキーセブン",
     "effect": "",
-    "category": "",
+    "category": "green",
     "rarities": [
       "R"
     ],
