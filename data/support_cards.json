@@ -1,81 +1,69 @@
 [
   {
-    "id": "support_1790101692068_s9qkl",
-    "name": "ミホノブルボン",
+    "id": "support_1790101748717_8fmfp",
+    "name": "メジロアルダン",
     "imagePath": null,
     "types": [
       "power"
     ],
     "skills": [
       {
-        "name": "根幹距離○",
+        "name": "左回り○",
         "type": "normal"
       },
       {
-        "name": "ポジションセンス",
+        "name": "先行コーナー○",
         "type": "normal"
       },
       {
-        "name": "先駆け",
+        "name": "攻めの姿勢",
         "type": "normal"
       },
       {
-        "name": "急ぎ足",
+        "name": "しとやかな足取り",
         "type": "normal"
       },
       {
-        "name": "逃げ直線○",
+        "name": "品行方正",
         "type": "normal"
       },
       {
-        "name": "逃げコーナー○",
+        "name": "飛躍の予感",
         "type": "normal"
       },
       {
-        "name": "先頭プライド",
+        "name": "素直な一歩",
         "type": "normal"
       },
       {
-        "name": "地固め",
+        "name": "決定打",
         "type": "normal"
       },
       {
-        "name": "自制心",
+        "name": "逸る足取り",
         "type": "normal"
       },
       {
-        "name": "切り込み隊長",
-        "type": "normal"
-      },
-      {
-        "name": "抜きん出る一歩",
-        "type": "normal"
-      },
-      {
-        "name": "逃げるが勝ち！",
+        "name": "憧れを越えて",
         "type": "normal"
       }
     ],
     "eventSkills": [
       {
-        "name": "集中力",
+        "name": "先行ためらい",
         "type": "normal"
       },
       {
-        "name": "ポジションセンス",
-        "type": "normal"
-      },
-      {
-        "name": "先手必勝",
+        "name": "十全十美",
         "type": "gold"
       },
       {
-        "name": "傑出",
+        "name": "幕引き",
         "type": "gold"
       }
     ],
     "notes": "",
-    "savedAt": "2026-09-22T18:28:12.068Z"
+    "savedAt": "2026-09-22T18:29:08.717Z"
   },
   {
     "id": "support_1790100920203_0fsaz",
@@ -1148,6 +1136,84 @@
     ],
     "notes": "",
     "savedAt": "2026-09-22T18:12:36.616Z"
+  },
+  {
+    "id": "support_1790101692068_s9qkl",
+    "name": "ミホノブルボン",
+    "imagePath": null,
+    "types": [
+      "power"
+    ],
+    "skills": [
+      {
+        "name": "根幹距離○",
+        "type": "normal"
+      },
+      {
+        "name": "ポジションセンス",
+        "type": "normal"
+      },
+      {
+        "name": "先駆け",
+        "type": "normal"
+      },
+      {
+        "name": "急ぎ足",
+        "type": "normal"
+      },
+      {
+        "name": "逃げ直線○",
+        "type": "normal"
+      },
+      {
+        "name": "逃げコーナー○",
+        "type": "normal"
+      },
+      {
+        "name": "先頭プライド",
+        "type": "normal"
+      },
+      {
+        "name": "地固め",
+        "type": "normal"
+      },
+      {
+        "name": "自制心",
+        "type": "normal"
+      },
+      {
+        "name": "切り込み隊長",
+        "type": "normal"
+      },
+      {
+        "name": "抜きん出る一歩",
+        "type": "normal"
+      },
+      {
+        "name": "逃げるが勝ち！",
+        "type": "normal"
+      }
+    ],
+    "eventSkills": [
+      {
+        "name": "集中力",
+        "type": "normal"
+      },
+      {
+        "name": "ポジションセンス",
+        "type": "normal"
+      },
+      {
+        "name": "先手必勝",
+        "type": "gold"
+      },
+      {
+        "name": "傑出",
+        "type": "gold"
+      }
+    ],
+    "notes": "",
+    "savedAt": "2026-09-22T18:28:12.068Z"
   },
   {
     "id": "support_1790101015582_aj21z",
