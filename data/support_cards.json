@@ -1,69 +1,69 @@
 [
   {
-    "id": "support_1790101748717_8fmfp",
-    "name": "メジロアルダン",
+    "id": "support_1790101794915_7p6qw",
+    "name": "カレンチャン",
     "imagePath": null,
     "types": [
-      "power"
+      "guts"
     ],
     "skills": [
       {
-        "name": "左回り○",
+        "name": "集中力",
         "type": "normal"
       },
       {
-        "name": "先行コーナー○",
+        "name": "スプリントギア",
         "type": "normal"
       },
       {
-        "name": "攻めの姿勢",
+        "name": "短距離直線○",
         "type": "normal"
       },
       {
-        "name": "しとやかな足取り",
+        "name": "短距離コーナー○",
         "type": "normal"
       },
       {
-        "name": "品行方正",
+        "name": "地固め",
         "type": "normal"
       },
       {
-        "name": "飛躍の予感",
+        "name": "軽い足取り",
         "type": "normal"
       },
       {
-        "name": "素直な一歩",
+        "name": "急発進",
         "type": "normal"
       },
       {
-        "name": "決定打",
+        "name": "瞬発力",
         "type": "normal"
       },
       {
-        "name": "逸る足取り",
-        "type": "normal"
-      },
-      {
-        "name": "憧れを越えて",
+        "name": "火花散らして",
         "type": "normal"
       }
     ],
     "eventSkills": [
       {
-        "name": "先行ためらい",
+        "name": "後方釘付",
         "type": "normal"
       },
       {
-        "name": "十全十美",
+        "name": "序盤巧者",
+        "type": "normal"
+      },
+      {
+        "name": "丁々発止",
         "type": "gold"
       },
       {
-        "name": "幕引き",
+        "name": "コンセントレーション",
         "type": "gold"
       }
     ],
     "notes": "",
-    "savedAt": "2026-09-22T18:29:08.717Z"
+    "savedAt": "2026-09-22T18:29:54.916Z"
   },
   {
     "id": "support_1790100920203_0fsaz",
@@ -1296,6 +1296,72 @@
     ],
     "notes": "",
     "savedAt": "2026-09-22T18:16:55.583Z"
+  },
+  {
+    "id": "support_1790101748717_8fmfp",
+    "name": "メジロアルダン",
+    "imagePath": null,
+    "types": [
+      "power"
+    ],
+    "skills": [
+      {
+        "name": "左回り○",
+        "type": "normal"
+      },
+      {
+        "name": "先行コーナー○",
+        "type": "normal"
+      },
+      {
+        "name": "攻めの姿勢",
+        "type": "normal"
+      },
+      {
+        "name": "しとやかな足取り",
+        "type": "normal"
+      },
+      {
+        "name": "品行方正",
+        "type": "normal"
+      },
+      {
+        "name": "飛躍の予感",
+        "type": "normal"
+      },
+      {
+        "name": "素直な一歩",
+        "type": "normal"
+      },
+      {
+        "name": "決定打",
+        "type": "normal"
+      },
+      {
+        "name": "逸る足取り",
+        "type": "normal"
+      },
+      {
+        "name": "憧れを越えて",
+        "type": "normal"
+      }
+    ],
+    "eventSkills": [
+      {
+        "name": "先行ためらい",
+        "type": "normal"
+      },
+      {
+        "name": "十全十美",
+        "type": "gold"
+      },
+      {
+        "name": "幕引き",
+        "type": "gold"
+      }
+    ],
+    "notes": "",
+    "savedAt": "2026-09-22T18:29:08.717Z"
   },
   {
     "id": "support_1790100958585_pshhp",
