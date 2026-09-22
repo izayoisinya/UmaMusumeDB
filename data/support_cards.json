@@ -1,105 +1,57 @@
 [
   {
-    "id": "support_1790101854348_gqftx",
-    "name": "アストンマーチャン",
+    "id": "support_1790101918648_m9lc5",
+    "name": "オルフェーヴル",
     "imagePath": null,
     "types": [
       "guts"
     ],
     "skills": [
       {
-        "name": "秋ウマ娘○",
+        "name": "コーナー巧者○",
         "type": "normal"
       },
       {
-        "name": "短距離直線○",
+        "name": "垂れウマ回避",
         "type": "normal"
       },
       {
-        "name": "短距離コーナー○",
+        "name": "尻尾上がり",
         "type": "normal"
       },
       {
-        "name": "後方釘付",
+        "name": "遊びはおしまいっ！",
         "type": "normal"
       },
       {
-        "name": "軽い足取り",
+        "name": "快速",
         "type": "normal"
       },
       {
-        "name": "急発進",
+        "name": "込み上げる熱",
         "type": "normal"
       },
       {
-        "name": "瞬発力",
-        "type": "normal"
-      },
-      {
-        "name": "譲れぬ一歩",
-        "type": "normal"
-      },
-      {
-        "name": "火花散らして",
-        "type": "normal"
-      },
-      {
-        "name": "弾ける足取り",
-        "type": "normal"
-      },
-      {
-        "name": "押しの一手",
-        "type": "normal"
-      },
-      {
-        "name": "急旋回",
-        "type": "normal"
-      },
-      {
-        "name": "猛プッシュ",
-        "type": "normal"
-      },
-      {
-        "name": "押せ押せムード",
+        "name": "渾身の足取り",
         "type": "normal"
       }
     ],
     "eventSkills": [
       {
-        "name": "軽い足取り",
+        "name": "型破り",
         "type": "normal"
       },
       {
-        "name": "危険回避",
+        "name": "快速",
         "type": "normal"
       },
       {
-        "name": "スプリントギア",
-        "type": "normal"
-      },
-      {
-        "name": "匠のステアリング",
+        "name": "神速",
         "type": "gold"
-      },
-      {
-        "name": "圧倒",
-        "type": "gold"
-      },
-      {
-        "name": "押せ押せムード",
-        "type": "normal"
-      },
-      {
-        "name": "海の加護",
-        "type": "normal"
-      },
-      {
-        "name": "いつまでも健やかに",
-        "type": "normal"
       }
     ],
     "notes": "",
-    "savedAt": "2026-09-22T18:30:54.348Z"
+    "savedAt": "2026-09-22T18:31:58.648Z"
   },
   {
     "id": "support_1790100920203_0fsaz",
@@ -260,6 +212,108 @@
     ],
     "notes": "",
     "savedAt": "2026-09-22T18:24:51.065Z"
+  },
+  {
+    "id": "support_1790101854348_gqftx",
+    "name": "アストンマーチャン",
+    "imagePath": null,
+    "types": [
+      "guts"
+    ],
+    "skills": [
+      {
+        "name": "秋ウマ娘○",
+        "type": "normal"
+      },
+      {
+        "name": "短距離直線○",
+        "type": "normal"
+      },
+      {
+        "name": "短距離コーナー○",
+        "type": "normal"
+      },
+      {
+        "name": "後方釘付",
+        "type": "normal"
+      },
+      {
+        "name": "軽い足取り",
+        "type": "normal"
+      },
+      {
+        "name": "急発進",
+        "type": "normal"
+      },
+      {
+        "name": "瞬発力",
+        "type": "normal"
+      },
+      {
+        "name": "譲れぬ一歩",
+        "type": "normal"
+      },
+      {
+        "name": "火花散らして",
+        "type": "normal"
+      },
+      {
+        "name": "弾ける足取り",
+        "type": "normal"
+      },
+      {
+        "name": "押しの一手",
+        "type": "normal"
+      },
+      {
+        "name": "急旋回",
+        "type": "normal"
+      },
+      {
+        "name": "猛プッシュ",
+        "type": "normal"
+      },
+      {
+        "name": "押せ押せムード",
+        "type": "normal"
+      }
+    ],
+    "eventSkills": [
+      {
+        "name": "軽い足取り",
+        "type": "normal"
+      },
+      {
+        "name": "危険回避",
+        "type": "normal"
+      },
+      {
+        "name": "スプリントギア",
+        "type": "normal"
+      },
+      {
+        "name": "匠のステアリング",
+        "type": "gold"
+      },
+      {
+        "name": "圧倒",
+        "type": "gold"
+      },
+      {
+        "name": "押せ押せムード",
+        "type": "normal"
+      },
+      {
+        "name": "海の加護",
+        "type": "normal"
+      },
+      {
+        "name": "いつまでも健やかに",
+        "type": "normal"
+      }
+    ],
+    "notes": "",
+    "savedAt": "2026-09-22T18:30:54.348Z"
   },
   {
     "id": "support_1790100842211_cx2g6",
