@@ -116,6 +116,110 @@ function onGithubConfigChanged() {
   return loadSkills();
 }
 
+// --- ウマ娘・サポカのスキルからの抽出 ---
+async function fetchJsonFile(path) {
+  const owner = (config && config.owner) || DEFAULT_OWNER;
+  const repo = (config && config.repo) || DEFAULT_REPO;
+  const branch = config && config.branch;
+  const url = `https://api.github.com/repos/${encodeURIComponent(owner)}/${encodeURIComponent(repo)}/contents/${path}`
+    + (branch ? `?ref=${encodeURIComponent(branch)}` : '');
+  const res = await fetch(url, { headers: authHeaders(), cache: 'no-store' });
+  if (res.status === 404) return [];
+  if (!res.ok) {
+    const errJson = await res.json().catch(() => ({}));
+    throw new Error(errJson.message || `GitHub APIエラー: ${res.status}`);
+  }
+  const json = await res.json();
+  try {
+    const arr = JSON.parse(decodeBase64Utf8(json.content));
+    return Array.isArray(arr) ? arr : [];
+  } catch {
+    return [];
+  }
+}
+
+function normalizeSkillLike(s) {
+  return typeof s === 'string' ? { name: s, type: 'normal' } : { name: s.name || '', type: s.type || 'normal' };
+}
+
+const SKILL_TYPE_TO_RARITY = { normal: 'R', gold: 'SR' };
+
+document.getElementById('extractSkillsBtn').addEventListener('click', async () => {
+  if (!config || !config.token) { setListStatus('抽出・保存にはPATが必要です。設定でPATを入力してください。', true); return; }
+  const btn = document.getElementById('extractSkillsBtn');
+  btn.disabled = true;
+  setListStatus('ウマ娘・サポカのスキルを読み込んでいます…');
+  try {
+    const [umas, cards] = await Promise.all([
+      fetchJsonFile('data/uma_musume.json'),
+      fetchJsonFile('data/support_cards.json'),
+    ]);
+
+    const found = new Map();
+    const collect = s => {
+      const skill = normalizeSkillLike(s);
+      const rarity = SKILL_TYPE_TO_RARITY[skill.type];
+      if (!rarity || !skill.name) return;
+      if (!found.has(skill.name)) found.set(skill.name, new Set());
+      found.get(skill.name).add(rarity);
+    };
+    umas.forEach(u => (u.skills || []).forEach(collect));
+    cards.forEach(c => {
+      (c.skills || []).forEach(collect);
+      (c.eventSkills || []).forEach(collect);
+    });
+
+    const updated = allSkills.slice();
+    let addedCount = 0;
+    let updatedCount = 0;
+    found.forEach((raritySet, name) => {
+      const existing = updated.find(sk => sk.name === name);
+      if (existing) {
+        const rarities = new Set(existing.rarities || []);
+        const before = rarities.size;
+        raritySet.forEach(r => rarities.add(r));
+        if (rarities.size !== before) {
+          existing.rarities = Array.from(rarities);
+          updatedCount++;
+        }
+      } else {
+        updated.push({
+          id: 'skill_' + Date.now() + '_' + Math.random().toString(36).slice(2, 7),
+          name,
+          effect: '',
+          category: '',
+          rarities: Array.from(raritySet),
+          styles: [],
+          distances: [],
+          notes: 'ウマ娘・サポカから自動抽出',
+          savedAt: new Date().toISOString(),
+        });
+        addedCount++;
+      }
+    });
+
+    if (!addedCount && !updatedCount) {
+      setListStatus('新しく抽出できるスキルはありませんでした。');
+      return;
+    }
+
+    setListStatus('保存しています…');
+    await saveSkillsToGitHub(updated, `スキル自動抽出: 新規${addedCount}件・レアリティ更新${updatedCount}件`);
+    allSkills = sortByName(updated);
+    renderSkills();
+    setListStatus(`抽出完了: 新規${addedCount}件・レアリティ更新${updatedCount}件`);
+  } catch (err) {
+    console.error(err);
+    if (err instanceof ConflictError) {
+      setListStatus('他の端末で更新されています。「更新」ボタンで最新を取得してからもう一度お試しください。', true);
+    } else {
+      setListStatus('抽出中にエラーが発生しました: ' + err.message, true);
+    }
+  } finally {
+    btn.disabled = false;
+  }
+});
+
 // --- 種別・属性の選択取得/反映 ---
 function getSelectedCategory() {
   const el = document.querySelector('input[name=fCategory]:checked');
