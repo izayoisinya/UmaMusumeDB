@@ -7331,11 +7331,13 @@
     "id": "skill_1790103292614_a4k8k",
     "name": "目覚めの時",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "R"
     ],
-    "styles": [],
+    "styles": [
+      "senko"
+    ],
     "distances": [],
     "notes": "ウマ娘・サポカから自動抽出",
     "savedAt": "2026-09-22T18:54:52.614Z"
@@ -7344,11 +7346,14 @@
     "id": "skill_1790103292616_67vzh",
     "name": "目指せセンター！",
     "effect": "",
-    "category": "",
+    "category": "accel",
     "rarities": [
       "SR"
     ],
-    "styles": [],
+    "styles": [
+      "nige",
+      "senko"
+    ],
     "distances": [],
     "notes": "ウマ娘・サポカから自動抽出",
     "savedAt": "2026-09-22T18:54:52.616Z"
