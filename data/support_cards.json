@@ -1,5 +1,79 @@
 [
   {
+    "id": "support_1790100920203_0fsaz",
+    "name": "アーモンドアイ",
+    "imagePath": null,
+    "types": [
+      "speed"
+    ],
+    "skills": [
+      {
+        "name": "コーナー巧者○",
+        "type": "normal"
+      },
+      {
+        "name": "直線巧者",
+        "type": "normal"
+      },
+      {
+        "name": "垂れウマ回避",
+        "type": "normal"
+      },
+      {
+        "name": "ウマ好み",
+        "type": "normal"
+      },
+      {
+        "name": "尻尾上がり",
+        "type": "normal"
+      },
+      {
+        "name": "探求心",
+        "type": "normal"
+      },
+      {
+        "name": "飛躍の予感",
+        "type": "normal"
+      },
+      {
+        "name": "さらなる高みへ",
+        "type": "normal"
+      },
+      {
+        "name": "躍動",
+        "type": "normal"
+      },
+      {
+        "name": "憧れを越えて",
+        "type": "normal"
+      }
+    ],
+    "eventSkills": [
+      {
+        "name": "品行方正",
+        "type": "normal"
+      },
+      {
+        "name": "シンギュラリティ",
+        "type": "gold"
+      },
+      {
+        "name": "才気煥発",
+        "type": "gold"
+      },
+      {
+        "name": "ハヤテ一文字",
+        "type": "gold"
+      },
+      {
+        "name": "弧線のプロフェッサー",
+        "type": "gold"
+      }
+    ],
+    "notes": "",
+    "savedAt": "2026-09-22T18:15:20.203Z"
+  },
+  {
     "id": "support_1790101491064_li6zs",
     "name": "アグネスデジタル",
     "imagePath": null,
@@ -84,80 +158,6 @@
     ],
     "notes": "",
     "savedAt": "2026-09-22T18:24:51.065Z"
-  },
-  {
-    "id": "support_1790100920203_0fsaz",
-    "name": "アーモンドアイ",
-    "imagePath": null,
-    "types": [
-      "speed"
-    ],
-    "skills": [
-      {
-        "name": "コーナー巧者○",
-        "type": "normal"
-      },
-      {
-        "name": "直線巧者",
-        "type": "normal"
-      },
-      {
-        "name": "垂れウマ回避",
-        "type": "normal"
-      },
-      {
-        "name": "ウマ好み",
-        "type": "normal"
-      },
-      {
-        "name": "尻尾上がり",
-        "type": "normal"
-      },
-      {
-        "name": "探求心",
-        "type": "normal"
-      },
-      {
-        "name": "飛躍の予感",
-        "type": "normal"
-      },
-      {
-        "name": "さらなる高みへ",
-        "type": "normal"
-      },
-      {
-        "name": "躍動",
-        "type": "normal"
-      },
-      {
-        "name": "憧れを越えて",
-        "type": "normal"
-      }
-    ],
-    "eventSkills": [
-      {
-        "name": "品行方正",
-        "type": "normal"
-      },
-      {
-        "name": "シンギュラリティ",
-        "type": "gold"
-      },
-      {
-        "name": "才気煥発",
-        "type": "gold"
-      },
-      {
-        "name": "ハヤテ一文字",
-        "type": "gold"
-      },
-      {
-        "name": "弧線のプロフェッサー",
-        "type": "gold"
-      }
-    ],
-    "notes": "",
-    "savedAt": "2026-09-22T18:15:20.203Z"
   },
   {
     "id": "support_1790100842211_cx2g6",
@@ -332,9 +332,7 @@
     "name": "キセキ",
     "imagePath": null,
     "types": [
-      "stamina",
-      "guts",
-      "wisdom"
+      "stamina"
     ],
     "skills": [
       {
@@ -409,7 +407,7 @@
       }
     ],
     "notes": "",
-    "savedAt": "2026-09-22T18:21:16.997Z"
+    "savedAt": "2026-09-22T18:25:35.933Z"
   },
   {
     "id": "support_1790100456891_903qd",
