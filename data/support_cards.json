@@ -1,60 +1,42 @@
 [
   {
-    "id": "support_1790102397611_tmx7w",
-    "name": "ウインバリアシオン",
+    "id": "support_1790102456080_b1u47",
+    "name": "フォーエバーヤング",
     "imagePath": null,
     "types": [
       "wisdom"
     ],
     "skills": [
       {
-        "name": "右回り○",
+        "name": "直線巧者",
         "type": "normal"
       },
       {
-        "name": "夏ウマ娘○",
+        "name": "ペースアップ",
         "type": "normal"
       },
       {
-        "name": "直線回復",
+        "name": "垂れウマ回避",
         "type": "normal"
       },
       {
-        "name": "内弁慶",
+        "name": "地固め",
         "type": "normal"
       },
       {
-        "name": "長距離直線○",
+        "name": "尻尾上がり",
         "type": "normal"
       },
       {
-        "name": "脇目も振らず",
+        "name": "遊びはおしまいっ！",
         "type": "normal"
       },
       {
-        "name": "ごぼう抜き",
+        "name": "快速",
         "type": "normal"
       },
       {
-        "name": "奮闘",
-        "type": "normal"
-      },
-      {
-        "name": "活路を拓く！",
-        "type": "normal"
-      },
-      {
-        "name": "張り切り",
-        "type": "normal"
-      },
-      {
-        "name": "聴せぬ心",
-        "type": "normal"
-      }
-    ],
-    "eventSkills": [
-      {
-        "name": "長距離コーナー○",
+        "name": "パイオニア",
         "type": "normal"
       },
       {
@@ -62,16 +44,58 @@
         "type": "normal"
       },
       {
-        "name": "内的体験",
+        "name": "心惹かれて",
+        "type": "normal"
+      },
+      {
+        "name": "勝負を懸けて",
+        "type": "normal"
+      },
+      {
+        "name": "巨歩",
+        "type": "normal"
+      },
+      {
+        "name": "もう一踏ん張り",
+        "type": "normal"
+      }
+    ],
+    "eventSkills": [
+      {
+        "name": "灯を胸に",
+        "type": "normal"
+      },
+      {
+        "name": "バイタリティ",
+        "type": "normal"
+      },
+      {
+        "name": "コール&レスポンス",
         "type": "gold"
       },
       {
-        "name": "エネルギッシュ",
+        "name": "二段構え",
+        "type": "normal"
+      },
+      {
+        "name": "イノベーション",
+        "type": "gold"
+      },
+      {
+        "name": "アプローチ",
+        "type": "normal"
+      },
+      {
+        "name": "尻尾の滝登り",
+        "type": "gold"
+      },
+      {
+        "name": "前人未到",
         "type": "gold"
       }
     ],
     "notes": "",
-    "savedAt": "2026-09-22T18:39:57.611Z"
+    "savedAt": "2026-09-22T18:40:56.081Z"
   },
   {
     "id": "support_1790100920203_0fsaz",
@@ -470,6 +494,80 @@
     ],
     "notes": "",
     "savedAt": "2026-09-22T18:36:53.215Z"
+  },
+  {
+    "id": "support_1790102397611_tmx7w",
+    "name": "ウインバリアシオン",
+    "imagePath": null,
+    "types": [
+      "wisdom"
+    ],
+    "skills": [
+      {
+        "name": "右回り○",
+        "type": "normal"
+      },
+      {
+        "name": "夏ウマ娘○",
+        "type": "normal"
+      },
+      {
+        "name": "直線回復",
+        "type": "normal"
+      },
+      {
+        "name": "内弁慶",
+        "type": "normal"
+      },
+      {
+        "name": "長距離直線○",
+        "type": "normal"
+      },
+      {
+        "name": "脇目も振らず",
+        "type": "normal"
+      },
+      {
+        "name": "ごぼう抜き",
+        "type": "normal"
+      },
+      {
+        "name": "奮闘",
+        "type": "normal"
+      },
+      {
+        "name": "活路を拓く！",
+        "type": "normal"
+      },
+      {
+        "name": "張り切り",
+        "type": "normal"
+      },
+      {
+        "name": "聴せぬ心",
+        "type": "normal"
+      }
+    ],
+    "eventSkills": [
+      {
+        "name": "長距離コーナー○",
+        "type": "normal"
+      },
+      {
+        "name": "比類なき",
+        "type": "normal"
+      },
+      {
+        "name": "内的体験",
+        "type": "gold"
+      },
+      {
+        "name": "エネルギッシュ",
+        "type": "gold"
+      }
+    ],
+    "notes": "",
+    "savedAt": "2026-09-22T18:39:57.611Z"
   },
   {
     "id": "support_1790100583667_wxipb",
