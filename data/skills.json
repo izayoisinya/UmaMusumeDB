@@ -5874,7 +5874,7 @@
     "id": "skill_1790103292613_6hjue",
     "name": "追込焦り",
     "effect": "",
-    "category": "",
+    "category": "debuff",
     "rarities": [
       "R"
     ],
@@ -5887,11 +5887,13 @@
     "id": "skill_1790103292613_liwfx",
     "name": "追込直線○",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "R"
     ],
-    "styles": [],
+    "styles": [
+      "oikomi"
+    ],
     "distances": [],
     "notes": "ウマ娘・サポカから自動抽出",
     "savedAt": "2026-09-22T18:54:52.613Z"
@@ -5900,11 +5902,13 @@
     "id": "skill_1790103292617_g0lel",
     "name": "追尾",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "R"
     ],
-    "styles": [],
+    "styles": [
+      "sashi"
+    ],
     "distances": [],
     "notes": "ウマ娘・サポカから自動抽出",
     "savedAt": "2026-09-22T18:54:52.617Z"
@@ -5913,11 +5917,13 @@
     "id": "skill_1790103292617_qiuh8",
     "name": "鍔迫り合い",
     "effect": "",
-    "category": "",
+    "category": "accel",
     "rarities": [
       "SR"
     ],
-    "styles": [],
+    "styles": [
+      "senko"
+    ],
     "distances": [],
     "notes": "ウマ娘・サポカから自動抽出",
     "savedAt": "2026-09-22T18:54:52.617Z"
@@ -5926,7 +5932,7 @@
     "id": "skill_1790103292615_px5td",
     "name": "泥んこマイスター",
     "effect": "",
-    "category": "",
+    "category": "green",
     "rarities": [
       "SR"
     ],
@@ -5939,7 +5945,7 @@
     "id": "skill_1790103292615_20jbe",
     "name": "泥遊び○",
     "effect": "",
-    "category": "",
+    "category": "green",
     "rarities": [
       "R"
     ],
@@ -5952,7 +5958,7 @@
     "id": "skill_1790103292613_406b9",
     "name": "徹底マーク○",
     "effect": "",
-    "category": "",
+    "category": "green",
     "rarities": [
       "R"
     ],
@@ -5978,12 +5984,16 @@
     "id": "skill_1790103292618_k0qm1",
     "name": "天賦の才",
     "effect": "",
-    "category": "",
+    "category": "accel",
     "rarities": [
       "SR"
     ],
-    "styles": [],
-    "distances": [],
+    "styles": [
+      "sashi"
+    ],
+    "distances": [
+      "medium"
+    ],
     "notes": "ウマ娘・サポカから自動抽出",
     "savedAt": "2026-09-22T18:54:52.618Z"
   },
@@ -6004,12 +6014,14 @@
     "id": "skill_1790103292614_mlfye",
     "name": "電撃の煌めき",
     "effect": "",
-    "category": "",
+    "category": "accel",
     "rarities": [
       "SR"
     ],
     "styles": [],
-    "distances": [],
+    "distances": [
+      "short"
+    ],
     "notes": "ウマ娘・サポカから自動抽出",
     "savedAt": "2026-09-22T18:54:52.614Z"
   },
@@ -6017,12 +6029,15 @@
     "id": "skill_1790103292616_lwo21",
     "name": "電光石火",
     "effect": "",
-    "category": "",
+    "category": "accel",
     "rarities": [
       "SR"
     ],
     "styles": [],
-    "distances": [],
+    "distances": [
+      "short",
+      "mile"
+    ],
     "notes": "ウマ娘・サポカから自動抽出",
     "savedAt": "2026-09-22T18:54:52.616Z"
   },
@@ -6030,7 +6045,7 @@
     "id": "skill_1790103292617_sya4a",
     "name": "登山家",
     "effect": "",
-    "category": "",
+    "category": "accel",
     "rarities": [
       "R"
     ],
@@ -6043,7 +6058,7 @@
     "id": "skill_1790103292617_dw98h",
     "name": "登竜門",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "R"
     ],
@@ -6056,12 +6071,16 @@
     "id": "skill_1790103292614_6fani",
     "name": "努力の結実",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "SR"
     ],
-    "styles": [],
-    "distances": [],
+    "styles": [
+      "senko"
+    ],
+    "distances": [
+      "long"
+    ],
     "notes": "ウマ娘・サポカから自動抽出",
     "savedAt": "2026-09-22T18:54:52.614Z"
   },
@@ -6069,11 +6088,13 @@
     "id": "skill_1790103292613_9obrs",
     "name": "努力家",
     "effect": "",
-    "category": "",
+    "category": "accel",
     "rarities": [
       "SR"
     ],
-    "styles": [],
+    "styles": [
+      "sashi"
+    ],
     "distances": [],
     "notes": "ウマ娘・サポカから自動抽出",
     "savedAt": "2026-09-22T18:54:52.613Z"
@@ -6082,7 +6103,7 @@
     "id": "skill_1790103292616_qnmig",
     "name": "土煙",
     "effect": "",
-    "category": "",
+    "category": "debuff",
     "rarities": [
       "R"
     ],
@@ -6095,12 +6116,14 @@
     "id": "skill_1790103292616_ne0hw",
     "name": "怒涛の追い上げ",
     "effect": "",
-    "category": "",
+    "category": "accel",
     "rarities": [
       "SR"
     ],
     "styles": [],
-    "distances": [],
+    "distances": [
+      "long"
+    ],
     "notes": "ウマ娘・サポカから自動抽出",
     "savedAt": "2026-09-22T18:54:52.616Z"
   },
