@@ -1,65 +1,65 @@
 [
   {
-    "id": "support_1790102213214_9s1s6",
-    "name": "イクノディクタス",
+    "id": "support_1790102263268_7uply",
+    "name": "サトノダイヤモンド",
     "imagePath": null,
     "types": [
       "wisdom"
     ],
     "skills": [
       {
-        "name": "マイル直線○",
+        "name": "コーナー加速○",
         "type": "normal"
       },
       {
-        "name": "マイルコーナー○",
+        "name": "ポジションセンス",
         "type": "normal"
       },
       {
-        "name": "負けん気",
+        "name": "差し切り体勢",
         "type": "normal"
       },
       {
-        "name": "地固め",
+        "name": "闘争心",
         "type": "normal"
       },
       {
-        "name": "向こう見ず",
+        "name": "差しコーナー○",
         "type": "normal"
       },
       {
-        "name": "自信家",
+        "name": "フルスロットル",
         "type": "normal"
       },
       {
-        "name": "滾る想い",
+        "name": "溢れる情熱",
         "type": "normal"
       },
       {
-        "name": "風切り",
-        "type": "normal"
-      },
-      {
-        "name": "胸の高鳴り",
+        "name": "進出開始",
         "type": "normal"
       }
     ],
     "eventSkills": [
       {
-        "name": "トリック（後）",
+        "name": "逃げためらい",
         "type": "normal"
       },
       {
-        "name": "負けん気",
+        "name": "込み上げる熱",
         "type": "normal"
       },
       {
-        "name": "姉御肌",
+        "name": "勇往邁進",
+        "type": "gold"
+      },
+      {
+        "name": "気炎万丈",
         "type": "gold"
       }
     ],
     "notes": "",
-    "savedAt": "2026-09-22T18:36:53.215Z"
+    "savedAt": "2026-09-22T18:37:43.268Z"
   },
   {
     "id": "support_1790100920203_0fsaz",
@@ -396,6 +396,68 @@
     ],
     "notes": "",
     "savedAt": "2026-09-22T18:14:02.211Z"
+  },
+  {
+    "id": "support_1790102213214_9s1s6",
+    "name": "イクノディクタス",
+    "imagePath": null,
+    "types": [
+      "wisdom"
+    ],
+    "skills": [
+      {
+        "name": "マイル直線○",
+        "type": "normal"
+      },
+      {
+        "name": "マイルコーナー○",
+        "type": "normal"
+      },
+      {
+        "name": "負けん気",
+        "type": "normal"
+      },
+      {
+        "name": "地固め",
+        "type": "normal"
+      },
+      {
+        "name": "向こう見ず",
+        "type": "normal"
+      },
+      {
+        "name": "自信家",
+        "type": "normal"
+      },
+      {
+        "name": "滾る想い",
+        "type": "normal"
+      },
+      {
+        "name": "風切り",
+        "type": "normal"
+      },
+      {
+        "name": "胸の高鳴り",
+        "type": "normal"
+      }
+    ],
+    "eventSkills": [
+      {
+        "name": "トリック（後）",
+        "type": "normal"
+      },
+      {
+        "name": "負けん気",
+        "type": "normal"
+      },
+      {
+        "name": "姉御肌",
+        "type": "gold"
+      }
+    ],
+    "notes": "",
+    "savedAt": "2026-09-22T18:36:53.215Z"
   },
   {
     "id": "support_1790100583667_wxipb",
