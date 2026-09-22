@@ -1,22 +1,56 @@
 [
   {
-    "id": "support_1790102263268_7uply",
-    "name": "サトノダイヤモンド",
+    "id": "support_1790102311512_kwdcr",
+    "name": "メジロラモーヌ",
     "imagePath": null,
     "types": [
       "wisdom"
     ],
     "skills": [
       {
-        "name": "コーナー加速○",
+        "name": "直線巧者",
         "type": "normal"
       },
       {
-        "name": "ポジションセンス",
+        "name": "集中力",
         "type": "normal"
       },
       {
-        "name": "差し切り体勢",
+        "name": "マイル直線○",
+        "type": "normal"
+      },
+      {
+        "name": "マイルコーナー○",
+        "type": "normal"
+      },
+      {
+        "name": "ギアシフト",
+        "type": "normal"
+      },
+      {
+        "name": "中距離直線○",
+        "type": "normal"
+      },
+      {
+        "name": "ありったけ",
+        "type": "normal"
+      },
+      {
+        "name": "確かな足取り",
+        "type": "normal"
+      },
+      {
+        "name": "しとやかな足取り",
+        "type": "normal"
+      }
+    ],
+    "eventSkills": [
+      {
+        "name": "中距離コーナー○",
+        "type": "normal"
+      },
+      {
+        "name": "負けん気",
         "type": "normal"
       },
       {
@@ -24,42 +58,12 @@
         "type": "normal"
       },
       {
-        "name": "差しコーナー○",
-        "type": "normal"
-      },
-      {
-        "name": "フルスロットル",
-        "type": "normal"
-      },
-      {
-        "name": "溢れる情熱",
-        "type": "normal"
-      },
-      {
-        "name": "進出開始",
-        "type": "normal"
-      }
-    ],
-    "eventSkills": [
-      {
-        "name": "逃げためらい",
-        "type": "normal"
-      },
-      {
-        "name": "込み上げる熱",
-        "type": "normal"
-      },
-      {
-        "name": "勇往邁進",
-        "type": "gold"
-      },
-      {
-        "name": "気炎万丈",
+        "name": "優位形成",
         "type": "gold"
       }
     ],
     "notes": "",
-    "savedAt": "2026-09-22T18:37:43.268Z"
+    "savedAt": "2026-09-22T18:38:31.513Z"
   },
   {
     "id": "support_1790100920203_0fsaz",
@@ -754,6 +758,68 @@
     ],
     "notes": "",
     "savedAt": "2026-09-22T18:25:35.933Z"
+  },
+  {
+    "id": "support_1790102263268_7uply",
+    "name": "サトノダイヤモンド",
+    "imagePath": null,
+    "types": [
+      "wisdom"
+    ],
+    "skills": [
+      {
+        "name": "コーナー加速○",
+        "type": "normal"
+      },
+      {
+        "name": "ポジションセンス",
+        "type": "normal"
+      },
+      {
+        "name": "差し切り体勢",
+        "type": "normal"
+      },
+      {
+        "name": "闘争心",
+        "type": "normal"
+      },
+      {
+        "name": "差しコーナー○",
+        "type": "normal"
+      },
+      {
+        "name": "フルスロットル",
+        "type": "normal"
+      },
+      {
+        "name": "溢れる情熱",
+        "type": "normal"
+      },
+      {
+        "name": "進出開始",
+        "type": "normal"
+      }
+    ],
+    "eventSkills": [
+      {
+        "name": "逃げためらい",
+        "type": "normal"
+      },
+      {
+        "name": "込み上げる熱",
+        "type": "normal"
+      },
+      {
+        "name": "勇往邁進",
+        "type": "gold"
+      },
+      {
+        "name": "気炎万丈",
+        "type": "gold"
+      }
+    ],
+    "notes": "",
+    "savedAt": "2026-09-22T18:37:43.268Z"
   },
   {
     "id": "support_1790100456891_903qd",
