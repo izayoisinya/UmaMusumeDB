@@ -1,7 +1,7 @@
 [
   {
-    "id": "support_1790101918648_m9lc5",
-    "name": "オルフェーヴル",
+    "id": "support_1790101987978_pfoze",
+    "name": "ステイゴールド",
     "imagePath": null,
     "types": [
       "guts"
@@ -12,46 +12,74 @@
         "type": "normal"
       },
       {
-        "name": "垂れウマ回避",
+        "name": "ウマ好み",
         "type": "normal"
       },
       {
-        "name": "尻尾上がり",
+        "name": "地固め",
         "type": "normal"
       },
       {
-        "name": "遊びはおしまいっ！",
+        "name": "スリップストリーム",
         "type": "normal"
       },
       {
-        "name": "快速",
+        "name": "しとやかな足取り",
         "type": "normal"
       },
       {
-        "name": "込み上げる熱",
+        "name": "イグニッション",
         "type": "normal"
       },
       {
-        "name": "渾身の足取り",
+        "name": "折れない心",
+        "type": "normal"
+      },
+      {
+        "name": "一歩すつ前へ",
+        "type": "normal"
+      },
+      {
+        "name": "比類なき",
+        "type": "normal"
+      },
+      {
+        "name": "夢への挑戦",
+        "type": "normal"
+      },
+      {
+        "name": "心惹かれて",
+        "type": "normal"
+      },
+      {
+        "name": "気ままな足取り",
         "type": "normal"
       }
     ],
     "eventSkills": [
       {
-        "name": "型破り",
+        "name": "直線巧者",
         "type": "normal"
       },
       {
-        "name": "快速",
+        "name": "比類なき",
         "type": "normal"
       },
       {
-        "name": "神速",
+        "name": "ネバーギブアップ",
+        "type": "gold"
+      },
+      {
+        "name": "好奇心",
+        "type": "gold"
+      },
+      {
+        "name": "自由奔放",
         "type": "gold"
       }
     ],
     "notes": "",
-    "savedAt": "2026-09-22T18:31:58.648Z"
+    "savedAt": "2026-09-22T18:33:07.978Z"
   },
   {
     "id": "support_1790100920203_0fsaz",
@@ -482,6 +510,60 @@
     ],
     "notes": "",
     "savedAt": "2026-09-22T18:10:25.375Z"
+  },
+  {
+    "id": "support_1790101918648_m9lc5",
+    "name": "オルフェーヴル",
+    "imagePath": null,
+    "types": [
+      "guts"
+    ],
+    "skills": [
+      {
+        "name": "コーナー巧者○",
+        "type": "normal"
+      },
+      {
+        "name": "垂れウマ回避",
+        "type": "normal"
+      },
+      {
+        "name": "尻尾上がり",
+        "type": "normal"
+      },
+      {
+        "name": "遊びはおしまいっ！",
+        "type": "normal"
+      },
+      {
+        "name": "快速",
+        "type": "normal"
+      },
+      {
+        "name": "込み上げる熱",
+        "type": "normal"
+      },
+      {
+        "name": "渾身の足取り",
+        "type": "normal"
+      }
+    ],
+    "eventSkills": [
+      {
+        "name": "型破り",
+        "type": "normal"
+      },
+      {
+        "name": "快速",
+        "type": "normal"
+      },
+      {
+        "name": "神速",
+        "type": "gold"
+      }
+    ],
+    "notes": "",
+    "savedAt": "2026-09-22T18:31:58.648Z"
   },
   {
     "id": "support_1790101794915_7p6qw",
