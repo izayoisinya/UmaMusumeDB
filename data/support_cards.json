@@ -1,87 +1,89 @@
 [
   {
-    "id": "support_1790101276997_bv9yj",
-    "name": "キセキ",
+    "id": "support_1790101491064_li6zs",
+    "name": "アグネスデジタル",
     "imagePath": null,
     "types": [
-      "stamina",
-      "guts",
-      "wisdom"
+      "power"
     ],
     "skills": [
       {
-        "name": "コーナー回復○",
+        "name": "差し切り体勢",
         "type": "normal"
       },
       {
-        "name": "ポジションセンス",
+        "name": "差し直線○",
         "type": "normal"
       },
       {
-        "name": "先駆け",
+        "name": "差しコーナー○",
         "type": "normal"
       },
       {
-        "name": "地固め",
+        "name": "十万バリキ",
         "type": "normal"
       },
       {
-        "name": "影打",
+        "name": "フルスロットル",
         "type": "normal"
       },
       {
-        "name": "バイブス上昇",
+        "name": "食らいつき",
         "type": "normal"
       },
       {
-        "name": "大詰め",
+        "name": "進出開始",
         "type": "normal"
       },
       {
-        "name": "迷いなし",
+        "name": "押し通る！",
         "type": "normal"
       },
       {
-        "name": "光明",
+        "name": "淀みなし",
         "type": "normal"
       },
       {
-        "name": "逃げるが勝ち！",
+        "name": "大志を抱いて",
         "type": "normal"
       },
       {
-        "name": "筆に任せて",
+        "name": "勇を奮って",
         "type": "normal"
       },
       {
-        "name": "ポイントマン",
+        "name": "大立ち回り",
+        "type": "normal"
+      },
+      {
+        "name": "流れに任せて",
         "type": "normal"
       }
     ],
     "eventSkills": [
       {
+        "name": "雨の日○",
+        "type": "normal"
+      },
+      {
         "name": "道悪○",
         "type": "normal"
       },
       {
-        "name": "覚悟を決めて",
+        "name": "一歩ずつ前へ",
         "type": "normal"
       },
       {
-        "name": "万里一空",
+        "name": "勇往邁進",
         "type": "gold"
       },
       {
-        "name": "レースメイカー",
-        "type": "gold"
-      },
-      {
-        "name": "ブチ☆アゲ↑バイブス",
+        "name": "一騎当千",
         "type": "gold"
       }
     ],
     "notes": "",
-    "savedAt": "2026-09-22T18:21:16.997Z"
+    "savedAt": "2026-09-22T18:24:51.065Z"
   },
   {
     "id": "support_1790100920203_0fsaz",
@@ -324,6 +326,90 @@
     ],
     "notes": "",
     "savedAt": "2026-09-22T18:10:25.375Z"
+  },
+  {
+    "id": "support_1790101276997_bv9yj",
+    "name": "キセキ",
+    "imagePath": null,
+    "types": [
+      "stamina",
+      "guts",
+      "wisdom"
+    ],
+    "skills": [
+      {
+        "name": "コーナー回復○",
+        "type": "normal"
+      },
+      {
+        "name": "ポジションセンス",
+        "type": "normal"
+      },
+      {
+        "name": "先駆け",
+        "type": "normal"
+      },
+      {
+        "name": "地固め",
+        "type": "normal"
+      },
+      {
+        "name": "影打",
+        "type": "normal"
+      },
+      {
+        "name": "バイブス上昇",
+        "type": "normal"
+      },
+      {
+        "name": "大詰め",
+        "type": "normal"
+      },
+      {
+        "name": "迷いなし",
+        "type": "normal"
+      },
+      {
+        "name": "光明",
+        "type": "normal"
+      },
+      {
+        "name": "逃げるが勝ち！",
+        "type": "normal"
+      },
+      {
+        "name": "筆に任せて",
+        "type": "normal"
+      },
+      {
+        "name": "ポイントマン",
+        "type": "normal"
+      }
+    ],
+    "eventSkills": [
+      {
+        "name": "道悪○",
+        "type": "normal"
+      },
+      {
+        "name": "覚悟を決めて",
+        "type": "normal"
+      },
+      {
+        "name": "万里一空",
+        "type": "gold"
+      },
+      {
+        "name": "レースメイカー",
+        "type": "gold"
+      },
+      {
+        "name": "ブチ☆アゲ↑バイブス",
+        "type": "gold"
+      }
+    ],
+    "notes": "",
+    "savedAt": "2026-09-22T18:21:16.997Z"
   },
   {
     "id": "support_1790100456891_903qd",
