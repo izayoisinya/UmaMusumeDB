@@ -4836,12 +4836,16 @@
     "id": "skill_1790103292616_pntbx",
     "name": "先導者",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "R"
     ],
-    "styles": [],
-    "distances": [],
+    "styles": [
+      "nige"
+    ],
+    "distances": [
+      "medium"
+    ],
     "notes": "ウマ娘・サポカから自動抽出",
     "savedAt": "2026-09-22T18:54:52.616Z"
   },
@@ -4849,12 +4853,16 @@
     "id": "skill_1790103292617_1wzxy",
     "name": "千載一遇",
     "effect": "",
-    "category": "",
+    "category": "accel",
     "rarities": [
       "SR"
     ],
-    "styles": [],
-    "distances": [],
+    "styles": [
+      "oikomi"
+    ],
+    "distances": [
+      "long"
+    ],
     "notes": "ウマ娘・サポカから自動抽出",
     "savedAt": "2026-09-22T18:54:52.617Z"
   },
@@ -4903,12 +4911,15 @@
     "id": "skill_1790103292617_b56u6",
     "name": "戦略家",
     "effect": "",
-    "category": "",
+    "category": "green",
     "rarities": [
       "R"
     ],
     "styles": [],
-    "distances": [],
+    "distances": [
+      "medium",
+      "long"
+    ],
     "notes": "ウマ娘・サポカから自動抽出",
     "savedAt": "2026-09-22T18:54:52.617Z"
   },
@@ -4929,7 +4940,7 @@
     "id": "skill_1790103292614_0jh3z",
     "name": "閃く雷光",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "SR"
     ],
@@ -4970,12 +4981,14 @@
     "id": "skill_1790103292614_aps0d",
     "name": "前途洋々",
     "effect": "",
-    "category": "",
+    "category": "green",
     "rarities": [
       "R"
     ],
     "styles": [],
-    "distances": [],
+    "distances": [
+      "medium"
+    ],
     "notes": "ウマ娘・サポカから自動抽出",
     "savedAt": "2026-09-22T18:54:52.614Z"
   },
@@ -4983,7 +4996,7 @@
     "id": "skill_1790103292613_bcfkx",
     "name": "前列狙い",
     "effect": "",
-    "category": "",
+    "category": "accel",
     "rarities": [
       "R"
     ],
@@ -5043,7 +5056,7 @@
     "id": "skill_1790103292617_ts5mu",
     "name": "狙いを定めて",
     "effect": "",
-    "category": "",
+    "category": "accel",
     "rarities": [
       "R"
     ],
@@ -5056,7 +5069,7 @@
     "id": "skill_1790103292613_b43z3",
     "name": "狙うは最前列！",
     "effect": "",
-    "category": "",
+    "category": "accel",
     "rarities": [
       "SR"
     ],
@@ -5098,12 +5111,15 @@
     "id": "skill_1790103292616_lvxlh",
     "name": "想い焦がれて",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "R"
     ],
     "styles": [],
-    "distances": [],
+    "distances": [
+      "mile",
+      "medium"
+    ],
     "notes": "ウマ娘・サポカから自動抽出",
     "savedAt": "2026-09-22T18:54:52.616Z"
   },
@@ -5111,11 +5127,13 @@
     "id": "skill_1790103292613_uc3lt",
     "name": "早業",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "SR"
     ],
-    "styles": [],
+    "styles": [
+      "nige"
+    ],
     "distances": [],
     "notes": "ウマ娘・サポカから自動抽出",
     "savedAt": "2026-09-22T18:54:52.613Z"
@@ -5124,11 +5142,13 @@
     "id": "skill_1790103292618_jk17r",
     "name": "早仕掛け",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "R"
     ],
-    "styles": [],
+    "styles": [
+      "oikomi"
+    ],
     "distances": [],
     "notes": "ウマ娘・サポカから自動抽出",
     "savedAt": "2026-09-22T18:54:52.618Z"
@@ -5137,7 +5157,7 @@
     "id": "skill_1790103292619_otnf7",
     "name": "息抜き上手",
     "effect": "",
-    "category": "",
+    "category": "heal",
     "rarities": [
       "R"
     ],
@@ -5150,12 +5170,14 @@
     "id": "skill_1790103292613_yda8t",
     "name": "束縛",
     "effect": "",
-    "category": "",
+    "category": "debuff",
     "rarities": [
       "R"
     ],
     "styles": [],
-    "distances": [],
+    "distances": [
+      "medium"
+    ],
     "notes": "ウマ娘・サポカから自動抽出",
     "savedAt": "2026-09-22T18:54:52.613Z"
   },
@@ -5163,7 +5185,7 @@
     "id": "skill_1790103292615_a8xb9",
     "name": "足がかり",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "R"
     ],
@@ -5176,7 +5198,7 @@
     "id": "skill_1790103292614_2pqf2",
     "name": "存在感",
     "effect": "",
-    "category": "",
+    "category": "heal",
     "rarities": [
       "R"
     ],
@@ -5202,7 +5224,7 @@
     "id": "skill_1790103292616_fs7sp",
     "name": "対抗意識○",
     "effect": "",
-    "category": "",
+    "category": "green",
     "rarities": [
       "R"
     ],
