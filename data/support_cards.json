@@ -1,105 +1,77 @@
 [
   {
-    "id": "support_1790100756616_f8fqa",
-    "name": "ミスターシービー",
+    "id": "support_1790100842211_cx2g6",
+    "name": "アドマイヤグルーヴ",
     "imagePath": null,
     "types": [
       "speed"
     ],
     "skills": [
       {
-        "name": "直線一気",
+        "name": "秋ウマ娘○",
         "type": "normal"
       },
       {
-        "name": "追込直線○",
+        "name": "中距離直線○",
         "type": "normal"
       },
       {
-        "name": "追込コーナー○",
+        "name": "中距離コーナー○",
         "type": "normal"
       },
       {
-        "name": "早仕掛け",
+        "name": "十万バリキ",
         "type": "normal"
       },
       {
-        "name": "打開策",
+        "name": "恐れぬ心",
         "type": "normal"
       },
       {
-        "name": "型破り",
+        "name": "駆け降り",
         "type": "normal"
       },
       {
-        "name": "ごぼう抜き",
+        "name": "躍動",
         "type": "normal"
       },
       {
-        "name": "渾身の足取り",
+        "name": "足がかり",
         "type": "normal"
       },
       {
-        "name": "影踏み",
+        "name": "静かな熱",
         "type": "normal"
       },
       {
-        "name": "捕捉",
+        "name": "頂を目指して",
         "type": "normal"
       },
       {
-        "name": "追駆",
-        "type": "normal"
-      },
-      {
-        "name": "急降下",
-        "type": "normal"
-      },
-      {
-        "name": "潮目を掴んで",
-        "type": "normal"
-      },
-      {
-        "name": "広がる景色",
-        "type": "normal"
-      },
-      {
-        "name": "私の足取り",
+        "name": "優等生",
         "type": "normal"
       }
     ],
     "eventSkills": [
       {
-        "name": "早仕掛け",
+        "name": "ワンチャンス",
         "type": "normal"
       },
       {
-        "name": "捕捉",
+        "name": "溢れる情熱",
         "type": "normal"
       },
       {
-        "name": "不動の心",
-        "type": "normal"
-      },
-      {
-        "name": "強攻策",
+        "name": "天賦の才",
         "type": "gold"
       },
       {
-        "name": "当機立断",
-        "type": "gold"
-      },
-      {
-        "name": "君臨",
-        "type": "gold"
-      },
-      {
-        "name": "一網打尽",
+        "name": "才色兼備",
         "type": "gold"
       }
     ],
     "notes": "",
-    "savedAt": "2026-09-22T18:12:36.616Z"
+    "savedAt": "2026-09-22T18:14:02.211Z"
   },
   {
     "id": "support_1790100583667_wxipb",
@@ -370,5 +342,107 @@
     ],
     "notes": "",
     "savedAt": "2026-09-15T23:25:37.583Z"
+  },
+  {
+    "id": "support_1790100756616_f8fqa",
+    "name": "ミスターシービー",
+    "imagePath": null,
+    "types": [
+      "speed"
+    ],
+    "skills": [
+      {
+        "name": "直線一気",
+        "type": "normal"
+      },
+      {
+        "name": "追込直線○",
+        "type": "normal"
+      },
+      {
+        "name": "追込コーナー○",
+        "type": "normal"
+      },
+      {
+        "name": "早仕掛け",
+        "type": "normal"
+      },
+      {
+        "name": "打開策",
+        "type": "normal"
+      },
+      {
+        "name": "型破り",
+        "type": "normal"
+      },
+      {
+        "name": "ごぼう抜き",
+        "type": "normal"
+      },
+      {
+        "name": "渾身の足取り",
+        "type": "normal"
+      },
+      {
+        "name": "影踏み",
+        "type": "normal"
+      },
+      {
+        "name": "捕捉",
+        "type": "normal"
+      },
+      {
+        "name": "追駆",
+        "type": "normal"
+      },
+      {
+        "name": "急降下",
+        "type": "normal"
+      },
+      {
+        "name": "潮目を掴んで",
+        "type": "normal"
+      },
+      {
+        "name": "広がる景色",
+        "type": "normal"
+      },
+      {
+        "name": "私の足取り",
+        "type": "normal"
+      }
+    ],
+    "eventSkills": [
+      {
+        "name": "早仕掛け",
+        "type": "normal"
+      },
+      {
+        "name": "捕捉",
+        "type": "normal"
+      },
+      {
+        "name": "不動の心",
+        "type": "normal"
+      },
+      {
+        "name": "強攻策",
+        "type": "gold"
+      },
+      {
+        "name": "当機立断",
+        "type": "gold"
+      },
+      {
+        "name": "君臨",
+        "type": "gold"
+      },
+      {
+        "name": "一網打尽",
+        "type": "gold"
+      }
+    ],
+    "notes": "",
+    "savedAt": "2026-09-22T18:12:36.616Z"
   }
 ]
