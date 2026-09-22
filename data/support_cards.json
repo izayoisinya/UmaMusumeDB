@@ -1,5 +1,71 @@
 [
   {
+    "id": "support_1790100958585_pshhp",
+    "name": "ラインクラフト",
+    "imagePath": null,
+    "types": [
+      "speed"
+    ],
+    "skills": [
+      {
+        "name": "積極策",
+        "type": "normal"
+      },
+      {
+        "name": "マイル直線○",
+        "type": "normal"
+      },
+      {
+        "name": "ギアシフト",
+        "type": "normal"
+      },
+      {
+        "name": "スピードイーター",
+        "type": "normal"
+      },
+      {
+        "name": "地固め",
+        "type": "normal"
+      },
+      {
+        "name": "一足飛び",
+        "type": "normal"
+      },
+      {
+        "name": "心弾んで",
+        "type": "normal"
+      },
+      {
+        "name": "風切り",
+        "type": "normal"
+      },
+      {
+        "name": "素直な一歩",
+        "type": "normal"
+      },
+      {
+        "name": "みなぎる闘志",
+        "type": "normal"
+      }
+    ],
+    "eventSkills": [
+      {
+        "name": "マイルコーナー○",
+        "type": "normal"
+      },
+      {
+        "name": "ギアチェンジ",
+        "type": "gold"
+      },
+      {
+        "name": "ハイボルテージ",
+        "type": "gold"
+      }
+    ],
+    "notes": "",
+    "savedAt": "2026-09-22T18:15:58.585Z"
+  },
+  {
     "id": "support_1790100920203_0fsaz",
     "name": "アーモンドアイ",
     "imagePath": null,
