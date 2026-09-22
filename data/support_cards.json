@@ -1,85 +1,61 @@
 [
   {
-    "id": "support_1790101015582_aj21z",
-    "name": "メイショウドトウ",
+    "id": "support_1790101063063_fmcpe",
+    "name": "シュヴァルグラン",
     "imagePath": null,
     "types": [
       "stamina"
     ],
     "skills": [
       {
-        "name": "コーナー巧者○",
+        "name": "スタミナキープ",
         "type": "normal"
       },
       {
-        "name": "コーナー回復○",
+        "name": "抜け出し準備",
         "type": "normal"
       },
       {
-        "name": "ウマ好み",
+        "name": "内弁慶",
         "type": "normal"
       },
       {
-        "name": "スリップストリーム",
+        "name": "長距離直線○",
         "type": "normal"
       },
       {
-        "name": "影打",
+        "name": "長距離コーナー○",
         "type": "normal"
       },
       {
-        "name": "下り坂巧者",
+        "name": "先行直線○",
         "type": "normal"
       },
       {
-        "name": "イグニッション",
+        "name": "攻めの姿勢",
         "type": "normal"
       },
       {
-        "name": "光明",
-        "type": "normal"
-      },
-      {
-        "name": "活路を拓く！",
-        "type": "normal"
-      },
-      {
-        "name": "息抜き上手",
-        "type": "normal"
-      },
-      {
-        "name": "奮い立つ心",
+        "name": "本領発揮",
         "type": "normal"
       }
     ],
     "eventSkills": [
       {
-        "name": "先行コーナー○",
+        "name": "勝利に向かって",
         "type": "normal"
       },
       {
-        "name": "ウマ好み",
+        "name": "真打",
+        "type": "gold"
+      },
+      {
+        "name": "影打",
         "type": "normal"
-      },
-      {
-        "name": "弧線のプロフェッサー",
-        "type": "gold"
-      },
-      {
-        "name": "パスファインダー",
-        "type": "gold"
-      },
-      {
-        "name": "曙光",
-        "type": "gold"
-      },
-      {
-        "name": "悠々自適",
-        "type": "gold"
       }
     ],
     "notes": "",
-    "savedAt": "2026-09-22T18:16:55.583Z"
+    "savedAt": "2026-09-22T18:17:43.063Z"
   },
   {
     "id": "support_1790100920203_0fsaz",
@@ -600,6 +576,88 @@
     ],
     "notes": "",
     "savedAt": "2026-09-22T18:12:36.616Z"
+  },
+  {
+    "id": "support_1790101015582_aj21z",
+    "name": "メイショウドトウ",
+    "imagePath": null,
+    "types": [
+      "stamina"
+    ],
+    "skills": [
+      {
+        "name": "コーナー巧者○",
+        "type": "normal"
+      },
+      {
+        "name": "コーナー回復○",
+        "type": "normal"
+      },
+      {
+        "name": "ウマ好み",
+        "type": "normal"
+      },
+      {
+        "name": "スリップストリーム",
+        "type": "normal"
+      },
+      {
+        "name": "影打",
+        "type": "normal"
+      },
+      {
+        "name": "下り坂巧者",
+        "type": "normal"
+      },
+      {
+        "name": "イグニッション",
+        "type": "normal"
+      },
+      {
+        "name": "光明",
+        "type": "normal"
+      },
+      {
+        "name": "活路を拓く！",
+        "type": "normal"
+      },
+      {
+        "name": "息抜き上手",
+        "type": "normal"
+      },
+      {
+        "name": "奮い立つ心",
+        "type": "normal"
+      }
+    ],
+    "eventSkills": [
+      {
+        "name": "先行コーナー○",
+        "type": "normal"
+      },
+      {
+        "name": "ウマ好み",
+        "type": "normal"
+      },
+      {
+        "name": "弧線のプロフェッサー",
+        "type": "gold"
+      },
+      {
+        "name": "パスファインダー",
+        "type": "gold"
+      },
+      {
+        "name": "曙光",
+        "type": "gold"
+      },
+      {
+        "name": "悠々自適",
+        "type": "gold"
+      }
+    ],
+    "notes": "",
+    "savedAt": "2026-09-22T18:16:55.583Z"
   },
   {
     "id": "support_1790100958585_pshhp",
