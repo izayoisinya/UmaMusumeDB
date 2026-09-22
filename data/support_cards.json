@@ -1,53 +1,57 @@
 [
   {
-    "id": "support_1790101122262_ppya4",
-    "name": "ホッコータルマエ",
+    "id": "support_1790101211164_qh6kp",
+    "name": "ヒシミラクル",
     "imagePath": null,
     "types": [
       "stamina"
     ],
     "skills": [
       {
-        "name": "前列狙い",
+        "name": "差し切り体勢",
         "type": "normal"
       },
       {
-        "name": "明るい兆し",
+        "name": "深呼吸",
         "type": "normal"
       },
       {
-        "name": "まっしぐら",
+        "name": "スタミナイーター",
         "type": "normal"
       },
       {
-        "name": "意気込み十分",
+        "name": "小休憩",
         "type": "normal"
       },
       {
-        "name": "二段構え",
+        "name": "ロックオン",
         "type": "normal"
       },
       {
-        "name": "砂払い",
+        "name": "大急ぎ",
+        "type": "normal"
+      },
+      {
+        "name": "進出開始",
         "type": "normal"
       }
     ],
     "eventSkills": [
       {
-        "name": "レコメンド",
+        "name": "マイペース",
         "type": "normal"
       },
       {
-        "name": "真っ向勝負",
+        "name": "ロックオン",
         "type": "normal"
       },
       {
-        "name": "コール&レスポンス",
+        "name": "一発必中",
         "type": "gold"
       }
     ],
     "notes": "",
-    "savedAt": "2026-09-22T18:18:42.263Z"
+    "savedAt": "2026-09-22T18:20:11.164Z"
   },
   {
     "id": "support_1790100920203_0fsaz",
@@ -524,6 +528,56 @@
     ],
     "notes": "",
     "savedAt": "2026-09-15T23:25:37.583Z"
+  },
+  {
+    "id": "support_1790101122262_ppya4",
+    "name": "ホッコータルマエ",
+    "imagePath": null,
+    "types": [
+      "stamina"
+    ],
+    "skills": [
+      {
+        "name": "前列狙い",
+        "type": "normal"
+      },
+      {
+        "name": "明るい兆し",
+        "type": "normal"
+      },
+      {
+        "name": "まっしぐら",
+        "type": "normal"
+      },
+      {
+        "name": "意気込み十分",
+        "type": "normal"
+      },
+      {
+        "name": "二段構え",
+        "type": "normal"
+      },
+      {
+        "name": "砂払い",
+        "type": "normal"
+      }
+    ],
+    "eventSkills": [
+      {
+        "name": "レコメンド",
+        "type": "normal"
+      },
+      {
+        "name": "真っ向勝負",
+        "type": "normal"
+      },
+      {
+        "name": "コール&レスポンス",
+        "type": "gold"
+      }
+    ],
+    "notes": "",
+    "savedAt": "2026-09-22T18:18:42.263Z"
   },
   {
     "id": "support_1790100756616_f8fqa",
