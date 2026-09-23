@@ -391,7 +391,7 @@ document.getElementById('resetSearchBtn').addEventListener('click', () => {
 });
 
 // --- 一覧表示 ---
-const CATEGORY_LABELS = { green: '緑スキル', heal: '回復スキル', debuff: 'デバフスキル', speed: '速度スキル', accel: '加速スキル' };
+const CATEGORY_LABELS = { green: '緑スキル', heal: '回復スキル', debuff: 'デバフスキル', speed: '速度スキル', accel: '加速スキル', lateral: '横移動速度スキル', vision: '視野スキル' };
 const STYLE_LABELS = { nige: '逃げ', senko: '先行', sashi: '差し', oikomi: '追込' };
 const DISTANCE_LABELS = { short: '短距離', mile: 'マイル', medium: '中距離', long: '長距離' };
 
