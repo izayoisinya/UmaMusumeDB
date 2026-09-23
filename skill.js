@@ -166,13 +166,13 @@ async function loadOwnershipIndex() {
     umas.forEach(u => {
       (u.skills || []).forEach(s => {
         const skill = normalizeSkillLike(s);
-        addTo(skill.name, 'umas', { name: u.name, type: skill.type });
+        addTo(skill.name, 'umas', { name: u.name, type: skill.type, id: u.id });
       });
     });
     cards.forEach(c => {
       [...(c.skills || []), ...(c.eventSkills || [])].forEach(s => {
         const skill = normalizeSkillLike(s);
-        addTo(skill.name, 'supports', { name: c.name, type: skill.type });
+        addTo(skill.name, 'supports', { name: c.name, type: skill.type, id: c.id });
       });
     });
     ownershipIndex = index;
@@ -257,18 +257,18 @@ function renderCardDetailHtml(card) {
   `;
 }
 
-function openOwnerDetail(kind, name) {
+function openOwnerDetail(kind, name, id) {
   const titleEl = document.getElementById('ownerDetailTitle');
   const bodyEl = document.getElementById('ownerDetailBody');
   let imageUrl = null;
   if (kind === 'uma') {
-    const uma = cachedUmas.find(u => u.name === name);
+    const uma = (id && cachedUmas.find(u => u.id === id)) || cachedUmas.find(u => u.name === name);
     if (!uma) return;
     imageUrl = uma.imagePath ? imageRawUrl(uma.imagePath) : null;
     titleEl.textContent = uma.name;
     bodyEl.innerHTML = renderUmaDetailHtml(uma);
   } else {
-    const card = cachedCards.find(c => c.name === name);
+    const card = (id && cachedCards.find(c => c.id === id)) || cachedCards.find(c => c.name === name);
     if (!card) return;
     imageUrl = card.imagePath ? imageRawUrl(card.imagePath) : null;
     titleEl.textContent = card.name;
@@ -315,7 +315,7 @@ document.getElementById('entries').addEventListener('click', e => {
   if (refLink) { openSkillDetail(refLink.dataset.name); return; }
   const link = e.target.closest('.owner-link');
   if (!link) return;
-  openOwnerDetail(link.dataset.kind, link.dataset.name);
+  openOwnerDetail(link.dataset.kind, link.dataset.name, link.dataset.id);
 });
 
 document.getElementById('extractSkillsBtn').addEventListener('click', async () => {
@@ -626,7 +626,7 @@ function renderSkills() {
     const owned = ownershipIndex.get(skill.name);
     const ownerLink = (u, kind) => {
       const label = `${escapeHtml(u.name)}${u.type && u.type !== 'normal' ? `(${SKILL_TYPE_LABELS[u.type] || u.type})` : ''}`;
-      return `<span class="owner-link" data-kind="${kind}" data-name="${escapeHtml(u.name)}">${label}</span>`;
+      return `<span class="owner-link" data-kind="${kind}" data-id="${escapeHtml(u.id || '')}" data-name="${escapeHtml(u.name)}">${label}</span>`;
     };
     const ownerUmasLine = (owned && owned.umas.length)
       ? `<div class="entry-notes">所持ウマ娘: ${owned.umas.map(u => ownerLink(u, 'uma')).join('、')}</div>`
