@@ -279,16 +279,40 @@ function openOwnerDetail(kind, name) {
   openModal('ownerDetailModal');
 }
 
-function jumpToSkillByName(name) {
-  const input = document.getElementById('searchNameInput');
-  input.value = name;
-  renderSkills();
-  document.getElementById('entries').scrollIntoView({ behavior: 'smooth', block: 'start' });
+function renderSkillDetailHtml(skill) {
+  const categoryBadge = (skill.categories || [])
+    .map(c => `<span class="apt-badge category-badge-${c}">${CATEGORY_LABELS[c] || c}</span>`)
+    .join('');
+  const rarityChips = (skill.rarities || []).map(r => `<span class="apt-badge">${r}</span>`).join('');
+  const styleChips = (skill.styles && skill.styles.length)
+    ? skill.styles.map(s => `<span class="apt-badge">${STYLE_LABELS[s] || s}</span>`).join('')
+    : `<span class="apt-badge">汎用</span>`;
+  const distanceChips = (skill.distances && skill.distances.length)
+    ? skill.distances.map(d => `<span class="apt-badge">${DISTANCE_LABELS[d] || d}</span>`).join('')
+    : `<span class="apt-badge">汎用</span>`;
+  return `
+    <div class="apt-row">${categoryBadge}${rarityChips}${styleChips}${distanceChips}</div>
+    ${skill.effect ? `<div class="entry-notes">${escapeHtml(skill.effect)}</div>` : ''}
+    ${skill.notes ? `<div class="entry-notes">${escapeHtml(skill.notes)}</div>` : ''}
+    ${skill.upperSkill ? `<div class="entry-notes">上位スキル: ${escapeHtml(skill.upperSkill)}</div>` : ''}
+    ${skill.lowerSkill ? `<div class="entry-notes">下位スキル: ${escapeHtml(skill.lowerSkill)}</div>` : ''}
+  `;
+}
+
+function openSkillDetail(name) {
+  const titleEl = document.getElementById('ownerDetailTitle');
+  const bodyEl = document.getElementById('ownerDetailBody');
+  const skill = allSkills.find(s => s.name === name);
+  titleEl.textContent = name;
+  bodyEl.innerHTML = skill
+    ? renderSkillDetailHtml(skill)
+    : `<p class="hint">このスキルはスキルブックに登録されていません。</p>`;
+  openModal('ownerDetailModal');
 }
 
 document.getElementById('entries').addEventListener('click', e => {
   const refLink = e.target.closest('.skill-ref-link');
-  if (refLink) { jumpToSkillByName(refLink.dataset.name); return; }
+  if (refLink) { openSkillDetail(refLink.dataset.name); return; }
   const link = e.target.closest('.owner-link');
   if (!link) return;
   openOwnerDetail(link.dataset.kind, link.dataset.name);

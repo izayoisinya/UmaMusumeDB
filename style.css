@@ -814,6 +814,11 @@ mark.search-hit {
 .apt-badge.category-badge-vision { color: #4e342e; border-color: #8d6e63; background: rgba(141,110,99,0.15); }
 .apt-badge.category-badge-start { color: #bf360c; border-color: #ff7043; background: rgba(255,112,67,0.15); }
 
+:root[data-theme="dark"] .type-checkbox.category-current-speed { border-color: #9fa8da; }
+:root[data-theme="dark"] .type-checkbox.category-vision { border-color: #bcaaa4; }
+:root[data-theme="dark"] .apt-badge.category-badge-current_speed { color: #c5cae9; border-color: #9fa8da; background: rgba(159,168,218,0.25); }
+:root[data-theme="dark"] .apt-badge.category-badge-vision { color: #efebe9; border-color: #bcaaa4; background: rgba(188,170,164,0.25); }
+
 .scroll-fab-group {
   position: fixed;
   right: 16px;
