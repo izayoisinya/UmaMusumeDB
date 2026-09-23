@@ -164,6 +164,78 @@ function setRadioValue(name, value, fallback) {
   if (el) el.checked = true;
 }
 
+// --- 出走ウマ娘の画像アップロード(3人分) ---
+function createTeamImageManager(index) {
+  const dropzone = document.getElementById('teamImageDropzone' + index);
+  const fileInput = document.getElementById('fTeamImage' + index);
+  const preview = document.getElementById('teamImagePreview' + index);
+  const previewWrap = document.getElementById('teamImagePreviewWrap' + index);
+  const hint = document.getElementById('teamImageDropzoneHint' + index);
+  const removeBtn = document.getElementById('removeTeamImageBtn' + index);
+  let pendingDataUrl = null;
+  let currentPath = null;
+  let removeFlag = false;
+
+  function showPreview(src) {
+    preview.src = src;
+    previewWrap.hidden = false;
+    hint.hidden = true;
+    removeBtn.hidden = false;
+  }
+  function hidePreview() {
+    preview.src = '';
+    previewWrap.hidden = true;
+    hint.hidden = false;
+    removeBtn.hidden = true;
+  }
+
+  dropzone.addEventListener('click', () => fileInput.click());
+  fileInput.addEventListener('change', async () => {
+    const file = fileInput.files[0];
+    if (!file) return;
+    try {
+      setStatus('画像を処理しています…');
+      pendingDataUrl = await resizeImageFile(file, 800, 0.8);
+      removeFlag = false;
+      showPreview(pendingDataUrl);
+      setStatus('');
+    } catch (err) {
+      console.error(err);
+      setStatus('画像の処理に失敗しました: ' + err.message, true);
+    }
+  });
+  removeBtn.addEventListener('click', e => {
+    e.stopPropagation();
+    pendingDataUrl = null;
+    fileInput.value = '';
+    if (currentPath) removeFlag = true;
+    hidePreview();
+  });
+
+  return {
+    reset() {
+      pendingDataUrl = null;
+      currentPath = null;
+      removeFlag = false;
+      fileInput.value = '';
+      hidePreview();
+    },
+    setExisting(path) {
+      pendingDataUrl = null;
+      removeFlag = false;
+      currentPath = path || null;
+      if (path) showPreview(imageRawUrl(path)); else hidePreview();
+    },
+    hasPending() { return !!pendingDataUrl; },
+    getPendingDataUrl() { return pendingDataUrl; },
+    shouldRemove() { return removeFlag && !!currentPath; },
+    getCurrentPath() { return currentPath; },
+    setUploadedPath(path) { currentPath = path; },
+  };
+}
+
+const teamImageManagers = [1, 2, 3].map(createTeamImageManager);
+
 // --- フォーム操作 ---
 function setPvpModalMode(isEditing) {
   editingEventId = isEditing;
@@ -181,6 +253,7 @@ function resetForm() {
     ['First', 'Second', 'Third', 'Other', 'Races'].forEach(key => {
       document.getElementById('fTeam' + key + i).value = 0;
     });
+    teamImageManagers[i - 1].reset();
   });
   setStatus('');
   setPvpModalMode(null);
@@ -212,6 +285,8 @@ function fillForm(ev) {
     const member = team[i - 1] || {};
     document.getElementById('fTeamName' + i).value = member.name || '';
     document.getElementById('fTeamWinRate' + i).value = member.winRate != null ? member.winRate : '';
+    document.getElementById('fTeamPlaceRate' + i).value = member.placeRate != null ? member.placeRate : '';
+    document.getElementById('fTeamShowRate' + i).value = member.showRate != null ? member.showRate : '';
     document.getElementById('fTeamPoints' + i).value = member.points != null ? member.points : '';
     const results = member.results || {};
     document.getElementById('fTeamFirst' + i).value = results.first || 0;
@@ -219,6 +294,7 @@ function fillForm(ev) {
     document.getElementById('fTeamThird' + i).value = results.third || 0;
     document.getElementById('fTeamOther' + i).value = results.other || 0;
     document.getElementById('fTeamRaces' + i).value = results.races || 0;
+    teamImageManagers[i - 1].setExisting(member.imagePath);
   });
 
   const champions = ev.champions || {};
@@ -249,11 +325,17 @@ function readTeamFromForm() {
   return [1, 2, 3].map(i => {
     const name = document.getElementById('fTeamName' + i).value.trim();
     const winRateRaw = document.getElementById('fTeamWinRate' + i).value;
+    const placeRateRaw = document.getElementById('fTeamPlaceRate' + i).value;
+    const showRateRaw = document.getElementById('fTeamShowRate' + i).value;
     const pointsRaw = document.getElementById('fTeamPoints' + i).value;
+    const manager = teamImageManagers[i - 1];
     return {
       name,
       winRate: winRateRaw === '' ? null : Number(winRateRaw),
+      placeRate: placeRateRaw === '' ? null : Number(placeRateRaw),
+      showRate: showRateRaw === '' ? null : Number(showRateRaw),
       points: pointsRaw === '' ? null : Number(pointsRaw),
+      imagePath: manager.shouldRemove() ? null : (manager.getCurrentPath() || null),
       results: includeResults ? {
         first: Number(document.getElementById('fTeamFirst' + i).value) || 0,
         second: Number(document.getElementById('fTeamSecond' + i).value) || 0,
@@ -262,7 +344,7 @@ function readTeamFromForm() {
         races: Number(document.getElementById('fTeamRaces' + i).value) || 0,
       } : null,
     };
-  }).filter(member => member.name);
+  });
 }
 
 // --- 保存 ---
@@ -292,7 +374,7 @@ document.getElementById('pvpForm').addEventListener('submit', async e => {
       weather: getRadioValue('fWeather', '晴'),
       going: getRadioValue('fGoing', '良'),
     },
-    team: readTeamFromForm(),
+    team: [],
     champions: eventType === 'champions' ? {
       tier: getRadioValue('fTier', 'grade'),
       reachedFinal: isFinalReached(),
@@ -316,6 +398,22 @@ document.getElementById('pvpForm').addEventListener('submit', async e => {
   const saveBtn = document.getElementById('savePvpBtn');
   saveBtn.disabled = true;
   try {
+    for (let i = 1; i <= 3; i++) {
+      const manager = teamImageManagers[i - 1];
+      const name = document.getElementById('fTeamName' + i).value.trim();
+      if (manager.hasPending()) {
+        setStatus('画像をアップロードしています…');
+        const imagePath = `images/${eventId}_uma${i}.jpg`;
+        await uploadImageToGitHub(imagePath, manager.getPendingDataUrl(), `対人イベント出走ウマ娘画像アップロード: ${name || eventId}`);
+        manager.setUploadedPath(imagePath);
+      } else if (manager.shouldRemove()) {
+        setStatus('画像を削除しています…');
+        await deleteImageFromGitHub(manager.getCurrentPath(), `対人イベント出走ウマ娘画像削除: ${name || eventId}`);
+        manager.setUploadedPath(null);
+      }
+    }
+    ev.team = readTeamFromForm().filter(member => member.name);
+    setStatus(isEditing ? '更新しています…' : '保存しています…');
     await saveEventsToGitHub(updated, `${isEditing ? '対人イベント記録編集' : '対人イベント記録追加'}: ${month}`);
     allEvents = sortEvents(updated);
     renderEvents();
@@ -454,27 +552,32 @@ function renderEvents() {
         rc.going,
       ].filter(Boolean).join(' ／ ');
 
-      const teamChips = (ev.team || []).map(member => {
-        const parts = [];
-        if (member.winRate != null) parts.push(`勝率${member.winRate}%`);
-        if (isLoh && member.points != null) parts.push(`${member.points}pt`);
-        const suffix = parts.length ? `（${parts.join(' / ')}）` : '';
-        return `<span class="chip white">${escapeHtml(member.name)}${suffix}</span>`;
+      const teamCards = (ev.team || []).map(member => {
+        const imageUrl = member.imagePath ? imageRawUrl(member.imagePath) : null;
+        const rateParts = [];
+        if (member.winRate != null) rateParts.push(`勝率${member.winRate}%`);
+        if (member.placeRate != null) rateParts.push(`連対${member.placeRate}%`);
+        if (member.showRate != null) rateParts.push(`複勝${member.showRate}%`);
+        if (isLoh && member.points != null) rateParts.push(`${member.points}pt`);
+        const r = showResults ? member.results : null;
+        const resultLine = r
+          ? `<div class="entry-notes">1着${r.first || 0} 2着${r.second || 0} 3着${r.third || 0} 圏外${r.other || 0}（${r.races || 0}戦）</div>`
+          : '';
+        return `
+          <div class="pvp-team-member">
+            ${imageUrl ? `<img class="pvp-team-thumb team-img" src="${escapeHtml(imageUrl)}" alt="${escapeHtml(member.name)}" loading="lazy">` : ''}
+            <div class="entry-name">${escapeHtml(member.name)}</div>
+            ${rateParts.length ? `<div class="entry-notes">${rateParts.join(' / ')}</div>` : ''}
+            ${resultLine}
+          </div>
+        `;
       }).join('');
-
-      const resultLines = showResults
-        ? (ev.team || []).filter(m => m.results).map(m => {
-            const r = m.results;
-            return `<div class="entry-notes">${escapeHtml(m.name)}: 1着${r.first || 0} 2着${r.second || 0} 3着${r.third || 0} 圏外${r.other || 0}（${r.races || 0}戦）</div>`;
-          }).join('')
-        : '';
 
       row.innerHTML = `
         <div class="entry-main">
           ${raceConditionLabel ? `<div class="entry-name-row"><div class="entry-name">${escapeHtml(raceConditionLabel)}</div></div>` : ''}
           <div class="apt-row">${badges}</div>
-          ${teamChips ? `<div class="chips">${teamChips}</div>` : ''}
-          ${resultLines}
+          ${teamCards ? `<div class="pvp-team-grid">${teamCards}</div>` : ''}
           ${ev.notes ? `<div class="entry-notes">${escapeHtml(ev.notes)}</div>` : ''}
         </div>
         <div class="entry-side">
@@ -486,6 +589,9 @@ function renderEvents() {
       `;
       row.querySelector('.entry-edit').addEventListener('click', () => startEditEvent(ev.id));
       row.querySelector('.entry-del').addEventListener('click', e => askDeleteConfirm(ev, e.currentTarget));
+      row.querySelectorAll('.team-img').forEach(img => {
+        img.addEventListener('click', () => openLightbox(img.src));
+      });
       list.appendChild(row);
     });
     section.appendChild(list);

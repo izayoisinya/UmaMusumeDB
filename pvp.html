@@ -138,54 +138,86 @@
 
       <div>
         <label>出走ウマ娘（3人）</label>
-        <div class="team-slot">
-          <input type="text" id="fTeamName1" placeholder="1人目のウマ娘名">
-          <div class="growth-input-row">
-            <div><span>勝率(%)</span><input type="number" id="fTeamWinRate1" step="0.1" placeholder="例: 34.6"></div>
-            <div class="loh-only"><span>獲得pt</span><input type="number" id="fTeamPoints1" placeholder="例: 1200"></div>
-          </div>
-          <div class="champions-final-only">
-            <label>戦績</label>
+        <div class="team-slots-grid">
+          <div class="team-slot">
+            <div class="dropzone" id="teamImageDropzone1">
+              <div id="teamImagePreviewWrap1" hidden><img id="teamImagePreview1" alt=""></div>
+              <div id="teamImageDropzoneHint1">タップして画像を選択</div>
+              <input type="file" id="fTeamImage1" accept="image/*">
+            </div>
+            <button type="button" class="btn secondary" id="removeTeamImageBtn1" hidden>画像を削除</button>
+            <input type="text" id="fTeamName1" placeholder="1人目のウマ娘名">
             <div class="growth-input-row">
-              <div><span>1着</span><input type="number" id="fTeamFirst1" value="0" min="0"></div>
-              <div><span>2着</span><input type="number" id="fTeamSecond1" value="0" min="0"></div>
-              <div><span>3着</span><input type="number" id="fTeamThird1" value="0" min="0"></div>
-              <div><span>圏外</span><input type="number" id="fTeamOther1" value="0" min="0"></div>
-              <div><span>出走回数</span><input type="number" id="fTeamRaces1" value="0" min="0"></div>
+              <div><span>勝率(%)</span><input type="number" id="fTeamWinRate1" step="0.1" placeholder="例: 34.6"></div>
+              <div><span>連対率(%)</span><input type="number" id="fTeamPlaceRate1" step="0.1" placeholder="例: 61.7"></div>
+              <div><span>複勝率(%)</span><input type="number" id="fTeamShowRate1" step="0.1" placeholder="例: 84"></div>
+            </div>
+            <div class="growth-input-row loh-only">
+              <div><span>獲得pt</span><input type="number" id="fTeamPoints1" placeholder="例: 1200"></div>
+            </div>
+            <div class="champions-final-only">
+              <label>戦績</label>
+              <div class="growth-input-row">
+                <div><span>1着</span><input type="number" id="fTeamFirst1" value="0" min="0"></div>
+                <div><span>2着</span><input type="number" id="fTeamSecond1" value="0" min="0"></div>
+                <div><span>3着</span><input type="number" id="fTeamThird1" value="0" min="0"></div>
+                <div><span>圏外</span><input type="number" id="fTeamOther1" value="0" min="0"></div>
+                <div><span>出走回数</span><input type="number" id="fTeamRaces1" value="0" min="0"></div>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="team-slot">
-          <input type="text" id="fTeamName2" placeholder="2人目のウマ娘名">
-          <div class="growth-input-row">
-            <div><span>勝率(%)</span><input type="number" id="fTeamWinRate2" step="0.1" placeholder="例: 33.3"></div>
-            <div class="loh-only"><span>獲得pt</span><input type="number" id="fTeamPoints2" placeholder="例: 1100"></div>
-          </div>
-          <div class="champions-final-only">
-            <label>戦績</label>
+          <div class="team-slot">
+            <div class="dropzone" id="teamImageDropzone2">
+              <div id="teamImagePreviewWrap2" hidden><img id="teamImagePreview2" alt=""></div>
+              <div id="teamImageDropzoneHint2">タップして画像を選択</div>
+              <input type="file" id="fTeamImage2" accept="image/*">
+            </div>
+            <button type="button" class="btn secondary" id="removeTeamImageBtn2" hidden>画像を削除</button>
+            <input type="text" id="fTeamName2" placeholder="2人目のウマ娘名">
             <div class="growth-input-row">
-              <div><span>1着</span><input type="number" id="fTeamFirst2" value="0" min="0"></div>
-              <div><span>2着</span><input type="number" id="fTeamSecond2" value="0" min="0"></div>
-              <div><span>3着</span><input type="number" id="fTeamThird2" value="0" min="0"></div>
-              <div><span>圏外</span><input type="number" id="fTeamOther2" value="0" min="0"></div>
-              <div><span>出走回数</span><input type="number" id="fTeamRaces2" value="0" min="0"></div>
+              <div><span>勝率(%)</span><input type="number" id="fTeamWinRate2" step="0.1" placeholder="例: 33.3"></div>
+              <div><span>連対率(%)</span><input type="number" id="fTeamPlaceRate2" step="0.1" placeholder="例: 60.5"></div>
+              <div><span>複勝率(%)</span><input type="number" id="fTeamShowRate2" step="0.1" placeholder="例: 79"></div>
+            </div>
+            <div class="growth-input-row loh-only">
+              <div><span>獲得pt</span><input type="number" id="fTeamPoints2" placeholder="例: 1100"></div>
+            </div>
+            <div class="champions-final-only">
+              <label>戦績</label>
+              <div class="growth-input-row">
+                <div><span>1着</span><input type="number" id="fTeamFirst2" value="0" min="0"></div>
+                <div><span>2着</span><input type="number" id="fTeamSecond2" value="0" min="0"></div>
+                <div><span>3着</span><input type="number" id="fTeamThird2" value="0" min="0"></div>
+                <div><span>圏外</span><input type="number" id="fTeamOther2" value="0" min="0"></div>
+                <div><span>出走回数</span><input type="number" id="fTeamRaces2" value="0" min="0"></div>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="team-slot">
-          <input type="text" id="fTeamName3" placeholder="3人目のウマ娘名">
-          <div class="growth-input-row">
-            <div><span>勝率(%)</span><input type="number" id="fTeamWinRate3" step="0.1" placeholder="例: 1.2"></div>
-            <div class="loh-only"><span>獲得pt</span><input type="number" id="fTeamPoints3" placeholder="例: 900"></div>
-          </div>
-          <div class="champions-final-only">
-            <label>戦績</label>
+          <div class="team-slot">
+            <div class="dropzone" id="teamImageDropzone3">
+              <div id="teamImagePreviewWrap3" hidden><img id="teamImagePreview3" alt=""></div>
+              <div id="teamImageDropzoneHint3">タップして画像を選択</div>
+              <input type="file" id="fTeamImage3" accept="image/*">
+            </div>
+            <button type="button" class="btn secondary" id="removeTeamImageBtn3" hidden>画像を削除</button>
+            <input type="text" id="fTeamName3" placeholder="3人目のウマ娘名">
             <div class="growth-input-row">
-              <div><span>1着</span><input type="number" id="fTeamFirst3" value="0" min="0"></div>
-              <div><span>2着</span><input type="number" id="fTeamSecond3" value="0" min="0"></div>
-              <div><span>3着</span><input type="number" id="fTeamThird3" value="0" min="0"></div>
-              <div><span>圏外</span><input type="number" id="fTeamOther3" value="0" min="0"></div>
-              <div><span>出走回数</span><input type="number" id="fTeamRaces3" value="0" min="0"></div>
+              <div><span>勝率(%)</span><input type="number" id="fTeamWinRate3" step="0.1" placeholder="例: 1.2"></div>
+              <div><span>連対率(%)</span><input type="number" id="fTeamPlaceRate3" step="0.1" placeholder="例: 13.6"></div>
+              <div><span>複勝率(%)</span><input type="number" id="fTeamShowRate3" step="0.1" placeholder="例: 21"></div>
+            </div>
+            <div class="growth-input-row loh-only">
+              <div><span>獲得pt</span><input type="number" id="fTeamPoints3" placeholder="例: 900"></div>
+            </div>
+            <div class="champions-final-only">
+              <label>戦績</label>
+              <div class="growth-input-row">
+                <div><span>1着</span><input type="number" id="fTeamFirst3" value="0" min="0"></div>
+                <div><span>2着</span><input type="number" id="fTeamSecond3" value="0" min="0"></div>
+                <div><span>3着</span><input type="number" id="fTeamThird3" value="0" min="0"></div>
+                <div><span>圏外</span><input type="number" id="fTeamOther3" value="0" min="0"></div>
+                <div><span>出走回数</span><input type="number" id="fTeamRaces3" value="0" min="0"></div>
+              </div>
             </div>
           </div>
         </div>

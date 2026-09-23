@@ -335,6 +335,7 @@ input[type=text]:focus, input[type=number]:focus, input[type=month]:focus, texta
   gap: 8px;
   flex-wrap: wrap;
 }
+.growth-input-row[hidden] { display: none; }
 .growth-input-row > div { flex: 1; min-width: 70px; }
 .growth-input-row span {
   display: block;
@@ -813,14 +814,51 @@ mark.search-hit {
   background: rgba(102,187,106,0.15);
   color: var(--green-dim);
 }
+.team-slots-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+@media (max-width: 520px) {
+  .team-slots-grid { grid-template-columns: 1fr; }
+}
 .team-slot {
   border: 1.5px dashed var(--panel-line);
   border-radius: 10px;
   padding: 10px;
-  margin-bottom: 8px;
 }
+.team-slot .dropzone { padding: 14px 8px; font-size: 12px; margin-bottom: 8px; }
+.team-slot .dropzone img { max-height: 100px; }
+.team-slot input[type=text] { margin-bottom: 8px; }
 .team-slot .growth-input-row { margin-top: 8px; }
 .champions-final-only { margin-top: 8px; }
+
+.pvp-team-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-top: 8px;
+}
+@media (max-width: 520px) {
+  .pvp-team-grid { grid-template-columns: 1fr; }
+}
+.pvp-team-member {
+  border: 1.5px solid var(--panel-line);
+  border-radius: 10px;
+  padding: 8px;
+  text-align: center;
+}
+.pvp-team-thumb {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 6px;
+  cursor: zoom-in;
+  display: block;
+}
+.pvp-team-member .entry-name { font-size: 13px; }
+.pvp-team-member .entry-notes { margin-top: 4px; text-align: left; }
 .event-section {
   border: 1.5px solid var(--panel-line);
   border-radius: 12px;
@@ -947,8 +985,7 @@ mark.search-hit {
 @media (orientation: landscape) {
   .uma-page .entries,
   .support-page .entries,
-  .skill-page .entries,
-  .pvp-page .entries {
+  .skill-page .entries {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 10px;
