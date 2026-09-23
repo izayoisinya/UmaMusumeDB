@@ -63,24 +63,83 @@
         <input type="month" id="fMonth">
       </div>
 
-      <div class="growth-input-row">
-        <div><span>順位</span><input type="text" id="fRank" placeholder="例: 1200"></div>
-        <div><span>獲得ポイント</span><input type="number" id="fPoints" placeholder="例: 8500"></div>
-      </div>
-
       <div>
-        <label for="teamTagInput">使用した編成</label>
-        <div class="tag-input" id="teamTagBox">
-          <input type="text" id="teamTagInput" placeholder="ウマ娘名を入力してスペースで確定">
+        <label>イベント種別</label>
+        <div class="radio-pill-row" id="eventTypeRow">
+          <label class="radio-pill"><input type="radio" name="fEventType" value="champions" checked>チャンピオンズミーティング</label>
+          <label class="radio-pill"><input type="radio" name="fEventType" value="loh">リーグオブヒーローズ</label>
         </div>
       </div>
 
       <div>
-        <label>勝敗数</label>
+        <label>出走ウマ娘（3人）</label>
+        <div class="team-slot">
+          <input type="text" id="fTeamName1" placeholder="1人目のウマ娘名">
+          <div class="growth-input-row">
+            <div><span>勝率(%)</span><input type="number" id="fTeamWinRate1" step="0.1" placeholder="例: 34.6"></div>
+            <div class="loh-only"><span>獲得pt</span><input type="number" id="fTeamPoints1" placeholder="例: 1200"></div>
+          </div>
+        </div>
+        <div class="team-slot">
+          <input type="text" id="fTeamName2" placeholder="2人目のウマ娘名">
+          <div class="growth-input-row">
+            <div><span>勝率(%)</span><input type="number" id="fTeamWinRate2" step="0.1" placeholder="例: 33.3"></div>
+            <div class="loh-only"><span>獲得pt</span><input type="number" id="fTeamPoints2" placeholder="例: 1100"></div>
+          </div>
+        </div>
+        <div class="team-slot">
+          <input type="text" id="fTeamName3" placeholder="3人目のウマ娘名">
+          <div class="growth-input-row">
+            <div><span>勝率(%)</span><input type="number" id="fTeamWinRate3" step="0.1" placeholder="例: 1.2"></div>
+            <div class="loh-only"><span>獲得pt</span><input type="number" id="fTeamPoints3" placeholder="例: 900"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="event-section" id="championsSection">
+        <div>
+          <label>グレード / オープン</label>
+          <div class="radio-pill-row">
+            <label class="radio-pill"><input type="radio" name="fTier" value="grade" checked>グレード</label>
+            <label class="radio-pill"><input type="radio" name="fTier" value="open">オープン</label>
+          </div>
+        </div>
+        <div>
+          <label>決勝進出</label>
+          <div class="radio-pill-row" id="finalStatusRow">
+            <label class="radio-pill"><input type="radio" name="fFinalStatus" value="reached" checked>進出</label>
+            <label class="radio-pill"><input type="radio" name="fFinalStatus" value="not">未進出</label>
+          </div>
+        </div>
+        <div id="finalDetailSection">
+          <div>
+            <label>決勝ラウンド</label>
+            <div class="radio-pill-row">
+              <label class="radio-pill"><input type="radio" name="fFinalRound" value="A" checked>Aラウンド</label>
+              <label class="radio-pill"><input type="radio" name="fFinalRound" value="B">Bラウンド</label>
+            </div>
+          </div>
+          <div>
+            <label>決勝での戦績</label>
+            <div class="growth-input-row">
+              <div><span>1着</span><input type="number" id="fFinalFirst" value="0" min="0"></div>
+              <div><span>2着</span><input type="number" id="fFinalSecond" value="0" min="0"></div>
+              <div><span>3着</span><input type="number" id="fFinalThird" value="0" min="0"></div>
+              <div><span>圏外</span><input type="number" id="fFinalOther" value="0" min="0"></div>
+              <div><span>出走回数</span><input type="number" id="fFinalRaces" value="0" min="0"></div>
+            </div>
+          </div>
+          <div>
+            <label for="fFinalRank">決勝順位</label>
+            <input type="number" id="fFinalRank" min="1" placeholder="例: 12">
+          </div>
+        </div>
+      </div>
+
+      <div class="event-section" id="lohSection" hidden>
         <div class="growth-input-row">
-          <div><span>勝ち</span><input type="number" id="fWins" value="0" min="0"></div>
-          <div><span>負け</span><input type="number" id="fLosses" value="0" min="0"></div>
-          <div><span>引き分け</span><input type="number" id="fDraws" value="0" min="0"></div>
+          <div><span>合計ポイント</span><input type="number" id="fLohTotalPoints" placeholder="例: 5400"></div>
+          <div><span>総合順位</span><input type="number" id="fLohRank" min="1" placeholder="例: 320"></div>
         </div>
       </div>
 

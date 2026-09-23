@@ -120,52 +120,46 @@ function onGithubConfigChanged() {
   return loadEvents();
 }
 
-// --- 使用した編成のタグ入力 ---
-function createTeamTagManager(boxId, inputId) {
-  const tags = [];
-  function render() {
-    const box = document.getElementById(boxId);
-    box.querySelectorAll('.tag-chip').forEach(el => el.remove());
-    const input = box.querySelector('input');
-    tags.forEach((name, i) => {
-      const chip = document.createElement('span');
-      chip.className = 'tag-chip';
-      chip.innerHTML = `${escapeHtml(name)}<button type="button" class="tag-remove" aria-label="削除">×</button>`;
-      chip.querySelector('.tag-remove').addEventListener('click', () => {
-        tags.splice(i, 1);
-        render();
-      });
-      box.insertBefore(chip, input);
-    });
-  }
-  const input = document.getElementById(inputId);
-  const commit = () => {
-    const val = input.value.trim();
-    if (val) {
-      tags.push(val);
-      input.value = '';
-      render();
-    }
-  };
-  input.addEventListener('keydown', e => {
-    if (e.key === ' ' || e.key === 'Enter' || e.key === ',' || e.key === '、') {
-      e.preventDefault();
-      commit();
-    } else if (e.key === 'Backspace' && !input.value && tags.length) {
-      tags.pop();
-      render();
-    }
-  });
-  input.addEventListener('blur', () => { if (input.value.trim()) commit(); });
-  return {
-    render,
-    reset() { tags.length = 0; render(); },
-    set(list) { tags.length = 0; (list || []).forEach(name => tags.push(name)); render(); },
-    get() { return tags.slice(); },
-  };
+// --- イベント種別に応じたフォーム項目の出し分け ---
+function getEventType() {
+  const el = document.querySelector('input[name="fEventType"]:checked');
+  return el ? el.value : 'champions';
 }
+function setEventType(type) {
+  const el = document.querySelector(`input[name="fEventType"][value="${type === 'loh' ? 'loh' : 'champions'}"]`);
+  if (el) el.checked = true;
+  updateEventSectionVisibility();
+}
+function updateEventSectionVisibility() {
+  const isLoh = getEventType() === 'loh';
+  document.getElementById('championsSection').hidden = isLoh;
+  document.getElementById('lohSection').hidden = !isLoh;
+  document.querySelectorAll('.loh-only').forEach(el => { el.hidden = !isLoh; });
+}
+document.querySelectorAll('input[name="fEventType"]').forEach(el => el.addEventListener('change', updateEventSectionVisibility));
 
-const teamManager = createTeamTagManager('teamTagBox', 'teamTagInput');
+function isFinalReached() {
+  const el = document.querySelector('input[name="fFinalStatus"]:checked');
+  return el ? el.value === 'reached' : true;
+}
+function setFinalReached(reached) {
+  const el = document.querySelector(`input[name="fFinalStatus"][value="${reached ? 'reached' : 'not'}"]`);
+  if (el) el.checked = true;
+  updateFinalDetailVisibility();
+}
+function updateFinalDetailVisibility() {
+  document.getElementById('finalDetailSection').hidden = !isFinalReached();
+}
+document.querySelectorAll('input[name="fFinalStatus"]').forEach(el => el.addEventListener('change', updateFinalDetailVisibility));
+
+function getRadioValue(name, fallback) {
+  const el = document.querySelector(`input[name="${name}"]:checked`);
+  return el ? el.value : fallback;
+}
+function setRadioValue(name, value, fallback) {
+  const el = document.querySelector(`input[name="${name}"][value="${value || fallback}"]`);
+  if (el) el.checked = true;
+}
 
 // --- フォーム操作 ---
 function setPvpModalMode(isEditing) {
@@ -176,10 +170,13 @@ function setPvpModalMode(isEditing) {
 
 function resetForm() {
   document.getElementById('pvpForm').reset();
-  teamManager.reset();
-  document.getElementById('fWins').value = 0;
-  document.getElementById('fLosses').value = 0;
-  document.getElementById('fDraws').value = 0;
+  setEventType('champions');
+  setFinalReached(true);
+  setRadioValue('fTier', 'grade', 'grade');
+  setRadioValue('fFinalRound', 'A', 'A');
+  ['fFinalFirst', 'fFinalSecond', 'fFinalThird', 'fFinalOther', 'fFinalRaces'].forEach(id => {
+    document.getElementById(id).value = 0;
+  });
   setStatus('');
   setPvpModalMode(null);
 }
@@ -194,12 +191,32 @@ document.getElementById('clearBtn').addEventListener('click', resetForm);
 
 function fillForm(ev) {
   document.getElementById('fMonth').value = ev.month || '';
-  document.getElementById('fRank').value = ev.rank || '';
-  document.getElementById('fPoints').value = ev.points != null ? ev.points : '';
-  teamManager.set(ev.team);
-  document.getElementById('fWins').value = ev.wins || 0;
-  document.getElementById('fLosses').value = ev.losses || 0;
-  document.getElementById('fDraws').value = ev.draws || 0;
+  setEventType(ev.eventType);
+
+  const team = ev.team || [];
+  [1, 2, 3].forEach(i => {
+    const member = team[i - 1] || {};
+    document.getElementById('fTeamName' + i).value = member.name || '';
+    document.getElementById('fTeamWinRate' + i).value = member.winRate != null ? member.winRate : '';
+    document.getElementById('fTeamPoints' + i).value = member.points != null ? member.points : '';
+  });
+
+  const champions = ev.champions || {};
+  setRadioValue('fTier', champions.tier, 'grade');
+  setFinalReached(champions.reachedFinal !== false);
+  setRadioValue('fFinalRound', champions.finalRound, 'A');
+  const results = champions.results || {};
+  document.getElementById('fFinalFirst').value = results.first || 0;
+  document.getElementById('fFinalSecond').value = results.second || 0;
+  document.getElementById('fFinalThird').value = results.third || 0;
+  document.getElementById('fFinalOther').value = results.other || 0;
+  document.getElementById('fFinalRaces').value = results.races || 0;
+  document.getElementById('fFinalRank').value = champions.rank != null ? champions.rank : '';
+
+  const loh = ev.loh || {};
+  document.getElementById('fLohTotalPoints').value = loh.totalPoints != null ? loh.totalPoints : '';
+  document.getElementById('fLohRank').value = loh.overallRank != null ? loh.overallRank : '';
+
   document.getElementById('fNotes').value = ev.notes || '';
 }
 
@@ -212,6 +229,19 @@ function startEditEvent(id) {
   openModal('pvpModal');
 }
 
+function readTeamFromForm() {
+  return [1, 2, 3].map(i => {
+    const name = document.getElementById('fTeamName' + i).value.trim();
+    const winRateRaw = document.getElementById('fTeamWinRate' + i).value;
+    const pointsRaw = document.getElementById('fTeamPoints' + i).value;
+    return {
+      name,
+      winRate: winRateRaw === '' ? null : Number(winRateRaw),
+      points: pointsRaw === '' ? null : Number(pointsRaw),
+    };
+  }).filter(member => member.name);
+}
+
 // --- 保存 ---
 document.getElementById('pvpForm').addEventListener('submit', async e => {
   e.preventDefault();
@@ -220,16 +250,33 @@ document.getElementById('pvpForm').addEventListener('submit', async e => {
   if (!month) { setStatus('開催月を入力してください。', true); return; }
 
   const eventId = editingEventId || ('pvp_' + Date.now() + '_' + Math.random().toString(36).slice(2, 7));
-  const pointsRaw = document.getElementById('fPoints').value;
+  const eventType = getEventType();
+  const finalRankRaw = document.getElementById('fFinalRank').value;
+  const lohTotalRaw = document.getElementById('fLohTotalPoints').value;
+  const lohRankRaw = document.getElementById('fLohRank').value;
+
   const ev = {
     id: eventId,
     month,
-    rank: document.getElementById('fRank').value.trim(),
-    points: pointsRaw === '' ? null : Number(pointsRaw),
-    team: teamManager.get(),
-    wins: Number(document.getElementById('fWins').value) || 0,
-    losses: Number(document.getElementById('fLosses').value) || 0,
-    draws: Number(document.getElementById('fDraws').value) || 0,
+    eventType,
+    team: readTeamFromForm(),
+    champions: eventType === 'champions' ? {
+      tier: getRadioValue('fTier', 'grade'),
+      reachedFinal: isFinalReached(),
+      finalRound: isFinalReached() ? getRadioValue('fFinalRound', 'A') : null,
+      results: isFinalReached() ? {
+        first: Number(document.getElementById('fFinalFirst').value) || 0,
+        second: Number(document.getElementById('fFinalSecond').value) || 0,
+        third: Number(document.getElementById('fFinalThird').value) || 0,
+        other: Number(document.getElementById('fFinalOther').value) || 0,
+        races: Number(document.getElementById('fFinalRaces').value) || 0,
+      } : null,
+      rank: (isFinalReached() && finalRankRaw !== '') ? Number(finalRankRaw) : null,
+    } : null,
+    loh: eventType === 'loh' ? {
+      totalPoints: lohTotalRaw === '' ? null : Number(lohTotalRaw),
+      overallRank: lohRankRaw === '' ? null : Number(lohRankRaw),
+    } : null,
     notes: document.getElementById('fNotes').value.trim(),
     savedAt: new Date().toISOString(),
   };
@@ -347,17 +394,41 @@ function renderEvents() {
     group.events.forEach(ev => {
       const row = document.createElement('div');
       row.className = 'entry';
-      const rankLabel = ev.rank ? `順位: ${escapeHtml(ev.rank)}` : '';
-      const pointsLabel = (ev.points != null) ? `${ev.points.toLocaleString('ja-JP')} pt` : '';
-      const headLine = [rankLabel, pointsLabel].filter(Boolean).join(' ／ ') || '記録';
-      const teamChips = (ev.team || []).map(name => `<span class="chip white">${escapeHtml(name)}</span>`).join('');
+      const isLoh = ev.eventType === 'loh';
+      const eventTypeLabel = isLoh ? 'リーグオブヒーローズ' : 'チャンピオンズミーティング';
+
+      let badges = `<span class="apt-badge">${eventTypeLabel}</span>`;
+      let statLine = '';
+      if (isLoh) {
+        const loh = ev.loh || {};
+        if (loh.totalPoints != null) badges += `<span class="apt-badge">合計 ${loh.totalPoints.toLocaleString('ja-JP')}pt</span>`;
+        if (loh.overallRank != null) badges += `<span class="apt-badge">総合${loh.overallRank}位</span>`;
+      } else {
+        const champions = ev.champions || {};
+        badges += `<span class="apt-badge">${champions.tier === 'open' ? 'オープン' : 'グレード'}</span>`;
+        if (champions.reachedFinal === false) {
+          badges += `<span class="apt-badge">決勝未進出</span>`;
+        } else {
+          badges += `<span class="apt-badge">決勝${champions.finalRound || '?'}ラウンド</span>`;
+          if (champions.rank != null) badges += `<span class="apt-badge">決勝${champions.rank}位</span>`;
+          const r = champions.results || {};
+          statLine = `<div class="entry-notes">決勝成績: 1着${r.first || 0} 2着${r.second || 0} 3着${r.third || 0} 圏外${r.other || 0}（${r.races || 0}戦）</div>`;
+        }
+      }
+
+      const teamChips = (ev.team || []).map(member => {
+        const parts = [];
+        if (member.winRate != null) parts.push(`勝率${member.winRate}%`);
+        if (isLoh && member.points != null) parts.push(`${member.points}pt`);
+        const suffix = parts.length ? `（${parts.join(' / ')}）` : '';
+        return `<span class="chip white">${escapeHtml(member.name)}${suffix}</span>`;
+      }).join('');
+
       row.innerHTML = `
         <div class="entry-main">
-          <div class="entry-name-row">
-            <div class="entry-name">${headLine}</div>
-          </div>
+          <div class="apt-row">${badges}</div>
           ${teamChips ? `<div class="chips">${teamChips}</div>` : ''}
-          <div class="entry-notes">勝敗: ${ev.wins || 0}勝${ev.losses || 0}敗${ev.draws || 0}分</div>
+          ${statLine}
           ${ev.notes ? `<div class="entry-notes">${escapeHtml(ev.notes)}</div>` : ''}
         </div>
         <div class="entry-side">
