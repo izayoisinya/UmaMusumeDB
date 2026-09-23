@@ -4761,7 +4761,9 @@
     "id": "skill_1790103292616_wmrj8",
     "name": "掌握",
     "effect": "",
-    "categories": [],
+    "categories": [
+      "current_speed"
+    ],
     "rarities": [
       "SR"
     ],
@@ -5657,7 +5659,9 @@
     "id": "skill_1790103292614_ixo4q",
     "name": "潜伏態勢",
     "effect": "",
-    "categories": [],
+    "categories": [
+      "heal"
+    ],
     "rarities": [
       "SR"
     ],
@@ -6890,7 +6894,9 @@
     "id": "skill_1790103292614_h1kxj",
     "name": "展開窺い",
     "effect": "",
-    "categories": [],
+    "categories": [
+      "heal"
+    ],
     "rarities": [
       "R"
     ],
@@ -7182,7 +7188,9 @@
     "id": "skill_1790103292615_el9vt",
     "name": "逃げのコツ○",
     "effect": "",
-    "categories": [],
+    "categories": [
+      "vision"
+    ],
     "rarities": [
       "R"
     ],
@@ -8594,7 +8602,9 @@
     "id": "skill_1790103292616_2v3no",
     "name": "勇迅円刃",
     "effect": "",
-    "categories": [],
+    "categories": [
+      "speed"
+    ],
     "rarities": [
       "SR"
     ],
@@ -8976,7 +8986,9 @@
     "id": "skill_1790103292617_06jqn",
     "name": "凛然と",
     "effect": "",
-    "categories": [],
+    "categories": [
+      "current_speed"
+    ],
     "rarities": [
       "R"
     ],
