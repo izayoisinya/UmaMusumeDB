@@ -63,6 +63,7 @@ window.PAGE_PROMPT = 'このスキル詳細のスクリーンショットから�
           <label class="type-checkbox category-accel"><input type="checkbox" value="accel" class="categoryFilter">加速スキル</label>
           <label class="type-checkbox category-lateral"><input type="checkbox" value="lateral" class="categoryFilter">横移動速度スキル</label>
           <label class="type-checkbox category-vision"><input type="checkbox" value="vision" class="categoryFilter">視野スキル</label>
+          <label class="type-checkbox category-start"><input type="checkbox" value="start" class="categoryFilter">スタートスキル</label>
           <label class="type-checkbox"><input type="checkbox" value="__none__" class="categoryFilter">未分類</label>
         </div>
       </div>
@@ -84,6 +85,7 @@ window.PAGE_PROMPT = 'このスキル詳細のスクリーンショットから�
           <label class="type-checkbox"><input type="checkbox" value="senko" class="styleFilter">先行</label>
           <label class="type-checkbox"><input type="checkbox" value="sashi" class="styleFilter">差し</label>
           <label class="type-checkbox"><input type="checkbox" value="oikomi" class="styleFilter">追込</label>
+          <label class="type-checkbox"><input type="checkbox" value="__general__" class="styleFilter">汎用</label>
         </div>
       </div>
 
@@ -94,6 +96,7 @@ window.PAGE_PROMPT = 'このスキル詳細のスクリーンショットから�
           <label class="type-checkbox"><input type="checkbox" value="mile" class="distanceFilter">マイル</label>
           <label class="type-checkbox"><input type="checkbox" value="medium" class="distanceFilter">中距離</label>
           <label class="type-checkbox"><input type="checkbox" value="long" class="distanceFilter">長距離</label>
+          <label class="type-checkbox"><input type="checkbox" value="__general__" class="distanceFilter">汎用</label>
         </div>
       </div>
 
@@ -163,6 +166,7 @@ window.PAGE_PROMPT = 'このスキル詳細のスクリーンショットから�
           <label class="type-checkbox category-accel"><input type="radio" name="fCategory" value="accel">加速スキル</label>
           <label class="type-checkbox category-lateral"><input type="radio" name="fCategory" value="lateral">横移動速度スキル</label>
           <label class="type-checkbox category-vision"><input type="radio" name="fCategory" value="vision">視野スキル</label>
+          <label class="type-checkbox category-start"><input type="radio" name="fCategory" value="start">スタートスキル</label>
         </div>
       </div>
 
@@ -177,22 +181,24 @@ window.PAGE_PROMPT = 'このスキル詳細のスクリーンショットから�
       </div>
 
       <div>
-        <label>脚質（複数可）</label>
+        <label>脚質（複数可・特定の脚質でなければ「汎用」）</label>
         <div class="type-checkbox-row">
           <label class="type-checkbox"><input type="checkbox" value="nige" class="fStyle">逃げ</label>
           <label class="type-checkbox"><input type="checkbox" value="senko" class="fStyle">先行</label>
           <label class="type-checkbox"><input type="checkbox" value="sashi" class="fStyle">差し</label>
           <label class="type-checkbox"><input type="checkbox" value="oikomi" class="fStyle">追込</label>
+          <label class="type-checkbox"><input type="checkbox" value="__general__" class="fStyle">汎用</label>
         </div>
       </div>
 
       <div>
-        <label>距離（複数可）</label>
+        <label>距離（複数可・特定の距離でなければ「汎用」）</label>
         <div class="type-checkbox-row">
           <label class="type-checkbox"><input type="checkbox" value="short" class="fDistance">短距離</label>
           <label class="type-checkbox"><input type="checkbox" value="mile" class="fDistance">マイル</label>
           <label class="type-checkbox"><input type="checkbox" value="medium" class="fDistance">中距離</label>
           <label class="type-checkbox"><input type="checkbox" value="long" class="fDistance">長距離</label>
+          <label class="type-checkbox"><input type="checkbox" value="__general__" class="fDistance">汎用</label>
         </div>
       </div>
 

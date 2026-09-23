@@ -285,8 +285,8 @@ function startEditSkill(id) {
   fillForm(skill);
   setSelectedCategory(skill.category || '');
   setCheckedValues('.fRarity', skill.rarities);
-  setCheckedValues('.fStyle', skill.styles);
-  setCheckedValues('.fDistance', skill.distances);
+  setCheckedValues('.fStyle', (skill.styles && skill.styles.length) ? skill.styles : ['__general__']);
+  setCheckedValues('.fDistance', (skill.distances && skill.distances.length) ? skill.distances : ['__general__']);
   document.getElementById('fNotes').value = skill.notes || '';
   openModal('skillModal');
 }
@@ -305,8 +305,8 @@ document.getElementById('skillForm').addEventListener('submit', async e => {
     effect: document.getElementById('fEffect').value.trim(),
     category: getSelectedCategory(),
     rarities: getCheckedValues('.fRarity'),
-    styles: getCheckedValues('.fStyle'),
-    distances: getCheckedValues('.fDistance'),
+    styles: getCheckedValues('.fStyle').filter(v => v !== '__general__'),
+    distances: getCheckedValues('.fDistance').filter(v => v !== '__general__'),
     notes: document.getElementById('fNotes').value.trim(),
     savedAt: new Date().toISOString(),
   };
@@ -391,7 +391,7 @@ document.getElementById('resetSearchBtn').addEventListener('click', () => {
 });
 
 // --- 一覧表示 ---
-const CATEGORY_LABELS = { green: '緑スキル', heal: '回復スキル', debuff: 'デバフスキル', speed: '速度スキル', accel: '加速スキル', lateral: '横移動速度スキル', vision: '視野スキル' };
+const CATEGORY_LABELS = { green: '緑スキル', heal: '回復スキル', debuff: 'デバフスキル', speed: '速度スキル', accel: '加速スキル', lateral: '横移動速度スキル', vision: '視野スキル', start: 'スタートスキル' };
 const STYLE_LABELS = { nige: '逃げ', senko: '先行', sashi: '差し', oikomi: '追込' };
 const DISTANCE_LABELS = { short: '短距離', mile: 'マイル', medium: '中距離', long: '長距離' };
 
@@ -419,8 +419,16 @@ function renderSkills() {
       if (!matches) return false;
     }
     if (rarityFilters.length && !(skill.rarities || []).some(r => rarityFilters.includes(r))) return false;
-    if (styleFilters.length && !(skill.styles || []).some(s => styleFilters.includes(s))) return false;
-    if (distanceFilters.length && !(skill.distances || []).some(d => distanceFilters.includes(d))) return false;
+    if (styleFilters.length) {
+      const styles = skill.styles || [];
+      const matches = styleFilters.some(f => f === '__general__' ? styles.length === 0 : styles.includes(f));
+      if (!matches) return false;
+    }
+    if (distanceFilters.length) {
+      const distances = skill.distances || [];
+      const matches = distanceFilters.some(f => f === '__general__' ? distances.length === 0 : distances.includes(f));
+      if (!matches) return false;
+    }
     return true;
   });
 
@@ -438,8 +446,12 @@ function renderSkills() {
       ? `<span class="apt-badge category-badge-${skill.category}">${CATEGORY_LABELS[skill.category] || skill.category}</span>`
       : '';
     const rarityChips = (skill.rarities || []).map(r => `<span class="apt-badge">${r}</span>`).join('');
-    const styleChips = (skill.styles || []).map(s => `<span class="apt-badge">${STYLE_LABELS[s] || s}</span>`).join('');
-    const distanceChips = (skill.distances || []).map(d => `<span class="apt-badge">${DISTANCE_LABELS[d] || d}</span>`).join('');
+    const styleChips = (skill.styles && skill.styles.length)
+      ? skill.styles.map(s => `<span class="apt-badge">${STYLE_LABELS[s] || s}</span>`).join('')
+      : `<span class="apt-badge">汎用</span>`;
+    const distanceChips = (skill.distances && skill.distances.length)
+      ? skill.distances.map(d => `<span class="apt-badge">${DISTANCE_LABELS[d] || d}</span>`).join('')
+      : `<span class="apt-badge">汎用</span>`;
     row.innerHTML = `
       <div class="entry-main">
         <div class="entry-name-row">

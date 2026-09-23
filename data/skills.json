@@ -517,7 +517,7 @@
     "id": "skill_1790103292615_zisw5",
     "name": "コンセントレーション",
     "effect": "",
-    "category": "",
+    "category": "start",
     "rarities": [
       "SR"
     ],
@@ -3850,7 +3850,7 @@
     "id": "skill_1790103292614_qk3i9",
     "name": "集中力",
     "effect": "",
-    "category": "",
+    "category": "start",
     "rarities": [
       "R"
     ],
