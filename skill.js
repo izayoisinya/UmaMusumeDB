@@ -12,6 +12,7 @@ class ConflictError extends Error {
 let currentSha = null;
 let allSkills = [];
 let editingSkillId = null;
+let ownershipIndex = new Map(); // スキル名 -> { umas: [{name,type}], supports: [{name,type}] }
 
 function contentsApiUrl() {
   const owner = (config && config.owner) || DEFAULT_OWNER;
@@ -143,6 +144,39 @@ function normalizeSkillLike(s) {
 }
 
 const SKILL_TYPE_TO_RARITY = { normal: 'R', gold: 'SR' };
+const SKILL_TYPE_LABELS = { normal: '通常', gold: '金', unique: '固有' };
+
+// --- スキル名 -> 所持ウマ娘・対応サポカの索引 ---
+async function loadOwnershipIndex() {
+  try {
+    const [umas, cards] = await Promise.all([
+      fetchJsonFile('data/uma_musume.json'),
+      fetchJsonFile('data/support_cards.json'),
+    ]);
+    const index = new Map();
+    const addTo = (name, kind, entry) => {
+      if (!name) return;
+      if (!index.has(name)) index.set(name, { umas: [], supports: [] });
+      index.get(name)[kind].push(entry);
+    };
+    umas.forEach(u => {
+      (u.skills || []).forEach(s => {
+        const skill = normalizeSkillLike(s);
+        addTo(skill.name, 'umas', { name: u.name, type: skill.type });
+      });
+    });
+    cards.forEach(c => {
+      [...(c.skills || []), ...(c.eventSkills || [])].forEach(s => {
+        const skill = normalizeSkillLike(s);
+        addTo(skill.name, 'supports', { name: c.name, type: skill.type });
+      });
+    });
+    ownershipIndex = index;
+    renderSkills();
+  } catch (err) {
+    console.error('所持ウマ娘・サポカの索引作成に失敗:', err);
+  }
+}
 
 document.getElementById('extractSkillsBtn').addEventListener('click', async () => {
   if (!config || !config.token) { setListStatus('抽出・保存にはPATが必要です。設定でPATを入力してください。', true); return; }
@@ -371,7 +405,7 @@ async function deleteSkill(id, btn) {
   }
 }
 
-document.getElementById('refreshBtn').addEventListener('click', () => loadSkills());
+document.getElementById('refreshBtn').addEventListener('click', () => { loadSkills(); loadOwnershipIndex(); });
 
 // --- 検索・絞り込み ---
 document.getElementById('searchNameInput').addEventListener('input', renderSkills);
@@ -445,6 +479,14 @@ function renderSkills() {
     const distanceChips = (skill.distances && skill.distances.length)
       ? skill.distances.map(d => `<span class="apt-badge">${DISTANCE_LABELS[d] || d}</span>`).join('')
       : `<span class="apt-badge">汎用</span>`;
+    const owned = ownershipIndex.get(skill.name);
+    const ownerLabel = (u) => `${escapeHtml(u.name)}${u.type && u.type !== 'normal' ? `(${SKILL_TYPE_LABELS[u.type] || u.type})` : ''}`;
+    const ownerUmasLine = (owned && owned.umas.length)
+      ? `<div class="entry-notes">所持ウマ娘: ${owned.umas.map(ownerLabel).join('、')}</div>`
+      : '';
+    const ownerCardsLine = (owned && owned.supports.length)
+      ? `<div class="entry-notes">対応サポカ: ${owned.supports.map(ownerLabel).join('、')}</div>`
+      : '';
     row.innerHTML = `
       <div class="entry-main">
         <div class="entry-name-row">
@@ -453,6 +495,8 @@ function renderSkills() {
         <div class="apt-row">${categoryBadge}${rarityChips}${styleChips}${distanceChips}</div>
         ${skill.effect ? `<div class="entry-notes">${escapeHtml(skill.effect)}</div>` : ''}
         ${skill.notes ? `<div class="entry-notes">${escapeHtml(skill.notes)}</div>` : ''}
+        ${ownerUmasLine}
+        ${ownerCardsLine}
       </div>
       <div class="entry-side">
         <div class="entry-actions">
@@ -469,3 +513,4 @@ function renderSkills() {
 
 resetForm();
 loadSkills();
+loadOwnershipIndex();
