@@ -6084,7 +6084,7 @@
     "name": "大急ぎ",
     "effect": "",
     "categories": [
-      "speed"
+      "current_speed"
     ],
     "rarities": [
       "R"
