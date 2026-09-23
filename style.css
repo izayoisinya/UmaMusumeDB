@@ -303,7 +303,7 @@ label {
   display: block;
   margin-bottom: 3px;
 }
-input[type=text], input[type=number], input[type=password], textarea, select {
+input[type=text], input[type=number], input[type=password], input[type=month], textarea, select {
   width: 100%;
   font-family: 'M PLUS Rounded 1c', sans-serif;
   font-size: 13px;
@@ -313,7 +313,7 @@ input[type=text], input[type=number], input[type=password], textarea, select {
   background: var(--surface);
   color: var(--ink);
 }
-input[type=text]:focus, input[type=number]:focus, textarea:focus, select:focus {
+input[type=text]:focus, input[type=number]:focus, input[type=month]:focus, textarea:focus, select:focus {
   border-color: var(--blue);
 }
 
@@ -537,6 +537,17 @@ input[type=text]:focus, input[type=number]:focus, textarea:focus, select:focus {
 }
 
 .entries { display: flex; flex-direction: column; gap: 10px; }
+.month-group { margin-top: 20px; }
+.month-group:first-child { margin-top: 0; }
+.month-group-heading {
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--green-dim);
+  margin: 0 0 8px;
+  padding-bottom: 4px;
+  border-bottom: 2px solid var(--panel-line);
+}
 .entry {
   border: 1.5px solid var(--panel-line);
   border-radius: 14px;
@@ -898,7 +909,8 @@ mark.search-hit {
 @media (orientation: landscape) {
   .uma-page .entries,
   .support-page .entries,
-  .skill-page .entries {
+  .skill-page .entries,
+  .pvp-page .entries {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 10px;

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>対人イベント記録 - 因子台帳</title>
+
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#8bc34a">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="因子台帳">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="ledger pvp-page">
+  <div class="masthead">
+    <div class="masthead-top">
+      <h1>対人イベント記録</h1>
+      <p id="countLabel">0 件記録</p>
+    </div>
+    <div class="masthead-menu">
+      <button type="button" class="masthead-btn" id="openRegisterModalBtn">＋ 記録を追加</button>
+      <a href="index.html" class="masthead-btn masthead-nav">因子台帳</a>
+      <a href="uma.html" class="masthead-btn masthead-nav">ウマ娘</a>
+      <a href="support.html" class="masthead-btn masthead-nav">サポカ</a>
+      <a href="skill.html" class="masthead-btn masthead-nav">スキル</a>
+      <a href="pvp.html" class="masthead-btn masthead-nav">対人イベント</a>
+      <button type="button" class="masthead-btn" id="openSettingsModalBtn">⚙ 設定</button>
+    </div>
+  </div>
+
+  <div class="layout">
+    <div class="panel list-panel">
+      <h2>
+        月ごとの記録
+        <button type="button" class="btn secondary btn-inline" id="refreshBtn">更新</button>
+      </h2>
+
+      <div class="status" id="listStatus"></div>
+      <div id="entries"></div>
+      <div class="empty" id="emptyMsg" style="display:none;">まだ記録がありません。「＋ 記録を追加」から入力して保存してください。</div>
+    </div>
+  </div>
+</div>
+
+<div class="scroll-fab-group" id="scrollFabGroup">
+  <button type="button" class="scroll-fab" id="scrollTopBtn" aria-label="一番上へ">↑</button>
+  <button type="button" class="scroll-fab" id="scrollBottomBtn" aria-label="一番下へ">↓</button>
+</div>
+
+<div class="modal-overlay" id="modalOverlay" hidden>
+  <div class="modal" id="pvpModal" role="dialog" aria-labelledby="pvpModalTitle" hidden>
+    <h2 id="pvpModalTitle">対人イベント記録を追加</h2>
+
+    <form class="form-grid" id="pvpForm">
+      <div>
+        <label for="fMonth">開催月</label>
+        <input type="month" id="fMonth">
+      </div>
+
+      <div class="growth-input-row">
+        <div><span>順位</span><input type="text" id="fRank" placeholder="例: 1200"></div>
+        <div><span>獲得ポイント</span><input type="number" id="fPoints" placeholder="例: 8500"></div>
+      </div>
+
+      <div>
+        <label for="teamTagInput">使用した編成</label>
+        <div class="tag-input" id="teamTagBox">
+          <input type="text" id="teamTagInput" placeholder="ウマ娘名を入力してスペースで確定">
+        </div>
+      </div>
+
+      <div>
+        <label>勝敗数</label>
+        <div class="growth-input-row">
+          <div><span>勝ち</span><input type="number" id="fWins" value="0" min="0"></div>
+          <div><span>負け</span><input type="number" id="fLosses" value="0" min="0"></div>
+          <div><span>引き分け</span><input type="number" id="fDraws" value="0" min="0"></div>
+        </div>
+      </div>
+
+      <div>
+        <label for="fNotes">メモ</label>
+        <textarea id="fNotes" rows="3" placeholder="対戦相手の傾向や反省点など"></textarea>
+      </div>
+
+      <div class="status" id="status"></div>
+      <button type="submit" class="btn" id="savePvpBtn">この内容を保存</button>
+      <button type="button" class="btn secondary" id="clearBtn">フォームをクリア</button>
+    </form>
+    <button type="button" class="btn secondary modal-close-btn" data-modal="pvpModal">閉じる</button>
+  </div>
+
+  <div class="modal" id="confirmDeleteModal" role="dialog" aria-labelledby="confirmDeleteTitle" hidden>
+    <h2 id="confirmDeleteTitle">削除の確認</h2>
+    <p class="hint" id="confirmDeleteMessage"></p>
+    <button type="button" class="btn danger" id="confirmDeleteBtn">削除する</button>
+    <button type="button" class="btn secondary modal-close-btn" data-modal="confirmDeleteModal">キャンセル</button>
+  </div>
+
+  <div class="modal" id="settingsModal" role="dialog" aria-labelledby="settingsModalTitle" hidden>
+    <h2 id="settingsModalTitle">設定</h2>
+    <div class="settings-tabs">
+      <button type="button" class="settings-tab active" data-tab="display">表示</button>
+      <button type="button" class="settings-tab" data-tab="github">GitHub連携</button>
+    </div>
+
+    <div class="settings-pane" data-pane="display">
+      <p class="hint">アプリの見た目を切り替えます。</p>
+      <button type="button" class="btn secondary" id="themeToggleBtn">🌙 ダークモードに切り替え</button>
+    </div>
+
+    <div class="settings-pane" data-pane="github" hidden>
+      <p class="hint">このアプリのデータは、このリポジトリに保存されます。<strong>閲覧のみならPATなしでも見られます</strong>（リポジトリ所有者・リポジトリ名だけ入力）。保存・削除には Contents 権限を持つ個人アクセストークン(PAT)が必要です。</p>
+      <div class="form-grid">
+        <div>
+          <label for="cfgOwner">リポジトリ所有者</label>
+          <input type="text" id="cfgOwner" placeholder="例: izayoisinya">
+        </div>
+        <div>
+          <label for="cfgRepo">リポジトリ名</label>
+          <input type="text" id="cfgRepo" placeholder="例: UmaMusumeDB">
+        </div>
+        <div>
+          <label for="cfgBranch">ブランチ</label>
+          <input type="text" id="cfgBranch" placeholder="main">
+        </div>
+        <div>
+          <label for="cfgToken">個人アクセストークン (PAT・保存/削除する場合のみ)</label>
+          <input type="password" id="cfgToken" placeholder="閲覧だけなら空欄でOK" autocomplete="off">
+        </div>
+        <button type="button" class="btn" id="cfgSaveBtn">保存して読み込む</button>
+        <button type="button" class="btn secondary" id="cfgClearBtn">設定を消去</button>
+      </div>
+      <div class="status" id="cfgStatus"></div>
+    </div>
+
+    <button type="button" class="btn secondary modal-close-btn" data-modal="settingsModal">閉じる</button>
+  </div>
+</div>
+
+<script src="common.js"></script>
+<script src="pvp.js"></script>
+</body>
+</html>
