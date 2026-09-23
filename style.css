@@ -659,6 +659,13 @@ mark.search-hit {
   border-radius: 3px;
 }
 .entry-notes { font-size: 12px; color: var(--ink-soft); margin-top: 6px; }
+.owner-link {
+  color: #4c8bf5;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+}
+.owner-link:hover, .owner-link:active { opacity: 0.75; }
 .entry-actions {
   display: flex;
   gap: 8px;

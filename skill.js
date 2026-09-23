@@ -13,6 +13,8 @@ let currentSha = null;
 let allSkills = [];
 let editingSkillId = null;
 let ownershipIndex = new Map(); // スキル名 -> { umas: [{name,type}], supports: [{name,type}] }
+let cachedUmas = [];
+let cachedCards = [];
 
 function contentsApiUrl() {
   const owner = (config && config.owner) || DEFAULT_OWNER;
@@ -153,6 +155,8 @@ async function loadOwnershipIndex() {
       fetchJsonFile('data/uma_musume.json'),
       fetchJsonFile('data/support_cards.json'),
     ]);
+    cachedUmas = umas;
+    cachedCards = cards;
     const index = new Map();
     const addTo = (name, kind, entry) => {
       if (!name) return;
@@ -177,6 +181,105 @@ async function loadOwnershipIndex() {
     console.error('所持ウマ娘・サポカの索引作成に失敗:', err);
   }
 }
+
+// --- 所持ウマ娘・サポカの詳細ポップアップ ---
+const CHIP_COLOR_CATEGORIES = new Set(['green', 'heal', 'debuff']);
+function categoryClassFor(skillName) {
+  const entry = allSkills.find(sk => sk.name === skillName);
+  const categories = (entry && entry.categories) || [];
+  return categories.filter(c => CHIP_COLOR_CATEGORIES.has(c)).map(c => `cat-${c}`).join(' ');
+}
+function detailSkillChip(s) {
+  const skill = normalizeSkillLike(s);
+  const catClass = categoryClassFor(skill.name);
+  return `<span class="chip white skill-chip skill-${skill.type}${catClass ? ' ' + catClass : ''}">${escapeHtml(skill.name)}</span>`;
+}
+
+function aptBadge(prefix, v) {
+  const rankClass = v ? 'rank-' + v : 'rank-none';
+  return `<span class="apt-badge ${rankClass}">${prefix}${v || '-'}</span>`;
+}
+const GROWTH_LABELS = { speed: 'スピ', stamina: 'スタ', power: 'パワ', guts: '根性', wisdom: '賢さ' };
+
+function renderUmaDetailHtml(uma) {
+  const imageUrl = uma.imagePath ? imageRawUrl(uma.imagePath) : null;
+  const track = uma.track || {};
+  const distance = uma.distance || {};
+  const style = uma.style || {};
+  const growth = uma.growth || {};
+  const skillChips = (uma.skills || []).map(detailSkillChip).join('');
+  const growthItemsHtml = Object.entries(GROWTH_LABELS)
+    .filter(([key]) => growth[key])
+    .map(([key, label]) => `<span class="growth-item">${label}+${growth[key]}%</span>`)
+    .join('');
+  return `
+    <div class="entry-name-row">
+      ${imageUrl ? `<img class="uma-icon" src="${escapeHtml(imageUrl)}" alt="${escapeHtml(uma.name)}" loading="lazy">` : ''}
+      <div class="entry-name">${escapeHtml(uma.name)}</div>
+    </div>
+    <div class="apt-group">
+      <span class="apt-group-label">コース</span>
+      <div class="apt-row">${aptBadge('芝', track.turf)}${aptBadge('ダ', track.dirt)}</div>
+    </div>
+    <div class="apt-group">
+      <span class="apt-group-label">距離</span>
+      <div class="apt-row">${aptBadge('短', distance.short)}${aptBadge('マ', distance.mile)}${aptBadge('中', distance.medium)}${aptBadge('長', distance.long)}</div>
+    </div>
+    <div class="apt-group">
+      <span class="apt-group-label">脚質</span>
+      <div class="apt-row">${aptBadge('逃', style.nige)}${aptBadge('先', style.senko)}${aptBadge('差', style.sashi)}${aptBadge('追', style.oikomi)}</div>
+    </div>
+    ${growthItemsHtml ? `<div class="growth-row"><span class="growth-item">成長率:</span>${growthItemsHtml}</div>` : ''}
+    <div class="chips">${skillChips || '<span style="color:var(--ink-soft);font-size:12px;">スキル未登録</span>'}</div>
+    ${uma.notes ? `<div class="entry-notes">${escapeHtml(uma.notes)}</div>` : ''}
+  `;
+}
+
+const SUPPORT_TYPE_LABELS = { speed: 'スピード', stamina: 'スタミナ', power: 'パワー', guts: '根性', wisdom: '賢さ' };
+function renderCardDetailHtml(card) {
+  const imageUrl = card.imagePath ? imageRawUrl(card.imagePath) : null;
+  const typeChips = (card.types || []).map(t => `<span class="apt-badge type-badge-${t}">${SUPPORT_TYPE_LABELS[t] || t}</span>`).join('');
+  const skillChips = (card.skills || []).map(detailSkillChip).join('');
+  const eventSkillChips = (card.eventSkills || []).map(detailSkillChip).join('');
+  return `
+    ${imageUrl ? `<div class="entry-image"><img class="entry-thumb" src="${escapeHtml(imageUrl)}" alt="${escapeHtml(card.name)}のイラスト" loading="lazy"></div>` : ''}
+    <div class="entry-name-row"><div class="entry-name">${escapeHtml(card.name)}</div></div>
+    ${typeChips ? `<div class="apt-row">${typeChips}</div>` : ''}
+    <div class="skill-group-label">所持スキル</div>
+    <div class="chips">${skillChips || '<span style="color:var(--ink-soft);font-size:12px;">スキル未登録</span>'}</div>
+    <div class="skill-group-label">育成イベントスキル</div>
+    <div class="chips">${eventSkillChips || '<span style="color:var(--ink-soft);font-size:12px;">スキル未登録</span>'}</div>
+    ${card.notes ? `<div class="entry-notes">${escapeHtml(card.notes)}</div>` : ''}
+  `;
+}
+
+function openOwnerDetail(kind, name) {
+  const titleEl = document.getElementById('ownerDetailTitle');
+  const bodyEl = document.getElementById('ownerDetailBody');
+  let imageUrl = null;
+  if (kind === 'uma') {
+    const uma = cachedUmas.find(u => u.name === name);
+    if (!uma) return;
+    imageUrl = uma.imagePath ? imageRawUrl(uma.imagePath) : null;
+    titleEl.textContent = uma.name;
+    bodyEl.innerHTML = renderUmaDetailHtml(uma);
+  } else {
+    const card = cachedCards.find(c => c.name === name);
+    if (!card) return;
+    imageUrl = card.imagePath ? imageRawUrl(card.imagePath) : null;
+    titleEl.textContent = card.name;
+    bodyEl.innerHTML = renderCardDetailHtml(card);
+  }
+  const thumb = bodyEl.querySelector('.uma-icon, .entry-thumb');
+  if (thumb && imageUrl) thumb.addEventListener('click', () => openLightbox(imageUrl));
+  openModal('ownerDetailModal');
+}
+
+document.getElementById('entries').addEventListener('click', e => {
+  const link = e.target.closest('.owner-link');
+  if (!link) return;
+  openOwnerDetail(link.dataset.kind, link.dataset.name);
+});
 
 document.getElementById('extractSkillsBtn').addEventListener('click', async () => {
   if (!config || !config.token) { setListStatus('抽出・保存にはPATが必要です。設定でPATを入力してください。', true); return; }
@@ -480,12 +583,15 @@ function renderSkills() {
       ? skill.distances.map(d => `<span class="apt-badge">${DISTANCE_LABELS[d] || d}</span>`).join('')
       : `<span class="apt-badge">汎用</span>`;
     const owned = ownershipIndex.get(skill.name);
-    const ownerLabel = (u) => `${escapeHtml(u.name)}${u.type && u.type !== 'normal' ? `(${SKILL_TYPE_LABELS[u.type] || u.type})` : ''}`;
+    const ownerLink = (u, kind) => {
+      const label = `${escapeHtml(u.name)}${u.type && u.type !== 'normal' ? `(${SKILL_TYPE_LABELS[u.type] || u.type})` : ''}`;
+      return `<span class="owner-link" data-kind="${kind}" data-name="${escapeHtml(u.name)}">${label}</span>`;
+    };
     const ownerUmasLine = (owned && owned.umas.length)
-      ? `<div class="entry-notes">所持ウマ娘: ${owned.umas.map(ownerLabel).join('、')}</div>`
+      ? `<div class="entry-notes">所持ウマ娘: ${owned.umas.map(u => ownerLink(u, 'uma')).join('、')}</div>`
       : '';
     const ownerCardsLine = (owned && owned.supports.length)
-      ? `<div class="entry-notes">対応サポカ: ${owned.supports.map(ownerLabel).join('、')}</div>`
+      ? `<div class="entry-notes">対応サポカ: ${owned.supports.map(u => ownerLink(u, 'support')).join('、')}</div>`
       : '';
     row.innerHTML = `
       <div class="entry-main">
