@@ -4024,7 +4024,8 @@
     "name": "砂の玄人",
     "effect": "",
     "categories": [
-      "heal"
+      "heal",
+      "speed"
     ],
     "rarities": [
       "SR"
@@ -6441,7 +6442,8 @@
     "name": "張り切り",
     "effect": "",
     "categories": [
-      "heal"
+      "heal",
+      "speed"
     ],
     "rarities": [
       "R"
@@ -7265,7 +7267,8 @@
     "name": "闘争心",
     "effect": "",
     "categories": [
-      "heal"
+      "heal",
+      "speed"
     ],
     "rarities": [
       "R"
@@ -7590,7 +7593,8 @@
     "name": "覇気十分",
     "effect": "",
     "categories": [
-      "heal"
+      "heal",
+      "speed"
     ],
     "rarities": [
       "R"
@@ -8924,7 +8928,8 @@
     "name": "連鎖反応",
     "effect": "",
     "categories": [
-      "heal"
+      "heal",
+      "current_speed"
     ],
     "rarities": [
       "SR"
@@ -8939,7 +8944,8 @@
     "name": "脇目も振らず",
     "effect": "",
     "categories": [
-      "heal"
+      "heal",
+      "speed"
     ],
     "rarities": [
       "R"
