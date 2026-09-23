@@ -216,6 +216,7 @@ function fillForm(ev) {
   const loh = ev.loh || {};
   document.getElementById('fLohTotalPoints').value = loh.totalPoints != null ? loh.totalPoints : '';
   document.getElementById('fLohRank').value = loh.overallRank != null ? loh.overallRank : '';
+  document.getElementById('fLohRankTier').value = loh.rankTier || '';
 
   document.getElementById('fNotes').value = ev.notes || '';
 }
@@ -276,6 +277,7 @@ document.getElementById('pvpForm').addEventListener('submit', async e => {
     loh: eventType === 'loh' ? {
       totalPoints: lohTotalRaw === '' ? null : Number(lohTotalRaw),
       overallRank: lohRankRaw === '' ? null : Number(lohRankRaw),
+      rankTier: document.getElementById('fLohRankTier').value.trim(),
     } : null,
     notes: document.getElementById('fNotes').value.trim(),
     savedAt: new Date().toISOString(),
@@ -401,6 +403,7 @@ function renderEvents() {
       let statLine = '';
       if (isLoh) {
         const loh = ev.loh || {};
+        if (loh.rankTier) badges += `<span class="apt-badge">${escapeHtml(loh.rankTier)}</span>`;
         if (loh.totalPoints != null) badges += `<span class="apt-badge">合計 ${loh.totalPoints.toLocaleString('ja-JP')}pt</span>`;
         if (loh.overallRank != null) badges += `<span class="apt-badge">総合${loh.overallRank}位</span>`;
       } else {
