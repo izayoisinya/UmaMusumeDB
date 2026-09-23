@@ -636,7 +636,13 @@ function renderSkills() {
     };
     const ownerLink = (u, kind) => {
       const label = `${escapeHtml(u.name)}${u.type && u.type !== 'normal' ? `(${SKILL_TYPE_LABELS[u.type] || u.type})` : ''}${u.dupIndex ? `[${u.dupIndex}]` : ''}`;
-      return `<span class="owner-link" data-kind="${kind}" data-id="${escapeHtml(u.id || '')}" data-name="${escapeHtml(u.name)}" data-dup="${u.dupIndex || ''}" data-skill="${escapeHtml(skill.name)}">${label}</span>`;
+      let typeClass = '';
+      if (kind === 'support') {
+        const card = cachedCards.find(c => c.id === u.id);
+        const primaryType = card && card.types && card.types[0];
+        if (primaryType) typeClass = ` apt-badge type-badge-${primaryType}`;
+      }
+      return `<span class="owner-link${typeClass}" data-kind="${kind}" data-id="${escapeHtml(u.id || '')}" data-name="${escapeHtml(u.name)}" data-dup="${u.dupIndex || ''}" data-skill="${escapeHtml(skill.name)}">${label}</span>`;
     };
     const ownerUmasLine = (owned && owned.umas.length)
       ? `<div class="apt-group"><span class="apt-group-label">所持ウマ娘</span><div class="apt-row">${withDupIndex(owned.umas).map(u => ownerLink(u, 'uma')).join('')}</div></div>`
