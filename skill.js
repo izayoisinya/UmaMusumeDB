@@ -242,14 +242,18 @@ function renderCardDetailHtml(card) {
   const skillChips = (card.skills || []).map(detailSkillChip).join('');
   const eventSkillChips = (card.eventSkills || []).map(detailSkillChip).join('');
   return `
-    ${imageUrl ? `<div class="entry-image"><img class="entry-thumb" src="${escapeHtml(imageUrl)}" alt="${escapeHtml(card.name)}のイラスト" loading="lazy"></div>` : ''}
-    <div class="entry-name-row"><div class="entry-name">${escapeHtml(card.name)}</div></div>
-    ${typeChips ? `<div class="apt-row">${typeChips}</div>` : ''}
-    <div class="skill-group-label">所持スキル</div>
-    <div class="chips">${skillChips || '<span style="color:var(--ink-soft);font-size:12px;">スキル未登録</span>'}</div>
-    <div class="skill-group-label">育成イベントスキル</div>
-    <div class="chips">${eventSkillChips || '<span style="color:var(--ink-soft);font-size:12px;">スキル未登録</span>'}</div>
-    ${card.notes ? `<div class="entry-notes">${escapeHtml(card.notes)}</div>` : ''}
+    <div class="entry" style="border:none;padding:0;">
+      <div class="entry-main">
+        <div class="entry-name-row"><div class="entry-name">${escapeHtml(card.name)}</div></div>
+        ${typeChips ? `<div class="apt-row">${typeChips}</div>` : ''}
+        <div class="skill-group-label">所持スキル</div>
+        <div class="chips">${skillChips || '<span style="color:var(--ink-soft);font-size:12px;">スキル未登録</span>'}</div>
+        <div class="skill-group-label">育成イベントスキル</div>
+        <div class="chips">${eventSkillChips || '<span style="color:var(--ink-soft);font-size:12px;">スキル未登録</span>'}</div>
+        ${card.notes ? `<div class="entry-notes">${escapeHtml(card.notes)}</div>` : ''}
+      </div>
+      ${imageUrl ? `<div class="entry-side"><div class="entry-image"><img class="entry-thumb" src="${escapeHtml(imageUrl)}" alt="${escapeHtml(card.name)}のイラスト" loading="lazy"></div></div>` : ''}
+    </div>
   `;
 }
 
