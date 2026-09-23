@@ -187,7 +187,7 @@ document.getElementById('extractSkillsBtn').addEventListener('click', async () =
           id: 'skill_' + Date.now() + '_' + Math.random().toString(36).slice(2, 7),
           name,
           effect: '',
-          category: '',
+          categories: [],
           rarities: Array.from(raritySet),
           styles: [],
           distances: [],
@@ -221,13 +221,6 @@ document.getElementById('extractSkillsBtn').addEventListener('click', async () =
 });
 
 // --- 種別・属性の選択取得/反映 ---
-function getSelectedCategory() {
-  const el = document.querySelector('input[name=fCategory]:checked');
-  return el ? el.value : '';
-}
-function setSelectedCategory(category) {
-  document.querySelectorAll('input[name=fCategory]').forEach(el => { el.checked = el.value === category; });
-}
 function getCheckedValues(selector) {
   return Array.from(document.querySelectorAll(selector + ':checked')).map(el => el.value);
 }
@@ -283,7 +276,7 @@ function startEditSkill(id) {
   resetForm();
   setSkillModalMode(id);
   fillForm(skill);
-  setSelectedCategory(skill.category || '');
+  setCheckedValues('.fCategory', skill.categories);
   setCheckedValues('.fRarity', skill.rarities);
   setCheckedValues('.fStyle', (skill.styles && skill.styles.length) ? skill.styles : ['__general__']);
   setCheckedValues('.fDistance', (skill.distances && skill.distances.length) ? skill.distances : ['__general__']);
@@ -303,7 +296,7 @@ document.getElementById('skillForm').addEventListener('submit', async e => {
     id: skillId,
     name,
     effect: document.getElementById('fEffect').value.trim(),
-    category: getSelectedCategory(),
+    categories: getCheckedValues('.fCategory'),
     rarities: getCheckedValues('.fRarity'),
     styles: getCheckedValues('.fStyle').filter(v => v !== '__general__'),
     distances: getCheckedValues('.fDistance').filter(v => v !== '__general__'),
@@ -414,8 +407,8 @@ function renderSkills() {
       if (!hay.includes(keyword)) return false;
     }
     if (categoryFilters.length) {
-      const cat = skill.category || '';
-      const matches = categoryFilters.some(f => f === '__none__' ? !cat : f === cat);
+      const cats = skill.categories || [];
+      const matches = categoryFilters.some(f => f === '__none__' ? cats.length === 0 : cats.includes(f));
       if (!matches) return false;
     }
     if (rarityFilters.length && !(skill.rarities || []).some(r => rarityFilters.includes(r))) return false;
@@ -442,9 +435,9 @@ function renderSkills() {
   filtered.forEach(skill => {
     const row = document.createElement('div');
     row.className = 'entry';
-    const categoryBadge = skill.category
-      ? `<span class="apt-badge category-badge-${skill.category}">${CATEGORY_LABELS[skill.category] || skill.category}</span>`
-      : '';
+    const categoryBadge = (skill.categories || [])
+      .map(c => `<span class="apt-badge category-badge-${c}">${CATEGORY_LABELS[c] || c}</span>`)
+      .join('');
     const rarityChips = (skill.rarities || []).map(r => `<span class="apt-badge">${r}</span>`).join('');
     const styleChips = (skill.styles && skill.styles.length)
       ? skill.styles.map(s => `<span class="apt-badge">${STYLE_LABELS[s] || s}</span>`).join('')
