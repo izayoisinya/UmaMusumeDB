@@ -787,6 +787,7 @@ mark.search-hit {
 .type-checkbox.category-heal { border-color: #29b6f6; }
 .type-checkbox.category-debuff { border-color: #ef5350; }
 .type-checkbox.category-speed { border-color: #ffb300; }
+.type-checkbox.category-current-speed { border-color: #5c6bc0; }
 .type-checkbox.category-accel { border-color: #7e57c2; }
 .type-checkbox.category-lateral { border-color: #26a69a; }
 .type-checkbox.category-vision { border-color: #8d6e63; }
@@ -796,6 +797,7 @@ mark.search-hit {
 .apt-badge.category-badge-heal { color: #0277bd; border-color: #29b6f6; background: rgba(41,182,246,0.15); }
 .apt-badge.category-badge-debuff { color: #c62828; border-color: #ef5350; background: rgba(239,83,80,0.15); }
 .apt-badge.category-badge-speed { color: #e65100; border-color: #ffb300; background: rgba(255,179,0,0.15); }
+.apt-badge.category-badge-current_speed { color: #283593; border-color: #5c6bc0; background: rgba(92,107,192,0.15); }
 .apt-badge.category-badge-accel { color: #6a1b9a; border-color: #7e57c2; background: rgba(126,87,194,0.15); }
 .apt-badge.category-badge-lateral { color: #00695c; border-color: #26a69a; background: rgba(38,166,154,0.15); }
 .apt-badge.category-badge-vision { color: #4e342e; border-color: #8d6e63; background: rgba(141,110,99,0.15); }

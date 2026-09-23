@@ -150,7 +150,7 @@
     "id": "skill_1790103292618_48l20",
     "name": "いつまでも健やかに",
     "effect": "",
-    "category": "speed",
+    "category": "current_speed",
     "rarities": [
       "R"
     ],
@@ -2403,7 +2403,7 @@
     "id": "skill_1790103292615_w9dqm",
     "name": "間隙を突いて",
     "effect": "",
-    "category": "speed",
+    "category": "current_speed",
     "rarities": [
       "R"
     ],
@@ -5320,7 +5320,7 @@
     "id": "skill_1790103292614_sw2ok",
     "name": "大詰め",
     "effect": "",
-    "category": "speed",
+    "category": "current_speed",
     "rarities": [
       "R"
     ],
@@ -6015,7 +6015,7 @@
     "id": "skill_1790103292617_dsrsg",
     "name": "天衣無縫",
     "effect": "",
-    "category": "speed",
+    "category": "current_speed",
     "rarities": [
       "SR"
     ],
@@ -6204,7 +6204,7 @@
     "id": "skill_1790103292617_gf8tt",
     "name": "灯を胸に",
     "effect": "",
-    "category": "speed",
+    "category": "current_speed",
     "rarities": [
       "R"
     ],
@@ -6520,7 +6520,7 @@
     "id": "skill_1790103292616_mnuz2",
     "name": "内なる獣",
     "effect": "",
-    "category": "speed",
+    "category": "current_speed",
     "rarities": [
       "R"
     ],
@@ -6710,7 +6710,7 @@
     "id": "skill_1790103292614_zdteg",
     "name": "破天荒",
     "effect": "",
-    "category": "speed",
+    "category": "current_speed",
     "rarities": [
       "R"
     ],
@@ -6873,7 +6873,7 @@
     "id": "skill_1790103292616_eh53f",
     "name": "比類なき",
     "effect": "",
-    "category": "speed",
+    "category": "current_speed",
     "rarities": [
       "R"
     ],
@@ -6959,7 +6959,7 @@
     "id": "skill_1790103292617_ebr47",
     "name": "品行方正",
     "effect": "",
-    "category": "speed",
+    "category": "current_speed",
     "rarities": [
       "R"
     ],
@@ -7281,7 +7281,7 @@
     "id": "skill_1790103292613_fwmxd",
     "name": "夢への挑戦",
     "effect": "",
-    "category": "speed",
+    "category": "current_speed",
     "rarities": [
       "R"
     ],
@@ -7533,7 +7533,7 @@
     "id": "skill_1790103292617_3i7ts",
     "name": "勇気凛々",
     "effect": "",
-    "category": "speed",
+    "category": "current_speed",
     "rarities": [
       "SR"
     ],
@@ -7559,7 +7559,7 @@
     "id": "skill_1790103292616_tvtag",
     "name": "勇壮活発",
     "effect": "",
-    "category": "speed",
+    "category": "current_speed",
     "rarities": [
       "SR"
     ],
