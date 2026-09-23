@@ -895,7 +895,9 @@ mark.search-hit {
 }
 
 @media (orientation: landscape) {
-  .uma-page .entries {
+  .uma-page .entries,
+  .support-page .entries,
+  .skill-page .entries {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 10px;
