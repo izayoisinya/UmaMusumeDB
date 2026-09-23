@@ -261,7 +261,7 @@
     "id": "skill_1790103292614_j0c0d",
     "name": "お見通し",
     "effect": "",
-    "category": "",
+    "category": "vision",
     "rarities": [
       "R"
     ],
@@ -1167,7 +1167,7 @@
     "id": "skill_1790103292614_cfm4u",
     "name": "ホークアイ",
     "effect": "",
-    "category": "",
+    "category": "vision",
     "rarities": [
       "R"
     ],
@@ -1180,7 +1180,7 @@
     "id": "skill_1790103292613_1s7c0",
     "name": "ポジションセンス",
     "effect": "",
-    "category": "",
+    "category": "lateral",
     "rarities": [
       "R"
     ],
@@ -1441,7 +1441,7 @@
     "id": "skill_1790103292613_rtypy",
     "name": "レーンの魔術師",
     "effect": "",
-    "category": "",
+    "category": "lateral",
     "rarities": [
       "SR"
     ],
@@ -2420,7 +2420,7 @@
     "id": "skill_1790103292614_ifas5",
     "name": "危険回避",
     "effect": "",
-    "category": "",
+    "category": "lateral",
     "rarities": [
       "R"
     ],
@@ -3474,7 +3474,7 @@
     "id": "skill_1790103292614_i0iga",
     "name": "差しのコツ○",
     "effect": "",
-    "category": "",
+    "category": "lateral",
     "rarities": [
       "R"
     ],
@@ -3625,7 +3625,7 @@
     "id": "skill_1790103292614_469yr",
     "name": "策士",
     "effect": "",
-    "category": "",
+    "category": "vision",
     "rarities": [
       "R"
     ],
@@ -3741,7 +3741,7 @@
     "id": "skill_1790103292614_j9yks",
     "name": "視界良好！異常なし！",
     "effect": "",
-    "category": "",
+    "category": "vision",
     "rarities": [
       "SR"
     ],
@@ -4786,7 +4786,7 @@
     "id": "skill_1790103292614_a462t",
     "name": "先行のコツ○",
     "effect": "",
-    "category": "",
+    "category": "vision",
     "rarities": [
       "R"
     ],
@@ -4921,7 +4921,7 @@
     "id": "skill_1790103292614_x2ss2",
     "name": "千里眼",
     "effect": "",
-    "category": "",
+    "category": "vision",
     "rarities": [
       "SR"
     ],
@@ -5247,7 +5247,7 @@
     "id": "skill_1790103292618_nfncl",
     "name": "打開策",
     "effect": "",
-    "category": "",
+    "category": "lateral",
     "rarities": [
       "R"
     ],
@@ -5354,7 +5354,7 @@
     "id": "skill_1790103292614_dtasv",
     "name": "大局観",
     "effect": "",
-    "category": "",
+    "category": "vision",
     "rarities": [
       "SR"
     ],
@@ -5614,7 +5614,7 @@
     "id": "skill_1790103292616_vw0ez",
     "name": "注目の踊り子",
     "effect": "",
-    "category": "",
+    "category": "lateral",
     "rarities": [
       "SR"
     ],
@@ -6468,7 +6468,7 @@
     "id": "skill_1790103292614_0cw56",
     "name": "読解力",
     "effect": "",
-    "category": "",
+    "category": "vision",
     "rarities": [
       "R"
     ],
@@ -7797,7 +7797,7 @@
     "id": "skill_1790103292613_w9g4t",
     "name": "臨機応変",
     "effect": "",
-    "category": "",
+    "category": "lateral",
     "rarities": [
       "R"
     ],
