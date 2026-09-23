@@ -664,6 +664,7 @@ mark.search-hit {
   text-decoration: underline;
   text-underline-offset: 2px;
   cursor: pointer;
+  white-space: nowrap;
 }
 .owner-link:hover, .owner-link:active { opacity: 0.75; }
 .entry-actions {
