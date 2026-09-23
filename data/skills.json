@@ -150,12 +150,15 @@
     "id": "skill_1790103292618_48l20",
     "name": "いつまでも健やかに",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "R"
     ],
     "styles": [],
-    "distances": [],
+    "distances": [
+      "short",
+      "mile"
+    ],
     "notes": "ウマ娘・サポカから自動抽出",
     "savedAt": "2026-09-22T18:54:52.618Z"
   },
@@ -312,12 +315,14 @@
     "id": "skill_1790103292615_odtgm",
     "name": "がむしゃら",
     "effect": "",
-    "category": "",
+    "category": "accel",
     "rarities": [
       "R"
     ],
     "styles": [],
-    "distances": [],
+    "distances": [
+      "long"
+    ],
     "notes": "ウマ娘・サポカから自動抽出",
     "savedAt": "2026-09-22T18:54:52.615Z"
   },
@@ -569,12 +574,15 @@
     "id": "skill_1790103292615_uuk5x",
     "name": "シビれる走り",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "R"
     ],
     "styles": [],
-    "distances": [],
+    "distances": [
+      "short",
+      "mile"
+    ],
     "notes": "ウマ娘・サポカから自動抽出",
     "savedAt": "2026-09-22T18:54:52.615Z"
   },
@@ -1185,12 +1193,14 @@
     "id": "skill_1790103292617_h744k",
     "name": "マイペース",
     "effect": "",
-    "category": "",
+    "category": "heal",
     "rarities": [
       "R"
     ],
     "styles": [],
-    "distances": [],
+    "distances": [
+      "long"
+    ],
     "notes": "ウマ娘・サポカから自動抽出",
     "savedAt": "2026-09-22T18:54:52.617Z"
   },
@@ -1252,7 +1262,7 @@
     "id": "skill_1790103292615_qtqjg",
     "name": "まっしぐら",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "R"
     ],
@@ -1306,7 +1316,7 @@
     "id": "skill_1790103292616_i13qb",
     "name": "やまっけ",
     "effect": "",
-    "category": "",
+    "category": "green",
     "rarities": [
       "R"
     ],
@@ -1444,7 +1454,7 @@
     "id": "skill_1790103292616_qqbuo",
     "name": "レコメンド",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "R"
     ],
@@ -1502,12 +1512,14 @@
     "id": "skill_1790103292615_dj5nd",
     "name": "圧倒的リード",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "SR"
     ],
     "styles": [],
-    "distances": [],
+    "distances": [
+      "short"
+    ],
     "notes": "ウマ娘・サポカから自動抽出",
     "savedAt": "2026-09-22T18:54:52.615Z"
   },
@@ -1640,12 +1652,14 @@
     "id": "skill_1790103292618_esyfg",
     "name": "一所懸命",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "SR"
     ],
     "styles": [],
-    "distances": [],
+    "distances": [
+      "long"
+    ],
     "notes": "ウマ娘・サポカから自動抽出",
     "savedAt": "2026-09-22T18:54:52.618Z"
   },
@@ -1870,7 +1884,7 @@
     "id": "skill_1790103292614_nq137",
     "name": "雨の日○",
     "effect": "",
-    "category": "",
+    "category": "green",
     "rarities": [
       "R"
     ],
@@ -1927,12 +1941,14 @@
     "id": "skill_1790103292615_qz1ed",
     "name": "影打",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "R"
     ],
     "styles": [],
-    "distances": [],
+    "distances": [
+      "long"
+    ],
     "notes": "ウマ娘・サポカから自動抽出",
     "savedAt": "2026-09-22T18:54:52.615Z"
   },
@@ -2009,11 +2025,13 @@
     "id": "skill_1790103292616_72sab",
     "name": "奥の手",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "R"
     ],
-    "styles": [],
+    "styles": [
+      "nige"
+    ],
     "distances": [],
     "notes": "ウマ娘・サポカから自動抽出",
     "savedAt": "2026-09-22T18:54:52.616Z"
@@ -2093,12 +2111,14 @@
     "id": "skill_1790103292618_5cyma",
     "name": "臆せぬ心",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "R"
     ],
     "styles": [],
-    "distances": [],
+    "distances": [
+      "long"
+    ],
     "notes": "ウマ娘・サポカから自動抽出",
     "savedAt": "2026-09-22T18:54:52.618Z"
   },
