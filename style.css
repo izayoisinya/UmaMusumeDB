@@ -820,6 +820,7 @@ mark.search-hit {
   margin-bottom: 8px;
 }
 .team-slot .growth-input-row { margin-top: 8px; }
+.champions-final-only { margin-top: 8px; }
 .event-section {
   border: 1.5px solid var(--panel-line);
   border-radius: 12px;

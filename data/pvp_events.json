@@ -16,30 +16,44 @@
       {
         "name": "セイウンスカイ",
         "winRate": 34.6,
-        "points": null
+        "points": null,
+        "results": {
+          "first": 28,
+          "second": 22,
+          "third": 18,
+          "other": 13,
+          "races": 81
+        }
       },
       {
         "name": "ヴィルシーナ",
         "winRate": 33.3,
-        "points": null
+        "points": null,
+        "results": {
+          "first": 27,
+          "second": 22,
+          "third": 15,
+          "other": 17,
+          "races": 81
+        }
       },
       {
         "name": "ダイタクヘリオス",
         "winRate": 1.2,
-        "points": null
+        "points": null,
+        "results": {
+          "first": 1,
+          "second": 10,
+          "third": 6,
+          "other": 64,
+          "races": 81
+        }
       }
     ],
     "champions": {
       "tier": "grade",
       "reachedFinal": true,
       "finalRound": "A",
-      "results": {
-        "first": 0,
-        "second": 0,
-        "third": 0,
-        "other": 0,
-        "races": 81
-      },
       "rank": 2
     },
     "loh": null,

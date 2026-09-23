@@ -144,6 +144,16 @@
             <div><span>勝率(%)</span><input type="number" id="fTeamWinRate1" step="0.1" placeholder="例: 34.6"></div>
             <div class="loh-only"><span>獲得pt</span><input type="number" id="fTeamPoints1" placeholder="例: 1200"></div>
           </div>
+          <div class="champions-final-only">
+            <label>戦績</label>
+            <div class="growth-input-row">
+              <div><span>1着</span><input type="number" id="fTeamFirst1" value="0" min="0"></div>
+              <div><span>2着</span><input type="number" id="fTeamSecond1" value="0" min="0"></div>
+              <div><span>3着</span><input type="number" id="fTeamThird1" value="0" min="0"></div>
+              <div><span>圏外</span><input type="number" id="fTeamOther1" value="0" min="0"></div>
+              <div><span>出走回数</span><input type="number" id="fTeamRaces1" value="0" min="0"></div>
+            </div>
+          </div>
         </div>
         <div class="team-slot">
           <input type="text" id="fTeamName2" placeholder="2人目のウマ娘名">
@@ -151,12 +161,32 @@
             <div><span>勝率(%)</span><input type="number" id="fTeamWinRate2" step="0.1" placeholder="例: 33.3"></div>
             <div class="loh-only"><span>獲得pt</span><input type="number" id="fTeamPoints2" placeholder="例: 1100"></div>
           </div>
+          <div class="champions-final-only">
+            <label>戦績</label>
+            <div class="growth-input-row">
+              <div><span>1着</span><input type="number" id="fTeamFirst2" value="0" min="0"></div>
+              <div><span>2着</span><input type="number" id="fTeamSecond2" value="0" min="0"></div>
+              <div><span>3着</span><input type="number" id="fTeamThird2" value="0" min="0"></div>
+              <div><span>圏外</span><input type="number" id="fTeamOther2" value="0" min="0"></div>
+              <div><span>出走回数</span><input type="number" id="fTeamRaces2" value="0" min="0"></div>
+            </div>
+          </div>
         </div>
         <div class="team-slot">
           <input type="text" id="fTeamName3" placeholder="3人目のウマ娘名">
           <div class="growth-input-row">
             <div><span>勝率(%)</span><input type="number" id="fTeamWinRate3" step="0.1" placeholder="例: 1.2"></div>
             <div class="loh-only"><span>獲得pt</span><input type="number" id="fTeamPoints3" placeholder="例: 900"></div>
+          </div>
+          <div class="champions-final-only">
+            <label>戦績</label>
+            <div class="growth-input-row">
+              <div><span>1着</span><input type="number" id="fTeamFirst3" value="0" min="0"></div>
+              <div><span>2着</span><input type="number" id="fTeamSecond3" value="0" min="0"></div>
+              <div><span>3着</span><input type="number" id="fTeamThird3" value="0" min="0"></div>
+              <div><span>圏外</span><input type="number" id="fTeamOther3" value="0" min="0"></div>
+              <div><span>出走回数</span><input type="number" id="fTeamRaces3" value="0" min="0"></div>
+            </div>
           </div>
         </div>
       </div>
@@ -182,16 +212,6 @@
             <div class="radio-pill-row">
               <label class="radio-pill"><input type="radio" name="fFinalRound" value="A" checked>Aグループ</label>
               <label class="radio-pill"><input type="radio" name="fFinalRound" value="B">Bグループ</label>
-            </div>
-          </div>
-          <div>
-            <label>決勝での戦績</label>
-            <div class="growth-input-row">
-              <div><span>1着</span><input type="number" id="fFinalFirst" value="0" min="0"></div>
-              <div><span>2着</span><input type="number" id="fFinalSecond" value="0" min="0"></div>
-              <div><span>3着</span><input type="number" id="fFinalThird" value="0" min="0"></div>
-              <div><span>圏外</span><input type="number" id="fFinalOther" value="0" min="0"></div>
-              <div><span>出走回数</span><input type="number" id="fFinalRaces" value="0" min="0"></div>
             </div>
           </div>
           <div>
