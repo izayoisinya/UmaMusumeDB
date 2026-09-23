@@ -12,6 +12,7 @@ class ConflictError extends Error {
 let currentSha = null;
 let allUmas = [];
 let editingUmaId = null;
+let skillCategoryIndex = new Map(); // スキル名 -> categories配列（スキルブックより）
 
 function contentsApiUrl() {
   const owner = (config && config.owner) || DEFAULT_OWNER;
@@ -34,6 +35,47 @@ function encodeUtf8Base64(str) {
   let binary = '';
   bytes.forEach(b => { binary += String.fromCharCode(b); });
   return btoa(binary);
+}
+
+async function fetchJsonFile(path) {
+  const owner = (config && config.owner) || DEFAULT_OWNER;
+  const repo = (config && config.repo) || DEFAULT_REPO;
+  const branch = config && config.branch;
+  const url = `https://api.github.com/repos/${encodeURIComponent(owner)}/${encodeURIComponent(repo)}/contents/${path}`
+    + (branch ? `?ref=${encodeURIComponent(branch)}` : '');
+  const res = await fetch(url, { headers: authHeaders(), cache: 'no-store' });
+  if (res.status === 404) return [];
+  if (!res.ok) {
+    const errJson = await res.json().catch(() => ({}));
+    throw new Error(errJson.message || `GitHub APIエラー: ${res.status}`);
+  }
+  const json = await res.json();
+  try {
+    const arr = JSON.parse(decodeBase64Utf8(json.content));
+    return Array.isArray(arr) ? arr : [];
+  } catch {
+    return [];
+  }
+}
+
+// --- スキル名 -> スキルブック上の種別カラー索引 ---
+const CHIP_COLOR_CATEGORIES = new Set(['green', 'heal', 'debuff']);
+async function loadSkillCategoryIndex() {
+  try {
+    const skills = await fetchJsonFile('data/skills.json');
+    const index = new Map();
+    skills.forEach(s => {
+      if (s && s.name) index.set(s.name, s.categories || []);
+    });
+    skillCategoryIndex = index;
+    renderUmas();
+  } catch (err) {
+    console.error('スキル種別の索引作成に失敗:', err);
+  }
+}
+function skillChipCategoryClass(skillName) {
+  const categories = skillCategoryIndex.get(skillName) || [];
+  return categories.filter(c => CHIP_COLOR_CATEGORIES.has(c)).map(c => `cat-${c}`).join(' ');
 }
 
 async function fetchUmasRaw() {
@@ -427,7 +469,7 @@ async function deleteUma(id, btn) {
   }
 }
 
-document.getElementById('refreshBtn').addEventListener('click', () => loadUmas());
+document.getElementById('refreshBtn').addEventListener('click', () => { loadUmas(); loadSkillCategoryIndex(); });
 
 // --- 一覧表示 ---
 function aptLabel(v) { return v ? v : '-'; }
@@ -547,7 +589,8 @@ function renderUmas() {
     row.className = 'entry';
     const skillChips = (uma.skills || []).map(s => {
       const skill = normalizeSkill(s);
-      return `<span class="chip white skill-chip skill-${skill.type}">${escapeHtml(skill.name)}</span>`;
+      const catClass = skillChipCategoryClass(skill.name);
+      return `<span class="chip white skill-chip skill-${skill.type}${catClass ? ' ' + catClass : ''}">${escapeHtml(skill.name)}</span>`;
     }).join('');
     const growthLabels = { speed: 'スピ', stamina: 'スタ', power: 'パワ', guts: '根性', wisdom: '賢さ' };
     const growthItemsHtml = Object.entries(growthLabels)
@@ -606,3 +649,4 @@ function renderUmas() {
 
 resetForm();
 loadUmas();
+loadSkillCategoryIndex();

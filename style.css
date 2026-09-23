@@ -633,6 +633,10 @@ input[type=text]:focus, input[type=number]:focus, textarea:focus, select:focus {
   color: #6d4c00;
   border: none;
 }
+/* スキルブックの種別（緑/回復/デバフ）に合わせてチップの枠色を揃える */
+.skill-chip.cat-green { border: 2px solid #66bb6a; }
+.skill-chip.cat-heal { border: 2px solid #29b6f6; }
+.skill-chip.cat-debuff { border: 2px solid #ef5350; }
 .chip.search-match {
   outline: 2px solid #00e5ff;
   outline-offset: 2px;
