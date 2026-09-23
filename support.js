@@ -579,10 +579,14 @@ function renderCards() {
           <div class="entry-name">${escapeHtml(card.name)}</div>
         </div>
         ${typeChips ? `<div class="apt-row">${typeChips}</div>` : ''}
-        <div class="skill-group-label">所持スキル</div>
-        <div class="chips">${skillChips || '<span style="color:var(--ink-soft);font-size:12px;">スキル未登録</span>'}</div>
-        <div class="skill-group-label">育成イベントスキル</div>
-        <div class="chips">${eventSkillChips || '<span style="color:var(--ink-soft);font-size:12px;">スキル未登録</span>'}</div>
+        <div class="skill-section">
+          <div class="skill-group-label">所持スキル</div>
+          <div class="chips">${skillChips || '<span style="color:var(--ink-soft);font-size:12px;">スキル未登録</span>'}</div>
+        </div>
+        <div class="skill-section">
+          <div class="skill-group-label">育成イベントスキル</div>
+          <div class="chips">${eventSkillChips || '<span style="color:var(--ink-soft);font-size:12px;">スキル未登録</span>'}</div>
+        </div>
         ${card.notes ? `<div class="entry-notes">${escapeHtml(card.notes)}</div>` : ''}
       </div>
       <div class="entry-side">

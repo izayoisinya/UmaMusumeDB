@@ -246,10 +246,14 @@ function renderCardDetailHtml(card) {
       <div class="entry-main">
         <div class="entry-name-row"><div class="entry-name">${escapeHtml(card.name)}</div></div>
         ${typeChips ? `<div class="apt-row">${typeChips}</div>` : ''}
-        <div class="skill-group-label">所持スキル</div>
-        <div class="chips">${skillChips || '<span style="color:var(--ink-soft);font-size:12px;">スキル未登録</span>'}</div>
-        <div class="skill-group-label">育成イベントスキル</div>
-        <div class="chips">${eventSkillChips || '<span style="color:var(--ink-soft);font-size:12px;">スキル未登録</span>'}</div>
+        <div class="skill-section">
+          <div class="skill-group-label">所持スキル</div>
+          <div class="chips">${skillChips || '<span style="color:var(--ink-soft);font-size:12px;">スキル未登録</span>'}</div>
+        </div>
+        <div class="skill-section">
+          <div class="skill-group-label">育成イベントスキル</div>
+          <div class="chips">${eventSkillChips || '<span style="color:var(--ink-soft);font-size:12px;">スキル未登録</span>'}</div>
+        </div>
         ${card.notes ? `<div class="entry-notes">${escapeHtml(card.notes)}</div>` : ''}
       </div>
       ${imageUrl ? `<div class="entry-side"><div class="entry-image"><img class="entry-thumb" src="${escapeHtml(imageUrl)}" alt="${escapeHtml(card.name)}のイラスト" loading="lazy"></div></div>` : ''}
@@ -659,8 +663,9 @@ function renderSkills() {
       <div class="entry-main">
         <div class="entry-name-row">
           <div class="entry-name">${escapeHtml(skill.name)}</div>
+          ${categoryBadge}
         </div>
-        <div class="apt-row">${categoryBadge}${styleChips}${distanceChips}</div>
+        <div class="apt-row">${styleChips}${distanceChips}</div>
         ${skill.effect ? `<div class="entry-notes">${escapeHtml(skill.effect)}</div>` : ''}
         ${skill.notes ? `<div class="entry-notes">${escapeHtml(skill.notes)}</div>` : ''}
         ${upperSkillLine}
