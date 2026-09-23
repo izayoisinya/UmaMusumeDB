@@ -7191,15 +7191,17 @@
     "name": "逃げのコツ○",
     "effect": "",
     "categories": [
-      "vision"
+      "green"
     ],
     "rarities": [
       "R"
     ],
-    "styles": [],
+    "styles": [
+      "nige"
+    ],
     "distances": [],
     "notes": "ウマ娘・サポカから自動抽出",
-    "savedAt": "2026-09-22T18:54:52.615Z"
+    "savedAt": "2026-09-23T06:59:15.579Z"
   },
   {
     "id": "skill_1790103292618_a6jrk",
