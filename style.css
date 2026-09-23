@@ -828,6 +828,7 @@ mark.search-hit {
   flex-direction: column;
   gap: 10px;
 }
+.event-section[hidden] { display: none; }
 
 .apt-badge.type-badge-speed { color: #0288d1; border-color: #4fc3f7; background: rgba(79,195,247,0.15); }
 .apt-badge.type-badge-stamina { color: #e64a19; border-color: #ff7043; background: rgba(255,112,67,0.15); }
