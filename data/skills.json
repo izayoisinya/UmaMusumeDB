@@ -7652,11 +7652,13 @@
     "id": "skill_1790103292614_2rdvd",
     "name": "流れに任せて",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "R"
     ],
-    "styles": [],
+    "styles": [
+      "senko"
+    ],
     "distances": [],
     "notes": "ウマ娘・サポカから自動抽出",
     "savedAt": "2026-09-22T18:54:52.614Z"
@@ -7665,11 +7667,13 @@
     "id": "skill_1790103292612_d4jen",
     "name": "流星光底",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "SR"
     ],
-    "styles": [],
+    "styles": [
+      "senko"
+    ],
     "distances": [],
     "notes": "ウマ娘・サポカから自動抽出",
     "savedAt": "2026-09-22T18:54:52.612Z"
@@ -7678,7 +7682,7 @@
     "id": "skill_1790103292613_2jnnk",
     "name": "良バ場○",
     "effect": "",
-    "category": "",
+    "category": "green",
     "rarities": [
       "R"
     ],
@@ -7691,11 +7695,13 @@
     "id": "skill_1790103292617_79ndc",
     "name": "力の限り",
     "effect": "",
-    "category": "",
+    "category": "accel",
     "rarities": [
       "R"
     ],
-    "styles": [],
+    "styles": [
+      "senko"
+    ],
     "distances": [],
     "notes": "ウマ娘・サポカから自動抽出",
     "savedAt": "2026-09-22T18:54:52.617Z"
@@ -7704,11 +7710,13 @@
     "id": "skill_1790103292618_lmste",
     "name": "力業",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "R"
     ],
-    "styles": [],
+    "styles": [
+      "senko"
+    ],
     "distances": [],
     "notes": "ウマ娘・サポカから自動抽出",
     "savedAt": "2026-09-22T18:54:52.618Z"
@@ -7730,11 +7738,13 @@
     "id": "skill_1790103292613_475d1",
     "name": "冷静",
     "effect": "",
-    "category": "",
+    "category": "heal",
     "rarities": [
       "R"
     ],
-    "styles": [],
+    "styles": [
+      "oikomi"
+    ],
     "distances": [],
     "notes": "ウマ娘・サポカから自動抽出",
     "savedAt": "2026-09-22T18:54:52.613Z"
@@ -7743,11 +7753,13 @@
     "id": "skill_1790103292613_mpdue",
     "name": "冷静沈着",
     "effect": "",
-    "category": "",
+    "category": "heal",
     "rarities": [
       "SR"
     ],
-    "styles": [],
+    "styles": [
+      "oikomi"
+    ],
     "distances": [],
     "notes": "ウマ娘・サポカから自動抽出",
     "savedAt": "2026-09-22T18:54:52.613Z"
@@ -7756,12 +7768,14 @@
     "id": "skill_1790103292614_qe5ns",
     "name": "烈風一閃",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "SR"
     ],
     "styles": [],
-    "distances": [],
+    "distances": [
+      "long"
+    ],
     "notes": "ウマ娘・サポカから自動抽出",
     "savedAt": "2026-09-22T18:54:52.614Z"
   },
@@ -7769,7 +7783,7 @@
     "id": "skill_1790103292618_r7k0u",
     "name": "連鎖反応",
     "effect": "",
-    "category": "",
+    "category": "heal",
     "rarities": [
       "SR"
     ],
@@ -7782,7 +7796,7 @@
     "id": "skill_1790103292617_xqt7s",
     "name": "脇目も振らず",
     "effect": "",
-    "category": "",
+    "category": "heal",
     "rarities": [
       "R"
     ],
@@ -7808,12 +7822,16 @@
     "id": "skill_1790103292617_aqahg",
     "name": "渾身の足取り",
     "effect": "",
-    "category": "",
+    "category": "accel",
     "rarities": [
       "R"
     ],
-    "styles": [],
-    "distances": [],
+    "styles": [
+      "oikomi"
+    ],
+    "distances": [
+      "medium"
+    ],
     "notes": "ウマ娘・サポカから自動抽出",
     "savedAt": "2026-09-22T18:54:52.617Z"
   },
@@ -7821,7 +7839,7 @@
     "id": "skill_1790103292616_0ydiv",
     "name": "滾る想い",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "R"
     ],
