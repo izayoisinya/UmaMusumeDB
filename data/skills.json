@@ -1344,7 +1344,8 @@
     "styles": [],
     "distances": [],
     "notes": "",
-    "savedAt": "2026-09-22T18:54:52.614Z"
+    "savedAt": "2026-09-22T18:54:52.614Z",
+    "upperSkill": "千里眼"
   },
   {
     "id": "skill_1790103292613_1s7c0",
@@ -1741,7 +1742,8 @@
       "short"
     ],
     "notes": "",
-    "savedAt": "2026-09-22T18:54:52.615Z"
+    "savedAt": "2026-09-22T18:54:52.615Z",
+    "lowerSkill": "大きなリード"
   },
   {
     "id": "skill_1790103292613_gz2yo",
@@ -3254,7 +3256,8 @@
     ],
     "distances": [],
     "notes": "",
-    "savedAt": "2026-09-22T18:54:52.614Z"
+    "savedAt": "2026-09-22T18:54:52.614Z",
+    "lowerSkill": "展開窺い"
   },
   {
     "id": "skill_1790103292613_wzmlc",
@@ -3713,7 +3716,8 @@
     "styles": [],
     "distances": [],
     "notes": "",
-    "savedAt": "2026-09-22T18:54:52.613Z"
+    "savedAt": "2026-09-22T18:54:52.613Z",
+    "lowerSkill": "直線回復"
   },
   {
     "id": "skill_1790103292616_trytv",
@@ -5296,7 +5300,8 @@
       "medium"
     ],
     "notes": "",
-    "savedAt": "2026-09-22T18:54:52.617Z"
+    "savedAt": "2026-09-22T18:54:52.617Z",
+    "lowerSkill": "前途洋々"
   },
   {
     "id": "skill_1790103292618_t68x4",
@@ -5343,7 +5348,8 @@
     "styles": [],
     "distances": [],
     "notes": "",
-    "savedAt": "2026-09-22T18:54:52.616Z"
+    "savedAt": "2026-09-22T18:54:52.616Z",
+    "upperSkill": "抜群の切れ味"
   },
   {
     "id": "skill_1790103292613_e7dqe",
@@ -5624,7 +5630,8 @@
     "styles": [],
     "distances": [],
     "notes": "",
-    "savedAt": "2026-09-22T18:54:52.614Z"
+    "savedAt": "2026-09-22T18:54:52.614Z",
+    "lowerSkill": "ホークアイ"
   },
   {
     "id": "skill_1790103292617_qz0gj",
@@ -5736,7 +5743,8 @@
       "medium"
     ],
     "notes": "",
-    "savedAt": "2026-09-22T18:54:52.614Z"
+    "savedAt": "2026-09-22T18:54:52.614Z",
+    "upperSkill": "切り開く者"
   },
   {
     "id": "skill_1790103292613_bcfkx",
@@ -6066,7 +6074,8 @@
       "short"
     ],
     "notes": "",
-    "savedAt": "2026-09-22T18:54:52.615Z"
+    "savedAt": "2026-09-22T18:54:52.615Z",
+    "upperSkill": "圧倒的リード"
   },
   {
     "id": "skill_1790103292614_sw2ok",
@@ -6119,7 +6128,8 @@
     "styles": [],
     "distances": [],
     "notes": "",
-    "savedAt": "2026-09-22T18:54:52.614Z"
+    "savedAt": "2026-09-22T18:54:52.614Z",
+    "lowerSkill": "読解力"
   },
   {
     "id": "skill_1790103292617_jq35e",
@@ -6287,7 +6297,8 @@
     "styles": [],
     "distances": [],
     "notes": "",
-    "savedAt": "2026-09-22T18:54:52.618Z"
+    "savedAt": "2026-09-22T18:54:52.618Z",
+    "upperSkill": "連鎖反応"
   },
   {
     "id": "skill_1790103292614_r3s8i",
@@ -6632,7 +6643,8 @@
     "styles": [],
     "distances": [],
     "notes": "",
-    "savedAt": "2026-09-22T18:54:52.613Z"
+    "savedAt": "2026-09-22T18:54:52.613Z",
+    "upperSkill": "好転一息"
   },
   {
     "id": "skill_1790103292614_dumxo",
@@ -6907,7 +6919,8 @@
     "styles": [],
     "distances": [],
     "notes": "",
-    "savedAt": "2026-09-22T18:54:52.614Z"
+    "savedAt": "2026-09-22T18:54:52.614Z",
+    "upperSkill": "慧眼"
   },
   {
     "id": "skill_1790103292614_mlfye",
@@ -7152,7 +7165,8 @@
     "styles": [],
     "distances": [],
     "notes": "",
-    "savedAt": "2026-09-22T18:54:52.615Z"
+    "savedAt": "2026-09-22T18:54:52.615Z",
+    "upperSkill": "抜群の踏み込み"
   },
   {
     "id": "skill_1790103292616_nrlyk",
@@ -7388,7 +7402,8 @@
     "styles": [],
     "distances": [],
     "notes": "",
-    "savedAt": "2026-09-22T18:54:52.614Z"
+    "savedAt": "2026-09-22T18:54:52.614Z",
+    "upperSkill": "大局観"
   },
   {
     "id": "skill_1790103292618_6r0lb",
@@ -7469,7 +7484,8 @@
       "long"
     ],
     "notes": "",
-    "savedAt": "2026-09-22T18:54:52.614Z"
+    "savedAt": "2026-09-22T18:54:52.614Z",
+    "lowerSkill": "内弁慶"
   },
   {
     "id": "skill_1790103292614_4cwyr",
@@ -7486,7 +7502,8 @@
       "long"
     ],
     "notes": "",
-    "savedAt": "2026-09-22T18:54:52.614Z"
+    "savedAt": "2026-09-22T18:54:52.614Z",
+    "upperSkill": "内的体験"
   },
   {
     "id": "skill_1790103292616_z0im6",
@@ -7806,7 +7823,8 @@
       "mile"
     ],
     "notes": "",
-    "savedAt": "2026-09-22T18:54:52.616Z"
+    "savedAt": "2026-09-22T18:54:52.616Z",
+    "lowerSkill": "切れ味"
   },
   {
     "id": "skill_1790103292615_n0gor",
@@ -7821,7 +7839,8 @@
     "styles": [],
     "distances": [],
     "notes": "",
-    "savedAt": "2026-09-22T18:54:52.615Z"
+    "savedAt": "2026-09-22T18:54:52.615Z",
+    "lowerSkill": "踏み込み上手"
   },
   {
     "id": "skill_1790103292613_c2v84",
@@ -8920,7 +8939,8 @@
     ],
     "distances": [],
     "notes": "",
-    "savedAt": "2026-09-22T18:54:52.613Z"
+    "savedAt": "2026-09-22T18:54:52.613Z",
+    "upperSkill": "冷静沈着"
   },
   {
     "id": "skill_1790103292613_mpdue",
@@ -8937,7 +8957,8 @@
     ],
     "distances": [],
     "notes": "",
-    "savedAt": "2026-09-22T18:54:52.613Z"
+    "savedAt": "2026-09-22T18:54:52.613Z",
+    "lowerSkill": "冷静"
   },
   {
     "id": "skill_1790103292614_qe5ns",
@@ -8970,7 +8991,8 @@
     "styles": [],
     "distances": [],
     "notes": "",
-    "savedAt": "2026-09-22T18:54:52.618Z"
+    "savedAt": "2026-09-22T18:54:52.618Z",
+    "lowerSkill": "端緒"
   },
   {
     "id": "skill_1790103292617_xqt7s",
