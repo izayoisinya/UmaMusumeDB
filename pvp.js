@@ -554,21 +554,25 @@ function renderEvents() {
 
       const teamCards = (ev.team || []).map(member => {
         const imageUrl = member.imagePath ? imageRawUrl(member.imagePath) : null;
-        const rateParts = [];
-        if (member.winRate != null) rateParts.push(`勝率${member.winRate}%`);
-        if (member.placeRate != null) rateParts.push(`連対${member.placeRate}%`);
-        if (member.showRate != null) rateParts.push(`複勝${member.showRate}%`);
-        if (isLoh && member.points != null) rateParts.push(`${member.points}pt`);
+        const rateBadges = [];
+        if (member.winRate != null) rateBadges.push(`<span class="apt-badge">勝率${member.winRate}%</span>`);
+        if (member.placeRate != null) rateBadges.push(`<span class="apt-badge">連対${member.placeRate}%</span>`);
+        if (member.showRate != null) rateBadges.push(`<span class="apt-badge">複勝${member.showRate}%</span>`);
+        if (isLoh && member.points != null) rateBadges.push(`<span class="apt-badge">${member.points}pt</span>`);
         const r = showResults ? member.results : null;
-        const resultLine = r
-          ? `<div class="entry-notes">1着${r.first || 0} 2着${r.second || 0} 3着${r.third || 0} 圏外${r.other || 0}（${r.races || 0}戦）</div>`
-          : '';
+        const resultBadges = r ? [
+          `<span class="apt-badge">1着${r.first || 0}</span>`,
+          `<span class="apt-badge">2着${r.second || 0}</span>`,
+          `<span class="apt-badge">3着${r.third || 0}</span>`,
+          `<span class="apt-badge">圏外${r.other || 0}</span>`,
+          `<span class="apt-badge">${r.races || 0}戦</span>`,
+        ] : [];
         return `
           <div class="pvp-team-member">
             ${imageUrl ? `<img class="pvp-team-thumb team-img" src="${escapeHtml(imageUrl)}" alt="${escapeHtml(member.name)}" loading="lazy">` : ''}
             <div class="entry-name">${escapeHtml(member.name)}</div>
-            ${rateParts.length ? `<div class="entry-notes">${rateParts.join(' / ')}</div>` : ''}
-            ${resultLine}
+            ${rateBadges.length ? `<div class="apt-row">${rateBadges.join('')}</div>` : ''}
+            ${resultBadges.length ? `<div class="apt-row">${resultBadges.join('')}</div>` : ''}
           </div>
         `;
       }).join('');

@@ -852,11 +852,13 @@ mark.search-hit {
   width: 100%;
   aspect-ratio: 3 / 4;
   object-fit: cover;
+  object-position: top;
   border-radius: 8px;
   margin-bottom: 6px;
   cursor: zoom-in;
   display: block;
 }
+.pvp-team-member .apt-row { justify-content: center; margin-top: 4px; }
 .pvp-team-member .entry-name { font-size: 13px; }
 .pvp-team-member .entry-notes { margin-top: 4px; text-align: left; }
 .event-section {
