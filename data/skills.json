@@ -3963,15 +3963,17 @@
     "name": "差しのコツ○",
     "effect": "",
     "categories": [
-      "lateral"
+      "green"
     ],
     "rarities": [
       "R"
     ],
-    "styles": [],
+    "styles": [
+      "sashi"
+    ],
     "distances": [],
     "notes": "ウマ娘・サポカから自動抽出",
-    "savedAt": "2026-09-22T18:54:52.614Z"
+    "savedAt": "2026-09-23T06:59:44.841Z"
   },
   {
     "id": "skill_1790103292613_irlev",
