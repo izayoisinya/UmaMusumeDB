@@ -16,8 +16,8 @@
       {
         "name": "セイウンスカイ",
         "winRate": 34.6,
-        "placeRate": null,
-        "showRate": null,
+        "placeRate": 61.7,
+        "showRate": 84,
         "points": null,
         "imagePath": "images/pvp_1790176048735_kyifb_uma1.jpg",
         "results": {
@@ -31,8 +31,8 @@
       {
         "name": "ヴィルシーナ",
         "winRate": 33.3,
-        "placeRate": null,
-        "showRate": null,
+        "placeRate": 60.5,
+        "showRate": 79,
         "points": null,
         "imagePath": "images/pvp_1790176048735_kyifb_uma2.jpg",
         "results": {
@@ -46,8 +46,8 @@
       {
         "name": "ダイタクヘリオス",
         "winRate": 1.2,
-        "placeRate": null,
-        "showRate": null,
+        "placeRate": 13.6,
+        "showRate": 21,
         "points": null,
         "imagePath": "images/pvp_1790176048735_kyifb_uma3.jpg",
         "results": {
@@ -67,6 +67,6 @@
     },
     "loh": null,
     "notes": "",
-    "savedAt": "2026-09-23T19:03:47.157Z"
+    "savedAt": "2026-09-23T19:06:04.827Z"
   }
 ]
