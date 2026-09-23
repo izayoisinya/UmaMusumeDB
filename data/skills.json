@@ -5125,8 +5125,10 @@
     "id": "skill_1790103292612_264q7",
     "name": "勢い任せ",
     "effect": "",
+    "upperSkill": "",
+    "lowerSkill": "",
     "categories": [
-      "green"
+      "heal"
     ],
     "rarities": [
       "R"
@@ -5136,7 +5138,7 @@
     ],
     "distances": [],
     "notes": "",
-    "savedAt": "2026-09-22T18:54:52.612Z"
+    "savedAt": "2026-09-23T09:38:02.362Z"
   },
   {
     "id": "skill_1790103292614_n5q5r",
