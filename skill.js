@@ -332,7 +332,7 @@ document.getElementById('extractSkillsBtn').addEventListener('click', async () =
           rarities: Array.from(raritySet),
           styles: [],
           distances: [],
-          notes: 'ウマ娘・サポカから自動抽出',
+          notes: '',
           savedAt: new Date().toISOString(),
         });
         addedCount++;
