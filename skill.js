@@ -257,21 +257,22 @@ function renderCardDetailHtml(card) {
   `;
 }
 
-function openOwnerDetail(kind, name, id) {
+function openOwnerDetail(kind, name, id, dupIndex) {
   const titleEl = document.getElementById('ownerDetailTitle');
   const bodyEl = document.getElementById('ownerDetailBody');
+  const suffix = dupIndex ? ` [${dupIndex}]` : '';
   let imageUrl = null;
   if (kind === 'uma') {
     const uma = (id && cachedUmas.find(u => u.id === id)) || cachedUmas.find(u => u.name === name);
     if (!uma) return;
     imageUrl = uma.imagePath ? imageRawUrl(uma.imagePath) : null;
-    titleEl.textContent = uma.name;
+    titleEl.textContent = uma.name + suffix;
     bodyEl.innerHTML = renderUmaDetailHtml(uma);
   } else {
     const card = (id && cachedCards.find(c => c.id === id)) || cachedCards.find(c => c.name === name);
     if (!card) return;
     imageUrl = card.imagePath ? imageRawUrl(card.imagePath) : null;
-    titleEl.textContent = card.name;
+    titleEl.textContent = card.name + suffix;
     bodyEl.innerHTML = renderCardDetailHtml(card);
   }
   const thumb = bodyEl.querySelector('.uma-icon, .entry-thumb');
@@ -315,7 +316,7 @@ document.getElementById('entries').addEventListener('click', e => {
   if (refLink) { openSkillDetail(refLink.dataset.name); return; }
   const link = e.target.closest('.owner-link');
   if (!link) return;
-  openOwnerDetail(link.dataset.kind, link.dataset.name, link.dataset.id);
+  openOwnerDetail(link.dataset.kind, link.dataset.name, link.dataset.id, link.dataset.dup);
 });
 
 document.getElementById('extractSkillsBtn').addEventListener('click', async () => {
@@ -624,15 +625,25 @@ function renderSkills() {
       ? skill.distances.map(d => `<span class="apt-badge">${DISTANCE_LABELS[d] || d}</span>`).join('')
       : `<span class="apt-badge">汎用</span>`;
     const owned = ownershipIndex.get(skill.name);
+    const withDupIndex = list => {
+      const counts = {};
+      list.forEach(u => { counts[u.name] = (counts[u.name] || 0) + 1; });
+      const seen = {};
+      return list.map(u => {
+        if (counts[u.name] <= 1) return { ...u, dupIndex: null };
+        seen[u.name] = (seen[u.name] || 0) + 1;
+        return { ...u, dupIndex: seen[u.name] };
+      });
+    };
     const ownerLink = (u, kind) => {
-      const label = `${escapeHtml(u.name)}${u.type && u.type !== 'normal' ? `(${SKILL_TYPE_LABELS[u.type] || u.type})` : ''}`;
-      return `<span class="owner-link" data-kind="${kind}" data-id="${escapeHtml(u.id || '')}" data-name="${escapeHtml(u.name)}">${label}</span>`;
+      const label = `${escapeHtml(u.name)}${u.type && u.type !== 'normal' ? `(${SKILL_TYPE_LABELS[u.type] || u.type})` : ''}${u.dupIndex ? `[${u.dupIndex}]` : ''}`;
+      return `<span class="owner-link" data-kind="${kind}" data-id="${escapeHtml(u.id || '')}" data-name="${escapeHtml(u.name)}" data-dup="${u.dupIndex || ''}">${label}</span>`;
     };
     const ownerUmasLine = (owned && owned.umas.length)
-      ? `<div class="entry-notes">所持ウマ娘: ${owned.umas.map(u => ownerLink(u, 'uma')).join('、')}</div>`
+      ? `<div class="entry-notes">所持ウマ娘: ${withDupIndex(owned.umas).map(u => ownerLink(u, 'uma')).join('、')}</div>`
       : '';
     const ownerCardsLine = (owned && owned.supports.length)
-      ? `<div class="entry-notes">対応サポカ: ${owned.supports.map(u => ownerLink(u, 'support')).join('、')}</div>`
+      ? `<div class="entry-notes">対応サポカ: ${withDupIndex(owned.supports).map(u => ownerLink(u, 'support')).join('、')}</div>`
       : '';
     const skillRefLink = (skillName) => `<span class="owner-link skill-ref-link" data-name="${escapeHtml(skillName)}">${escapeHtml(skillName)}</span>`;
     const upperSkillLine = skill.upperSkill
