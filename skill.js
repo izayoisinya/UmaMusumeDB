@@ -283,15 +283,14 @@ function renderSkillDetailHtml(skill) {
   const categoryBadge = (skill.categories || [])
     .map(c => `<span class="apt-badge category-badge-${c}">${CATEGORY_LABELS[c] || c}</span>`)
     .join('');
-  const rarityChips = (skill.rarities || []).map(r => `<span class="apt-badge">${r}</span>`).join('');
   const styleChips = (skill.styles && skill.styles.length)
     ? skill.styles.map(s => `<span class="apt-badge">${STYLE_LABELS[s] || s}</span>`).join('')
-    : `<span class="apt-badge">汎用</span>`;
+    : '';
   const distanceChips = (skill.distances && skill.distances.length)
     ? skill.distances.map(d => `<span class="apt-badge">${DISTANCE_LABELS[d] || d}</span>`).join('')
-    : `<span class="apt-badge">汎用</span>`;
+    : '';
   return `
-    <div class="apt-row">${categoryBadge}${rarityChips}${styleChips}${distanceChips}</div>
+    <div class="apt-row">${categoryBadge}${styleChips}${distanceChips}</div>
     ${skill.effect ? `<div class="entry-notes">${escapeHtml(skill.effect)}</div>` : ''}
     ${skill.notes ? `<div class="entry-notes">${escapeHtml(skill.notes)}</div>` : ''}
     ${skill.upperSkill ? `<div class="entry-notes">上位スキル: ${escapeHtml(skill.upperSkill)}</div>` : ''}
@@ -616,13 +615,12 @@ function renderSkills() {
     const categoryBadge = (skill.categories || [])
       .map(c => `<span class="apt-badge category-badge-${c}">${CATEGORY_LABELS[c] || c}</span>`)
       .join('');
-    const rarityChips = (skill.rarities || []).map(r => `<span class="apt-badge">${r}</span>`).join('');
     const styleChips = (skill.styles && skill.styles.length)
       ? skill.styles.map(s => `<span class="apt-badge">${STYLE_LABELS[s] || s}</span>`).join('')
-      : `<span class="apt-badge">汎用</span>`;
+      : '';
     const distanceChips = (skill.distances && skill.distances.length)
       ? skill.distances.map(d => `<span class="apt-badge">${DISTANCE_LABELS[d] || d}</span>`).join('')
-      : `<span class="apt-badge">汎用</span>`;
+      : '';
     const owned = ownershipIndex.get(skill.name);
     const withDupIndex = list => {
       const counts = {};
@@ -662,7 +660,7 @@ function renderSkills() {
         <div class="entry-name-row">
           <div class="entry-name">${escapeHtml(skill.name)}</div>
         </div>
-        <div class="apt-row">${categoryBadge}${rarityChips}${styleChips}${distanceChips}</div>
+        <div class="apt-row">${categoryBadge}${styleChips}${distanceChips}</div>
         ${skill.effect ? `<div class="entry-notes">${escapeHtml(skill.effect)}</div>` : ''}
         ${skill.notes ? `<div class="entry-notes">${escapeHtml(skill.notes)}</div>` : ''}
         ${upperSkillLine}
