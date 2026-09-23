@@ -405,11 +405,11 @@ function renderEvents() {
         if (loh.overallRank != null) badges += `<span class="apt-badge">総合${loh.overallRank}位</span>`;
       } else {
         const champions = ev.champions || {};
-        badges += `<span class="apt-badge">${champions.tier === 'open' ? 'オープン' : 'グレード'}</span>`;
+        badges += `<span class="apt-badge">${champions.tier === 'open' ? 'オープンリーグ' : 'グレードリーグ'}</span>`;
         if (champions.reachedFinal === false) {
           badges += `<span class="apt-badge">決勝未進出</span>`;
         } else {
-          badges += `<span class="apt-badge">決勝${champions.finalRound || '?'}ラウンド</span>`;
+          badges += `<span class="apt-badge">決勝${champions.finalRound || '?'}グループ</span>`;
           if (champions.rank != null) badges += `<span class="apt-badge">決勝${champions.rank}位</span>`;
           const r = champions.results || {};
           statLine = `<div class="entry-notes">決勝成績: 1着${r.first || 0} 2着${r.second || 0} 3着${r.third || 0} 圏外${r.other || 0}（${r.races || 0}戦）</div>`;
