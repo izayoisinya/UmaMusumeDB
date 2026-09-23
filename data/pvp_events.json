@@ -15,17 +15,17 @@
     "team": [
       {
         "name": "セイウンスカイ",
-        "winRate": null,
+        "winRate": 34.6,
         "points": null
       },
       {
         "name": "ヴィルシーナ",
-        "winRate": null,
+        "winRate": 33.3,
         "points": null
       },
       {
         "name": "ダイタクヘリオス",
-        "winRate": null,
+        "winRate": 1.2,
         "points": null
       }
     ],
@@ -44,6 +44,6 @@
     },
     "loh": null,
     "notes": "",
-    "savedAt": "2026-09-23T15:07:28.735Z"
+    "savedAt": "2026-09-23T15:08:41.910Z"
   }
 ]
