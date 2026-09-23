@@ -279,7 +279,16 @@ function openOwnerDetail(kind, name) {
   openModal('ownerDetailModal');
 }
 
+function jumpToSkillByName(name) {
+  const input = document.getElementById('searchNameInput');
+  input.value = name;
+  renderSkills();
+  document.getElementById('entries').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
 document.getElementById('entries').addEventListener('click', e => {
+  const refLink = e.target.closest('.skill-ref-link');
+  if (refLink) { jumpToSkillByName(refLink.dataset.name); return; }
   const link = e.target.closest('.owner-link');
   if (!link) return;
   openOwnerDetail(link.dataset.kind, link.dataset.name);
@@ -393,6 +402,8 @@ document.getElementById('openRegisterModalBtn').addEventListener('click', () => 
 function fillForm(parsed) {
   document.getElementById('fName').value = parsed.name || '';
   document.getElementById('fEffect').value = parsed.effect || '';
+  document.getElementById('fUpperSkill').value = parsed.upperSkill || '';
+  document.getElementById('fLowerSkill').value = parsed.lowerSkill || '';
 }
 
 document.getElementById('loadJsonBtn').addEventListener('click', () => {
@@ -437,6 +448,8 @@ document.getElementById('skillForm').addEventListener('submit', async e => {
     id: skillId,
     name,
     effect: document.getElementById('fEffect').value.trim(),
+    upperSkill: document.getElementById('fUpperSkill').value.trim(),
+    lowerSkill: document.getElementById('fLowerSkill').value.trim(),
     categories: getCheckedValues('.fCategory'),
     rarities: getCheckedValues('.fRarity'),
     styles: getCheckedValues('.fStyle').filter(v => v !== '__general__'),
@@ -597,6 +610,13 @@ function renderSkills() {
     const ownerCardsLine = (owned && owned.supports.length)
       ? `<div class="entry-notes">対応サポカ: ${owned.supports.map(u => ownerLink(u, 'support')).join('、')}</div>`
       : '';
+    const skillRefLink = (skillName) => `<span class="owner-link skill-ref-link" data-name="${escapeHtml(skillName)}">${escapeHtml(skillName)}</span>`;
+    const upperSkillLine = skill.upperSkill
+      ? `<div class="entry-notes">上位スキル: ${skillRefLink(skill.upperSkill)}</div>`
+      : '';
+    const lowerSkillLine = skill.lowerSkill
+      ? `<div class="entry-notes">下位スキル: ${skillRefLink(skill.lowerSkill)}</div>`
+      : '';
     row.innerHTML = `
       <div class="entry-main">
         <div class="entry-name-row">
@@ -605,6 +625,8 @@ function renderSkills() {
         <div class="apt-row">${categoryBadge}${rarityChips}${styleChips}${distanceChips}</div>
         ${skill.effect ? `<div class="entry-notes">${escapeHtml(skill.effect)}</div>` : ''}
         ${skill.notes ? `<div class="entry-notes">${escapeHtml(skill.notes)}</div>` : ''}
+        ${upperSkillLine}
+        ${lowerSkillLine}
         ${ownerUmasLine}
         ${ownerCardsLine}
       </div>
