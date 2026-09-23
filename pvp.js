@@ -190,9 +190,17 @@ document.getElementById('openRegisterModalBtn').addEventListener('click', () => 
 document.getElementById('clearBtn').addEventListener('click', resetForm);
 
 function fillForm(ev) {
-  document.getElementById('fRaceCondition').value = ev.raceCondition || '';
   document.getElementById('fMonth').value = ev.month || '';
   setEventType(ev.eventType);
+
+  const rc = ev.raceCondition || {};
+  document.getElementById('fLocation').value = rc.location || '';
+  document.getElementById('fDistance').value = rc.distance != null ? rc.distance : '';
+  setRadioValue('fSurface', rc.surface, '芝');
+  setRadioValue('fTrackDirection', rc.direction, '右回り');
+  setRadioValue('fSeason', rc.season, '春');
+  setRadioValue('fWeather', rc.weather, '晴');
+  setRadioValue('fGoing', rc.going, '良');
 
   const team = ev.team || [];
   [1, 2, 3].forEach(i => {
@@ -257,11 +265,20 @@ document.getElementById('pvpForm').addEventListener('submit', async e => {
   const lohTotalRaw = document.getElementById('fLohTotalPoints').value;
   const lohRankRaw = document.getElementById('fLohRank').value;
 
+  const distanceRaw = document.getElementById('fDistance').value;
   const ev = {
     id: eventId,
-    raceCondition: document.getElementById('fRaceCondition').value.trim(),
     month,
     eventType,
+    raceCondition: {
+      location: document.getElementById('fLocation').value,
+      distance: distanceRaw === '' ? null : Number(distanceRaw),
+      surface: getRadioValue('fSurface', '芝'),
+      direction: getRadioValue('fTrackDirection', '右回り'),
+      season: getRadioValue('fSeason', '春'),
+      weather: getRadioValue('fWeather', '晴'),
+      going: getRadioValue('fGoing', '良'),
+    },
     team: readTeamFromForm(),
     champions: eventType === 'champions' ? {
       tier: getRadioValue('fTier', 'grade'),
@@ -421,6 +438,17 @@ function renderEvents() {
         }
       }
 
+      const rc = ev.raceCondition || {};
+      const raceConditionLabel = [
+        rc.location,
+        rc.distance != null ? `${rc.distance}m` : '',
+        rc.surface,
+        rc.direction,
+        rc.season,
+        rc.weather,
+        rc.going,
+      ].filter(Boolean).join(' ／ ');
+
       const teamChips = (ev.team || []).map(member => {
         const parts = [];
         if (member.winRate != null) parts.push(`勝率${member.winRate}%`);
@@ -431,7 +459,7 @@ function renderEvents() {
 
       row.innerHTML = `
         <div class="entry-main">
-          ${ev.raceCondition ? `<div class="entry-name-row"><div class="entry-name">${escapeHtml(ev.raceCondition)}</div></div>` : ''}
+          ${raceConditionLabel ? `<div class="entry-name-row"><div class="entry-name">${escapeHtml(raceConditionLabel)}</div></div>` : ''}
           <div class="apt-row">${badges}</div>
           ${teamChips ? `<div class="chips">${teamChips}</div>` : ''}
           ${statLine}

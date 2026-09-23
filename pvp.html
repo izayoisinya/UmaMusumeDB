@@ -59,11 +59,6 @@
 
     <form class="form-grid" id="pvpForm">
       <div>
-        <label for="fRaceCondition">レース条件</label>
-        <input type="text" id="fRaceCondition" placeholder="例: マイル・芝・東京">
-      </div>
-
-      <div>
         <label for="fMonth">開催月</label>
         <input type="month" id="fMonth">
       </div>
@@ -73,6 +68,71 @@
         <div class="radio-pill-row" id="eventTypeRow">
           <label class="radio-pill"><input type="radio" name="fEventType" value="champions" checked>チャンピオンズミーティング</label>
           <label class="radio-pill"><input type="radio" name="fEventType" value="loh">リーグオブヒーローズ</label>
+        </div>
+      </div>
+
+      <div class="event-section">
+        <label>レース条件</label>
+        <div>
+          <label for="fLocation">場所</label>
+          <select id="fLocation">
+            <option value="">未選択</option>
+            <option value="東京">東京</option>
+            <option value="中山">中山</option>
+            <option value="阪神">阪神</option>
+            <option value="京都">京都</option>
+            <option value="中京">中京</option>
+            <option value="小倉">小倉</option>
+            <option value="新潟">新潟</option>
+            <option value="福島">福島</option>
+            <option value="札幌">札幌</option>
+            <option value="函館">函館</option>
+          </select>
+        </div>
+        <div>
+          <label for="fDistance">距離(m)</label>
+          <input type="number" id="fDistance" min="0" step="100" placeholder="例: 1800">
+        </div>
+        <div>
+          <label>バ場</label>
+          <div class="radio-pill-row">
+            <label class="radio-pill"><input type="radio" name="fSurface" value="芝" checked>芝</label>
+            <label class="radio-pill"><input type="radio" name="fSurface" value="ダート">ダート</label>
+          </div>
+        </div>
+        <div>
+          <label>コース</label>
+          <div class="radio-pill-row">
+            <label class="radio-pill"><input type="radio" name="fTrackDirection" value="右回り" checked>右回り</label>
+            <label class="radio-pill"><input type="radio" name="fTrackDirection" value="左回り">左回り</label>
+          </div>
+        </div>
+        <div>
+          <label>季節</label>
+          <div class="radio-pill-row">
+            <label class="radio-pill"><input type="radio" name="fSeason" value="春" checked>春</label>
+            <label class="radio-pill"><input type="radio" name="fSeason" value="夏">夏</label>
+            <label class="radio-pill"><input type="radio" name="fSeason" value="秋">秋</label>
+            <label class="radio-pill"><input type="radio" name="fSeason" value="冬">冬</label>
+          </div>
+        </div>
+        <div>
+          <label>天候</label>
+          <div class="radio-pill-row">
+            <label class="radio-pill"><input type="radio" name="fWeather" value="晴" checked>晴</label>
+            <label class="radio-pill"><input type="radio" name="fWeather" value="曇">曇</label>
+            <label class="radio-pill"><input type="radio" name="fWeather" value="雨">雨</label>
+            <label class="radio-pill"><input type="radio" name="fWeather" value="雪">雪</label>
+          </div>
+        </div>
+        <div>
+          <label>バ場状態</label>
+          <div class="radio-pill-row">
+            <label class="radio-pill"><input type="radio" name="fGoing" value="良" checked>良</label>
+            <label class="radio-pill"><input type="radio" name="fGoing" value="稍重">稍重</label>
+            <label class="radio-pill"><input type="radio" name="fGoing" value="重">重</label>
+            <label class="radio-pill"><input type="radio" name="fGoing" value="不良">不良</label>
+          </div>
         </div>
       </div>
 
