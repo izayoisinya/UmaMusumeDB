@@ -3772,7 +3772,10 @@
     "id": "skill_1790103292612_hxvvu",
     "name": "荒ぶる旋風",
     "effect": "",
-    "categories": [],
+    "categories": [
+      "speed",
+      "debuff"
+    ],
     "rarities": [
       "SR"
     ],
@@ -4149,7 +4152,8 @@
     "name": "仕掛け準備",
     "effect": "",
     "categories": [
-      "accel"
+      "accel",
+      "lateral"
     ],
     "rarities": [
       "R"
@@ -4498,7 +4502,8 @@
     "name": "準備万全！",
     "effect": "",
     "categories": [
-      "accel"
+      "accel",
+      "lateral"
     ],
     "rarities": [
       "SR"
@@ -5730,7 +5735,8 @@
     "name": "前列狙い",
     "effect": "",
     "categories": [
-      "accel"
+      "accel",
+      "lateral"
     ],
     "rarities": [
       "R"
@@ -5813,7 +5819,8 @@
     "name": "狙うは最前列！",
     "effect": "",
     "categories": [
-      "accel"
+      "accel",
+      "lateral"
     ],
     "rarities": [
       "SR"
@@ -5859,7 +5866,8 @@
     "name": "想い焦がれて",
     "effect": "",
     "categories": [
-      "speed"
+      "speed",
+      "current_speed"
     ],
     "rarities": [
       "R"
@@ -5911,7 +5919,8 @@
     "name": "息抜き上手",
     "effect": "",
     "categories": [
-      "heal"
+      "heal",
+      "current_speed"
     ],
     "rarities": [
       "R"
@@ -6175,7 +6184,8 @@
     "name": "脱兎の先へ",
     "effect": "",
     "categories": [
-      "heal"
+      "heal",
+      "speed"
     ],
     "rarities": [
       "SR"
@@ -6260,7 +6270,8 @@
     "name": "端緒",
     "effect": "",
     "categories": [
-      "heal"
+      "heal",
+      "current_speed"
     ],
     "rarities": [
       "R"
@@ -6635,7 +6646,8 @@
     "name": "追い上げ",
     "effect": "",
     "categories": [
-      "accel"
+      "accel",
+      "speed"
     ],
     "rarities": [
       "R"
@@ -6892,7 +6904,8 @@
     "name": "電撃の煌めき",
     "effect": "",
     "categories": [
-      "accel"
+      "accel",
+      "speed"
     ],
     "rarities": [
       "SR"
@@ -7008,7 +7021,8 @@
     "name": "怒涛の追い上げ",
     "effect": "",
     "categories": [
-      "accel"
+      "accel",
+      "speed"
     ],
     "rarities": [
       "SR"
@@ -7497,7 +7511,8 @@
     "name": "二段構え",
     "effect": "",
     "categories": [
-      "speed"
+      "speed",
+      "current_speed"
     ],
     "rarities": [
       "R"
@@ -8123,7 +8138,8 @@
     "name": "別腹タンク",
     "effect": "",
     "categories": [
-      "heal"
+      "heal",
+      "speed"
     ],
     "rarities": [
       "R"
@@ -8607,7 +8623,8 @@
     "name": "悠々自適",
     "effect": "",
     "categories": [
-      "heal"
+      "heal",
+      "current_speed"
     ],
     "rarities": [
       "SR"
