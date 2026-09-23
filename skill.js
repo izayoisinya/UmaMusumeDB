@@ -413,7 +413,11 @@ function renderSkills() {
       const hay = [skill.name, skill.effect].filter(Boolean).join(' ').toLowerCase();
       if (!hay.includes(keyword)) return false;
     }
-    if (categoryFilters.length && !categoryFilters.includes(skill.category)) return false;
+    if (categoryFilters.length) {
+      const cat = skill.category || '';
+      const matches = categoryFilters.some(f => f === '__none__' ? !cat : f === cat);
+      if (!matches) return false;
+    }
     if (rarityFilters.length && !(skill.rarities || []).some(r => rarityFilters.includes(r))) return false;
     if (styleFilters.length && !(skill.styles || []).some(s => styleFilters.includes(s))) return false;
     if (distanceFilters.length && !(skill.distances || []).some(d => distanceFilters.includes(d))) return false;
