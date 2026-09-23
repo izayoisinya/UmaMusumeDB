@@ -257,22 +257,21 @@ function renderCardDetailHtml(card) {
   `;
 }
 
-function openOwnerDetail(kind, name, id, dupIndex) {
+function openOwnerDetail(kind, name, id, dupIndex, skillName) {
   const titleEl = document.getElementById('ownerDetailTitle');
   const bodyEl = document.getElementById('ownerDetailBody');
   const suffix = dupIndex ? ` [${dupIndex}]` : '';
+  titleEl.textContent = skillName || (name + suffix);
   let imageUrl = null;
   if (kind === 'uma') {
     const uma = (id && cachedUmas.find(u => u.id === id)) || cachedUmas.find(u => u.name === name);
     if (!uma) return;
     imageUrl = uma.imagePath ? imageRawUrl(uma.imagePath) : null;
-    titleEl.textContent = uma.name + suffix;
     bodyEl.innerHTML = renderUmaDetailHtml(uma);
   } else {
     const card = (id && cachedCards.find(c => c.id === id)) || cachedCards.find(c => c.name === name);
     if (!card) return;
     imageUrl = card.imagePath ? imageRawUrl(card.imagePath) : null;
-    titleEl.textContent = card.name + suffix;
     bodyEl.innerHTML = renderCardDetailHtml(card);
   }
   const thumb = bodyEl.querySelector('.uma-icon, .entry-thumb');
@@ -316,7 +315,7 @@ document.getElementById('entries').addEventListener('click', e => {
   if (refLink) { openSkillDetail(refLink.dataset.name); return; }
   const link = e.target.closest('.owner-link');
   if (!link) return;
-  openOwnerDetail(link.dataset.kind, link.dataset.name, link.dataset.id, link.dataset.dup);
+  openOwnerDetail(link.dataset.kind, link.dataset.name, link.dataset.id, link.dataset.dup, link.dataset.skill);
 });
 
 document.getElementById('extractSkillsBtn').addEventListener('click', async () => {
@@ -637,7 +636,7 @@ function renderSkills() {
     };
     const ownerLink = (u, kind) => {
       const label = `${escapeHtml(u.name)}${u.type && u.type !== 'normal' ? `(${SKILL_TYPE_LABELS[u.type] || u.type})` : ''}${u.dupIndex ? `[${u.dupIndex}]` : ''}`;
-      return `<span class="owner-link" data-kind="${kind}" data-id="${escapeHtml(u.id || '')}" data-name="${escapeHtml(u.name)}" data-dup="${u.dupIndex || ''}">${label}</span>`;
+      return `<span class="owner-link" data-kind="${kind}" data-id="${escapeHtml(u.id || '')}" data-name="${escapeHtml(u.name)}" data-dup="${u.dupIndex || ''}" data-skill="${escapeHtml(skill.name)}">${label}</span>`;
     };
     const ownerUmasLine = (owned && owned.umas.length)
       ? `<div class="entry-notes">所持ウマ娘: ${withDupIndex(owned.umas).map(u => ownerLink(u, 'uma')).join('、')}</div>`
