@@ -265,6 +265,18 @@
       </div>
 
       <div>
+        <label for="fVideo">決勝動画（任意・95MBまで）</label>
+        <div class="dropzone" id="videoDropzone">
+          <div id="videoPreviewWrap" hidden>
+            <video id="videoPreview" controls playsinline></video>
+          </div>
+          <div id="videoDropzoneHint">タップして動画を選択</div>
+          <input type="file" id="fVideo" accept="video/*">
+        </div>
+        <button type="button" class="btn secondary" id="removeVideoBtn" hidden>動画を削除</button>
+      </div>
+
+      <div>
         <label for="fNotes">メモ</label>
         <textarea id="fNotes" rows="3" placeholder="対戦相手の傾向や反省点など"></textarea>
       </div>

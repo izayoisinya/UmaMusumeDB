@@ -162,6 +162,16 @@ function resizeImageFile(file, maxDim, quality) {
   });
 }
 
+// リサイズせずファイルをそのままdata URL化する(動画など画像以外のファイル用)
+function readFileAsDataUrl(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = () => reject(new Error('ファイルの読み込みに失敗しました'));
+    reader.readAsDataURL(file);
+  });
+}
+
 // --- ライトボックス(画像拡大表示) ---
 const lightbox = document.getElementById('lightbox');
 const lightboxImg = document.getElementById('lightboxImg');

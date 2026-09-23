@@ -236,6 +236,94 @@ function createTeamImageManager(index) {
 
 const teamImageManagers = [1, 2, 3].map(createTeamImageManager);
 
+// --- 決勝動画のアップロード(1イベントにつき1本) ---
+const VIDEO_MAX_BYTES = 95 * 1024 * 1024;
+function createVideoManager() {
+  const dropzone = document.getElementById('videoDropzone');
+  const fileInput = document.getElementById('fVideo');
+  const preview = document.getElementById('videoPreview');
+  const previewWrap = document.getElementById('videoPreviewWrap');
+  const hint = document.getElementById('videoDropzoneHint');
+  const removeBtn = document.getElementById('removeVideoBtn');
+  let pendingDataUrl = null;
+  let pendingExt = 'mp4';
+  let currentPath = null;
+  let removeFlag = false;
+
+  function showPreview(src) {
+    preview.src = src;
+    previewWrap.hidden = false;
+    hint.hidden = true;
+    removeBtn.hidden = false;
+  }
+  function hidePreview() {
+    preview.pause();
+    preview.removeAttribute('src');
+    preview.load();
+    previewWrap.hidden = true;
+    hint.hidden = false;
+    removeBtn.hidden = true;
+  }
+
+  dropzone.addEventListener('click', e => {
+    if (e.target.closest('video')) return;
+    fileInput.click();
+  });
+  fileInput.addEventListener('change', async () => {
+    const file = fileInput.files[0];
+    if (!file) return;
+    if (file.size > VIDEO_MAX_BYTES) {
+      setStatus(`動画が大きすぎます(${(file.size / 1024 / 1024).toFixed(1)}MB)。95MB以下にしてください。`, true);
+      fileInput.value = '';
+      return;
+    }
+    try {
+      setStatus('動画を読み込んでいます…');
+      pendingDataUrl = await readFileAsDataUrl(file);
+      const m = /\.([a-zA-Z0-9]+)$/.exec(file.name || '');
+      pendingExt = m ? m[1].toLowerCase() : 'mp4';
+      removeFlag = false;
+      showPreview(pendingDataUrl);
+      setStatus('');
+    } catch (err) {
+      console.error(err);
+      setStatus('動画の読み込みに失敗しました: ' + err.message, true);
+    }
+  });
+  removeBtn.addEventListener('click', e => {
+    e.stopPropagation();
+    pendingDataUrl = null;
+    fileInput.value = '';
+    if (currentPath) removeFlag = true;
+    hidePreview();
+  });
+
+  return {
+    reset() {
+      pendingDataUrl = null;
+      pendingExt = 'mp4';
+      currentPath = null;
+      removeFlag = false;
+      fileInput.value = '';
+      hidePreview();
+    },
+    setExisting(path) {
+      pendingDataUrl = null;
+      removeFlag = false;
+      currentPath = path || null;
+      if (path) showPreview(imageRawUrl(path)); else hidePreview();
+    },
+    hasPending() { return !!pendingDataUrl; },
+    getPendingDataUrl() { return pendingDataUrl; },
+    getPendingExt() { return pendingExt; },
+    shouldRemove() { return removeFlag && !!currentPath; },
+    getCurrentPath() { return currentPath; },
+    setUploadedPath(path) { currentPath = path; },
+  };
+}
+
+const videoManager = createVideoManager();
+
 // --- フォーム操作 ---
 function setPvpModalMode(isEditing) {
   editingEventId = isEditing;
@@ -255,6 +343,7 @@ function resetForm() {
     });
     teamImageManagers[i - 1].reset();
   });
+  videoManager.reset();
   setStatus('');
   setPvpModalMode(null);
 }
@@ -308,6 +397,7 @@ function fillForm(ev) {
   document.getElementById('fLohRank').value = loh.overallRank != null ? loh.overallRank : '';
   document.getElementById('fLohRankTier').value = loh.rankTier || '';
 
+  videoManager.setExisting(ev.videoPath);
   document.getElementById('fNotes').value = ev.notes || '';
 }
 
@@ -375,6 +465,7 @@ document.getElementById('pvpForm').addEventListener('submit', async e => {
       going: getRadioValue('fGoing', '良'),
     },
     team: [],
+    videoPath: null,
     champions: eventType === 'champions' ? {
       tier: getRadioValue('fTier', 'grade'),
       reachedFinal: isFinalReached(),
@@ -413,6 +504,19 @@ document.getElementById('pvpForm').addEventListener('submit', async e => {
       }
     }
     ev.team = readTeamFromForm().filter(member => member.name);
+
+    if (videoManager.hasPending()) {
+      setStatus('動画をアップロードしています…(サイズによって時間がかかります)');
+      const videoPath = `videos/${eventId}.${videoManager.getPendingExt()}`;
+      await uploadImageToGitHub(videoPath, videoManager.getPendingDataUrl(), `対人イベント決勝動画アップロード: ${month}`);
+      videoManager.setUploadedPath(videoPath);
+    } else if (videoManager.shouldRemove()) {
+      setStatus('動画を削除しています…');
+      await deleteImageFromGitHub(videoManager.getCurrentPath(), `対人イベント決勝動画削除: ${month}`);
+      videoManager.setUploadedPath(null);
+    }
+    ev.videoPath = videoManager.getCurrentPath() || null;
+
     setStatus(isEditing ? '更新しています…' : '保存しています…');
     await saveEventsToGitHub(updated, `${isEditing ? '対人イベント記録編集' : '対人イベント記録追加'}: ${month}`);
     allEvents = sortEvents(updated);
@@ -577,11 +681,17 @@ function renderEvents() {
         `;
       }).join('');
 
+      const videoUrl = ev.videoPath ? imageRawUrl(ev.videoPath) : null;
+      const videoWrap = videoUrl
+        ? `<div class="pvp-video-wrap"><span class="apt-group-label">決勝動画</span><video controls preload="metadata" playsinline src="${escapeHtml(videoUrl)}"></video></div>`
+        : '';
+
       row.innerHTML = `
         <div class="entry-main">
           ${raceConditionLabel ? `<div class="entry-name-row"><div class="entry-name">${escapeHtml(raceConditionLabel)}</div></div>` : ''}
           <div class="apt-row">${badges}</div>
           ${teamCards ? `<div class="pvp-team-grid">${teamCards}</div>` : ''}
+          ${videoWrap}
           ${ev.notes ? `<div class="entry-notes">${escapeHtml(ev.notes)}</div>` : ''}
         </div>
         <div class="entry-side">

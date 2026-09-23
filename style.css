@@ -240,6 +240,14 @@ button { touch-action: manipulation; }
   display: block;
   margin: 0 auto 10px;
 }
+.dropzone video {
+  max-width: 100%;
+  max-height: 220px;
+  display: block;
+  margin: 0 auto 10px;
+  border-radius: 8px;
+  background: #000;
+}
 .dropzone input[type=file] { display: none; }
 
 .btn {
@@ -879,6 +887,16 @@ mark.search-hit {
 }
 .pvp-team-member .apt-row { justify-content: center; margin-top: 4px; }
 .pvp-team-member .entry-name { font-size: 13px; }
+
+.pvp-video-wrap { margin-top: 10px; }
+.pvp-video-wrap video {
+  width: 100%;
+  max-height: 360px;
+  border-radius: 10px;
+  margin-top: 4px;
+  background: #000;
+  display: block;
+}
 .pvp-team-member .entry-notes { margin-top: 4px; text-align: left; }
 .event-section {
   border: 1.5px solid var(--panel-line);
