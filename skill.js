@@ -643,17 +643,17 @@ function renderSkills() {
       return `<span class="owner-link${typeClass}" data-kind="${kind}" data-id="${escapeHtml(u.id || '')}" data-name="${escapeHtml(u.name)}" data-dup="${u.dupIndex || ''}" data-skill="${escapeHtml(skill.name)}">${label}</span>`;
     };
     const ownerUmasLine = (owned && owned.umas.length)
-      ? `<div class="apt-group"><span class="apt-group-label">所持ウマ娘</span><div class="apt-row">${withDupIndex(owned.umas).map(u => ownerLink(u, 'uma')).join('')}</div></div>`
+      ? `<div class="apt-group owner-group"><span class="apt-group-label">所持ウマ娘</span><div class="apt-row">${withDupIndex(owned.umas).map(u => ownerLink(u, 'uma')).join('')}</div></div>`
       : '';
     const ownerCardsLine = (owned && owned.supports.length)
-      ? `<div class="apt-group"><span class="apt-group-label">対応サポカ</span><div class="apt-row">${withDupIndex(owned.supports).map(u => ownerLink(u, 'support')).join('')}</div></div>`
+      ? `<div class="apt-group owner-group"><span class="apt-group-label">対応サポカ</span><div class="apt-row">${withDupIndex(owned.supports).map(u => ownerLink(u, 'support')).join('')}</div></div>`
       : '';
     const skillRefLink = (skillName) => `<span class="owner-link skill-ref-link" data-name="${escapeHtml(skillName)}">${escapeHtml(skillName)}</span>`;
     const upperSkillLine = skill.upperSkill
-      ? `<div class="apt-group"><span class="apt-group-label">上位スキル</span><div class="apt-row">${skillRefLink(skill.upperSkill)}</div></div>`
+      ? `<div class="apt-group owner-group"><span class="apt-group-label">上位スキル</span><div class="apt-row">${skillRefLink(skill.upperSkill)}</div></div>`
       : '';
     const lowerSkillLine = skill.lowerSkill
-      ? `<div class="apt-group"><span class="apt-group-label">下位スキル</span><div class="apt-row">${skillRefLink(skill.lowerSkill)}</div></div>`
+      ? `<div class="apt-group owner-group"><span class="apt-group-label">下位スキル</span><div class="apt-row">${skillRefLink(skill.lowerSkill)}</div></div>`
       : '';
     row.innerHTML = `
       <div class="entry-main">

@@ -685,6 +685,19 @@ mark.search-hit {
   white-space: nowrap;
 }
 .owner-link:hover, .owner-link:active { opacity: 0.75; }
+.owner-group {
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px dashed var(--panel-line);
+}
+.owner-group .apt-group-label {
+  font-size: 12px;
+  color: var(--ink);
+}
+.owner-group .owner-link {
+  font-size: 13px;
+  padding: 5px 12px;
+}
 .entry-actions {
   display: flex;
   gap: 8px;
