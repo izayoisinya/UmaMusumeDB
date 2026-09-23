@@ -1,1 +1,49 @@
-[]
+[
+  {
+    "id": "pvp_1790176048735_kyifb",
+    "month": "2026-09",
+    "eventType": "champions",
+    "raceCondition": {
+      "location": "東京",
+      "distance": 1800,
+      "surface": "芝",
+      "direction": "左回り",
+      "season": "秋",
+      "weather": "晴",
+      "going": "良"
+    },
+    "team": [
+      {
+        "name": "セイウンスカイ",
+        "winRate": null,
+        "points": null
+      },
+      {
+        "name": "ヴィルシーナ",
+        "winRate": null,
+        "points": null
+      },
+      {
+        "name": "ダイタクヘリオス",
+        "winRate": null,
+        "points": null
+      }
+    ],
+    "champions": {
+      "tier": "grade",
+      "reachedFinal": true,
+      "finalRound": "A",
+      "results": {
+        "first": 0,
+        "second": 0,
+        "third": 0,
+        "other": 0,
+        "races": 81
+      },
+      "rank": 2
+    },
+    "loh": null,
+    "notes": "",
+    "savedAt": "2026-09-23T15:07:28.735Z"
+  }
+]
