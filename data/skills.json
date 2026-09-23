@@ -7362,12 +7362,14 @@
     "id": "skill_1790103292613_1no0s",
     "name": "躍動",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "R"
     ],
     "styles": [],
-    "distances": [],
+    "distances": [
+      "medium"
+    ],
     "notes": "ウマ娘・サポカから自動抽出",
     "savedAt": "2026-09-22T18:54:52.613Z"
   },
@@ -7375,12 +7377,15 @@
     "id": "skill_1790103292617_fwop2",
     "name": "優位形成",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "SR"
     ],
     "styles": [],
-    "distances": [],
+    "distances": [
+      "mile",
+      "medium"
+    ],
     "notes": "ウマ娘・サポカから自動抽出",
     "savedAt": "2026-09-22T18:54:52.617Z"
   },
@@ -7388,7 +7393,7 @@
     "id": "skill_1790103292617_t7z1r",
     "name": "優雅な砂浴び",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "SR"
     ],
@@ -7401,7 +7406,7 @@
     "id": "skill_1790103292618_155l4",
     "name": "優等生",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "R"
     ],
@@ -7414,11 +7419,13 @@
     "id": "skill_1790103292617_bixe4",
     "name": "勇を奮って",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "R"
     ],
-    "styles": [],
+    "styles": [
+      "sashi"
+    ],
     "distances": [],
     "notes": "ウマ娘・サポカから自動抽出",
     "savedAt": "2026-09-22T18:54:52.617Z"
@@ -7427,11 +7434,13 @@
     "id": "skill_1790103292613_g177p",
     "name": "勇往邁進",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "SR"
     ],
-    "styles": [],
+    "styles": [
+      "sashi"
+    ],
     "distances": [],
     "notes": "ウマ娘・サポカから自動抽出",
     "savedAt": "2026-09-22T18:54:52.613Z"
@@ -7440,11 +7449,13 @@
     "id": "skill_1790103292614_fghj0",
     "name": "勇気の一歩",
     "effect": "",
-    "category": "",
+    "category": "accel",
     "rarities": [
       "R"
     ],
-    "styles": [],
+    "styles": [
+      "senko"
+    ],
     "distances": [],
     "notes": "ウマ娘・サポカから自動抽出",
     "savedAt": "2026-09-22T18:54:52.614Z"
@@ -7492,7 +7503,7 @@
     "id": "skill_1790103292619_7s5au",
     "name": "悠々自適",
     "effect": "",
-    "category": "",
+    "category": "heal",
     "rarities": [
       "SR"
     ],
@@ -7505,7 +7516,7 @@
     "id": "skill_1790103292618_nyb74",
     "name": "悠久走破",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "SR"
     ],
@@ -7518,11 +7529,13 @@
     "id": "skill_1790103292614_doyrd",
     "name": "憂いなし",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "R"
     ],
-    "styles": [],
+    "styles": [
+      "senko"
+    ],
     "distances": [],
     "notes": "ウマ娘・サポカから自動抽出",
     "savedAt": "2026-09-22T18:54:52.614Z"
@@ -7531,7 +7544,7 @@
     "id": "skill_1790103292615_48ywf",
     "name": "遊びはおしまいっ！",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "R"
     ],
@@ -7544,11 +7557,13 @@
     "id": "skill_1790103292614_xl5pm",
     "name": "余勢を駆って",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "R"
     ],
-    "styles": [],
+    "styles": [
+      "senko"
+    ],
     "distances": [],
     "notes": "ウマ娘・サポカから自動抽出",
     "savedAt": "2026-09-22T18:54:52.614Z"
@@ -7557,11 +7572,13 @@
     "id": "skill_1790103292614_tzz2k",
     "name": "余裕綽々",
     "effect": "",
-    "category": "",
+    "category": "heal",
     "rarities": [
       "SR"
     ],
-    "styles": [],
+    "styles": [
+      "senko"
+    ],
     "distances": [],
     "notes": "ウマ娘・サポカから自動抽出",
     "savedAt": "2026-09-22T18:54:52.614Z"
@@ -7570,7 +7587,7 @@
     "id": "skill_1790103292616_79s3x",
     "name": "遥か先へ",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "SR"
     ],
@@ -7583,7 +7600,7 @@
     "id": "skill_1790103292618_3a2pg",
     "name": "陽の加護",
     "effect": "",
-    "category": "",
+    "category": "speed",
     "rarities": [
       "R"
     ],
@@ -7596,7 +7613,7 @@
     "id": "skill_1790103292617_97ev7",
     "name": "淀の申し子",
     "effect": "",
-    "category": "",
+    "category": "green",
     "rarities": [
       "SR"
     ],
