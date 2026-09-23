@@ -190,6 +190,7 @@ document.getElementById('openRegisterModalBtn').addEventListener('click', () => 
 document.getElementById('clearBtn').addEventListener('click', resetForm);
 
 function fillForm(ev) {
+  document.getElementById('fRaceCondition').value = ev.raceCondition || '';
   document.getElementById('fMonth').value = ev.month || '';
   setEventType(ev.eventType);
 
@@ -258,6 +259,7 @@ document.getElementById('pvpForm').addEventListener('submit', async e => {
 
   const ev = {
     id: eventId,
+    raceCondition: document.getElementById('fRaceCondition').value.trim(),
     month,
     eventType,
     team: readTeamFromForm(),
@@ -429,6 +431,7 @@ function renderEvents() {
 
       row.innerHTML = `
         <div class="entry-main">
+          ${ev.raceCondition ? `<div class="entry-name-row"><div class="entry-name">${escapeHtml(ev.raceCondition)}</div></div>` : ''}
           <div class="apt-row">${badges}</div>
           ${teamChips ? `<div class="chips">${teamChips}</div>` : ''}
           ${statLine}
