@@ -5459,15 +5459,17 @@
     "name": "先行のコツ○",
     "effect": "",
     "categories": [
-      "vision"
+      "green"
     ],
     "rarities": [
       "R"
     ],
-    "styles": [],
+    "styles": [
+      "senko"
+    ],
     "distances": [],
     "notes": "ウマ娘・サポカから自動抽出",
-    "savedAt": "2026-09-22T18:54:52.614Z"
+    "savedAt": "2026-09-23T06:58:59.762Z"
   },
   {
     "id": "skill_1790103292614_puivp",
