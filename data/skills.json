@@ -2476,7 +2476,7 @@
     "name": "夏ウマ娘○",
     "effect": "",
     "categories": [
-      "speed"
+      "green"
     ],
     "rarities": [
       "R"
@@ -2484,7 +2484,7 @@
     "styles": [],
     "distances": [],
     "notes": "ウマ娘・サポカから自動抽出",
-    "savedAt": "2026-09-22T18:54:52.613Z"
+    "savedAt": "2026-09-23T07:00:27.562Z"
   },
   {
     "id": "skill_1790103292618_yba4j",
@@ -3543,7 +3543,7 @@
     "name": "交流重賞○",
     "effect": "",
     "categories": [
-      "speed"
+      "green"
     ],
     "rarities": [
       "R"
@@ -3551,7 +3551,7 @@
     "styles": [],
     "distances": [],
     "notes": "ウマ娘・サポカから自動抽出",
-    "savedAt": "2026-09-22T18:54:52.615Z"
+    "savedAt": "2026-09-23T07:00:38.697Z"
   },
   {
     "id": "skill_1790103292618_tpat1",
@@ -3886,7 +3886,7 @@
     "name": "左回り○",
     "effect": "",
     "categories": [
-      "speed"
+      "green"
     ],
     "rarities": [
       "R"
@@ -3894,7 +3894,7 @@
     "styles": [],
     "distances": [],
     "notes": "ウマ娘・サポカから自動抽出",
-    "savedAt": "2026-09-22T18:54:52.615Z"
+    "savedAt": "2026-09-23T07:00:52.412Z"
   },
   {
     "id": "skill_1790103292615_e3o1k",
@@ -3963,15 +3963,17 @@
     "name": "差しのコツ○",
     "effect": "",
     "categories": [
-      "lateral"
+      "green"
     ],
     "rarities": [
       "R"
     ],
-    "styles": [],
+    "styles": [
+      "sashi"
+    ],
     "distances": [],
     "notes": "ウマ娘・サポカから自動抽出",
-    "savedAt": "2026-09-22T18:54:52.614Z"
+    "savedAt": "2026-09-23T06:59:44.841Z"
   },
   {
     "id": "skill_1790103292613_irlev",
@@ -4378,7 +4380,7 @@
     "name": "秋ウマ娘○",
     "effect": "",
     "categories": [
-      "speed"
+      "green"
     ],
     "rarities": [
       "R"
@@ -4386,7 +4388,7 @@
     "styles": [],
     "distances": [],
     "notes": "ウマ娘・サポカから自動抽出",
-    "savedAt": "2026-09-22T18:54:52.614Z"
+    "savedAt": "2026-09-23T07:01:45.481Z"
   },
   {
     "id": "skill_1790103292614_qk3i9",
@@ -4455,7 +4457,7 @@
     "name": "春ウマ娘○",
     "effect": "",
     "categories": [
-      "speed"
+      "green"
     ],
     "rarities": [
       "R"
@@ -4463,7 +4465,7 @@
     "styles": [],
     "distances": [],
     "notes": "ウマ娘・サポカから自動抽出",
-    "savedAt": "2026-09-22T18:54:52.614Z"
+    "savedAt": "2026-09-23T07:01:53.417Z"
   },
   {
     "id": "skill_1790103292614_o272w",
@@ -5459,15 +5461,17 @@
     "name": "先行のコツ○",
     "effect": "",
     "categories": [
-      "vision"
+      "green"
     ],
     "rarities": [
       "R"
     ],
-    "styles": [],
+    "styles": [
+      "senko"
+    ],
     "distances": [],
     "notes": "ウマ娘・サポカから自動抽出",
-    "savedAt": "2026-09-22T18:54:52.614Z"
+    "savedAt": "2026-09-23T06:58:59.762Z"
   },
   {
     "id": "skill_1790103292614_puivp",
@@ -7189,15 +7193,17 @@
     "name": "逃げのコツ○",
     "effect": "",
     "categories": [
-      "vision"
+      "green"
     ],
     "rarities": [
       "R"
     ],
-    "styles": [],
+    "styles": [
+      "nige"
+    ],
     "distances": [],
     "notes": "ウマ娘・サポカから自動抽出",
-    "savedAt": "2026-09-22T18:54:52.615Z"
+    "savedAt": "2026-09-23T06:59:15.579Z"
   },
   {
     "id": "skill_1790103292618_a6jrk",
