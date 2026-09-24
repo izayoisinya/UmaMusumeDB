@@ -195,7 +195,7 @@ function createTeamImageManager(index) {
     if (!file) return;
     try {
       setStatus('画像を処理しています…');
-      pendingDataUrl = await resizeImageFile(file, 800, 0.8);
+      pendingDataUrl = await resizeImageFile(file, 1600, 0.85);
       removeFlag = false;
       showPreview(pendingDataUrl);
       setStatus('');
