@@ -324,6 +324,82 @@ function createVideoManager() {
 
 const videoManager = createVideoManager();
 
+// --- 参考画像(新聞・着順表など、複数枚) ---
+function createExtraImagesManager() {
+  const dropzone = document.getElementById('extraImagesDropzone');
+  const fileInput = document.getElementById('fExtraImages');
+  const grid = document.getElementById('extraImagesGrid');
+  const hint = document.getElementById('extraImagesHint');
+  let items = []; // { key, path, dataUrl, toDelete }
+
+  function render() {
+    grid.innerHTML = '';
+    items.forEach(item => {
+      if (item.toDelete) return;
+      const thumb = document.createElement('div');
+      thumb.className = 'extra-image-thumb';
+      const img = document.createElement('img');
+      img.src = item.dataUrl || imageRawUrl(item.path);
+      img.alt = '';
+      thumb.appendChild(img);
+      const removeBtn = document.createElement('button');
+      removeBtn.type = 'button';
+      removeBtn.className = 'extra-image-remove';
+      removeBtn.textContent = '×';
+      removeBtn.addEventListener('click', e => {
+        e.stopPropagation();
+        if (item.path) {
+          item.toDelete = true;
+        } else {
+          items = items.filter(i => i.key !== item.key);
+        }
+        render();
+      });
+      thumb.appendChild(removeBtn);
+      grid.appendChild(thumb);
+    });
+    hint.hidden = items.some(i => !i.toDelete);
+  }
+
+  dropzone.addEventListener('click', e => {
+    if (e.target.closest('.extra-image-thumb')) return;
+    fileInput.click();
+  });
+  fileInput.addEventListener('change', async () => {
+    const files = Array.from(fileInput.files || []);
+    if (!files.length) return;
+    try {
+      setStatus('画像を処理しています…');
+      for (const file of files) {
+        const dataUrl = await resizeImageFile(file, 1600, 0.85);
+        items.push({ key: 'new_' + Date.now() + '_' + Math.random().toString(36).slice(2, 7), path: null, dataUrl, toDelete: false });
+      }
+      fileInput.value = '';
+      render();
+      setStatus('');
+    } catch (err) {
+      console.error(err);
+      setStatus('画像の処理に失敗しました: ' + err.message, true);
+    }
+  });
+
+  return {
+    reset() {
+      items = [];
+      fileInput.value = '';
+      render();
+    },
+    setExisting(paths) {
+      items = (paths || []).map(path => ({ key: path, path, dataUrl: null, toDelete: false }));
+      fileInput.value = '';
+      render();
+    },
+    getItems() { return items; },
+  };
+}
+
+const extraImagesManager = createExtraImagesManager();
+
 // --- フォーム操作 ---
 function setPvpModalMode(isEditing) {
   editingEventId = isEditing;
@@ -344,6 +420,7 @@ function resetForm() {
     teamImageManagers[i - 1].reset();
   });
   videoManager.reset();
+  extraImagesManager.reset();
   setStatus('');
   setPvpModalMode(null);
 }
@@ -398,6 +475,7 @@ function fillForm(ev) {
   document.getElementById('fLohRankTier').value = loh.rankTier || '';
 
   videoManager.setExisting(ev.videoPath);
+  extraImagesManager.setExisting(ev.extraImages);
   document.getElementById('fNotes').value = ev.notes || '';
 }
 
@@ -466,6 +544,7 @@ document.getElementById('pvpForm').addEventListener('submit', async e => {
     },
     team: [],
     videoPath: null,
+    extraImages: [],
     champions: eventType === 'champions' ? {
       tier: getRadioValue('fTier', 'grade'),
       reachedFinal: isFinalReached(),
@@ -516,6 +595,29 @@ document.getElementById('pvpForm').addEventListener('submit', async e => {
       videoManager.setUploadedPath(null);
     }
     ev.videoPath = videoManager.getCurrentPath() || null;
+
+    const extraItems = extraImagesManager.getItems();
+    const extraPaths = [];
+    let extraIndex = 0;
+    for (const item of extraItems) {
+      extraIndex++;
+      if (item.toDelete) {
+        if (item.path) {
+          setStatus('参考画像を削除しています…');
+          await deleteImageFromGitHub(item.path, `対人イベント参考画像削除: ${month}`);
+        }
+        continue;
+      }
+      if (item.path) {
+        extraPaths.push(item.path);
+      } else {
+        setStatus('参考画像をアップロードしています…');
+        const imagePath = `images/${eventId}_extra${extraIndex}.jpg`;
+        await uploadImageToGitHub(imagePath, item.dataUrl, `対人イベント参考画像アップロード: ${month}`);
+        extraPaths.push(imagePath);
+      }
+    }
+    ev.extraImages = extraPaths;
 
     setStatus(isEditing ? '更新しています…' : '保存しています…');
     await saveEventsToGitHub(updated, `${isEditing ? '対人イベント記録編集' : '対人イベント記録追加'}: ${month}`);
@@ -686,12 +788,19 @@ function renderEvents() {
         ? `<div class="pvp-video-wrap"><span class="apt-group-label">決勝動画</span><video controls preload="metadata" playsinline src="${escapeHtml(videoUrl)}"></video></div>`
         : '';
 
+      const extraImagesHtml = (ev.extraImages || []).length
+        ? `<div class="pvp-extra-images"><span class="apt-group-label">参考画像</span><div class="extra-images-grid">${
+            (ev.extraImages || []).map(path => `<div class="extra-image-thumb"><img class="extra-img" src="${escapeHtml(imageRawUrl(path))}" alt="参考画像" loading="lazy"></div>`).join('')
+          }</div></div>`
+        : '';
+
       row.innerHTML = `
         <div class="entry-main">
           ${raceConditionLabel ? `<div class="entry-name-row"><div class="entry-name">${escapeHtml(raceConditionLabel)}</div></div>` : ''}
           <div class="apt-row">${badges}</div>
           ${teamCards ? `<div class="pvp-team-grid">${teamCards}</div>` : ''}
           ${videoWrap}
+          ${extraImagesHtml}
           ${ev.notes ? `<div class="entry-notes">${escapeHtml(ev.notes)}</div>` : ''}
         </div>
         <div class="entry-side">
@@ -703,7 +812,7 @@ function renderEvents() {
       `;
       row.querySelector('.entry-edit').addEventListener('click', () => startEditEvent(ev.id));
       row.querySelector('.entry-del').addEventListener('click', e => askDeleteConfirm(ev, e.currentTarget));
-      row.querySelectorAll('.team-img').forEach(img => {
+      row.querySelectorAll('.team-img, .extra-img').forEach(img => {
         img.addEventListener('click', () => openLightbox(img.src));
       });
       list.appendChild(row);
