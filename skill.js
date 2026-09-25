@@ -314,6 +314,14 @@ function openSkillDetail(name) {
 }
 
 document.getElementById('entries').addEventListener('click', e => {
+  const editBtn = e.target.closest('.entry-edit');
+  if (editBtn) { startEditSkill(editBtn.dataset.id); return; }
+  const delBtn = e.target.closest('.entry-del');
+  if (delBtn) {
+    const skill = allSkills.find(sk => sk.id === delBtn.dataset.id);
+    if (skill) askDeleteConfirm(skill, delBtn);
+    return;
+  }
   const refLink = e.target.closest('.skill-ref-link');
   if (refLink) { openSkillDetail(refLink.dataset.name); return; }
   const link = e.target.closest('.owner-link');
@@ -555,7 +563,7 @@ async function deleteSkill(id, btn) {
 document.getElementById('refreshBtn').addEventListener('click', () => { loadSkills(); loadOwnershipIndex(); });
 
 // --- 検索・絞り込み ---
-document.getElementById('searchNameInput').addEventListener('input', renderSkills);
+document.getElementById('searchNameInput').addEventListener('input', debounce(renderSkills, 150));
 document.querySelectorAll('.categoryFilter, .rarityFilter, .styleFilter, .distanceFilter').forEach(el => el.addEventListener('change', renderSkills));
 
 document.getElementById('resetSearchBtn').addEventListener('click', () => {
@@ -572,7 +580,6 @@ const DISTANCE_LABELS = { short: '短距離', mile: 'マイル', medium: '中距
 function renderSkills() {
   const container = document.getElementById('entries');
   const emptyMsg = document.getElementById('emptyMsg');
-  container.innerHTML = '';
 
   document.getElementById('countLabel').textContent = allSkills.length + ' 件 登録';
 
@@ -607,12 +614,14 @@ function renderSkills() {
   });
 
   if (!filtered.length) {
+    container.innerHTML = '';
     emptyMsg.style.display = 'block';
     emptyMsg.textContent = allSkills.length ? '該当する登録が見つかりません。' : 'まだ登録がありません。「＋ スキル登録」からClaudeの出力を貼り付けるか、手入力して保存してください。';
     return;
   }
   emptyMsg.style.display = 'none';
 
+  const fragment = document.createDocumentFragment();
   filtered.forEach(skill => {
     const row = document.createElement('div');
     row.className = 'entry';
@@ -680,10 +689,10 @@ function renderSkills() {
         </div>
       </div>
     `;
-    row.querySelector('.entry-edit').addEventListener('click', () => startEditSkill(skill.id));
-    row.querySelector('.entry-del').addEventListener('click', e => askDeleteConfirm(skill, e.currentTarget));
-    container.appendChild(row);
+    fragment.appendChild(row);
   });
+  container.innerHTML = '';
+  container.appendChild(fragment);
 }
 
 resetForm();

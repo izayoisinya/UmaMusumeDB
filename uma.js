@@ -525,14 +525,6 @@ document.getElementById('resetSearchBtn').addEventListener('click', () => {
   renderUmas();
 });
 
-function debounce(fn, delay) {
-  let timer;
-  return (...args) => {
-    clearTimeout(timer);
-    timer = setTimeout(() => fn(...args), delay);
-  };
-}
-
 document.getElementById('entries').addEventListener('click', e => {
   const editBtn = e.target.closest('.entry-edit');
   if (editBtn) { startEditUma(editBtn.dataset.id); return; }
