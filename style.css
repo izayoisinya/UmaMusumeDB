@@ -995,11 +995,17 @@ mark.search-hit {
 .support-deck-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
+  gap: 10px;
   margin-top: 8px;
 }
+.support-deck-grid .char-select-box { min-height: 130px; font-size: 14px; }
+.support-deck-grid .uma-icon { width: 64px; height: 64px; }
+.support-deck-grid .char-select-filled-inner span { font-size: 13px; }
 @media (max-width: 520px) {
   .support-deck-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (orientation: landscape) and (min-width: 700px) {
+  .support-deck-grid { grid-template-columns: repeat(6, 1fr); }
 }
 
 .pedigree-tree {
