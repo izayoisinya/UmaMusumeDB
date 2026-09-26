@@ -519,7 +519,7 @@ function getSelectedTypeFilters() {
 }
 
 // --- 一覧表示 ---
-const TYPE_LABELS = { speed: 'スピード', stamina: 'スタミナ', power: 'パワー', guts: '根性', wisdom: '賢さ' };
+const TYPE_LABELS = { speed: 'スピード', stamina: 'スタミナ', power: 'パワー', guts: '根性', wisdom: '賢さ', friend: '友人', group: 'グループ' };
 
 function cardSkillNames(card) {
   return [...(card.skills || []), ...(card.eventSkills || [])].map(s => normalizeSkill(s).name);

@@ -235,7 +235,7 @@ function renderUmaDetailHtml(uma) {
   `;
 }
 
-const SUPPORT_TYPE_LABELS = { speed: 'スピード', stamina: 'スタミナ', power: 'パワー', guts: '根性', wisdom: '賢さ' };
+const SUPPORT_TYPE_LABELS = { speed: 'スピード', stamina: 'スタミナ', power: 'パワー', guts: '根性', wisdom: '賢さ', friend: '友人', group: 'グループ' };
 function renderCardDetailHtml(card) {
   const imageUrl = card.imagePath ? imageRawUrl(card.imagePath) : null;
   const typeChips = (card.types || []).map(t => `<span class="apt-badge type-badge-${t}">${SUPPORT_TYPE_LABELS[t] || t}</span>`).join('');

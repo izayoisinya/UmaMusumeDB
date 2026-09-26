@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>サポカ図鑑 - 因子台帳</title>
 <script>
-window.PAGE_PROMPT = 'このサポートカードの詳細画面のスクリーンショットから、次のJSON形式だけを出力してください（説明や前置き、コードフェンスは不要です）。複数枚の画像が送られている場合は、すべてを1枚のサポートカードの情報として統合してください。\n\n{"name": string, "types": ["speed"|"stamina"|"power"|"guts"|"wisdom"], "skills": [{"name": string, "type": "gold"|"normal"}], "eventSkills": [{"name": string, "type": "gold"|"normal"}]}\n\n・nameはカード名（人物名）のみ。称号（[ ]で囲まれた部分）は含めない。\n・typesはカードのタイプアイコン（靴=speed、ハート=stamina、拳=power、炎=guts、帽子=wisdom）から判定してください。複数のタイプが表示されている場合はすべて含めてください。\n・skillsは「所持スキル」タブに表示されているスキル名の一覧です。スキル名が書かれているエリアの背景色が黄色（金色）になっているものはtype:"gold"、それ以外はtype:"normal"としてください。\n・eventSkillsは「育成イベント」のポップアップで確認できる、そのカードから入手できるスキル名の一覧です。同様に背景が金色ならgold、それ以外はnormalとしてください。\n\n項目は省略せず全て出力してください。';
+window.PAGE_PROMPT = 'このサポートカードの詳細画面のスクリーンショットから、次のJSON形式だけを出力してください（説明や前置き、コードフェンスは不要です）。複数枚の画像が送られている場合は、すべてを1枚のサポートカードの情報として統合してください。\n\n{"name": string, "types": ["speed"|"stamina"|"power"|"guts"|"wisdom"|"friend"|"group"], "skills": [{"name": string, "type": "gold"|"normal"}], "eventSkills": [{"name": string, "type": "gold"|"normal"}]}\n\n・nameはカード名（人物名）のみ。称号（[ ]で囲まれた部分）は含めない。\n・typesはカードのタイプアイコン（靴=speed、ハート=stamina、拳=power、炎=guts、帽子=wisdom、友人=friend、グループ=group)から判定してください。複数のタイプが表示されている場合はすべて含めてください。アイコンから判断しづらい場合は、画面上に表示されている「フレンド」「友人」「グループ」等のテキストラベルも手がかりにしてください。\n・skillsは「所持スキル」タブに表示されているスキル名の一覧です。スキル名が書かれているエリアの背景色が黄色（金色）になっているものはtype:"gold"、それ以外はtype:"normal"としてください。\n・eventSkillsは「育成イベント」のポップアップで確認できる、そのカードから入手できるスキル名の一覧です。同様に背景が金色ならgold、それ以外はnormalとしてください。\n\n項目は省略せず全て出力してください。';
 </script>
 
 <link rel="manifest" href="manifest.json">
@@ -61,6 +61,8 @@ window.PAGE_PROMPT = 'このサポートカードの詳細画面のスクリー�
           <label class="type-checkbox type-power"><input type="checkbox" value="power" class="typeFilter">パワー</label>
           <label class="type-checkbox type-guts"><input type="checkbox" value="guts" class="typeFilter">根性</label>
           <label class="type-checkbox type-wisdom"><input type="checkbox" value="wisdom" class="typeFilter">賢さ</label>
+          <label class="type-checkbox type-friend"><input type="checkbox" value="friend" class="typeFilter">友人</label>
+          <label class="type-checkbox type-group"><input type="checkbox" value="group" class="typeFilter">グループ</label>
         </div>
       </div>
 
@@ -150,6 +152,8 @@ window.PAGE_PROMPT = 'このサポートカードの詳細画面のスクリー�
           <label class="type-checkbox type-power"><input type="checkbox" value="power" class="fType">パワー</label>
           <label class="type-checkbox type-guts"><input type="checkbox" value="guts" class="fType">根性</label>
           <label class="type-checkbox type-wisdom"><input type="checkbox" value="wisdom" class="fType">賢さ</label>
+          <label class="type-checkbox type-friend"><input type="checkbox" value="friend" class="fType">友人</label>
+          <label class="type-checkbox type-group"><input type="checkbox" value="group" class="fType">グループ</label>
         </div>
       </div>
 

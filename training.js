@@ -664,6 +664,8 @@ function closeCharacterConfig() {
 document.getElementById('characterConfigBackBtn').addEventListener('click', closeCharacterConfig);
 
 function pedigreeCardHtml(slot, label) {
+  const sel = configPedigreeSelections[slot];
+  const redFactor = (sel && sel.redFactor) || {};
   return `
     <div class="pedigree-card">
       <div class="pedigree-card-label">${label}</div>
@@ -676,6 +678,15 @@ function pedigreeCardHtml(slot, label) {
         </div>
       </div>
       <div class="pedigree-apt-area" id="pedigreeAptArea${slot}"></div>
+      ${slot !== 0 ? `
+        <div class="pedigree-red-factor">
+          <label>赤因子</label>
+          <div class="pedigree-red-factor-row">
+            <input type="text" id="pedigreeRedRarity${slot}" placeholder="レアリティ" value="${escapeHtml(redFactor.rarity || '')}">
+            <input type="text" id="pedigreeRedType${slot}" placeholder="種類" value="${escapeHtml(redFactor.type || '')}">
+          </div>
+        </div>
+      ` : ''}
     </div>
   `;
 }
@@ -720,16 +731,31 @@ function renderCharacterConfigBody() {
     document.getElementById('pedigreeBox' + slot).addEventListener('click', () => openPedigreeCharacterPicker(slot));
     document.getElementById('pedigreeClearBtn' + slot).addEventListener('click', e => {
       e.stopPropagation();
-      configPedigreeSelections[slot] = null;
+      const keepRedFactor = configPedigreeSelections[slot] && configPedigreeSelections[slot].redFactor;
+      configPedigreeSelections[slot] = keepRedFactor ? { ...emptyPedigreeEntry(), redFactor: keepRedFactor } : null;
       updatePedigreeCard(slot);
     });
     updatePedigreeCard(slot);
+    if (slot !== 0) {
+      document.getElementById('pedigreeRedRarity' + slot).addEventListener('input', e => {
+        if (!configPedigreeSelections[slot]) configPedigreeSelections[slot] = emptyPedigreeEntry();
+        configPedigreeSelections[slot].redFactor = configPedigreeSelections[slot].redFactor || {};
+        configPedigreeSelections[slot].redFactor.rarity = e.target.value;
+      });
+      document.getElementById('pedigreeRedType' + slot).addEventListener('input', e => {
+        if (!configPedigreeSelections[slot]) configPedigreeSelections[slot] = emptyPedigreeEntry();
+        configPedigreeSelections[slot].redFactor = configPedigreeSelections[slot].redFactor || {};
+        configPedigreeSelections[slot].redFactor.type = e.target.value;
+      });
+    }
   });
 }
 
 function openPedigreeCharacterPicker(slot) {
   openUmaPicker('characterConfigModal', u => {
+    const existingRedFactor = configPedigreeSelections[slot] && configPedigreeSelections[slot].redFactor;
     configPedigreeSelections[slot] = pedigreeEntryFromUma(u);
+    if (existingRedFactor) configPedigreeSelections[slot].redFactor = existingRedFactor;
     updatePedigreeCard(slot);
   });
 }
@@ -875,6 +901,7 @@ document.getElementById('characterConfigSaveBtn').addEventListener('click', asyn
     track: sel.track || {},
     distance: sel.distance || {},
     style: sel.style || {},
+    redFactor: sel.redFactor ? { rarity: sel.redFactor.rarity || '', type: sel.redFactor.type || '' } : null,
   } : null);
   const updated = allPlans.map(p => p.id === plan.id ? plan : p);
   statusEl.textContent = '保存しています…';
