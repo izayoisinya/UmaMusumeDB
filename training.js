@@ -79,6 +79,12 @@ async function savePlansToGitHub(newEntries, commitMessage) {
 const STATUS_ORDER = ['in_progress', 'not_started', 'done'];
 const STATUS_LABELS = { not_started: '未着手', in_progress: '育成中', done: '完了' };
 
+function planLabel(plan) {
+  if (plan.title) return plan.title;
+  const names = (plan.characters || []).map(c => c.name).filter(Boolean).join('・');
+  return names || '無題';
+}
+
 function sortPlans(list) {
   return list.slice().sort((a, b) => (b.savedAt || '').localeCompare(a.savedAt || ''));
 }
@@ -152,6 +158,7 @@ document.getElementById('openRegisterModalBtn').addEventListener('click', () => 
 document.getElementById('clearBtn').addEventListener('click', resetForm);
 
 function fillForm(plan) {
+  document.getElementById('fTitle').value = plan.title || '';
   setRadioValue('fStatus', plan.status, 'not_started');
   setRadioValue('fEventType', plan.eventType, 'champions');
 
@@ -196,6 +203,7 @@ document.getElementById('trainingForm').addEventListener('submit', async e => {
   const distanceRaw = document.getElementById('fDistance').value;
   const plan = {
     id: planId,
+    title: document.getElementById('fTitle').value.trim(),
     status: getRadioValue('fStatus', 'not_started'),
     eventType: getRadioValue('fEventType', 'champions'),
     raceCondition: {
@@ -220,7 +228,7 @@ document.getElementById('trainingForm').addEventListener('submit', async e => {
   const saveBtn = document.getElementById('saveTrainingBtn');
   saveBtn.disabled = true;
   try {
-    await savePlansToGitHub(updated, `${isEditing ? '育成計画編集' : '育成計画追加'}: ${plan.characters.map(c => c.name).join('・') || planId}`);
+    await savePlansToGitHub(updated, `${isEditing ? '育成計画編集' : '育成計画追加'}: ${planLabel(plan)}`);
     allPlans = sortPlans(updated);
     renderPlans();
     resetForm();
@@ -244,8 +252,7 @@ let pendingDeleteBtn = null;
 function askDeleteConfirm(plan, btn) {
   pendingDeleteId = plan.id;
   pendingDeleteBtn = btn;
-  const label = (plan.characters || []).map(c => c.name).join('・') || '無題';
-  document.getElementById('confirmDeleteMessage').textContent = `「${label}」の育成計画を削除します。この操作は取り消せません。よろしいですか？`;
+  document.getElementById('confirmDeleteMessage').textContent = `「${planLabel(plan)}」の育成計画を削除します。この操作は取り消せません。よろしいですか？`;
   openModal('confirmDeleteModal');
 }
 
@@ -265,7 +272,7 @@ async function deletePlan(id, btn) {
   setListStatus('削除しています…');
   if (btn) btn.disabled = true;
   try {
-    await savePlansToGitHub(updated, `育成計画削除: ${target ? (target.characters || []).map(c => c.name).join('・') || id : id}`);
+    await savePlansToGitHub(updated, `育成計画削除: ${target ? planLabel(target) : id}`);
     allPlans = updated;
     setListStatus('');
     renderPlans();
@@ -342,11 +349,12 @@ function renderPlans() {
       row.innerHTML = `
         <div class="entry-main">
           <div class="entry-name-row">
-            <div class="entry-name">${charNames || '（キャラ未定）'}</div>
+            <div class="entry-name">${plan.title ? escapeHtml(plan.title) : '（タイトル未設定）'}</div>
           </div>
           <div class="apt-row">
             <span class="apt-badge">${eventTypeLabel}</span>
           </div>
+          ${charNames ? `<div class="entry-notes">育成予定: ${charNames}</div>` : ''}
           ${raceConditionLabel ? `<div class="entry-notes">${escapeHtml(raceConditionLabel)}</div>` : ''}
           ${plan.notes ? `<div class="entry-notes">${escapeHtml(plan.notes)}</div>` : ''}
         </div>
