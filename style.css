@@ -587,6 +587,17 @@ input[type=text]:focus, input[type=number]:focus, input[type=month]:focus, texta
   padding-bottom: 4px;
   border-bottom: 2px solid var(--panel-line);
 }
+.status-group { margin-top: 20px; }
+.status-group:first-child { margin-top: 0; }
+.status-group-heading {
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--green-dim);
+  margin: 0 0 8px;
+  padding-bottom: 4px;
+  border-bottom: 2px solid var(--panel-line);
+}
 .entry {
   border: 1.5px solid var(--panel-line);
   border-radius: 14px;
