@@ -79,6 +79,11 @@ async function savePlansToGitHub(newEntries, commitMessage) {
 const STATUS_ORDER = ['in_progress', 'not_started', 'done'];
 const STATUS_LABELS = { not_started: '未着手', in_progress: '育成中', done: '完了' };
 
+function formatMonthLabel(month) {
+  const m = /^(\d{4})-(\d{2})$/.exec(month || '');
+  return m ? `${m[1]}年${Number(m[2])}月` : '';
+}
+
 function planLabel(plan) {
   if (plan.title) return plan.title;
   const names = (plan.characters || []).map(c => c.name).filter(Boolean).join('・');
@@ -158,6 +163,7 @@ document.getElementById('openRegisterModalBtn').addEventListener('click', () => 
 document.getElementById('clearBtn').addEventListener('click', resetForm);
 
 function fillForm(plan) {
+  document.getElementById('fMonth').value = plan.month || '';
   document.getElementById('fTitle').value = plan.title || '';
   setRadioValue('fStatus', plan.status, 'not_started');
   setRadioValue('fEventType', plan.eventType, 'champions');
@@ -203,6 +209,7 @@ document.getElementById('trainingForm').addEventListener('submit', async e => {
   const distanceRaw = document.getElementById('fDistance').value;
   const plan = {
     id: planId,
+    month: document.getElementById('fMonth').value,
     title: document.getElementById('fTitle').value.trim(),
     status: getRadioValue('fStatus', 'not_started'),
     eventType: getRadioValue('fEventType', 'champions'),
@@ -345,10 +352,12 @@ function renderPlans() {
       ].filter(Boolean).join(' ／ ');
 
       const charNames = (plan.characters || []).map(c => escapeHtml(c.name)).join('、');
+      const monthLabel = formatMonthLabel(plan.month);
 
       row.innerHTML = `
         <div class="entry-main">
           <div class="entry-name-row">
+            ${monthLabel ? `<span class="apt-badge">${escapeHtml(monthLabel)}</span>` : ''}
             <div class="entry-name">${plan.title ? escapeHtml(plan.title) : '（タイトル未設定）'}</div>
           </div>
           <div class="apt-row">
