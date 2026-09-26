@@ -23,6 +23,7 @@
       <h1>育成計画</h1>
       <p id="countLabel">0 件記録</p>
     </div>
+    <div id="pinnedTabsBar" class="pinned-tabs-bar" hidden></div>
     <div class="masthead-menu">
       <button type="button" class="masthead-btn" id="openRegisterModalBtn">＋ 計画を追加</button>
       <a href="index.html" class="masthead-btn masthead-nav">因子台帳</a>
@@ -211,6 +212,7 @@
   <div class="modal" id="planDetailModal" role="dialog" aria-labelledby="planDetailTitle" hidden>
     <h2 id="planDetailTitle">育成計画詳細</h2>
     <div id="planDetailBody"></div>
+    <button type="button" class="btn secondary" id="planDetailPinBtn">タブに登録</button>
     <button type="button" class="btn secondary modal-close-btn" data-modal="planDetailModal">閉じる</button>
   </div>
 
@@ -219,6 +221,7 @@
     <div id="characterConfigBody"></div>
     <div class="status" id="characterConfigStatus"></div>
     <button type="button" class="btn" id="characterConfigSaveBtn">この内容を保存</button>
+    <button type="button" class="btn secondary" id="characterConfigPinBtn">タブに登録</button>
     <button type="button" class="btn secondary" id="characterConfigBackBtn">戻る</button>
   </div>
 

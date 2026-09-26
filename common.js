@@ -322,3 +322,76 @@ const currentPage = location.pathname.split('/').pop() || 'index.html';
 document.querySelectorAll('.masthead-nav').forEach(a => {
   if (a.getAttribute('href') === currentPage) a.classList.add('active');
 });
+
+// --- ポップアップのタブ登録(擬似タスクバー。ページを跨いで特定のポップアップに素早く戻れるようにする) ---
+const PINNED_TABS_KEY = 'umaFactorLedger:pinnedTabs';
+
+function escapeHtmlCommon(s) {
+  return String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+}
+
+function loadPinnedTabs() {
+  try {
+    const raw = localStorage.getItem(PINNED_TABS_KEY);
+    const arr = raw ? JSON.parse(raw) : [];
+    return Array.isArray(arr) ? arr : [];
+  } catch {
+    return [];
+  }
+}
+function savePinnedTabsList(tabs) {
+  localStorage.setItem(PINNED_TABS_KEY, JSON.stringify(tabs));
+}
+function isPinnedTab(key) {
+  return loadPinnedTabs().some(t => t.key === key);
+}
+function addPinnedTab(tab) {
+  const tabs = loadPinnedTabs().filter(t => t.key !== tab.key);
+  tabs.push(tab);
+  savePinnedTabsList(tabs);
+  renderPinnedTabsBar();
+}
+function removePinnedTab(key) {
+  savePinnedTabsList(loadPinnedTabs().filter(t => t.key !== key));
+  renderPinnedTabsBar();
+}
+
+function renderPinnedTabsBar() {
+  const bar = document.getElementById('pinnedTabsBar');
+  if (!bar) return;
+  const tabs = loadPinnedTabs();
+  if (!tabs.length) {
+    bar.innerHTML = '';
+    bar.hidden = true;
+    return;
+  }
+  bar.hidden = false;
+  bar.innerHTML = tabs.map(t => `
+    <span class="pinned-tab">
+      <button type="button" class="pinned-tab-open" data-key="${escapeHtmlCommon(t.key)}">${escapeHtmlCommon(t.label)}</button>
+      <button type="button" class="pinned-tab-close" data-key="${escapeHtmlCommon(t.key)}">×</button>
+    </span>
+  `).join('');
+  bar.querySelectorAll('.pinned-tab-open').forEach(btn => {
+    btn.addEventListener('click', () => openPinnedTab(btn.dataset.key));
+  });
+  bar.querySelectorAll('.pinned-tab-close').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      removePinnedTab(btn.dataset.key);
+    });
+  });
+}
+
+function openPinnedTab(key) {
+  const tab = loadPinnedTabs().find(t => t.key === key);
+  if (!tab) return;
+  if (tab.page === currentPage && typeof window.openPinnedTabTarget === 'function') {
+    window.openPinnedTabTarget(tab);
+    return;
+  }
+  const qs = new URLSearchParams(tab.params || {}).toString();
+  location.href = tab.page + (qs ? '?' + qs : '');
+}
+
+renderPinnedTabsBar();

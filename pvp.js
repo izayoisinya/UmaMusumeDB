@@ -982,9 +982,11 @@ function renderEventDetailHtml(ev) {
   `;
 }
 
+let currentEventDetailId = null;
 function openEventDetail(id) {
   const ev = allEvents.find(e => e.id === id);
   if (!ev) return;
+  currentEventDetailId = id;
   const body = document.getElementById('eventDetailBody');
   body.innerHTML = renderEventDetailHtml(ev);
   body.querySelectorAll('.team-img, .extra-img').forEach(img => {
@@ -993,6 +995,31 @@ function openEventDetail(id) {
   openModal('eventDetailModal');
 }
 
+document.getElementById('eventDetailPinBtn').addEventListener('click', () => {
+  const ev = allEvents.find(e => e.id === currentEventDetailId);
+  if (!ev) return;
+  const { raceConditionLabel } = eventMeta(ev);
+  addPinnedTab({
+    key: `pvp-event-${ev.id}`,
+    page: 'pvp.html',
+    type: 'eventDetail',
+    params: { event: ev.id },
+    label: `${formatMonthLabel(ev.month)} ${raceConditionLabel || ''}`.trim(),
+  });
+});
+
+// --- タブ登録からの復帰(別ページからの遷移・同ページでのタブ再オープン両対応) ---
+window.openPinnedTabTarget = function(tab) {
+  if (tab.type === 'eventDetail') openEventDetail(tab.params.event);
+};
+
+function handlePinnedTabDeepLink() {
+  const eventId = new URLSearchParams(location.search).get('event');
+  if (eventId) openEventDetail(eventId);
+}
+
 resetForm();
-loadEvents();
-loadCachedUmas().then(renderEvents);
+Promise.all([loadEvents(), loadCachedUmas()]).then(() => {
+  renderEvents();
+  handlePinnedTabDeepLink();
+});

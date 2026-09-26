@@ -548,9 +548,11 @@ function renderPlans() {
 }
 
 // --- 育成計画詳細ポップアップ(タップで開く) ---
+let currentPlanDetailId = null;
 function openPlanDetail(id) {
   const plan = allPlans.find(p => p.id === id);
   if (!plan) return;
+  currentPlanDetailId = id;
   const body = document.getElementById('planDetailBody');
   body.innerHTML = renderPlanDetailHtml(plan);
   body.querySelectorAll('.plan-detail-char').forEach(el => {
@@ -558,6 +560,18 @@ function openPlanDetail(id) {
   });
   openModal('planDetailModal');
 }
+
+document.getElementById('planDetailPinBtn').addEventListener('click', () => {
+  const plan = allPlans.find(p => p.id === currentPlanDetailId);
+  if (!plan) return;
+  addPinnedTab({
+    key: `training-plan-${plan.id}`,
+    page: 'training.html',
+    type: 'planDetail',
+    params: { plan: plan.id },
+    label: planLabel(plan),
+  });
+});
 
 function renderPlanDetailHtml(plan) {
   const monthLabel = formatMonthLabel(plan.month);
@@ -729,6 +743,19 @@ function closeCharacterConfig() {
   document.getElementById('planDetailModal').hidden = false;
 }
 document.getElementById('characterConfigBackBtn').addEventListener('click', closeCharacterConfig);
+
+document.getElementById('characterConfigPinBtn').addEventListener('click', () => {
+  const plan = allPlans.find(p => p.id === configTargetPlanId);
+  const character = plan && (plan.characters || [])[configTargetCharIndex];
+  if (!plan || !character) return;
+  addPinnedTab({
+    key: `training-char-${plan.id}-${configTargetCharIndex}`,
+    page: 'training.html',
+    type: 'characterConfig',
+    params: { plan: plan.id, char: configTargetCharIndex },
+    label: `${character.name}の編成`,
+  });
+});
 
 function pedigreeCardHtml(slot, label) {
   const sel = configPedigreeSelections[slot];
@@ -1081,7 +1108,29 @@ document.getElementById('supportCardPickerSearch').addEventListener('input', deb
   renderSupportCardPickerGrid(document.getElementById('supportCardPickerSearch').value);
 }, 150));
 
+// --- タブ登録からの復帰(別ページからの遷移・同ページでのタブ再オープン両対応) ---
+window.openPinnedTabTarget = function(tab) {
+  if (tab.type === 'characterConfig') {
+    openCharacterConfig(tab.params.plan, Number(tab.params.char));
+  } else if (tab.type === 'planDetail') {
+    openPlanDetail(tab.params.plan);
+  }
+};
+
+function handlePinnedTabDeepLink() {
+  const params = new URLSearchParams(location.search);
+  const planId = params.get('plan');
+  const charIndex = params.get('char');
+  if (!planId) return;
+  if (charIndex !== null) {
+    openCharacterConfig(planId, Number(charIndex));
+  } else {
+    openPlanDetail(planId);
+  }
+}
+
 resetForm();
-loadPlans();
-loadCachedUmas().then(renderPlans);
-loadCachedSupportCards();
+Promise.all([loadPlans(), loadCachedUmas(), loadCachedSupportCards()]).then(() => {
+  renderPlans();
+  handlePinnedTabDeepLink();
+});
