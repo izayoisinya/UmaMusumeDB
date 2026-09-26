@@ -1074,6 +1074,13 @@ mark.search-hit {
   .pedigree-card-wide .char-select-box { width: 100%; }
   .pedigree-card-wide .pedigree-apt-area { margin-top: 8px; }
 }
+@media (orientation: portrait) {
+  /* 縦向きでは親カードも祖カードと同じ縦積みレイアウトに戻す(本人カードは常に横並びのまま) */
+  .pedigree-card-parent { width: 190px; }
+  .pedigree-card-parent .pedigree-card-main { display: block; }
+  .pedigree-card-parent .char-select-box { width: auto; }
+  .pedigree-card-parent .pedigree-apt-area { margin-top: 8px; }
+}
 
 .pvp-team-grid {
   display: grid;

@@ -734,8 +734,9 @@ function pedigreeCardHtml(slot, label) {
   const sel = configPedigreeSelections[slot];
   const redFactor = (sel && sel.redFactor) || {};
   const isWide = slot <= 2;
+  const isParent = slot === 1 || slot === 2;
   return `
-    <div class="pedigree-card${isWide ? ' pedigree-card-wide' : ''}">
+    <div class="pedigree-card${isWide ? ' pedigree-card-wide' : ''}${isParent ? ' pedigree-card-parent' : ''}">
       <div class="pedigree-card-label">${label}</div>
       <div class="pedigree-card-main">
         <div class="char-select-box" id="pedigreeBox${slot}">
