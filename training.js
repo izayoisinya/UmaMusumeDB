@@ -625,30 +625,53 @@ function aptBadgeBoosted(prefix, base, bonus) {
   const rankClass = boosted ? 'rank-' + boosted : 'rank-none';
   return `<span class="apt-badge ${rankClass}">${prefix}${boosted || '-'}<small>+${bonus}</small></span>`;
 }
-// 祖父母は(祖1,祖2)(祖3,祖4)、親は(親1,親2)のペアごとに同じ種類の赤因子を合算し、
-// 3星ごとに1段階、本人の対応する適性ランクを上昇させる。上昇量は種類ごとに最大4段階
-// (★3の赤因子4人分=計★12相当)までしか反映しない
-function computePedigreeBonuses() {
+// 血統ツリーは 祖a(3),祖b(4) → 親A(1) → 本人(0) ／ 祖c(5),祖d(6) → 親B(2) → 本人(0) という構造。
+// 各ペア(祖a,祖b)(祖c,祖d)(親A,親B)は、同じ種類の赤因子を持つ場合は星数を合算、異なる
+// 場合はそれぞれ個別に、3星ごとに1段階そのペアの「1つ上」の適性ランクを上昇させる
+// (祖a,祖bのペア→親Aと本人の両方、祖c,祖dのペア→親Bと本人の両方、親A,親Bのペア→本人)。
+// 上昇量は種類ごと・対象ごとに最大4段階(★3の赤因子4人分=計★12相当)までしか反映しない
+function computePairBonus(slotA, slotB) {
   const bonuses = {};
   const add = (type, stars) => {
     if (!type || !stars) return;
     bonuses[type] = Math.min(4, (bonuses[type] || 0) + Math.ceil(stars / 3));
   };
-  [[1, 2], [3, 4], [5, 6]].forEach(([a, b]) => {
-    const rfA = configPedigreeSelections[a] && configPedigreeSelections[a].redFactor;
-    const rfB = configPedigreeSelections[b] && configPedigreeSelections[b].redFactor;
-    const typeA = rfA && rfA.type;
-    const typeB = rfB && rfB.type;
-    const starA = (rfA && Number(rfA.rarity)) || 0;
-    const starB = (rfB && Number(rfB.rarity)) || 0;
-    if (typeA && typeA === typeB) {
-      add(typeA, starA + starB);
-    } else {
-      if (typeA) add(typeA, starA);
-      if (typeB) add(typeB, starB);
-    }
-  });
+  const rfA = configPedigreeSelections[slotA] && configPedigreeSelections[slotA].redFactor;
+  const rfB = configPedigreeSelections[slotB] && configPedigreeSelections[slotB].redFactor;
+  const typeA = rfA && rfA.type;
+  const typeB = rfB && rfB.type;
+  const starA = (rfA && Number(rfA.rarity)) || 0;
+  const starB = (rfB && Number(rfB.rarity)) || 0;
+  if (typeA && typeA === typeB) {
+    add(typeA, starA + starB);
+  } else {
+    if (typeA) add(typeA, starA);
+    if (typeB) add(typeB, starB);
+  }
   return bonuses;
+}
+
+function mergeBonuses(...bonusObjs) {
+  const merged = {};
+  bonusObjs.forEach(b => {
+    Object.entries(b).forEach(([type, val]) => {
+      merged[type] = Math.min(4, (merged[type] || 0) + val);
+    });
+  });
+  return merged;
+}
+
+function bonusesForPedigreeSlot(slot) {
+  if (slot === 0) return mergeBonuses(computePairBonus(1, 2), computePairBonus(3, 4), computePairBonus(5, 6));
+  if (slot === 1) return computePairBonus(3, 4);
+  if (slot === 2) return computePairBonus(5, 6);
+  return {};
+}
+
+function refreshPedigreeDependents(sourceSlot) {
+  renderPedigreeAptArea(0);
+  if (sourceSlot === 3 || sourceSlot === 4) renderPedigreeAptArea(1);
+  if (sourceSlot === 5 || sourceSlot === 6) renderPedigreeAptArea(2);
 }
 
 function emptyPedigreeEntry() {
@@ -812,14 +835,14 @@ function renderCharacterConfigBody() {
           rarityEl.querySelectorAll('.star-btn').forEach(b => {
             b.classList.toggle('active', Number(b.dataset.star) <= newValue);
           });
-          renderPedigreeAptArea(0);
+          refreshPedigreeDependents(slot);
         });
       });
       document.getElementById('pedigreeRedType' + slot).addEventListener('change', e => {
         if (!configPedigreeSelections[slot]) configPedigreeSelections[slot] = emptyPedigreeEntry();
         configPedigreeSelections[slot].redFactor = configPedigreeSelections[slot].redFactor || {};
         configPedigreeSelections[slot].redFactor.type = e.target.value;
-        renderPedigreeAptArea(0);
+        refreshPedigreeDependents(slot);
       });
     }
   });
@@ -868,7 +891,7 @@ function renderPedigreeAptArea(slot) {
   const area = document.getElementById('pedigreeAptArea' + slot);
   const sel = configPedigreeSelections[slot];
   const hasRegistrySel = !!(sel && !sel.manual);
-  const bonuses = slot === 0 ? computePedigreeBonuses() : {};
+  const bonuses = bonusesForPedigreeSlot(slot);
 
   if (hasRegistrySel) {
     const track = sel.track || {};
@@ -904,7 +927,7 @@ function renderPedigreeAptArea(slot) {
       <div><span>差</span>${aptSelect('pedigreeSashi' + slot, style.sashi)}</div>
       <div><span>追</span>${aptSelect('pedigreeOikomi' + slot, style.oikomi)}</div>
     </div>
-    ${bonusEntries.length ? `<p class="pedigree-bonus-hint">親・祖父母の赤因子による自動加算: ${bonusEntries.map(([k, v]) => `${APT_TYPE_LABELS[k] || k}+${v}`).join('、')}</p>` : ''}
+    ${bonusEntries.length ? `<p class="pedigree-bonus-hint">${slot === 0 ? '親・祖父母' : '祖父母'}の赤因子による自動加算: ${bonusEntries.map(([k, v]) => `${APT_TYPE_LABELS[k] || k}+${v}`).join('、')}</p>` : ''}
   `;
   document.getElementById('pedigreeManualName' + slot).addEventListener('input', e => {
     if (!configPedigreeSelections[slot]) configPedigreeSelections[slot] = emptyPedigreeEntry();
