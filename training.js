@@ -13,6 +13,7 @@ let currentSha = null;
 let allPlans = [];
 let editingPlanId = null;
 let cachedUmas = [];
+let cachedSupportCards = [];
 
 function contentsApiUrl() {
   const owner = (config && config.owner) || DEFAULT_OWNER;
@@ -64,6 +65,15 @@ async function loadCachedUmas() {
   } catch (err) {
     console.error('所持ウマ娘一覧の取得に失敗:', err);
     cachedUmas = [];
+  }
+}
+
+async function loadCachedSupportCards() {
+  try {
+    cachedSupportCards = await fetchJsonFile('data/support_cards.json');
+  } catch (err) {
+    console.error('所持サポートカード一覧の取得に失敗:', err);
+    cachedSupportCards = [];
   }
 }
 
@@ -159,7 +169,8 @@ async function onGithubConfigChanged() {
   allPlans = [];
   currentSha = null;
   cachedUmas = [];
-  await Promise.all([loadPlans(), loadCachedUmas()]);
+  cachedSupportCards = [];
+  await Promise.all([loadPlans(), loadCachedUmas(), loadCachedSupportCards()]);
   renderPlans();
 }
 
@@ -437,7 +448,9 @@ document.getElementById('entries').addEventListener('click', e => {
     return;
   }
   const icon = e.target.closest('.plan-char-icon');
-  if (icon) openLightbox(icon.src);
+  if (icon) { openLightbox(icon.src); return; }
+  const row = e.target.closest('.entry');
+  if (row && row.dataset.id) openPlanDetail(row.dataset.id);
 });
 
 function renderPlans() {
@@ -469,7 +482,8 @@ function renderPlans() {
     list.className = 'entries';
     plans.forEach(plan => {
       const row = document.createElement('div');
-      row.className = 'entry';
+      row.className = 'entry entry-clickable';
+      row.dataset.id = plan.id;
       const isLoh = plan.eventType === 'loh';
       const eventTypeLabel = isLoh ? 'リーグオブヒーローズ' : 'チャンピオンズミーティング';
 
@@ -524,6 +538,237 @@ function renderPlans() {
   container.appendChild(fragment);
 }
 
+// --- 育成計画詳細ポップアップ(タップで開く) ---
+function openPlanDetail(id) {
+  const plan = allPlans.find(p => p.id === id);
+  if (!plan) return;
+  const body = document.getElementById('planDetailBody');
+  body.innerHTML = renderPlanDetailHtml(plan);
+  body.querySelectorAll('.plan-detail-char').forEach(el => {
+    el.addEventListener('click', () => openCharacterConfig(plan.id, Number(el.dataset.index)));
+  });
+  openModal('planDetailModal');
+}
+
+function renderPlanDetailHtml(plan) {
+  const monthLabel = formatMonthLabel(plan.month);
+  const isLoh = plan.eventType === 'loh';
+  const eventTypeLabel = isLoh ? 'リーグオブヒーローズ' : 'チャンピオンズミーティング';
+  const rc = plan.raceCondition || {};
+  const raceConditionLabel = [
+    rc.location,
+    rc.distance != null ? `${rc.distance}m` : '',
+    rc.surface,
+    rc.direction,
+    rc.season,
+    rc.weather,
+    rc.going,
+  ].filter(Boolean).join(' ／ ');
+
+  const charCardsHtml = (plan.characters || []).map((c, idx) => {
+    const uma = c.id ? cachedUmas.find(u => u.id === c.id) : cachedUmas.find(u => u.name === c.name);
+    const imageUrl = uma && uma.imagePath ? imageRawUrl(uma.imagePath) : null;
+    const deckCount = (c.supportDeck || []).filter(Boolean).length;
+    return `
+      <div class="plan-char-chip plan-detail-char" data-index="${idx}">
+        ${imageUrl ? `<img class="uma-icon" src="${escapeHtml(imageUrl)}" alt="${escapeHtml(c.name)}" loading="lazy">` : ''}
+        <span>${escapeHtml(c.name)}${deckCount ? `<br><small>サポカ${deckCount}/6</small>` : ''}</span>
+      </div>
+    `;
+  }).join('');
+
+  return `
+    <div class="entry-name-row">
+      ${monthLabel ? `<span class="apt-badge">${escapeHtml(monthLabel)}</span>` : ''}
+      <div class="entry-name">${plan.title ? escapeHtml(plan.title) : '（タイトル未設定）'}</div>
+    </div>
+    <div class="apt-row"><span class="apt-badge">${eventTypeLabel}</span></div>
+    ${raceConditionLabel ? `<div class="entry-notes">${escapeHtml(raceConditionLabel)}</div>` : ''}
+    ${charCardsHtml ? `<div class="apt-group owner-group"><span class="apt-group-label">育成予定(タップして編成を設定)</span><div class="plan-char-row">${charCardsHtml}</div></div>` : ''}
+    ${plan.notes ? `<div class="entry-notes">${escapeHtml(plan.notes)}</div>` : ''}
+  `;
+}
+
+// --- キャラ編成ポップアップ(サポカ編成6枚) ---
+let configTargetPlanId = null;
+let configTargetCharIndex = null;
+let configDeckSelections = [null, null, null, null, null, null];
+
+function openCharacterConfig(planId, charIndex) {
+  const plan = allPlans.find(p => p.id === planId);
+  if (!plan) return;
+  const character = (plan.characters || [])[charIndex];
+  if (!character) return;
+  configTargetPlanId = planId;
+  configTargetCharIndex = charIndex;
+  configDeckSelections = [0, 1, 2, 3, 4, 5].map(i => {
+    const d = (character.supportDeck || [])[i];
+    if (!d) return null;
+    const card = d.id ? cachedSupportCards.find(c => c.id === d.id) : cachedSupportCards.find(c => c.name === d.name);
+    return card
+      ? { id: card.id, name: card.name, imagePath: card.imagePath || null }
+      : { id: d.id || null, name: d.name, imagePath: null };
+  });
+  document.getElementById('characterConfigTitle').textContent = `${character.name}の編成`;
+  renderCharacterConfigBody();
+  const statusEl = document.getElementById('characterConfigStatus');
+  statusEl.textContent = '';
+  statusEl.className = 'status';
+  document.getElementById('planDetailModal').hidden = true;
+  document.getElementById('characterConfigModal').hidden = false;
+}
+
+function closeCharacterConfig() {
+  document.getElementById('characterConfigModal').hidden = true;
+  document.getElementById('planDetailModal').hidden = false;
+}
+document.getElementById('characterConfigBackBtn').addEventListener('click', closeCharacterConfig);
+
+function renderCharacterConfigBody() {
+  const body = document.getElementById('characterConfigBody');
+  body.innerHTML = `
+    <label>サポカ編成（6枚）</label>
+    <div class="support-deck-grid">
+      ${[0, 1, 2, 3, 4, 5].map(i => `
+        <div class="team-slot">
+          <div class="char-select-box" id="deckSlotBox${i}">
+            <div id="deckSlotEmpty${i}">タップして選択</div>
+            <div class="char-select-filled-inner" id="deckSlotFilled${i}" hidden>
+              <img class="uma-icon" id="deckSlotIcon${i}" alt="">
+              <span id="deckSlotName${i}"></span>
+            </div>
+          </div>
+          <button type="button" class="btn secondary btn-inline" id="deckSlotClearBtn${i}" hidden>選択を解除</button>
+        </div>
+      `).join('')}
+    </div>
+  `;
+  [0, 1, 2, 3, 4, 5].forEach(i => {
+    updateDeckSlotBox(i);
+    document.getElementById('deckSlotBox' + i).addEventListener('click', () => openSupportCardPicker(i));
+    document.getElementById('deckSlotClearBtn' + i).addEventListener('click', e => {
+      e.stopPropagation();
+      configDeckSelections[i] = null;
+      updateDeckSlotBox(i);
+    });
+  });
+}
+
+function updateDeckSlotBox(i) {
+  const sel = configDeckSelections[i];
+  const box = document.getElementById('deckSlotBox' + i);
+  const emptyEl = document.getElementById('deckSlotEmpty' + i);
+  const filledEl = document.getElementById('deckSlotFilled' + i);
+  const iconEl = document.getElementById('deckSlotIcon' + i);
+  const nameEl = document.getElementById('deckSlotName' + i);
+  const clearBtn = document.getElementById('deckSlotClearBtn' + i);
+  if (sel) {
+    box.classList.add('filled');
+    emptyEl.hidden = true;
+    filledEl.hidden = false;
+    if (sel.imagePath) {
+      iconEl.src = imageRawUrl(sel.imagePath);
+      iconEl.hidden = false;
+    } else {
+      iconEl.hidden = true;
+    }
+    nameEl.textContent = sel.name;
+    clearBtn.hidden = false;
+  } else {
+    box.classList.remove('filled');
+    emptyEl.hidden = false;
+    filledEl.hidden = true;
+    clearBtn.hidden = true;
+  }
+}
+
+document.getElementById('characterConfigSaveBtn').addEventListener('click', async () => {
+  const statusEl = document.getElementById('characterConfigStatus');
+  if (!config || !config.token) {
+    statusEl.textContent = '保存にはPATが必要です。設定でPATを入力してください。';
+    statusEl.className = 'status error';
+    return;
+  }
+  const plan = allPlans.find(p => p.id === configTargetPlanId);
+  if (!plan) return;
+  const character = (plan.characters || [])[configTargetCharIndex];
+  if (!character) return;
+  character.supportDeck = configDeckSelections.map(sel => sel ? { id: sel.id, name: sel.name } : null);
+  const updated = allPlans.map(p => p.id === plan.id ? plan : p);
+  statusEl.textContent = '保存しています…';
+  statusEl.className = 'status';
+  const saveBtn = document.getElementById('characterConfigSaveBtn');
+  saveBtn.disabled = true;
+  try {
+    await savePlansToGitHub(updated, `育成計画サポカ編成更新: ${character.name}`);
+    allPlans = sortPlans(updated);
+    statusEl.textContent = '保存しました。';
+    renderPlans();
+  } catch (err) {
+    console.error(err);
+    if (err instanceof ConflictError) {
+      statusEl.textContent = '他の端末で更新されています。「更新」ボタンで最新を取得してからもう一度保存してください。';
+    } else {
+      statusEl.textContent = '保存中にエラーが発生しました: ' + err.message;
+    }
+    statusEl.className = 'status error';
+  } finally {
+    saveBtn.disabled = false;
+  }
+});
+
+// --- サポートカード選択ピッカー ---
+let deckPickerTargetSlot = null;
+
+function openSupportCardPicker(slot) {
+  deckPickerTargetSlot = slot;
+  document.getElementById('supportCardPickerSearch').value = '';
+  renderSupportCardPickerGrid('');
+  document.getElementById('characterConfigModal').hidden = true;
+  document.getElementById('supportCardPickerModal').hidden = false;
+}
+
+function closeSupportCardPicker() {
+  document.getElementById('supportCardPickerModal').hidden = true;
+  document.getElementById('characterConfigModal').hidden = false;
+}
+document.getElementById('supportCardPickerCloseBtn').addEventListener('click', closeSupportCardPicker);
+
+function renderSupportCardPickerGrid(keyword) {
+  const grid = document.getElementById('supportCardPickerGrid');
+  const kw = keyword.trim().toLowerCase();
+  const filtered = kw ? cachedSupportCards.filter(c => (c.name || '').toLowerCase().includes(kw)) : cachedSupportCards;
+  grid.innerHTML = '';
+  const fragment = document.createDocumentFragment();
+  filtered.forEach(c => {
+    const tile = document.createElement('div');
+    tile.className = 'character-picker-tile';
+    const imageUrl = c.imagePath ? imageRawUrl(c.imagePath) : '';
+    tile.innerHTML = `
+      ${imageUrl ? `<img src="${escapeHtml(imageUrl)}" alt="${escapeHtml(c.name)}" loading="lazy">` : ''}
+      <span>${escapeHtml(c.name)}</span>
+    `;
+    tile.addEventListener('click', () => selectSupportCard(c));
+    fragment.appendChild(tile);
+  });
+  grid.appendChild(fragment);
+  document.getElementById('supportCardPickerStatus').textContent = cachedSupportCards.length
+    ? (filtered.length ? '' : '該当するサポートカードが見つかりません。')
+    : 'サポカ図鑑にまだ登録がありません。';
+}
+
+function selectSupportCard(c) {
+  if (deckPickerTargetSlot == null) return;
+  configDeckSelections[deckPickerTargetSlot] = { id: c.id, name: c.name, imagePath: c.imagePath || null };
+  updateDeckSlotBox(deckPickerTargetSlot);
+  closeSupportCardPicker();
+}
+
+document.getElementById('supportCardPickerSearch').addEventListener('input', debounce(() => {
+  renderSupportCardPickerGrid(document.getElementById('supportCardPickerSearch').value);
+}, 150));
+
 resetForm();
 loadPlans();
 loadCachedUmas().then(renderPlans);
+loadCachedSupportCards();

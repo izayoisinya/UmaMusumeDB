@@ -963,6 +963,24 @@ mark.search-hit {
 .plan-char-chip { display: flex; align-items: center; gap: 6px; }
 .plan-char-chip .uma-icon { width: 32px; height: 32px; cursor: zoom-in; }
 .plan-char-chip span { font-size: 13px; }
+.plan-detail-char {
+  cursor: pointer;
+  border: 1.5px solid var(--panel-line);
+  border-radius: 10px;
+  padding: 6px 10px;
+}
+.plan-detail-char:hover { border-color: var(--green-dim); }
+.plan-detail-char small { color: var(--ink-soft); }
+
+.support-deck-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-top: 8px;
+}
+@media (max-width: 520px) {
+  .support-deck-grid { grid-template-columns: repeat(2, 1fr); }
+}
 
 .pvp-team-grid {
   display: grid;

@@ -208,6 +208,28 @@
     <button type="button" class="btn secondary" id="characterPickerCloseBtn">閉じる</button>
   </div>
 
+  <div class="modal" id="planDetailModal" role="dialog" aria-labelledby="planDetailTitle" hidden>
+    <h2 id="planDetailTitle">育成計画詳細</h2>
+    <div id="planDetailBody"></div>
+    <button type="button" class="btn secondary modal-close-btn" data-modal="planDetailModal">閉じる</button>
+  </div>
+
+  <div class="modal" id="characterConfigModal" role="dialog" aria-labelledby="characterConfigTitle" hidden>
+    <h2 id="characterConfigTitle">キャラ編成</h2>
+    <div id="characterConfigBody"></div>
+    <div class="status" id="characterConfigStatus"></div>
+    <button type="button" class="btn" id="characterConfigSaveBtn">この内容を保存</button>
+    <button type="button" class="btn secondary" id="characterConfigBackBtn">戻る</button>
+  </div>
+
+  <div class="modal" id="supportCardPickerModal" role="dialog" aria-labelledby="supportCardPickerTitle" hidden>
+    <h2 id="supportCardPickerTitle">サポートカードを選択</h2>
+    <input type="text" id="supportCardPickerSearch" class="character-picker-search" placeholder="名前で検索">
+    <div id="supportCardPickerGrid" class="character-picker-grid"></div>
+    <div class="status" id="supportCardPickerStatus"></div>
+    <button type="button" class="btn secondary" id="supportCardPickerCloseBtn">閉じる</button>
+  </div>
+
   <div class="modal" id="confirmDeleteModal" role="dialog" aria-labelledby="confirmDeleteTitle" hidden>
     <h2 id="confirmDeleteTitle">削除の確認</h2>
     <p class="hint" id="confirmDeleteMessage"></p>
