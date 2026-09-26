@@ -982,6 +982,42 @@ mark.search-hit {
   .support-deck-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
+.pedigree-tree {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  margin-top: 10px;
+}
+.pedigree-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+}
+.pedigree-card {
+  border: 1.5px dashed var(--panel-line);
+  border-radius: 10px;
+  padding: 10px;
+  width: 190px;
+  flex-shrink: 0;
+}
+.pedigree-card-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--ink-soft);
+  margin-bottom: 6px;
+  text-align: center;
+}
+.pedigree-apt-area { margin-top: 8px; }
+.pedigree-apt-area input[type=text] { margin-bottom: 6px; }
+.pedigree-apt-area .apt-select-row { margin-top: 6px; }
+.pedigree-apt-area .apt-row { justify-content: center; margin-top: 6px; }
+@media (max-width: 520px) {
+  .pedigree-card { width: 100%; max-width: 260px; }
+}
+
 .pvp-team-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

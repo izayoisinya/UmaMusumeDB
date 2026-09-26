@@ -192,7 +192,8 @@ function setTrainingModalMode(isEditing) {
 
 // --- 育成予定ウマ娘の選択(所持ウマ娘一覧からアイコン付きで選ぶ) ---
 let charSelections = [null, null, null];
-let pickerTargetIndex = null;
+let umaPickerReturnModalId = null;
+let umaPickerOnSelect = null;
 
 function updateCharSelectBox(index) {
   const sel = charSelections[index - 1];
@@ -222,19 +223,22 @@ function updateCharSelectBox(index) {
   }
 }
 
-function openCharacterPicker(index) {
-  pickerTargetIndex = index;
+// 汎用ウマ娘ピッカー(呼び出し元modalに戻る+選択時コールバック方式。育成予定ウマ娘枠・
+// 因子設計図の各枠など、複数の場所から共通で使う)
+function openUmaPicker(returnModalId, onSelect) {
+  umaPickerReturnModalId = returnModalId;
+  umaPickerOnSelect = onSelect;
   document.getElementById('characterPickerSearch').value = '';
   renderCharacterPickerGrid('');
-  document.getElementById('trainingModal').hidden = true;
+  document.getElementById(returnModalId).hidden = true;
   document.getElementById('characterPickerModal').hidden = false;
 }
 
-function closeCharacterPicker() {
+function closeUmaPicker() {
   document.getElementById('characterPickerModal').hidden = true;
-  document.getElementById('trainingModal').hidden = false;
+  if (umaPickerReturnModalId) document.getElementById(umaPickerReturnModalId).hidden = false;
 }
-document.getElementById('characterPickerCloseBtn').addEventListener('click', closeCharacterPicker);
+document.getElementById('characterPickerCloseBtn').addEventListener('click', closeUmaPicker);
 
 function renderCharacterPickerGrid(keyword) {
   const grid = document.getElementById('characterPickerGrid');
@@ -250,7 +254,7 @@ function renderCharacterPickerGrid(keyword) {
       ${imageUrl ? `<img src="${escapeHtml(imageUrl)}" alt="${escapeHtml(u.name)}" loading="lazy">` : ''}
       <span>${escapeHtml(u.name)}</span>
     `;
-    tile.addEventListener('click', () => selectCharacter(u));
+    tile.addEventListener('click', () => selectUmaFromPicker(u));
     fragment.appendChild(tile);
   });
   grid.appendChild(fragment);
@@ -259,11 +263,16 @@ function renderCharacterPickerGrid(keyword) {
     : 'ウマ娘図鑑にまだ登録がありません。';
 }
 
-function selectCharacter(u) {
-  if (pickerTargetIndex == null) return;
-  charSelections[pickerTargetIndex - 1] = { id: u.id, name: u.name, imagePath: u.imagePath || null };
-  updateCharSelectBox(pickerTargetIndex);
-  closeCharacterPicker();
+function selectUmaFromPicker(u) {
+  if (umaPickerOnSelect) umaPickerOnSelect(u);
+  closeUmaPicker();
+}
+
+function openCharacterPicker(index) {
+  openUmaPicker('trainingModal', u => {
+    charSelections[index - 1] = { id: u.id, name: u.name, imagePath: u.imagePath || null };
+    updateCharSelectBox(index);
+  });
 }
 
 [1, 2, 3].forEach(i => {
@@ -589,10 +598,30 @@ function renderPlanDetailHtml(plan) {
   `;
 }
 
-// --- キャラ編成ポップアップ(サポカ編成6枚) ---
+// --- 適性表示・入力の共通ヘルパー ---
+const APT_RANKS = ['S', 'A', 'B', 'C', 'D', 'E', 'F', 'G'];
+function aptBadge(prefix, v) {
+  const rankClass = v ? 'rank-' + v : 'rank-none';
+  return `<span class="apt-badge ${rankClass}">${prefix}${v || '-'}</span>`;
+}
+function aptSelect(id, value) {
+  return `<select id="${id}"><option value="">-</option>${APT_RANKS.map(r => `<option value="${r}"${value === r ? ' selected' : ''}>${r}</option>`).join('')}</select>`;
+}
+function emptyPedigreeEntry() {
+  return { id: null, name: '', imagePath: null, manual: true, track: {}, distance: {}, style: {} };
+}
+function pedigreeEntryFromUma(u) {
+  return {
+    id: u.id, name: u.name, imagePath: u.imagePath || null, manual: false,
+    track: u.track || {}, distance: u.distance || {}, style: u.style || {},
+  };
+}
+
+// --- キャラ編成ポップアップ(サポカ編成6枚+因子設計図) ---
 let configTargetPlanId = null;
 let configTargetCharIndex = null;
 let configDeckSelections = [null, null, null, null, null, null];
+let configPedigreeSelections = new Array(7).fill(null);
 
 function openCharacterConfig(planId, charIndex) {
   const plan = allPlans.find(p => p.id === planId);
@@ -609,6 +638,16 @@ function openCharacterConfig(planId, charIndex) {
       ? { id: card.id, name: card.name, imagePath: card.imagePath || null }
       : { id: d.id || null, name: d.name, imagePath: null };
   });
+  const savedPedigree = character.pedigree || [];
+  configPedigreeSelections = [0, 1, 2, 3, 4, 5, 6].map(slot => {
+    const p = savedPedigree[slot];
+    if (p) return p;
+    if (slot === 0) {
+      const uma = character.id ? cachedUmas.find(u => u.id === character.id) : cachedUmas.find(u => u.name === character.name);
+      return uma ? pedigreeEntryFromUma(uma) : { id: null, name: character.name, imagePath: null, manual: true, track: {}, distance: {}, style: {} };
+    }
+    return null;
+  });
   document.getElementById('characterConfigTitle').textContent = `${character.name}の編成`;
   renderCharacterConfigBody();
   const statusEl = document.getElementById('characterConfigStatus');
@@ -623,6 +662,23 @@ function closeCharacterConfig() {
   document.getElementById('planDetailModal').hidden = false;
 }
 document.getElementById('characterConfigBackBtn').addEventListener('click', closeCharacterConfig);
+
+function pedigreeCardHtml(slot, label) {
+  return `
+    <div class="pedigree-card">
+      <div class="pedigree-card-label">${label}</div>
+      <div class="char-select-box" id="pedigreeBox${slot}">
+        <div id="pedigreeEmpty${slot}">タップして図鑑から選択</div>
+        <div class="char-select-filled-inner" id="pedigreeFilled${slot}" hidden>
+          <img class="uma-icon" id="pedigreeIcon${slot}" alt="">
+          <span id="pedigreeName${slot}"></span>
+        </div>
+      </div>
+      <button type="button" class="btn secondary btn-inline" id="pedigreeClearBtn${slot}" hidden>選択を解除</button>
+      <div class="pedigree-apt-area" id="pedigreeAptArea${slot}"></div>
+    </div>
+  `;
+}
 
 function renderCharacterConfigBody() {
   const body = document.getElementById('characterConfigBody');
@@ -642,6 +698,14 @@ function renderCharacterConfigBody() {
         </div>
       `).join('')}
     </div>
+
+    <label style="display:block;margin-top:18px;">因子設計図</label>
+    <p class="hint">図鑑にいれば所持ウマ娘の適性を自動反映(編集不可)。図鑑に無いキャラは名前を手入力して適性を手動設定できる。</p>
+    <div class="pedigree-tree">
+      <div class="pedigree-row pedigree-row-self">${pedigreeCardHtml(0, '本人')}</div>
+      <div class="pedigree-row pedigree-row-parents">${pedigreeCardHtml(1, '親')}${pedigreeCardHtml(2, '親')}</div>
+      <div class="pedigree-row pedigree-row-grandparents">${pedigreeCardHtml(3, '祖')}${pedigreeCardHtml(4, '祖')}${pedigreeCardHtml(5, '祖')}${pedigreeCardHtml(6, '祖')}</div>
+    </div>
   `;
   [0, 1, 2, 3, 4, 5].forEach(i => {
     updateDeckSlotBox(i);
@@ -650,6 +714,116 @@ function renderCharacterConfigBody() {
       e.stopPropagation();
       configDeckSelections[i] = null;
       updateDeckSlotBox(i);
+    });
+  });
+  [0, 1, 2, 3, 4, 5, 6].forEach(slot => {
+    document.getElementById('pedigreeBox' + slot).addEventListener('click', () => openPedigreeCharacterPicker(slot));
+    document.getElementById('pedigreeClearBtn' + slot).addEventListener('click', e => {
+      e.stopPropagation();
+      configPedigreeSelections[slot] = null;
+      updatePedigreeCard(slot);
+    });
+    updatePedigreeCard(slot);
+  });
+}
+
+function openPedigreeCharacterPicker(slot) {
+  openUmaPicker('characterConfigModal', u => {
+    configPedigreeSelections[slot] = pedigreeEntryFromUma(u);
+    updatePedigreeCard(slot);
+  });
+}
+
+function updatePedigreeCard(slot) {
+  const sel = configPedigreeSelections[slot];
+  const hasRegistrySel = !!(sel && !sel.manual);
+  const box = document.getElementById('pedigreeBox' + slot);
+  const emptyEl = document.getElementById('pedigreeEmpty' + slot);
+  const filledEl = document.getElementById('pedigreeFilled' + slot);
+  const iconEl = document.getElementById('pedigreeIcon' + slot);
+  const nameEl = document.getElementById('pedigreeName' + slot);
+  const clearBtn = document.getElementById('pedigreeClearBtn' + slot);
+  if (hasRegistrySel) {
+    box.classList.add('filled');
+    emptyEl.hidden = true;
+    filledEl.hidden = false;
+    if (sel.imagePath) {
+      iconEl.src = imageRawUrl(sel.imagePath);
+      iconEl.hidden = false;
+    } else {
+      iconEl.hidden = true;
+    }
+    nameEl.textContent = sel.name;
+    clearBtn.hidden = false;
+  } else {
+    box.classList.remove('filled');
+    emptyEl.hidden = false;
+    filledEl.hidden = true;
+    clearBtn.hidden = true;
+  }
+  renderPedigreeAptArea(slot);
+}
+
+function renderPedigreeAptArea(slot) {
+  const area = document.getElementById('pedigreeAptArea' + slot);
+  const sel = configPedigreeSelections[slot];
+  const hasRegistrySel = !!(sel && !sel.manual);
+
+  if (hasRegistrySel) {
+    const track = sel.track || {};
+    const distance = sel.distance || {};
+    const style = sel.style || {};
+    area.innerHTML = `
+      <div class="apt-row">${aptBadge('芝', track.turf)}${aptBadge('ダ', track.dirt)}</div>
+      <div class="apt-row">${aptBadge('短', distance.short)}${aptBadge('マ', distance.mile)}${aptBadge('中', distance.medium)}${aptBadge('長', distance.long)}</div>
+      <div class="apt-row">${aptBadge('逃', style.nige)}${aptBadge('先', style.senko)}${aptBadge('差', style.sashi)}${aptBadge('追', style.oikomi)}</div>
+    `;
+    return;
+  }
+
+  const track = (sel && sel.track) || {};
+  const distance = (sel && sel.distance) || {};
+  const style = (sel && sel.style) || {};
+  area.innerHTML = `
+    <input type="text" id="pedigreeManualName${slot}" placeholder="図鑑に無い場合は名前を手入力" value="${escapeHtml((sel && sel.name) || '')}">
+    <div class="apt-select-row">
+      <div><span>芝</span>${aptSelect('pedigreeTurf' + slot, track.turf)}</div>
+      <div><span>ダート</span>${aptSelect('pedigreeDirt' + slot, track.dirt)}</div>
+    </div>
+    <div class="apt-select-row">
+      <div><span>短</span>${aptSelect('pedigreeShort' + slot, distance.short)}</div>
+      <div><span>マ</span>${aptSelect('pedigreeMile' + slot, distance.mile)}</div>
+      <div><span>中</span>${aptSelect('pedigreeMedium' + slot, distance.medium)}</div>
+      <div><span>長</span>${aptSelect('pedigreeLong' + slot, distance.long)}</div>
+    </div>
+    <div class="apt-select-row">
+      <div><span>逃</span>${aptSelect('pedigreeNige' + slot, style.nige)}</div>
+      <div><span>先</span>${aptSelect('pedigreeSenko' + slot, style.senko)}</div>
+      <div><span>差</span>${aptSelect('pedigreeSashi' + slot, style.sashi)}</div>
+      <div><span>追</span>${aptSelect('pedigreeOikomi' + slot, style.oikomi)}</div>
+    </div>
+  `;
+  document.getElementById('pedigreeManualName' + slot).addEventListener('input', e => {
+    if (!configPedigreeSelections[slot]) configPedigreeSelections[slot] = emptyPedigreeEntry();
+    configPedigreeSelections[slot].name = e.target.value.trim();
+    configPedigreeSelections[slot].manual = true;
+  });
+  [
+    ['pedigreeTurf' + slot, 'track', 'turf'],
+    ['pedigreeDirt' + slot, 'track', 'dirt'],
+    ['pedigreeShort' + slot, 'distance', 'short'],
+    ['pedigreeMile' + slot, 'distance', 'mile'],
+    ['pedigreeMedium' + slot, 'distance', 'medium'],
+    ['pedigreeLong' + slot, 'distance', 'long'],
+    ['pedigreeNige' + slot, 'style', 'nige'],
+    ['pedigreeSenko' + slot, 'style', 'senko'],
+    ['pedigreeSashi' + slot, 'style', 'sashi'],
+    ['pedigreeOikomi' + slot, 'style', 'oikomi'],
+  ].forEach(([id, group, key]) => {
+    document.getElementById(id).addEventListener('change', e => {
+      if (!configPedigreeSelections[slot]) configPedigreeSelections[slot] = emptyPedigreeEntry();
+      configPedigreeSelections[slot].manual = true;
+      configPedigreeSelections[slot][group][key] = e.target.value || null;
     });
   });
 }
@@ -694,6 +868,14 @@ document.getElementById('characterConfigSaveBtn').addEventListener('click', asyn
   const character = (plan.characters || [])[configTargetCharIndex];
   if (!character) return;
   character.supportDeck = configDeckSelections.map(sel => sel ? { id: sel.id, name: sel.name } : null);
+  character.pedigree = configPedigreeSelections.map(sel => sel ? {
+    id: sel.id || null,
+    name: sel.name || '',
+    manual: !!sel.manual,
+    track: sel.track || {},
+    distance: sel.distance || {},
+    style: sel.style || {},
+  } : null);
   const updated = allPlans.map(p => p.id === plan.id ? plan : p);
   statusEl.textContent = '保存しています…';
   statusEl.className = 'status';
