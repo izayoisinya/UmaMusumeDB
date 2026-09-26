@@ -1,37 +1,5 @@
 [
   {
-    "id": "training_1790405415344_qu91h",
-    "month": "",
-    "title": "",
-    "status": "in_progress",
-    "eventType": "champions",
-    "raceCondition": {
-      "location": "ロンシャン",
-      "distance": 2400,
-      "surface": "芝",
-      "direction": "右回り",
-      "season": "秋",
-      "weather": "晴",
-      "going": "重"
-    },
-    "characters": [
-      {
-        "id": "uma_1789508282654_jqgsg",
-        "name": "セイウンスカイ"
-      },
-      {
-        "id": "uma_1789589419069_syoa2",
-        "name": "キタサンブラック"
-      },
-      {
-        "id": "uma_1789590260799_xw00e",
-        "name": "カツラギエース"
-      }
-    ],
-    "notes": "",
-    "savedAt": "2026-09-26T07:05:42.306Z"
-  },
-  {
     "id": "training_1790404979348_kdmk5",
     "month": "",
     "title": "毎日王冠チャンミ",
@@ -62,5 +30,37 @@
     ],
     "notes": "",
     "savedAt": "2026-09-26T07:49:00.369Z"
+  },
+  {
+    "id": "training_1790405415344_qu91h",
+    "month": "",
+    "title": "",
+    "status": "in_progress",
+    "eventType": "champions",
+    "raceCondition": {
+      "location": "ロンシャン",
+      "distance": 2400,
+      "surface": "芝",
+      "direction": "右回り",
+      "season": "秋",
+      "weather": "晴",
+      "going": "重"
+    },
+    "characters": [
+      {
+        "id": "uma_1789507386398_xpsma",
+        "name": "セイウンスカイ"
+      },
+      {
+        "id": "uma_1789589419069_syoa2",
+        "name": "キタサンブラック"
+      },
+      {
+        "id": "uma_1789590260799_xw00e",
+        "name": "カツラギエース"
+      }
+    ],
+    "notes": "",
+    "savedAt": "2026-09-26T18:16:52.290Z"
   }
 ]
