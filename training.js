@@ -626,12 +626,13 @@ function aptBadgeBoosted(prefix, base, bonus) {
   return `<span class="apt-badge ${rankClass}">${prefix}${boosted || '-'}<small>+${bonus}</small></span>`;
 }
 // 祖父母は(祖1,祖2)(祖3,祖4)、親は(親1,親2)のペアごとに同じ種類の赤因子を合算し、
-// 3星ごとに1段階、本人の対応する適性ランクを上昇させる
+// 3星ごとに1段階、本人の対応する適性ランクを上昇させる。上昇量は種類ごとに最大4段階
+// (★3の赤因子4人分=計★12相当)までしか反映しない
 function computePedigreeBonuses() {
   const bonuses = {};
   const add = (type, stars) => {
     if (!type || !stars) return;
-    bonuses[type] = (bonuses[type] || 0) + Math.ceil(stars / 3);
+    bonuses[type] = Math.min(4, (bonuses[type] || 0) + Math.ceil(stars / 3));
   };
   [[1, 2], [3, 4], [5, 6]].forEach(([a, b]) => {
     const rfA = configPedigreeSelections[a] && configPedigreeSelections[a].redFactor;
