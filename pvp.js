@@ -855,7 +855,7 @@ function renderEvents() {
     list.className = 'entries';
     group.events.forEach(ev => {
       const row = document.createElement('div');
-      row.className = 'entry';
+      row.className = 'entry entry-clickable';
       const { badges, raceConditionLabel } = eventMeta(ev);
       const teamChipsHtml = (ev.team || []).filter(m => m.name).map(m => {
         const uma = m.id ? cachedUmas.find(u => u.id === m.id) : cachedUmas.find(u => u.name === m.name);
@@ -869,7 +869,7 @@ function renderEvents() {
       }).join('');
 
       row.innerHTML = `
-        <div class="entry-main entry-main-tappable">
+        <div class="entry-main">
           ${raceConditionLabel ? `<div class="entry-name-row"><div class="entry-name">${escapeHtml(raceConditionLabel)}</div></div>` : ''}
           <div class="apt-row">${badges}</div>
           ${teamChipsHtml ? `<div class="plan-char-row">${teamChipsHtml}</div>` : ''}
@@ -886,7 +886,7 @@ function renderEvents() {
       row.querySelectorAll('.plan-char-icon').forEach(img => {
         img.addEventListener('click', e => { e.stopPropagation(); openLightbox(img.src); });
       });
-      row.querySelector('.entry-main-tappable').addEventListener('click', () => openEventDetail(ev.id));
+      row.addEventListener('click', () => openEventDetail(ev.id));
       list.appendChild(row);
     });
     section.appendChild(list);
