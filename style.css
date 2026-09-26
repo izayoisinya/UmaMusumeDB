@@ -978,7 +978,7 @@ mark.search-hit {
 }
 .pvp-team-thumb {
   width: 100%;
-  aspect-ratio: 3 / 4;
+  height: 100px;
   object-fit: cover;
   object-position: top;
   border-radius: 8px;
