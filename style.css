@@ -1039,8 +1039,7 @@ mark.search-hit {
   margin-bottom: 6px;
   text-align: center;
 }
-.pedigree-card-main { display: flex; }
-.pedigree-card-wide .pedigree-card-main { align-items: flex-start; gap: 12px; }
+.pedigree-card-wide .pedigree-card-main { display: flex; align-items: flex-start; gap: 12px; }
 .pedigree-card-wide .char-select-box { flex-shrink: 0; width: 140px; }
 .pedigree-apt-area { margin-top: 8px; flex: 1; min-width: 0; }
 .pedigree-card-wide .pedigree-apt-area { margin-top: 0; }
