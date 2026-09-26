@@ -1,7 +1,7 @@
 [
   {
     "id": "training_1790404979348_kdmk5",
-    "status": "not_started",
+    "status": "done",
     "eventType": "champions",
     "raceCondition": {
       "location": "東京",
@@ -24,6 +24,6 @@
       }
     ],
     "notes": "",
-    "savedAt": "2026-09-26T06:43:27.547Z"
+    "savedAt": "2026-09-26T06:48:07.758Z"
   }
 ]
