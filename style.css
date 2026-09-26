@@ -901,6 +901,64 @@ mark.search-hit {
 .team-slot .growth-input-row { margin-top: 8px; }
 .champions-final-only { margin-top: 8px; }
 
+.char-select-box {
+  border: 1.5px dashed var(--panel-line);
+  border-radius: 10px;
+  padding: 10px;
+  min-height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  cursor: pointer;
+  color: var(--ink-soft);
+  font-size: 13px;
+}
+.char-select-box.filled { border-style: solid; }
+.char-select-filled-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+.char-select-filled-inner span { font-size: 12px; color: var(--ink); word-break: break-all; }
+.team-slot .btn-inline { margin-top: 8px; width: 100%; }
+
+.character-picker-search { margin-bottom: 10px; }
+.character-picker-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(76px, 1fr));
+  gap: 10px;
+  max-height: 50vh;
+  overflow-y: auto;
+  margin-bottom: 10px;
+}
+.character-picker-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 6px;
+  border: 1.5px solid var(--panel-line);
+  border-radius: 10px;
+  background: var(--surface);
+  cursor: pointer;
+  text-align: center;
+}
+.character-picker-tile:hover { border-color: var(--green-dim); }
+.character-picker-tile img {
+  width: 56px;
+  height: 56px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+.character-picker-tile span { font-size: 11px; line-height: 1.2; word-break: break-all; }
+
+.plan-char-row { display: flex; flex-wrap: wrap; gap: 10px; }
+.plan-char-chip { display: flex; align-items: center; gap: 6px; }
+.plan-char-chip .uma-icon { width: 32px; height: 32px; cursor: zoom-in; }
+.plan-char-chip span { font-size: 13px; }
+
 .pvp-team-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

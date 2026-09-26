@@ -156,13 +156,34 @@
         <label>育成予定ウマ娘（3人）</label>
         <div class="team-slots-grid">
           <div class="team-slot">
-            <input type="text" id="fCharName1" placeholder="1人目のウマ娘名">
+            <div class="char-select-box" id="charSelectBox1">
+              <div id="charSelectEmpty1">タップして選択</div>
+              <div class="char-select-filled-inner" id="charSelectFilled1" hidden>
+                <img class="uma-icon" id="charSelectIcon1" alt="">
+                <span id="charSelectName1"></span>
+              </div>
+            </div>
+            <button type="button" class="btn secondary btn-inline" id="charSelectClearBtn1" hidden>選択を解除</button>
           </div>
           <div class="team-slot">
-            <input type="text" id="fCharName2" placeholder="2人目のウマ娘名">
+            <div class="char-select-box" id="charSelectBox2">
+              <div id="charSelectEmpty2">タップして選択</div>
+              <div class="char-select-filled-inner" id="charSelectFilled2" hidden>
+                <img class="uma-icon" id="charSelectIcon2" alt="">
+                <span id="charSelectName2"></span>
+              </div>
+            </div>
+            <button type="button" class="btn secondary btn-inline" id="charSelectClearBtn2" hidden>選択を解除</button>
           </div>
           <div class="team-slot">
-            <input type="text" id="fCharName3" placeholder="3人目のウマ娘名">
+            <div class="char-select-box" id="charSelectBox3">
+              <div id="charSelectEmpty3">タップして選択</div>
+              <div class="char-select-filled-inner" id="charSelectFilled3" hidden>
+                <img class="uma-icon" id="charSelectIcon3" alt="">
+                <span id="charSelectName3"></span>
+              </div>
+            </div>
+            <button type="button" class="btn secondary btn-inline" id="charSelectClearBtn3" hidden>選択を解除</button>
           </div>
         </div>
       </div>
@@ -177,6 +198,14 @@
       <button type="button" class="btn secondary" id="clearBtn">フォームをクリア</button>
     </form>
     <button type="button" class="btn secondary modal-close-btn" data-modal="trainingModal">閉じる</button>
+  </div>
+
+  <div class="modal" id="characterPickerModal" role="dialog" aria-labelledby="characterPickerTitle" hidden>
+    <h2 id="characterPickerTitle">育成予定ウマ娘を選択</h2>
+    <input type="text" id="characterPickerSearch" class="character-picker-search" placeholder="名前で検索">
+    <div id="characterPickerGrid" class="character-picker-grid"></div>
+    <div class="status" id="characterPickerStatus"></div>
+    <button type="button" class="btn secondary" id="characterPickerCloseBtn">閉じる</button>
   </div>
 
   <div class="modal" id="confirmDeleteModal" role="dialog" aria-labelledby="confirmDeleteTitle" hidden>

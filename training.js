@@ -12,6 +12,7 @@ class ConflictError extends Error {
 let currentSha = null;
 let allPlans = [];
 let editingPlanId = null;
+let cachedUmas = [];
 
 function contentsApiUrl() {
   const owner = (config && config.owner) || DEFAULT_OWNER;
@@ -34,6 +35,36 @@ function encodeUtf8Base64(str) {
   let binary = '';
   bytes.forEach(b => { binary += String.fromCharCode(b); });
   return btoa(binary);
+}
+
+async function fetchJsonFile(path) {
+  const owner = (config && config.owner) || DEFAULT_OWNER;
+  const repo = (config && config.repo) || DEFAULT_REPO;
+  const branch = config && config.branch;
+  const url = `https://api.github.com/repos/${encodeURIComponent(owner)}/${encodeURIComponent(repo)}/contents/${path}`
+    + (branch ? `?ref=${encodeURIComponent(branch)}` : '');
+  const res = await fetch(url, { headers: authHeaders(), cache: 'no-store' });
+  if (res.status === 404) return [];
+  if (!res.ok) {
+    const errJson = await res.json().catch(() => ({}));
+    throw new Error(errJson.message || `GitHub APIエラー: ${res.status}`);
+  }
+  const json = await res.json();
+  try {
+    const arr = JSON.parse(decodeBase64Utf8(json.content));
+    return Array.isArray(arr) ? arr : [];
+  } catch {
+    return [];
+  }
+}
+
+async function loadCachedUmas() {
+  try {
+    cachedUmas = await fetchJsonFile('data/uma_musume.json');
+  } catch (err) {
+    console.error('所持ウマ娘一覧の取得に失敗:', err);
+    cachedUmas = [];
+  }
 }
 
 async function fetchPlansRaw() {
@@ -124,10 +155,12 @@ async function loadPlans() {
 }
 
 // common.jsのGitHub連携設定フォーム(保存/消去)から呼ばれるフック
-function onGithubConfigChanged() {
+async function onGithubConfigChanged() {
   allPlans = [];
   currentSha = null;
-  return loadPlans();
+  cachedUmas = [];
+  await Promise.all([loadPlans(), loadCachedUmas()]);
+  renderPlans();
 }
 
 function getRadioValue(name, fallback) {
@@ -146,10 +179,101 @@ function setTrainingModalMode(isEditing) {
   document.getElementById('saveTrainingBtn').textContent = isEditing ? 'この内容で更新' : 'この内容を保存';
 }
 
+// --- 育成予定ウマ娘の選択(所持ウマ娘一覧からアイコン付きで選ぶ) ---
+let charSelections = [null, null, null];
+let pickerTargetIndex = null;
+
+function updateCharSelectBox(index) {
+  const sel = charSelections[index - 1];
+  const box = document.getElementById('charSelectBox' + index);
+  const emptyEl = document.getElementById('charSelectEmpty' + index);
+  const filledEl = document.getElementById('charSelectFilled' + index);
+  const iconEl = document.getElementById('charSelectIcon' + index);
+  const nameEl = document.getElementById('charSelectName' + index);
+  const clearBtn = document.getElementById('charSelectClearBtn' + index);
+  if (sel) {
+    box.classList.add('filled');
+    emptyEl.hidden = true;
+    filledEl.hidden = false;
+    if (sel.imagePath) {
+      iconEl.src = imageRawUrl(sel.imagePath);
+      iconEl.hidden = false;
+    } else {
+      iconEl.hidden = true;
+    }
+    nameEl.textContent = sel.name;
+    clearBtn.hidden = false;
+  } else {
+    box.classList.remove('filled');
+    emptyEl.hidden = false;
+    filledEl.hidden = true;
+    clearBtn.hidden = true;
+  }
+}
+
+function openCharacterPicker(index) {
+  pickerTargetIndex = index;
+  document.getElementById('characterPickerSearch').value = '';
+  renderCharacterPickerGrid('');
+  document.getElementById('trainingModal').hidden = true;
+  document.getElementById('characterPickerModal').hidden = false;
+}
+
+function closeCharacterPicker() {
+  document.getElementById('characterPickerModal').hidden = true;
+  document.getElementById('trainingModal').hidden = false;
+}
+document.getElementById('characterPickerCloseBtn').addEventListener('click', closeCharacterPicker);
+
+function renderCharacterPickerGrid(keyword) {
+  const grid = document.getElementById('characterPickerGrid');
+  const kw = keyword.trim().toLowerCase();
+  const filtered = kw ? cachedUmas.filter(u => (u.name || '').toLowerCase().includes(kw)) : cachedUmas;
+  grid.innerHTML = '';
+  const fragment = document.createDocumentFragment();
+  filtered.forEach(u => {
+    const tile = document.createElement('div');
+    tile.className = 'character-picker-tile';
+    const imageUrl = u.imagePath ? imageRawUrl(u.imagePath) : '';
+    tile.innerHTML = `
+      ${imageUrl ? `<img src="${escapeHtml(imageUrl)}" alt="${escapeHtml(u.name)}" loading="lazy">` : ''}
+      <span>${escapeHtml(u.name)}</span>
+    `;
+    tile.addEventListener('click', () => selectCharacter(u));
+    fragment.appendChild(tile);
+  });
+  grid.appendChild(fragment);
+  document.getElementById('characterPickerStatus').textContent = cachedUmas.length
+    ? (filtered.length ? '' : '該当するウマ娘が見つかりません。')
+    : 'ウマ娘図鑑にまだ登録がありません。';
+}
+
+function selectCharacter(u) {
+  if (pickerTargetIndex == null) return;
+  charSelections[pickerTargetIndex - 1] = { id: u.id, name: u.name, imagePath: u.imagePath || null };
+  updateCharSelectBox(pickerTargetIndex);
+  closeCharacterPicker();
+}
+
+[1, 2, 3].forEach(i => {
+  document.getElementById('charSelectBox' + i).addEventListener('click', () => openCharacterPicker(i));
+  document.getElementById('charSelectClearBtn' + i).addEventListener('click', e => {
+    e.stopPropagation();
+    charSelections[i - 1] = null;
+    updateCharSelectBox(i);
+  });
+});
+
+document.getElementById('characterPickerSearch').addEventListener('input', debounce(e => {
+  renderCharacterPickerGrid(document.getElementById('characterPickerSearch').value);
+}, 150));
+
 function resetForm() {
   document.getElementById('trainingForm').reset();
   setRadioValue('fStatus', 'not_started', 'not_started');
   setRadioValue('fEventType', 'champions', 'champions');
+  charSelections = [null, null, null];
+  [1, 2, 3].forEach(updateCharSelectBox);
   setStatus('');
   setTrainingModalMode(null);
 }
@@ -178,9 +302,15 @@ function fillForm(plan) {
   setRadioValue('fGoing', rc.going, '良');
 
   const characters = plan.characters || [];
-  [1, 2, 3].forEach(i => {
-    document.getElementById('fCharName' + i).value = (characters[i - 1] && characters[i - 1].name) || '';
+  charSelections = [1, 2, 3].map(i => {
+    const c = characters[i - 1];
+    if (!c) return null;
+    const uma = c.id ? cachedUmas.find(u => u.id === c.id) : cachedUmas.find(u => u.name === c.name);
+    return uma
+      ? { id: uma.id, name: uma.name, imagePath: uma.imagePath || null }
+      : { id: c.id || null, name: c.name, imagePath: null };
   });
+  [1, 2, 3].forEach(updateCharSelectBox);
 
   document.getElementById('fNotes').value = plan.notes || '';
 }
@@ -195,9 +325,9 @@ function startEditPlan(id) {
 }
 
 function readCharactersFromForm() {
-  return [1, 2, 3]
-    .map(i => ({ name: document.getElementById('fCharName' + i).value.trim() }))
-    .filter(c => c.name);
+  return charSelections
+    .filter(Boolean)
+    .map(c => ({ id: c.id || null, name: c.name }));
 }
 
 // --- 保存 ---
@@ -304,7 +434,10 @@ document.getElementById('entries').addEventListener('click', e => {
   if (delBtn) {
     const plan = allPlans.find(p => p.id === delBtn.dataset.id);
     if (plan) askDeleteConfirm(plan, delBtn);
+    return;
   }
+  const icon = e.target.closest('.plan-char-icon');
+  if (icon) openLightbox(icon.src);
 });
 
 function renderPlans() {
@@ -351,7 +484,16 @@ function renderPlans() {
         rc.going,
       ].filter(Boolean).join(' ／ ');
 
-      const charNames = (plan.characters || []).map(c => escapeHtml(c.name)).join('、');
+      const charChipsHtml = (plan.characters || []).map(c => {
+        const uma = c.id ? cachedUmas.find(u => u.id === c.id) : cachedUmas.find(u => u.name === c.name);
+        const imageUrl = uma && uma.imagePath ? imageRawUrl(uma.imagePath) : null;
+        return `
+          <div class="plan-char-chip">
+            ${imageUrl ? `<img class="uma-icon plan-char-icon" src="${escapeHtml(imageUrl)}" alt="${escapeHtml(c.name)}" loading="lazy">` : ''}
+            <span>${escapeHtml(c.name)}</span>
+          </div>
+        `;
+      }).join('');
       const monthLabel = formatMonthLabel(plan.month);
 
       row.innerHTML = `
@@ -363,7 +505,7 @@ function renderPlans() {
           <div class="apt-row">
             <span class="apt-badge">${eventTypeLabel}</span>
           </div>
-          ${charNames ? `<div class="entry-notes">育成予定: ${charNames}</div>` : ''}
+          ${charChipsHtml ? `<div class="apt-group owner-group"><span class="apt-group-label">育成予定</span><div class="plan-char-row">${charChipsHtml}</div></div>` : ''}
           ${raceConditionLabel ? `<div class="entry-notes">${escapeHtml(raceConditionLabel)}</div>` : ''}
           ${plan.notes ? `<div class="entry-notes">${escapeHtml(plan.notes)}</div>` : ''}
         </div>
@@ -384,3 +526,4 @@ function renderPlans() {
 
 resetForm();
 loadPlans();
+loadCachedUmas().then(renderPlans);
