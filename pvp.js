@@ -725,83 +725,14 @@ function renderEvents() {
     group.events.forEach(ev => {
       const row = document.createElement('div');
       row.className = 'entry';
-      const isLoh = ev.eventType === 'loh';
-      const eventTypeLabel = isLoh ? 'リーグオブヒーローズ' : 'チャンピオンズミーティング';
-
-      let badges = `<span class="apt-badge">${eventTypeLabel}</span>`;
-      let showResults = false;
-      if (isLoh) {
-        const loh = ev.loh || {};
-        if (loh.rankTier) badges += `<span class="apt-badge">${escapeHtml(loh.rankTier)}</span>`;
-        if (loh.totalPoints != null) badges += `<span class="apt-badge">合計 ${loh.totalPoints.toLocaleString('ja-JP')}pt</span>`;
-        if (loh.overallRank != null) badges += `<span class="apt-badge">総合${loh.overallRank}位</span>`;
-      } else {
-        const champions = ev.champions || {};
-        badges += `<span class="apt-badge">${champions.tier === 'open' ? 'オープンリーグ' : 'グレードリーグ'}</span>`;
-        if (champions.reachedFinal === false) {
-          badges += `<span class="apt-badge">決勝未進出</span>`;
-        } else {
-          badges += `<span class="apt-badge">決勝${champions.finalRound || '?'}グループ</span>`;
-          if (champions.rank != null) badges += `<span class="apt-badge">決勝${champions.rank}位</span>`;
-          showResults = true;
-        }
-      }
-
-      const rc = ev.raceCondition || {};
-      const raceConditionLabel = [
-        rc.location,
-        rc.distance != null ? `${rc.distance}m` : '',
-        rc.surface,
-        rc.direction,
-        rc.season,
-        rc.weather,
-        rc.going,
-      ].filter(Boolean).join(' ／ ');
-
-      const teamCards = (ev.team || []).map(member => {
-        const imageUrl = member.imagePath ? imageRawUrl(member.imagePath) : null;
-        const rateBadges = [];
-        if (member.winRate != null) rateBadges.push(`<span class="apt-badge">勝率${member.winRate}%</span>`);
-        if (member.placeRate != null) rateBadges.push(`<span class="apt-badge">連対${member.placeRate}%</span>`);
-        if (member.showRate != null) rateBadges.push(`<span class="apt-badge">複勝${member.showRate}%</span>`);
-        if (isLoh && member.points != null) rateBadges.push(`<span class="apt-badge">${member.points}pt</span>`);
-        const r = showResults ? member.results : null;
-        const resultBadges = r ? [
-          `<span class="apt-badge">1着${r.first || 0}</span>`,
-          `<span class="apt-badge">2着${r.second || 0}</span>`,
-          `<span class="apt-badge">3着${r.third || 0}</span>`,
-          `<span class="apt-badge">圏外${r.other || 0}</span>`,
-          `<span class="apt-badge">${r.races || 0}戦</span>`,
-        ] : [];
-        return `
-          <div class="pvp-team-member">
-            ${imageUrl ? `<img class="pvp-team-thumb team-img" src="${escapeHtml(imageUrl)}" alt="${escapeHtml(member.name)}" loading="lazy">` : ''}
-            <div class="entry-name">${escapeHtml(member.name)}</div>
-            ${rateBadges.length ? `<div class="apt-row">${rateBadges.join('')}</div>` : ''}
-            ${resultBadges.length ? `<div class="apt-row">${resultBadges.join('')}</div>` : ''}
-          </div>
-        `;
-      }).join('');
-
-      const videoUrl = ev.videoPath ? imageRawUrl(ev.videoPath) : null;
-      const videoWrap = videoUrl
-        ? `<div class="pvp-video-wrap"><span class="apt-group-label">決勝動画</span><video controls preload="metadata" playsinline src="${escapeHtml(videoUrl)}"></video></div>`
-        : '';
-
-      const extraImagesHtml = (ev.extraImages || []).length
-        ? `<div class="pvp-extra-images"><span class="apt-group-label">参考画像</span><div class="extra-images-grid">${
-            (ev.extraImages || []).map(path => `<div class="extra-image-thumb"><img class="extra-img" src="${escapeHtml(imageRawUrl(path))}" alt="参考画像" loading="lazy"></div>`).join('')
-          }</div></div>`
-        : '';
+      const { badges, raceConditionLabel } = eventMeta(ev);
+      const teamNamesLabel = (ev.team || []).map(m => escapeHtml(m.name)).filter(Boolean).join('、');
 
       row.innerHTML = `
-        <div class="entry-main">
+        <div class="entry-main entry-main-tappable">
           ${raceConditionLabel ? `<div class="entry-name-row"><div class="entry-name">${escapeHtml(raceConditionLabel)}</div></div>` : ''}
           <div class="apt-row">${badges}</div>
-          ${teamCards ? `<div class="pvp-team-grid">${teamCards}</div>` : ''}
-          ${videoWrap}
-          ${extraImagesHtml}
-          ${ev.notes ? `<div class="entry-notes">${escapeHtml(ev.notes)}</div>` : ''}
+          ${teamNamesLabel ? `<div class="entry-notes">${teamNamesLabel}</div>` : ''}
         </div>
         <div class="entry-side">
           <div class="entry-actions">
@@ -810,16 +741,113 @@ function renderEvents() {
           </div>
         </div>
       `;
-      row.querySelector('.entry-edit').addEventListener('click', () => startEditEvent(ev.id));
-      row.querySelector('.entry-del').addEventListener('click', e => askDeleteConfirm(ev, e.currentTarget));
-      row.querySelectorAll('.team-img, .extra-img').forEach(img => {
-        img.addEventListener('click', () => openLightbox(img.src));
-      });
+      row.querySelector('.entry-edit').addEventListener('click', e => { e.stopPropagation(); startEditEvent(ev.id); });
+      row.querySelector('.entry-del').addEventListener('click', e => { e.stopPropagation(); askDeleteConfirm(ev, e.currentTarget); });
+      row.querySelector('.entry-main-tappable').addEventListener('click', () => openEventDetail(ev.id));
       list.appendChild(row);
     });
     section.appendChild(list);
     container.appendChild(section);
   });
+}
+
+// --- イベント種別・レース条件の表示用データを組み立てる(一覧・詳細で共用) ---
+function eventMeta(ev) {
+  const isLoh = ev.eventType === 'loh';
+  const eventTypeLabel = isLoh ? 'リーグオブヒーローズ' : 'チャンピオンズミーティング';
+
+  let badges = `<span class="apt-badge">${eventTypeLabel}</span>`;
+  let showResults = false;
+  if (isLoh) {
+    const loh = ev.loh || {};
+    if (loh.rankTier) badges += `<span class="apt-badge">${escapeHtml(loh.rankTier)}</span>`;
+    if (loh.totalPoints != null) badges += `<span class="apt-badge">合計 ${loh.totalPoints.toLocaleString('ja-JP')}pt</span>`;
+    if (loh.overallRank != null) badges += `<span class="apt-badge">総合${loh.overallRank}位</span>`;
+  } else {
+    const champions = ev.champions || {};
+    badges += `<span class="apt-badge">${champions.tier === 'open' ? 'オープンリーグ' : 'グレードリーグ'}</span>`;
+    if (champions.reachedFinal === false) {
+      badges += `<span class="apt-badge">決勝未進出</span>`;
+    } else {
+      badges += `<span class="apt-badge">決勝${champions.finalRound || '?'}グループ</span>`;
+      if (champions.rank != null) badges += `<span class="apt-badge">決勝${champions.rank}位</span>`;
+      showResults = true;
+    }
+  }
+
+  const rc = ev.raceCondition || {};
+  const raceConditionLabel = [
+    rc.location,
+    rc.distance != null ? `${rc.distance}m` : '',
+    rc.surface,
+    rc.direction,
+    rc.season,
+    rc.weather,
+    rc.going,
+  ].filter(Boolean).join(' ／ ');
+
+  return { isLoh, badges, showResults, raceConditionLabel };
+}
+
+// --- 対人イベント詳細ポップアップ(全項目表示) ---
+function renderEventDetailHtml(ev) {
+  const { isLoh, badges, showResults, raceConditionLabel } = eventMeta(ev);
+
+  const teamCards = (ev.team || []).map(member => {
+    const imageUrl = member.imagePath ? imageRawUrl(member.imagePath) : null;
+    const rateBadges = [];
+    if (member.winRate != null) rateBadges.push(`<span class="apt-badge">勝率${member.winRate}%</span>`);
+    if (member.placeRate != null) rateBadges.push(`<span class="apt-badge">連対${member.placeRate}%</span>`);
+    if (member.showRate != null) rateBadges.push(`<span class="apt-badge">複勝${member.showRate}%</span>`);
+    if (isLoh && member.points != null) rateBadges.push(`<span class="apt-badge">${member.points}pt</span>`);
+    const r = showResults ? member.results : null;
+    const resultBadges = r ? [
+      `<span class="apt-badge">1着${r.first || 0}</span>`,
+      `<span class="apt-badge">2着${r.second || 0}</span>`,
+      `<span class="apt-badge">3着${r.third || 0}</span>`,
+      `<span class="apt-badge">圏外${r.other || 0}</span>`,
+      `<span class="apt-badge">${r.races || 0}戦</span>`,
+    ] : [];
+    return `
+      <div class="pvp-team-member">
+        ${imageUrl ? `<img class="pvp-team-thumb team-img" src="${escapeHtml(imageUrl)}" alt="${escapeHtml(member.name)}" loading="lazy">` : ''}
+        <div class="entry-name">${escapeHtml(member.name)}</div>
+        ${rateBadges.length ? `<div class="apt-row">${rateBadges.join('')}</div>` : ''}
+        ${resultBadges.length ? `<div class="apt-row">${resultBadges.join('')}</div>` : ''}
+      </div>
+    `;
+  }).join('');
+
+  const videoUrl = ev.videoPath ? imageRawUrl(ev.videoPath) : null;
+  const videoWrap = videoUrl
+    ? `<div class="pvp-video-wrap"><span class="apt-group-label">決勝動画</span><video controls preload="metadata" playsinline src="${escapeHtml(videoUrl)}"></video></div>`
+    : '';
+
+  const extraImagesHtml = (ev.extraImages || []).length
+    ? `<div class="pvp-extra-images"><span class="apt-group-label">参考画像</span><div class="extra-images-grid">${
+        (ev.extraImages || []).map(path => `<div class="extra-image-thumb"><img class="extra-img" src="${escapeHtml(imageRawUrl(path))}" alt="参考画像" loading="lazy"></div>`).join('')
+      }</div></div>`
+    : '';
+
+  return `
+    ${raceConditionLabel ? `<div class="entry-name-row"><div class="entry-name">${escapeHtml(raceConditionLabel)}</div></div>` : ''}
+    <div class="apt-row">${badges}</div>
+    ${teamCards ? `<div class="pvp-team-grid">${teamCards}</div>` : ''}
+    ${videoWrap}
+    ${extraImagesHtml}
+    ${ev.notes ? `<div class="entry-notes">${escapeHtml(ev.notes)}</div>` : ''}
+  `;
+}
+
+function openEventDetail(id) {
+  const ev = allEvents.find(e => e.id === id);
+  if (!ev) return;
+  const body = document.getElementById('eventDetailBody');
+  body.innerHTML = renderEventDetailHtml(ev);
+  body.querySelectorAll('.team-img, .extra-img').forEach(img => {
+    img.addEventListener('click', () => openLightbox(img.src));
+  });
+  openModal('eventDetailModal');
 }
 
 resetForm();
