@@ -607,6 +607,49 @@ function aptBadge(prefix, v) {
 function aptSelect(id, value) {
   return `<select id="${id}"><option value="">-</option>${APT_RANKS.map(r => `<option value="${r}"${value === r ? ' selected' : ''}>${r}</option>`).join('')}</select>`;
 }
+const APT_TYPE_LABELS = {
+  'track.turf': '芝', 'track.dirt': 'ダート',
+  'distance.short': '短距離', 'distance.mile': 'マイル', 'distance.medium': '中距離', 'distance.long': '長距離',
+  'style.nige': '逃げ', 'style.senko': '先行', 'style.sashi': '差し', 'style.oikomi': '追込',
+};
+const RANK_SCALE = ['G', 'F', 'E', 'D', 'C', 'B', 'A', 'S'];
+function boostRank(baseRank, bonus) {
+  if (!baseRank || !bonus) return baseRank || null;
+  const idx = RANK_SCALE.indexOf(baseRank);
+  if (idx === -1) return baseRank;
+  return RANK_SCALE[Math.min(RANK_SCALE.length - 1, idx + bonus)];
+}
+function aptBadgeBoosted(prefix, base, bonus) {
+  if (!bonus) return aptBadge(prefix, base);
+  const boosted = boostRank(base, bonus);
+  const rankClass = boosted ? 'rank-' + boosted : 'rank-none';
+  return `<span class="apt-badge ${rankClass}">${prefix}${boosted || '-'}<small>+${bonus}</small></span>`;
+}
+// 祖父母は(祖1,祖2)(祖3,祖4)、親は(親1,親2)のペアごとに同じ種類の赤因子を合算し、
+// 3星ごとに1段階、本人の対応する適性ランクを上昇させる
+function computePedigreeBonuses() {
+  const bonuses = {};
+  const add = (type, stars) => {
+    if (!type || !stars) return;
+    bonuses[type] = (bonuses[type] || 0) + Math.ceil(stars / 3);
+  };
+  [[1, 2], [3, 4], [5, 6]].forEach(([a, b]) => {
+    const rfA = configPedigreeSelections[a] && configPedigreeSelections[a].redFactor;
+    const rfB = configPedigreeSelections[b] && configPedigreeSelections[b].redFactor;
+    const typeA = rfA && rfA.type;
+    const typeB = rfB && rfB.type;
+    const starA = (rfA && Number(rfA.rarity)) || 0;
+    const starB = (rfB && Number(rfB.rarity)) || 0;
+    if (typeA && typeA === typeB) {
+      add(typeA, starA + starB);
+    } else {
+      if (typeA) add(typeA, starA);
+      if (typeB) add(typeB, starB);
+    }
+  });
+  return bonuses;
+}
+
 function emptyPedigreeEntry() {
   return { id: null, name: '', imagePath: null, manual: true, track: {}, distance: {}, style: {} };
 }
@@ -681,10 +724,28 @@ function pedigreeCardHtml(slot, label) {
       ${slot !== 0 ? `
         <div class="pedigree-red-factor">
           <label>赤因子</label>
-          <div class="pedigree-red-factor-row">
-            <input type="text" id="pedigreeRedRarity${slot}" placeholder="レアリティ" value="${escapeHtml(redFactor.rarity || '')}">
-            <input type="text" id="pedigreeRedType${slot}" placeholder="種類" value="${escapeHtml(redFactor.type || '')}">
+          <div class="star-rating" id="pedigreeRedRarity${slot}" data-value="${Number(redFactor.rarity) || 0}">
+            ${[1, 2, 3].map(n => `<button type="button" class="star-btn${n <= (Number(redFactor.rarity) || 0) ? ' active' : ''}" data-star="${n}">★</button>`).join('')}
           </div>
+          <select id="pedigreeRedType${slot}">
+            <option value="">種類を選択</option>
+            <optgroup label="馬場">
+              <option value="track.turf"${redFactor.type === 'track.turf' ? ' selected' : ''}>芝</option>
+              <option value="track.dirt"${redFactor.type === 'track.dirt' ? ' selected' : ''}>ダート</option>
+            </optgroup>
+            <optgroup label="距離">
+              <option value="distance.short"${redFactor.type === 'distance.short' ? ' selected' : ''}>短距離</option>
+              <option value="distance.mile"${redFactor.type === 'distance.mile' ? ' selected' : ''}>マイル</option>
+              <option value="distance.medium"${redFactor.type === 'distance.medium' ? ' selected' : ''}>中距離</option>
+              <option value="distance.long"${redFactor.type === 'distance.long' ? ' selected' : ''}>長距離</option>
+            </optgroup>
+            <optgroup label="脚質">
+              <option value="style.nige"${redFactor.type === 'style.nige' ? ' selected' : ''}>逃げ</option>
+              <option value="style.senko"${redFactor.type === 'style.senko' ? ' selected' : ''}>先行</option>
+              <option value="style.sashi"${redFactor.type === 'style.sashi' ? ' selected' : ''}>差し</option>
+              <option value="style.oikomi"${redFactor.type === 'style.oikomi' ? ' selected' : ''}>追込</option>
+            </optgroup>
+          </select>
         </div>
       ` : ''}
     </div>
@@ -737,15 +798,27 @@ function renderCharacterConfigBody() {
     });
     updatePedigreeCard(slot);
     if (slot !== 0) {
-      document.getElementById('pedigreeRedRarity' + slot).addEventListener('input', e => {
-        if (!configPedigreeSelections[slot]) configPedigreeSelections[slot] = emptyPedigreeEntry();
-        configPedigreeSelections[slot].redFactor = configPedigreeSelections[slot].redFactor || {};
-        configPedigreeSelections[slot].redFactor.rarity = e.target.value;
+      const rarityEl = document.getElementById('pedigreeRedRarity' + slot);
+      rarityEl.querySelectorAll('.star-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const n = Number(btn.dataset.star);
+          const current = Number(rarityEl.dataset.value) || 0;
+          const newValue = current === n ? 0 : n;
+          if (!configPedigreeSelections[slot]) configPedigreeSelections[slot] = emptyPedigreeEntry();
+          configPedigreeSelections[slot].redFactor = configPedigreeSelections[slot].redFactor || {};
+          configPedigreeSelections[slot].redFactor.rarity = newValue;
+          rarityEl.dataset.value = newValue;
+          rarityEl.querySelectorAll('.star-btn').forEach(b => {
+            b.classList.toggle('active', Number(b.dataset.star) <= newValue);
+          });
+          renderPedigreeAptArea(0);
+        });
       });
-      document.getElementById('pedigreeRedType' + slot).addEventListener('input', e => {
+      document.getElementById('pedigreeRedType' + slot).addEventListener('change', e => {
         if (!configPedigreeSelections[slot]) configPedigreeSelections[slot] = emptyPedigreeEntry();
         configPedigreeSelections[slot].redFactor = configPedigreeSelections[slot].redFactor || {};
         configPedigreeSelections[slot].redFactor.type = e.target.value;
+        renderPedigreeAptArea(0);
       });
     }
   });
@@ -794,15 +867,16 @@ function renderPedigreeAptArea(slot) {
   const area = document.getElementById('pedigreeAptArea' + slot);
   const sel = configPedigreeSelections[slot];
   const hasRegistrySel = !!(sel && !sel.manual);
+  const bonuses = slot === 0 ? computePedigreeBonuses() : {};
 
   if (hasRegistrySel) {
     const track = sel.track || {};
     const distance = sel.distance || {};
     const style = sel.style || {};
     area.innerHTML = `
-      <div class="apt-row">${aptBadge('芝', track.turf)}${aptBadge('ダ', track.dirt)}</div>
-      <div class="apt-row">${aptBadge('短', distance.short)}${aptBadge('マ', distance.mile)}${aptBadge('中', distance.medium)}${aptBadge('長', distance.long)}</div>
-      <div class="apt-row">${aptBadge('逃', style.nige)}${aptBadge('先', style.senko)}${aptBadge('差', style.sashi)}${aptBadge('追', style.oikomi)}</div>
+      <div class="apt-row">${aptBadgeBoosted('芝', track.turf, bonuses['track.turf'])}${aptBadgeBoosted('ダ', track.dirt, bonuses['track.dirt'])}</div>
+      <div class="apt-row">${aptBadgeBoosted('短', distance.short, bonuses['distance.short'])}${aptBadgeBoosted('マ', distance.mile, bonuses['distance.mile'])}${aptBadgeBoosted('中', distance.medium, bonuses['distance.medium'])}${aptBadgeBoosted('長', distance.long, bonuses['distance.long'])}</div>
+      <div class="apt-row">${aptBadgeBoosted('逃', style.nige, bonuses['style.nige'])}${aptBadgeBoosted('先', style.senko, bonuses['style.senko'])}${aptBadgeBoosted('差', style.sashi, bonuses['style.sashi'])}${aptBadgeBoosted('追', style.oikomi, bonuses['style.oikomi'])}</div>
     `;
     return;
   }
@@ -810,6 +884,7 @@ function renderPedigreeAptArea(slot) {
   const track = (sel && sel.track) || {};
   const distance = (sel && sel.distance) || {};
   const style = (sel && sel.style) || {};
+  const bonusEntries = Object.entries(bonuses);
   area.innerHTML = `
     <input type="text" id="pedigreeManualName${slot}" placeholder="図鑑に無い場合は名前を手入力" value="${escapeHtml((sel && sel.name) || '')}">
     <div class="apt-select-row">
@@ -828,6 +903,7 @@ function renderPedigreeAptArea(slot) {
       <div><span>差</span>${aptSelect('pedigreeSashi' + slot, style.sashi)}</div>
       <div><span>追</span>${aptSelect('pedigreeOikomi' + slot, style.oikomi)}</div>
     </div>
+    ${bonusEntries.length ? `<p class="pedigree-bonus-hint">親・祖父母の赤因子による自動加算: ${bonusEntries.map(([k, v]) => `${APT_TYPE_LABELS[k] || k}+${v}`).join('、')}</p>` : ''}
   `;
   document.getElementById('pedigreeManualName' + slot).addEventListener('input', e => {
     if (!configPedigreeSelections[slot]) configPedigreeSelections[slot] = emptyPedigreeEntry();
@@ -901,7 +977,7 @@ document.getElementById('characterConfigSaveBtn').addEventListener('click', asyn
     track: sel.track || {},
     distance: sel.distance || {},
     style: sel.style || {},
-    redFactor: sel.redFactor ? { rarity: sel.redFactor.rarity || '', type: sel.redFactor.type || '' } : null,
+    redFactor: sel.redFactor ? { rarity: Number(sel.redFactor.rarity) || 0, type: sel.redFactor.type || '' } : null,
   } : null);
   const updated = allPlans.map(p => p.id === plan.id ? plan : p);
   statusEl.textContent = '保存しています…';

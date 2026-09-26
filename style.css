@@ -1044,8 +1044,24 @@ mark.search-hit {
 .pedigree-apt-area .apt-row { justify-content: center; margin-top: 6px; }
 .pedigree-red-factor { margin-top: 10px; border-top: 1px dashed var(--panel-line); padding-top: 8px; }
 .pedigree-red-factor label { font-size: 11px; color: var(--ink-soft); font-weight: 700; margin-bottom: 4px; display: block; }
-.pedigree-red-factor-row { display: flex; gap: 6px; }
-.pedigree-red-factor-row input { flex: 1; min-width: 0; }
+.pedigree-red-factor select { margin-top: 6px; }
+.star-rating { display: flex; gap: 2px; }
+.star-btn {
+  border: none;
+  background: none;
+  padding: 0;
+  font-size: 22px;
+  line-height: 1;
+  color: var(--panel-line);
+  cursor: pointer;
+}
+.star-btn.active { color: #ffb300; }
+.pedigree-bonus-hint {
+  font-size: 11px;
+  color: var(--green-dim);
+  margin: 8px 0 0;
+}
+.apt-badge small { font-size: 9px; margin-left: 2px; opacity: 0.85; }
 @media (max-width: 520px) {
   .pedigree-card { width: 100%; max-width: 260px; }
 }
