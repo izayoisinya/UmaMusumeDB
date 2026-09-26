@@ -921,6 +921,8 @@ mark.search-hit {
   align-items: center;
   gap: 6px;
 }
+.char-select-filled-inner[hidden] { display: none; }
+.char-select-filled-inner .uma-icon[hidden] { display: none; }
 .char-select-filled-inner span { font-size: 12px; color: var(--ink); word-break: break-all; }
 .team-slot .btn-inline { margin-top: 8px; width: 100%; }
 
