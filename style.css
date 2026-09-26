@@ -909,6 +909,7 @@ mark.search-hit {
 .champions-final-only { margin-top: 8px; }
 
 .char-select-box {
+  position: relative;
   border: 1.5px dashed var(--panel-line);
   border-radius: 10px;
   padding: 10px;
@@ -931,7 +932,22 @@ mark.search-hit {
 .char-select-filled-inner[hidden] { display: none; }
 .char-select-filled-inner .uma-icon[hidden] { display: none; }
 .char-select-filled-inner span { font-size: 12px; color: var(--ink); word-break: break-all; }
-.team-slot .btn-inline { margin-top: 8px; width: 100%; }
+.char-select-clear-btn {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  font-size: 14px;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 2;
+}
+.char-select-clear-btn[hidden] { display: none; }
 
 .character-picker-search { margin-bottom: 10px; }
 .character-picker-grid {

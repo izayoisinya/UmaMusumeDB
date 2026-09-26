@@ -668,13 +668,13 @@ function pedigreeCardHtml(slot, label) {
     <div class="pedigree-card">
       <div class="pedigree-card-label">${label}</div>
       <div class="char-select-box" id="pedigreeBox${slot}">
+        <button type="button" class="char-select-clear-btn" id="pedigreeClearBtn${slot}" hidden>×</button>
         <div id="pedigreeEmpty${slot}">タップして図鑑から選択</div>
         <div class="char-select-filled-inner" id="pedigreeFilled${slot}" hidden>
           <img class="uma-icon" id="pedigreeIcon${slot}" alt="">
           <span id="pedigreeName${slot}"></span>
         </div>
       </div>
-      <button type="button" class="btn secondary btn-inline" id="pedigreeClearBtn${slot}" hidden>選択を解除</button>
       <div class="pedigree-apt-area" id="pedigreeAptArea${slot}"></div>
     </div>
   `;
@@ -688,13 +688,13 @@ function renderCharacterConfigBody() {
       ${[0, 1, 2, 3, 4, 5].map(i => `
         <div class="team-slot">
           <div class="char-select-box" id="deckSlotBox${i}">
+            <button type="button" class="char-select-clear-btn" id="deckSlotClearBtn${i}" hidden>×</button>
             <div id="deckSlotEmpty${i}">タップして選択</div>
             <div class="char-select-filled-inner" id="deckSlotFilled${i}" hidden>
               <img class="uma-icon" id="deckSlotIcon${i}" alt="">
               <span id="deckSlotName${i}"></span>
             </div>
           </div>
-          <button type="button" class="btn secondary btn-inline" id="deckSlotClearBtn${i}" hidden>選択を解除</button>
         </div>
       `).join('')}
     </div>
