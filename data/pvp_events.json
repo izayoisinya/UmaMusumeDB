@@ -15,6 +15,7 @@
     "team": [
       {
         "name": "セイウンスカイ",
+        "id": null,
         "winRate": 34.6,
         "placeRate": 61.7,
         "showRate": 84,
@@ -30,6 +31,7 @@
       },
       {
         "name": "ヴィルシーナ",
+        "id": null,
         "winRate": 33.3,
         "placeRate": 60.5,
         "showRate": 79,
@@ -45,6 +47,7 @@
       },
       {
         "name": "ダイタクヘリオス",
+        "id": "uma_1789590083783_ega8g",
         "winRate": 1.2,
         "placeRate": 13.6,
         "showRate": 21,
@@ -73,6 +76,6 @@
     },
     "loh": null,
     "notes": "",
-    "savedAt": "2026-09-26T05:40:53.727Z"
+    "savedAt": "2026-09-26T17:57:23.699Z"
   }
 ]
