@@ -1,33 +1,5 @@
 [
   {
-    "id": "training_1790404979348_kdmk5",
-    "title": "毎日王冠チャンミ",
-    "status": "done",
-    "eventType": "champions",
-    "raceCondition": {
-      "location": "東京",
-      "distance": 1800,
-      "surface": "芝",
-      "direction": "左回り",
-      "season": "秋",
-      "weather": "晴",
-      "going": "良"
-    },
-    "characters": [
-      {
-        "name": "セイウンスカイ"
-      },
-      {
-        "name": "ヴィルシーナ"
-      },
-      {
-        "name": "ダイタクヘリオス"
-      }
-    ],
-    "notes": "",
-    "savedAt": "2026-09-26T06:57:07.043Z"
-  },
-  {
     "id": "training_1790405415344_qu91h",
     "month": "",
     "title": "",
@@ -58,5 +30,37 @@
     ],
     "notes": "",
     "savedAt": "2026-09-26T07:05:42.306Z"
+  },
+  {
+    "id": "training_1790404979348_kdmk5",
+    "month": "",
+    "title": "毎日王冠チャンミ",
+    "status": "done",
+    "eventType": "champions",
+    "raceCondition": {
+      "location": "東京",
+      "distance": 1800,
+      "surface": "芝",
+      "direction": "左回り",
+      "season": "秋",
+      "weather": "晴",
+      "going": "良"
+    },
+    "characters": [
+      {
+        "id": "uma_1789508282654_jqgsg",
+        "name": "セイウンスカイ"
+      },
+      {
+        "id": "uma_1789590051006_52itb",
+        "name": "ヴィルシーナ"
+      },
+      {
+        "id": "uma_1789590083783_ega8g",
+        "name": "ダイタクヘリオス"
+      }
+    ],
+    "notes": "",
+    "savedAt": "2026-09-26T07:49:00.369Z"
   }
 ]
