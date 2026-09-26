@@ -12,6 +12,7 @@ class ConflictError extends Error {
 let currentSha = null;
 let allEvents = [];
 let editingEventId = null;
+let cachedUmas = [];
 
 function contentsApiUrl() {
   const owner = (config && config.owner) || DEFAULT_OWNER;
@@ -34,6 +35,36 @@ function encodeUtf8Base64(str) {
   let binary = '';
   bytes.forEach(b => { binary += String.fromCharCode(b); });
   return btoa(binary);
+}
+
+async function fetchJsonFile(path) {
+  const owner = (config && config.owner) || DEFAULT_OWNER;
+  const repo = (config && config.repo) || DEFAULT_REPO;
+  const branch = config && config.branch;
+  const url = `https://api.github.com/repos/${encodeURIComponent(owner)}/${encodeURIComponent(repo)}/contents/${path}`
+    + (branch ? `?ref=${encodeURIComponent(branch)}` : '');
+  const res = await fetch(url, { headers: authHeaders(), cache: 'no-store' });
+  if (res.status === 404) return [];
+  if (!res.ok) {
+    const errJson = await res.json().catch(() => ({}));
+    throw new Error(errJson.message || `GitHub APIエラー: ${res.status}`);
+  }
+  const json = await res.json();
+  try {
+    const arr = JSON.parse(decodeBase64Utf8(json.content));
+    return Array.isArray(arr) ? arr : [];
+  } catch {
+    return [];
+  }
+}
+
+async function loadCachedUmas() {
+  try {
+    cachedUmas = await fetchJsonFile('data/uma_musume.json');
+  } catch (err) {
+    console.error('所持ウマ娘一覧の取得に失敗:', err);
+    cachedUmas = [];
+  }
 }
 
 async function fetchEventsRaw() {
@@ -114,10 +145,12 @@ async function loadEvents() {
 }
 
 // common.jsのGitHub連携設定フォーム(保存/消去)から呼ばれるフック
-function onGithubConfigChanged() {
+async function onGithubConfigChanged() {
   allEvents = [];
   currentSha = null;
-  return loadEvents();
+  cachedUmas = [];
+  await Promise.all([loadEvents(), loadCachedUmas()]);
+  renderEvents();
 }
 
 // --- イベント種別に応じたフォーム項目の出し分け ---
@@ -726,13 +759,22 @@ function renderEvents() {
       const row = document.createElement('div');
       row.className = 'entry';
       const { badges, raceConditionLabel } = eventMeta(ev);
-      const teamNamesLabel = (ev.team || []).map(m => escapeHtml(m.name)).filter(Boolean).join('、');
+      const teamChipsHtml = (ev.team || []).filter(m => m.name).map(m => {
+        const uma = cachedUmas.find(u => u.name === m.name);
+        const imageUrl = uma && uma.imagePath ? imageRawUrl(uma.imagePath) : null;
+        return `
+          <div class="plan-char-chip">
+            ${imageUrl ? `<img class="uma-icon plan-char-icon" src="${escapeHtml(imageUrl)}" alt="${escapeHtml(m.name)}" loading="lazy">` : ''}
+            <span>${escapeHtml(m.name)}</span>
+          </div>
+        `;
+      }).join('');
 
       row.innerHTML = `
         <div class="entry-main entry-main-tappable">
           ${raceConditionLabel ? `<div class="entry-name-row"><div class="entry-name">${escapeHtml(raceConditionLabel)}</div></div>` : ''}
           <div class="apt-row">${badges}</div>
-          ${teamNamesLabel ? `<div class="entry-notes">${teamNamesLabel}</div>` : ''}
+          ${teamChipsHtml ? `<div class="plan-char-row">${teamChipsHtml}</div>` : ''}
         </div>
         <div class="entry-side">
           <div class="entry-actions">
@@ -743,6 +785,9 @@ function renderEvents() {
       `;
       row.querySelector('.entry-edit').addEventListener('click', e => { e.stopPropagation(); startEditEvent(ev.id); });
       row.querySelector('.entry-del').addEventListener('click', e => { e.stopPropagation(); askDeleteConfirm(ev, e.currentTarget); });
+      row.querySelectorAll('.plan-char-icon').forEach(img => {
+        img.addEventListener('click', e => { e.stopPropagation(); openLightbox(img.src); });
+      });
       row.querySelector('.entry-main-tappable').addEventListener('click', () => openEventDetail(ev.id));
       list.appendChild(row);
     });
@@ -852,3 +897,4 @@ function openEventDetail(id) {
 
 resetForm();
 loadEvents();
+loadCachedUmas().then(renderEvents);
