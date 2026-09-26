@@ -809,8 +809,8 @@ mark.search-hit {
   max-width: 560px;
 }
 @media (orientation: landscape) and (min-width: 700px) {
-  .modal { max-width: 900px; }
-  #registerModal { max-width: 900px; }
+  .modal { max-width: 960px; }
+  #registerModal { max-width: 960px; }
 }
 .modal h2 {
   font-family: 'M PLUS Rounded 1c', sans-serif;
@@ -1031,6 +1031,7 @@ mark.search-hit {
   width: 190px;
   flex-shrink: 0;
 }
+.pedigree-card-wide { width: 380px; max-width: 100%; }
 .pedigree-card-label {
   font-size: 12px;
   font-weight: 700;
@@ -1038,10 +1039,15 @@ mark.search-hit {
   margin-bottom: 6px;
   text-align: center;
 }
-.pedigree-apt-area { margin-top: 8px; }
+.pedigree-card-main { display: flex; }
+.pedigree-card-wide .pedigree-card-main { align-items: flex-start; gap: 12px; }
+.pedigree-card-wide .char-select-box { flex-shrink: 0; width: 140px; }
+.pedigree-apt-area { margin-top: 8px; flex: 1; min-width: 0; }
+.pedigree-card-wide .pedigree-apt-area { margin-top: 0; }
 .pedigree-apt-area input[type=text] { margin-bottom: 6px; }
-.pedigree-apt-area .apt-select-row { margin-top: 6px; }
-.pedigree-apt-area .apt-row { justify-content: center; margin-top: 6px; }
+.pedigree-apt-area .apt-select-row { margin-top: 6px; flex-wrap: nowrap; }
+.pedigree-apt-area .apt-select-row > div { min-width: 0; }
+.pedigree-apt-area .apt-row { justify-content: center; margin-top: 6px; flex-wrap: nowrap; }
 .pedigree-red-factor { margin-top: 10px; border-top: 1px dashed var(--panel-line); padding-top: 8px; }
 .pedigree-red-factor label { font-size: 11px; color: var(--ink-soft); font-weight: 700; margin-bottom: 4px; display: block; }
 .pedigree-red-factor select { margin-top: 6px; }
@@ -1064,6 +1070,10 @@ mark.search-hit {
 .apt-badge small { font-size: 9px; margin-left: 2px; opacity: 0.85; }
 @media (max-width: 520px) {
   .pedigree-card { width: 100%; max-width: 260px; }
+  .pedigree-card-wide { width: 100%; max-width: 260px; }
+  .pedigree-card-wide .pedigree-card-main { flex-direction: column; align-items: center; }
+  .pedigree-card-wide .char-select-box { width: 100%; }
+  .pedigree-card-wide .pedigree-apt-area { margin-top: 8px; }
 }
 
 .pvp-team-grid {

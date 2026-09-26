@@ -733,18 +733,21 @@ document.getElementById('characterConfigBackBtn').addEventListener('click', clos
 function pedigreeCardHtml(slot, label) {
   const sel = configPedigreeSelections[slot];
   const redFactor = (sel && sel.redFactor) || {};
+  const isWide = slot <= 2;
   return `
-    <div class="pedigree-card">
+    <div class="pedigree-card${isWide ? ' pedigree-card-wide' : ''}">
       <div class="pedigree-card-label">${label}</div>
-      <div class="char-select-box" id="pedigreeBox${slot}">
-        <button type="button" class="char-select-clear-btn" id="pedigreeClearBtn${slot}" hidden>×</button>
-        <div id="pedigreeEmpty${slot}">タップして図鑑から選択</div>
-        <div class="char-select-filled-inner" id="pedigreeFilled${slot}" hidden>
-          <img class="uma-icon" id="pedigreeIcon${slot}" alt="">
-          <span id="pedigreeName${slot}"></span>
+      <div class="pedigree-card-main">
+        <div class="char-select-box" id="pedigreeBox${slot}">
+          <button type="button" class="char-select-clear-btn" id="pedigreeClearBtn${slot}" hidden>×</button>
+          <div id="pedigreeEmpty${slot}">タップして図鑑から選択</div>
+          <div class="char-select-filled-inner" id="pedigreeFilled${slot}" hidden>
+            <img class="uma-icon" id="pedigreeIcon${slot}" alt="">
+            <span id="pedigreeName${slot}"></span>
+          </div>
         </div>
+        <div class="pedigree-apt-area" id="pedigreeAptArea${slot}"></div>
       </div>
-      <div class="pedigree-apt-area" id="pedigreeAptArea${slot}"></div>
       ${slot !== 0 ? `
         <div class="pedigree-red-factor">
           <label>赤因子</label>
