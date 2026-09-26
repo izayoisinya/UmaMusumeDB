@@ -269,6 +269,95 @@ function createTeamImageManager(index) {
 
 const teamImageManagers = [1, 2, 3].map(createTeamImageManager);
 
+// --- 出走ウマ娘の選択(所持ウマ娘一覧からアイコン付きで選ぶ。同名でも衣装違いを個別に選べる) ---
+let teamCharSelections = [null, null, null];
+let teamCharPickerTargetIndex = null;
+
+function updateTeamCharSelectBox(index) {
+  const sel = teamCharSelections[index - 1];
+  const box = document.getElementById('charSelectBox' + index);
+  const emptyEl = document.getElementById('charSelectEmpty' + index);
+  const filledEl = document.getElementById('charSelectFilled' + index);
+  const iconEl = document.getElementById('charSelectIcon' + index);
+  const nameEl = document.getElementById('charSelectName' + index);
+  const clearBtn = document.getElementById('charSelectClearBtn' + index);
+  if (sel) {
+    box.classList.add('filled');
+    emptyEl.hidden = true;
+    filledEl.hidden = false;
+    if (sel.imagePath) {
+      iconEl.src = imageRawUrl(sel.imagePath);
+      iconEl.hidden = false;
+    } else {
+      iconEl.hidden = true;
+    }
+    nameEl.textContent = sel.name;
+    clearBtn.hidden = false;
+  } else {
+    box.classList.remove('filled');
+    emptyEl.hidden = false;
+    filledEl.hidden = true;
+    clearBtn.hidden = true;
+  }
+}
+
+function openTeamCharacterPicker(index) {
+  teamCharPickerTargetIndex = index;
+  document.getElementById('characterPickerSearch').value = '';
+  renderTeamCharacterPickerGrid('');
+  document.getElementById('pvpModal').hidden = true;
+  document.getElementById('characterPickerModal').hidden = false;
+}
+
+function closeTeamCharacterPicker() {
+  document.getElementById('characterPickerModal').hidden = true;
+  document.getElementById('pvpModal').hidden = false;
+}
+document.getElementById('characterPickerCloseBtn').addEventListener('click', closeTeamCharacterPicker);
+
+function renderTeamCharacterPickerGrid(keyword) {
+  const grid = document.getElementById('characterPickerGrid');
+  const kw = keyword.trim().toLowerCase();
+  const filtered = kw ? cachedUmas.filter(u => (u.name || '').toLowerCase().includes(kw)) : cachedUmas;
+  grid.innerHTML = '';
+  const fragment = document.createDocumentFragment();
+  filtered.forEach(u => {
+    const tile = document.createElement('div');
+    tile.className = 'character-picker-tile';
+    const imageUrl = u.imagePath ? imageRawUrl(u.imagePath) : '';
+    tile.innerHTML = `
+      ${imageUrl ? `<img src="${escapeHtml(imageUrl)}" alt="${escapeHtml(u.name)}" loading="lazy">` : ''}
+      <span>${escapeHtml(u.name)}</span>
+    `;
+    tile.addEventListener('click', () => selectTeamCharacter(u));
+    fragment.appendChild(tile);
+  });
+  grid.appendChild(fragment);
+  document.getElementById('characterPickerStatus').textContent = cachedUmas.length
+    ? (filtered.length ? '' : '該当するウマ娘が見つかりません。')
+    : 'ウマ娘図鑑にまだ登録がありません。';
+}
+
+function selectTeamCharacter(u) {
+  if (teamCharPickerTargetIndex == null) return;
+  teamCharSelections[teamCharPickerTargetIndex - 1] = { id: u.id, name: u.name, imagePath: u.imagePath || null };
+  updateTeamCharSelectBox(teamCharPickerTargetIndex);
+  closeTeamCharacterPicker();
+}
+
+[1, 2, 3].forEach(i => {
+  document.getElementById('charSelectBox' + i).addEventListener('click', () => openTeamCharacterPicker(i));
+  document.getElementById('charSelectClearBtn' + i).addEventListener('click', e => {
+    e.stopPropagation();
+    teamCharSelections[i - 1] = null;
+    updateTeamCharSelectBox(i);
+  });
+});
+
+document.getElementById('characterPickerSearch').addEventListener('input', debounce(() => {
+  renderTeamCharacterPickerGrid(document.getElementById('characterPickerSearch').value);
+}, 150));
+
 // --- 決勝動画のアップロード(1イベントにつき1本) ---
 const VIDEO_MAX_BYTES = 95 * 1024 * 1024;
 function createVideoManager() {
@@ -452,6 +541,8 @@ function resetForm() {
     });
     teamImageManagers[i - 1].reset();
   });
+  teamCharSelections = [null, null, null];
+  [1, 2, 3].forEach(updateTeamCharSelectBox);
   videoManager.reset();
   extraImagesManager.reset();
   setStatus('');
@@ -482,7 +573,12 @@ function fillForm(ev) {
   const team = ev.team || [];
   [1, 2, 3].forEach(i => {
     const member = team[i - 1] || {};
-    document.getElementById('fTeamName' + i).value = member.name || '';
+    teamCharSelections[i - 1] = member.name ? {
+      id: member.id || null,
+      name: member.name,
+      imagePath: (member.id ? (cachedUmas.find(u => u.id === member.id) || {}).imagePath : (cachedUmas.find(u => u.name === member.name) || {}).imagePath) || null,
+    } : null;
+    updateTeamCharSelectBox(i);
     document.getElementById('fTeamWinRate' + i).value = member.winRate != null ? member.winRate : '';
     document.getElementById('fTeamPlaceRate' + i).value = member.placeRate != null ? member.placeRate : '';
     document.getElementById('fTeamShowRate' + i).value = member.showRate != null ? member.showRate : '';
@@ -524,7 +620,8 @@ function startEditEvent(id) {
 function readTeamFromForm() {
   const includeResults = getEventType() === 'champions' && isFinalReached();
   return [1, 2, 3].map(i => {
-    const name = document.getElementById('fTeamName' + i).value.trim();
+    const sel = teamCharSelections[i - 1];
+    const name = sel ? sel.name : '';
     const winRateRaw = document.getElementById('fTeamWinRate' + i).value;
     const placeRateRaw = document.getElementById('fTeamPlaceRate' + i).value;
     const showRateRaw = document.getElementById('fTeamShowRate' + i).value;
@@ -532,6 +629,7 @@ function readTeamFromForm() {
     const manager = teamImageManagers[i - 1];
     return {
       name,
+      id: sel ? sel.id : null,
       winRate: winRateRaw === '' ? null : Number(winRateRaw),
       placeRate: placeRateRaw === '' ? null : Number(placeRateRaw),
       showRate: showRateRaw === '' ? null : Number(showRateRaw),
@@ -603,7 +701,7 @@ document.getElementById('pvpForm').addEventListener('submit', async e => {
   try {
     for (let i = 1; i <= 3; i++) {
       const manager = teamImageManagers[i - 1];
-      const name = document.getElementById('fTeamName' + i).value.trim();
+      const name = (teamCharSelections[i - 1] && teamCharSelections[i - 1].name) || '';
       if (manager.hasPending()) {
         setStatus('画像をアップロードしています…');
         const imagePath = `images/${eventId}_uma${i}.jpg`;
@@ -760,7 +858,7 @@ function renderEvents() {
       row.className = 'entry';
       const { badges, raceConditionLabel } = eventMeta(ev);
       const teamChipsHtml = (ev.team || []).filter(m => m.name).map(m => {
-        const uma = cachedUmas.find(u => u.name === m.name);
+        const uma = m.id ? cachedUmas.find(u => u.id === m.id) : cachedUmas.find(u => u.name === m.name);
         const imageUrl = uma && uma.imagePath ? imageRawUrl(uma.imagePath) : null;
         return `
           <div class="plan-char-chip">

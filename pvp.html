@@ -148,7 +148,14 @@
               <input type="file" id="fTeamImage1" accept="image/*">
             </div>
             <button type="button" class="btn secondary" id="removeTeamImageBtn1" hidden>画像を削除</button>
-            <input type="text" id="fTeamName1" placeholder="1人目のウマ娘名">
+            <div class="char-select-box" id="charSelectBox1">
+              <div id="charSelectEmpty1">タップしてキャラ選択</div>
+              <div class="char-select-filled-inner" id="charSelectFilled1" hidden>
+                <img class="uma-icon" id="charSelectIcon1" alt="">
+                <span id="charSelectName1"></span>
+              </div>
+            </div>
+            <button type="button" class="btn secondary btn-inline" id="charSelectClearBtn1" hidden>選択を解除</button>
             <div class="growth-input-row">
               <div><span>勝率(%)</span><input type="number" id="fTeamWinRate1" step="0.1" placeholder="例: 34.6"></div>
               <div><span>連対率(%)</span><input type="number" id="fTeamPlaceRate1" step="0.1" placeholder="例: 61.7"></div>
@@ -175,7 +182,14 @@
               <input type="file" id="fTeamImage2" accept="image/*">
             </div>
             <button type="button" class="btn secondary" id="removeTeamImageBtn2" hidden>画像を削除</button>
-            <input type="text" id="fTeamName2" placeholder="2人目のウマ娘名">
+            <div class="char-select-box" id="charSelectBox2">
+              <div id="charSelectEmpty2">タップしてキャラ選択</div>
+              <div class="char-select-filled-inner" id="charSelectFilled2" hidden>
+                <img class="uma-icon" id="charSelectIcon2" alt="">
+                <span id="charSelectName2"></span>
+              </div>
+            </div>
+            <button type="button" class="btn secondary btn-inline" id="charSelectClearBtn2" hidden>選択を解除</button>
             <div class="growth-input-row">
               <div><span>勝率(%)</span><input type="number" id="fTeamWinRate2" step="0.1" placeholder="例: 33.3"></div>
               <div><span>連対率(%)</span><input type="number" id="fTeamPlaceRate2" step="0.1" placeholder="例: 60.5"></div>
@@ -202,7 +216,14 @@
               <input type="file" id="fTeamImage3" accept="image/*">
             </div>
             <button type="button" class="btn secondary" id="removeTeamImageBtn3" hidden>画像を削除</button>
-            <input type="text" id="fTeamName3" placeholder="3人目のウマ娘名">
+            <div class="char-select-box" id="charSelectBox3">
+              <div id="charSelectEmpty3">タップしてキャラ選択</div>
+              <div class="char-select-filled-inner" id="charSelectFilled3" hidden>
+                <img class="uma-icon" id="charSelectIcon3" alt="">
+                <span id="charSelectName3"></span>
+              </div>
+            </div>
+            <button type="button" class="btn secondary btn-inline" id="charSelectClearBtn3" hidden>選択を解除</button>
             <div class="growth-input-row">
               <div><span>勝率(%)</span><input type="number" id="fTeamWinRate3" step="0.1" placeholder="例: 1.2"></div>
               <div><span>連対率(%)</span><input type="number" id="fTeamPlaceRate3" step="0.1" placeholder="例: 13.6"></div>
@@ -303,6 +324,14 @@
     <h2 id="eventDetailTitle">対人イベント詳細</h2>
     <div id="eventDetailBody"></div>
     <button type="button" class="btn secondary modal-close-btn" data-modal="eventDetailModal">閉じる</button>
+  </div>
+
+  <div class="modal" id="characterPickerModal" role="dialog" aria-labelledby="characterPickerTitle" hidden>
+    <h2 id="characterPickerTitle">出走ウマ娘を選択</h2>
+    <input type="text" id="characterPickerSearch" class="character-picker-search" placeholder="名前で検索">
+    <div id="characterPickerGrid" class="character-picker-grid"></div>
+    <div class="status" id="characterPickerStatus"></div>
+    <button type="button" class="btn secondary" id="characterPickerCloseBtn">閉じる</button>
   </div>
 
   <div class="modal" id="confirmDeleteModal" role="dialog" aria-labelledby="confirmDeleteTitle" hidden>
