@@ -505,8 +505,8 @@ function renderPlans() {
           <div class="apt-row">
             <span class="apt-badge">${eventTypeLabel}</span>
           </div>
-          ${charChipsHtml ? `<div class="apt-group owner-group"><span class="apt-group-label">育成予定</span><div class="plan-char-row">${charChipsHtml}</div></div>` : ''}
           ${raceConditionLabel ? `<div class="entry-notes">${escapeHtml(raceConditionLabel)}</div>` : ''}
+          ${charChipsHtml ? `<div class="apt-group owner-group"><span class="apt-group-label">育成予定</span><div class="plan-char-row">${charChipsHtml}</div></div>` : ''}
           ${plan.notes ? `<div class="entry-notes">${escapeHtml(plan.notes)}</div>` : ''}
         </div>
         <div class="entry-side">
