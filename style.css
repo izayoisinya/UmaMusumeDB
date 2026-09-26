@@ -808,6 +808,10 @@ mark.search-hit {
 #registerModal {
   max-width: 560px;
 }
+@media (orientation: landscape) and (min-width: 700px) {
+  .modal { max-width: 900px; }
+  #registerModal { max-width: 900px; }
+}
 .modal h2 {
   font-family: 'M PLUS Rounded 1c', sans-serif;
   font-size: 18px;
