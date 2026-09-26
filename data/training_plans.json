@@ -1,26 +1,5 @@
 [
   {
-    "id": "training_1790405415344_qu91h",
-    "status": "in_progress",
-    "eventType": "champions",
-    "raceCondition": {
-      "location": "ロンシャン",
-      "distance": 2400,
-      "surface": "芝",
-      "direction": "右回り",
-      "season": "秋",
-      "weather": "晴",
-      "going": "重"
-    },
-    "characters": [
-      {
-        "name": "セイウンスカイ"
-      }
-    ],
-    "notes": "",
-    "savedAt": "2026-09-26T06:50:15.345Z"
-  },
-  {
     "id": "training_1790404979348_kdmk5",
     "title": "毎日王冠チャンミ",
     "status": "done",
@@ -46,6 +25,27 @@
       }
     ],
     "notes": "",
-    "savedAt": "2026-09-26T06:52:39.993Z"
+    "savedAt": "2026-09-26T06:56:25.104Z"
+  },
+  {
+    "id": "training_1790405415344_qu91h",
+    "status": "in_progress",
+    "eventType": "champions",
+    "raceCondition": {
+      "location": "ロンシャン",
+      "distance": 2400,
+      "surface": "芝",
+      "direction": "右回り",
+      "season": "秋",
+      "weather": "晴",
+      "going": "重"
+    },
+    "characters": [
+      {
+        "name": "セイウンスカイ"
+      }
+    ],
+    "notes": "",
+    "savedAt": "2026-09-26T06:50:15.345Z"
   }
 ]
