@@ -1,17 +1,23 @@
-// character-config.js — 全ページ共通の「キャラ編成」ポップアップ(サポカ編成6枚+因子設計図)
+// character-config.js — タブ登録できるポップアップ(キャラ編成/育成計画詳細/
+// イベント結果詳細)をページ非依存で開けるようにする共通部品
 //
-// training.htmlの育成計画詳細から使っていたキャラ編成機能を、どのページからでも
-// window.openCharacterConfigWidget(planId, charIndex, options) で呼び出せる共通部品に
-// 切り出したもの。必要なモーダルHTMLは初回呼び出し時に現在のページの#modalOverlayへ
-// 自動で挿入する(common.jsのopenModal/closeModalと同じ仕組みに乗る)。
+// training.js/pvp.jsの各ポップアップ(キャラ編成=サポカ編成6枚+因子設計図、
+// 育成計画詳細、イベント結果詳細)を、どのページからでも
+// window.openCharacterConfigWidget(planId, charIndex, options) /
+// window.openPlanDetailWidget(planId, options) /
+// window.openEventDetailWidget(eventId, options)
+// で呼び出せる共通部品に切り出したもの。必要なモーダルHTMLは初回呼び出し時に
+// 現在のページの#modalOverlayへ自動で挿入する(common.jsのopenModal/closeModal
+// と同じ仕組みに乗る)。
 //
-// 呼び出し元のページが何を読み込んでいるかに依存しないよう、データ(育成計画/ウマ娘/
-// サポカ)は呼び出しのたびに自前で取得する。
+// 呼び出し元のページが何を読み込んでいるかに依存しないよう、データ(育成計画/
+// ウマ娘/サポカ/イベント結果)は呼び出しのたびに自前で取得する。
 
 (function () {
   const DATA_PATH = 'data/training_plans.json';
   const UMA_PATH = 'data/uma_musume.json';
   const SUPPORT_PATH = 'data/support_cards.json';
+  const EVENTS_PATH = 'data/pvp_events.json';
 
   class CcConflictError extends Error {
     constructor() {
@@ -151,6 +157,9 @@
   let ccUmaPickerTargetSlot = null;
   let ccPlanDetailId = null;
   let ccPlanDetailReturnModalId = null;
+  let ccEvents = [];
+  let ccEventDetailId = null;
+  let ccEventDetailReturnModalId = null;
 
   // --- モーダルHTML注入(初回のみ) ---
   function ensureMarkup() {
@@ -189,6 +198,13 @@
         <button type="button" class="btn secondary" id="ccPlanDetailPinBtn">タブに登録</button>
         <button type="button" class="btn secondary" id="ccPlanDetailCloseBtn">閉じる</button>
       </div>
+      <div class="modal" id="ccEventDetailModal" role="dialog" aria-labelledby="ccEventDetailTitle" hidden>
+        <h2 id="ccEventDetailTitle">イベント結果詳細</h2>
+        <div id="ccEventDetailBody"></div>
+        <div class="status" id="ccEventDetailStatus"></div>
+        <button type="button" class="btn secondary" id="ccEventDetailPinBtn">タブに登録</button>
+        <button type="button" class="btn secondary" id="ccEventDetailCloseBtn">閉じる</button>
+      </div>
     `;
     while (wrap.firstElementChild) overlay.appendChild(wrap.firstElementChild);
 
@@ -205,6 +221,8 @@
     }, 150));
     document.getElementById('ccPlanDetailCloseBtn').addEventListener('click', closePlanDetailWidget);
     document.getElementById('ccPlanDetailPinBtn').addEventListener('click', handlePlanDetailPin);
+    document.getElementById('ccEventDetailCloseBtn').addEventListener('click', closeEventDetailWidget);
+    document.getElementById('ccEventDetailPinBtn').addEventListener('click', handleEventDetailPin);
   }
 
   // --- 公開エントリポイント ---
@@ -426,6 +444,172 @@
       type: 'planDetail',
       params: { plan: plan.id },
       label: planLabelCc(plan),
+    });
+  }
+
+  // --- イベント結果詳細ポップアップ(読み取り専用) ---
+  function formatMonthLabelEventCc(month) {
+    const m = /^(\d{4})-(\d{2})$/.exec(month || '');
+    return m ? `${m[1]}年${Number(m[2])}月` : (month || '不明な月');
+  }
+
+  function eventMetaCc(ev) {
+    const isLoh = ev.eventType === 'loh';
+    const eventTypeLabel = isLoh ? 'リーグオブヒーローズ' : 'チャンピオンズミーティング';
+
+    let badges = `<span class="apt-badge">${eventTypeLabel}</span>`;
+    let showResults = false;
+    if (isLoh) {
+      const loh = ev.loh || {};
+      if (loh.rankTier) badges += `<span class="apt-badge">${ccEscapeHtml(loh.rankTier)}</span>`;
+      if (loh.totalPoints != null) badges += `<span class="apt-badge">合計 ${loh.totalPoints.toLocaleString('ja-JP')}pt</span>`;
+      if (loh.overallRank != null) badges += `<span class="apt-badge">総合${loh.overallRank}位</span>`;
+    } else {
+      const champions = ev.champions || {};
+      badges += `<span class="apt-badge">${champions.tier === 'open' ? 'オープンリーグ' : 'グレードリーグ'}</span>`;
+      if (champions.reachedFinal === false) {
+        badges += `<span class="apt-badge">決勝未進出</span>`;
+      } else {
+        badges += `<span class="apt-badge">決勝${champions.finalRound || '?'}グループ</span>`;
+        if (champions.rank != null) badges += `<span class="apt-badge">決勝${champions.rank}位</span>`;
+        showResults = true;
+      }
+    }
+
+    const rc = ev.raceCondition || {};
+    const raceConditionLabel = [
+      rc.location,
+      rc.distance != null ? `${rc.distance}m` : '',
+      rc.surface,
+      rc.direction,
+      rc.season,
+      rc.weather,
+      rc.going,
+    ].filter(Boolean).join(' ／ ');
+
+    return { isLoh, badges, showResults, raceConditionLabel };
+  }
+
+  function renderEventDetailBody(ev) {
+    const { isLoh, badges, showResults, raceConditionLabel } = eventMetaCc(ev);
+
+    const teamCards = (ev.team || []).map(member => {
+      const imageUrl = member.imagePath ? imageRawUrl(member.imagePath) : null;
+      const rateBadges = [];
+      if (member.winRate != null) rateBadges.push(`<span class="apt-badge">勝率${member.winRate}%</span>`);
+      if (member.placeRate != null) rateBadges.push(`<span class="apt-badge">連対${member.placeRate}%</span>`);
+      if (member.showRate != null) rateBadges.push(`<span class="apt-badge">複勝${member.showRate}%</span>`);
+      if (isLoh && member.points != null) rateBadges.push(`<span class="apt-badge">${member.points}pt</span>`);
+      const r = showResults ? member.results : null;
+      const resultBadges = r ? [
+        `<span class="apt-badge">1着${r.first || 0}</span>`,
+        `<span class="apt-badge">2着${r.second || 0}</span>`,
+        `<span class="apt-badge">3着${r.third || 0}</span>`,
+        `<span class="apt-badge">圏外${r.other || 0}</span>`,
+        `<span class="apt-badge">${r.races || 0}戦</span>`,
+      ] : [];
+      return `
+        <div class="pvp-team-member">
+          ${imageUrl ? `<img class="pvp-team-thumb team-img" src="${ccEscapeHtml(imageUrl)}" alt="${ccEscapeHtml(member.name)}" loading="lazy">` : ''}
+          <div class="entry-name">${ccEscapeHtml(member.name)}</div>
+          ${rateBadges.length ? `<div class="apt-row">${rateBadges.join('')}</div>` : ''}
+          ${resultBadges.length ? `<div class="apt-row">${resultBadges.join('')}</div>` : ''}
+        </div>
+      `;
+    }).join('');
+
+    const videoUrl = ev.videoPath ? imageRawUrl(ev.videoPath) : null;
+    const videoWrap = videoUrl
+      ? `<div class="pvp-video-wrap"><span class="apt-group-label">決勝動画</span><video controls preload="metadata" playsinline src="${ccEscapeHtml(videoUrl)}"></video></div>`
+      : '';
+
+    const extraImagesHtml = (ev.extraImages || []).length
+      ? `<div class="pvp-extra-images"><span class="apt-group-label">参考画像</span><div class="extra-images-grid">${
+          (ev.extraImages || []).map(path => `<div class="extra-image-thumb"><img class="extra-img" src="${ccEscapeHtml(imageRawUrl(path))}" alt="参考画像" loading="lazy"></div>`).join('')
+        }</div></div>`
+      : '';
+
+    const body = document.getElementById('ccEventDetailBody');
+    body.innerHTML = `
+      ${raceConditionLabel ? `<div class="entry-name-row"><div class="entry-name">${ccEscapeHtml(raceConditionLabel)}</div></div>` : ''}
+      <div class="apt-row">${badges}</div>
+      ${teamCards ? `<div class="pvp-team-grid">${teamCards}</div>` : ''}
+      ${videoWrap}
+      ${extraImagesHtml}
+      ${ev.notes ? `<div class="entry-notes">${ccEscapeHtml(ev.notes)}</div>` : ''}
+    `;
+    body.querySelectorAll('.team-img, .extra-img').forEach(img => {
+      img.addEventListener('click', () => { if (typeof openLightbox === 'function') openLightbox(img.src); });
+    });
+  }
+
+  window.openEventDetailWidget = async function (eventId, options) {
+    options = options || {};
+    if (!config || !config.owner || !config.repo) {
+      alert('先に「⚙ 設定」からGitHub連携(リポジトリ所有者・リポジトリ名)を設定してください。');
+      return;
+    }
+    ensureMarkup();
+    ccEventDetailId = eventId;
+    ccEventDetailReturnModalId = options.returnModalId || null;
+
+    const statusEl = document.getElementById('ccEventDetailStatus');
+    statusEl.textContent = '読み込み中…';
+    statusEl.className = 'status';
+    document.getElementById('ccEventDetailBody').innerHTML = '';
+
+    if (ccEventDetailReturnModalId) {
+      const returnEl = document.getElementById(ccEventDetailReturnModalId);
+      if (returnEl) returnEl.hidden = true;
+    }
+    document.getElementById('ccEventDetailModal').hidden = false;
+    document.getElementById('modalOverlay').hidden = false;
+
+    try {
+      const [events, umas] = await Promise.all([
+        ccFetchJson(EVENTS_PATH),
+        ccFetchJson(UMA_PATH),
+      ]);
+      ccEvents = events;
+      ccUmas = umas;
+    } catch (err) {
+      console.error(err);
+      statusEl.textContent = 'データの読み込みに失敗しました: ' + err.message;
+      statusEl.className = 'status error';
+      return;
+    }
+
+    const ev = ccEvents.find(e => e.id === eventId);
+    if (!ev) {
+      statusEl.textContent = '対象のイベント結果が見つかりませんでした。';
+      statusEl.className = 'status error';
+      return;
+    }
+
+    document.getElementById('ccEventDetailTitle').textContent = `${formatMonthLabelEventCc(ev.month)} イベント結果詳細`;
+    renderEventDetailBody(ev);
+    statusEl.textContent = '';
+  };
+
+  function closeEventDetailWidget() {
+    document.getElementById('ccEventDetailModal').hidden = true;
+    if (ccEventDetailReturnModalId && document.getElementById(ccEventDetailReturnModalId)) {
+      document.getElementById(ccEventDetailReturnModalId).hidden = false;
+    } else if (typeof closeModal === 'function') {
+      closeModal();
+    }
+  }
+
+  function handleEventDetailPin() {
+    const ev = ccEvents.find(e => e.id === ccEventDetailId);
+    if (!ev || typeof addPinnedTab !== 'function') return;
+    const { raceConditionLabel } = eventMetaCc(ev);
+    addPinnedTab({
+      key: `pvp-event-${ev.id}`,
+      page: 'pvp.html',
+      type: 'eventDetail',
+      params: { event: ev.id },
+      label: `${formatMonthLabelEventCc(ev.month)} ${raceConditionLabel || ''}`.trim(),
     });
   }
 

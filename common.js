@@ -401,6 +401,10 @@ function openPinnedTab(key) {
     window.openPlanDetailWidget(tab.params.plan);
     return;
   }
+  if (tab.type === 'eventDetail' && typeof window.openEventDetailWidget === 'function') {
+    window.openEventDetailWidget(tab.params.event);
+    return;
+  }
   const qs = new URLSearchParams(tab.params || {}).toString();
   location.href = tab.page + (qs ? '?' + qs : '');
 }

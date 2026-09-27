@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>対人イベント記録 - 因子台帳</title>
+<title>イベント結果記録 - 因子台帳</title>
 
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#8bc34a">
@@ -20,7 +20,7 @@
 <div class="ledger pvp-page">
   <div class="masthead">
     <div class="masthead-top">
-      <h1>対人イベント記録</h1>
+      <h1>イベント結果記録</h1>
       <div id="pinnedTabsBar" class="pinned-tabs-bar" hidden></div>
       <p id="countLabel">0 件記録</p>
     </div>
@@ -30,7 +30,7 @@
       <a href="uma.html" class="masthead-btn masthead-nav">ウマ娘</a>
       <a href="support.html" class="masthead-btn masthead-nav">サポカ</a>
       <a href="skill.html" class="masthead-btn masthead-nav">スキル</a>
-      <a href="pvp.html" class="masthead-btn masthead-nav">対人イベント</a>
+      <a href="pvp.html" class="masthead-btn masthead-nav">イベント結果</a>
       <a href="training.html" class="masthead-btn masthead-nav">育成計画</a>
       <button type="button" class="masthead-btn" id="openSettingsModalBtn">⚙ 設定</button>
     </div>
@@ -57,7 +57,7 @@
 
 <div class="modal-overlay" id="modalOverlay" hidden>
   <div class="modal" id="pvpModal" role="dialog" aria-labelledby="pvpModalTitle" hidden>
-    <h2 id="pvpModalTitle">対人イベント記録を追加</h2>
+    <h2 id="pvpModalTitle">イベント結果記録を追加</h2>
 
     <form class="form-grid" id="pvpForm">
       <div>
@@ -322,7 +322,7 @@
   </div>
 
   <div class="modal" id="eventDetailModal" role="dialog" aria-labelledby="eventDetailTitle" hidden>
-    <h2 id="eventDetailTitle">対人イベント詳細</h2>
+    <h2 id="eventDetailTitle">イベント結果詳細</h2>
     <div id="eventDetailBody"></div>
     <button type="button" class="btn secondary" id="eventDetailPinBtn">タブに登録</button>
     <button type="button" class="btn secondary modal-close-btn" data-modal="eventDetailModal">閉じる</button>

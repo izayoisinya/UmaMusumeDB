@@ -1,4 +1,4 @@
-// pvp.js — 対人イベント記録ページ固有ロジック
+// pvp.js — イベント結果記録ページ固有ロジック
 
 const DATA_PATH = 'data/pvp_events.json';
 
@@ -525,7 +525,7 @@ const extraImagesManager = createExtraImagesManager();
 // --- フォーム操作 ---
 function setPvpModalMode(isEditing) {
   editingEventId = isEditing;
-  document.getElementById('pvpModalTitle').textContent = isEditing ? '対人イベント記録を編集' : '対人イベント記録を追加';
+  document.getElementById('pvpModalTitle').textContent = isEditing ? 'イベント結果記録を編集' : 'イベント結果記録を追加';
   document.getElementById('savePvpBtn').textContent = isEditing ? 'この内容で更新' : 'この内容を保存';
 }
 
@@ -705,11 +705,11 @@ document.getElementById('pvpForm').addEventListener('submit', async e => {
       if (manager.hasPending()) {
         setStatus('画像をアップロードしています…');
         const imagePath = `images/${eventId}_uma${i}.jpg`;
-        await uploadImageToGitHub(imagePath, manager.getPendingDataUrl(), `対人イベント出走ウマ娘画像アップロード: ${name || eventId}`);
+        await uploadImageToGitHub(imagePath, manager.getPendingDataUrl(), `イベント結果出走ウマ娘画像アップロード: ${name || eventId}`);
         manager.setUploadedPath(imagePath);
       } else if (manager.shouldRemove()) {
         setStatus('画像を削除しています…');
-        await deleteImageFromGitHub(manager.getCurrentPath(), `対人イベント出走ウマ娘画像削除: ${name || eventId}`);
+        await deleteImageFromGitHub(manager.getCurrentPath(), `イベント結果出走ウマ娘画像削除: ${name || eventId}`);
         manager.setUploadedPath(null);
       }
     }
@@ -718,11 +718,11 @@ document.getElementById('pvpForm').addEventListener('submit', async e => {
     if (videoManager.hasPending()) {
       setStatus('動画をアップロードしています…(サイズによって時間がかかります)');
       const videoPath = `videos/${eventId}.${videoManager.getPendingExt()}`;
-      await uploadImageToGitHub(videoPath, videoManager.getPendingDataUrl(), `対人イベント決勝動画アップロード: ${month}`);
+      await uploadImageToGitHub(videoPath, videoManager.getPendingDataUrl(), `イベント結果決勝動画アップロード: ${month}`);
       videoManager.setUploadedPath(videoPath);
     } else if (videoManager.shouldRemove()) {
       setStatus('動画を削除しています…');
-      await deleteImageFromGitHub(videoManager.getCurrentPath(), `対人イベント決勝動画削除: ${month}`);
+      await deleteImageFromGitHub(videoManager.getCurrentPath(), `イベント結果決勝動画削除: ${month}`);
       videoManager.setUploadedPath(null);
     }
     ev.videoPath = videoManager.getCurrentPath() || null;
@@ -735,7 +735,7 @@ document.getElementById('pvpForm').addEventListener('submit', async e => {
       if (item.toDelete) {
         if (item.path) {
           setStatus('参考画像を削除しています…');
-          await deleteImageFromGitHub(item.path, `対人イベント参考画像削除: ${month}`);
+          await deleteImageFromGitHub(item.path, `イベント結果参考画像削除: ${month}`);
         }
         continue;
       }
@@ -744,14 +744,14 @@ document.getElementById('pvpForm').addEventListener('submit', async e => {
       } else {
         setStatus('参考画像をアップロードしています…');
         const imagePath = `images/${eventId}_extra${extraIndex}.jpg`;
-        await uploadImageToGitHub(imagePath, item.dataUrl, `対人イベント参考画像アップロード: ${month}`);
+        await uploadImageToGitHub(imagePath, item.dataUrl, `イベント結果参考画像アップロード: ${month}`);
         extraPaths.push(imagePath);
       }
     }
     ev.extraImages = extraPaths;
 
     setStatus(isEditing ? '更新しています…' : '保存しています…');
-    await saveEventsToGitHub(updated, `${isEditing ? '対人イベント記録編集' : '対人イベント記録追加'}: ${month}`);
+    await saveEventsToGitHub(updated, `${isEditing ? 'イベント結果記録編集' : 'イベント結果記録追加'}: ${month}`);
     allEvents = sortEvents(updated);
     renderEvents();
     resetForm();
@@ -795,7 +795,7 @@ async function deleteEvent(id, btn) {
   setListStatus('削除しています…');
   if (btn) btn.disabled = true;
   try {
-    await saveEventsToGitHub(updated, `対人イベント記録削除: ${target ? target.month : id}`);
+    await saveEventsToGitHub(updated, `イベント結果記録削除: ${target ? target.month : id}`);
     allEvents = updated;
     setListStatus('');
     renderEvents();
@@ -932,7 +932,7 @@ function eventMeta(ev) {
   return { isLoh, badges, showResults, raceConditionLabel };
 }
 
-// --- 対人イベント詳細ポップアップ(全項目表示) ---
+// --- イベント結果詳細ポップアップ(全項目表示) ---
 function renderEventDetailHtml(ev) {
   const { isLoh, badges, showResults, raceConditionLabel } = eventMeta(ev);
 
