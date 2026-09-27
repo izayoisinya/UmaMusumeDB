@@ -846,6 +846,39 @@ mark.search-hit {
   z-index: 100;
 }
 .modal-overlay[hidden] { display: none; }
+.modal-compact-toggle {
+  position: fixed;
+  top: 14px;
+  right: 14px;
+  z-index: 101;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1.5px solid var(--panel-line);
+  background: var(--surface);
+  color: var(--ink);
+  font-size: 15px;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+  pointer-events: auto;
+}
+.modal-overlay.compact {
+  background: transparent;
+  pointer-events: none;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: 12px;
+}
+#modalOverlay.compact .modal {
+  pointer-events: auto;
+  width: 300px;
+  max-width: 86vw;
+  max-height: 55vh;
+  font-size: 13px;
+  box-shadow: 0 8px 26px rgba(0,0,0,0.45);
+}
+.modal-overlay.compact .modal h2 { font-size: 15px; }
 .modal {
   background: var(--panel);
   border: none;

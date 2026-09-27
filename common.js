@@ -249,6 +249,38 @@ if (modalOverlay) {
   document.addEventListener('keydown', e => { if (e.key === 'Escape' && !modalOverlay.hidden) closeModal(); });
 }
 
+// --- ポップアップ縮小表示(裏のメイン画面を見ながら操作したい場合用) ---
+// どのモーダルが開いていても効くよう、#modalOverlay自体に'compact'クラスを
+// 付け外しする。縮小時はオーバーレイの背景を透過+クリック貫通にし、
+// モーダル本体だけを右下に小さく表示する。
+const MODAL_COMPACT_KEY = 'umaFactorLedger:modalCompact';
+function isModalCompact() {
+  try {
+    return localStorage.getItem(MODAL_COMPACT_KEY) === '1';
+  } catch {
+    return false;
+  }
+}
+function setModalCompact(on) {
+  if (!modalOverlay) return;
+  modalOverlay.classList.toggle('compact', on);
+  const btn = document.getElementById('modalCompactToggleBtn');
+  if (btn) {
+    btn.textContent = on ? '⤢' : '⤡';
+    btn.title = on ? 'ポップアップを元のサイズに戻す' : 'ポップアップを小さくして裏の画面を見る';
+  }
+  try { localStorage.setItem(MODAL_COMPACT_KEY, on ? '1' : '0'); } catch {}
+}
+if (modalOverlay && !document.getElementById('modalCompactToggleBtn')) {
+  const compactBtn = document.createElement('button');
+  compactBtn.type = 'button';
+  compactBtn.id = 'modalCompactToggleBtn';
+  compactBtn.className = 'modal-compact-toggle';
+  compactBtn.addEventListener('click', () => setModalCompact(!modalOverlay.classList.contains('compact')));
+  modalOverlay.appendChild(compactBtn);
+  setModalCompact(isModalCompact());
+}
+
 const openSettingsModalBtn = document.getElementById('openSettingsModalBtn');
 if (openSettingsModalBtn) {
   openSettingsModalBtn.addEventListener('click', () => openModal('settingsModal'));
