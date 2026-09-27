@@ -736,6 +736,7 @@ function openCharacterConfig(planId, charIndex) {
   statusEl.className = 'status';
   document.getElementById('planDetailModal').hidden = true;
   document.getElementById('characterConfigModal').hidden = false;
+  document.getElementById('modalOverlay').hidden = false;
 }
 
 function closeCharacterConfig() {
