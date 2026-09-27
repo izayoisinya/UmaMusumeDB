@@ -51,7 +51,10 @@
         "id": "uma_1789507386398_xpsma",
         "name": "セイウンスカイ",
         "supportDeck": [
-          null,
+          {
+            "id": "support_1789514094685_iyvrs",
+            "name": "タップダンスシチー"
+          },
           null,
           null,
           null,
