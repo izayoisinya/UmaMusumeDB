@@ -133,8 +133,8 @@ button { touch-action: manipulation; }
 .pinned-tabs-bar {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 6px;
-  margin-top: 8px;
 }
 .pinned-tabs-bar[hidden] { display: none; }
 .pinned-tab {
