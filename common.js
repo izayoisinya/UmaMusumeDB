@@ -306,12 +306,18 @@ function applyModalCompactPos(modal) {
     modal.style.top = pos.top + 'px';
     modal.style.right = 'auto';
     modal.style.bottom = 'auto';
-  } else {
-    modal.style.left = '';
-    modal.style.top = '';
-    modal.style.right = '';
-    modal.style.bottom = '';
+    return;
   }
+  // 保存位置がまだ無い場合: transform-originがtop leftなので、CSSの
+  // right/bottom指定のままだと縮小するほど右下の角から離れてしまう。
+  // 表示中の(縮小後の)実測サイズから右下寄せの座標を計算して明示指定する。
+  const rect = modal.getBoundingClientRect();
+  if (!rect.width || !rect.height) return; // 非表示中は測れないので何もしない
+  const margin = 12;
+  modal.style.left = Math.max(margin, window.innerWidth - margin - rect.width) + 'px';
+  modal.style.top = Math.max(margin, window.innerHeight - margin - rect.height) + 'px';
+  modal.style.right = 'auto';
+  modal.style.bottom = 'auto';
 }
 if (modalOverlay) {
   let dragState = null;

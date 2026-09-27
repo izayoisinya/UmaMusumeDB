@@ -883,10 +883,11 @@ mark.search-hit {
   top: auto;
   margin: 0;
   pointer-events: auto;
-  width: 300px;
+  width: 480px;
   max-width: 86vw;
-  max-height: 55vh;
-  font-size: 13px;
+  max-height: 70vh;
+  transform-origin: top left;
+  transform: scale(0.6);
   box-shadow: 0 8px 26px rgba(0,0,0,0.45);
 }
 /* 縮小表示中はヘッダーをつかんでドラッグ移動できる */
