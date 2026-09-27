@@ -769,8 +769,11 @@ function pedigreeCardHtml(slot, label) {
   const redFactor = (sel && sel.redFactor) || {};
   const isWide = slot <= 2;
   const isParent = slot === 1 || slot === 2;
+  // 親A(1)・祖a(3)・祖b(4)は同じ色、親B(2)・祖c(5)・祖d(6)は別の色の枠で
+  // 囲み、どの祖がどの親に対応するか見た目で分かるようにする。
+  const groupClass = [1, 3, 4].includes(slot) ? ' pedigree-group-a' : [2, 5, 6].includes(slot) ? ' pedigree-group-b' : '';
   return `
-    <div class="pedigree-card${isWide ? ' pedigree-card-wide' : ''}${isParent ? ' pedigree-card-parent' : ''}">
+    <div class="pedigree-card${isWide ? ' pedigree-card-wide' : ''}${isParent ? ' pedigree-card-parent' : ''}${groupClass}">
       <div class="pedigree-card-label">${label}</div>
       <div class="pedigree-card-main">
         <div class="char-select-box" id="pedigreeBox${slot}">

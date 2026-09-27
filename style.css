@@ -1149,6 +1149,8 @@ mark.search-hit {
   flex-shrink: 0;
 }
 .pedigree-card-wide { width: 380px; max-width: 100%; }
+.pedigree-card.pedigree-group-a { border: 2px solid var(--blue-dim); }
+.pedigree-card.pedigree-group-b { border: 2px solid var(--gold-dim); }
 .pedigree-card-label {
   font-size: 12px;
   font-weight: 700;
