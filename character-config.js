@@ -662,7 +662,7 @@
             </div>
             <select id="ccPedigreeRedType${slot}">
               <option value="">種類を選択</option>
-              <optgroup label="馬場">
+              <optgroup label="バ場">
                 <option value="track.turf"${redFactor.type === 'track.turf' ? ' selected' : ''}>芝</option>
                 <option value="track.dirt"${redFactor.type === 'track.dirt' ? ' selected' : ''}>ダート</option>
               </optgroup>
