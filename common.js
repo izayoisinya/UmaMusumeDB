@@ -631,6 +631,19 @@ function openPinnedTab(key) {
 }
 
 renderPinnedTabsBar();
+// iPadでホーム画面から起動したPWA等では、bfcache(ページの凍結復元)により
+// スクリプトが再実行されずDOMがそのまま復元されることがあり、その間に
+// 別タイミングで保存されたタブ登録が反映されないまま表示され続けることが
+// ある。pageshow(bfcache復元時はevent.persistedがtrue)のたびに
+// 最新のlocalStorageから登録タブを再描画し直して同期させる。
+// また、初回読み込み直後はフォント読み込み等でFABボタン群の実際の位置が
+// 後から確定することがあるため、loadイベントでも位置を再計算しておく。
+window.addEventListener('pageshow', () => {
+  renderPinnedTabsBar();
+});
+window.addEventListener('load', () => {
+  positionPinnedTabsBar();
+});
 
 // --- トースト通知(左下に出て自動で消える) ---
 let toastHideTimer = null;
