@@ -1362,6 +1362,13 @@ mark.search-hit {
   flex-direction: column;
   align-items: flex-start;
   width: 100%;
+  min-width: 0;
+}
+.modal-overlay.compact .pedigree-red-factor-row select {
+  width: 100%;
+  min-width: 0;
+  padding: 2px 4px;
+  font-size: 10px;
 }
 .star-rating { display: flex; gap: 2px; }
 .star-btn {
