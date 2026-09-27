@@ -1121,29 +1121,53 @@ mark.search-hit {
   gap: 10px;
   margin-top: 8px;
 }
-.support-deck-grid .char-select-box { min-height: 130px; font-size: 14px; }
-.support-deck-grid .char-select-box.filled { padding: 0; align-items: stretch; overflow: hidden; }
-.support-deck-grid .char-select-filled-inner { width: 100%; height: 100%; gap: 0; }
-.support-deck-grid .uma-icon {
-  width: 100%;
-  height: auto;
-  aspect-ratio: 3 / 4;
-  object-fit: cover;
-  border: none;
-  border-radius: 8px 8px 0 0;
-}
-.support-deck-grid .char-select-filled-inner span {
-  font-size: 11px;
-  padding: 4px 4px 6px;
-  text-decoration: underline;
-  text-align: center;
-}
+.support-deck-grid .char-select-box { min-height: 130px; font-size: 14px; height: 160px; }
 @media (max-width: 520px) {
   .support-deck-grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (orientation: landscape) and (min-width: 700px) {
   .support-deck-grid { grid-template-columns: repeat(6, 1fr); }
 }
+
+/* サポカ編成・因子設計図のキャラアイコンを枠いっぱいに表示し、
+   名称は画像に重ねて下部に影付きで表示する */
+.support-deck-grid .char-select-box.filled,
+.pedigree-card .char-select-box.filled {
+  padding: 0;
+  align-items: stretch;
+  overflow: hidden;
+}
+.support-deck-grid .char-select-filled-inner,
+.pedigree-card .char-select-filled-inner {
+  width: 100%;
+  height: 100%;
+  gap: 0;
+  position: relative;
+}
+.support-deck-grid .uma-icon,
+.pedigree-card .uma-icon {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border: none;
+  border-radius: 8px;
+}
+.support-deck-grid .char-select-filled-inner span,
+.pedigree-card .char-select-filled-inner span {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  font-size: 11px;
+  padding: 4px 4px 5px;
+  text-decoration: underline;
+  text-align: center;
+  color: #fff;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.9), 0 0 6px rgba(0,0,0,0.7);
+  background: linear-gradient(to top, rgba(0,0,0,0.55), rgba(0,0,0,0));
+  pointer-events: none;
+}
+.pedigree-card .char-select-box { height: 130px; }
 
 .pedigree-tree {
   display: flex;
