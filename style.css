@@ -874,17 +874,28 @@ mark.search-hit {
 .modal-overlay.compact {
   background: transparent;
   pointer-events: none;
-  align-items: flex-end;
-  justify-content: flex-end;
-  padding: 12px;
 }
 #modalOverlay.compact .modal {
+  position: fixed;
+  right: 12px;
+  bottom: 12px;
+  left: auto;
+  top: auto;
+  margin: 0;
   pointer-events: auto;
   width: 300px;
   max-width: 86vw;
   max-height: 55vh;
   font-size: 13px;
   box-shadow: 0 8px 26px rgba(0,0,0,0.45);
+}
+/* 縮小表示中はヘッダーをつかんでドラッグ移動できる */
+.modal-overlay.compact .modal-header-row {
+  cursor: grab;
+  touch-action: none;
+}
+.modal-overlay.compact .modal-header-row:active {
+  cursor: grabbing;
 }
 .modal-overlay.compact .modal h2 { font-size: 15px; }
 .modal {

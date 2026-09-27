@@ -270,6 +270,9 @@ function setModalCompact(on) {
     btn.title = on ? 'ポップアップを元のサイズに戻す' : 'ポップアップを小さくして裏の画面を見る';
   }
   try { localStorage.setItem(MODAL_COMPACT_KEY, on ? '1' : '0'); } catch {}
+  if (on) {
+    document.querySelectorAll('.modal').forEach(applyModalCompactPos);
+  }
 }
 if (modalOverlay && !document.getElementById('modalCompactToggleBtn')) {
   const compactBtn = document.createElement('button');
@@ -279,6 +282,93 @@ if (modalOverlay && !document.getElementById('modalCompactToggleBtn')) {
   compactBtn.addEventListener('click', () => setModalCompact(!modalOverlay.classList.contains('compact')));
   modalOverlay.appendChild(compactBtn);
   setModalCompact(isModalCompact());
+}
+
+// --- 縮小表示中、ヘッダーをドラッグしてポップアップを移動できるようにする ---
+// 位置は画面外に完全にはみ出さないよう、各辺は自身の幅/高さの70%まで
+// はみ出し可(30%は必ず画面内に残す)に制限して保存する。
+const MODAL_COMPACT_POS_KEY = 'umaFactorLedger:modalCompactPos';
+function loadModalCompactPos() {
+  try {
+    const raw = localStorage.getItem(MODAL_COMPACT_POS_KEY);
+    return raw ? JSON.parse(raw) : null;
+  } catch {
+    return null;
+  }
+}
+function saveModalCompactPos(pos) {
+  try { localStorage.setItem(MODAL_COMPACT_POS_KEY, JSON.stringify(pos)); } catch {}
+}
+function applyModalCompactPos(modal) {
+  const pos = loadModalCompactPos();
+  if (pos) {
+    modal.style.left = pos.left + 'px';
+    modal.style.top = pos.top + 'px';
+    modal.style.right = 'auto';
+    modal.style.bottom = 'auto';
+  } else {
+    modal.style.left = '';
+    modal.style.top = '';
+    modal.style.right = '';
+    modal.style.bottom = '';
+  }
+}
+if (modalOverlay) {
+  let dragState = null;
+  modalOverlay.addEventListener('pointerdown', e => {
+    if (!modalOverlay.classList.contains('compact')) return;
+    const header = e.target.closest('.modal-header-row');
+    if (!header || e.target.closest('.modal-header-actions')) return;
+    const modal = header.closest('.modal');
+    if (!modal) return;
+    const rect = modal.getBoundingClientRect();
+    dragState = {
+      modal,
+      startX: e.clientX,
+      startY: e.clientY,
+      startLeft: rect.left,
+      startTop: rect.top,
+      width: rect.width,
+      height: rect.height,
+    };
+    header.setPointerCapture(e.pointerId);
+  });
+  modalOverlay.addEventListener('pointermove', e => {
+    if (!dragState) return;
+    const vw = window.innerWidth;
+    const vh = window.innerHeight;
+    const w = dragState.width;
+    const h = dragState.height;
+    let left = dragState.startLeft + (e.clientX - dragState.startX);
+    let top = dragState.startTop + (e.clientY - dragState.startY);
+    left = Math.max(-w * 0.7, Math.min(vw - w * 0.3, left));
+    top = Math.max(-h * 0.7, Math.min(vh - h * 0.3, top));
+    dragState.modal.style.left = left + 'px';
+    dragState.modal.style.top = top + 'px';
+    dragState.modal.style.right = 'auto';
+    dragState.modal.style.bottom = 'auto';
+  });
+  const endModalDrag = () => {
+    if (!dragState) return;
+    const rect = dragState.modal.getBoundingClientRect();
+    saveModalCompactPos({ left: rect.left, top: rect.top });
+    dragState = null;
+  };
+  modalOverlay.addEventListener('pointerup', endModalDrag);
+  modalOverlay.addEventListener('pointercancel', endModalDrag);
+
+  // character-config.js等が後からポップアップを追加/表示するケースにも
+  // 対応するため、hidden属性の変化を監視して表示された瞬間に位置を適用する
+  const modalVisibilityObserver = new MutationObserver(mutations => {
+    if (!modalOverlay.classList.contains('compact')) return;
+    mutations.forEach(m => {
+      const target = m.target;
+      if (m.attributeName === 'hidden' && target.classList && target.classList.contains('modal') && !target.hidden) {
+        applyModalCompactPos(target);
+      }
+    });
+  });
+  modalVisibilityObserver.observe(modalOverlay, { attributes: true, attributeFilter: ['hidden'], subtree: true });
 }
 
 const openSettingsModalBtn = document.getElementById('openSettingsModalBtn');
