@@ -1122,8 +1122,22 @@ mark.search-hit {
   margin-top: 8px;
 }
 .support-deck-grid .char-select-box { min-height: 130px; font-size: 14px; }
-.support-deck-grid .uma-icon { width: 64px; height: 64px; }
-.support-deck-grid .char-select-filled-inner span { font-size: 13px; }
+.support-deck-grid .char-select-box.filled { padding: 0; align-items: stretch; overflow: hidden; }
+.support-deck-grid .char-select-filled-inner { width: 100%; height: 100%; gap: 0; }
+.support-deck-grid .uma-icon {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border: none;
+  border-radius: 8px 8px 0 0;
+}
+.support-deck-grid .char-select-filled-inner span {
+  font-size: 11px;
+  padding: 4px 4px 6px;
+  text-decoration: underline;
+  text-align: center;
+}
 @media (max-width: 520px) {
   .support-deck-grid { grid-template-columns: repeat(2, 1fr); }
 }
