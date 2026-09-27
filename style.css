@@ -1366,6 +1366,8 @@ mark.search-hit {
 }
 .scroll-fab:active { transform: translateY(1px); }
 .scroll-fab.search-fab { background: linear-gradient(135deg, #64b5f6, var(--blue-dim)); font-size: 20px; }
+.scroll-fab.register-fab { background: linear-gradient(135deg, var(--green), var(--green-dim)); font-size: 24px; }
+.scroll-fab.extract-fab { background: linear-gradient(135deg, #ab47bc, #8e24aa); font-size: 19px; }
 
 .search-popup-overlay {
   position: fixed;
