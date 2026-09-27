@@ -174,7 +174,7 @@
           <h2 id="ccCharacterConfigTitle">キャラ編成</h2>
           <div class="modal-header-actions">
             <button type="button" class="modal-icon-btn" id="ccCharacterConfigSaveBtn" title="この内容を保存" aria-label="この内容を保存">💾</button>
-            <button type="button" class="modal-icon-btn" id="ccCharacterConfigPinBtn" title="タブに登録" aria-label="タブに登録">📌</button>
+            <button type="button" class="modal-icon-btn" id="ccCharacterConfigPinBtn" title="タブに登録" aria-label="タブに登録"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg></button>
             <button type="button" class="modal-icon-btn" id="ccCharacterConfigCloseBtn" title="閉じる" aria-label="閉じる">✕</button>
           </div>
         </div>
@@ -199,7 +199,7 @@
         <div class="modal-header-row">
           <h2 id="ccPlanDetailTitle">育成計画詳細</h2>
           <div class="modal-header-actions">
-            <button type="button" class="modal-icon-btn" id="ccPlanDetailPinBtn" title="タブに登録" aria-label="タブに登録">📌</button>
+            <button type="button" class="modal-icon-btn" id="ccPlanDetailPinBtn" title="タブに登録" aria-label="タブに登録"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg></button>
             <button type="button" class="modal-icon-btn" id="ccPlanDetailCloseBtn" title="閉じる" aria-label="閉じる">✕</button>
           </div>
         </div>
@@ -210,7 +210,7 @@
         <div class="modal-header-row">
           <h2 id="ccEventDetailTitle">イベント結果詳細</h2>
           <div class="modal-header-actions">
-            <button type="button" class="modal-icon-btn" id="ccEventDetailPinBtn" title="タブに登録" aria-label="タブに登録">📌</button>
+            <button type="button" class="modal-icon-btn" id="ccEventDetailPinBtn" title="タブに登録" aria-label="タブに登録"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg></button>
             <button type="button" class="modal-icon-btn" id="ccEventDetailCloseBtn" title="閉じる" aria-label="閉じる">✕</button>
           </div>
         </div>

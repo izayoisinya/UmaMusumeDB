@@ -960,6 +960,7 @@ mark.search-hit {
   cursor: pointer;
 }
 .modal-icon-btn:hover { background: var(--green-dim); color: #fff; border-color: var(--green-dim); }
+.modal-icon-btn svg { display: block; }
 
 #lightbox {
   position: fixed;
