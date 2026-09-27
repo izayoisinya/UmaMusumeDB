@@ -617,7 +617,7 @@ function renderPlanDetailHtml(plan) {
 const APT_RANKS = ['S', 'A', 'B', 'C', 'D', 'E', 'F', 'G'];
 function aptBadge(prefix, v) {
   const rankClass = v ? 'rank-' + v : 'rank-none';
-  return `<span class="apt-badge ${rankClass}">${prefix}${v || '-'}</span>`;
+  return `<span class="apt-badge ${rankClass}"><span class="apt-badge-prefix">${prefix}</span><span class="apt-badge-value">${v || '-'}</span></span>`;
 }
 function aptSelect(id, value) {
   return `<select id="${id}"><option value="">-</option>${APT_RANKS.map(r => `<option value="${r}"${value === r ? ' selected' : ''}>${r}</option>`).join('')}</select>`;
@@ -638,7 +638,7 @@ function aptBadgeBoosted(prefix, base, bonus) {
   if (!bonus) return aptBadge(prefix, base);
   const boosted = boostRank(base, bonus);
   const rankClass = boosted ? 'rank-' + boosted : 'rank-none';
-  return `<span class="apt-badge ${rankClass}">${prefix}${boosted || '-'}<small>+${bonus}</small></span>`;
+  return `<span class="apt-badge ${rankClass}"><span class="apt-badge-prefix">${prefix}</span><span class="apt-badge-value">${boosted || '-'}<small>+${bonus}</small></span></span>`;
 }
 // 血統ツリーは 祖a(3),祖b(4) → 親A(1) → 本人(0) ／ 祖c(5),祖d(6) → 親B(2) → 本人(0) という構造。
 // 各ペア(祖a,祖b)(祖c,祖d)(親A,親B)は、同じ種類の赤因子を持つ場合は星数を合算、異なる

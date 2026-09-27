@@ -1264,6 +1264,26 @@ mark.search-hit {
   .pedigree-column .pedigree-subrow { flex-direction: column; }
   .pedigree-card { padding: 8px; }
   .pedigree-card-label { font-size: 11px; margin-bottom: 4px; }
+  /* 本人以外(親・祖)の適性バッジは「芝A」の横並びではなく縦積みにして幅を詰める */
+  .pedigree-card-parent .apt-badge,
+  .pedigree-card:not(.pedigree-card-wide) .apt-badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 1.15;
+    padding: 2px 5px;
+    border-radius: 8px;
+    gap: 0;
+  }
+  .pedigree-card-parent .apt-badge-prefix,
+  .pedigree-card:not(.pedigree-card-wide) .apt-badge-prefix {
+    font-size: 9px;
+  }
+  .pedigree-card-parent .apt-badge small,
+  .pedigree-card:not(.pedigree-card-wide) .apt-badge small {
+    margin-left: 0;
+    display: block;
+  }
 }
 @media (max-width: 400px) {
   .modal { padding: 12px; }

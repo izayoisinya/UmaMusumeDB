@@ -109,7 +109,7 @@
   const CC_APT_RANKS = ['S', 'A', 'B', 'C', 'D', 'E', 'F', 'G'];
   function ccAptBadge(prefix, v) {
     const rankClass = v ? 'rank-' + v : 'rank-none';
-    return `<span class="apt-badge ${rankClass}">${prefix}${v || '-'}</span>`;
+    return `<span class="apt-badge ${rankClass}"><span class="apt-badge-prefix">${prefix}</span><span class="apt-badge-value">${v || '-'}</span></span>`;
   }
   function ccAptSelect(id, value) {
     return `<select id="${id}"><option value="">-</option>${CC_APT_RANKS.map(r => `<option value="${r}"${value === r ? ' selected' : ''}>${r}</option>`).join('')}</select>`;
@@ -130,7 +130,7 @@
     if (!bonus) return ccAptBadge(prefix, base);
     const boosted = ccBoostRank(base, bonus);
     const rankClass = boosted ? 'rank-' + boosted : 'rank-none';
-    return `<span class="apt-badge ${rankClass}">${prefix}${boosted || '-'}<small>+${bonus}</small></span>`;
+    return `<span class="apt-badge ${rankClass}"><span class="apt-badge-prefix">${prefix}</span><span class="apt-badge-value">${boosted || '-'}<small>+${bonus}</small></span></span>`;
   }
   function ccEmptyPedigreeEntry() {
     return { id: null, name: '', imagePath: null, manual: true, track: {}, distance: {}, style: {} };
