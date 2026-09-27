@@ -924,8 +924,19 @@ mark.search-hit {
   justify-content: space-between;
   gap: 10px;
   margin-bottom: 14px;
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: var(--panel);
+  padding-bottom: 4px;
 }
-.modal-header-row h2 { margin: 0; }
+.modal-header-row h2 {
+  margin: 0;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 .modal-header-actions {
   display: flex;
   align-items: center;
