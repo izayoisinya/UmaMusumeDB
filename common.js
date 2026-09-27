@@ -390,10 +390,15 @@ function openPinnedTab(key) {
     window.openPinnedTabTarget(tab);
     return;
   }
-  // キャラ編成(サポカ編成/因子設計図)はcharacter-config.jsを読み込んでいる
-  // どのページからでもポップアップとして開けるので、遷移せずその場で開く。
+  // キャラ編成(サポカ編成/因子設計図)・育成計画詳細はcharacter-config.js
+  // を読み込んでいるどのページからでもポップアップとして開けるので、
+  // 遷移せずその場で開く。
   if (tab.type === 'characterConfig' && typeof window.openCharacterConfigWidget === 'function') {
     window.openCharacterConfigWidget(tab.params.plan, Number(tab.params.char));
+    return;
+  }
+  if (tab.type === 'planDetail' && typeof window.openPlanDetailWidget === 'function') {
+    window.openPlanDetailWidget(tab.params.plan);
     return;
   }
   const qs = new URLSearchParams(tab.params || {}).toString();

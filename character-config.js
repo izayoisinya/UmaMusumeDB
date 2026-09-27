@@ -149,6 +149,8 @@
   let ccPedigreeSelections = new Array(7).fill(null);
   let ccDeckPickerSlot = null;
   let ccUmaPickerTargetSlot = null;
+  let ccPlanDetailId = null;
+  let ccPlanDetailReturnModalId = null;
 
   // --- モーダルHTML注入(初回のみ) ---
   function ensureMarkup() {
@@ -180,6 +182,13 @@
         <div class="status" id="ccUmaPickerStatus"></div>
         <button type="button" class="btn secondary" id="ccUmaPickerCloseBtn">閉じる</button>
       </div>
+      <div class="modal" id="ccPlanDetailModal" role="dialog" aria-labelledby="ccPlanDetailTitle" hidden>
+        <h2 id="ccPlanDetailTitle">育成計画詳細</h2>
+        <div id="ccPlanDetailBody"></div>
+        <div class="status" id="ccPlanDetailStatus"></div>
+        <button type="button" class="btn secondary" id="ccPlanDetailPinBtn">タブに登録</button>
+        <button type="button" class="btn secondary" id="ccPlanDetailCloseBtn">閉じる</button>
+      </div>
     `;
     while (wrap.firstElementChild) overlay.appendChild(wrap.firstElementChild);
 
@@ -194,6 +203,8 @@
     document.getElementById('ccUmaPickerSearch').addEventListener('input', debounce(() => {
       renderUmaPickerGrid(document.getElementById('ccUmaPickerSearch').value);
     }, 150));
+    document.getElementById('ccPlanDetailCloseBtn').addEventListener('click', closePlanDetailWidget);
+    document.getElementById('ccPlanDetailPinBtn').addEventListener('click', handlePlanDetailPin);
   }
 
   // --- 公開エントリポイント ---
@@ -289,6 +300,132 @@
       type: 'characterConfig',
       params: { plan: plan.id, char: ccCharIndex },
       label: `${character.name}の編成`,
+    });
+  }
+
+  // --- 育成計画詳細ポップアップ ---
+  window.openPlanDetailWidget = async function (planId, options) {
+    options = options || {};
+    if (!config || !config.owner || !config.repo) {
+      alert('先に「⚙ 設定」からGitHub連携(リポジトリ所有者・リポジトリ名)を設定してください。');
+      return;
+    }
+    ensureMarkup();
+    ccPlanDetailId = planId;
+    ccPlanDetailReturnModalId = options.returnModalId || null;
+
+    const statusEl = document.getElementById('ccPlanDetailStatus');
+    statusEl.textContent = '読み込み中…';
+    statusEl.className = 'status';
+    document.getElementById('ccPlanDetailBody').innerHTML = '';
+
+    if (ccPlanDetailReturnModalId) {
+      const returnEl = document.getElementById(ccPlanDetailReturnModalId);
+      if (returnEl) returnEl.hidden = true;
+    }
+    document.getElementById('ccPlanDetailModal').hidden = false;
+    document.getElementById('modalOverlay').hidden = false;
+
+    try {
+      const [plansRaw, umas] = await Promise.all([
+        ccFetchPlansRaw(),
+        ccFetchJson(UMA_PATH),
+      ]);
+      ccPlans = plansRaw.entries;
+      ccSha = plansRaw.sha;
+      ccUmas = umas;
+    } catch (err) {
+      console.error(err);
+      statusEl.textContent = 'データの読み込みに失敗しました: ' + err.message;
+      statusEl.className = 'status error';
+      return;
+    }
+
+    const plan = ccPlans.find(p => p.id === planId);
+    if (!plan) {
+      statusEl.textContent = '対象の育成計画が見つかりませんでした。';
+      statusEl.className = 'status error';
+      return;
+    }
+
+    document.getElementById('ccPlanDetailTitle').textContent = planLabelCc(plan);
+    renderPlanDetailBody(plan);
+    statusEl.textContent = '';
+  };
+
+  function planLabelCc(plan) {
+    if (plan.title) return plan.title;
+    const names = (plan.characters || []).map(c => c.name).filter(Boolean).join('・');
+    return names || '無題';
+  }
+  function formatMonthLabelCc(month) {
+    const m = /^(\d{4})-(\d{2})$/.exec(month || '');
+    return m ? `${m[1]}年${Number(m[2])}月` : '';
+  }
+
+  function renderPlanDetailBody(plan) {
+    const monthLabel = formatMonthLabelCc(plan.month);
+    const isLoh = plan.eventType === 'loh';
+    const eventTypeLabel = isLoh ? 'リーグオブヒーローズ' : 'チャンピオンズミーティング';
+    const rc = plan.raceCondition || {};
+    const raceConditionLabel = [
+      rc.location,
+      rc.distance != null ? `${rc.distance}m` : '',
+      rc.surface,
+      rc.direction,
+      rc.season,
+      rc.weather,
+      rc.going,
+    ].filter(Boolean).join(' ／ ');
+
+    const charCardsHtml = (plan.characters || []).map((c, idx) => {
+      const uma = c.id ? ccUmas.find(u => u.id === c.id) : ccUmas.find(u => u.name === c.name);
+      const imageUrl = uma && uma.imagePath ? imageRawUrl(uma.imagePath) : null;
+      const deckCount = (c.supportDeck || []).filter(Boolean).length;
+      return `
+        <div class="plan-char-chip plan-detail-char" data-index="${idx}">
+          ${imageUrl ? `<img class="uma-icon" src="${ccEscapeHtml(imageUrl)}" alt="${ccEscapeHtml(c.name)}" loading="lazy">` : ''}
+          <span>${ccEscapeHtml(c.name)}${deckCount ? `<br><small>サポカ${deckCount}/6</small>` : ''}</span>
+        </div>
+      `;
+    }).join('');
+
+    const body = document.getElementById('ccPlanDetailBody');
+    body.innerHTML = `
+      <div class="entry-name-row">
+        ${monthLabel ? `<span class="apt-badge">${ccEscapeHtml(monthLabel)}</span>` : ''}
+        <div class="entry-name">${plan.title ? ccEscapeHtml(plan.title) : '（タイトル未設定）'}</div>
+      </div>
+      <div class="apt-row"><span class="apt-badge">${eventTypeLabel}</span></div>
+      ${raceConditionLabel ? `<div class="entry-notes">${ccEscapeHtml(raceConditionLabel)}</div>` : ''}
+      ${charCardsHtml ? `<div class="apt-group owner-group"><span class="apt-group-label">育成予定(タップして編成を設定)</span><div class="plan-char-row">${charCardsHtml}</div></div>` : ''}
+      ${plan.notes ? `<div class="entry-notes">${ccEscapeHtml(plan.notes)}</div>` : ''}
+    `;
+    body.querySelectorAll('.plan-detail-char').forEach(el => {
+      el.addEventListener('click', () => {
+        window.openCharacterConfigWidget(plan.id, Number(el.dataset.index), { returnModalId: 'ccPlanDetailModal' });
+      });
+    });
+  }
+
+  function closePlanDetailWidget() {
+    document.getElementById('ccPlanDetailModal').hidden = true;
+    if (ccPlanDetailReturnModalId && document.getElementById(ccPlanDetailReturnModalId)) {
+      document.getElementById(ccPlanDetailReturnModalId).hidden = false;
+    } else if (typeof closeModal === 'function') {
+      closeModal();
+    }
+  }
+
+  function handlePlanDetailPin() {
+    const plan = ccPlans.find(p => p.id === ccPlanDetailId);
+    if (!plan || typeof addPinnedTab !== 'function') return;
+    addPinnedTab({
+      key: `training-plan-${plan.id}`,
+      page: 'training.html',
+      type: 'planDetail',
+      params: { plan: plan.id },
+      label: planLabelCc(plan),
     });
   }
 
