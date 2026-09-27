@@ -840,8 +840,16 @@ function renderCharacterConfigBody() {
     <p class="hint">図鑑にいれば所持ウマ娘の適性を自動反映(編集不可)。図鑑に無いキャラは名前を手入力して適性を手動設定できる。</p>
     <div class="pedigree-tree">
       <div class="pedigree-row pedigree-row-self">${pedigreeCardHtml(0, '本人')}</div>
-      <div class="pedigree-row pedigree-row-parents">${pedigreeCardHtml(1, '親')}${pedigreeCardHtml(2, '親')}</div>
-      <div class="pedigree-row pedigree-row-grandparents">${pedigreeCardHtml(3, '祖')}${pedigreeCardHtml(4, '祖')}${pedigreeCardHtml(5, '祖')}${pedigreeCardHtml(6, '祖')}</div>
+      <div class="pedigree-columns">
+        <div class="pedigree-column">
+          ${pedigreeCardHtml(1, '親')}
+          <div class="pedigree-subrow">${pedigreeCardHtml(3, '祖')}${pedigreeCardHtml(4, '祖')}</div>
+        </div>
+        <div class="pedigree-column">
+          ${pedigreeCardHtml(2, '親')}
+          <div class="pedigree-subrow">${pedigreeCardHtml(5, '祖')}${pedigreeCardHtml(6, '祖')}</div>
+        </div>
+      </div>
     </div>
   `;
   [0, 1, 2, 3, 4, 5].forEach(i => {
