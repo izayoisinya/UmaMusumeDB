@@ -286,6 +286,12 @@
     const savedPedigree = character.pedigree || [];
     ccPedigreeSelections = [0, 1, 2, 3, 4, 5, 6].map(slot => {
       const p = savedPedigree[slot];
+      // 保存データにはimagePathを含めていない(図鑑参照時は常に最新の登録内容を
+      // 反映させるため)。図鑑登録済み(manual:false)の場合はidから毎回引き直す。
+      if (p && !p.manual && p.id) {
+        const uma = ccUmas.find(u => u.id === p.id);
+        if (uma) return { ...ccPedigreeEntryFromUma(uma), redFactor: p.redFactor || null };
+      }
       if (p) return p;
       if (slot === 0) {
         const uma = character.id ? ccUmas.find(u => u.id === character.id) : ccUmas.find(u => u.name === character.name);
