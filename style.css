@@ -1217,7 +1217,17 @@ mark.search-hit {
   .pedigree-card-wide .pedigree-card-main { flex-direction: column; align-items: center; }
   .pedigree-card-wide .char-select-box { width: 100%; }
   .pedigree-card-wide .pedigree-apt-area { margin-top: 8px; }
-  .pedigree-columns { flex-direction: column; align-items: center; }
+  /* 親(左右)は横並びのまま維持し、その下の祖2人だけ縦積みにして2列に収める */
+  .pedigree-columns { gap: 8px; }
+  .pedigree-column { gap: 8px; }
+  .pedigree-column .pedigree-subrow { flex-direction: column; }
+  .pedigree-card { padding: 8px; }
+  .pedigree-card-label { font-size: 11px; margin-bottom: 4px; }
+}
+@media (max-width: 400px) {
+  .pedigree-apt-area .apt-select-row { gap: 4px; }
+  .pedigree-apt-area .apt-select-row > div { min-width: 0; }
+  .pedigree-apt-area select { padding-left: 4px; padding-right: 4px; font-size: 11px; }
 }
 @media (orientation: portrait) {
   /* 縦向きでは親カードも祖カードと同じ縦積みレイアウトに戻す(本人カードは常に横並びのまま) */
