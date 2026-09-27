@@ -889,6 +889,12 @@ mark.search-hit {
 .modal-overlay.compact .modal.compact-eligible .modal-header-row:active {
   cursor: grabbing;
 }
+/* 縮小表示中は保存(サポカ編成・因子設計図の編集)は想定していないため、
+   キャラ編成ポップアップの保存ボタンを非表示にする */
+.modal-overlay.compact #characterConfigSaveBtn,
+.modal-overlay.compact #ccCharacterConfigSaveBtn {
+  display: none;
+}
 .modal-overlay.compact .modal h2 { font-size: 15px; }
 .modal {
   background: var(--panel);
@@ -1243,6 +1249,13 @@ mark.search-hit {
   min-width: 150px;
   max-width: 190px;
 }
+/* 縮小表示では祖カードの中身がアイコン56px+赤因子だけで済むため、
+   通常表示より最低幅を詰めて横並びに収まりやすくする */
+.modal-overlay.compact .pedigree-column .pedigree-subrow > .pedigree-card {
+  flex-basis: 120px;
+  min-width: 120px;
+  max-width: 160px;
+}
 .pedigree-card {
   border: 1.5px dashed var(--panel-line);
   border-radius: 10px;
@@ -1291,7 +1304,9 @@ mark.search-hit {
 .modal-overlay.compact .pedigree-card-parent,
 .modal-overlay.compact .pedigree-card:not(.pedigree-card-wide) {
   display: grid;
-  grid-template-columns: auto 1fr;
+  /* 1frではなくminmax(0,1fr)にして、selectの最小コンテンツ幅で
+     カード全体が広がり祖同士が横並びに収まらなくなるのを防ぐ */
+  grid-template-columns: auto minmax(0, 1fr);
   grid-template-areas:
     "label label"
     "icon redfactor";
