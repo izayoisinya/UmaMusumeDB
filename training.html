@@ -210,19 +210,27 @@
   </div>
 
   <div class="modal" id="planDetailModal" role="dialog" aria-labelledby="planDetailTitle" hidden>
-    <h2 id="planDetailTitle">育成計画詳細</h2>
+    <div class="modal-header-row">
+      <h2 id="planDetailTitle">育成計画詳細</h2>
+      <div class="modal-header-actions">
+        <button type="button" class="modal-icon-btn" id="planDetailPinBtn" title="タブに登録" aria-label="タブに登録">📌</button>
+        <button type="button" class="modal-icon-btn modal-close-btn" data-modal="planDetailModal" title="閉じる" aria-label="閉じる">✕</button>
+      </div>
+    </div>
     <div id="planDetailBody"></div>
-    <button type="button" class="btn secondary" id="planDetailPinBtn">タブに登録</button>
-    <button type="button" class="btn secondary modal-close-btn" data-modal="planDetailModal">閉じる</button>
   </div>
 
   <div class="modal" id="characterConfigModal" role="dialog" aria-labelledby="characterConfigTitle" hidden>
-    <h2 id="characterConfigTitle">キャラ編成</h2>
+    <div class="modal-header-row">
+      <h2 id="characterConfigTitle">キャラ編成</h2>
+      <div class="modal-header-actions">
+        <button type="button" class="modal-icon-btn" id="characterConfigSaveBtn" title="この内容を保存" aria-label="この内容を保存">💾</button>
+        <button type="button" class="modal-icon-btn" id="characterConfigPinBtn" title="タブに登録" aria-label="タブに登録">📌</button>
+        <button type="button" class="modal-icon-btn" id="characterConfigBackBtn" title="戻る" aria-label="戻る">←</button>
+      </div>
+    </div>
     <div id="characterConfigBody"></div>
     <div class="status" id="characterConfigStatus"></div>
-    <button type="button" class="btn" id="characterConfigSaveBtn">この内容を保存</button>
-    <button type="button" class="btn secondary" id="characterConfigPinBtn">タブに登録</button>
-    <button type="button" class="btn secondary" id="characterConfigBackBtn">戻る</button>
   </div>
 
   <div class="modal" id="supportCardPickerModal" role="dialog" aria-labelledby="supportCardPickerTitle" hidden>

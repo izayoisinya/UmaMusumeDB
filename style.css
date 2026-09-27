@@ -914,6 +914,37 @@ mark.search-hit {
   margin-top: 10px;
 }
 
+.modal-header-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.modal-header-row h2 { margin: 0; }
+.modal-header-actions {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+}
+.modal-icon-btn {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1.5px solid var(--panel-line);
+  background: var(--surface);
+  color: var(--ink);
+  font-size: 14px;
+  line-height: 1;
+  cursor: pointer;
+}
+.modal-icon-btn:hover { background: var(--green-dim); color: #fff; border-color: var(--green-dim); }
+
 #lightbox {
   position: fixed;
   inset: 0;

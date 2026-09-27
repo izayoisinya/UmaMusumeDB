@@ -322,10 +322,14 @@
   </div>
 
   <div class="modal" id="eventDetailModal" role="dialog" aria-labelledby="eventDetailTitle" hidden>
-    <h2 id="eventDetailTitle">イベント結果詳細</h2>
+    <div class="modal-header-row">
+      <h2 id="eventDetailTitle">イベント結果詳細</h2>
+      <div class="modal-header-actions">
+        <button type="button" class="modal-icon-btn" id="eventDetailPinBtn" title="タブに登録" aria-label="タブに登録">📌</button>
+        <button type="button" class="modal-icon-btn modal-close-btn" data-modal="eventDetailModal" title="閉じる" aria-label="閉じる">✕</button>
+      </div>
+    </div>
     <div id="eventDetailBody"></div>
-    <button type="button" class="btn secondary" id="eventDetailPinBtn">タブに登録</button>
-    <button type="button" class="btn secondary modal-close-btn" data-modal="eventDetailModal">閉じる</button>
   </div>
 
   <div class="modal" id="characterPickerModal" role="dialog" aria-labelledby="characterPickerTitle" hidden>

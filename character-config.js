@@ -170,12 +170,16 @@
     const wrap = document.createElement('div');
     wrap.innerHTML = `
       <div class="modal" id="ccCharacterConfigModal" role="dialog" aria-labelledby="ccCharacterConfigTitle" hidden>
-        <h2 id="ccCharacterConfigTitle">キャラ編成</h2>
+        <div class="modal-header-row">
+          <h2 id="ccCharacterConfigTitle">キャラ編成</h2>
+          <div class="modal-header-actions">
+            <button type="button" class="modal-icon-btn" id="ccCharacterConfigSaveBtn" title="この内容を保存" aria-label="この内容を保存">💾</button>
+            <button type="button" class="modal-icon-btn" id="ccCharacterConfigPinBtn" title="タブに登録" aria-label="タブに登録">📌</button>
+            <button type="button" class="modal-icon-btn" id="ccCharacterConfigCloseBtn" title="閉じる" aria-label="閉じる">✕</button>
+          </div>
+        </div>
         <div id="ccCharacterConfigBody"></div>
         <div class="status" id="ccCharacterConfigStatus"></div>
-        <button type="button" class="btn" id="ccCharacterConfigSaveBtn">この内容を保存</button>
-        <button type="button" class="btn secondary" id="ccCharacterConfigPinBtn">タブに登録</button>
-        <button type="button" class="btn secondary" id="ccCharacterConfigCloseBtn">閉じる</button>
       </div>
       <div class="modal" id="ccSupportCardPickerModal" role="dialog" aria-labelledby="ccSupportCardPickerTitle" hidden>
         <h2 id="ccSupportCardPickerTitle">サポートカードを選択</h2>
@@ -192,18 +196,26 @@
         <button type="button" class="btn secondary" id="ccUmaPickerCloseBtn">閉じる</button>
       </div>
       <div class="modal" id="ccPlanDetailModal" role="dialog" aria-labelledby="ccPlanDetailTitle" hidden>
-        <h2 id="ccPlanDetailTitle">育成計画詳細</h2>
+        <div class="modal-header-row">
+          <h2 id="ccPlanDetailTitle">育成計画詳細</h2>
+          <div class="modal-header-actions">
+            <button type="button" class="modal-icon-btn" id="ccPlanDetailPinBtn" title="タブに登録" aria-label="タブに登録">📌</button>
+            <button type="button" class="modal-icon-btn" id="ccPlanDetailCloseBtn" title="閉じる" aria-label="閉じる">✕</button>
+          </div>
+        </div>
         <div id="ccPlanDetailBody"></div>
         <div class="status" id="ccPlanDetailStatus"></div>
-        <button type="button" class="btn secondary" id="ccPlanDetailPinBtn">タブに登録</button>
-        <button type="button" class="btn secondary" id="ccPlanDetailCloseBtn">閉じる</button>
       </div>
       <div class="modal" id="ccEventDetailModal" role="dialog" aria-labelledby="ccEventDetailTitle" hidden>
-        <h2 id="ccEventDetailTitle">イベント結果詳細</h2>
+        <div class="modal-header-row">
+          <h2 id="ccEventDetailTitle">イベント結果詳細</h2>
+          <div class="modal-header-actions">
+            <button type="button" class="modal-icon-btn" id="ccEventDetailPinBtn" title="タブに登録" aria-label="タブに登録">📌</button>
+            <button type="button" class="modal-icon-btn" id="ccEventDetailCloseBtn" title="閉じる" aria-label="閉じる">✕</button>
+          </div>
+        </div>
         <div id="ccEventDetailBody"></div>
         <div class="status" id="ccEventDetailStatus"></div>
-        <button type="button" class="btn secondary" id="ccEventDetailPinBtn">タブに登録</button>
-        <button type="button" class="btn secondary" id="ccEventDetailCloseBtn">閉じる</button>
       </div>
     `;
     while (wrap.firstElementChild) overlay.appendChild(wrap.firstElementChild);
