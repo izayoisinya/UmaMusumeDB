@@ -322,8 +322,8 @@
     document.getElementById('ccCharacterConfigModal').hidden = true;
     if (ccReturnModalId && document.getElementById(ccReturnModalId)) {
       document.getElementById(ccReturnModalId).hidden = false;
-    } else if (typeof closeModal === 'function') {
-      closeModal();
+    } else if (typeof hideOverlayIfNoModalOpen === 'function') {
+      hideOverlayIfNoModalOpen();
     }
   }
 
@@ -449,8 +449,8 @@
     document.getElementById('ccPlanDetailModal').hidden = true;
     if (ccPlanDetailReturnModalId && document.getElementById(ccPlanDetailReturnModalId)) {
       document.getElementById(ccPlanDetailReturnModalId).hidden = false;
-    } else if (typeof closeModal === 'function') {
-      closeModal();
+    } else if (typeof hideOverlayIfNoModalOpen === 'function') {
+      hideOverlayIfNoModalOpen();
     }
   }
 
@@ -614,8 +614,8 @@
     document.getElementById('ccEventDetailModal').hidden = true;
     if (ccEventDetailReturnModalId && document.getElementById(ccEventDetailReturnModalId)) {
       document.getElementById(ccEventDetailReturnModalId).hidden = false;
-    } else if (typeof closeModal === 'function') {
-      closeModal();
+    } else if (typeof hideOverlayIfNoModalOpen === 'function') {
+      hideOverlayIfNoModalOpen();
     }
   }
 

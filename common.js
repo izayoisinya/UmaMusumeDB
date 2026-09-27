@@ -241,6 +241,17 @@ function closeModal() {
   if (overlay) overlay.hidden = true;
   document.querySelectorAll('.modal').forEach(m => { m.hidden = true; });
 }
+// character-config.js等の各ウィジェットが「戻り先が無い」時のフォールバックで使う。
+// closeModal()と違い他の開いているモーダルには触れず、
+// 他に開いているモーダルが無い時だけオーバーレイごと非表示にする
+// (縮小表示で複数ポップアップが同時に開いている時、片方の×でもう片方まで
+// 一緒に閉じてしまわないようにするため)。
+function hideOverlayIfNoModalOpen() {
+  const overlay = document.getElementById('modalOverlay');
+  if (!overlay) return;
+  const stillOpen = Array.from(document.querySelectorAll('.modal')).some(m => !m.hidden);
+  if (!stillOpen) overlay.hidden = true;
+}
 
 const modalOverlay = document.getElementById('modalOverlay');
 if (modalOverlay) {
