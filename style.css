@@ -1176,6 +1176,7 @@ mark.search-hit {
 .pedigree-card-wide { width: 380px; max-width: 100%; }
 .pedigree-card.pedigree-group-a { border: 2px solid var(--blue-dim); }
 .pedigree-card.pedigree-group-b { border: 2px solid var(--gold-dim); }
+.pedigree-card.pedigree-group-self { border: 2px solid var(--green-dim); }
 .pedigree-card-label {
   font-size: 12px;
   font-weight: 700;
@@ -1193,7 +1194,9 @@ mark.search-hit {
 .pedigree-apt-area .apt-row { justify-content: center; margin-top: 6px; flex-wrap: nowrap; }
 .pedigree-red-factor { margin-top: 10px; border-top: 1px dashed var(--panel-line); padding-top: 8px; }
 .pedigree-red-factor label { font-size: 11px; color: var(--ink-soft); font-weight: 700; margin-bottom: 4px; display: block; }
-.pedigree-red-factor select { margin-top: 6px; }
+.pedigree-red-factor-row { display: flex; align-items: center; gap: 8px; }
+.pedigree-red-factor-row .star-rating { flex-shrink: 0; }
+.pedigree-red-factor-row select { flex: 1; min-width: 0; margin-top: 0; }
 .star-rating { display: flex; gap: 2px; }
 .star-btn {
   border: none;

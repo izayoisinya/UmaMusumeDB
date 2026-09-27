@@ -639,7 +639,7 @@
     const isParent = slot === 1 || slot === 2;
     // 親A(1)・祖a(3)・祖b(4)は同じ色、親B(2)・祖c(5)・祖d(6)は別の色の枠で
     // 囲み、どの祖がどの親に対応するか見た目で分かるようにする。
-    const groupClass = [1, 3, 4].includes(slot) ? ' pedigree-group-a' : [2, 5, 6].includes(slot) ? ' pedigree-group-b' : '';
+    const groupClass = [1, 3, 4].includes(slot) ? ' pedigree-group-a' : [2, 5, 6].includes(slot) ? ' pedigree-group-b' : ' pedigree-group-self';
     return `
       <div class="pedigree-card${isWide ? ' pedigree-card-wide' : ''}${isParent ? ' pedigree-card-parent' : ''}${groupClass}">
         <div class="pedigree-card-label">${label}</div>
@@ -657,28 +657,30 @@
         ${slot !== 0 ? `
           <div class="pedigree-red-factor">
             <label>赤因子</label>
-            <div class="star-rating" id="ccPedigreeRedRarity${slot}" data-value="${Number(redFactor.rarity) || 0}">
-              ${[1, 2, 3].map(n => `<button type="button" class="star-btn${n <= (Number(redFactor.rarity) || 0) ? ' active' : ''}" data-star="${n}">★</button>`).join('')}
+            <div class="pedigree-red-factor-row">
+              <div class="star-rating" id="ccPedigreeRedRarity${slot}" data-value="${Number(redFactor.rarity) || 0}">
+                ${[1, 2, 3].map(n => `<button type="button" class="star-btn${n <= (Number(redFactor.rarity) || 0) ? ' active' : ''}" data-star="${n}">★</button>`).join('')}
+              </div>
+              <select id="ccPedigreeRedType${slot}">
+                <option value="">種類を選択</option>
+                <optgroup label="バ場">
+                  <option value="track.turf"${redFactor.type === 'track.turf' ? ' selected' : ''}>芝</option>
+                  <option value="track.dirt"${redFactor.type === 'track.dirt' ? ' selected' : ''}>ダート</option>
+                </optgroup>
+                <optgroup label="距離">
+                  <option value="distance.short"${redFactor.type === 'distance.short' ? ' selected' : ''}>短距離</option>
+                  <option value="distance.mile"${redFactor.type === 'distance.mile' ? ' selected' : ''}>マイル</option>
+                  <option value="distance.medium"${redFactor.type === 'distance.medium' ? ' selected' : ''}>中距離</option>
+                  <option value="distance.long"${redFactor.type === 'distance.long' ? ' selected' : ''}>長距離</option>
+                </optgroup>
+                <optgroup label="脚質">
+                  <option value="style.nige"${redFactor.type === 'style.nige' ? ' selected' : ''}>逃げ</option>
+                  <option value="style.senko"${redFactor.type === 'style.senko' ? ' selected' : ''}>先行</option>
+                  <option value="style.sashi"${redFactor.type === 'style.sashi' ? ' selected' : ''}>差し</option>
+                  <option value="style.oikomi"${redFactor.type === 'style.oikomi' ? ' selected' : ''}>追込</option>
+                </optgroup>
+              </select>
             </div>
-            <select id="ccPedigreeRedType${slot}">
-              <option value="">種類を選択</option>
-              <optgroup label="バ場">
-                <option value="track.turf"${redFactor.type === 'track.turf' ? ' selected' : ''}>芝</option>
-                <option value="track.dirt"${redFactor.type === 'track.dirt' ? ' selected' : ''}>ダート</option>
-              </optgroup>
-              <optgroup label="距離">
-                <option value="distance.short"${redFactor.type === 'distance.short' ? ' selected' : ''}>短距離</option>
-                <option value="distance.mile"${redFactor.type === 'distance.mile' ? ' selected' : ''}>マイル</option>
-                <option value="distance.medium"${redFactor.type === 'distance.medium' ? ' selected' : ''}>中距離</option>
-                <option value="distance.long"${redFactor.type === 'distance.long' ? ' selected' : ''}>長距離</option>
-              </optgroup>
-              <optgroup label="脚質">
-                <option value="style.nige"${redFactor.type === 'style.nige' ? ' selected' : ''}>逃げ</option>
-                <option value="style.senko"${redFactor.type === 'style.senko' ? ' selected' : ''}>先行</option>
-                <option value="style.sashi"${redFactor.type === 'style.sashi' ? ' selected' : ''}>差し</option>
-                <option value="style.oikomi"${redFactor.type === 'style.oikomi' ? ' selected' : ''}>追込</option>
-              </optgroup>
-            </select>
           </div>
         ` : ''}
       </div>
@@ -705,7 +707,6 @@
       </div>
 
       <label style="display:block;margin-top:18px;">因子設計図</label>
-      <p class="hint">図鑑にいれば所持ウマ娘の適性を自動反映(編集不可)。図鑑に無いキャラは名前を手入力して適性を手動設定できる。</p>
       <div class="pedigree-tree">
         <div class="pedigree-row pedigree-row-self">${pedigreeCardHtml(0, '本人')}</div>
         <div class="pedigree-columns">
