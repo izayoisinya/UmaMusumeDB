@@ -1266,13 +1266,37 @@ mark.search-hit {
   .pedigree-card-label { font-size: 11px; margin-bottom: 4px; }
 }
 @media (max-width: 400px) {
-  .pedigree-apt-area .apt-select-row { gap: 4px; }
+  .modal { padding: 12px; }
+  .pedigree-columns { gap: 4px; }
+  .pedigree-column { gap: 4px; }
+  .pedigree-card { padding: 4px; }
+  .pedigree-card-label { font-size: 10px; margin-bottom: 2px; }
+  .pedigree-apt-area .apt-select-row { gap: 2px; }
   .pedigree-apt-area .apt-select-row > div { min-width: 0; }
-  .pedigree-apt-area select { padding-left: 4px; padding-right: 4px; font-size: 11px; }
+  .pedigree-apt-area select {
+    padding: 4px 2px;
+    font-size: 10px;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: none;
+    text-align: center;
+    text-align-last: center;
+  }
+  .pedigree-red-factor { padding-top: 4px; margin-top: 4px; }
+  .pedigree-red-factor-row { gap: 4px; }
+  .pedigree-red-factor-row .star-btn { font-size: 15px; }
+  .pedigree-red-factor-row select {
+    padding: 4px 2px;
+    font-size: 10px;
+    appearance: none;
+    -webkit-appearance: none;
+  }
 }
 @media (orientation: portrait) {
-  /* 縦向きでは親カードも祖カードと同じ縦積みレイアウトに戻す(本人カードは常に横並びのまま) */
-  .pedigree-card-parent { width: 190px; }
+  /* 縦向きでは親カードも祖カードと同じ縦積みレイアウトに戻す(本人カードは常に横並びのまま)。
+     幅は固定pxにせず100%+max-widthにして、スマホの狭い画面でも
+     .pedigree-card側の縮小(100%)が効いてはみ出さないようにする */
+  .pedigree-card-parent { width: 100%; max-width: 190px; }
   .pedigree-card-parent .pedigree-card-main { display: block; }
   .pedigree-card-parent .char-select-box { width: auto; }
   .pedigree-card-parent .pedigree-apt-area { margin-top: 8px; }
