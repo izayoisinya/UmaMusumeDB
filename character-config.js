@@ -1,0 +1,715 @@
+// character-config.js — 全ページ共通の「キャラ編成」ポップアップ(サポカ編成6枚+因子設計図)
+//
+// training.htmlの育成計画詳細から使っていたキャラ編成機能を、どのページからでも
+// window.openCharacterConfigWidget(planId, charIndex, options) で呼び出せる共通部品に
+// 切り出したもの。必要なモーダルHTMLは初回呼び出し時に現在のページの#modalOverlayへ
+// 自動で挿入する(common.jsのopenModal/closeModalと同じ仕組みに乗る)。
+//
+// 呼び出し元のページが何を読み込んでいるかに依存しないよう、データ(育成計画/ウマ娘/
+// サポカ)は呼び出しのたびに自前で取得する。
+
+(function () {
+  const DATA_PATH = 'data/training_plans.json';
+  const UMA_PATH = 'data/uma_musume.json';
+  const SUPPORT_PATH = 'data/support_cards.json';
+
+  class CcConflictError extends Error {
+    constructor() {
+      super('conflict');
+      this.name = 'CcConflictError';
+    }
+  }
+
+  function ccEscapeHtml(s) {
+    return String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  }
+  function ccDecodeBase64Utf8(b64) {
+    const binary = atob(b64.replace(/\n/g, ''));
+    const bytes = Uint8Array.from(binary, c => c.charCodeAt(0));
+    return new TextDecoder('utf-8').decode(bytes);
+  }
+  function ccEncodeUtf8Base64(str) {
+    const bytes = new TextEncoder().encode(str);
+    let binary = '';
+    bytes.forEach(b => { binary += String.fromCharCode(b); });
+    return btoa(binary);
+  }
+
+  function ccContentsApiUrl(path) {
+    const owner = (config && config.owner) || DEFAULT_OWNER;
+    const repo = (config && config.repo) || DEFAULT_REPO;
+    return `https://api.github.com/repos/${encodeURIComponent(owner)}/${encodeURIComponent(repo)}/contents/${path}`;
+  }
+  function ccContentsApiUrlForGet(path) {
+    const url = ccContentsApiUrl(path);
+    const branch = config && config.branch;
+    return branch ? `${url}?ref=${encodeURIComponent(branch)}` : url;
+  }
+
+  async function ccFetchJson(path) {
+    const res = await fetch(ccContentsApiUrlForGet(path), { headers: authHeaders(), cache: 'no-store' });
+    if (res.status === 404) return [];
+    if (!res.ok) {
+      const errJson = await res.json().catch(() => ({}));
+      throw new Error(errJson.message || `GitHub APIエラー: ${res.status}`);
+    }
+    const json = await res.json();
+    try {
+      const arr = JSON.parse(ccDecodeBase64Utf8(json.content));
+      return Array.isArray(arr) ? arr : [];
+    } catch {
+      return [];
+    }
+  }
+
+  async function ccFetchPlansRaw() {
+    const res = await fetch(ccContentsApiUrlForGet(DATA_PATH), { headers: authHeaders(), cache: 'no-store' });
+    if (res.status === 404) return { sha: null, entries: [] };
+    if (!res.ok) {
+      const errJson = await res.json().catch(() => ({}));
+      throw new Error(errJson.message || `GitHub APIエラー: ${res.status}`);
+    }
+    const json = await res.json();
+    let entries = [];
+    try {
+      entries = JSON.parse(ccDecodeBase64Utf8(json.content));
+      if (!Array.isArray(entries)) entries = [];
+    } catch {
+      entries = [];
+    }
+    return { sha: json.sha, entries };
+  }
+
+  async function ccSavePlans(newEntries, sha, commitMessage) {
+    const body = {
+      message: commitMessage,
+      content: ccEncodeUtf8Base64(JSON.stringify(newEntries, null, 2)),
+    };
+    if (config && config.branch) body.branch = config.branch;
+    if (sha) body.sha = sha;
+    const res = await fetch(ccContentsApiUrl(DATA_PATH), {
+      method: 'PUT',
+      headers: { ...authHeaders(), 'Content-Type': 'application/json' },
+      body: JSON.stringify(body),
+    });
+    if (res.status === 409) throw new CcConflictError();
+    if (!res.ok) {
+      const errJson = await res.json().catch(() => ({}));
+      throw new Error(errJson.message || `GitHub APIエラー: ${res.status}`);
+    }
+  }
+
+  // --- 適性表示・入力の共通ヘルパー ---
+  const CC_APT_RANKS = ['S', 'A', 'B', 'C', 'D', 'E', 'F', 'G'];
+  function ccAptBadge(prefix, v) {
+    const rankClass = v ? 'rank-' + v : 'rank-none';
+    return `<span class="apt-badge ${rankClass}">${prefix}${v || '-'}</span>`;
+  }
+  function ccAptSelect(id, value) {
+    return `<select id="${id}"><option value="">-</option>${CC_APT_RANKS.map(r => `<option value="${r}"${value === r ? ' selected' : ''}>${r}</option>`).join('')}</select>`;
+  }
+  const CC_APT_TYPE_LABELS = {
+    'track.turf': '芝', 'track.dirt': 'ダート',
+    'distance.short': '短距離', 'distance.mile': 'マイル', 'distance.medium': '中距離', 'distance.long': '長距離',
+    'style.nige': '逃げ', 'style.senko': '先行', 'style.sashi': '差し', 'style.oikomi': '追込',
+  };
+  const CC_RANK_SCALE = ['G', 'F', 'E', 'D', 'C', 'B', 'A', 'S'];
+  function ccBoostRank(baseRank, bonus) {
+    if (!baseRank || !bonus) return baseRank || null;
+    const idx = CC_RANK_SCALE.indexOf(baseRank);
+    if (idx === -1) return baseRank;
+    return CC_RANK_SCALE[Math.min(CC_RANK_SCALE.length - 1, idx + bonus)];
+  }
+  function ccAptBadgeBoosted(prefix, base, bonus) {
+    if (!bonus) return ccAptBadge(prefix, base);
+    const boosted = ccBoostRank(base, bonus);
+    const rankClass = boosted ? 'rank-' + boosted : 'rank-none';
+    return `<span class="apt-badge ${rankClass}">${prefix}${boosted || '-'}<small>+${bonus}</small></span>`;
+  }
+  function ccEmptyPedigreeEntry() {
+    return { id: null, name: '', imagePath: null, manual: true, track: {}, distance: {}, style: {} };
+  }
+  function ccPedigreeEntryFromUma(u) {
+    return {
+      id: u.id, name: u.name, imagePath: u.imagePath || null, manual: false,
+      track: u.track || {}, distance: u.distance || {}, style: u.style || {},
+    };
+  }
+
+  // --- 状態 ---
+  let ccPlans = [];
+  let ccSha = null;
+  let ccUmas = [];
+  let ccSupportCards = [];
+  let ccPlanId = null;
+  let ccCharIndex = null;
+  let ccReturnModalId = null;
+  let ccOnSaved = null;
+  let ccDeckSelections = [null, null, null, null, null, null];
+  let ccPedigreeSelections = new Array(7).fill(null);
+  let ccDeckPickerSlot = null;
+  let ccUmaPickerTargetSlot = null;
+
+  // --- モーダルHTML注入(初回のみ) ---
+  function ensureMarkup() {
+    if (document.getElementById('ccCharacterConfigModal')) return;
+    const overlay = document.getElementById('modalOverlay');
+    if (!overlay) return;
+
+    const wrap = document.createElement('div');
+    wrap.innerHTML = `
+      <div class="modal" id="ccCharacterConfigModal" role="dialog" aria-labelledby="ccCharacterConfigTitle" hidden>
+        <h2 id="ccCharacterConfigTitle">キャラ編成</h2>
+        <div id="ccCharacterConfigBody"></div>
+        <div class="status" id="ccCharacterConfigStatus"></div>
+        <button type="button" class="btn" id="ccCharacterConfigSaveBtn">この内容を保存</button>
+        <button type="button" class="btn secondary" id="ccCharacterConfigPinBtn">タブに登録</button>
+        <button type="button" class="btn secondary" id="ccCharacterConfigCloseBtn">閉じる</button>
+      </div>
+      <div class="modal" id="ccSupportCardPickerModal" role="dialog" aria-labelledby="ccSupportCardPickerTitle" hidden>
+        <h2 id="ccSupportCardPickerTitle">サポートカードを選択</h2>
+        <input type="text" id="ccSupportCardPickerSearch" class="character-picker-search" placeholder="名前で検索">
+        <div id="ccSupportCardPickerGrid" class="character-picker-grid"></div>
+        <div class="status" id="ccSupportCardPickerStatus"></div>
+        <button type="button" class="btn secondary" id="ccSupportCardPickerCloseBtn">閉じる</button>
+      </div>
+      <div class="modal" id="ccUmaPickerModal" role="dialog" aria-labelledby="ccUmaPickerTitle" hidden>
+        <h2 id="ccUmaPickerTitle">ウマ娘を選択</h2>
+        <input type="text" id="ccUmaPickerSearch" class="character-picker-search" placeholder="名前で検索">
+        <div id="ccUmaPickerGrid" class="character-picker-grid"></div>
+        <div class="status" id="ccUmaPickerStatus"></div>
+        <button type="button" class="btn secondary" id="ccUmaPickerCloseBtn">閉じる</button>
+      </div>
+    `;
+    while (wrap.firstElementChild) overlay.appendChild(wrap.firstElementChild);
+
+    document.getElementById('ccCharacterConfigCloseBtn').addEventListener('click', closeWidget);
+    document.getElementById('ccCharacterConfigSaveBtn').addEventListener('click', handleSave);
+    document.getElementById('ccCharacterConfigPinBtn').addEventListener('click', handlePin);
+    document.getElementById('ccSupportCardPickerCloseBtn').addEventListener('click', closeSupportPicker);
+    document.getElementById('ccUmaPickerCloseBtn').addEventListener('click', closeUmaPicker);
+    document.getElementById('ccSupportCardPickerSearch').addEventListener('input', debounce(() => {
+      renderSupportPickerGrid(document.getElementById('ccSupportCardPickerSearch').value);
+    }, 150));
+    document.getElementById('ccUmaPickerSearch').addEventListener('input', debounce(() => {
+      renderUmaPickerGrid(document.getElementById('ccUmaPickerSearch').value);
+    }, 150));
+  }
+
+  // --- 公開エントリポイント ---
+  window.openCharacterConfigWidget = async function (planId, charIndex, options) {
+    options = options || {};
+    if (!config || !config.owner || !config.repo) {
+      alert('先に「⚙ 設定」からGitHub連携(リポジトリ所有者・リポジトリ名)を設定してください。');
+      return;
+    }
+    ensureMarkup();
+    ccPlanId = planId;
+    ccCharIndex = charIndex;
+    ccReturnModalId = options.returnModalId || null;
+    ccOnSaved = typeof options.onSaved === 'function' ? options.onSaved : null;
+
+    const statusEl = document.getElementById('ccCharacterConfigStatus');
+    statusEl.textContent = '読み込み中…';
+    statusEl.className = 'status';
+    document.getElementById('ccCharacterConfigBody').innerHTML = '';
+
+    if (ccReturnModalId) {
+      const returnEl = document.getElementById(ccReturnModalId);
+      if (returnEl) returnEl.hidden = true;
+    }
+    document.getElementById('ccCharacterConfigModal').hidden = false;
+    document.getElementById('modalOverlay').hidden = false;
+
+    try {
+      const [plansRaw, umas, supports] = await Promise.all([
+        ccFetchPlansRaw(),
+        ccFetchJson(UMA_PATH),
+        ccFetchJson(SUPPORT_PATH),
+      ]);
+      ccPlans = plansRaw.entries;
+      ccSha = plansRaw.sha;
+      ccUmas = umas;
+      ccSupportCards = supports;
+    } catch (err) {
+      console.error(err);
+      statusEl.textContent = 'データの読み込みに失敗しました: ' + err.message;
+      statusEl.className = 'status error';
+      return;
+    }
+
+    const plan = ccPlans.find(p => p.id === planId);
+    const character = plan && (plan.characters || [])[charIndex];
+    if (!plan || !character) {
+      statusEl.textContent = '対象の育成計画・キャラが見つかりませんでした。';
+      statusEl.className = 'status error';
+      return;
+    }
+
+    ccDeckSelections = [0, 1, 2, 3, 4, 5].map(i => {
+      const d = (character.supportDeck || [])[i];
+      if (!d) return null;
+      const card = d.id ? ccSupportCards.find(c => c.id === d.id) : ccSupportCards.find(c => c.name === d.name);
+      return card
+        ? { id: card.id, name: card.name, imagePath: card.imagePath || null }
+        : { id: d.id || null, name: d.name, imagePath: null };
+    });
+    const savedPedigree = character.pedigree || [];
+    ccPedigreeSelections = [0, 1, 2, 3, 4, 5, 6].map(slot => {
+      const p = savedPedigree[slot];
+      if (p) return p;
+      if (slot === 0) {
+        const uma = character.id ? ccUmas.find(u => u.id === character.id) : ccUmas.find(u => u.name === character.name);
+        return uma ? ccPedigreeEntryFromUma(uma) : { id: null, name: character.name, imagePath: null, manual: true, track: {}, distance: {}, style: {} };
+      }
+      return null;
+    });
+
+    document.getElementById('ccCharacterConfigTitle').textContent = `${character.name}の編成`;
+    renderBody();
+    statusEl.textContent = '';
+  };
+
+  function closeWidget() {
+    document.getElementById('ccCharacterConfigModal').hidden = true;
+    if (ccReturnModalId && document.getElementById(ccReturnModalId)) {
+      document.getElementById(ccReturnModalId).hidden = false;
+    } else if (typeof closeModal === 'function') {
+      closeModal();
+    }
+  }
+
+  function handlePin() {
+    const plan = ccPlans.find(p => p.id === ccPlanId);
+    const character = plan && (plan.characters || [])[ccCharIndex];
+    if (!plan || !character || typeof addPinnedTab !== 'function') return;
+    addPinnedTab({
+      key: `training-char-${plan.id}-${ccCharIndex}`,
+      page: 'training.html',
+      type: 'characterConfig',
+      params: { plan: plan.id, char: ccCharIndex },
+      label: `${character.name}の編成`,
+    });
+  }
+
+  // --- 本体描画 ---
+  function pedigreeCardHtml(slot, label) {
+    const sel = ccPedigreeSelections[slot];
+    const redFactor = (sel && sel.redFactor) || {};
+    const isWide = slot <= 2;
+    const isParent = slot === 1 || slot === 2;
+    return `
+      <div class="pedigree-card${isWide ? ' pedigree-card-wide' : ''}${isParent ? ' pedigree-card-parent' : ''}">
+        <div class="pedigree-card-label">${label}</div>
+        <div class="pedigree-card-main">
+          <div class="char-select-box" id="ccPedigreeBox${slot}">
+            <button type="button" class="char-select-clear-btn" id="ccPedigreeClearBtn${slot}" hidden>×</button>
+            <div id="ccPedigreeEmpty${slot}">タップして図鑑から選択</div>
+            <div class="char-select-filled-inner" id="ccPedigreeFilled${slot}" hidden>
+              <img class="uma-icon" id="ccPedigreeIcon${slot}" alt="">
+              <span id="ccPedigreeName${slot}"></span>
+            </div>
+          </div>
+          <div class="pedigree-apt-area" id="ccPedigreeAptArea${slot}"></div>
+        </div>
+        ${slot !== 0 ? `
+          <div class="pedigree-red-factor">
+            <label>赤因子</label>
+            <div class="star-rating" id="ccPedigreeRedRarity${slot}" data-value="${Number(redFactor.rarity) || 0}">
+              ${[1, 2, 3].map(n => `<button type="button" class="star-btn${n <= (Number(redFactor.rarity) || 0) ? ' active' : ''}" data-star="${n}">★</button>`).join('')}
+            </div>
+            <select id="ccPedigreeRedType${slot}">
+              <option value="">種類を選択</option>
+              <optgroup label="馬場">
+                <option value="track.turf"${redFactor.type === 'track.turf' ? ' selected' : ''}>芝</option>
+                <option value="track.dirt"${redFactor.type === 'track.dirt' ? ' selected' : ''}>ダート</option>
+              </optgroup>
+              <optgroup label="距離">
+                <option value="distance.short"${redFactor.type === 'distance.short' ? ' selected' : ''}>短距離</option>
+                <option value="distance.mile"${redFactor.type === 'distance.mile' ? ' selected' : ''}>マイル</option>
+                <option value="distance.medium"${redFactor.type === 'distance.medium' ? ' selected' : ''}>中距離</option>
+                <option value="distance.long"${redFactor.type === 'distance.long' ? ' selected' : ''}>長距離</option>
+              </optgroup>
+              <optgroup label="脚質">
+                <option value="style.nige"${redFactor.type === 'style.nige' ? ' selected' : ''}>逃げ</option>
+                <option value="style.senko"${redFactor.type === 'style.senko' ? ' selected' : ''}>先行</option>
+                <option value="style.sashi"${redFactor.type === 'style.sashi' ? ' selected' : ''}>差し</option>
+                <option value="style.oikomi"${redFactor.type === 'style.oikomi' ? ' selected' : ''}>追込</option>
+              </optgroup>
+            </select>
+          </div>
+        ` : ''}
+      </div>
+    `;
+  }
+
+  function renderBody() {
+    const body = document.getElementById('ccCharacterConfigBody');
+    body.innerHTML = `
+      <label>サポカ編成（6枚）</label>
+      <div class="support-deck-grid">
+        ${[0, 1, 2, 3, 4, 5].map(i => `
+          <div class="team-slot">
+            <div class="char-select-box" id="ccDeckSlotBox${i}">
+              <button type="button" class="char-select-clear-btn" id="ccDeckSlotClearBtn${i}" hidden>×</button>
+              <div id="ccDeckSlotEmpty${i}">タップして選択</div>
+              <div class="char-select-filled-inner" id="ccDeckSlotFilled${i}" hidden>
+                <img class="uma-icon" id="ccDeckSlotIcon${i}" alt="">
+                <span id="ccDeckSlotName${i}"></span>
+              </div>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+
+      <label style="display:block;margin-top:18px;">因子設計図</label>
+      <p class="hint">図鑑にいれば所持ウマ娘の適性を自動反映(編集不可)。図鑑に無いキャラは名前を手入力して適性を手動設定できる。</p>
+      <div class="pedigree-tree">
+        <div class="pedigree-row pedigree-row-self">${pedigreeCardHtml(0, '本人')}</div>
+        <div class="pedigree-row pedigree-row-parents">${pedigreeCardHtml(1, '親')}${pedigreeCardHtml(2, '親')}</div>
+        <div class="pedigree-row pedigree-row-grandparents">${pedigreeCardHtml(3, '祖')}${pedigreeCardHtml(4, '祖')}${pedigreeCardHtml(5, '祖')}${pedigreeCardHtml(6, '祖')}</div>
+      </div>
+    `;
+    [0, 1, 2, 3, 4, 5].forEach(i => {
+      updateDeckSlotBox(i);
+      document.getElementById('ccDeckSlotBox' + i).addEventListener('click', () => openSupportPicker(i));
+      document.getElementById('ccDeckSlotClearBtn' + i).addEventListener('click', e => {
+        e.stopPropagation();
+        ccDeckSelections[i] = null;
+        updateDeckSlotBox(i);
+      });
+    });
+    [0, 1, 2, 3, 4, 5, 6].forEach(slot => {
+      document.getElementById('ccPedigreeBox' + slot).addEventListener('click', () => openUmaPickerForPedigree(slot));
+      document.getElementById('ccPedigreeClearBtn' + slot).addEventListener('click', e => {
+        e.stopPropagation();
+        const keepRedFactor = ccPedigreeSelections[slot] && ccPedigreeSelections[slot].redFactor;
+        ccPedigreeSelections[slot] = keepRedFactor ? { ...ccEmptyPedigreeEntry(), redFactor: keepRedFactor } : null;
+        updatePedigreeCard(slot);
+      });
+      updatePedigreeCard(slot);
+      if (slot !== 0) {
+        const rarityEl = document.getElementById('ccPedigreeRedRarity' + slot);
+        rarityEl.querySelectorAll('.star-btn').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const n = Number(btn.dataset.star);
+            const current = Number(rarityEl.dataset.value) || 0;
+            const newValue = current === n ? 0 : n;
+            if (!ccPedigreeSelections[slot]) ccPedigreeSelections[slot] = ccEmptyPedigreeEntry();
+            ccPedigreeSelections[slot].redFactor = ccPedigreeSelections[slot].redFactor || {};
+            ccPedigreeSelections[slot].redFactor.rarity = newValue;
+            rarityEl.dataset.value = newValue;
+            rarityEl.querySelectorAll('.star-btn').forEach(b => {
+              b.classList.toggle('active', Number(b.dataset.star) <= newValue);
+            });
+            refreshPedigreeDependents(slot);
+          });
+        });
+        document.getElementById('ccPedigreeRedType' + slot).addEventListener('change', e => {
+          if (!ccPedigreeSelections[slot]) ccPedigreeSelections[slot] = ccEmptyPedigreeEntry();
+          ccPedigreeSelections[slot].redFactor = ccPedigreeSelections[slot].redFactor || {};
+          ccPedigreeSelections[slot].redFactor.type = e.target.value;
+          refreshPedigreeDependents(slot);
+        });
+      }
+    });
+  }
+
+  function computePairBonus(slotA, slotB) {
+    const bonuses = {};
+    const add = (type, stars) => {
+      if (!type || !stars) return;
+      bonuses[type] = Math.min(4, (bonuses[type] || 0) + Math.ceil(stars / 3));
+    };
+    const rfA = ccPedigreeSelections[slotA] && ccPedigreeSelections[slotA].redFactor;
+    const rfB = ccPedigreeSelections[slotB] && ccPedigreeSelections[slotB].redFactor;
+    const typeA = rfA && rfA.type;
+    const typeB = rfB && rfB.type;
+    const starA = (rfA && Number(rfA.rarity)) || 0;
+    const starB = (rfB && Number(rfB.rarity)) || 0;
+    if (typeA && typeA === typeB) {
+      add(typeA, starA + starB);
+    } else {
+      if (typeA) add(typeA, starA);
+      if (typeB) add(typeB, starB);
+    }
+    return bonuses;
+  }
+  function mergeBonuses(...bonusObjs) {
+    const merged = {};
+    bonusObjs.forEach(b => {
+      Object.entries(b).forEach(([type, val]) => {
+        merged[type] = Math.min(4, (merged[type] || 0) + val);
+      });
+    });
+    return merged;
+  }
+  function bonusesForPedigreeSlot(slot) {
+    if (slot === 0) return mergeBonuses(computePairBonus(1, 2), computePairBonus(3, 4), computePairBonus(5, 6));
+    if (slot === 1) return computePairBonus(3, 4);
+    if (slot === 2) return computePairBonus(5, 6);
+    return {};
+  }
+  function refreshPedigreeDependents(sourceSlot) {
+    renderPedigreeAptArea(0);
+    if (sourceSlot === 3 || sourceSlot === 4) renderPedigreeAptArea(1);
+    if (sourceSlot === 5 || sourceSlot === 6) renderPedigreeAptArea(2);
+  }
+
+  function updatePedigreeCard(slot) {
+    const sel = ccPedigreeSelections[slot];
+    const hasRegistrySel = !!(sel && !sel.manual);
+    const box = document.getElementById('ccPedigreeBox' + slot);
+    const emptyEl = document.getElementById('ccPedigreeEmpty' + slot);
+    const filledEl = document.getElementById('ccPedigreeFilled' + slot);
+    const iconEl = document.getElementById('ccPedigreeIcon' + slot);
+    const nameEl = document.getElementById('ccPedigreeName' + slot);
+    const clearBtn = document.getElementById('ccPedigreeClearBtn' + slot);
+    if (hasRegistrySel) {
+      box.classList.add('filled');
+      emptyEl.hidden = true;
+      filledEl.hidden = false;
+      if (sel.imagePath) {
+        iconEl.src = imageRawUrl(sel.imagePath);
+        iconEl.hidden = false;
+      } else {
+        iconEl.hidden = true;
+      }
+      nameEl.textContent = sel.name;
+      clearBtn.hidden = false;
+    } else {
+      box.classList.remove('filled');
+      emptyEl.hidden = false;
+      filledEl.hidden = true;
+      clearBtn.hidden = true;
+    }
+    renderPedigreeAptArea(slot);
+  }
+
+  function renderPedigreeAptArea(slot) {
+    const area = document.getElementById('ccPedigreeAptArea' + slot);
+    if (!area) return;
+    const sel = ccPedigreeSelections[slot];
+    const hasRegistrySel = !!(sel && !sel.manual);
+    const bonuses = bonusesForPedigreeSlot(slot);
+
+    if (hasRegistrySel) {
+      const track = sel.track || {};
+      const distance = sel.distance || {};
+      const style = sel.style || {};
+      area.innerHTML = `
+        <div class="apt-row">${ccAptBadgeBoosted('芝', track.turf, bonuses['track.turf'])}${ccAptBadgeBoosted('ダ', track.dirt, bonuses['track.dirt'])}</div>
+        <div class="apt-row">${ccAptBadgeBoosted('短', distance.short, bonuses['distance.short'])}${ccAptBadgeBoosted('マ', distance.mile, bonuses['distance.mile'])}${ccAptBadgeBoosted('中', distance.medium, bonuses['distance.medium'])}${ccAptBadgeBoosted('長', distance.long, bonuses['distance.long'])}</div>
+        <div class="apt-row">${ccAptBadgeBoosted('逃', style.nige, bonuses['style.nige'])}${ccAptBadgeBoosted('先', style.senko, bonuses['style.senko'])}${ccAptBadgeBoosted('差', style.sashi, bonuses['style.sashi'])}${ccAptBadgeBoosted('追', style.oikomi, bonuses['style.oikomi'])}</div>
+      `;
+      return;
+    }
+
+    const track = (sel && sel.track) || {};
+    const distance = (sel && sel.distance) || {};
+    const style = (sel && sel.style) || {};
+    const bonusEntries = Object.entries(bonuses);
+    area.innerHTML = `
+      <input type="text" id="ccPedigreeManualName${slot}" placeholder="図鑑に無い場合は名前を手入力" value="${ccEscapeHtml((sel && sel.name) || '')}">
+      <div class="apt-select-row">
+        <div><span>芝</span>${ccAptSelect('ccPedigreeTurf' + slot, track.turf)}</div>
+        <div><span>ダート</span>${ccAptSelect('ccPedigreeDirt' + slot, track.dirt)}</div>
+      </div>
+      <div class="apt-select-row">
+        <div><span>短</span>${ccAptSelect('ccPedigreeShort' + slot, distance.short)}</div>
+        <div><span>マ</span>${ccAptSelect('ccPedigreeMile' + slot, distance.mile)}</div>
+        <div><span>中</span>${ccAptSelect('ccPedigreeMedium' + slot, distance.medium)}</div>
+        <div><span>長</span>${ccAptSelect('ccPedigreeLong' + slot, distance.long)}</div>
+      </div>
+      <div class="apt-select-row">
+        <div><span>逃</span>${ccAptSelect('ccPedigreeNige' + slot, style.nige)}</div>
+        <div><span>先</span>${ccAptSelect('ccPedigreeSenko' + slot, style.senko)}</div>
+        <div><span>差</span>${ccAptSelect('ccPedigreeSashi' + slot, style.sashi)}</div>
+        <div><span>追</span>${ccAptSelect('ccPedigreeOikomi' + slot, style.oikomi)}</div>
+      </div>
+      ${bonusEntries.length ? `<p class="pedigree-bonus-hint">${slot === 0 ? '親・祖父母' : '祖父母'}の赤因子による自動加算: ${bonusEntries.map(([k, v]) => `${CC_APT_TYPE_LABELS[k] || k}+${v}`).join('、')}</p>` : ''}
+    `;
+    document.getElementById('ccPedigreeManualName' + slot).addEventListener('input', e => {
+      if (!ccPedigreeSelections[slot]) ccPedigreeSelections[slot] = ccEmptyPedigreeEntry();
+      ccPedigreeSelections[slot].name = e.target.value.trim();
+      ccPedigreeSelections[slot].manual = true;
+    });
+    [
+      ['ccPedigreeTurf' + slot, 'track', 'turf'],
+      ['ccPedigreeDirt' + slot, 'track', 'dirt'],
+      ['ccPedigreeShort' + slot, 'distance', 'short'],
+      ['ccPedigreeMile' + slot, 'distance', 'mile'],
+      ['ccPedigreeMedium' + slot, 'distance', 'medium'],
+      ['ccPedigreeLong' + slot, 'distance', 'long'],
+      ['ccPedigreeNige' + slot, 'style', 'nige'],
+      ['ccPedigreeSenko' + slot, 'style', 'senko'],
+      ['ccPedigreeSashi' + slot, 'style', 'sashi'],
+      ['ccPedigreeOikomi' + slot, 'style', 'oikomi'],
+    ].forEach(([id, group, key]) => {
+      document.getElementById(id).addEventListener('change', e => {
+        if (!ccPedigreeSelections[slot]) ccPedigreeSelections[slot] = ccEmptyPedigreeEntry();
+        ccPedigreeSelections[slot].manual = true;
+        ccPedigreeSelections[slot][group][key] = e.target.value || null;
+      });
+    });
+  }
+
+  function updateDeckSlotBox(i) {
+    const sel = ccDeckSelections[i];
+    const box = document.getElementById('ccDeckSlotBox' + i);
+    const emptyEl = document.getElementById('ccDeckSlotEmpty' + i);
+    const filledEl = document.getElementById('ccDeckSlotFilled' + i);
+    const iconEl = document.getElementById('ccDeckSlotIcon' + i);
+    const nameEl = document.getElementById('ccDeckSlotName' + i);
+    const clearBtn = document.getElementById('ccDeckSlotClearBtn' + i);
+    if (sel) {
+      box.classList.add('filled');
+      emptyEl.hidden = true;
+      filledEl.hidden = false;
+      if (sel.imagePath) {
+        iconEl.src = imageRawUrl(sel.imagePath);
+        iconEl.hidden = false;
+      } else {
+        iconEl.hidden = true;
+      }
+      nameEl.textContent = sel.name;
+      clearBtn.hidden = false;
+    } else {
+      box.classList.remove('filled');
+      emptyEl.hidden = false;
+      filledEl.hidden = true;
+      clearBtn.hidden = true;
+    }
+  }
+
+  // --- サポートカードピッカー ---
+  function openSupportPicker(slot) {
+    ccDeckPickerSlot = slot;
+    document.getElementById('ccSupportCardPickerSearch').value = '';
+    renderSupportPickerGrid('');
+    document.getElementById('ccCharacterConfigModal').hidden = true;
+    document.getElementById('ccSupportCardPickerModal').hidden = false;
+  }
+  function closeSupportPicker() {
+    document.getElementById('ccSupportCardPickerModal').hidden = true;
+    document.getElementById('ccCharacterConfigModal').hidden = false;
+  }
+  function renderSupportPickerGrid(keyword) {
+    const grid = document.getElementById('ccSupportCardPickerGrid');
+    const kw = keyword.trim().toLowerCase();
+    const filtered = kw ? ccSupportCards.filter(c => (c.name || '').toLowerCase().includes(kw)) : ccSupportCards;
+    grid.innerHTML = '';
+    const fragment = document.createDocumentFragment();
+    filtered.forEach(c => {
+      const tile = document.createElement('div');
+      tile.className = 'character-picker-tile';
+      const imageUrl = c.imagePath ? imageRawUrl(c.imagePath) : '';
+      tile.innerHTML = `
+        ${imageUrl ? `<img src="${ccEscapeHtml(imageUrl)}" alt="${ccEscapeHtml(c.name)}" loading="lazy">` : ''}
+        <span>${ccEscapeHtml(c.name)}</span>
+      `;
+      tile.addEventListener('click', () => selectSupportCard(c));
+      fragment.appendChild(tile);
+    });
+    grid.appendChild(fragment);
+    document.getElementById('ccSupportCardPickerStatus').textContent = ccSupportCards.length
+      ? (filtered.length ? '' : '該当するサポートカードが見つかりません。')
+      : 'サポカ図鑑にまだ登録がありません。';
+  }
+  function selectSupportCard(c) {
+    if (ccDeckPickerSlot == null) return;
+    ccDeckSelections[ccDeckPickerSlot] = { id: c.id, name: c.name, imagePath: c.imagePath || null };
+    updateDeckSlotBox(ccDeckPickerSlot);
+    closeSupportPicker();
+  }
+
+  // --- ウマ娘ピッカー(因子設計図の各枠用) ---
+  function openUmaPickerForPedigree(slot) {
+    ccUmaPickerTargetSlot = slot;
+    document.getElementById('ccUmaPickerSearch').value = '';
+    renderUmaPickerGrid('');
+    document.getElementById('ccCharacterConfigModal').hidden = true;
+    document.getElementById('ccUmaPickerModal').hidden = false;
+  }
+  function closeUmaPicker() {
+    document.getElementById('ccUmaPickerModal').hidden = true;
+    document.getElementById('ccCharacterConfigModal').hidden = false;
+  }
+  function renderUmaPickerGrid(keyword) {
+    const grid = document.getElementById('ccUmaPickerGrid');
+    const kw = keyword.trim().toLowerCase();
+    const filtered = kw ? ccUmas.filter(u => (u.name || '').toLowerCase().includes(kw)) : ccUmas;
+    grid.innerHTML = '';
+    const fragment = document.createDocumentFragment();
+    filtered.forEach(u => {
+      const tile = document.createElement('div');
+      tile.className = 'character-picker-tile';
+      const imageUrl = u.imagePath ? imageRawUrl(u.imagePath) : '';
+      tile.innerHTML = `
+        ${imageUrl ? `<img src="${ccEscapeHtml(imageUrl)}" alt="${ccEscapeHtml(u.name)}" loading="lazy">` : ''}
+        <span>${ccEscapeHtml(u.name)}</span>
+      `;
+      tile.addEventListener('click', () => selectUmaForPedigree(u));
+      fragment.appendChild(tile);
+    });
+    grid.appendChild(fragment);
+    document.getElementById('ccUmaPickerStatus').textContent = ccUmas.length
+      ? (filtered.length ? '' : '該当するウマ娘が見つかりません。')
+      : 'ウマ娘図鑑にまだ登録がありません。';
+  }
+  function selectUmaForPedigree(u) {
+    if (ccUmaPickerTargetSlot == null) return;
+    const slot = ccUmaPickerTargetSlot;
+    const existingRedFactor = ccPedigreeSelections[slot] && ccPedigreeSelections[slot].redFactor;
+    ccPedigreeSelections[slot] = ccPedigreeEntryFromUma(u);
+    if (existingRedFactor) ccPedigreeSelections[slot].redFactor = existingRedFactor;
+    updatePedigreeCard(slot);
+    closeUmaPicker();
+  }
+
+  // --- 保存 ---
+  async function handleSave() {
+    const statusEl = document.getElementById('ccCharacterConfigStatus');
+    if (!config || !config.token) {
+      statusEl.textContent = '保存にはPATが必要です。設定でPATを入力してください。';
+      statusEl.className = 'status error';
+      return;
+    }
+    const plan = ccPlans.find(p => p.id === ccPlanId);
+    if (!plan) return;
+    const character = (plan.characters || [])[ccCharIndex];
+    if (!character) return;
+    character.supportDeck = ccDeckSelections.map(sel => sel ? { id: sel.id, name: sel.name } : null);
+    character.pedigree = ccPedigreeSelections.map(sel => sel ? {
+      id: sel.id || null,
+      name: sel.name || '',
+      manual: !!sel.manual,
+      track: sel.track || {},
+      distance: sel.distance || {},
+      style: sel.style || {},
+      redFactor: sel.redFactor ? { rarity: Number(sel.redFactor.rarity) || 0, type: sel.redFactor.type || '' } : null,
+    } : null);
+    const updated = ccPlans.map(p => p.id === plan.id ? plan : p);
+    statusEl.textContent = '保存しています…';
+    statusEl.className = 'status';
+    const saveBtn = document.getElementById('ccCharacterConfigSaveBtn');
+    saveBtn.disabled = true;
+    try {
+      await ccSavePlans(updated, ccSha, `育成計画サポカ編成更新: ${character.name}`);
+      ccPlans = updated;
+      statusEl.textContent = '保存しました。';
+      if (ccOnSaved) ccOnSaved(updated);
+      window.dispatchEvent(new CustomEvent('training-plans-updated', { detail: { plans: updated } }));
+    } catch (err) {
+      console.error(err);
+      if (err instanceof CcConflictError) {
+        statusEl.textContent = '他の端末で更新されています。もう一度開き直してから保存してください。';
+      } else {
+        statusEl.textContent = '保存中にエラーが発生しました: ' + err.message;
+      }
+      statusEl.className = 'status error';
+    } finally {
+      saveBtn.disabled = false;
+    }
+  }
+})();

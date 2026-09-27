@@ -10,6 +10,7 @@ class ConflictError extends Error {
 let currentSha = null;
 let allEntries = [];
 let editingEntryId = null;
+let trainingPlanIndexByName = new Map();
 
 function contentsApiUrl() {
   const owner = (config && config.owner) || DEFAULT_OWNER;
@@ -384,6 +385,39 @@ async function loadEntries() {
     setListStatus('読み込みに失敗しました: ' + err.message, true);
   }
   renderEntries();
+  loadTrainingPlanIndex();
+}
+
+function formatTrainingPlanLabel(plan) {
+  if (plan.title) return plan.title;
+  const m = /^(\d{4})-(\d{2})$/.exec(plan.month || '');
+  return m ? `${m[1]}年${Number(m[2])}月の育成計画` : '無題の育成計画';
+}
+
+async function loadTrainingPlanIndex() {
+  try {
+    const owner = (config && config.owner) || DEFAULT_OWNER;
+    const repo = (config && config.repo) || DEFAULT_REPO;
+    const url = `https://api.github.com/repos/${encodeURIComponent(owner)}/${encodeURIComponent(repo)}/contents/data/training_plans.json`;
+    const branch = config && config.branch;
+    const res = await fetch(branch ? `${url}?ref=${encodeURIComponent(branch)}` : url, { headers: authHeaders(), cache: 'no-store' });
+    if (!res.ok) return;
+    const json = await res.json();
+    const plans = JSON.parse(decodeBase64Utf8(json.content));
+    const index = new Map();
+    (Array.isArray(plans) ? plans : []).forEach(plan => {
+      (plan.characters || []).forEach((c, charIndex) => {
+        if (!c || !c.name) return;
+        const list = index.get(c.name) || [];
+        list.push({ planId: plan.id, charIndex, label: formatTrainingPlanLabel(plan) });
+        index.set(c.name, list);
+      });
+    });
+    trainingPlanIndexByName = index;
+    renderEntries();
+  } catch (err) {
+    console.error(err);
+  }
 }
 
 async function deleteEntry(id, btn) {
@@ -605,6 +639,7 @@ function renderEntries() {
     const imageUrl = entry.imagePath ? imageRawUrl(entry.imagePath) : null;
     const whiteCount = (entry.white || []).length;
     const whiteSelfCount = getWhiteSelfCount(entry);
+    const planMatches = trainingPlanIndexByName.get(entry.character) || [];
 
     row.innerHTML = `
       <div class="entry-main">
@@ -621,11 +656,16 @@ function renderEntries() {
           <button class="entry-edit" data-id="${entry.id}">編集</button>
           <button class="entry-del" data-id="${entry.id}">削除</button>
         </div>
+        ${planMatches.map((m, i) => `<button class="entry-plan-link" data-plan-idx="${i}">${escapeAttr(m.label)}の編成を見る</button>`).join('')}
         ${imageUrl ? `<div class="entry-image"><img class="entry-thumb" src="${escapeAttr(imageUrl)}" alt="${escapeAttr(entry.character)}の継承画面" loading="lazy"></div>` : ''}
       </div>
     `;
     row.querySelector('.entry-edit').addEventListener('click', () => startEditEntry(entry.id));
     row.querySelector('.entry-del').addEventListener('click', e => askDeleteConfirm(entry, e.currentTarget));
+    row.querySelectorAll('.entry-plan-link').forEach(btn => {
+      const m = planMatches[Number(btn.dataset.planIdx)];
+      if (m) btn.addEventListener('click', () => window.openCharacterConfigWidget(m.planId, m.charIndex));
+    });
     const thumb = row.querySelector('.entry-thumb');
     if (thumb) thumb.addEventListener('click', () => openLightbox(imageUrl));
     container.appendChild(row);
