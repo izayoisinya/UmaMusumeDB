@@ -823,7 +823,7 @@ function pedigreeCardHtml(slot, label) {
 function renderCharacterConfigBody() {
   const body = document.getElementById('characterConfigBody');
   body.innerHTML = `
-    <label>サポカ編成（6枚）</label>
+    <label class="config-section-title">サポカ編成（6枚）</label>
     <div class="support-deck-grid">
       ${[0, 1, 2, 3, 4, 5].map(i => `
         <div class="team-slot">
@@ -839,7 +839,7 @@ function renderCharacterConfigBody() {
       `).join('')}
     </div>
 
-    <label style="display:block;margin-top:18px;">因子設計図</label>
+    <label class="config-section-title" style="margin-top:18px;">因子設計図</label>
     <div class="pedigree-tree">
       <div class="pedigree-row pedigree-row-self">${pedigreeCardHtml(0, '本人')}</div>
       <div class="pedigree-columns">

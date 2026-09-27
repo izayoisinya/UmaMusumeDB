@@ -380,6 +380,14 @@ label {
   display: block;
   margin-bottom: 3px;
 }
+.config-section-title {
+  font-size: 14px;
+  color: var(--green-dim);
+  font-weight: 800;
+  padding-left: 8px;
+  border-left: 4px solid var(--green-dim);
+  margin-bottom: 8px;
+}
 input[type=text], input[type=number], input[type=password], input[type=month], textarea, select {
   width: 100%;
   font-family: 'M PLUS Rounded 1c', sans-serif;
@@ -1183,6 +1191,7 @@ mark.search-hit {
   pointer-events: none;
 }
 .pedigree-card .char-select-box { height: 90px; }
+.pedigree-card:not(.pedigree-card-wide) .char-select-box { height: 70px; }
 
 .pedigree-tree {
   display: flex;
@@ -1263,6 +1272,7 @@ mark.search-hit {
   gap: 8px;
 }
 .pedigree-red-factor label { font-size: 11px; color: var(--ink-soft); font-weight: 700; flex-shrink: 0; }
+.pedigree-card:not(.pedigree-card-wide) .pedigree-red-factor label { display: none; }
 .pedigree-red-factor-row { display: flex; align-items: center; gap: 8px; flex: 1; min-width: 120px; }
 .pedigree-red-factor-row .star-rating { flex-shrink: 0; }
 .pedigree-red-factor-row select { flex: 1; min-width: 0; margin-top: 0; }
