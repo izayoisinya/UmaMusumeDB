@@ -874,7 +874,7 @@ mark.search-hit {
   left: auto;
   top: auto;
   margin: 0;
-  width: 640px;
+  width: 720px;
   max-width: 86vw;
   max-height: 46vh;
   transform-origin: top left;
@@ -890,9 +890,19 @@ mark.search-hit {
   cursor: grabbing;
 }
 /* 縮小表示中は保存(サポカ編成・因子設計図の編集)は想定していないため、
-   キャラ編成ポップアップの保存ボタンを非表示にする */
+   キャラ編成ポップアップの保存ボタンを非表示にし、サポカ編成・
+   因子設計図の各操作(選択・解除・★評価・種類選択)も無効化して
+   閲覧専用にする */
 .modal-overlay.compact #characterConfigSaveBtn,
 .modal-overlay.compact #ccCharacterConfigSaveBtn {
+  display: none;
+}
+.modal-overlay.compact .support-deck-grid,
+.modal-overlay.compact .pedigree-tree {
+  pointer-events: none;
+}
+/* 縮小表示では因子設計図の画像に重ねた名前は小さすぎて読めないため非表示 */
+.modal-overlay.compact .pedigree-card .char-select-filled-inner span {
   display: none;
 }
 .modal-overlay.compact .modal h2 { font-size: 15px; }
