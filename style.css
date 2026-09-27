@@ -1167,7 +1167,7 @@ mark.search-hit {
   background: linear-gradient(to top, rgba(0,0,0,0.55), rgba(0,0,0,0));
   pointer-events: none;
 }
-.pedigree-card .char-select-box { height: 130px; }
+.pedigree-card .char-select-box { height: 90px; }
 
 .pedigree-tree {
   display: flex;
@@ -1223,13 +1223,13 @@ mark.search-hit {
   text-align: center;
 }
 .pedigree-card-wide .pedigree-card-main { display: flex; align-items: flex-start; gap: 12px; }
-.pedigree-card-wide .char-select-box { flex-shrink: 0; width: 140px; }
+.pedigree-card-wide .char-select-box { flex-shrink: 0; width: 100px; }
 .pedigree-apt-area { margin-top: 8px; flex: 1; min-width: 0; }
 .pedigree-card-wide .pedigree-apt-area { margin-top: 0; }
 .pedigree-apt-area input[type=text] { margin-bottom: 6px; }
 .pedigree-apt-area .apt-select-row { margin-top: 6px; flex-wrap: nowrap; }
 .pedigree-apt-area .apt-select-row > div { min-width: 0; }
-.pedigree-apt-area .apt-row { justify-content: center; margin-top: 6px; flex-wrap: nowrap; }
+.pedigree-apt-area .apt-row { justify-content: flex-start; margin-top: 6px; flex-wrap: nowrap; }
 .pedigree-red-factor { margin-top: 10px; border-top: 1px dashed var(--panel-line); padding-top: 8px; }
 .pedigree-red-factor label { font-size: 11px; color: var(--ink-soft); font-weight: 700; margin-bottom: 4px; display: block; }
 .pedigree-red-factor-row { display: flex; align-items: center; gap: 8px; }
