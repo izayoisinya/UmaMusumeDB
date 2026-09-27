@@ -883,9 +883,9 @@ mark.search-hit {
   top: auto;
   margin: 0;
   pointer-events: auto;
-  width: 480px;
+  width: 640px;
   max-width: 86vw;
-  max-height: 70vh;
+  max-height: 46vh;
   transform-origin: top left;
   transform: scale(0.6);
   box-shadow: 0 8px 26px rgba(0,0,0,0.45);
@@ -1163,6 +1163,10 @@ mark.search-hit {
 @media (orientation: landscape) and (min-width: 700px) {
   .support-deck-grid { grid-template-columns: repeat(6, 1fr); }
 }
+/* 縮小表示は実際の表示幅がとても狭いので、viewport基準のメディア
+   クエリに関係なく常に3列+小さめアイコンに固定する */
+.modal-overlay.compact .support-deck-grid { grid-template-columns: repeat(3, 1fr); }
+.modal-overlay.compact .support-deck-grid .char-select-box { min-height: 70px; height: 70px; }
 
 /* サポカ編成・因子設計図のキャラアイコンを枠いっぱいに表示し、
    名称は画像に重ねて下部に影付きで表示する */
@@ -1288,6 +1292,62 @@ mark.search-hit {
 .pedigree-red-factor-row { display: flex; align-items: center; gap: 8px; flex: 1; min-width: 120px; }
 .pedigree-red-factor-row .star-rating { flex-shrink: 0; }
 .pedigree-red-factor-row select { flex: 1; min-width: 0; margin-top: 0; }
+
+/* 縮小表示: 親・祖カードはアイコンを正方形で左上に、右に赤因子(★上/選択下)、
+   その下に適性を配置する専用レイアウト(display:contentsでpedigree-card-main
+   の入れ子を無視し、pedigree-card自体を3エリアのグリッドにする) */
+.modal-overlay.compact .pedigree-card-parent,
+.modal-overlay.compact .pedigree-card:not(.pedigree-card-wide) {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-areas:
+    "label label"
+    "icon redfactor"
+    "apt apt";
+  column-gap: 8px;
+  row-gap: 4px;
+  align-items: start;
+}
+.modal-overlay.compact .pedigree-card-parent .pedigree-card-label,
+.modal-overlay.compact .pedigree-card:not(.pedigree-card-wide) .pedigree-card-label {
+  grid-area: label;
+  margin-bottom: 0;
+}
+.modal-overlay.compact .pedigree-card-parent .pedigree-card-main,
+.modal-overlay.compact .pedigree-card:not(.pedigree-card-wide) .pedigree-card-main {
+  display: contents;
+}
+.modal-overlay.compact .pedigree-card-parent .char-select-box,
+.modal-overlay.compact .pedigree-card:not(.pedigree-card-wide) .char-select-box {
+  grid-area: icon;
+  width: 56px;
+  height: 56px;
+  aspect-ratio: 1 / 1;
+  flex-shrink: 0;
+}
+.modal-overlay.compact .pedigree-card-parent .pedigree-apt-area,
+.modal-overlay.compact .pedigree-card:not(.pedigree-card-wide) .pedigree-apt-area {
+  grid-area: apt;
+  margin-top: 0;
+}
+.modal-overlay.compact .pedigree-card-parent .pedigree-red-factor,
+.modal-overlay.compact .pedigree-card:not(.pedigree-card-wide) .pedigree-red-factor {
+  grid-area: redfactor;
+  border-top: none;
+  margin-top: 0;
+  padding-top: 0;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.modal-overlay.compact .pedigree-card-parent .pedigree-red-factor label,
+.modal-overlay.compact .pedigree-card:not(.pedigree-card-wide) .pedigree-red-factor label {
+  display: none;
+}
+.modal-overlay.compact .pedigree-red-factor-row {
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
 .star-rating { display: flex; gap: 2px; }
 .star-btn {
   border: none;
