@@ -356,6 +356,7 @@ document.getElementById('entryForm').addEventListener('submit', async e => {
     renderEntries();
     resetForm();
     setStatus(isEditing ? '更新しました。' : '保存しました。');
+    showToast(isEditing ? '更新しました' : '保存しました');
     setTimeout(closeModal, 700);
   } catch (err) {
     console.error(err);

@@ -1467,3 +1467,24 @@ mark.search-hit {
     align-items: start;
   }
 }
+
+.toast-notice {
+  position: fixed;
+  left: 16px;
+  bottom: 16px;
+  z-index: 300;
+  background: linear-gradient(135deg, var(--green), var(--green-dim));
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 10px 16px;
+  border-radius: 999px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.3);
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  pointer-events: none;
+  max-width: calc(100vw - 32px);
+}
+.toast-notice.show { opacity: 1; transform: translateY(0); }
+.toast-notice.hide { opacity: 0; transform: translateY(8px); }

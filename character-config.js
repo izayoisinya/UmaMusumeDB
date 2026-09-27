@@ -1049,6 +1049,7 @@
       await ccSavePlans(updated, ccSha, `育成計画サポカ編成更新: ${character.name}`);
       ccPlans = updated;
       statusEl.textContent = '保存しました。';
+      if (typeof showToast === 'function') showToast('保存しました');
       if (ccOnSaved) ccOnSaved(updated);
       window.dispatchEvent(new CustomEvent('training-plans-updated', { detail: { plans: updated } }));
     } catch (err) {

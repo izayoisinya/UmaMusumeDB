@@ -442,3 +442,28 @@ function openPinnedTab(key) {
 }
 
 renderPinnedTabsBar();
+
+// --- トースト通知(左下に出て自動で消える) ---
+let toastHideTimer = null;
+let toastRemoveTimer = null;
+function showToast(message) {
+  let toast = document.getElementById('toastNotice');
+  if (!toast) {
+    toast = document.createElement('div');
+    toast.id = 'toastNotice';
+    toast.className = 'toast-notice';
+    document.body.appendChild(toast);
+  }
+  clearTimeout(toastHideTimer);
+  clearTimeout(toastRemoveTimer);
+  toast.textContent = message;
+  toast.classList.remove('hide');
+  // 直前のトーストがフェードアウト中でも即座に再表示できるようreflowを挟む
+  void toast.offsetWidth;
+  toast.classList.add('show');
+  toastHideTimer = setTimeout(() => {
+    toast.classList.remove('show');
+    toast.classList.add('hide');
+    toastRemoveTimer = setTimeout(() => { toast.classList.remove('hide'); }, 300);
+  }, 2200);
+}

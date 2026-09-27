@@ -390,6 +390,7 @@ document.getElementById('trainingForm').addEventListener('submit', async e => {
     renderPlans();
     resetForm();
     setStatus(isEditing ? '更新しました。' : '保存しました。');
+    showToast(isEditing ? '更新しました' : '保存しました');
     setTimeout(closeModal, 700);
   } catch (err) {
     console.error(err);
@@ -1062,6 +1063,7 @@ document.getElementById('characterConfigSaveBtn').addEventListener('click', asyn
     await savePlansToGitHub(updated, `育成計画サポカ編成更新: ${character.name}`);
     allPlans = sortPlans(updated);
     statusEl.textContent = '保存しました。';
+    showToast('保存しました');
     renderPlans();
   } catch (err) {
     console.error(err);
