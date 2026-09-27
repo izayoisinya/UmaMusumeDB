@@ -390,6 +390,12 @@ function openPinnedTab(key) {
     window.openPinnedTabTarget(tab);
     return;
   }
+  // キャラ編成(サポカ編成/因子設計図)はcharacter-config.jsを読み込んでいる
+  // どのページからでもポップアップとして開けるので、遷移せずその場で開く。
+  if (tab.type === 'characterConfig' && typeof window.openCharacterConfigWidget === 'function') {
+    window.openCharacterConfigWidget(tab.params.plan, Number(tab.params.char));
+    return;
+  }
   const qs = new URLSearchParams(tab.params || {}).toString();
   location.href = tab.page + (qs ? '?' + qs : '');
 }
