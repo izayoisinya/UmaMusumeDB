@@ -84,12 +84,138 @@
             },
             "redFactor": null
           },
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
+          {
+            "id": "uma_1789655823584_jy9tb",
+            "name": "エピファネイア",
+            "manual": false,
+            "track": {
+              "turf": "A",
+              "dirt": "G"
+            },
+            "distance": {
+              "short": "G",
+              "mile": "E",
+              "medium": "A",
+              "long": "A"
+            },
+            "style": {
+              "nige": "D",
+              "senko": "A",
+              "sashi": "B",
+              "oikomi": "G"
+            },
+            "redFactor": null
+          },
+          {
+            "id": "uma_1789589419069_syoa2",
+            "name": "キタサンブラック",
+            "manual": false,
+            "track": {
+              "turf": "A",
+              "dirt": "G"
+            },
+            "distance": {
+              "short": "E",
+              "mile": "C",
+              "medium": "A",
+              "long": "A"
+            },
+            "style": {
+              "nige": "A",
+              "senko": "B",
+              "sashi": "C",
+              "oikomi": "G"
+            },
+            "redFactor": null
+          },
+          {
+            "id": "uma_1789596364212_za8rl",
+            "name": "テイエムオペラオー",
+            "manual": false,
+            "track": {
+              "turf": "A",
+              "dirt": "E"
+            },
+            "distance": {
+              "short": "G",
+              "mile": "E",
+              "medium": "A",
+              "long": "A"
+            },
+            "style": {
+              "nige": "C",
+              "senko": "A",
+              "sashi": "A",
+              "oikomi": "G"
+            },
+            "redFactor": null
+          },
+          {
+            "id": "uma_1789596332815_93tcm",
+            "name": "アグネスタキオン",
+            "manual": false,
+            "track": {
+              "turf": "A",
+              "dirt": "G"
+            },
+            "distance": {
+              "short": "G",
+              "mile": "D",
+              "medium": "A",
+              "long": "B"
+            },
+            "style": {
+              "nige": "E",
+              "senko": "A",
+              "sashi": "B",
+              "oikomi": "F"
+            },
+            "redFactor": null
+          },
+          {
+            "id": "uma_1789589814348_ms0ke",
+            "name": "ミホノブルボン",
+            "manual": false,
+            "track": {
+              "turf": "A",
+              "dirt": "G"
+            },
+            "distance": {
+              "short": "C",
+              "mile": "B",
+              "medium": "A",
+              "long": "B"
+            },
+            "style": {
+              "nige": "A",
+              "senko": "E",
+              "sashi": "G",
+              "oikomi": "G"
+            },
+            "redFactor": null
+          },
+          {
+            "id": "uma_1789597009620_m0ngc",
+            "name": "フジキセキ",
+            "manual": false,
+            "track": {
+              "turf": "A",
+              "dirt": "F"
+            },
+            "distance": {
+              "short": "B",
+              "mile": "A",
+              "medium": "B",
+              "long": "E"
+            },
+            "style": {
+              "nige": "C",
+              "senko": "A",
+              "sashi": "C",
+              "oikomi": "G"
+            },
+            "redFactor": null
+          }
         ]
       },
       {
