@@ -879,20 +879,23 @@ mark.search-hit {
   z-index: 100;
 }
 .modal-overlay[hidden] { display: none; }
-/* 縮小表示切替ボタンはmodal-icon-btnのスタイルに乗せ、各ポップアップの
-   ヘッダー(保存/タブ登録/閉じる等と同じ並び)に配置する(JS側で移動) */
-.modal-overlay.compact {
+/* 縮小表示はモーダルごとに個別のcompactクラスで切り替える(同時に複数の
+   縮小ポップアップを出しつつ、特定の1つだけ通常サイズに戻せるようにするため)。
+   #modalOverlay自体の背景(透過+クリック貫通)は、表示中の全モーダルが
+   compactの時だけ付く.all-compactクラスで制御する(JS側で都度再計算)。 */
+.modal-overlay.all-compact {
   background: transparent;
   pointer-events: none;
 }
 /* 縮小表示中でも、対象外(登録/編集フォームやピッカー等)のモーダルは
    常にクリックできるようにしておく(でないと操作不能になってしまう) */
-#modalOverlay.compact .modal {
+.modal-overlay.all-compact .modal {
   pointer-events: auto;
 }
-/* 縮小の見た目(位置・サイズ)は対応ポップアップ(.compact-eligible)にのみ適用。
-   それ以外(登録/編集フォーム・ピッカー等)は縮小表示中でも通常サイズのまま */
-#modalOverlay.compact .modal.compact-eligible {
+/* 縮小の見た目(位置・サイズ)は対応ポップアップ(.compact-eligible)自身が
+   .compactクラスを持つ時にのみ適用。それ以外(登録/編集フォーム・
+   ピッカー等、また通常表示に戻したポップアップ)は通常サイズのまま */
+.modal.compact-eligible.compact {
   position: fixed;
   right: 12px;
   bottom: 12px;
@@ -907,30 +910,29 @@ mark.search-hit {
   box-shadow: 0 8px 26px rgba(0,0,0,0.45);
 }
 /* 縮小表示中はヘッダーをつかんでドラッグ移動できる */
-.modal-overlay.compact .modal.compact-eligible .modal-header-row {
+.modal.compact-eligible.compact .modal-header-row {
   cursor: grab;
   touch-action: none;
 }
-.modal-overlay.compact .modal.compact-eligible .modal-header-row:active {
+.modal.compact-eligible.compact .modal-header-row:active {
   cursor: grabbing;
 }
 /* 縮小表示中は保存(サポカ編成・因子設計図の編集)は想定していないため、
    キャラ編成ポップアップの保存ボタンを非表示にし、サポカ編成・
    因子設計図の各操作(選択・解除・★評価・種類選択)も無効化して
    閲覧専用にする */
-.modal-overlay.compact #characterConfigSaveBtn,
-.modal-overlay.compact #ccCharacterConfigSaveBtn {
+.modal.compact .config-save-btn {
   display: none;
 }
-.modal-overlay.compact .support-deck-grid,
-.modal-overlay.compact .pedigree-tree {
+.modal.compact .support-deck-grid,
+.modal.compact .pedigree-tree {
   pointer-events: none;
 }
 /* 縮小表示では因子設計図の画像に重ねた名前は小さすぎて読めないため非表示 */
-.modal-overlay.compact .pedigree-card .char-select-filled-inner span {
+.modal.compact .pedigree-card .char-select-filled-inner span {
   display: none;
 }
-.modal-overlay.compact .modal h2 { font-size: 15px; }
+.modal.compact h2 { font-size: 15px; }
 .modal {
   background: var(--panel);
   border: none;
@@ -1197,8 +1199,8 @@ mark.search-hit {
 }
 /* 縮小表示は実際の表示幅がとても狭いので、viewport基準のメディア
    クエリに関係なく常に3列+小さめアイコンに固定する */
-.modal-overlay.compact .support-deck-grid { grid-template-columns: repeat(3, 1fr); }
-.modal-overlay.compact .support-deck-grid .char-select-box { min-height: 70px; height: 70px; }
+.modal.compact .support-deck-grid { grid-template-columns: repeat(3, 1fr); }
+.modal.compact .support-deck-grid .char-select-box { min-height: 70px; height: 70px; }
 
 /* サポカ編成・因子設計図のキャラアイコンを枠いっぱいに表示し、
    名称は画像に重ねて下部に影付きで表示する */
@@ -1286,7 +1288,7 @@ mark.search-hit {
 }
 /* 縮小表示では祖カードの中身がアイコン56px+赤因子だけで済むため、
    通常表示より最低幅を詰めて横並びに収まりやすくする */
-.modal-overlay.compact .pedigree-column .pedigree-subrow > .pedigree-card {
+.modal.compact .pedigree-column .pedigree-subrow > .pedigree-card {
   flex-basis: 120px;
   min-width: 120px;
   max-width: 160px;
@@ -1336,8 +1338,8 @@ mark.search-hit {
    並べる専用レイアウト(display:contentsでpedigree-card-mainの入れ子を無視し、
    pedigree-card自体を2エリアのグリッドにする)。適性バッジは縮小表示では
    非表示にして、その分コンパクトにする */
-.modal-overlay.compact .pedigree-card-parent,
-.modal-overlay.compact .pedigree-card:not(.pedigree-card-wide) {
+.modal.compact .pedigree-card-parent,
+.modal.compact .pedigree-card:not(.pedigree-card-wide) {
   display: grid;
   /* 1frではなくminmax(0,1fr)にして、selectの最小コンテンツ幅で
      カード全体が広がり祖同士が横並びに収まらなくなるのを防ぐ */
@@ -1349,29 +1351,29 @@ mark.search-hit {
   row-gap: 4px;
   align-items: start;
 }
-.modal-overlay.compact .pedigree-card-parent .pedigree-card-label,
-.modal-overlay.compact .pedigree-card:not(.pedigree-card-wide) .pedigree-card-label {
+.modal.compact .pedigree-card-parent .pedigree-card-label,
+.modal.compact .pedigree-card:not(.pedigree-card-wide) .pedigree-card-label {
   grid-area: label;
   margin-bottom: 0;
 }
-.modal-overlay.compact .pedigree-card-parent .pedigree-card-main,
-.modal-overlay.compact .pedigree-card:not(.pedigree-card-wide) .pedigree-card-main {
+.modal.compact .pedigree-card-parent .pedigree-card-main,
+.modal.compact .pedigree-card:not(.pedigree-card-wide) .pedigree-card-main {
   display: contents;
 }
-.modal-overlay.compact .pedigree-card-parent .char-select-box,
-.modal-overlay.compact .pedigree-card:not(.pedigree-card-wide) .char-select-box {
+.modal.compact .pedigree-card-parent .char-select-box,
+.modal.compact .pedigree-card:not(.pedigree-card-wide) .char-select-box {
   grid-area: icon;
   width: 56px;
   height: 56px;
   aspect-ratio: 1 / 1;
   flex-shrink: 0;
 }
-.modal-overlay.compact .pedigree-card-parent .pedigree-apt-area,
-.modal-overlay.compact .pedigree-card:not(.pedigree-card-wide) .pedigree-apt-area {
+.modal.compact .pedigree-card-parent .pedigree-apt-area,
+.modal.compact .pedigree-card:not(.pedigree-card-wide) .pedigree-apt-area {
   display: none;
 }
-.modal-overlay.compact .pedigree-card-parent .pedigree-red-factor,
-.modal-overlay.compact .pedigree-card:not(.pedigree-card-wide) .pedigree-red-factor {
+.modal.compact .pedigree-card-parent .pedigree-red-factor,
+.modal.compact .pedigree-card:not(.pedigree-card-wide) .pedigree-red-factor {
   grid-area: redfactor;
   border-top: none;
   margin-top: 0;
@@ -1379,17 +1381,17 @@ mark.search-hit {
   flex-direction: column;
   align-items: flex-start;
 }
-.modal-overlay.compact .pedigree-card-parent .pedigree-red-factor label,
-.modal-overlay.compact .pedigree-card:not(.pedigree-card-wide) .pedigree-red-factor label {
+.modal.compact .pedigree-card-parent .pedigree-red-factor label,
+.modal.compact .pedigree-card:not(.pedigree-card-wide) .pedigree-red-factor label {
   display: none;
 }
-.modal-overlay.compact .pedigree-red-factor-row {
+.modal.compact .pedigree-red-factor-row {
   flex-direction: column;
   align-items: flex-start;
   width: 100%;
   min-width: 0;
 }
-.modal-overlay.compact .pedigree-red-factor-row select {
+.modal.compact .pedigree-red-factor-row select {
   width: 100%;
   min-width: 0;
   padding: 2px 4px;

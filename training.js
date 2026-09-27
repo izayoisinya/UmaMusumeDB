@@ -551,7 +551,6 @@ function renderPlans() {
 // --- 育成計画詳細ポップアップ(タップで開く) ---
 let currentPlanDetailId = null;
 function openPlanDetail(id, keepCompactState) {
-  if (!keepCompactState) setModalCompact(false);
   const plan = allPlans.find(p => p.id === id);
   if (!plan) return;
   currentPlanDetailId = id;
@@ -561,7 +560,12 @@ function openPlanDetail(id, keepCompactState) {
     el.addEventListener('click', () => openCharacterConfig(plan.id, Number(el.dataset.index)));
   });
   openModal('planDetailModal');
+  applyDefaultCompactOnOpen(document.getElementById('planDetailModal'), keepCompactState);
 }
+document.getElementById('planDetailCompactBtn').addEventListener('click', () => {
+  const modal = document.getElementById('planDetailModal');
+  setModalCompact(!modal.classList.contains('compact'), modal);
+});
 
 document.getElementById('planDetailPinBtn').addEventListener('click', () => {
   const plan = allPlans.find(p => p.id === currentPlanDetailId);
@@ -707,7 +711,6 @@ let configDeckSelections = [null, null, null, null, null, null];
 let configPedigreeSelections = new Array(7).fill(null);
 
 function openCharacterConfig(planId, charIndex, keepCompactState) {
-  if (!keepCompactState) setModalCompact(false);
   const plan = allPlans.find(p => p.id === planId);
   if (!plan) return;
   const character = (plan.characters || [])[charIndex];
@@ -746,7 +749,12 @@ function openCharacterConfig(planId, charIndex, keepCompactState) {
   document.getElementById('planDetailModal').hidden = true;
   document.getElementById('characterConfigModal').hidden = false;
   document.getElementById('modalOverlay').hidden = false;
+  applyDefaultCompactOnOpen(document.getElementById('characterConfigModal'), keepCompactState);
 }
+document.getElementById('characterConfigCompactBtn').addEventListener('click', () => {
+  const modal = document.getElementById('characterConfigModal');
+  setModalCompact(!modal.classList.contains('compact'), modal);
+});
 
 function closeCharacterConfig() {
   document.getElementById('characterConfigModal').hidden = true;
@@ -1134,10 +1142,10 @@ document.getElementById('supportCardPickerSearch').addEventListener('input', deb
 }, 150));
 
 // --- タブ登録からの復帰(別ページからの遷移・同ページでのタブ再オープン両対応) ---
+// キャラ編成は複数同時表示に対応させるため常にcharacter-config.js経由
+// (common.jsのopenPinnedTab側で分岐済み)で開き、ここには来ない。
 window.openPinnedTabTarget = function(tab) {
-  if (tab.type === 'characterConfig') {
-    openCharacterConfig(tab.params.plan, Number(tab.params.char), true);
-  } else if (tab.type === 'planDetail') {
+  if (tab.type === 'planDetail') {
     openPlanDetail(tab.params.plan, true);
   }
 };

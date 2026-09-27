@@ -10,6 +10,12 @@
 // 現在のページの#modalOverlayへ自動で挿入する(common.jsのopenModal/closeModal
 // と同じ仕組みに乗る)。
 //
+// キャラ編成のみ、画面サイズが許す範囲(最大CC_CONFIG_MAX_INSTANCES件)で
+// 複数キャラ分を同時に開いておける(縮小表示で並べて見比べる用途を想定)。
+// キャラごとにモーダル要素と状態(サポカ編成/因子設計図の選択内容)を独立して
+// 持たせ、キー(planId:charIndex)で管理する。育成計画詳細・イベント結果詳細は
+// これまで通り1つずつのシングルトン。
+//
 // 呼び出し元のページが何を読み込んでいるかに依存しないよう、データ(育成計画/
 // ウマ娘/サポカ/イベント結果)は呼び出しのたびに自前で取得する。
 
@@ -111,8 +117,8 @@
     const rankClass = v ? 'rank-' + v : 'rank-none';
     return `<span class="apt-badge ${rankClass}"><span class="apt-badge-prefix">${prefix}</span><span class="apt-badge-value">${v || '-'}</span></span>`;
   }
-  function ccAptSelect(id, value) {
-    return `<select id="${id}"><option value="">-</option>${CC_APT_RANKS.map(r => `<option value="${r}"${value === r ? ' selected' : ''}>${r}</option>`).join('')}</select>`;
+  function ccAptSelect(field, value) {
+    return `<select data-field="${field}"><option value="">-</option>${CC_APT_RANKS.map(r => `<option value="${r}"${value === r ? ' selected' : ''}>${r}</option>`).join('')}</select>`;
   }
   const CC_APT_TYPE_LABELS = {
     'track.turf': '芝', 'track.dirt': 'ダート',
@@ -143,44 +149,32 @@
   }
 
   // --- 状態 ---
+  // 育成計画詳細・イベント結果詳細はこれまで通り1つずつ(シングルトン)。
   let ccPlans = [];
   let ccSha = null;
   let ccUmas = [];
-  let ccSupportCards = [];
-  let ccPlanId = null;
-  let ccCharIndex = null;
-  let ccReturnModalId = null;
-  let ccOnSaved = null;
-  let ccDeckSelections = [null, null, null, null, null, null];
-  let ccPedigreeSelections = new Array(7).fill(null);
-  let ccDeckPickerSlot = null;
-  let ccUmaPickerTargetSlot = null;
   let ccPlanDetailId = null;
   let ccPlanDetailReturnModalId = null;
   let ccEvents = [];
   let ccEventDetailId = null;
   let ccEventDetailReturnModalId = null;
 
-  // --- モーダルHTML注入(初回のみ) ---
+  // キャラ編成は複数キャラ分を同時に開けるようにする(最大CC_CONFIG_MAX_INSTANCES件)。
+  // planId:charIndexをキーにインスタンスを管理し、それぞれ独立したモーダル要素と
+  // 状態(サポカ編成/因子設計図の選択内容・取得データ)を持つ。
+  const CC_CONFIG_MAX_INSTANCES = 5;
+  const ccConfigInstances = new Map();
+  let ccActivePickerCtx = null; // { instance, kind: 'deck'|'pedigree', slot }
+
+  // --- モーダルHTML注入(初回のみ。育成計画詳細/イベント結果詳細/各ピッカーのみ。
+  //     キャラ編成はcreateConfigInstance()でキャラごとに動的生成する) ---
   function ensureMarkup() {
-    if (document.getElementById('ccCharacterConfigModal')) return;
+    if (document.getElementById('ccPlanDetailModal')) return;
     const overlay = document.getElementById('modalOverlay');
     if (!overlay) return;
 
     const wrap = document.createElement('div');
     wrap.innerHTML = `
-      <div class="modal compact-eligible" id="ccCharacterConfigModal" role="dialog" aria-labelledby="ccCharacterConfigTitle" hidden>
-        <div class="modal-header-row">
-          <h2 id="ccCharacterConfigTitle">キャラ編成</h2>
-          <div class="modal-header-actions">
-            <button type="button" class="modal-icon-btn" id="ccCharacterConfigSaveBtn" title="この内容を保存" aria-label="この内容を保存">💾</button>
-            <button type="button" class="modal-icon-btn" id="ccCharacterConfigPinBtn" title="タブに登録" aria-label="タブに登録"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg></button>
-            <button type="button" class="modal-icon-btn" id="ccCharacterConfigCloseBtn" title="閉じる" aria-label="閉じる">✕</button>
-          </div>
-        </div>
-        <div id="ccCharacterConfigBody"></div>
-        <div class="status" id="ccCharacterConfigStatus"></div>
-      </div>
       <div class="modal" id="ccSupportCardPickerModal" role="dialog" aria-labelledby="ccSupportCardPickerTitle" hidden>
         <h2 id="ccSupportCardPickerTitle">サポートカードを選択</h2>
         <input type="text" id="ccSupportCardPickerSearch" class="character-picker-search" placeholder="名前で検索">
@@ -195,10 +189,11 @@
         <div class="status" id="ccUmaPickerStatus"></div>
         <button type="button" class="btn secondary" id="ccUmaPickerCloseBtn">閉じる</button>
       </div>
-      <div class="modal compact-eligible" id="ccPlanDetailModal" role="dialog" aria-labelledby="ccPlanDetailTitle" hidden>
+      <div class="modal compact-eligible" id="ccPlanDetailModal" data-pos-key="cc-plan-detail" role="dialog" aria-labelledby="ccPlanDetailTitle" hidden>
         <div class="modal-header-row">
           <h2 id="ccPlanDetailTitle">育成計画詳細</h2>
           <div class="modal-header-actions">
+            <button type="button" class="modal-icon-btn modal-compact-toggle" id="ccPlanDetailCompactBtn" title="ポップアップを小さくして裏の画面を見る" aria-label="縮小表示切替">⤡</button>
             <button type="button" class="modal-icon-btn" id="ccPlanDetailPinBtn" title="タブに登録" aria-label="タブに登録"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg></button>
             <button type="button" class="modal-icon-btn" id="ccPlanDetailCloseBtn" title="閉じる" aria-label="閉じる">✕</button>
           </div>
@@ -206,10 +201,11 @@
         <div id="ccPlanDetailBody"></div>
         <div class="status" id="ccPlanDetailStatus"></div>
       </div>
-      <div class="modal compact-eligible" id="ccEventDetailModal" role="dialog" aria-labelledby="ccEventDetailTitle" hidden>
+      <div class="modal compact-eligible" id="ccEventDetailModal" data-pos-key="cc-event-detail" role="dialog" aria-labelledby="ccEventDetailTitle" hidden>
         <div class="modal-header-row">
           <h2 id="ccEventDetailTitle">イベント結果詳細</h2>
           <div class="modal-header-actions">
+            <button type="button" class="modal-icon-btn modal-compact-toggle" id="ccEventDetailCompactBtn" title="ポップアップを小さくして裏の画面を見る" aria-label="縮小表示切替">⤡</button>
             <button type="button" class="modal-icon-btn" id="ccEventDetailPinBtn" title="タブに登録" aria-label="タブに登録"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg></button>
             <button type="button" class="modal-icon-btn" id="ccEventDetailCloseBtn" title="閉じる" aria-label="閉じる">✕</button>
           </div>
@@ -220,9 +216,6 @@
     `;
     while (wrap.firstElementChild) overlay.appendChild(wrap.firstElementChild);
 
-    document.getElementById('ccCharacterConfigCloseBtn').addEventListener('click', closeWidget);
-    document.getElementById('ccCharacterConfigSaveBtn').addEventListener('click', handleSave);
-    document.getElementById('ccCharacterConfigPinBtn').addEventListener('click', handlePin);
     document.getElementById('ccSupportCardPickerCloseBtn').addEventListener('click', closeSupportPicker);
     document.getElementById('ccUmaPickerCloseBtn').addEventListener('click', closeUmaPicker);
     document.getElementById('ccSupportCardPickerSearch').addEventListener('input', debounce(() => {
@@ -233,35 +226,128 @@
     }, 150));
     document.getElementById('ccPlanDetailCloseBtn').addEventListener('click', closePlanDetailWidget);
     document.getElementById('ccPlanDetailPinBtn').addEventListener('click', handlePlanDetailPin);
+    document.getElementById('ccPlanDetailCompactBtn').addEventListener('click', () => {
+      const modal = document.getElementById('ccPlanDetailModal');
+      setModalCompact(!modal.classList.contains('compact'), modal);
+    });
     document.getElementById('ccEventDetailCloseBtn').addEventListener('click', closeEventDetailWidget);
     document.getElementById('ccEventDetailPinBtn').addEventListener('click', handleEventDetailPin);
+    document.getElementById('ccEventDetailCompactBtn').addEventListener('click', () => {
+      const modal = document.getElementById('ccEventDetailModal');
+      setModalCompact(!modal.classList.contains('compact'), modal);
+    });
+  }
+
+  // --- キャラ編成: インスタンス生成(キャラごとに独立したモーダル+状態を持つ) ---
+  function createConfigInstance(key) {
+    const overlay = document.getElementById('modalOverlay');
+    const wrap = document.createElement('div');
+    wrap.innerHTML = `
+      <div class="modal compact-eligible cc-character-config-modal" role="dialog" aria-label="キャラ編成" hidden>
+        <div class="modal-header-row">
+          <h2 class="cc-config-title">キャラ編成</h2>
+          <div class="modal-header-actions">
+            <button type="button" class="modal-icon-btn modal-compact-toggle" title="ポップアップを小さくして裏の画面を見る" aria-label="縮小表示切替">⤡</button>
+            <button type="button" class="modal-icon-btn config-save-btn" title="この内容を保存" aria-label="この内容を保存">💾</button>
+            <button type="button" class="modal-icon-btn cc-config-pin-btn" title="タブに登録" aria-label="タブに登録"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg></button>
+            <button type="button" class="modal-icon-btn cc-config-close-btn" title="閉じる" aria-label="閉じる">✕</button>
+          </div>
+        </div>
+        <div class="cc-config-body"></div>
+        <div class="status cc-config-status"></div>
+      </div>
+    `;
+    const modalEl = wrap.firstElementChild;
+    overlay.appendChild(modalEl);
+    modalEl.dataset.posKey = 'characterConfig:' + key;
+
+    const instance = {
+      key,
+      modalEl,
+      bodyEl: modalEl.querySelector('.cc-config-body'),
+      statusEl: modalEl.querySelector('.cc-config-status'),
+      titleEl: modalEl.querySelector('.cc-config-title'),
+      planId: null,
+      charIndex: null,
+      returnModalId: null,
+      onSaved: null,
+      plans: [],
+      sha: null,
+      umas: [],
+      supportCards: [],
+      deckSelections: [null, null, null, null, null, null],
+      pedigreeSelections: new Array(7).fill(null),
+    };
+    modalEl.querySelector('.cc-config-close-btn').addEventListener('click', () => closeConfigInstance(instance));
+    modalEl.querySelector('.config-save-btn').addEventListener('click', () => handleSave(instance));
+    modalEl.querySelector('.cc-config-pin-btn').addEventListener('click', () => handlePin(instance));
+    modalEl.querySelector('.modal-compact-toggle').addEventListener('click', () => {
+      setModalCompact(!modalEl.classList.contains('compact'), modalEl);
+    });
+    ccConfigInstances.set(key, instance);
+    return instance;
+  }
+
+  function closeConfigInstance(instance) {
+    instance.modalEl.hidden = true;
+    ccConfigInstances.delete(instance.key);
+    instance.modalEl.remove();
+    if (instance.returnModalId && document.getElementById(instance.returnModalId)) {
+      document.getElementById(instance.returnModalId).hidden = false;
+    } else if (typeof hideOverlayIfNoModalOpen === 'function') {
+      hideOverlayIfNoModalOpen();
+    }
+  }
+
+  function handlePin(instance) {
+    const plan = instance.plans.find(p => p.id === instance.planId);
+    const character = plan && (plan.characters || [])[instance.charIndex];
+    if (!plan || !character || typeof addPinnedTab !== 'function') return;
+    addPinnedTab({
+      key: `training-char-${plan.id}-${instance.charIndex}`,
+      page: 'training.html',
+      type: 'characterConfig',
+      params: { plan: plan.id, char: instance.charIndex },
+      label: `${character.name}の編成`,
+    });
   }
 
   // --- 公開エントリポイント ---
   window.openCharacterConfigWidget = async function (planId, charIndex, options) {
     options = options || {};
-    if (!options.keepCompactState && typeof setModalCompact === 'function') setModalCompact(false);
     if (!config || !config.owner || !config.repo) {
       alert('先に「⚙ 設定」からGitHub連携(リポジトリ所有者・リポジトリ名)を設定してください。');
       return;
     }
     ensureMarkup();
-    ccPlanId = planId;
-    ccCharIndex = charIndex;
-    ccReturnModalId = options.returnModalId || null;
-    ccOnSaved = typeof options.onSaved === 'function' ? options.onSaved : null;
 
-    const statusEl = document.getElementById('ccCharacterConfigStatus');
-    statusEl.textContent = '読み込み中…';
-    statusEl.className = 'status';
-    document.getElementById('ccCharacterConfigBody').innerHTML = '';
+    const key = planId + ':' + charIndex;
+    let instance = ccConfigInstances.get(key);
+    if (!instance) {
+      if (ccConfigInstances.size >= CC_CONFIG_MAX_INSTANCES) {
+        const msg = `キャラ編成は同時に${CC_CONFIG_MAX_INSTANCES}個までしか開けません。どれかを閉じてください。`;
+        if (typeof showToast === 'function') showToast(msg); else alert(msg);
+        return;
+      }
+      instance = createConfigInstance(key);
+    }
+    instance.planId = planId;
+    instance.charIndex = charIndex;
+    instance.returnModalId = options.returnModalId || null;
+    instance.onSaved = typeof options.onSaved === 'function' ? options.onSaved : null;
 
-    if (ccReturnModalId) {
-      const returnEl = document.getElementById(ccReturnModalId);
+    instance.statusEl.textContent = '読み込み中…';
+    instance.statusEl.className = 'status';
+    instance.bodyEl.innerHTML = '';
+
+    if (instance.returnModalId) {
+      const returnEl = document.getElementById(instance.returnModalId);
       if (returnEl) returnEl.hidden = true;
     }
-    document.getElementById('ccCharacterConfigModal').hidden = false;
+    instance.modalEl.hidden = false;
     document.getElementById('modalOverlay').hidden = false;
+    if (typeof bringModalToFront === 'function') bringModalToFront(instance.modalEl);
+    if (typeof applyDefaultCompactOnOpen === 'function') applyDefaultCompactOnOpen(instance.modalEl, !!options.keepCompactState);
 
     try {
       const [plansRaw, umas, supports] = await Promise.all([
@@ -269,76 +355,54 @@
         ccFetchJson(UMA_PATH),
         ccFetchJson(SUPPORT_PATH),
       ]);
-      ccPlans = plansRaw.entries;
-      ccSha = plansRaw.sha;
-      ccUmas = umas;
-      ccSupportCards = supports;
+      instance.plans = plansRaw.entries;
+      instance.sha = plansRaw.sha;
+      instance.umas = umas;
+      instance.supportCards = supports;
     } catch (err) {
       console.error(err);
-      statusEl.textContent = 'データの読み込みに失敗しました: ' + err.message;
-      statusEl.className = 'status error';
+      instance.statusEl.textContent = 'データの読み込みに失敗しました: ' + err.message;
+      instance.statusEl.className = 'status error';
       return;
     }
 
-    const plan = ccPlans.find(p => p.id === planId);
+    const plan = instance.plans.find(p => p.id === planId);
     const character = plan && (plan.characters || [])[charIndex];
     if (!plan || !character) {
-      statusEl.textContent = '対象の育成計画・キャラが見つかりませんでした。';
-      statusEl.className = 'status error';
+      instance.statusEl.textContent = '対象の育成計画・キャラが見つかりませんでした。';
+      instance.statusEl.className = 'status error';
       return;
     }
 
-    ccDeckSelections = [0, 1, 2, 3, 4, 5].map(i => {
+    instance.deckSelections = [0, 1, 2, 3, 4, 5].map(i => {
       const d = (character.supportDeck || [])[i];
       if (!d) return null;
-      const card = d.id ? ccSupportCards.find(c => c.id === d.id) : ccSupportCards.find(c => c.name === d.name);
+      const card = d.id ? instance.supportCards.find(c => c.id === d.id) : instance.supportCards.find(c => c.name === d.name);
       return card
         ? { id: card.id, name: card.name, imagePath: card.imagePath || null }
         : { id: d.id || null, name: d.name, imagePath: null };
     });
     const savedPedigree = character.pedigree || [];
-    ccPedigreeSelections = [0, 1, 2, 3, 4, 5, 6].map(slot => {
+    instance.pedigreeSelections = [0, 1, 2, 3, 4, 5, 6].map(slot => {
       const p = savedPedigree[slot];
       // 保存データにはimagePathを含めていない(図鑑参照時は常に最新の登録内容を
       // 反映させるため)。図鑑登録済み(manual:false)の場合はidから毎回引き直す。
       if (p && !p.manual && p.id) {
-        const uma = ccUmas.find(u => u.id === p.id);
+        const uma = instance.umas.find(u => u.id === p.id);
         if (uma) return { ...ccPedigreeEntryFromUma(uma), redFactor: p.redFactor || null };
       }
       if (p) return p;
       if (slot === 0) {
-        const uma = character.id ? ccUmas.find(u => u.id === character.id) : ccUmas.find(u => u.name === character.name);
+        const uma = character.id ? instance.umas.find(u => u.id === character.id) : instance.umas.find(u => u.name === character.name);
         return uma ? ccPedigreeEntryFromUma(uma) : { id: null, name: character.name, imagePath: null, manual: true, track: {}, distance: {}, style: {} };
       }
       return null;
     });
 
-    document.getElementById('ccCharacterConfigTitle').textContent = `${character.name}の編成`;
-    renderBody();
-    statusEl.textContent = '';
+    instance.titleEl.textContent = `${character.name}の編成`;
+    renderBody(instance);
+    instance.statusEl.textContent = '';
   };
-
-  function closeWidget() {
-    document.getElementById('ccCharacterConfigModal').hidden = true;
-    if (ccReturnModalId && document.getElementById(ccReturnModalId)) {
-      document.getElementById(ccReturnModalId).hidden = false;
-    } else if (typeof hideOverlayIfNoModalOpen === 'function') {
-      hideOverlayIfNoModalOpen();
-    }
-  }
-
-  function handlePin() {
-    const plan = ccPlans.find(p => p.id === ccPlanId);
-    const character = plan && (plan.characters || [])[ccCharIndex];
-    if (!plan || !character || typeof addPinnedTab !== 'function') return;
-    addPinnedTab({
-      key: `training-char-${plan.id}-${ccCharIndex}`,
-      page: 'training.html',
-      type: 'characterConfig',
-      params: { plan: plan.id, char: ccCharIndex },
-      label: `${character.name}の編成`,
-    });
-  }
 
   // --- 育成計画詳細ポップアップ ---
   window.openPlanDetailWidget = async function (planId, options) {
@@ -362,6 +426,8 @@
     }
     document.getElementById('ccPlanDetailModal').hidden = false;
     document.getElementById('modalOverlay').hidden = false;
+    if (typeof bringModalToFront === 'function') bringModalToFront(document.getElementById('ccPlanDetailModal'));
+    if (typeof applyDefaultCompactOnOpen === 'function') applyDefaultCompactOnOpen(document.getElementById('ccPlanDetailModal'), !!options.keepCompactState);
 
     try {
       const [plansRaw, umas] = await Promise.all([
@@ -583,6 +649,8 @@
     }
     document.getElementById('ccEventDetailModal').hidden = false;
     document.getElementById('modalOverlay').hidden = false;
+    if (typeof bringModalToFront === 'function') bringModalToFront(document.getElementById('ccEventDetailModal'));
+    if (typeof applyDefaultCompactOnOpen === 'function') applyDefaultCompactOnOpen(document.getElementById('ccEventDetailModal'), !!options.keepCompactState);
 
     try {
       const [events, umas] = await Promise.all([
@@ -632,9 +700,9 @@
     });
   }
 
-  // --- 本体描画 ---
-  function pedigreeCardHtml(slot, label) {
-    const sel = ccPedigreeSelections[slot];
+  // --- キャラ編成本体描画(インスタンスごと) ---
+  function pedigreeCardHtml(instance, slot, label) {
+    const sel = instance.pedigreeSelections[slot];
     const redFactor = (sel && sel.redFactor) || {};
     const isWide = slot <= 2;
     const isParent = slot === 1 || slot === 2;
@@ -642,27 +710,27 @@
     // 囲み、どの祖がどの親に対応するか見た目で分かるようにする。
     const groupClass = [1, 3, 4].includes(slot) ? ' pedigree-group-a' : [2, 5, 6].includes(slot) ? ' pedigree-group-b' : ' pedigree-group-self';
     return `
-      <div class="pedigree-card${isWide ? ' pedigree-card-wide' : ''}${isParent ? ' pedigree-card-parent' : ''}${groupClass}">
-        <div class="pedigree-card-label" id="ccPedigreeCardLabel${slot}">${label}</div>
+      <div class="pedigree-card${isWide ? ' pedigree-card-wide' : ''}${isParent ? ' pedigree-card-parent' : ''}${groupClass}" data-slot="${slot}">
+        <div class="pedigree-card-label">${label}</div>
         <div class="pedigree-card-main">
-          <div class="char-select-box" id="ccPedigreeBox${slot}">
-            <button type="button" class="char-select-clear-btn" id="ccPedigreeClearBtn${slot}" hidden>×</button>
-            <div id="ccPedigreeEmpty${slot}">タップして図鑑から選択</div>
-            <div class="char-select-filled-inner" id="ccPedigreeFilled${slot}" hidden>
-              <img class="uma-icon" id="ccPedigreeIcon${slot}" alt="">
-              <span id="ccPedigreeName${slot}"></span>
+          <div class="char-select-box">
+            <button type="button" class="char-select-clear-btn" hidden>×</button>
+            <div class="char-select-empty-text">タップして図鑑から選択</div>
+            <div class="char-select-filled-inner" hidden>
+              <img class="uma-icon" alt="">
+              <span class="char-select-name"></span>
             </div>
           </div>
-          <div class="pedigree-apt-area" id="ccPedigreeAptArea${slot}"></div>
+          <div class="pedigree-apt-area"></div>
         </div>
         ${slot !== 0 ? `
           <div class="pedigree-red-factor">
             <label>赤因子</label>
             <div class="pedigree-red-factor-row">
-              <div class="star-rating" id="ccPedigreeRedRarity${slot}" data-value="${Number(redFactor.rarity) || 0}">
+              <div class="star-rating" data-value="${Number(redFactor.rarity) || 0}">
                 ${[1, 2, 3].map(n => `<button type="button" class="star-btn${n <= (Number(redFactor.rarity) || 0) ? ' active' : ''}" data-star="${n}">★</button>`).join('')}
               </div>
-              <select id="ccPedigreeRedType${slot}">
+              <select>
                 <option value="">種類を選択</option>
                 <optgroup label="バ場">
                   <option value="track.turf"${redFactor.type === 'track.turf' ? ' selected' : ''}>芝</option>
@@ -688,19 +756,22 @@
     `;
   }
 
-  function renderBody() {
-    const body = document.getElementById('ccCharacterConfigBody');
-    body.innerHTML = `
+  function pedigreeCardEl(instance, slot) {
+    return instance.bodyEl.querySelector('.pedigree-tree [data-slot="' + slot + '"]');
+  }
+
+  function renderBody(instance) {
+    instance.bodyEl.innerHTML = `
       <label class="config-section-title">サポカ編成（6枚）</label>
       <div class="support-deck-grid">
         ${[0, 1, 2, 3, 4, 5].map(i => `
           <div class="team-slot">
-            <div class="char-select-box" id="ccDeckSlotBox${i}">
-              <button type="button" class="char-select-clear-btn" id="ccDeckSlotClearBtn${i}" hidden>×</button>
-              <div id="ccDeckSlotEmpty${i}">タップして選択</div>
-              <div class="char-select-filled-inner" id="ccDeckSlotFilled${i}" hidden>
-                <img class="uma-icon" id="ccDeckSlotIcon${i}" alt="">
-                <span id="ccDeckSlotName${i}"></span>
+            <div class="char-select-box" data-slot="${i}">
+              <button type="button" class="char-select-clear-btn" hidden>×</button>
+              <div class="char-select-empty-text">タップして選択</div>
+              <div class="char-select-filled-inner" hidden>
+                <img class="uma-icon" alt="">
+                <span class="char-select-name"></span>
               </div>
             </div>
           </div>
@@ -709,72 +780,74 @@
 
       <label class="config-section-title" style="margin-top:18px;">因子設計図</label>
       <div class="pedigree-tree">
-        <div class="pedigree-row pedigree-row-self">${pedigreeCardHtml(0, '本人')}</div>
+        <div class="pedigree-row pedigree-row-self">${pedigreeCardHtml(instance, 0, '本人')}</div>
         <div class="pedigree-columns">
           <div class="pedigree-column">
-            ${pedigreeCardHtml(1, '親')}
-            <div class="pedigree-subrow">${pedigreeCardHtml(3, '祖')}${pedigreeCardHtml(4, '祖')}</div>
+            ${pedigreeCardHtml(instance, 1, '親')}
+            <div class="pedigree-subrow">${pedigreeCardHtml(instance, 3, '祖')}${pedigreeCardHtml(instance, 4, '祖')}</div>
           </div>
           <div class="pedigree-column">
-            ${pedigreeCardHtml(2, '親')}
-            <div class="pedigree-subrow">${pedigreeCardHtml(5, '祖')}${pedigreeCardHtml(6, '祖')}</div>
+            ${pedigreeCardHtml(instance, 2, '親')}
+            <div class="pedigree-subrow">${pedigreeCardHtml(instance, 5, '祖')}${pedigreeCardHtml(instance, 6, '祖')}</div>
           </div>
         </div>
       </div>
     `;
     [0, 1, 2, 3, 4, 5].forEach(i => {
-      updateDeckSlotBox(i);
-      document.getElementById('ccDeckSlotBox' + i).addEventListener('click', () => openSupportPicker(i));
-      document.getElementById('ccDeckSlotClearBtn' + i).addEventListener('click', e => {
+      updateDeckSlotBox(instance, i);
+      const box = instance.bodyEl.querySelector('.support-deck-grid [data-slot="' + i + '"]');
+      box.addEventListener('click', () => openSupportPicker(instance, i));
+      box.querySelector('.char-select-clear-btn').addEventListener('click', e => {
         e.stopPropagation();
-        ccDeckSelections[i] = null;
-        updateDeckSlotBox(i);
+        instance.deckSelections[i] = null;
+        updateDeckSlotBox(instance, i);
       });
     });
     [0, 1, 2, 3, 4, 5, 6].forEach(slot => {
-      document.getElementById('ccPedigreeBox' + slot).addEventListener('click', () => openUmaPickerForPedigree(slot));
-      document.getElementById('ccPedigreeClearBtn' + slot).addEventListener('click', e => {
+      const card = pedigreeCardEl(instance, slot);
+      card.querySelector('.char-select-box').addEventListener('click', () => openUmaPickerForPedigree(instance, slot));
+      card.querySelector('.char-select-clear-btn').addEventListener('click', e => {
         e.stopPropagation();
-        const keepRedFactor = ccPedigreeSelections[slot] && ccPedigreeSelections[slot].redFactor;
-        ccPedigreeSelections[slot] = keepRedFactor ? { ...ccEmptyPedigreeEntry(), redFactor: keepRedFactor } : null;
-        updatePedigreeCard(slot);
+        const keepRedFactor = instance.pedigreeSelections[slot] && instance.pedigreeSelections[slot].redFactor;
+        instance.pedigreeSelections[slot] = keepRedFactor ? { ...ccEmptyPedigreeEntry(), redFactor: keepRedFactor } : null;
+        updatePedigreeCard(instance, slot);
       });
-      updatePedigreeCard(slot);
+      updatePedigreeCard(instance, slot);
       if (slot !== 0) {
-        const rarityEl = document.getElementById('ccPedigreeRedRarity' + slot);
+        const rarityEl = card.querySelector('.star-rating');
         rarityEl.querySelectorAll('.star-btn').forEach(btn => {
           btn.addEventListener('click', () => {
             const n = Number(btn.dataset.star);
             const current = Number(rarityEl.dataset.value) || 0;
             const newValue = current === n ? 0 : n;
-            if (!ccPedigreeSelections[slot]) ccPedigreeSelections[slot] = ccEmptyPedigreeEntry();
-            ccPedigreeSelections[slot].redFactor = ccPedigreeSelections[slot].redFactor || {};
-            ccPedigreeSelections[slot].redFactor.rarity = newValue;
+            if (!instance.pedigreeSelections[slot]) instance.pedigreeSelections[slot] = ccEmptyPedigreeEntry();
+            instance.pedigreeSelections[slot].redFactor = instance.pedigreeSelections[slot].redFactor || {};
+            instance.pedigreeSelections[slot].redFactor.rarity = newValue;
             rarityEl.dataset.value = newValue;
             rarityEl.querySelectorAll('.star-btn').forEach(b => {
               b.classList.toggle('active', Number(b.dataset.star) <= newValue);
             });
-            refreshPedigreeDependents(slot);
+            refreshPedigreeDependents(instance, slot);
           });
         });
-        document.getElementById('ccPedigreeRedType' + slot).addEventListener('change', e => {
-          if (!ccPedigreeSelections[slot]) ccPedigreeSelections[slot] = ccEmptyPedigreeEntry();
-          ccPedigreeSelections[slot].redFactor = ccPedigreeSelections[slot].redFactor || {};
-          ccPedigreeSelections[slot].redFactor.type = e.target.value;
-          refreshPedigreeDependents(slot);
+        card.querySelector('.pedigree-red-factor-row select').addEventListener('change', e => {
+          if (!instance.pedigreeSelections[slot]) instance.pedigreeSelections[slot] = ccEmptyPedigreeEntry();
+          instance.pedigreeSelections[slot].redFactor = instance.pedigreeSelections[slot].redFactor || {};
+          instance.pedigreeSelections[slot].redFactor.type = e.target.value;
+          refreshPedigreeDependents(instance, slot);
         });
       }
     });
   }
 
-  function computePairBonus(slotA, slotB) {
+  function computePairBonus(instance, slotA, slotB) {
     const bonuses = {};
     const add = (type, stars) => {
       if (!type || !stars) return;
       bonuses[type] = Math.min(4, (bonuses[type] || 0) + Math.ceil(stars / 3));
     };
-    const rfA = ccPedigreeSelections[slotA] && ccPedigreeSelections[slotA].redFactor;
-    const rfB = ccPedigreeSelections[slotB] && ccPedigreeSelections[slotB].redFactor;
+    const rfA = instance.pedigreeSelections[slotA] && instance.pedigreeSelections[slotA].redFactor;
+    const rfB = instance.pedigreeSelections[slotB] && instance.pedigreeSelections[slotB].redFactor;
     const typeA = rfA && rfA.type;
     const typeB = rfB && rfB.type;
     const starA = (rfA && Number(rfA.rarity)) || 0;
@@ -796,28 +869,29 @@
     });
     return merged;
   }
-  function bonusesForPedigreeSlot(slot) {
-    if (slot === 0) return mergeBonuses(computePairBonus(1, 2), computePairBonus(3, 4), computePairBonus(5, 6));
-    if (slot === 1) return computePairBonus(3, 4);
-    if (slot === 2) return computePairBonus(5, 6);
+  function bonusesForPedigreeSlot(instance, slot) {
+    if (slot === 0) return mergeBonuses(computePairBonus(instance, 1, 2), computePairBonus(instance, 3, 4), computePairBonus(instance, 5, 6));
+    if (slot === 1) return computePairBonus(instance, 3, 4);
+    if (slot === 2) return computePairBonus(instance, 5, 6);
     return {};
   }
-  function refreshPedigreeDependents(sourceSlot) {
-    renderPedigreeAptArea(0);
-    if (sourceSlot === 3 || sourceSlot === 4) renderPedigreeAptArea(1);
-    if (sourceSlot === 5 || sourceSlot === 6) renderPedigreeAptArea(2);
+  function refreshPedigreeDependents(instance, sourceSlot) {
+    renderPedigreeAptArea(instance, 0);
+    if (sourceSlot === 3 || sourceSlot === 4) renderPedigreeAptArea(instance, 1);
+    if (sourceSlot === 5 || sourceSlot === 6) renderPedigreeAptArea(instance, 2);
   }
 
-  function updatePedigreeCard(slot) {
-    const sel = ccPedigreeSelections[slot];
+  function updatePedigreeCard(instance, slot) {
+    const sel = instance.pedigreeSelections[slot];
     const hasRegistrySel = !!(sel && !sel.manual);
-    const box = document.getElementById('ccPedigreeBox' + slot);
-    const emptyEl = document.getElementById('ccPedigreeEmpty' + slot);
-    const filledEl = document.getElementById('ccPedigreeFilled' + slot);
-    const iconEl = document.getElementById('ccPedigreeIcon' + slot);
-    const nameEl = document.getElementById('ccPedigreeName' + slot);
-    const clearBtn = document.getElementById('ccPedigreeClearBtn' + slot);
-    const labelEl = document.getElementById('ccPedigreeCardLabel' + slot);
+    const card = pedigreeCardEl(instance, slot);
+    const box = card.querySelector('.char-select-box');
+    const emptyEl = card.querySelector('.char-select-empty-text');
+    const filledEl = card.querySelector('.char-select-filled-inner');
+    const iconEl = filledEl.querySelector('.uma-icon');
+    const nameEl = filledEl.querySelector('.char-select-name');
+    const clearBtn = card.querySelector('.char-select-clear-btn');
+    const labelEl = card.querySelector('.pedigree-card-label');
     if (labelEl) labelEl.hidden = hasRegistrySel;
     if (hasRegistrySel) {
       box.classList.add('filled');
@@ -837,15 +911,16 @@
       filledEl.hidden = true;
       clearBtn.hidden = true;
     }
-    renderPedigreeAptArea(slot);
+    renderPedigreeAptArea(instance, slot);
   }
 
-  function renderPedigreeAptArea(slot) {
-    const area = document.getElementById('ccPedigreeAptArea' + slot);
+  function renderPedigreeAptArea(instance, slot) {
+    const card = pedigreeCardEl(instance, slot);
+    const area = card && card.querySelector('.pedigree-apt-area');
     if (!area) return;
-    const sel = ccPedigreeSelections[slot];
+    const sel = instance.pedigreeSelections[slot];
     const hasRegistrySel = !!(sel && !sel.manual);
-    const bonuses = bonusesForPedigreeSlot(slot);
+    const bonuses = bonusesForPedigreeSlot(instance, slot);
 
     if (hasRegistrySel) {
       const track = sel.track || {};
@@ -864,58 +939,48 @@
     const style = (sel && sel.style) || {};
     const bonusEntries = Object.entries(bonuses);
     area.innerHTML = `
-      <input type="text" id="ccPedigreeManualName${slot}" placeholder="図鑑に無い場合は名前を手入力" value="${ccEscapeHtml((sel && sel.name) || '')}">
+      <input type="text" class="cc-pedigree-manual-name" placeholder="図鑑に無い場合は名前を手入力" value="${ccEscapeHtml((sel && sel.name) || '')}">
       <div class="apt-select-row">
-        <div><span>芝</span>${ccAptSelect('ccPedigreeTurf' + slot, track.turf)}</div>
-        <div><span>ダート</span>${ccAptSelect('ccPedigreeDirt' + slot, track.dirt)}</div>
+        <div><span>芝</span>${ccAptSelect('track.turf', track.turf)}</div>
+        <div><span>ダート</span>${ccAptSelect('track.dirt', track.dirt)}</div>
       </div>
       <div class="apt-select-row">
-        <div><span>短</span>${ccAptSelect('ccPedigreeShort' + slot, distance.short)}</div>
-        <div><span>マ</span>${ccAptSelect('ccPedigreeMile' + slot, distance.mile)}</div>
-        <div><span>中</span>${ccAptSelect('ccPedigreeMedium' + slot, distance.medium)}</div>
-        <div><span>長</span>${ccAptSelect('ccPedigreeLong' + slot, distance.long)}</div>
+        <div><span>短</span>${ccAptSelect('distance.short', distance.short)}</div>
+        <div><span>マ</span>${ccAptSelect('distance.mile', distance.mile)}</div>
+        <div><span>中</span>${ccAptSelect('distance.medium', distance.medium)}</div>
+        <div><span>長</span>${ccAptSelect('distance.long', distance.long)}</div>
       </div>
       <div class="apt-select-row">
-        <div><span>逃</span>${ccAptSelect('ccPedigreeNige' + slot, style.nige)}</div>
-        <div><span>先</span>${ccAptSelect('ccPedigreeSenko' + slot, style.senko)}</div>
-        <div><span>差</span>${ccAptSelect('ccPedigreeSashi' + slot, style.sashi)}</div>
-        <div><span>追</span>${ccAptSelect('ccPedigreeOikomi' + slot, style.oikomi)}</div>
+        <div><span>逃</span>${ccAptSelect('style.nige', style.nige)}</div>
+        <div><span>先</span>${ccAptSelect('style.senko', style.senko)}</div>
+        <div><span>差</span>${ccAptSelect('style.sashi', style.sashi)}</div>
+        <div><span>追</span>${ccAptSelect('style.oikomi', style.oikomi)}</div>
       </div>
       ${bonusEntries.length ? `<p class="pedigree-bonus-hint">${slot === 0 ? '親・祖父母' : '祖父母'}の赤因子による自動加算: ${bonusEntries.map(([k, v]) => `${CC_APT_TYPE_LABELS[k] || k}+${v}`).join('、')}</p>` : ''}
     `;
-    document.getElementById('ccPedigreeManualName' + slot).addEventListener('input', e => {
-      if (!ccPedigreeSelections[slot]) ccPedigreeSelections[slot] = ccEmptyPedigreeEntry();
-      ccPedigreeSelections[slot].name = e.target.value.trim();
-      ccPedigreeSelections[slot].manual = true;
+    area.querySelector('.cc-pedigree-manual-name').addEventListener('input', e => {
+      if (!instance.pedigreeSelections[slot]) instance.pedigreeSelections[slot] = ccEmptyPedigreeEntry();
+      instance.pedigreeSelections[slot].name = e.target.value.trim();
+      instance.pedigreeSelections[slot].manual = true;
     });
-    [
-      ['ccPedigreeTurf' + slot, 'track', 'turf'],
-      ['ccPedigreeDirt' + slot, 'track', 'dirt'],
-      ['ccPedigreeShort' + slot, 'distance', 'short'],
-      ['ccPedigreeMile' + slot, 'distance', 'mile'],
-      ['ccPedigreeMedium' + slot, 'distance', 'medium'],
-      ['ccPedigreeLong' + slot, 'distance', 'long'],
-      ['ccPedigreeNige' + slot, 'style', 'nige'],
-      ['ccPedigreeSenko' + slot, 'style', 'senko'],
-      ['ccPedigreeSashi' + slot, 'style', 'sashi'],
-      ['ccPedigreeOikomi' + slot, 'style', 'oikomi'],
-    ].forEach(([id, group, key]) => {
-      document.getElementById(id).addEventListener('change', e => {
-        if (!ccPedigreeSelections[slot]) ccPedigreeSelections[slot] = ccEmptyPedigreeEntry();
-        ccPedigreeSelections[slot].manual = true;
-        ccPedigreeSelections[slot][group][key] = e.target.value || null;
+    area.querySelectorAll('select[data-field]').forEach(el => {
+      const [group, fieldKey] = el.dataset.field.split('.');
+      el.addEventListener('change', e => {
+        if (!instance.pedigreeSelections[slot]) instance.pedigreeSelections[slot] = ccEmptyPedigreeEntry();
+        instance.pedigreeSelections[slot].manual = true;
+        instance.pedigreeSelections[slot][group][fieldKey] = e.target.value || null;
       });
     });
   }
 
-  function updateDeckSlotBox(i) {
-    const sel = ccDeckSelections[i];
-    const box = document.getElementById('ccDeckSlotBox' + i);
-    const emptyEl = document.getElementById('ccDeckSlotEmpty' + i);
-    const filledEl = document.getElementById('ccDeckSlotFilled' + i);
-    const iconEl = document.getElementById('ccDeckSlotIcon' + i);
-    const nameEl = document.getElementById('ccDeckSlotName' + i);
-    const clearBtn = document.getElementById('ccDeckSlotClearBtn' + i);
+  function updateDeckSlotBox(instance, i) {
+    const sel = instance.deckSelections[i];
+    const box = instance.bodyEl.querySelector('.support-deck-grid [data-slot="' + i + '"]');
+    const emptyEl = box.querySelector('.char-select-empty-text');
+    const filledEl = box.querySelector('.char-select-filled-inner');
+    const iconEl = filledEl.querySelector('.uma-icon');
+    const nameEl = filledEl.querySelector('.char-select-name');
+    const clearBtn = box.querySelector('.char-select-clear-btn');
     if (sel) {
       box.classList.add('filled');
       emptyEl.hidden = true;
@@ -936,22 +1001,23 @@
     }
   }
 
-  // --- サポートカードピッカー ---
-  function openSupportPicker(slot) {
-    ccDeckPickerSlot = slot;
+  // --- サポートカードピッカー(共有。どのインスタンスから開いたかはccActivePickerCtxで追跡) ---
+  function openSupportPicker(instance, slot) {
+    ccActivePickerCtx = { instance, kind: 'deck', slot };
     document.getElementById('ccSupportCardPickerSearch').value = '';
     renderSupportPickerGrid('');
-    document.getElementById('ccCharacterConfigModal').hidden = true;
+    instance.modalEl.hidden = true;
     document.getElementById('ccSupportCardPickerModal').hidden = false;
   }
   function closeSupportPicker() {
     document.getElementById('ccSupportCardPickerModal').hidden = true;
-    document.getElementById('ccCharacterConfigModal').hidden = false;
+    if (ccActivePickerCtx && ccActivePickerCtx.instance) ccActivePickerCtx.instance.modalEl.hidden = false;
   }
   function renderSupportPickerGrid(keyword) {
     const grid = document.getElementById('ccSupportCardPickerGrid');
+    const cards = (ccActivePickerCtx && ccActivePickerCtx.instance && ccActivePickerCtx.instance.supportCards) || [];
     const kw = keyword.trim().toLowerCase();
-    const filtered = kw ? ccSupportCards.filter(c => (c.name || '').toLowerCase().includes(kw)) : ccSupportCards;
+    const filtered = kw ? cards.filter(c => (c.name || '').toLowerCase().includes(kw)) : cards;
     grid.innerHTML = '';
     const fragment = document.createDocumentFragment();
     filtered.forEach(c => {
@@ -966,33 +1032,35 @@
       fragment.appendChild(tile);
     });
     grid.appendChild(fragment);
-    document.getElementById('ccSupportCardPickerStatus').textContent = ccSupportCards.length
+    document.getElementById('ccSupportCardPickerStatus').textContent = cards.length
       ? (filtered.length ? '' : '該当するサポートカードが見つかりません。')
       : 'サポカ図鑑にまだ登録がありません。';
   }
   function selectSupportCard(c) {
-    if (ccDeckPickerSlot == null) return;
-    ccDeckSelections[ccDeckPickerSlot] = { id: c.id, name: c.name, imagePath: c.imagePath || null };
-    updateDeckSlotBox(ccDeckPickerSlot);
+    if (!ccActivePickerCtx || ccActivePickerCtx.kind !== 'deck') return;
+    const { instance, slot } = ccActivePickerCtx;
+    instance.deckSelections[slot] = { id: c.id, name: c.name, imagePath: c.imagePath || null };
+    updateDeckSlotBox(instance, slot);
     closeSupportPicker();
   }
 
-  // --- ウマ娘ピッカー(因子設計図の各枠用) ---
-  function openUmaPickerForPedigree(slot) {
-    ccUmaPickerTargetSlot = slot;
+  // --- ウマ娘ピッカー(因子設計図の各枠用。共有) ---
+  function openUmaPickerForPedigree(instance, slot) {
+    ccActivePickerCtx = { instance, kind: 'pedigree', slot };
     document.getElementById('ccUmaPickerSearch').value = '';
     renderUmaPickerGrid('');
-    document.getElementById('ccCharacterConfigModal').hidden = true;
+    instance.modalEl.hidden = true;
     document.getElementById('ccUmaPickerModal').hidden = false;
   }
   function closeUmaPicker() {
     document.getElementById('ccUmaPickerModal').hidden = true;
-    document.getElementById('ccCharacterConfigModal').hidden = false;
+    if (ccActivePickerCtx && ccActivePickerCtx.instance) ccActivePickerCtx.instance.modalEl.hidden = false;
   }
   function renderUmaPickerGrid(keyword) {
     const grid = document.getElementById('ccUmaPickerGrid');
+    const umas = (ccActivePickerCtx && ccActivePickerCtx.instance && ccActivePickerCtx.instance.umas) || [];
     const kw = keyword.trim().toLowerCase();
-    const filtered = kw ? ccUmas.filter(u => (u.name || '').toLowerCase().includes(kw)) : ccUmas;
+    const filtered = kw ? umas.filter(u => (u.name || '').toLowerCase().includes(kw)) : umas;
     grid.innerHTML = '';
     const fragment = document.createDocumentFragment();
     filtered.forEach(u => {
@@ -1007,34 +1075,34 @@
       fragment.appendChild(tile);
     });
     grid.appendChild(fragment);
-    document.getElementById('ccUmaPickerStatus').textContent = ccUmas.length
+    document.getElementById('ccUmaPickerStatus').textContent = umas.length
       ? (filtered.length ? '' : '該当するウマ娘が見つかりません。')
       : 'ウマ娘図鑑にまだ登録がありません。';
   }
   function selectUmaForPedigree(u) {
-    if (ccUmaPickerTargetSlot == null) return;
-    const slot = ccUmaPickerTargetSlot;
-    const existingRedFactor = ccPedigreeSelections[slot] && ccPedigreeSelections[slot].redFactor;
-    ccPedigreeSelections[slot] = ccPedigreeEntryFromUma(u);
-    if (existingRedFactor) ccPedigreeSelections[slot].redFactor = existingRedFactor;
-    updatePedigreeCard(slot);
+    if (!ccActivePickerCtx || ccActivePickerCtx.kind !== 'pedigree') return;
+    const { instance, slot } = ccActivePickerCtx;
+    const existingRedFactor = instance.pedigreeSelections[slot] && instance.pedigreeSelections[slot].redFactor;
+    instance.pedigreeSelections[slot] = ccPedigreeEntryFromUma(u);
+    if (existingRedFactor) instance.pedigreeSelections[slot].redFactor = existingRedFactor;
+    updatePedigreeCard(instance, slot);
     closeUmaPicker();
   }
 
   // --- 保存 ---
-  async function handleSave() {
-    const statusEl = document.getElementById('ccCharacterConfigStatus');
+  async function handleSave(instance) {
+    const statusEl = instance.statusEl;
     if (!config || !config.token) {
       statusEl.textContent = '保存にはPATが必要です。設定でPATを入力してください。';
       statusEl.className = 'status error';
       return;
     }
-    const plan = ccPlans.find(p => p.id === ccPlanId);
+    const plan = instance.plans.find(p => p.id === instance.planId);
     if (!plan) return;
-    const character = (plan.characters || [])[ccCharIndex];
+    const character = (plan.characters || [])[instance.charIndex];
     if (!character) return;
-    character.supportDeck = ccDeckSelections.map(sel => sel ? { id: sel.id, name: sel.name } : null);
-    character.pedigree = ccPedigreeSelections.map(sel => sel ? {
+    character.supportDeck = instance.deckSelections.map(sel => sel ? { id: sel.id, name: sel.name } : null);
+    character.pedigree = instance.pedigreeSelections.map(sel => sel ? {
       id: sel.id || null,
       name: sel.name || '',
       manual: !!sel.manual,
@@ -1043,17 +1111,17 @@
       style: sel.style || {},
       redFactor: sel.redFactor ? { rarity: Number(sel.redFactor.rarity) || 0, type: sel.redFactor.type || '' } : null,
     } : null);
-    const updated = ccPlans.map(p => p.id === plan.id ? plan : p);
+    const updated = instance.plans.map(p => p.id === plan.id ? plan : p);
     statusEl.textContent = '保存しています…';
     statusEl.className = 'status';
-    const saveBtn = document.getElementById('ccCharacterConfigSaveBtn');
+    const saveBtn = instance.modalEl.querySelector('.config-save-btn');
     saveBtn.disabled = true;
     try {
-      await ccSavePlans(updated, ccSha, `育成計画サポカ編成更新: ${character.name}`);
-      ccPlans = updated;
+      await ccSavePlans(updated, instance.sha, `育成計画サポカ編成更新: ${character.name}`);
+      instance.plans = updated;
       statusEl.textContent = '保存しました。';
       if (typeof showToast === 'function') showToast('保存しました');
-      if (ccOnSaved) ccOnSaved(updated);
+      if (instance.onSaved) instance.onSaved(updated);
       window.dispatchEvent(new CustomEvent('training-plans-updated', { detail: { plans: updated } }));
     } catch (err) {
       console.error(err);

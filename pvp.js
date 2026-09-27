@@ -985,7 +985,6 @@ function renderEventDetailHtml(ev) {
 
 let currentEventDetailId = null;
 function openEventDetail(id, keepCompactState) {
-  if (!keepCompactState) setModalCompact(false);
   const ev = allEvents.find(e => e.id === id);
   if (!ev) return;
   currentEventDetailId = id;
@@ -995,7 +994,12 @@ function openEventDetail(id, keepCompactState) {
     img.addEventListener('click', () => openLightbox(img.src));
   });
   openModal('eventDetailModal');
+  applyDefaultCompactOnOpen(document.getElementById('eventDetailModal'), keepCompactState);
 }
+document.getElementById('eventDetailCompactBtn').addEventListener('click', () => {
+  const modal = document.getElementById('eventDetailModal');
+  setModalCompact(!modal.classList.contains('compact'), modal);
+});
 
 document.getElementById('eventDetailPinBtn').addEventListener('click', () => {
   const ev = allEvents.find(e => e.id === currentEventDetailId);

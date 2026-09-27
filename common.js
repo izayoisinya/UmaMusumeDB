@@ -261,9 +261,11 @@ if (modalOverlay) {
 }
 
 // --- ポップアップ縮小表示(裏のメイン画面を見ながら操作したい場合用) ---
-// どのモーダルが開いていても効くよう、#modalOverlay自体に'compact'クラスを
-// 付け外しする。縮小時はオーバーレイの背景を透過+クリック貫通にし、
-// モーダル本体だけを右下に小さく表示する。
+// モーダルごとに個別に'compact'クラスを持たせ、それぞれ独立して縮小⇔通常を
+// 切り替え・移動できるようにする(縮小ポップアップを複数同時に出しておき、
+// 特定の1つだけ通常サイズに戻す、という使い方に対応するため)。
+// #modalOverlay自体の背景(透過してクリック貫通させるか、通常通り塞ぐか)は
+// 「今表示中の全モーダルがcompactかどうか」から都度再計算する(updateOverlayBackdropState)。
 const MODAL_COMPACT_KEY = 'umaFactorLedger:modalCompact';
 function isModalCompact() {
   try {
@@ -272,59 +274,80 @@ function isModalCompact() {
     return false;
   }
 }
-function setModalCompact(on) {
+let modalCompactZCounter = 200;
+function bringModalToFront(modal) {
+  modalCompactZCounter += 1;
+  modal.style.zIndex = String(modalCompactZCounter);
+}
+function updateOverlayBackdropState() {
   if (!modalOverlay) return;
-  modalOverlay.classList.toggle('compact', on);
-  const btn = document.getElementById('modalCompactToggleBtn');
-  if (btn) {
-    btn.textContent = on ? '⤢' : '⤡';
-    btn.title = on ? 'ポップアップを元のサイズに戻す' : 'ポップアップを小さくして裏の画面を見る';
-  }
-  try { localStorage.setItem(MODAL_COMPACT_KEY, on ? '1' : '0'); } catch {}
-  if (on) {
-    document.querySelectorAll('.modal').forEach(applyModalCompactPos);
-  }
+  const visible = Array.from(document.querySelectorAll('.modal')).filter(m => !m.hidden);
+  const allCompact = visible.length > 0 && visible.every(m => m.classList.contains('compact-eligible') && m.classList.contains('compact'));
+  modalOverlay.classList.toggle('all-compact', allCompact);
 }
-function relocateCompactToggle(modal) {
-  const btn = document.getElementById('modalCompactToggleBtn');
+function updateModalCompactToggleBtn(modal, on) {
+  const btn = modal.querySelector('.modal-compact-toggle');
   if (!btn) return;
-  const actions = modal.querySelector('.modal-header-actions');
-  if (actions && btn.parentElement !== actions) {
-    actions.insertBefore(btn, actions.firstChild);
-  }
+  btn.textContent = on ? '⤢' : '⤡';
+  btn.title = on ? 'ポップアップを元のサイズに戻す' : 'ポップアップを小さくして裏の画面を見る';
 }
-if (modalOverlay && !document.getElementById('modalCompactToggleBtn')) {
-  const compactBtn = document.createElement('button');
-  compactBtn.type = 'button';
-  compactBtn.id = 'modalCompactToggleBtn';
-  compactBtn.className = 'modal-compact-toggle modal-icon-btn';
-  compactBtn.title = 'ポップアップを小さくして裏の画面を見る';
-  compactBtn.addEventListener('click', () => setModalCompact(!modalOverlay.classList.contains('compact')));
-  modalOverlay.appendChild(compactBtn);
-  setModalCompact(isModalCompact());
+// modalを指定: そのモーダルだけ縮小on/offする。省略時は今表示中の
+// 縮小対応モーダル全部に一括適用する(後方互換用)。
+function setModalCompact(on, modal) {
+  const targets = modal ? [modal] : Array.from(document.querySelectorAll('.modal.compact-eligible'));
+  targets.forEach(m => {
+    m.classList.toggle('compact', on);
+    updateModalCompactToggleBtn(m, on);
+    if (on) {
+      applyModalCompactPos(m);
+      bringModalToFront(m);
+    } else {
+      m.style.left = '';
+      m.style.top = '';
+      m.style.right = '';
+      m.style.bottom = '';
+    }
+  });
+  try { localStorage.setItem(MODAL_COMPACT_KEY, on ? '1' : '0'); } catch {}
+  updateOverlayBackdropState();
+}
+// ページ内で新規にモーダルを開く時、縮小状態を初期化するためのヘルパー。
+// keepState=true(ピン留めタブ経由の復元など)なら前回の既定(縮小/通常)を
+// 引き継ぎ、falseなら常に通常サイズで開く。
+function applyDefaultCompactOnOpen(modal, keepState) {
+  if (!modal) return;
+  setModalCompact(keepState ? isModalCompact() : false, modal);
 }
 
 // --- 縮小表示中、ヘッダーをドラッグしてポップアップを移動できるようにする ---
-// 位置は画面外に完全にはみ出さないよう、各辺は自身の幅/高さの70%まで
-// はみ出し可(30%は必ず画面内に残す)に制限して保存する。
+// 位置はモーダルごと(data-pos-keyで識別)に個別保存し、次回そのモーダルを
+// 縮小表示した時に同じ場所へ復元する。保存位置が無い場合は、既に表示中の
+// 他の縮小ポップアップの数だけ右下からずらした位置を初期値にする(複数同時に
+// 開いても重ならないようにするため)。画面外に完全にはみ出さないよう、
+// 各辺は自身の幅/高さの70%まではみ出し可(30%は必ず画面内に残す)に制限する。
 const MODAL_COMPACT_POS_KEY = 'umaFactorLedger:modalCompactPos';
-function loadModalCompactPos() {
+function loadModalCompactPosMap() {
   try {
     const raw = localStorage.getItem(MODAL_COMPACT_POS_KEY);
-    return raw ? JSON.parse(raw) : null;
+    const obj = raw ? JSON.parse(raw) : null;
+    return obj && typeof obj === 'object' && !Array.isArray(obj) ? obj : {};
   } catch {
-    return null;
+    return {};
   }
 }
-function saveModalCompactPos(pos) {
-  try { localStorage.setItem(MODAL_COMPACT_POS_KEY, JSON.stringify(pos)); } catch {}
+function saveModalCompactPosForKey(key, pos) {
+  if (!key) return;
+  const map = loadModalCompactPosMap();
+  map[key] = pos;
+  try { localStorage.setItem(MODAL_COMPACT_POS_KEY, JSON.stringify(map)); } catch {}
 }
 function applyModalCompactPos(modal) {
   if (!modal.classList.contains('compact-eligible')) return;
-  const pos = loadModalCompactPos();
-  if (pos) {
-    modal.style.left = pos.left + 'px';
-    modal.style.top = pos.top + 'px';
+  const key = modal.dataset.posKey || null;
+  const saved = key ? loadModalCompactPosMap()[key] : null;
+  if (saved) {
+    modal.style.left = saved.left + 'px';
+    modal.style.top = saved.top + 'px';
     modal.style.right = 'auto';
     modal.style.bottom = 'auto';
     return;
@@ -332,22 +355,25 @@ function applyModalCompactPos(modal) {
   // 保存位置がまだ無い場合: transform-originがtop leftなので、CSSの
   // right/bottom指定のままだと縮小するほど右下の角から離れてしまう。
   // 表示中の(縮小後の)実測サイズから右下寄せの座標を計算して明示指定する。
+  // 他に既に縮小表示中のモーダルがあれば、その数だけ左上へずらして重なりを避ける。
   const rect = modal.getBoundingClientRect();
   if (!rect.width || !rect.height) return; // 非表示中は測れないので何もしない
   const margin = 12;
-  modal.style.left = Math.max(margin, window.innerWidth - margin - rect.width) + 'px';
-  modal.style.top = Math.max(margin, window.innerHeight - margin - rect.height) + 'px';
+  const othersOpen = Array.from(document.querySelectorAll('.modal.compact-eligible.compact')).filter(m => m !== modal).length;
+  const cascade = Math.min(othersOpen, 6) * 26;
+  modal.style.left = Math.max(margin, window.innerWidth - margin - rect.width - cascade) + 'px';
+  modal.style.top = Math.max(margin, window.innerHeight - margin - rect.height - cascade) + 'px';
   modal.style.right = 'auto';
   modal.style.bottom = 'auto';
 }
 if (modalOverlay) {
   let dragState = null;
   modalOverlay.addEventListener('pointerdown', e => {
-    if (!modalOverlay.classList.contains('compact')) return;
+    const modal = e.target.closest('.modal');
+    if (modal) bringModalToFront(modal);
     const header = e.target.closest('.modal-header-row');
     if (!header || e.target.closest('.modal-header-actions')) return;
-    const modal = header.closest('.modal');
-    if (!modal) return;
+    if (!modal || !modal.classList.contains('compact')) return;
     const rect = modal.getBoundingClientRect();
     dragState = {
       modal,
@@ -378,23 +404,28 @@ if (modalOverlay) {
   const endModalDrag = () => {
     if (!dragState) return;
     const rect = dragState.modal.getBoundingClientRect();
-    saveModalCompactPos({ left: rect.left, top: rect.top });
+    saveModalCompactPosForKey(dragState.modal.dataset.posKey, { left: rect.left, top: rect.top });
     dragState = null;
   };
   modalOverlay.addEventListener('pointerup', endModalDrag);
   modalOverlay.addEventListener('pointercancel', endModalDrag);
 
   // character-config.js等が後からポップアップを追加/表示するケースにも
-  // 対応するため、hidden属性の変化を監視して表示された瞬間に
-  // 縮小切替ボタンをそのモーダルのヘッダーへ移し、縮小表示中なら位置も適用する
+  // 対応するため、hidden属性の変化を監視して表示された瞬間に前面へ出し、
+  // 縮小状態ならその位置を適用する。オーバーレイの背景状態も都度再計算する。
   const modalVisibilityObserver = new MutationObserver(mutations => {
+    let changed = false;
     mutations.forEach(m => {
       const target = m.target;
-      if (m.attributeName === 'hidden' && target.classList && target.classList.contains('modal') && !target.hidden) {
-        relocateCompactToggle(target);
-        if (modalOverlay.classList.contains('compact')) applyModalCompactPos(target);
+      if (m.attributeName === 'hidden' && target.classList && target.classList.contains('modal')) {
+        changed = true;
+        if (!target.hidden) {
+          bringModalToFront(target);
+          if (target.classList.contains('compact')) applyModalCompactPos(target);
+        }
       }
     });
+    if (changed) updateOverlayBackdropState();
   });
   modalVisibilityObserver.observe(modalOverlay, { attributes: true, attributeFilter: ['hidden'], subtree: true });
 }
@@ -572,17 +603,21 @@ window.addEventListener('resize', positionPinnedTabsBar);
 function openPinnedTab(key) {
   const tab = loadPinnedTabs().find(t => t.key === key);
   if (!tab) return;
-  if (tab.page === currentPage && typeof window.openPinnedTabTarget === 'function') {
-    window.openPinnedTabTarget(tab);
-    return;
-  }
-  // キャラ編成(サポカ編成/因子設計図)・育成計画詳細はcharacter-config.js
-  // を読み込んでいるどのページからでもポップアップとして開けるので、
-  // 遷移せずその場で開く。
+  // キャラ編成は複数キャラを同時に開けるようにしたいので、同じページを
+  // 開いている時でもページ内蔵の単一モーダルではなく、常にcharacter-config.js
+  // の複数インスタンス対応版を使う(training.html上でも他ページ経由でも
+  // 挙動を揃えるため)。
   if (tab.type === 'characterConfig' && typeof window.openCharacterConfigWidget === 'function') {
     window.openCharacterConfigWidget(tab.params.plan, Number(tab.params.char), { keepCompactState: true });
     return;
   }
+  if (tab.page === currentPage && typeof window.openPinnedTabTarget === 'function') {
+    window.openPinnedTabTarget(tab);
+    return;
+  }
+  // 育成計画詳細・イベント結果詳細はcharacter-config.js
+  // を読み込んでいるどのページからでもポップアップとして開けるので、
+  // 遷移せずその場で開く。
   if (tab.type === 'planDetail' && typeof window.openPlanDetailWidget === 'function') {
     window.openPlanDetailWidget(tab.params.plan);
     return;
