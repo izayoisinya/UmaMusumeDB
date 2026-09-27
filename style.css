@@ -854,23 +854,8 @@ mark.search-hit {
   z-index: 100;
 }
 .modal-overlay[hidden] { display: none; }
-.modal-compact-toggle {
-  position: fixed;
-  top: 14px;
-  right: 14px;
-  z-index: 101;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  border: 1.5px solid var(--panel-line);
-  background: var(--surface);
-  color: var(--ink);
-  font-size: 15px;
-  line-height: 1;
-  cursor: pointer;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
-  pointer-events: auto;
-}
+/* 縮小表示切替ボタンはmodal-icon-btnのスタイルに乗せ、各ポップアップの
+   ヘッダー(保存/タブ登録/閉じる等と同じ並び)に配置する(JS側で移動) */
 .modal-overlay.compact {
   background: transparent;
   pointer-events: none;
@@ -1293,17 +1278,17 @@ mark.search-hit {
 .pedigree-red-factor-row .star-rating { flex-shrink: 0; }
 .pedigree-red-factor-row select { flex: 1; min-width: 0; margin-top: 0; }
 
-/* 縮小表示: 親・祖カードはアイコンを正方形で左上に、右に赤因子(★上/選択下)、
-   その下に適性を配置する専用レイアウト(display:contentsでpedigree-card-main
-   の入れ子を無視し、pedigree-card自体を3エリアのグリッドにする) */
+/* 縮小表示: 親・祖カードはアイコンを正方形で左上に、右に赤因子(★上/選択下)を
+   並べる専用レイアウト(display:contentsでpedigree-card-mainの入れ子を無視し、
+   pedigree-card自体を2エリアのグリッドにする)。適性バッジは縮小表示では
+   非表示にして、その分コンパクトにする */
 .modal-overlay.compact .pedigree-card-parent,
 .modal-overlay.compact .pedigree-card:not(.pedigree-card-wide) {
   display: grid;
   grid-template-columns: auto 1fr;
   grid-template-areas:
     "label label"
-    "icon redfactor"
-    "apt apt";
+    "icon redfactor";
   column-gap: 8px;
   row-gap: 4px;
   align-items: start;
@@ -1327,8 +1312,7 @@ mark.search-hit {
 }
 .modal-overlay.compact .pedigree-card-parent .pedigree-apt-area,
 .modal-overlay.compact .pedigree-card:not(.pedigree-card-wide) .pedigree-apt-area {
-  grid-area: apt;
-  margin-top: 0;
+  display: none;
 }
 .modal-overlay.compact .pedigree-card-parent .pedigree-red-factor,
 .modal-overlay.compact .pedigree-card:not(.pedigree-card-wide) .pedigree-red-factor {

@@ -274,11 +274,20 @@ function setModalCompact(on) {
     document.querySelectorAll('.modal').forEach(applyModalCompactPos);
   }
 }
+function relocateCompactToggle(modal) {
+  const btn = document.getElementById('modalCompactToggleBtn');
+  if (!btn) return;
+  const actions = modal.querySelector('.modal-header-actions');
+  if (actions && btn.parentElement !== actions) {
+    actions.insertBefore(btn, actions.firstChild);
+  }
+}
 if (modalOverlay && !document.getElementById('modalCompactToggleBtn')) {
   const compactBtn = document.createElement('button');
   compactBtn.type = 'button';
   compactBtn.id = 'modalCompactToggleBtn';
-  compactBtn.className = 'modal-compact-toggle';
+  compactBtn.className = 'modal-compact-toggle modal-icon-btn';
+  compactBtn.title = 'ポップアップを小さくして裏の画面を見る';
   compactBtn.addEventListener('click', () => setModalCompact(!modalOverlay.classList.contains('compact')));
   modalOverlay.appendChild(compactBtn);
   setModalCompact(isModalCompact());
@@ -364,13 +373,14 @@ if (modalOverlay) {
   modalOverlay.addEventListener('pointercancel', endModalDrag);
 
   // character-config.js等が後からポップアップを追加/表示するケースにも
-  // 対応するため、hidden属性の変化を監視して表示された瞬間に位置を適用する
+  // 対応するため、hidden属性の変化を監視して表示された瞬間に
+  // 縮小切替ボタンをそのモーダルのヘッダーへ移し、縮小表示中なら位置も適用する
   const modalVisibilityObserver = new MutationObserver(mutations => {
-    if (!modalOverlay.classList.contains('compact')) return;
     mutations.forEach(m => {
       const target = m.target;
       if (m.attributeName === 'hidden' && target.classList && target.classList.contains('modal') && !target.hidden) {
-        applyModalCompactPos(target);
+        relocateCompactToggle(target);
+        if (modalOverlay.classList.contains('compact')) applyModalCompactPos(target);
       }
     });
   });
