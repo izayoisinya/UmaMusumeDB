@@ -130,36 +130,61 @@ button { touch-action: manipulation; }
 }
 .masthead-btn:hover { background: #fff; }
 .masthead-btn:focus-visible { outline: 2px solid var(--blue-dim); outline-offset: 2px; }
+/* 登録タブは右下の＋/↑/↓ボタン群のすぐ上に縦積みで固定表示する。
+   通常は丸い小さいボタン(頭文字のみ)で、マウスhover/タップで
+   横に伸びて全文表示し、その状態でもう一度押すとポップアップを開く。
+   bottom位置はscrollFabGroupの実際の高さに合わせてJS側で都度計算する
+   (ページごとにボタンの数が違うため)。 */
 .pinned-tabs-bar {
+  position: fixed;
+  right: 12px;
+  bottom: 120px;
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-end;
   gap: 6px;
+  z-index: 149;
 }
 .pinned-tabs-bar[hidden] { display: none; }
 .pinned-tab {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: 2px;
-  background: rgba(255,255,255,0.85);
+  height: 30px;
+  max-width: 30px;
+  background: rgba(255,255,255,0.94);
   border-radius: 999px;
   overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.22);
+  cursor: pointer;
+  transition: max-width 0.22s ease;
 }
-.pinned-tab-open {
+.pinned-tab.expanded {
+  max-width: 200px;
+}
+.pinned-tab-icon {
+  flex-shrink: 0;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  color: #558b2f;
+}
+.pinned-tab-label {
   font-family: 'M PLUS Rounded 1c', sans-serif;
   font-size: 11px;
   font-weight: 700;
-  padding: 5px 4px 5px 12px;
-  border: none;
-  background: none;
   color: #558b2f;
-  cursor: pointer;
-  max-width: 160px;
+  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  white-space: nowrap;
+  max-width: 130px;
 }
 .pinned-tab-close {
+  flex-shrink: 0;
   font-size: 12px;
   line-height: 1;
   padding: 5px 10px 5px 4px;

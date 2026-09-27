@@ -506,13 +506,30 @@ function renderPinnedTabsBar() {
   }
   bar.hidden = false;
   bar.innerHTML = tabs.map(t => `
-    <span class="pinned-tab">
-      <button type="button" class="pinned-tab-open" data-key="${escapeHtmlCommon(t.key)}">${escapeHtmlCommon(t.label)}</button>
+    <span class="pinned-tab" data-key="${escapeHtmlCommon(t.key)}">
+      <span class="pinned-tab-icon">${escapeHtmlCommon(t.label.slice(0, 1))}</span>
+      <span class="pinned-tab-label">${escapeHtmlCommon(t.label)}</span>
       <button type="button" class="pinned-tab-close" data-key="${escapeHtmlCommon(t.key)}">×</button>
     </span>
   `).join('');
-  bar.querySelectorAll('.pinned-tab-open').forEach(btn => {
-    btn.addEventListener('click', () => openPinnedTab(btn.dataset.key));
+  bar.querySelectorAll('.pinned-tab').forEach(el => {
+    // マウスhoverの時だけ自動で全文表示する(タッチでもpointerenterは
+    // 発火するが、pointerTypeで見分けてタッチでは反応させない。
+    // タッチは代わりにclickの1回目で全文表示、2回目でポップアップを開く)
+    el.addEventListener('pointerenter', e => {
+      if (e.pointerType === 'mouse') el.classList.add('expanded');
+    });
+    el.addEventListener('pointerleave', e => {
+      if (e.pointerType === 'mouse') el.classList.remove('expanded');
+    });
+    el.addEventListener('click', e => {
+      if (e.target.closest('.pinned-tab-close')) return;
+      if (!el.classList.contains('expanded')) {
+        el.classList.add('expanded');
+        return;
+      }
+      openPinnedTab(el.dataset.key);
+    });
   });
   bar.querySelectorAll('.pinned-tab-close').forEach(btn => {
     btn.addEventListener('click', e => {
@@ -520,7 +537,26 @@ function renderPinnedTabsBar() {
       removePinnedTab(btn.dataset.key);
     });
   });
+  positionPinnedTabsBar();
 }
+
+// マウスhover/タップで一時的に全文表示した登録タブを、
+// タブ以外の場所を押したら通常の小さい表示に戻す
+document.addEventListener('click', e => {
+  if (e.target.closest('.pinned-tab')) return;
+  document.querySelectorAll('.pinned-tab.expanded').forEach(el => el.classList.remove('expanded'));
+});
+
+// 登録タブの縦積みを、右下の＋/↑/↓ボタン群のすぐ上に来るように
+// 都度位置合わせする(ページごとにボタン数が違い高さが変わるため)
+function positionPinnedTabsBar() {
+  const bar = document.getElementById('pinnedTabsBar');
+  const fabGroup = document.getElementById('scrollFabGroup');
+  if (!bar || !fabGroup || bar.hidden) return;
+  const fabRect = fabGroup.getBoundingClientRect();
+  bar.style.bottom = (window.innerHeight - fabRect.top + 10) + 'px';
+}
+window.addEventListener('resize', positionPinnedTabsBar);
 
 function openPinnedTab(key) {
   const tab = loadPinnedTabs().find(t => t.key === key);
