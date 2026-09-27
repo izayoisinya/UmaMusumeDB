@@ -775,7 +775,7 @@ function pedigreeCardHtml(slot, label) {
   const groupClass = [1, 3, 4].includes(slot) ? ' pedigree-group-a' : [2, 5, 6].includes(slot) ? ' pedigree-group-b' : ' pedigree-group-self';
   return `
     <div class="pedigree-card${isWide ? ' pedigree-card-wide' : ''}${isParent ? ' pedigree-card-parent' : ''}${groupClass}">
-      <div class="pedigree-card-label">${label}</div>
+      <div class="pedigree-card-label" id="pedigreeCardLabel${slot}">${label}</div>
       <div class="pedigree-card-main">
         <div class="char-select-box" id="pedigreeBox${slot}">
           <button type="button" class="char-select-clear-btn" id="pedigreeClearBtn${slot}" hidden>×</button>
@@ -917,6 +917,8 @@ function updatePedigreeCard(slot) {
   const iconEl = document.getElementById('pedigreeIcon' + slot);
   const nameEl = document.getElementById('pedigreeName' + slot);
   const clearBtn = document.getElementById('pedigreeClearBtn' + slot);
+  const labelEl = document.getElementById('pedigreeCardLabel' + slot);
+  if (labelEl) labelEl.hidden = hasRegistrySel;
   if (hasRegistrySel) {
     box.classList.add('filled');
     emptyEl.hidden = true;
