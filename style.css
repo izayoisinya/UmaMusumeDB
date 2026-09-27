@@ -860,14 +860,20 @@ mark.search-hit {
   background: transparent;
   pointer-events: none;
 }
+/* 縮小表示中でも、対象外(登録/編集フォームやピッカー等)のモーダルは
+   常にクリックできるようにしておく(でないと操作不能になってしまう) */
 #modalOverlay.compact .modal {
+  pointer-events: auto;
+}
+/* 縮小の見た目(位置・サイズ)は対応ポップアップ(.compact-eligible)にのみ適用。
+   それ以外(登録/編集フォーム・ピッカー等)は縮小表示中でも通常サイズのまま */
+#modalOverlay.compact .modal.compact-eligible {
   position: fixed;
   right: 12px;
   bottom: 12px;
   left: auto;
   top: auto;
   margin: 0;
-  pointer-events: auto;
   width: 640px;
   max-width: 86vw;
   max-height: 46vh;
@@ -876,11 +882,11 @@ mark.search-hit {
   box-shadow: 0 8px 26px rgba(0,0,0,0.45);
 }
 /* 縮小表示中はヘッダーをつかんでドラッグ移動できる */
-.modal-overlay.compact .modal-header-row {
+.modal-overlay.compact .modal.compact-eligible .modal-header-row {
   cursor: grab;
   touch-action: none;
 }
-.modal-overlay.compact .modal-header-row:active {
+.modal-overlay.compact .modal.compact-eligible .modal-header-row:active {
   cursor: grabbing;
 }
 .modal-overlay.compact .modal h2 { font-size: 15px; }

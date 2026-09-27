@@ -984,7 +984,8 @@ function renderEventDetailHtml(ev) {
 }
 
 let currentEventDetailId = null;
-function openEventDetail(id) {
+function openEventDetail(id, keepCompactState) {
+  if (!keepCompactState) setModalCompact(false);
   const ev = allEvents.find(e => e.id === id);
   if (!ev) return;
   currentEventDetailId = id;
@@ -1011,12 +1012,12 @@ document.getElementById('eventDetailPinBtn').addEventListener('click', () => {
 
 // --- タブ登録からの復帰(別ページからの遷移・同ページでのタブ再オープン両対応) ---
 window.openPinnedTabTarget = function(tab) {
-  if (tab.type === 'eventDetail') openEventDetail(tab.params.event);
+  if (tab.type === 'eventDetail') openEventDetail(tab.params.event, true);
 };
 
 function handlePinnedTabDeepLink() {
   const eventId = new URLSearchParams(location.search).get('event');
-  if (eventId) openEventDetail(eventId);
+  if (eventId) openEventDetail(eventId, true);
 }
 
 resetForm();

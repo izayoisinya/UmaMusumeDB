@@ -550,7 +550,8 @@ function renderPlans() {
 
 // --- 育成計画詳細ポップアップ(タップで開く) ---
 let currentPlanDetailId = null;
-function openPlanDetail(id) {
+function openPlanDetail(id, keepCompactState) {
+  if (!keepCompactState) setModalCompact(false);
   const plan = allPlans.find(p => p.id === id);
   if (!plan) return;
   currentPlanDetailId = id;
@@ -705,7 +706,8 @@ let configTargetCharIndex = null;
 let configDeckSelections = [null, null, null, null, null, null];
 let configPedigreeSelections = new Array(7).fill(null);
 
-function openCharacterConfig(planId, charIndex) {
+function openCharacterConfig(planId, charIndex, keepCompactState) {
+  if (!keepCompactState) setModalCompact(false);
   const plan = allPlans.find(p => p.id === planId);
   if (!plan) return;
   const character = (plan.characters || [])[charIndex];
@@ -1134,9 +1136,9 @@ document.getElementById('supportCardPickerSearch').addEventListener('input', deb
 // --- タブ登録からの復帰(別ページからの遷移・同ページでのタブ再オープン両対応) ---
 window.openPinnedTabTarget = function(tab) {
   if (tab.type === 'characterConfig') {
-    openCharacterConfig(tab.params.plan, Number(tab.params.char));
+    openCharacterConfig(tab.params.plan, Number(tab.params.char), true);
   } else if (tab.type === 'planDetail') {
-    openPlanDetail(tab.params.plan);
+    openPlanDetail(tab.params.plan, true);
   }
 };
 
@@ -1146,9 +1148,9 @@ function handlePinnedTabDeepLink() {
   const charIndex = params.get('char');
   if (!planId) return;
   if (charIndex !== null) {
-    openCharacterConfig(planId, Number(charIndex));
+    openCharacterConfig(planId, Number(charIndex), true);
   } else {
-    openPlanDetail(planId);
+    openPlanDetail(planId, true);
   }
 }
 

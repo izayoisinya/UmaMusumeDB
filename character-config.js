@@ -169,7 +169,7 @@
 
     const wrap = document.createElement('div');
     wrap.innerHTML = `
-      <div class="modal" id="ccCharacterConfigModal" role="dialog" aria-labelledby="ccCharacterConfigTitle" hidden>
+      <div class="modal compact-eligible" id="ccCharacterConfigModal" role="dialog" aria-labelledby="ccCharacterConfigTitle" hidden>
         <div class="modal-header-row">
           <h2 id="ccCharacterConfigTitle">キャラ編成</h2>
           <div class="modal-header-actions">
@@ -195,7 +195,7 @@
         <div class="status" id="ccUmaPickerStatus"></div>
         <button type="button" class="btn secondary" id="ccUmaPickerCloseBtn">閉じる</button>
       </div>
-      <div class="modal" id="ccPlanDetailModal" role="dialog" aria-labelledby="ccPlanDetailTitle" hidden>
+      <div class="modal compact-eligible" id="ccPlanDetailModal" role="dialog" aria-labelledby="ccPlanDetailTitle" hidden>
         <div class="modal-header-row">
           <h2 id="ccPlanDetailTitle">育成計画詳細</h2>
           <div class="modal-header-actions">
@@ -206,7 +206,7 @@
         <div id="ccPlanDetailBody"></div>
         <div class="status" id="ccPlanDetailStatus"></div>
       </div>
-      <div class="modal" id="ccEventDetailModal" role="dialog" aria-labelledby="ccEventDetailTitle" hidden>
+      <div class="modal compact-eligible" id="ccEventDetailModal" role="dialog" aria-labelledby="ccEventDetailTitle" hidden>
         <div class="modal-header-row">
           <h2 id="ccEventDetailTitle">イベント結果詳細</h2>
           <div class="modal-header-actions">
@@ -240,6 +240,7 @@
   // --- 公開エントリポイント ---
   window.openCharacterConfigWidget = async function (planId, charIndex, options) {
     options = options || {};
+    if (!options.keepCompactState && typeof setModalCompact === 'function') setModalCompact(false);
     if (!config || !config.owner || !config.repo) {
       alert('先に「⚙ 設定」からGitHub連携(リポジトリ所有者・リポジトリ名)を設定してください。');
       return;

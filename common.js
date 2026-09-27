@@ -309,6 +309,7 @@ function saveModalCompactPos(pos) {
   try { localStorage.setItem(MODAL_COMPACT_POS_KEY, JSON.stringify(pos)); } catch {}
 }
 function applyModalCompactPos(modal) {
+  if (!modal.classList.contains('compact-eligible')) return;
   const pos = loadModalCompactPos();
   if (pos) {
     modal.style.left = pos.left + 'px';
@@ -532,7 +533,7 @@ function openPinnedTab(key) {
   // を読み込んでいるどのページからでもポップアップとして開けるので、
   // 遷移せずその場で開く。
   if (tab.type === 'characterConfig' && typeof window.openCharacterConfigWidget === 'function') {
-    window.openCharacterConfigWidget(tab.params.plan, Number(tab.params.char));
+    window.openCharacterConfigWidget(tab.params.plan, Number(tab.params.char), { keepCompactState: true });
     return;
   }
   if (tab.type === 'planDetail' && typeof window.openPlanDetailWidget === 'function') {
