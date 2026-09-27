@@ -1204,6 +1204,14 @@ mark.search-hit {
   gap: 10px;
   width: 100%;
 }
+/* 祖2枚は固定190pxではなく伸縮可にして、横に並べる余白があるタブレット
+   縦向きなどでは横並びのまま収まるようにする(収まらなければ自動で折返す) */
+.pedigree-column .pedigree-subrow > .pedigree-card {
+  flex: 1 1 150px;
+  width: auto;
+  min-width: 150px;
+  max-width: 190px;
+}
 .pedigree-card {
   border: 1.5px dashed var(--panel-line);
   border-radius: 10px;
