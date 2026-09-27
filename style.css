@@ -917,6 +917,9 @@ mark.search-hit {
 .modal .modal-close-btn {
   margin-top: 10px;
 }
+.modal .modal-header-actions .modal-close-btn {
+  margin-top: 0;
+}
 
 .modal-header-row {
   display: flex;
