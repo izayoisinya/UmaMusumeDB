@@ -909,15 +909,18 @@ mark.search-hit {
 /* 縮小表示は上辺の70%まで画面外にはみ出せてヘッダーがつかめなくなる
    ことがあるので、下辺にも同じ役割のつかみ手を用意する(通常表示・
    ヘッダーが常に見えている縮小eligible以外では非表示)。
-   見た目は主張させたくないので透明にし、モーダル本来のpadding-bottom分
-   (このモーダルではpadding-bottomを0にして代わりにこの高さを使っている)
-   を使って下辺ギリギリまでタッチ範囲を広げている */
+   position:stickyだと中身がmax-heightより短くスクロールが発生しない時に
+   自然な流し込み位置(コンテンツ直後)から動かず、見た目の高さによって
+   位置がバラついてしまうため、モーダル(縮小時はposition:fixedなので
+   containing blockになる)に対するposition:absoluteで常に下辺ぴったりに
+   固定する。見た目は主張させたくないので透明にしてある */
 .modal-footer-row { display: none; }
 .modal.compact-eligible.compact .modal-footer-row {
   display: block;
-  position: sticky;
+  position: absolute;
+  left: 0;
+  right: 0;
   bottom: 0;
-  margin-top: 8px;
   height: 22px;
   background: transparent;
   cursor: grab;
