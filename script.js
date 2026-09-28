@@ -576,7 +576,7 @@ function renderEntries() {
     return ok;
   });
 
-  document.getElementById('countLabel').textContent = allEntries.length + ' 頭 登録';
+  document.getElementById('countLabel').textContent = allEntries.length + ' 件 登録';
 
   if (!filtered.length) {
     emptyMsg.style.display = 'block';

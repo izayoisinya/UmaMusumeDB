@@ -543,7 +543,7 @@ function renderUmas() {
   const container = document.getElementById('entries');
   const emptyMsg = document.getElementById('emptyMsg');
 
-  document.getElementById('countLabel').textContent = allUmas.length + ' 頭 登録';
+  document.getElementById('countLabel').textContent = allUmas.length + ' 件 登録';
 
   const nameKeyword = searchNameInput.value.trim().toLowerCase();
   const skillKeyword = searchSkillInput.value.trim().toLowerCase();
