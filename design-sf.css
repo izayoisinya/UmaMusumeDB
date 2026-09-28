@@ -26,7 +26,7 @@
   --blue-dim: #00b8d9;
   --red: #ff2e97;
   --red-dim: #e0177d;
-  --white-f: #8b5cf6;
+  --white-f: #f4f7ff;
   --green: #39ff9d;
   --green-dim: #12c987;
   --danger: #ff3b5c;
@@ -191,6 +191,12 @@
 [data-design="sf"] .chip.red { background: linear-gradient(135deg, var(--red), var(--red-dim)); box-shadow: var(--sf-glow-pink); }
 [data-design="sf"] .chip.green { background: linear-gradient(135deg, var(--green), var(--green-dim)); box-shadow: 0 0 6px rgba(57,255,157,0.6); }
 [data-design="sf"] .chip.white { border-color: var(--white-f); color: var(--white-f); }
+/* スキルの種別枠(固有/回復/デバフ)は.chip.whiteの上書きで消えていた
+   (どちらも同じ特異度で、.chip.whiteの方が後に効いてしまっていたため)。
+   種別ごとの枠色を優先させるため、ここでより後ろに書いて勝たせる */
+[data-design="sf"] .skill-chip.cat-green { border-color: var(--green); box-shadow: 0 0 6px rgba(57,255,157,0.5); }
+[data-design="sf"] .skill-chip.cat-heal { border-color: var(--blue); box-shadow: var(--sf-glow-cyan); }
+[data-design="sf"] .skill-chip.cat-debuff { border-color: var(--red); box-shadow: var(--sf-glow-pink); }
 [data-design="sf"] .apt-badge {
   border-width: 1.5px;
   background: rgba(10,14,26,0.7);
