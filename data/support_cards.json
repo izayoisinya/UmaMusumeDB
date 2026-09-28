@@ -1,106 +1,8 @@
 [
   {
-    "id": "support_1790102456080_b1u47",
-    "name": "フォーエバーヤング",
-    "imagePath": null,
-    "types": [
-      "wisdom"
-    ],
-    "skills": [
-      {
-        "name": "直線巧者",
-        "type": "normal"
-      },
-      {
-        "name": "ペースアップ",
-        "type": "normal"
-      },
-      {
-        "name": "垂れウマ回避",
-        "type": "normal"
-      },
-      {
-        "name": "地固め",
-        "type": "normal"
-      },
-      {
-        "name": "尻尾上がり",
-        "type": "normal"
-      },
-      {
-        "name": "遊びはおしまいっ！",
-        "type": "normal"
-      },
-      {
-        "name": "快速",
-        "type": "normal"
-      },
-      {
-        "name": "パイオニア",
-        "type": "normal"
-      },
-      {
-        "name": "比類なき",
-        "type": "normal"
-      },
-      {
-        "name": "心惹かれて",
-        "type": "normal"
-      },
-      {
-        "name": "勝負を懸けて",
-        "type": "normal"
-      },
-      {
-        "name": "巨歩",
-        "type": "normal"
-      },
-      {
-        "name": "もう一踏ん張り",
-        "type": "normal"
-      }
-    ],
-    "eventSkills": [
-      {
-        "name": "灯を胸に",
-        "type": "normal"
-      },
-      {
-        "name": "バイタリティ",
-        "type": "normal"
-      },
-      {
-        "name": "コール&レスポンス",
-        "type": "gold"
-      },
-      {
-        "name": "二段構え",
-        "type": "normal"
-      },
-      {
-        "name": "イノベーション",
-        "type": "gold"
-      },
-      {
-        "name": "アプローチ",
-        "type": "normal"
-      },
-      {
-        "name": "尻尾の滝登り",
-        "type": "gold"
-      },
-      {
-        "name": "前人未到",
-        "type": "gold"
-      }
-    ],
-    "notes": "",
-    "savedAt": "2026-09-22T18:40:56.081Z"
-  },
-  {
     "id": "support_1790100920203_0fsaz",
     "name": "アーモンドアイ",
-    "imagePath": null,
+    "imagePath": "images/support_1790100920203_0fsaz.jpg",
     "types": [
       "speed"
     ],
@@ -169,7 +71,7 @@
       }
     ],
     "notes": "",
-    "savedAt": "2026-09-22T18:15:20.203Z"
+    "savedAt": "2026-09-28T20:21:35.318Z"
   },
   {
     "id": "support_1790101491064_li6zs",
@@ -1666,6 +1568,104 @@
     ],
     "notes": "",
     "savedAt": "2026-09-22T18:27:12.293Z"
+  },
+  {
+    "id": "support_1790102456080_b1u47",
+    "name": "フォーエバーヤング",
+    "imagePath": null,
+    "types": [
+      "wisdom"
+    ],
+    "skills": [
+      {
+        "name": "直線巧者",
+        "type": "normal"
+      },
+      {
+        "name": "ペースアップ",
+        "type": "normal"
+      },
+      {
+        "name": "垂れウマ回避",
+        "type": "normal"
+      },
+      {
+        "name": "地固め",
+        "type": "normal"
+      },
+      {
+        "name": "尻尾上がり",
+        "type": "normal"
+      },
+      {
+        "name": "遊びはおしまいっ！",
+        "type": "normal"
+      },
+      {
+        "name": "快速",
+        "type": "normal"
+      },
+      {
+        "name": "パイオニア",
+        "type": "normal"
+      },
+      {
+        "name": "比類なき",
+        "type": "normal"
+      },
+      {
+        "name": "心惹かれて",
+        "type": "normal"
+      },
+      {
+        "name": "勝負を懸けて",
+        "type": "normal"
+      },
+      {
+        "name": "巨歩",
+        "type": "normal"
+      },
+      {
+        "name": "もう一踏ん張り",
+        "type": "normal"
+      }
+    ],
+    "eventSkills": [
+      {
+        "name": "灯を胸に",
+        "type": "normal"
+      },
+      {
+        "name": "バイタリティ",
+        "type": "normal"
+      },
+      {
+        "name": "コール&レスポンス",
+        "type": "gold"
+      },
+      {
+        "name": "二段構え",
+        "type": "normal"
+      },
+      {
+        "name": "イノベーション",
+        "type": "gold"
+      },
+      {
+        "name": "アプローチ",
+        "type": "normal"
+      },
+      {
+        "name": "尻尾の滝登り",
+        "type": "gold"
+      },
+      {
+        "name": "前人未到",
+        "type": "gold"
+      }
+    ],
+    "notes": "",
+    "savedAt": "2026-09-22T18:40:56.081Z"
   },
   {
     "id": "support_1790101122262_ppya4",
