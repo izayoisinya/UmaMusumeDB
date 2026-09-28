@@ -545,24 +545,25 @@ document.querySelectorAll('.masthead-nav').forEach(a => {
   if (a.getAttribute('href') === currentPage) a.classList.add('active');
 });
 
-// --- ヘッダーの横幅が足りない時、ページ切替ボタン群をハンバーガーメニューに収納する ---
+// --- ヘッダーの横幅が足りない時、タイトルをタップするとページ切替ボタン群を
+//     ハンバーガーメニューとして開閉できるようにする ---
 const mastheadMenu = document.getElementById('mastheadMenu');
-const mastheadMenuToggle = document.getElementById('mastheadMenuToggle');
-if (mastheadMenu && mastheadMenuToggle) {
-  mastheadMenuToggle.addEventListener('click', () => {
+const mastheadTitle = document.getElementById('mastheadTitle');
+if (mastheadMenu && mastheadTitle) {
+  mastheadTitle.addEventListener('click', () => {
     const open = mastheadMenu.classList.toggle('open');
-    mastheadMenuToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    mastheadTitle.setAttribute('aria-expanded', open ? 'true' : 'false');
   });
   document.addEventListener('click', e => {
     if (!mastheadMenu.classList.contains('open')) return;
-    if (e.target.closest('#mastheadMenu') || e.target.closest('#mastheadMenuToggle')) return;
+    if (e.target.closest('#mastheadMenu') || e.target.closest('#mastheadTitle')) return;
     mastheadMenu.classList.remove('open');
-    mastheadMenuToggle.setAttribute('aria-expanded', 'false');
+    mastheadTitle.setAttribute('aria-expanded', 'false');
   });
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape' && mastheadMenu.classList.contains('open')) {
       mastheadMenu.classList.remove('open');
-      mastheadMenuToggle.setAttribute('aria-expanded', 'false');
+      mastheadTitle.setAttribute('aria-expanded', 'false');
     }
   });
 }

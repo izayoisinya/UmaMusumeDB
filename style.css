@@ -107,8 +107,8 @@ button { touch-action: manipulation; }
   flex-shrink: 0;
 }
 /* 横幅が足りる時はタイトルと件数の間に挟んで1行で表示する。
-   足りない場合は@media側で非表示にし、代わりに左下のハンバーガー
-   ボタン(.masthead-menu-toggle)を押した時だけポップアップで出す */
+   足りない場合は@media側で非表示にし、代わりにタイトル自体
+   (.masthead-title-toggle)をタップした時だけポップアップで出す */
 .masthead-menu {
   display: flex;
   gap: 8px;
@@ -136,35 +136,21 @@ button { touch-action: manipulation; }
 }
 .masthead-btn:hover { background: #fff; }
 .masthead-btn:focus-visible { outline: 2px solid var(--blue-dim); outline-offset: 2px; }
-/* 横幅が足りない時だけ出すハンバーガーボタン。.mastheadが
-   position:sticky(positionあり)なので、そのままposition:absoluteの
-   起点にできる(.mastheadのpositionは上書きしないこと) */
-.masthead-menu-toggle {
+/* 横幅が足りない時は、タイトル(h1)自体がハンバーガーボタンを兼ねる。
+   専用アイコン(☰)はこの時だけ表示する */
+.masthead-menu-icon {
   display: none;
-  position: absolute;
-  left: 16px;
-  bottom: 10px;
-  width: 36px;
-  height: 36px;
-  flex-shrink: 0;
-  border: none;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.92);
-  color: #558b2f;
-  font-size: 17px;
-  line-height: 1;
-  cursor: pointer;
-  touch-action: manipulation;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.12);
-  align-items: center;
-  justify-content: center;
-  z-index: 2;
+  margin-right: 8px;
+  font-size: 0.7em;
+  vertical-align: middle;
 }
-.masthead-menu-toggle:hover { background: #fff; }
 @media (max-width: 999px) {
-  /* ハンバーガーボタンが左下に絶対配置されるため、タイトル行と
-     重ならないよう下側に余白を確保しておく */
-  .masthead { padding-bottom: 58px; }
+  .masthead-menu-icon { display: inline-block; }
+  .masthead-title-toggle {
+    cursor: pointer;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
   .masthead-menu { display: none; }
   .masthead-menu.open {
     display: flex;
@@ -182,7 +168,6 @@ button { touch-action: manipulation; }
     z-index: 20;
   }
   .masthead-menu.open .masthead-btn { justify-content: center; }
-  .masthead-menu-toggle { display: flex; }
 }
 /* 登録タブは右下の＋/↑/↓ボタン群のすぐ上に縦積みで固定表示する。
    通常は丸い小さいボタン(頭文字のみ)で、マウスhover/タップで
@@ -251,7 +236,6 @@ button { touch-action: manipulation; }
 @media (max-width: 520px) {
   .masthead {
     padding: 12px 16px;
-    padding-bottom: 54px;
     gap: 8px 10px;
   }
   .masthead h1 { font-size: 22px; }
