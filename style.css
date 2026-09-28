@@ -1374,9 +1374,14 @@ mark.search-hit {
 .pedigree-apt-area .apt-select-row { margin-top: 6px; flex-wrap: nowrap; }
 .pedigree-apt-area .apt-select-row > div { min-width: 0; }
 .pedigree-apt-area .apt-row { justify-content: flex-start; margin-top: 6px; flex-wrap: nowrap; }
-/* 祖カードは横幅が狭く、距離・脚質のような4個並びのバッジがnowrapだと
-   カード右端からはみ出すため、祖カードに限り折り返しを許可して収める */
-.pedigree-card:not(.pedigree-card-wide) .pedigree-apt-area .apt-row { flex-wrap: wrap; }
+/* 祖カードは横幅が狭く、距離・脚質のような4個並びのバッジが標準サイズだと
+   折り返さずにカード右端からはみ出すため、祖カードに限りバッジ自体を
+   縮小して1行に収める */
+.pedigree-card:not(.pedigree-card-wide) .pedigree-apt-area .apt-row { gap: 3px; }
+.pedigree-card:not(.pedigree-card-wide) .pedigree-apt-area .apt-badge {
+  font-size: 10px;
+  padding: 2px 6px;
+}
 .pedigree-red-factor {
   margin-top: 10px;
   border-top: 1px dashed var(--panel-line);
