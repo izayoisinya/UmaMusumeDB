@@ -996,7 +996,7 @@ mark.search-hit {
   position: sticky;
   top: 0;
   z-index: 5;
-  background: var(--panel);
+  background: transparent;
   padding-bottom: 4px;
 }
 .modal-header-row h2 {
@@ -1005,6 +1005,8 @@ mark.search-hit {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  text-decoration: underline;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.35);
 }
 .modal-header-actions {
   display: flex;
