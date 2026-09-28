@@ -197,6 +197,19 @@
 [data-design="sf"] .skill-chip.cat-green { border-color: var(--green); box-shadow: 0 0 6px rgba(57,255,157,0.5); }
 [data-design="sf"] .skill-chip.cat-heal { border-color: var(--blue); box-shadow: var(--sf-glow-cyan); }
 [data-design="sf"] .skill-chip.cat-debuff { border-color: var(--red); box-shadow: var(--sf-glow-pink); }
+/* 金スキルは元々「明るい金背景+こげ茶文字」の配色だったのに、上の
+   .chip.whiteが文字色を白に上書きしてしまい、明るい背景に白文字で
+   ほぼ読めなくなっていた。単色背景なので文字色を元の配色に戻すだけで
+   十分読みやすくなる */
+[data-design="sf"] .chip.skill-gold { color: #6d4c00; }
+/* 固有スキルは背景が虹色グラデーション(赤〜紫まで全域)なので、
+   単色の文字色ではどこかの区間で必ず埋もれてしまう。文字色を変えるより
+   縁取り(黒っぽいアウトライン)を強めた方が全区間で安定して読める */
+[data-design="sf"] .chip.skill-unique {
+  color: #fff;
+  -webkit-text-stroke: 0.6px rgba(0,0,0,0.85);
+  text-shadow: 0 1px 2px rgba(0,0,0,0.7), 0 0 4px rgba(0,0,0,0.6);
+}
 [data-design="sf"] .apt-badge {
   border-width: 1.5px;
   background: rgba(10,14,26,0.7);
