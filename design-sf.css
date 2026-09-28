@@ -83,7 +83,10 @@
      祖先に付けるとその要素までクリップされて消えてしまうため) */
   border-radius: 4px 34px 4px 34px;
   box-shadow: 0 0 0 1px rgba(45,226,255,0.4), 0 8px 30px rgba(255,46,151,0.25);
-  position: relative;
+  /* position:relativeは付けない。.mastheadは元々(style.css側で)
+     position:stickyでスクロール追従のヘッダー固定をしているため、
+     ここでpositionを上書きするとstickyが解除されて固定が外れてしまう。
+     ::after用の配置起点としてはstickyのままでも十分機能する */
 }
 [data-design="sf"] .masthead::after {
   content: '';
