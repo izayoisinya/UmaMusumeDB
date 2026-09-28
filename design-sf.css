@@ -78,8 +78,10 @@
 /* ============ 4. マストヘッド: 非対称カット+ネオングラデ ============ */
 [data-design="sf"] .masthead {
   background: linear-gradient(115deg, var(--header-a) 0%, #180a2e 45%, var(--header-b) 100%);
-  border-radius: 4px 22px 4px 22px;
-  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 16px), calc(100% - 16px) 100%, 0 100%);
+  /* 非対称の角丸で近未来パネルらしさを出す。clip-pathは使わない
+     (内部にposition:fixedの要素(登録タブ等)がある場合、clip-pathを
+     祖先に付けるとその要素までクリップされて消えてしまうため) */
+  border-radius: 4px 34px 4px 34px;
   box-shadow: 0 0 0 1px rgba(45,226,255,0.4), 0 8px 30px rgba(255,46,151,0.25);
   position: relative;
 }
@@ -216,13 +218,18 @@
 }
 
 /* ============ 9. 登録タブ・縮小トグル等の小物 ============ */
+/* 背景がかなり暗いデザインなので、control-tab-icon.background色を
+   淡いダークネイビーにしただけだと背景に溶けて見えなくなってしまう。
+   縁のネオングローを強めにして輪郭がはっきり見えるようにする */
 [data-design="sf"] .pinned-tab {
-  background: rgba(10,14,26,0.9);
-  border: 1px solid rgba(45,226,255,0.5);
+  background: rgba(30, 38, 60, 0.96);
+  border: 1.5px solid var(--blue);
+  box-shadow: var(--sf-glow-cyan);
 }
 [data-design="sf"] .pinned-tab-icon,
 [data-design="sf"] .pinned-tab-label {
   color: var(--blue);
+  font-family: 'Orbitron', 'M PLUS Rounded 1c', sans-serif;
 }
 [data-design="sf"] .toast-notice {
   background: linear-gradient(135deg, var(--green), var(--green-dim));
