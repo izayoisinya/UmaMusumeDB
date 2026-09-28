@@ -545,6 +545,28 @@ document.querySelectorAll('.masthead-nav').forEach(a => {
   if (a.getAttribute('href') === currentPage) a.classList.add('active');
 });
 
+// --- ヘッダーの横幅が足りない時、ページ切替ボタン群をハンバーガーメニューに収納する ---
+const mastheadMenu = document.getElementById('mastheadMenu');
+const mastheadMenuToggle = document.getElementById('mastheadMenuToggle');
+if (mastheadMenu && mastheadMenuToggle) {
+  mastheadMenuToggle.addEventListener('click', () => {
+    const open = mastheadMenu.classList.toggle('open');
+    mastheadMenuToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  document.addEventListener('click', e => {
+    if (!mastheadMenu.classList.contains('open')) return;
+    if (e.target.closest('#mastheadMenu') || e.target.closest('#mastheadMenuToggle')) return;
+    mastheadMenu.classList.remove('open');
+    mastheadMenuToggle.setAttribute('aria-expanded', 'false');
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && mastheadMenu.classList.contains('open')) {
+      mastheadMenu.classList.remove('open');
+      mastheadMenuToggle.setAttribute('aria-expanded', 'false');
+    }
+  });
+}
+
 // --- ポップアップのタブ登録(擬似タスクバー。ページを跨いで特定のポップアップに素早く戻れるようにする) ---
 const PINNED_TABS_KEY = 'umaFactorLedger:pinnedTabs';
 

@@ -83,10 +83,10 @@ button { touch-action: manipulation; }
 }
 .masthead-top {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   justify-content: space-between;
   gap: 10px 14px;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 }
 .masthead h1 {
   font-family: 'M PLUS Rounded 1c', sans-serif;
@@ -96,6 +96,7 @@ button { touch-action: manipulation; }
   margin: 0;
   letter-spacing: 0.02em;
   text-shadow: 0 2px 3px rgba(70,90,20,0.25);
+  flex-shrink: 0;
 }
 .masthead p {
   color: #fff;
@@ -103,11 +104,16 @@ button { touch-action: manipulation; }
   font-weight: 700;
   margin: 0;
   text-shadow: 0 1px 2px rgba(70,90,20,0.2);
+  flex-shrink: 0;
 }
+/* 横幅が足りる時はタイトルと件数の間に挟んで1行で表示する。
+   足りない場合は@media側で非表示にし、代わりに左下のハンバーガー
+   ボタン(.masthead-menu-toggle)を押した時だけポップアップで出す */
 .masthead-menu {
   display: flex;
   gap: 8px;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  min-width: 0;
 }
 .masthead-btn {
   font-family: 'M PLUS Rounded 1c', sans-serif;
@@ -130,6 +136,54 @@ button { touch-action: manipulation; }
 }
 .masthead-btn:hover { background: #fff; }
 .masthead-btn:focus-visible { outline: 2px solid var(--blue-dim); outline-offset: 2px; }
+/* 横幅が足りない時だけ出すハンバーガーボタン。.mastheadが
+   position:sticky(positionあり)なので、そのままposition:absoluteの
+   起点にできる(.mastheadのpositionは上書きしないこと) */
+.masthead-menu-toggle {
+  display: none;
+  position: absolute;
+  left: 16px;
+  bottom: 10px;
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.92);
+  color: #558b2f;
+  font-size: 17px;
+  line-height: 1;
+  cursor: pointer;
+  touch-action: manipulation;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.12);
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+.masthead-menu-toggle:hover { background: #fff; }
+@media (max-width: 999px) {
+  /* ハンバーガーボタンが左下に絶対配置されるため、タイトル行と
+     重ならないよう下側に余白を確保しておく */
+  .masthead { padding-bottom: 58px; }
+  .masthead-menu { display: none; }
+  .masthead-menu.open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    left: 16px;
+    top: 100%;
+    margin-top: 8px;
+    background: var(--panel);
+    border-radius: 14px;
+    padding: 10px;
+    gap: 6px;
+    min-width: 180px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+    z-index: 20;
+  }
+  .masthead-menu.open .masthead-btn { justify-content: center; }
+  .masthead-menu-toggle { display: flex; }
+}
 /* 登録タブは右下の＋/↑/↓ボタン群のすぐ上に縦積みで固定表示する。
    通常は丸い小さいボタン(頭文字のみ)で、マウスhover/タップで
    横に伸びて全文表示し、その状態でもう一度押すとポップアップを開く。
@@ -197,20 +251,15 @@ button { touch-action: manipulation; }
 @media (max-width: 520px) {
   .masthead {
     padding: 12px 16px;
+    padding-bottom: 54px;
     gap: 8px 10px;
   }
   .masthead h1 { font-size: 22px; }
-  .masthead-menu {
-    width: 100%;
-    overflow-x: auto;
-    flex-wrap: nowrap;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-  }
-  .masthead-menu::-webkit-scrollbar { display: none; }
+  /* .masthead-menu自体はこの幅では(999px基準の方の@media側で)既に
+     ハンバーガーボタンの中に収納済みなので、ここではポップアップに
+     並ぶ.masthead-btnのサイズだけ詰める */
   .masthead-btn {
     white-space: nowrap;
-    flex-shrink: 0;
     font-size: 11px;
     padding: 7px 12px;
     min-height: 32px;
