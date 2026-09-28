@@ -1,106 +1,8 @@
 [
   {
-    "id": "support_1790102456080_b1u47",
-    "name": "フォーエバーヤング",
-    "imagePath": null,
-    "types": [
-      "wisdom"
-    ],
-    "skills": [
-      {
-        "name": "直線巧者",
-        "type": "normal"
-      },
-      {
-        "name": "ペースアップ",
-        "type": "normal"
-      },
-      {
-        "name": "垂れウマ回避",
-        "type": "normal"
-      },
-      {
-        "name": "地固め",
-        "type": "normal"
-      },
-      {
-        "name": "尻尾上がり",
-        "type": "normal"
-      },
-      {
-        "name": "遊びはおしまいっ！",
-        "type": "normal"
-      },
-      {
-        "name": "快速",
-        "type": "normal"
-      },
-      {
-        "name": "パイオニア",
-        "type": "normal"
-      },
-      {
-        "name": "比類なき",
-        "type": "normal"
-      },
-      {
-        "name": "心惹かれて",
-        "type": "normal"
-      },
-      {
-        "name": "勝負を懸けて",
-        "type": "normal"
-      },
-      {
-        "name": "巨歩",
-        "type": "normal"
-      },
-      {
-        "name": "もう一踏ん張り",
-        "type": "normal"
-      }
-    ],
-    "eventSkills": [
-      {
-        "name": "灯を胸に",
-        "type": "normal"
-      },
-      {
-        "name": "バイタリティ",
-        "type": "normal"
-      },
-      {
-        "name": "コール&レスポンス",
-        "type": "gold"
-      },
-      {
-        "name": "二段構え",
-        "type": "normal"
-      },
-      {
-        "name": "イノベーション",
-        "type": "gold"
-      },
-      {
-        "name": "アプローチ",
-        "type": "normal"
-      },
-      {
-        "name": "尻尾の滝登り",
-        "type": "gold"
-      },
-      {
-        "name": "前人未到",
-        "type": "gold"
-      }
-    ],
-    "notes": "",
-    "savedAt": "2026-09-22T18:40:56.081Z"
-  },
-  {
     "id": "support_1790100920203_0fsaz",
     "name": "アーモンドアイ",
-    "imagePath": null,
+    "imagePath": "images/support_1790100920203_0fsaz.jpg",
     "types": [
       "speed"
     ],
@@ -169,12 +71,12 @@
       }
     ],
     "notes": "",
-    "savedAt": "2026-09-22T18:15:20.203Z"
+    "savedAt": "2026-09-28T20:21:35.318Z"
   },
   {
     "id": "support_1790101491064_li6zs",
     "name": "アグネスデジタル",
-    "imagePath": null,
+    "imagePath": "images/support_1790101491064_li6zs.jpg",
     "types": [
       "power"
     ],
@@ -255,12 +157,12 @@
       }
     ],
     "notes": "",
-    "savedAt": "2026-09-22T18:24:51.065Z"
+    "savedAt": "2026-09-28T20:21:54.113Z"
   },
   {
     "id": "support_1790101854348_gqftx",
     "name": "アストンマーチャン",
-    "imagePath": null,
+    "imagePath": "images/support_1790101854348_gqftx.jpg",
     "types": [
       "guts"
     ],
@@ -357,12 +259,12 @@
       }
     ],
     "notes": "",
-    "savedAt": "2026-09-22T18:30:54.348Z"
+    "savedAt": "2026-09-28T20:22:14.123Z"
   },
   {
     "id": "support_1790100842211_cx2g6",
     "name": "アドマイヤグルーヴ",
-    "imagePath": null,
+    "imagePath": "images/support_1790100842211_cx2g6.jpg",
     "types": [
       "speed"
     ],
@@ -431,12 +333,12 @@
       }
     ],
     "notes": "",
-    "savedAt": "2026-09-22T18:14:02.211Z"
+    "savedAt": "2026-09-28T20:22:32.390Z"
   },
   {
     "id": "support_1790102213214_9s1s6",
     "name": "イクノディクタス",
-    "imagePath": null,
+    "imagePath": "images/support_1790102213214_9s1s6.jpg",
     "types": [
       "wisdom"
     ],
@@ -493,12 +395,12 @@
       }
     ],
     "notes": "",
-    "savedAt": "2026-09-22T18:36:53.215Z"
+    "savedAt": "2026-09-28T20:22:47.124Z"
   },
   {
     "id": "support_1790102397611_tmx7w",
     "name": "ウインバリアシオン",
-    "imagePath": null,
+    "imagePath": "images/support_1790102397611_tmx7w.jpg",
     "types": [
       "wisdom"
     ],
@@ -567,12 +469,12 @@
       }
     ],
     "notes": "",
-    "savedAt": "2026-09-22T18:39:57.611Z"
+    "savedAt": "2026-09-28T20:23:04.611Z"
   },
   {
     "id": "support_1790100583667_wxipb",
     "name": "エフフォーリア",
-    "imagePath": null,
+    "imagePath": "images/support_1790100583667_wxipb.jpg",
     "types": [
       "speed"
     ],
@@ -661,12 +563,12 @@
       }
     ],
     "notes": "",
-    "savedAt": "2026-09-22T18:10:25.375Z"
+    "savedAt": "2026-09-28T20:23:19.780Z"
   },
   {
     "id": "support_1790101918648_m9lc5",
     "name": "オルフェーヴル",
-    "imagePath": null,
+    "imagePath": "images/support_1790101918648_m9lc5.jpg",
     "types": [
       "guts"
     ],
@@ -715,12 +617,12 @@
       }
     ],
     "notes": "",
-    "savedAt": "2026-09-22T18:31:58.648Z"
+    "savedAt": "2026-09-28T20:23:37.216Z"
   },
   {
     "id": "support_1790101794915_7p6qw",
     "name": "カレンチャン",
-    "imagePath": null,
+    "imagePath": "images/support_1790101794915_7p6qw.jpg",
     "types": [
       "guts"
     ],
@@ -781,12 +683,12 @@
       }
     ],
     "notes": "",
-    "savedAt": "2026-09-22T18:29:54.916Z"
+    "savedAt": "2026-09-28T20:23:54.084Z"
   },
   {
     "id": "support_1790101276997_bv9yj",
     "name": "キセキ",
-    "imagePath": null,
+    "imagePath": "images/support_1790101276997_bv9yj.jpg",
     "types": [
       "stamina"
     ],
@@ -863,12 +765,12 @@
       }
     ],
     "notes": "",
-    "savedAt": "2026-09-22T18:25:35.933Z"
+    "savedAt": "2026-09-28T20:24:11.157Z"
   },
   {
     "id": "support_1790102263268_7uply",
     "name": "サトノダイヤモンド",
-    "imagePath": null,
+    "imagePath": "images/support_1790102263268_7uply.jpg",
     "types": [
       "wisdom"
     ],
@@ -925,12 +827,12 @@
       }
     ],
     "notes": "",
-    "savedAt": "2026-09-22T18:37:43.268Z"
+    "savedAt": "2026-09-28T20:24:30.543Z"
   },
   {
     "id": "support_1790100456891_903qd",
     "name": "サトノダイヤモンド",
-    "imagePath": null,
+    "imagePath": "images/support_1790100456891_903qd.jpg",
     "types": [
       "speed"
     ],
@@ -1011,12 +913,12 @@
       }
     ],
     "notes": "",
-    "savedAt": "2026-09-22T18:07:36.891Z"
+    "savedAt": "2026-09-28T20:24:46.661Z"
   },
   {
     "id": "support_1790101063063_fmcpe",
     "name": "シュヴァルグラン",
-    "imagePath": null,
+    "imagePath": "images/support_1790101063063_fmcpe.jpg",
     "types": [
       "stamina"
     ],
@@ -1069,12 +971,12 @@
       }
     ],
     "notes": "",
-    "savedAt": "2026-09-22T18:17:43.063Z"
+    "savedAt": "2026-09-28T20:25:04.797Z"
   },
   {
     "id": "support_1790102130135_rz6bn",
     "name": "シンボリルドルフ",
-    "imagePath": null,
+    "imagePath": "images/support_1790102130135_rz6bn.jpg",
     "types": [
       "wisdom"
     ],
@@ -1139,12 +1041,12 @@
       }
     ],
     "notes": "",
-    "savedAt": "2026-09-22T18:35:30.135Z"
+    "savedAt": "2026-09-28T20:25:26.123Z"
   },
   {
     "id": "support_1790101987978_pfoze",
     "name": "ステイゴールド",
-    "imagePath": null,
+    "imagePath": "images/support_1790101987978_pfoze.jpg",
     "types": [
       "guts"
     ],
@@ -1221,12 +1123,12 @@
       }
     ],
     "notes": "",
-    "savedAt": "2026-09-22T18:33:07.978Z"
+    "savedAt": "2026-09-28T20:25:47.296Z"
   },
   {
     "id": "support_1790101549038_gw6l2",
     "name": "セイウンスカイ",
-    "imagePath": null,
+    "imagePath": "images/support_1790101549038_gw6l2.jpg",
     "types": [
       "power"
     ],
@@ -1275,12 +1177,12 @@
       }
     ],
     "notes": "",
-    "savedAt": "2026-09-22T18:25:49.038Z"
+    "savedAt": "2026-09-28T20:26:00.665Z"
   },
   {
     "id": "support_1790102065371_x9q7g",
     "name": "ダイワスカーレット",
-    "imagePath": null,
+    "imagePath": "images/support_1790102065371_x9q7g.jpg",
     "types": [
       "wisdom"
     ],
@@ -1353,7 +1255,7 @@
       }
     ],
     "notes": "",
-    "savedAt": "2026-09-22T18:34:25.371Z"
+    "savedAt": "2026-09-28T20:26:22.315Z"
   },
   {
     "id": "support_1789514094685_iyvrs",
@@ -1448,7 +1350,7 @@
   {
     "id": "support_1790101585749_k65jf",
     "name": "タマモクロス",
-    "imagePath": null,
+    "imagePath": "images/support_1790101585749_k65jf.jpg",
     "types": [
       "power"
     ],
@@ -1513,12 +1415,12 @@
       }
     ],
     "notes": "",
-    "savedAt": "2026-09-22T18:26:25.750Z"
+    "savedAt": "2026-09-28T20:26:38.303Z"
   },
   {
     "id": "support_1790101211164_qh6kp",
     "name": "ヒシミラクル",
-    "imagePath": null,
+    "imagePath": "images/support_1790101211164_qh6kp.jpg",
     "types": [
       "stamina"
     ],
@@ -1567,12 +1469,12 @@
       }
     ],
     "notes": "",
-    "savedAt": "2026-09-22T18:20:11.164Z"
+    "savedAt": "2026-09-28T20:26:57.000Z"
   },
   {
     "id": "support_1790101632293_wzdoj",
     "name": "ファインモーション",
-    "imagePath": null,
+    "imagePath": "images/support_1790101632293_wzdoj.jpg",
     "types": [
       "power"
     ],
@@ -1665,12 +1567,110 @@
       }
     ],
     "notes": "",
-    "savedAt": "2026-09-22T18:27:12.293Z"
+    "savedAt": "2026-09-28T20:27:13.919Z"
+  },
+  {
+    "id": "support_1790102456080_b1u47",
+    "name": "フォーエバーヤング",
+    "imagePath": "images/support_1790102456080_b1u47.jpg",
+    "types": [
+      "wisdom"
+    ],
+    "skills": [
+      {
+        "name": "直線巧者",
+        "type": "normal"
+      },
+      {
+        "name": "ペースアップ",
+        "type": "normal"
+      },
+      {
+        "name": "垂れウマ回避",
+        "type": "normal"
+      },
+      {
+        "name": "地固め",
+        "type": "normal"
+      },
+      {
+        "name": "尻尾上がり",
+        "type": "normal"
+      },
+      {
+        "name": "遊びはおしまいっ！",
+        "type": "normal"
+      },
+      {
+        "name": "快速",
+        "type": "normal"
+      },
+      {
+        "name": "パイオニア",
+        "type": "normal"
+      },
+      {
+        "name": "比類なき",
+        "type": "normal"
+      },
+      {
+        "name": "心惹かれて",
+        "type": "normal"
+      },
+      {
+        "name": "勝負を懸けて",
+        "type": "normal"
+      },
+      {
+        "name": "巨歩",
+        "type": "normal"
+      },
+      {
+        "name": "もう一踏ん張り",
+        "type": "normal"
+      }
+    ],
+    "eventSkills": [
+      {
+        "name": "灯を胸に",
+        "type": "normal"
+      },
+      {
+        "name": "バイタリティ",
+        "type": "normal"
+      },
+      {
+        "name": "コール&レスポンス",
+        "type": "gold"
+      },
+      {
+        "name": "二段構え",
+        "type": "normal"
+      },
+      {
+        "name": "イノベーション",
+        "type": "gold"
+      },
+      {
+        "name": "アプローチ",
+        "type": "normal"
+      },
+      {
+        "name": "尻尾の滝登り",
+        "type": "gold"
+      },
+      {
+        "name": "前人未到",
+        "type": "gold"
+      }
+    ],
+    "notes": "",
+    "savedAt": "2026-09-28T20:27:30.089Z"
   },
   {
     "id": "support_1790101122262_ppya4",
     "name": "ホッコータルマエ",
-    "imagePath": null,
+    "imagePath": "images/support_1790101122262_ppya4.jpg",
     "types": [
       "stamina"
     ],
@@ -1715,12 +1715,12 @@
       }
     ],
     "notes": "",
-    "savedAt": "2026-09-22T18:18:42.263Z"
+    "savedAt": "2026-09-28T20:27:45.930Z"
   },
   {
     "id": "support_1790100756616_f8fqa",
     "name": "ミスターシービー",
-    "imagePath": null,
+    "imagePath": "images/support_1790100756616_f8fqa.jpg",
     "types": [
       "speed"
     ],
@@ -1817,12 +1817,12 @@
       }
     ],
     "notes": "",
-    "savedAt": "2026-09-22T18:12:36.616Z"
+    "savedAt": "2026-09-28T20:28:03.296Z"
   },
   {
     "id": "support_1790102177928_8qdws",
     "name": "ミホノブルボン",
-    "imagePath": null,
+    "imagePath": "images/support_1790102177928_8qdws.jpg",
     "types": [
       "wisdom"
     ],
@@ -1879,12 +1879,12 @@
       }
     ],
     "notes": "",
-    "savedAt": "2026-09-22T18:36:17.928Z"
+    "savedAt": "2026-09-28T20:28:17.217Z"
   },
   {
     "id": "support_1790101692068_s9qkl",
     "name": "ミホノブルボン",
-    "imagePath": null,
+    "imagePath": "images/support_1790101692068_s9qkl.jpg",
     "types": [
       "power"
     ],
@@ -1957,12 +1957,12 @@
       }
     ],
     "notes": "",
-    "savedAt": "2026-09-22T18:28:12.068Z"
+    "savedAt": "2026-09-28T20:28:30.858Z"
   },
   {
     "id": "support_1790101015582_aj21z",
     "name": "メイショウドトウ",
-    "imagePath": null,
+    "imagePath": "images/support_1790101015582_aj21z.jpg",
     "types": [
       "stamina"
     ],
@@ -2039,12 +2039,12 @@
       }
     ],
     "notes": "",
-    "savedAt": "2026-09-22T18:16:55.583Z"
+    "savedAt": "2026-09-28T20:28:48.259Z"
   },
   {
     "id": "support_1790101748717_8fmfp",
     "name": "メジロアルダン",
-    "imagePath": null,
+    "imagePath": "images/support_1790101748717_8fmfp.jpg",
     "types": [
       "power"
     ],
@@ -2105,12 +2105,12 @@
       }
     ],
     "notes": "",
-    "savedAt": "2026-09-22T18:29:08.717Z"
+    "savedAt": "2026-09-28T20:29:11.228Z"
   },
   {
     "id": "support_1790102311512_kwdcr",
     "name": "メジロラモーヌ",
-    "imagePath": null,
+    "imagePath": "images/support_1790102311512_kwdcr.jpg",
     "types": [
       "wisdom"
     ],
@@ -2171,12 +2171,12 @@
       }
     ],
     "notes": "",
-    "savedAt": "2026-09-22T18:38:31.513Z"
+    "savedAt": "2026-09-28T20:29:24.260Z"
   },
   {
     "id": "support_1790100958585_pshhp",
     "name": "ラインクラフト",
-    "imagePath": null,
+    "imagePath": "images/support_1790100958585_pshhp.jpg",
     "types": [
       "speed"
     ],
@@ -2237,6 +2237,6 @@
       }
     ],
     "notes": "",
-    "savedAt": "2026-09-22T18:15:58.585Z"
+    "savedAt": "2026-09-28T20:30:16.067Z"
   }
 ]

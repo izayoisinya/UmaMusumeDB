@@ -17,7 +17,78 @@
     "characters": [
       {
         "id": "uma_1789508282654_jqgsg",
-        "name": "セイウンスカイ"
+        "name": "セイウンスカイ",
+        "supportDeck": [
+          {
+            "id": "support_1789514094685_iyvrs",
+            "name": "タップダンスシチー"
+          },
+          {
+            "id": "support_1790100958585_pshhp",
+            "name": "ラインクラフト"
+          },
+          {
+            "id": "support_1790101692068_s9qkl",
+            "name": "ミホノブルボン"
+          },
+          null,
+          {
+            "id": "support_1790102456080_b1u47",
+            "name": "フォーエバーヤング"
+          },
+          null
+        ],
+        "pedigree": [
+          {
+            "id": "uma_1789508282654_jqgsg",
+            "name": "セイウンスカイ",
+            "manual": false,
+            "track": {
+              "turf": "A",
+              "dirt": "G"
+            },
+            "distance": {
+              "short": "G",
+              "mile": "C",
+              "medium": "A",
+              "long": "A"
+            },
+            "style": {
+              "nige": "A",
+              "senko": "B",
+              "sashi": "D",
+              "oikomi": "E"
+            },
+            "redFactor": null
+          },
+          {
+            "id": "uma_1789655823584_jy9tb",
+            "name": "エピファネイア",
+            "manual": false,
+            "track": {
+              "turf": "A",
+              "dirt": "G"
+            },
+            "distance": {
+              "short": "G",
+              "mile": "E",
+              "medium": "A",
+              "long": "A"
+            },
+            "style": {
+              "nige": "D",
+              "senko": "A",
+              "sashi": "B",
+              "oikomi": "G"
+            },
+            "redFactor": null
+          },
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
       },
       {
         "id": "uma_1789590051006_52itb",
