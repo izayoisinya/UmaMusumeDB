@@ -1420,7 +1420,7 @@
   {
     "id": "support_1790101211164_qh6kp",
     "name": "ヒシミラクル",
-    "imagePath": null,
+    "imagePath": "images/support_1790101211164_qh6kp.jpg",
     "types": [
       "stamina"
     ],
@@ -1469,7 +1469,7 @@
       }
     ],
     "notes": "",
-    "savedAt": "2026-09-22T18:20:11.164Z"
+    "savedAt": "2026-09-28T20:26:57.000Z"
   },
   {
     "id": "support_1790101632293_wzdoj",
