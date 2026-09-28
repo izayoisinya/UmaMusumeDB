@@ -1246,6 +1246,18 @@ mark.search-hit {
   padding: 0;
 }
 .support-deck-grid .char-select-box { min-height: 130px; font-size: 14px; height: 160px; }
+.team-slot-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 6px;
+}
+.team-slot-skills .chip {
+  font-size: 10px;
+  padding: 3px 8px;
+}
+/* 縮小表示では見づらく操作もできないため、取得スキル一覧は非表示にする */
+.modal.compact .team-slot-skills { display: none; }
 @media (max-width: 520px) {
   .support-deck-grid { grid-template-columns: repeat(2, 1fr); }
 }

@@ -774,6 +774,7 @@
                 <span class="char-select-name"></span>
               </div>
             </div>
+            <div class="team-slot-skills"></div>
           </div>
         `).join('')}
       </div>
@@ -973,6 +974,19 @@
     });
   }
 
+  // --- サポカ編成の各枠に、そのサポカで取得できるスキル(所持・育成イベント)を表示 ---
+  function ccNormalizeSkill(s) {
+    return typeof s === 'string' ? { name: s, type: 'normal' } : { name: s.name || '', type: s.type || 'normal' };
+  }
+  function ccSupportCardSkillChipsHtml(instance, sel) {
+    if (!sel) return '';
+    const card = (instance.supportCards || []).find(c => (sel.id ? c.id === sel.id : c.name === sel.name));
+    if (!card) return '';
+    const skills = [...(card.skills || []), ...(card.eventSkills || [])].map(ccNormalizeSkill).filter(s => s.name);
+    if (!skills.length) return '';
+    return skills.map(s => `<span class="chip white skill-chip skill-${s.type}">${ccEscapeHtml(s.name)}</span>`).join('');
+  }
+
   function updateDeckSlotBox(instance, i) {
     const sel = instance.deckSelections[i];
     const box = instance.bodyEl.querySelector('.support-deck-grid [data-slot="' + i + '"]');
@@ -981,6 +995,7 @@
     const iconEl = filledEl.querySelector('.uma-icon');
     const nameEl = filledEl.querySelector('.char-select-name');
     const clearBtn = box.querySelector('.char-select-clear-btn');
+    const skillsEl = box.parentElement.querySelector('.team-slot-skills');
     if (sel) {
       box.classList.add('filled');
       emptyEl.hidden = true;
@@ -999,6 +1014,7 @@
       filledEl.hidden = true;
       clearBtn.hidden = true;
     }
+    skillsEl.innerHTML = ccSupportCardSkillChipsHtml(instance, sel);
   }
 
   // --- サポートカードピッカー(共有。どのインスタンスから開いたかはccActivePickerCtxで追跡) ---
