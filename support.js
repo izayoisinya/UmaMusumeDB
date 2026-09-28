@@ -531,7 +531,7 @@ function renderCards() {
   const emptyMsg = document.getElementById('emptyMsg');
   container.innerHTML = '';
 
-  document.getElementById('countLabel').textContent = allCards.length + ' 枚 登録';
+  document.getElementById('countLabel').textContent = allCards.length + ' 件 登録';
 
   const nameKeyword = searchNameInput.value.trim().toLowerCase();
   const requiredTerms = getFieldTerms('searchRequiredInput', requiredTags);
