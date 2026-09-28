@@ -918,7 +918,7 @@
   {
     "id": "support_1790101063063_fmcpe",
     "name": "シュヴァルグラン",
-    "imagePath": null,
+    "imagePath": "images/support_1790101063063_fmcpe.jpg",
     "types": [
       "stamina"
     ],
@@ -971,7 +971,7 @@
       }
     ],
     "notes": "",
-    "savedAt": "2026-09-22T18:17:43.063Z"
+    "savedAt": "2026-09-28T20:25:04.797Z"
   },
   {
     "id": "support_1790102130135_rz6bn",
