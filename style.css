@@ -895,6 +895,7 @@ mark.search-hit {
   transform-origin: top left;
   transform: scale(0.6);
   box-shadow: 0 8px 26px rgba(0,0,0,0.45);
+  padding-top: 8px;
 }
 /* 縮小表示中はヘッダーをつかんでドラッグ移動できる */
 .modal.compact-eligible.compact .modal-header-row {
