@@ -1212,9 +1212,9 @@ mark.search-hit {
   .support-deck-grid { grid-template-columns: repeat(6, 1fr); }
 }
 /* 縮小表示は実際の表示幅がとても狭いので、viewport基準のメディア
-   クエリに関係なく常に3列+小さめアイコンに固定する */
-.modal.compact .support-deck-grid { grid-template-columns: repeat(3, 1fr); }
-.modal.compact .support-deck-grid .char-select-box { min-height: 70px; height: 70px; }
+   クエリに関係なく常に6枚横並び1行+小さめアイコンに固定する */
+.modal.compact .support-deck-grid { grid-template-columns: repeat(6, 1fr); gap: 6px; }
+.modal.compact .support-deck-grid .char-select-box { min-height: 62px; height: 62px; }
 
 /* サポカ編成・因子設計図のキャラアイコンを枠いっぱいに表示し、
    名称は画像に重ねて下部に影付きで表示する */
