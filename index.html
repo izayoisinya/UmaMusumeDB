@@ -14,6 +14,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="design-sf.css">
 </head>
 <body>
 <div class="ledger">
@@ -210,6 +212,13 @@
     <div class="settings-pane" data-pane="display">
       <p class="hint">アプリの見た目を切り替えます。</p>
       <button type="button" class="btn secondary" id="themeToggleBtn">🌙 ダークモードに切り替え</button>
+      <div style="margin-top:14px;">
+        <label for="designSelect">デザイン</label>
+        <select id="designSelect">
+          <option value="default">標準</option>
+          <option value="sf">SF(サイバーパンク)</option>
+        </select>
+      </div>
     </div>
 
     <div class="settings-pane" data-pane="github" hidden>
