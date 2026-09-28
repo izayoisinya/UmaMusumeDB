@@ -474,7 +474,7 @@
   {
     "id": "support_1790100583667_wxipb",
     "name": "エフフォーリア",
-    "imagePath": null,
+    "imagePath": "images/support_1790100583667_wxipb.jpg",
     "types": [
       "speed"
     ],
@@ -563,7 +563,7 @@
       }
     ],
     "notes": "",
-    "savedAt": "2026-09-22T18:10:25.375Z"
+    "savedAt": "2026-09-28T20:23:19.780Z"
   },
   {
     "id": "support_1790101918648_m9lc5",
