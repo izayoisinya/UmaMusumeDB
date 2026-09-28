@@ -1962,7 +1962,7 @@
   {
     "id": "support_1790101015582_aj21z",
     "name": "メイショウドトウ",
-    "imagePath": null,
+    "imagePath": "images/support_1790101015582_aj21z.jpg",
     "types": [
       "stamina"
     ],
@@ -2039,7 +2039,7 @@
       }
     ],
     "notes": "",
-    "savedAt": "2026-09-22T18:16:55.583Z"
+    "savedAt": "2026-09-28T20:28:48.259Z"
   },
   {
     "id": "support_1790101748717_8fmfp",
