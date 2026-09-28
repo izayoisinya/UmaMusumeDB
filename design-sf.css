@@ -91,8 +91,13 @@
 [data-design="sf"] .masthead::after {
   content: '';
   position: absolute;
-  left: 0; right: 0; bottom: 0;
-  height: 3px;
+  /* .mastheadの角丸(border-radius: 4px 34px 4px 34px、左下が34px)に
+     合わせて、直線の下線が丸めた角からはみ出さないよう左右を内側に
+     逃がす(overflow:hiddenで祖先ごとクリップする手も考えたが、
+     縮小ポップアップの登録タブが消えた時と同じ問題を再発しかねないため
+     線側を短くする方式にした) */
+  left: 34px; right: 8px; bottom: 2px;
+  height: 2px;
   background: linear-gradient(90deg, var(--red), var(--blue), var(--green));
   box-shadow: 0 0 10px rgba(45,226,255,0.8);
 }
