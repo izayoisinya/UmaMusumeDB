@@ -1204,6 +1204,12 @@ mark.search-hit {
   gap: 10px;
   margin-top: 8px;
 }
+/* .team-slotの外枠(点線)は.char-select-box自身の枠と二重になるだけなので
+   サポカ編成では外枠を消して.char-select-boxの枠だけにする */
+.support-deck-grid .team-slot {
+  border: none;
+  padding: 0;
+}
 .support-deck-grid .char-select-box { min-height: 130px; font-size: 14px; height: 160px; }
 @media (max-width: 520px) {
   .support-deck-grid { grid-template-columns: repeat(2, 1fr); }
