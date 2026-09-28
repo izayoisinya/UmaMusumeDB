@@ -976,7 +976,7 @@
   {
     "id": "support_1790102130135_rz6bn",
     "name": "シンボリルドルフ",
-    "imagePath": null,
+    "imagePath": "images/support_1790102130135_rz6bn.jpg",
     "types": [
       "wisdom"
     ],
@@ -1041,7 +1041,7 @@
       }
     ],
     "notes": "",
-    "savedAt": "2026-09-22T18:35:30.135Z"
+    "savedAt": "2026-09-28T20:25:26.123Z"
   },
   {
     "id": "support_1790101987978_pfoze",
