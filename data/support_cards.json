@@ -2176,7 +2176,7 @@
   {
     "id": "support_1790100958585_pshhp",
     "name": "ラインクラフト",
-    "imagePath": null,
+    "imagePath": "images/support_1790100958585_pshhp.jpg",
     "types": [
       "speed"
     ],
@@ -2237,6 +2237,6 @@
       }
     ],
     "notes": "",
-    "savedAt": "2026-09-22T18:15:58.585Z"
+    "savedAt": "2026-09-28T20:30:16.067Z"
   }
 ]
