@@ -349,7 +349,6 @@ function ensureModalFooterHandle(modal) {
   const handle = document.createElement('div');
   handle.className = 'modal-footer-row';
   handle.setAttribute('aria-hidden', 'true');
-  handle.textContent = '⋯';
   modal.appendChild(handle);
 }
 function applyModalCompactPos(modal) {

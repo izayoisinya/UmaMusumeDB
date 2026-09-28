@@ -896,6 +896,7 @@ mark.search-hit {
   transform: scale(0.6);
   box-shadow: 0 8px 26px rgba(0,0,0,0.45);
   padding-top: 8px;
+  padding-bottom: 0;
 }
 /* 縮小表示中はヘッダーをつかんでドラッグ移動できる */
 .modal.compact-eligible.compact .modal-header-row {
@@ -907,21 +908,18 @@ mark.search-hit {
 }
 /* 縮小表示は上辺の70%まで画面外にはみ出せてヘッダーがつかめなくなる
    ことがあるので、下辺にも同じ役割のつかみ手を用意する(通常表示・
-   ヘッダーが常に見えている縮小eligible以外では非表示) */
+   ヘッダーが常に見えている縮小eligible以外では非表示)。
+   見た目は主張させたくないので透明にし、モーダル本来のpadding-bottom分
+   (このモーダルではpadding-bottomを0にして代わりにこの高さを使っている)
+   を使って下辺ギリギリまでタッチ範囲を広げている */
 .modal-footer-row { display: none; }
 .modal.compact-eligible.compact .modal-footer-row {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: block;
   position: sticky;
   bottom: 0;
   margin-top: 8px;
-  height: 16px;
-  border-top: 1px dashed var(--panel-line);
-  background: var(--panel);
-  color: var(--ink-soft);
-  font-size: 11px;
-  letter-spacing: 2px;
+  height: 22px;
+  background: transparent;
   cursor: grab;
   touch-action: none;
 }
