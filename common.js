@@ -341,8 +341,20 @@ function saveModalCompactPosForKey(key, pos) {
   map[key] = pos;
   try { localStorage.setItem(MODAL_COMPACT_POS_KEY, JSON.stringify(map)); } catch {}
 }
+// 縮小表示は上辺の70%まで画面外にはみ出せるため、その状態だとヘッダーが
+// 画面外に出てつかめなくなる。下辺にも同じ役割のつかみ手を用意しておき、
+// どちらがはみ出していても掴んで戻せるようにする。
+function ensureModalFooterHandle(modal) {
+  if (modal.querySelector('.modal-footer-row')) return;
+  const handle = document.createElement('div');
+  handle.className = 'modal-footer-row';
+  handle.setAttribute('aria-hidden', 'true');
+  handle.textContent = '⋯';
+  modal.appendChild(handle);
+}
 function applyModalCompactPos(modal) {
   if (!modal.classList.contains('compact-eligible')) return;
+  ensureModalFooterHandle(modal);
   const key = modal.dataset.posKey || null;
   const saved = key ? loadModalCompactPosMap()[key] : null;
   if (saved) {
@@ -371,8 +383,9 @@ if (modalOverlay) {
   modalOverlay.addEventListener('pointerdown', e => {
     const modal = e.target.closest('.modal');
     if (modal) bringModalToFront(modal);
-    const header = e.target.closest('.modal-header-row');
-    if (!header || e.target.closest('.modal-header-actions')) return;
+    const handle = e.target.closest('.modal-header-row, .modal-footer-row');
+    if (!handle) return;
+    if (handle.classList.contains('modal-header-row') && e.target.closest('.modal-header-actions')) return;
     if (!modal || !modal.classList.contains('compact')) return;
     const rect = modal.getBoundingClientRect();
     dragState = {
@@ -384,7 +397,7 @@ if (modalOverlay) {
       width: rect.width,
       height: rect.height,
     };
-    header.setPointerCapture(e.pointerId);
+    handle.setPointerCapture(e.pointerId);
   });
   modalOverlay.addEventListener('pointermove', e => {
     if (!dragState) return;
@@ -570,6 +583,11 @@ function renderPinnedTabsBar() {
         el.classList.add('expanded');
         return;
       }
+      // ポップアップを開く操作そのものはタブ要素の中で発生するため、
+      // 外側クリックで畳む処理(下の document click ハンドラ)には
+      // 拾われない。ここで明示的に畳んでおく(タッチ操作で開いた後
+      // 小さい表示に戻らない不具合の対策)。
+      el.classList.remove('expanded');
       openPinnedTab(el.dataset.key);
     });
   });

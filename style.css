@@ -905,6 +905,29 @@ mark.search-hit {
 .modal.compact-eligible.compact .modal-header-row:active {
   cursor: grabbing;
 }
+/* 縮小表示は上辺の70%まで画面外にはみ出せてヘッダーがつかめなくなる
+   ことがあるので、下辺にも同じ役割のつかみ手を用意する(通常表示・
+   ヘッダーが常に見えている縮小eligible以外では非表示) */
+.modal-footer-row { display: none; }
+.modal.compact-eligible.compact .modal-footer-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: sticky;
+  bottom: 0;
+  margin-top: 8px;
+  height: 16px;
+  border-top: 1px dashed var(--panel-line);
+  background: var(--panel);
+  color: var(--ink-soft);
+  font-size: 11px;
+  letter-spacing: 2px;
+  cursor: grab;
+  touch-action: none;
+}
+.modal.compact-eligible.compact .modal-footer-row:active {
+  cursor: grabbing;
+}
 /* 縮小表示中は保存(サポカ編成・因子設計図の編集)は想定していないため、
    キャラ編成ポップアップの保存ボタンを非表示にし、サポカ編成・
    因子設計図の各操作(選択・解除・★評価・種類選択)も無効化して
