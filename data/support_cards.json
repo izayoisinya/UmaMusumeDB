@@ -1670,7 +1670,7 @@
   {
     "id": "support_1790101122262_ppya4",
     "name": "ホッコータルマエ",
-    "imagePath": null,
+    "imagePath": "images/support_1790101122262_ppya4.jpg",
     "types": [
       "stamina"
     ],
@@ -1715,7 +1715,7 @@
       }
     ],
     "notes": "",
-    "savedAt": "2026-09-22T18:18:42.263Z"
+    "savedAt": "2026-09-28T20:27:45.930Z"
   },
   {
     "id": "support_1790100756616_f8fqa",
