@@ -940,8 +940,10 @@ mark.search-hit {
 .modal.compact .pedigree-tree {
   pointer-events: none;
 }
-/* 縮小表示では因子設計図の画像に重ねた名前は小さすぎて読めないため非表示 */
-.modal.compact .pedigree-card .char-select-filled-inner span {
+/* 縮小表示では画像に重ねた名前は小さすぎて読めない上、操作も無効化済み
+   (編集不可)なので×ボタンごと非表示にする(サポカ編成・因子設計図共通) */
+.modal.compact .char-select-filled-inner span,
+.modal.compact .char-select-clear-btn {
   display: none;
 }
 .modal.compact h2 { font-size: 15px; }
