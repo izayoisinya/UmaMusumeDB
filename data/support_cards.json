@@ -1046,7 +1046,7 @@
   {
     "id": "support_1790101987978_pfoze",
     "name": "ステイゴールド",
-    "imagePath": null,
+    "imagePath": "images/support_1790101987978_pfoze.jpg",
     "types": [
       "guts"
     ],
@@ -1123,7 +1123,7 @@
       }
     ],
     "notes": "",
-    "savedAt": "2026-09-22T18:33:07.978Z"
+    "savedAt": "2026-09-28T20:25:47.296Z"
   },
   {
     "id": "support_1790101549038_gw6l2",
