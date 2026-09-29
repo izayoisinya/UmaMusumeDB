@@ -58,13 +58,23 @@ if (themeToggleBtn) {
 // スコープの上書きのみで構成しており、属性が付いていなければ何も効かない)。
 const DESIGN_KEY = 'umaFactorLedger:design';
 function applyDesign(design) {
-  if (design && design !== 'default') {
+  const isCustom = !!(design && design !== 'default');
+  if (isCustom) {
     document.documentElement.setAttribute('data-design', design);
   } else {
     document.documentElement.removeAttribute('data-design');
   }
   const select = document.getElementById('designSelect');
   if (select) select.value = design || 'default';
+  // SF/ミリタリー/未来風はいずれもdata-themeの値に関係なく固定の配色
+  // (design-xxx.cssが:root[data-theme="dark"]を見ずに常に上書きする)
+  // なので、これらを選んでいる間はライト/ダーク切り替えボタンを表示しても
+  // 実際には何も変化せず紛らわしい。カスタムデザイン選択中はボタンを隠し、
+  // 代わりに理由を説明するヒントを出す
+  const toggleBtn = document.getElementById('themeToggleBtn');
+  const toggleHint = document.getElementById('themeToggleHint');
+  if (toggleBtn) toggleBtn.hidden = isCustom;
+  if (toggleHint) toggleHint.hidden = !isCustom;
 }
 function initDesign() {
   const stored = localStorage.getItem(DESIGN_KEY) || 'default';
