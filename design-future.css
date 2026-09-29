@@ -81,16 +81,33 @@
 /* Liquid Glassは「色を塗った板」ではなく「背景を強くぼかして透かした
    ガラス」なので、装飾的なグラデーションで塗りつぶすのはやめ、ごく
    淡いティントの半透明+強いbackdrop-filterで.ledger側の背景光彩を
-   透過させる方向にする */
+   透過させる方向にする。
+   注意: backdrop-filter(やfilter/transform/will-change等)を持つ要素は、
+   その内側にあるposition:fixedの子孫の基準を「ビューポート」から
+   「自分自身」に変えてしまう。.masthead の中には#pinnedTabsBar
+   (position:fixed、登録タブ)が入っているため、.masthead自身に
+   backdrop-filterを付けるとタブがビューポートの左上付近など画面外へ
+   飛んでいってしまう(実際に発生した不具合)。そのため、ぼかし+背景は
+   .masthead自身ではなく::beforeの背景レイヤーとして敷き、.masthead
+   本体はbackdrop-filterを持たないようにする */
 [data-design="future"] .masthead {
-  background: linear-gradient(120deg, rgba(255,255,255,0.55), rgba(255,255,255,0.32));
+  background: transparent;
   border-radius: 28px;
-  box-shadow: var(--glass-specular);
   border: 1px solid rgba(255,255,255,0.6);
-  backdrop-filter: blur(24px) saturate(180%);
-  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  box-shadow: var(--glass-specular);
+  isolation: isolate;
   /* .mastheadは元々position:stickyでヘッダー固定をしているため、
      ここでpositionは上書きしない */
+}
+[data-design="future"] .masthead::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(120deg, rgba(255,255,255,0.55), rgba(255,255,255,0.32));
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  z-index: -1;
 }
 [data-design="future"] .masthead::after {
   content: '';
@@ -240,10 +257,16 @@
 }
 
 /* ============ 9. 登録タブ等の小物 ============ */
+/* このデザインは明るい背景の上に明るい半透明ガラスを重ねる構成のため、
+   他の要素と同じ透明度のままだと淡い背景に溶けてほぼ見えなくなって
+   しまう(実際に「タブが見えない」との指摘で発覚)。登録タブは常時
+   画面に浮いた状態で押せる必要がある実用要素なので、背景を高めの
+   不透明度にし縁の色もはっきりさせて、ガラスの中でも周囲から浮き
+   上がって見えるようにする */
 [data-design="future"] .pinned-tab {
-  background: linear-gradient(180deg, rgba(255,255,255,0.85), rgba(255,255,255,0.55));
-  border: 1.5px solid rgba(255,255,255,0.75);
-  box-shadow: var(--glass-specular);
+  background: linear-gradient(180deg, rgba(255,255,255,0.97), rgba(255,255,255,0.88));
+  border: 1.5px solid var(--blue);
+  box-shadow: 0 4px 14px rgba(31,55,110,0.35), 0 0 0 1px rgba(255,255,255,0.6);
   backdrop-filter: blur(14px) saturate(160%);
   -webkit-backdrop-filter: blur(14px) saturate(160%);
 }
