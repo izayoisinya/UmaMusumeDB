@@ -17,7 +17,7 @@
 :root[data-design="future"] {
   --bg-top: #eef3fb;
   --bg-bottom: #e2e9f5;
-  --panel: rgba(255, 255, 255, 0.62);
+  --panel: rgba(255, 255, 255, 0.42);
   --panel-line: #8fb4e0;
   --ink: #1c2b3d;
   --ink-soft: #5c7290;
@@ -40,9 +40,17 @@
   --overlay-bg: rgba(210, 222, 240, 0.7);
 
   --future-glow: 0 0 0 1px rgba(34,196,232,0.35), 0 8px 24px rgba(120,150,220,0.22);
-  /* ガラスの縁の反射(上端に明るいハイライト、下端はわずかに沈む)を
-     どのガラス要素でも同じ質感で使い回せるようにした共通シャドウ */
-  --glass-specular: inset 0 1px 0 rgba(255,255,255,0.85), inset 0 -1px 0 rgba(255,255,255,0.15), 0 10px 30px rgba(31,55,110,0.16);
+  /* ガラスの縁の反射・厚み・浮遊感を1つにまとめた共通シャドウ。
+     内側: 上端の明るいハイライト+その下に淡く続くグロー(光が縁から
+     差し込む感じ)+下端のうっすらした沈み込み(ガラスの厚み)。
+     外側: 近距離のくっきりした影(輪郭を締める)+遠距離のやわらかい
+     色付きの影(浮いている感じ)の二段構え */
+  --glass-specular:
+    inset 0 1px 0 rgba(255,255,255,0.95),
+    inset 0 8px 16px -10px rgba(255,255,255,0.8),
+    inset 0 -1px 0 rgba(31,55,110,0.12),
+    0 2px 6px rgba(31,55,110,0.10),
+    0 18px 40px -8px rgba(31,55,110,0.28);
 }
 
 /* ============ 2. 背景: 淡いホログラム光 ============ */
@@ -104,9 +112,14 @@
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  background: linear-gradient(120deg, rgba(255,255,255,0.55), rgba(255,255,255,0.32));
-  backdrop-filter: blur(24px) saturate(180%);
-  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  /* 左上に淡い光沢(ガラス表面の反射)を重ね、その下に薄いティントの
+     本体を敷く。本体自体は前より薄くして、backdrop-filterのぼかし越しに
+     背後の光彩がよりはっきり透けて見えるようにしている */
+  background:
+    radial-gradient(120% 90% at 12% -10%, rgba(255,255,255,0.85), transparent 55%),
+    linear-gradient(120deg, rgba(255,255,255,0.4), rgba(255,255,255,0.16));
+  backdrop-filter: blur(30px) saturate(200%);
+  -webkit-backdrop-filter: blur(30px) saturate(200%);
   z-index: -1;
 }
 [data-design="future"] .masthead::after {
@@ -123,13 +136,15 @@
 [data-design="future"] .modal-icon-btn,
 [data-design="future"] .settings-tab {
   font-family: 'Sora', 'M PLUS Rounded 1c', sans-serif;
-  background: linear-gradient(180deg, rgba(255,255,255,0.7), rgba(255,255,255,0.35));
+  background:
+    radial-gradient(120% 120% at 20% -20%, rgba(255,255,255,0.8), transparent 55%),
+    linear-gradient(180deg, rgba(255,255,255,0.45), rgba(255,255,255,0.18));
   color: var(--ink);
   border: 1px solid rgba(255,255,255,0.7);
   border-radius: 999px;
   box-shadow: var(--glass-specular);
-  backdrop-filter: blur(14px) saturate(160%);
-  -webkit-backdrop-filter: blur(14px) saturate(160%);
+  backdrop-filter: blur(18px) saturate(180%);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
   transition: box-shadow 0.15s ease, transform 0.15s ease;
 }
 [data-design="future"] .masthead-btn {
@@ -175,12 +190,14 @@
 [data-design="future"] .plan-card,
 [data-design="future"] .pedigree-card,
 [data-design="future"] .team-slot {
-  background: var(--panel);
+  background:
+    radial-gradient(140% 70% at 15% -10%, rgba(255,255,255,0.7), transparent 55%),
+    rgba(255, 255, 255, 0.42);
   border-radius: 24px;
   border: 1px solid rgba(255,255,255,0.7);
   box-shadow: var(--glass-specular);
-  backdrop-filter: blur(20px) saturate(170%);
-  -webkit-backdrop-filter: blur(20px) saturate(170%);
+  backdrop-filter: blur(26px) saturate(190%);
+  -webkit-backdrop-filter: blur(26px) saturate(190%);
 }
 [data-design="future"] .pedigree-card.pedigree-group-a { border-color: var(--blue); }
 [data-design="future"] .pedigree-card.pedigree-group-b { border-color: var(--red); }
