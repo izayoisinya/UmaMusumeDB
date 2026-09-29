@@ -1,0 +1,238 @@
+/* design-future.css — 追加デザイン「未来風」プレビュー版
+ *
+ * [data-design="future"] でスコープした上書き専用スタイル。style.cssは
+ * 一切変更しない。data-design属性がこの値でない時はこのファイルのルールは
+ * 何も効かない。
+ *
+ * 既存のSF(サイバーパンク/ネオン・暗い背景)とは方向性を分け、明るい
+ * ガラス質のホログラフィックUIを目指す(白〜銀基調+シアン〜紫の淡い
+ * グラデーション、半透明パネル、細いライン)。まずは気に入るかどうかを
+ * 見るための軽いプレビューとして、design-sf.css/design-military.cssと
+ * 同じ範囲(パレット/見出し/マストヘッド/ボタン/カード/チップ/フォーム/
+ * 登録タブ)をひととおり上書きしている。
+ */
+
+/* ============ 1. パレット ============ */
+:root[data-design="future"] {
+  --bg-top: #eef3fb;
+  --bg-bottom: #e2e9f5;
+  --panel: rgba(255, 255, 255, 0.62);
+  --panel-line: #8fb4e0;
+  --ink: #1c2b3d;
+  --ink-soft: #5c7290;
+  --gold: #c7a6ff;
+  --gold-dim: #a67ef0;
+  --blue: #22c4e8;
+  --blue-dim: #0fa3c4;
+  --red: #ff6fa8;
+  --red-dim: #e2528a;
+  --white-f: #1c2b3d;
+  --green: #35d6a8;
+  --green-dim: #17b78c;
+  --danger: #ff5b7a;
+  --header-a: #b7d3ff;
+  --header-b: #d8c6ff;
+  --surface: rgba(255, 255, 255, 0.55);
+  --surface-alt: rgba(255, 255, 255, 0.4);
+  --surface-alt-active: rgba(34, 196, 232, 0.18);
+  --code-bg: rgba(255, 255, 255, 0.5);
+  --overlay-bg: rgba(210, 222, 240, 0.7);
+
+  --future-glow: 0 0 0 1px rgba(34,196,232,0.35), 0 8px 24px rgba(120,150,220,0.22);
+}
+
+/* ============ 2. 背景: 淡いホログラム光 ============ */
+:root[data-design="future"] body {
+  font-family: 'Exo 2', 'M PLUS Rounded 1c', sans-serif;
+  background: var(--bg-bottom);
+}
+[data-design="future"] .ledger {
+  background:
+    radial-gradient(ellipse at 15% -5%, rgba(199,166,255,0.35), transparent 45%),
+    radial-gradient(ellipse at 90% 10%, rgba(34,196,232,0.3), transparent 45%),
+    linear-gradient(180deg, var(--bg-top) 0%, var(--bg-bottom) 70%);
+}
+
+/* ============ 3. 見出し ============ */
+[data-design="future"] .masthead h1,
+[data-design="future"] h2,
+[data-design="future"] .settings-tab,
+[data-design="future"] .config-section-title,
+[data-design="future"] .apt-group-label {
+  font-family: 'Sora', 'M PLUS Rounded 1c', sans-serif;
+  letter-spacing: 0.01em;
+}
+[data-design="future"] .masthead h1 {
+  color: #1c2b3d;
+  text-shadow: 0 1px 0 rgba(255,255,255,0.6);
+}
+[data-design="future"] .modal-header-row h2 {
+  color: var(--blue-dim);
+  text-decoration: none;
+  border-bottom: 2px solid var(--blue);
+  padding-bottom: 3px;
+}
+
+/* ============ 4. マストヘッド: ガラス質の淡いグラデーション ============ */
+[data-design="future"] .masthead {
+  background: linear-gradient(120deg, var(--header-a) 0%, #f2f6ff 45%, var(--header-b) 100%);
+  border-radius: 20px;
+  box-shadow: var(--future-glow);
+  border: 1px solid rgba(255,255,255,0.7);
+  backdrop-filter: blur(6px);
+  /* .mastheadは元々position:stickyでヘッダー固定をしているため、
+     ここでpositionは上書きしない */
+}
+[data-design="future"] .masthead::after {
+  content: '';
+  position: absolute;
+  left: 20px; right: 20px; bottom: 2px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--blue), var(--gold), var(--green));
+  opacity: 0.8;
+}
+
+/* ============ 5. ボタン全般: ガラスピル型 ============ */
+[data-design="future"] .btn,
+[data-design="future"] .masthead-btn,
+[data-design="future"] .modal-icon-btn,
+[data-design="future"] .settings-tab {
+  font-family: 'Sora', 'M PLUS Rounded 1c', sans-serif;
+  background: rgba(255, 255, 255, 0.55);
+  color: var(--ink);
+  border: 1px solid rgba(143,180,224,0.6);
+  border-radius: 999px;
+  box-shadow: 0 2px 8px rgba(120,150,220,0.18);
+  transition: box-shadow 0.15s ease, transform 0.15s ease;
+}
+[data-design="future"] .masthead-btn {
+  background: rgba(255,255,255,0.45);
+  color: var(--ink);
+  border-color: rgba(255,255,255,0.8);
+}
+[data-design="future"] .masthead-btn.active,
+[data-design="future"] .masthead-nav.active {
+  background: rgba(34,196,232,0.2);
+  border-color: var(--blue);
+  color: var(--blue-dim);
+}
+[data-design="future"] .btn:hover,
+[data-design="future"] .masthead-btn:hover,
+[data-design="future"] .modal-icon-btn:hover,
+[data-design="future"] .settings-tab:hover {
+  box-shadow: var(--future-glow);
+  transform: translateY(-1px);
+}
+[data-design="future"] .btn.secondary {
+  color: var(--red-dim);
+  border-color: var(--red);
+}
+[data-design="future"] .settings-tab.active {
+  background: rgba(34,196,232,0.2);
+  color: var(--blue-dim);
+  border-color: var(--blue);
+}
+[data-design="future"] .modal-icon-btn {
+  border-radius: 999px;
+}
+[data-design="future"] .scroll-fab {
+  border: 1px solid rgba(255,255,255,0.8);
+  box-shadow: var(--future-glow);
+}
+
+/* ============ 6. パネル/カード: 半透明ガラス ============ */
+[data-design="future"] .modal,
+[data-design="future"] .entry,
+[data-design="future"] .plan-card,
+[data-design="future"] .pedigree-card,
+[data-design="future"] .team-slot {
+  background: var(--panel);
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,0.7);
+  box-shadow: var(--future-glow);
+  backdrop-filter: blur(10px);
+}
+[data-design="future"] .pedigree-card.pedigree-group-a { border-color: var(--blue); }
+[data-design="future"] .pedigree-card.pedigree-group-b { border-color: var(--red); }
+[data-design="future"] .pedigree-card.pedigree-group-self { border-color: var(--green); }
+[data-design="future"] .char-select-box {
+  border: 1px dashed rgba(34,196,232,0.5);
+  border-radius: 12px;
+  background: rgba(255,255,255,0.35);
+}
+[data-design="future"] .char-select-box.filled {
+  border-style: solid;
+  border-color: var(--blue);
+}
+
+/* ============ 7. チップ/バッジ ============ */
+[data-design="future"] .chip,
+[data-design="future"] .apt-badge,
+[data-design="future"] .white-count-badge {
+  font-family: 'Sora', 'M PLUS Rounded 1c', sans-serif;
+  border-radius: 999px;
+}
+[data-design="future"] .chip.blue { background: linear-gradient(135deg, var(--blue), var(--blue-dim)); color: #06222c; }
+[data-design="future"] .chip.red { background: linear-gradient(135deg, var(--red), var(--red-dim)); color: #3a0a1c; }
+[data-design="future"] .chip.green { background: linear-gradient(135deg, var(--green), var(--green-dim)); color: #063326; }
+[data-design="future"] .chip.white { border-color: var(--blue); color: var(--ink); background: rgba(255,255,255,0.6); }
+/* design-sf.css/design-military.cssと同じ理由(.chip.whiteとの特異度衝突)で
+   種別枠色と金/固有スキルの可読性を個別に上書きしておく */
+[data-design="future"] .skill-chip.cat-green { border-color: var(--green); }
+[data-design="future"] .skill-chip.cat-heal { border-color: var(--blue); }
+[data-design="future"] .skill-chip.cat-debuff { border-color: var(--red); }
+[data-design="future"] .chip.skill-gold { color: #6d4c00; }
+[data-design="future"] .chip.skill-unique {
+  color: #1c2b3d;
+  -webkit-text-stroke: 0.4px rgba(255,255,255,0.9);
+  text-shadow: none;
+}
+[data-design="future"] .apt-badge {
+  border-width: 1.5px;
+  background: rgba(255,255,255,0.55);
+}
+
+/* ============ 8. フォーム要素 ============ */
+[data-design="future"] input[type=text],
+[data-design="future"] input[type=number],
+[data-design="future"] input[type=password],
+[data-design="future"] input[type=month],
+[data-design="future"] textarea,
+[data-design="future"] select {
+  background: rgba(255, 255, 255, 0.6);
+  color: var(--ink);
+  border: 1px solid rgba(143,180,224,0.6);
+  border-radius: 10px;
+}
+[data-design="future"] input[type=text]:focus,
+[data-design="future"] input[type=number]:focus,
+[data-design="future"] input[type=month]:focus,
+[data-design="future"] textarea:focus,
+[data-design="future"] select:focus {
+  border-color: var(--blue);
+  box-shadow: var(--future-glow);
+}
+
+/* ============ 9. 登録タブ等の小物 ============ */
+[data-design="future"] .pinned-tab {
+  background: rgba(255, 255, 255, 0.85);
+  border: 1.5px solid var(--blue);
+  box-shadow: var(--future-glow);
+}
+[data-design="future"] .pinned-tab-icon,
+[data-design="future"] .pinned-tab-label {
+  color: var(--blue-dim);
+  font-family: 'Sora', 'M PLUS Rounded 1c', sans-serif;
+}
+[data-design="future"] .toast-notice {
+  background: linear-gradient(135deg, var(--green), var(--blue));
+  color: #06222c;
+}
+
+/* ============ 10. スクロールバー ============ */
+[data-design="future"] ::-webkit-scrollbar { width: 8px; height: 8px; }
+[data-design="future"] ::-webkit-scrollbar-track { background: rgba(255,255,255,0.3); }
+[data-design="future"] ::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--blue), var(--gold));
+  border-radius: 4px;
+}
