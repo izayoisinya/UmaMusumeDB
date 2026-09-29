@@ -103,6 +103,7 @@ window.PAGE_PROMPT = 'このサポートカードの詳細画面のスクリー�
 <div class="scroll-fab-group" id="scrollFabGroup">
   <button type="button" class="scroll-fab register-fab" id="openRegisterModalBtn" aria-label="＋ サポカ登録">＋</button>
   <button type="button" class="scroll-fab search-fab" id="searchToggleBtn" aria-label="検索・絞り込み">🔍</button>
+  <button type="button" class="scroll-fab unowned-fab" id="openUnownedListBtn" aria-label="未所持一覧">☆</button>
   <button type="button" class="scroll-fab" id="scrollTopBtn" aria-label="一番上へ">↑</button>
   <button type="button" class="scroll-fab" id="scrollBottomBtn" aria-label="一番下へ">↓</button>
 </div>
@@ -183,10 +184,26 @@ window.PAGE_PROMPT = 'このサポートカードの詳細画面のスクリー�
         <textarea id="fNotes" rows="2" placeholder="用途など"></textarea>
       </div>
 
+      <div>
+        <label class="count-filter-checkbox">
+          <input type="checkbox" id="fOwned" checked>
+          所持している(外すと未所持として登録され、通常の一覧には表示されません)
+        </label>
+      </div>
+
       <button type="submit" class="btn" id="saveSupportBtn">この内容を保存</button>
       <button type="button" class="btn secondary" id="clearBtn">フォームをクリア</button>
     </form>
     <button type="button" class="btn secondary modal-close-btn" data-modal="supportModal">閉じる</button>
+  </div>
+
+  <div class="modal" id="unownedListModal" role="dialog" aria-labelledby="unownedListTitle" hidden>
+    <h2 id="unownedListTitle">未所持サポカ一覧</h2>
+    <p class="hint">通常の一覧には表示されない未所持のサポカです。入手したら「入手した」で所持一覧に移動できます。</p>
+    <div class="status" id="unownedListStatus"></div>
+    <div class="entries" id="unownedEntries"></div>
+    <div class="empty" id="unownedEmptyMsg" style="display:none;">未所持のサポカはいません。</div>
+    <button type="button" class="btn secondary modal-close-btn" data-modal="unownedListModal">閉じる</button>
   </div>
 
   <div class="modal" id="confirmDeleteModal" role="dialog" aria-labelledby="confirmDeleteTitle" hidden>

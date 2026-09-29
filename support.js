@@ -14,6 +14,26 @@ let allCards = [];
 let editingCardId = null;
 let skillCategoryIndex = new Map(); // スキル名 -> categories配列（スキルブックより）
 
+// 保存成功後の自動クローズ(700ms遅延)が、その間に別のモーダルを
+// 開いた場合にそちらを巻き込んで閉じてしまわないようにするための管理
+let pendingAutoCloseTimer = null;
+function cancelPendingAutoClose() {
+  if (pendingAutoCloseTimer) {
+    clearTimeout(pendingAutoCloseTimer);
+    pendingAutoCloseTimer = null;
+  }
+}
+function scheduleAutoClose() {
+  cancelPendingAutoClose();
+  pendingAutoCloseTimer = setTimeout(() => {
+    pendingAutoCloseTimer = null;
+    closeModal();
+  }, 700);
+}
+
+// ownedフィールドが無い(過去登録分)場合は所持扱いにする
+function isCardOwned(card) { return card.owned !== false; }
+
 function contentsApiUrl() {
   const owner = (config && config.owner) || DEFAULT_OWNER;
   const repo = (config && config.repo) || DEFAULT_REPO;
@@ -300,6 +320,7 @@ function resetForm() {
 }
 
 document.getElementById('openRegisterModalBtn').addEventListener('click', () => {
+  cancelPendingAutoClose();
   resetForm();
   setSupportModalMode(null);
   openModal('supportModal');
@@ -310,6 +331,7 @@ function fillForm(parsed) {
   setSelectedTypes(parsed.types);
   skillManager.set(parsed.skills);
   eventSkillManager.set(parsed.eventSkills);
+  document.getElementById('fOwned').checked = parsed.owned !== false;
 }
 
 document.getElementById('loadJsonBtn').addEventListener('click', () => {
@@ -331,6 +353,7 @@ document.getElementById('clearBtn').addEventListener('click', resetForm);
 function startEditCard(id) {
   const card = allCards.find(c => c.id === id);
   if (!card) return;
+  cancelPendingAutoClose();
   resetForm();
   setSupportModalMode(id);
   fillForm(card);
@@ -358,6 +381,7 @@ document.getElementById('supportForm').addEventListener('submit', async e => {
     skills: skillManager.get(),
     eventSkills: eventSkillManager.get(),
     notes: document.getElementById('fNotes').value.trim(),
+    owned: document.getElementById('fOwned').checked,
     savedAt: new Date().toISOString(),
   };
 
@@ -383,10 +407,11 @@ document.getElementById('supportForm').addEventListener('submit', async e => {
     await saveCardsToGitHub(updated, `${isEditing ? 'サポカ編集' : 'サポカ登録'}: ${name}`);
     allCards = sortByName(updated);
     renderCards();
+    renderUnownedList();
     resetForm();
     setStatus(isEditing ? '更新しました。' : '保存しました。');
     showToast(isEditing ? '更新しました' : '保存しました');
-    setTimeout(closeModal, 700);
+    scheduleAutoClose();
   } catch (err) {
     console.error(err);
     if (err instanceof ConflictError) {
@@ -403,6 +428,7 @@ let pendingDeleteId = null;
 let pendingDeleteBtn = null;
 
 function askDeleteConfirm(card, btn) {
+  cancelPendingAutoClose();
   pendingDeleteId = card.id;
   pendingDeleteBtn = btn;
   document.getElementById('confirmDeleteMessage').textContent = `「${card.name}」を削除します。この操作は取り消せません。よろしいですか？`;
@@ -429,6 +455,7 @@ async function deleteCard(id, btn) {
     allCards = updated;
     setListStatus('');
     renderCards();
+    renderUnownedList();
   } catch (err) {
     console.error(err);
     if (err instanceof ConflictError) {
@@ -526,19 +553,72 @@ function cardSkillNames(card) {
   return [...(card.skills || []), ...(card.eventSkills || [])].map(s => normalizeSkill(s).name);
 }
 
+function buildCardEntryRow(card, { showObtainBtn } = {}) {
+  const row = document.createElement('div');
+  row.className = 'entry';
+  const typeChips = (card.types || [])
+    .map(t => `<span class="apt-badge type-badge-${t}">${TYPE_LABELS[t] || t}</span>`)
+    .join('');
+  const skillChips = (card.skills || []).map(s => {
+    const skill = normalizeSkill(s);
+    const catClass = skillChipCategoryClass(skill.name);
+    return `<span class="chip white skill-chip skill-${skill.type}${catClass ? ' ' + catClass : ''}">${escapeHtml(skill.name)}</span>`;
+  }).join('');
+  const eventSkillChips = (card.eventSkills || []).map(s => {
+    const skill = normalizeSkill(s);
+    const catClass = skillChipCategoryClass(skill.name);
+    return `<span class="chip white skill-chip skill-${skill.type}${catClass ? ' ' + catClass : ''}">${escapeHtml(skill.name)}</span>`;
+  }).join('');
+  const imageUrl = card.imagePath ? imageRawUrl(card.imagePath) : null;
+  row.innerHTML = `
+    <div class="entry-main">
+      <div class="entry-name-row">
+        <div class="entry-name">${escapeHtml(card.name)}</div>
+      </div>
+      ${typeChips ? `<div class="apt-row">${typeChips}</div>` : ''}
+      <div class="skill-section">
+        <div class="skill-group-label">所持スキル</div>
+        <div class="chips">${skillChips || '<span style="color:var(--ink-soft);font-size:12px;">スキル未登録</span>'}</div>
+      </div>
+      <div class="skill-section">
+        <div class="skill-group-label">育成イベントスキル</div>
+        <div class="chips">${eventSkillChips || '<span style="color:var(--ink-soft);font-size:12px;">スキル未登録</span>'}</div>
+      </div>
+      ${card.notes ? `<div class="entry-notes">${escapeHtml(card.notes)}</div>` : ''}
+    </div>
+    <div class="entry-side">
+      <div class="entry-actions">
+        ${showObtainBtn ? `<button class="entry-obtain btn secondary" data-id="${card.id}">入手した</button>` : ''}
+        <button class="entry-edit" data-id="${card.id}">編集</button>
+        <button class="entry-del" data-id="${card.id}">削除</button>
+      </div>
+      ${imageUrl ? `<div class="entry-image"><img class="entry-thumb" src="${escapeHtml(imageUrl)}" alt="${escapeHtml(card.name)}のイラスト" loading="lazy"></div>` : ''}
+    </div>
+  `;
+  row.querySelector('.entry-edit').addEventListener('click', () => startEditCard(card.id));
+  row.querySelector('.entry-del').addEventListener('click', e => askDeleteConfirm(card, e.currentTarget));
+  if (showObtainBtn) {
+    row.querySelector('.entry-obtain').addEventListener('click', e => markCardObtained(card.id, e.currentTarget));
+  }
+  const thumb = row.querySelector('.entry-thumb');
+  if (thumb) thumb.addEventListener('click', () => openLightbox(imageUrl));
+  return row;
+}
+
 function renderCards() {
   const container = document.getElementById('entries');
   const emptyMsg = document.getElementById('emptyMsg');
   container.innerHTML = '';
 
-  document.getElementById('countLabel').textContent = allCards.length + ' 件 登録';
+  const ownedCards = allCards.filter(isCardOwned);
+  document.getElementById('countLabel').textContent = ownedCards.length + ' 件 登録';
 
   const nameKeyword = searchNameInput.value.trim().toLowerCase();
   const requiredTerms = getFieldTerms('searchRequiredInput', requiredTags);
   const optionalTerms = getFieldTerms('searchOptionalInput', optionalTags);
   const typeFilters = getSelectedTypeFilters();
 
-  const filtered = allCards.filter(card => {
+  const filtered = ownedCards.filter(card => {
     if (nameKeyword && !(card.name || '').toLowerCase().includes(nameKeyword)) return false;
     if (typeFilters.length && !(card.types || []).some(t => typeFilters.includes(t))) return false;
     if (requiredTerms.length || optionalTerms.length) {
@@ -552,58 +632,65 @@ function renderCards() {
 
   if (!filtered.length) {
     emptyMsg.style.display = 'block';
-    emptyMsg.textContent = allCards.length ? '該当する登録が見つかりません。' : 'まだ登録がありません。「＋ サポカ登録」からClaudeの出力を貼り付けるか、手入力して保存してください。';
+    emptyMsg.textContent = ownedCards.length ? '該当する登録が見つかりません。' : 'まだ登録がありません。「＋ サポカ登録」からClaudeの出力を貼り付けるか、手入力して保存してください。';
     return;
   }
   emptyMsg.style.display = 'none';
 
-  filtered.forEach(card => {
-    const row = document.createElement('div');
-    row.className = 'entry';
-    const typeChips = (card.types || [])
-      .map(t => `<span class="apt-badge type-badge-${t}">${TYPE_LABELS[t] || t}</span>`)
-      .join('');
-    const skillChips = (card.skills || []).map(s => {
-      const skill = normalizeSkill(s);
-      const catClass = skillChipCategoryClass(skill.name);
-      return `<span class="chip white skill-chip skill-${skill.type}${catClass ? ' ' + catClass : ''}">${escapeHtml(skill.name)}</span>`;
-    }).join('');
-    const eventSkillChips = (card.eventSkills || []).map(s => {
-      const skill = normalizeSkill(s);
-      const catClass = skillChipCategoryClass(skill.name);
-      return `<span class="chip white skill-chip skill-${skill.type}${catClass ? ' ' + catClass : ''}">${escapeHtml(skill.name)}</span>`;
-    }).join('');
-    const imageUrl = card.imagePath ? imageRawUrl(card.imagePath) : null;
-    row.innerHTML = `
-      <div class="entry-main">
-        <div class="entry-name-row">
-          <div class="entry-name">${escapeHtml(card.name)}</div>
-        </div>
-        ${typeChips ? `<div class="apt-row">${typeChips}</div>` : ''}
-        <div class="skill-section">
-          <div class="skill-group-label">所持スキル</div>
-          <div class="chips">${skillChips || '<span style="color:var(--ink-soft);font-size:12px;">スキル未登録</span>'}</div>
-        </div>
-        <div class="skill-section">
-          <div class="skill-group-label">育成イベントスキル</div>
-          <div class="chips">${eventSkillChips || '<span style="color:var(--ink-soft);font-size:12px;">スキル未登録</span>'}</div>
-        </div>
-        ${card.notes ? `<div class="entry-notes">${escapeHtml(card.notes)}</div>` : ''}
-      </div>
-      <div class="entry-side">
-        <div class="entry-actions">
-          <button class="entry-edit" data-id="${card.id}">編集</button>
-          <button class="entry-del" data-id="${card.id}">削除</button>
-        </div>
-        ${imageUrl ? `<div class="entry-image"><img class="entry-thumb" src="${escapeHtml(imageUrl)}" alt="${escapeHtml(card.name)}のイラスト" loading="lazy"></div>` : ''}
-      </div>
-    `;
-    row.querySelector('.entry-edit').addEventListener('click', () => startEditCard(card.id));
-    row.querySelector('.entry-del').addEventListener('click', e => askDeleteConfirm(card, e.currentTarget));
-    const thumb = row.querySelector('.entry-thumb');
-    if (thumb) thumb.addEventListener('click', () => openLightbox(imageUrl));
-    container.appendChild(row);
-  });
+  filtered.forEach(card => container.appendChild(buildCardEntryRow(card)));
+}
+
+function setUnownedListStatus(msg, isError) {
+  const el = document.getElementById('unownedListStatus');
+  if (!el) return;
+  el.textContent = msg;
+  el.classList.toggle('error', !!isError);
+}
+
+function renderUnownedList() {
+  const container = document.getElementById('unownedEntries');
+  const emptyMsg = document.getElementById('unownedEmptyMsg');
+  if (!container || !emptyMsg) return;
+  const unowned = allCards.filter(card => !isCardOwned(card));
+
+  container.innerHTML = '';
+  if (!unowned.length) {
+    emptyMsg.style.display = 'block';
+    return;
+  }
+  emptyMsg.style.display = 'none';
+  unowned.forEach(card => container.appendChild(buildCardEntryRow(card, { showObtainBtn: true })));
+}
+
+document.getElementById('openUnownedListBtn').addEventListener('click', () => {
+  cancelPendingAutoClose();
+  renderUnownedList();
+  openModal('unownedListModal');
+});
+
+async function markCardObtained(id, btn) {
+  if (!config || !config.token) { setUnownedListStatus('更新にはPATが必要です。設定でPATを入力してください。', true); return; }
+  const target = allCards.find(c => c.id === id);
+  if (!target) return;
+  const updated = allCards.map(c => c.id === id ? { ...c, owned: true } : c);
+  setUnownedListStatus('更新しています…');
+  if (btn) btn.disabled = true;
+  try {
+    await saveCardsToGitHub(updated, `サポカ入手: ${target.name}`);
+    allCards = sortByName(updated);
+    setUnownedListStatus('');
+    renderUnownedList();
+    renderCards();
+    showToast(`「${target.name}」を所持一覧に移動しました`);
+  } catch (err) {
+    console.error(err);
+    if (err instanceof ConflictError) {
+      setUnownedListStatus('他の端末で更新されています。「更新」ボタンで最新を取得してからもう一度お試しください。', true);
+    } else {
+      setUnownedListStatus('更新中にエラーが発生しました: ' + err.message, true);
+    }
+    if (btn) btn.disabled = false;
+  }
 }
 
 resetForm();
