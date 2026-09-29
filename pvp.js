@@ -887,7 +887,7 @@ function renderEvents() {
       row.querySelectorAll('.plan-char-icon').forEach(img => {
         img.addEventListener('click', e => { e.stopPropagation(); openLightbox(img.src); });
       });
-      row.addEventListener('click', () => openEventDetail(ev.id));
+      row.addEventListener('click', () => window.openEventDetailWidget(ev.id));
       list.appendChild(row);
     });
     section.appendChild(list);
@@ -933,110 +933,12 @@ function eventMeta(ev) {
   return { isLoh, badges, showResults, raceConditionLabel };
 }
 
-// --- イベント結果詳細ポップアップ(全項目表示) ---
-function renderEventDetailHtml(ev) {
-  const { isLoh, badges, showResults, raceConditionLabel } = eventMeta(ev);
-
-  const teamCards = (ev.team || []).map(member => {
-    const imageUrl = member.imagePath ? imageRawUrl(member.imagePath) : null;
-    const rateBadges = [];
-    if (member.winRate != null) rateBadges.push(`<span class="apt-badge">勝率${member.winRate}%</span>`);
-    if (member.placeRate != null) rateBadges.push(`<span class="apt-badge">連対${member.placeRate}%</span>`);
-    if (member.showRate != null) rateBadges.push(`<span class="apt-badge">複勝${member.showRate}%</span>`);
-    if (isLoh && member.points != null) rateBadges.push(`<span class="apt-badge">${member.points}pt</span>`);
-    const r = showResults ? member.results : null;
-    const resultBadges = r ? [
-      `<span class="apt-badge">1着${r.first || 0}</span>`,
-      `<span class="apt-badge">2着${r.second || 0}</span>`,
-      `<span class="apt-badge">3着${r.third || 0}</span>`,
-      `<span class="apt-badge">圏外${r.other || 0}</span>`,
-      `<span class="apt-badge">${r.races || 0}戦</span>`,
-    ] : [];
-    return `
-      <div class="pvp-team-member">
-        ${imageUrl ? `<img class="pvp-team-thumb team-img" src="${escapeHtml(imageUrl)}" alt="${escapeHtml(member.name)}" loading="lazy">` : ''}
-        <div class="entry-name">${escapeHtml(member.name)}</div>
-        ${rateBadges.length ? `<div class="apt-row">${rateBadges.join('')}</div>` : ''}
-        ${resultBadges.length ? `<div class="apt-row">${resultBadges.join('')}</div>` : ''}
-      </div>
-    `;
-  }).join('');
-
-  const videoUrl = ev.videoPath ? imageRawUrl(ev.videoPath) : null;
-  const videoWrap = videoUrl
-    ? `<div class="pvp-video-wrap"><span class="apt-group-label">決勝動画</span><video controls preload="metadata" playsinline src="${escapeHtml(videoUrl)}"></video></div>`
-    : '';
-
-  const extraImagesHtml = (ev.extraImages || []).length
-    ? `<div class="pvp-extra-images"><span class="apt-group-label">参考画像</span><div class="extra-images-grid">${
-        (ev.extraImages || []).map(path => `<div class="extra-image-thumb"><img class="extra-img" src="${escapeHtml(imageRawUrl(path))}" alt="参考画像" loading="lazy"></div>`).join('')
-      }</div></div>`
-    : '';
-
-  return `
-    ${raceConditionLabel ? `<div class="entry-name-row"><div class="entry-name">${escapeHtml(raceConditionLabel)}</div></div>` : ''}
-    <div class="apt-row">${badges}</div>
-    ${teamCards ? `<div class="pvp-team-grid">${teamCards}</div>` : ''}
-    ${videoWrap}
-    ${extraImagesHtml}
-    ${ev.notes ? `<div class="entry-notes">${escapeHtml(ev.notes)}</div>` : ''}
-  `;
-}
-
-let currentEventDetailId = null;
-function openEventDetail(id, keepCompactState) {
-  const ev = allEvents.find(e => e.id === id);
-  if (!ev) return;
-  currentEventDetailId = id;
-  const body = document.getElementById('eventDetailBody');
-  body.innerHTML = renderEventDetailHtml(ev);
-  body.querySelectorAll('.team-img, .extra-img').forEach(img => {
-    img.addEventListener('click', () => openLightbox(img.src));
-  });
-  openModal('eventDetailModal');
-  applyDefaultCompactOnOpen(document.getElementById('eventDetailModal'), keepCompactState);
-}
-document.getElementById('eventDetailCompactBtn').addEventListener('click', () => {
-  const modal = document.getElementById('eventDetailModal');
-  setModalCompact(!modal.classList.contains('compact'), modal);
-});
-
-document.getElementById('eventDetailPinBtn').addEventListener('click', () => {
-  const ev = allEvents.find(e => e.id === currentEventDetailId);
-  if (!ev) return;
-  const { raceConditionLabel } = eventMeta(ev);
-  addPinnedTab({
-    key: `pvp-event-${ev.id}`,
-    page: 'pvp.html',
-    type: 'eventDetail',
-    params: { event: ev.id },
-    label: `${formatMonthLabel(ev.month)} ${raceConditionLabel || ''}`.trim(),
-  });
-});
-
-// --- タブ登録からの復帰(別ページからの遷移・同ページでのタブ再オープン両対応) ---
-window.openPinnedTabTarget = function(tab) {
-  if (tab.type === 'eventDetail') openEventDetail(tab.params.event, true);
-};
-
-function handlePinnedTabDeepLink() {
-  const eventId = new URLSearchParams(location.search).get('event');
-  if (eventId) openEventDetail(eventId, true);
-}
-
-// 縮小表示ポップアップを開いたまま別ページへ遷移した時の復元用。pvp.html
-// 自前のイベント結果詳細ポップアップが現在実際に開いている(hiddenでない)
-// 場合、対応するピン留めタブのキーを返す。
-window.getLocalOpenPinnedTabKeys = function () {
-  const modal = document.getElementById('eventDetailModal');
-  if (modal && !modal.hidden && currentEventDetailId) {
-    return [`pvp-event-${currentEventDetailId}`];
-  }
-  return [];
-};
+// イベント結果詳細ポップアップはcharacter-config.js側のウィジェット
+// (window.openEventDetailWidget)経由で開く。ピン留めタブの再オープン・
+// 別ページへ遷移した後の自動復元もそちら側で一元管理されるため、
+// このページ独自の実装は持たない。
 
 resetForm();
 Promise.all([loadEvents(), loadCachedUmas()]).then(() => {
   renderEvents();
-  handlePinnedTabDeepLink();
 });
