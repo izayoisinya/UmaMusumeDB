@@ -126,10 +126,19 @@
             "id": "support_1789514094685_iyvrs",
             "name": "タップダンスシチー"
           },
+          {
+            "id": "support_1790100583667_wxipb",
+            "name": "エフフォーリア"
+          },
+          {
+            "id": "support_1790101015582_aj21z",
+            "name": "メイショウドトウ"
+          },
           null,
-          null,
-          null,
-          null,
+          {
+            "id": "support_1790102456080_b1u47",
+            "name": "フォーエバーヤング"
+          },
           null
         ],
         "pedigree": [
