@@ -1024,6 +1024,17 @@ function handlePinnedTabDeepLink() {
   if (eventId) openEventDetail(eventId, true);
 }
 
+// 縮小表示ポップアップを開いたまま別ページへ遷移した時の復元用。pvp.html
+// 自前のイベント結果詳細ポップアップが現在実際に開いている(hiddenでない)
+// 場合、対応するピン留めタブのキーを返す。
+window.getLocalOpenPinnedTabKeys = function () {
+  const modal = document.getElementById('eventDetailModal');
+  if (modal && !modal.hidden && currentEventDetailId) {
+    return [`pvp-event-${currentEventDetailId}`];
+  }
+  return [];
+};
+
 resetForm();
 Promise.all([loadEvents(), loadCachedUmas()]).then(() => {
   renderEvents();

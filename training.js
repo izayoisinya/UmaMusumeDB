@@ -1177,6 +1177,22 @@ function handlePinnedTabDeepLink() {
   }
 }
 
+// 縮小表示ポップアップを開いたまま別ページへ遷移した時の復元用。training.html
+// 自前のプラン詳細/キャラ編成ポップアップ(このページの主導線)が現在
+// 実際に開いている(hiddenでない)場合、対応するピン留めタブのキーを返す。
+window.getLocalOpenPinnedTabKeys = function () {
+  const keys = [];
+  const planModal = document.getElementById('planDetailModal');
+  if (planModal && !planModal.hidden && currentPlanDetailId) {
+    keys.push(`training-plan-${currentPlanDetailId}`);
+  }
+  const charModal = document.getElementById('characterConfigModal');
+  if (charModal && !charModal.hidden && configTargetPlanId != null && configTargetCharIndex != null) {
+    keys.push(`training-char-${configTargetPlanId}-${configTargetCharIndex}`);
+  }
+  return keys;
+};
+
 resetForm();
 Promise.all([loadPlans(), loadCachedUmas(), loadCachedSupportCards()]).then(() => {
   renderPlans();

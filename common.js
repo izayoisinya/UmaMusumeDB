@@ -714,6 +714,70 @@ window.addEventListener('load', () => {
   positionPinnedTabsBar();
 });
 
+// --- 縮小表示ポップアップを開いたまま別ページへ遷移した時、遷移先で自動的に
+// 同じタブを開き直す ---
+// 実際にどのポップアップが開いているか(hiddenでないか)は、character-config.js /
+// training.js / pvp.jsそれぞれが自前のモーダル要素・状態変数で管理しているため、
+// 各ページが window.ccGetOpenPinnedTabKeys / window.getLocalOpenPinnedTabKeys を
+// 定義していればそれを呼び出して集約する(定義されていないページ・実装では
+// 単純にスキップされる)。
+const OPEN_PINNED_TABS_KEY = 'umaFactorLedger:openPinnedTabs';
+function collectOpenPinnedTabKeys() {
+  const keys = new Set();
+  if (typeof window.ccGetOpenPinnedTabKeys === 'function') {
+    window.ccGetOpenPinnedTabKeys().forEach(k => keys.add(k));
+  }
+  if (typeof window.getLocalOpenPinnedTabKeys === 'function') {
+    window.getLocalOpenPinnedTabKeys().forEach(k => keys.add(k));
+  }
+  const pinnedKeys = new Set(loadPinnedTabs().map(t => t.key));
+  return Array.from(keys).filter(k => pinnedKeys.has(k));
+}
+// ページを離れる直前(タブを閉じる/リロードも含む)に、その時点で実際に
+// 開いていたピン留めタブのキー一覧を保存しておく。次に(同じページ・別
+// ページ問わず)どこかのページが読み込まれた時、これを見て自動的に
+// 開き直す。
+window.addEventListener('pagehide', () => {
+  try {
+    localStorage.setItem(OPEN_PINNED_TABS_KEY, JSON.stringify(collectOpenPinnedTabKeys()));
+  } catch {}
+});
+// 復元時は常にcharacter-config.js側のウィジェット(自前でデータを取得するため
+// どのページからでもタイミングを気にせず開ける)経由で開き、かつ縮小表示の
+// 状態も引き継ぐ。
+function openPinnedTabForRestore(key) {
+  const tab = loadPinnedTabs().find(t => t.key === key);
+  if (!tab) return;
+  if (tab.type === 'characterConfig' && typeof window.openCharacterConfigWidget === 'function') {
+    window.openCharacterConfigWidget(tab.params.plan, Number(tab.params.char), { keepCompactState: true });
+    return;
+  }
+  if (tab.type === 'planDetail' && typeof window.openPlanDetailWidget === 'function') {
+    window.openPlanDetailWidget(tab.params.plan, { keepCompactState: true });
+    return;
+  }
+  if (tab.type === 'eventDetail' && typeof window.openEventDetailWidget === 'function') {
+    window.openEventDetailWidget(tab.params.event, { keepCompactState: true });
+    return;
+  }
+  openPinnedTab(key);
+}
+function restoreOpenPinnedTabs() {
+  let keys = [];
+  try {
+    keys = JSON.parse(localStorage.getItem(OPEN_PINNED_TABS_KEY) || '[]');
+  } catch {}
+  if (!Array.isArray(keys) || !keys.length) return;
+  keys.forEach(key => openPinnedTabForRestore(key));
+}
+// loadイベントまで待つことで、character-config.js/training.js/pvp.js等
+// 全スクリプトの読み込み(関数定義)が確実に終わってから復元処理を行う。
+// bfcache復元(pageshow, persisted:true)の時はJS状態自体がそのまま
+// 残っているため、ここでは呼ばない(二重に開いてしまうため)。
+window.addEventListener('load', () => {
+  restoreOpenPinnedTabs();
+});
+
 // --- トースト通知(左下に出て自動で消える) ---
 let toastHideTimer = null;
 let toastRemoveTimer = null;

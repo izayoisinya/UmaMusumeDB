@@ -1151,4 +1151,26 @@
       saveBtn.disabled = false;
     }
   }
+
+  // --- 縮小表示ポップアップを開いたまま別ページへ遷移した時の復元用 ---
+  // 現在このモジュール経由で実際に開いている(hiddenでない)ポップアップに
+  // 対応するピン留めタブのキーを列挙する。common.jsがページ離脱直前に
+  // これを呼び出し、次にページを開いた時の自動復元に使う。
+  window.ccGetOpenPinnedTabKeys = function () {
+    const keys = [];
+    ccConfigInstances.forEach(instance => {
+      if (!instance.modalEl.hidden && instance.planId != null && instance.charIndex != null) {
+        keys.push(`training-char-${instance.planId}-${instance.charIndex}`);
+      }
+    });
+    const planModal = document.getElementById('ccPlanDetailModal');
+    if (planModal && !planModal.hidden && ccPlanDetailId) {
+      keys.push(`training-plan-${ccPlanDetailId}`);
+    }
+    const eventModal = document.getElementById('ccEventDetailModal');
+    if (eventModal && !eventModal.hidden && ccEventDetailId) {
+      keys.push(`pvp-event-${ccEventDetailId}`);
+    }
+    return keys;
+  };
 })();
