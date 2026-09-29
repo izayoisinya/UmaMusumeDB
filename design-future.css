@@ -1,17 +1,16 @@
-/* design-future.css — 追加デザイン「未来風」プレビュー版
+/* design-future.css — 追加デザイン「未来風(Liquid Glass)」
  *
  * [data-design="future"] でスコープした上書き専用スタイル。style.cssは
  * 一切変更しない。data-design属性がこの値でない時はこのファイルのルールは
- * 何も効かない。
+ * 何も効かない。design-sf.css/design-military.cssと同じ範囲(パレット/
+ * 見出し/マストヘッド/ボタン/カード/チップ/フォーム/登録タブ)を
+ * 一通り上書きしている。
  *
- * 既存のSF(サイバーパンク/ネオン・暗い背景)とは方向性を分け、明るい
- * ガラス質のUIを目指す。iOSの「Liquid Glass」(背景を強くぼかして
- * 透過させ、縁に光の反射(スペキュラーハイライト)を効かせるガラス
- * 表現)を意識し、装飾的な色よりも強めのぼかし+縁のハイライトで
- * 「ガラスそのもの」の質感を出す方向に寄せている。まずは気に入るか
- * どうかを見るための軽いプレビューとして、design-sf.css/
- * design-military.cssと同じ範囲(パレット/見出し/マストヘッド/ボタン/
- * カード/チップ/フォーム/登録タブ)をひととおり上書きしている。
+ * 既存のSF(サイバーパンク/ネオン・暗い背景)とは方向性を分け、iOSの
+ * 「Liquid Glass」(背景を強くぼかして透過させ、縁に光の反射
+ * (スペキュラーハイライト)を効かせるガラス表現)を意識し、装飾的な
+ * 色を塗るのではなく強めのぼかし(backdrop-filter)+縁のハイライトで
+ * 「ガラスそのもの」の質感を出している。
  */
 
 /* ============ 1. パレット ============ */
@@ -191,14 +190,24 @@
 [data-design="future"] .chip.green { background: linear-gradient(160deg, var(--green), var(--green-dim)); color: #063326; box-shadow: inset 0 1px 0 rgba(255,255,255,0.5); }
 [data-design="future"] .chip.white { border-color: var(--blue); color: var(--ink); background: rgba(255,255,255,0.55); backdrop-filter: blur(8px); }
 /* design-sf.css/design-military.cssと同じ理由(.chip.whiteとの特異度衝突)で
-   種別枠色と金/固有スキルの可読性を個別に上書きしておく */
+   種別枠色と金/固有スキルの可読性を個別に上書きしておく。このデザインは
+   さらに.chip.whiteにガラス風の半透明背景も設定しているため、それが
+   金/固有スキル本来の色付き背景まで上書きしてしまわないよう、背景も
+   あわせて明示的に指定し直す必要がある */
 [data-design="future"] .skill-chip.cat-green { border-color: var(--green); }
 [data-design="future"] .skill-chip.cat-heal { border-color: var(--blue); }
 [data-design="future"] .skill-chip.cat-debuff { border-color: var(--red); }
-[data-design="future"] .chip.skill-gold { color: #6d4c00; }
+[data-design="future"] .chip.skill-gold {
+  background: linear-gradient(160deg, #ffe082, #ffb300);
+  color: #6d4c00;
+  border: none;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
+}
 [data-design="future"] .chip.skill-unique {
-  color: #1c2b3d;
-  -webkit-text-stroke: 0.4px rgba(255,255,255,0.9);
+  background: linear-gradient(90deg, #ff5252, #ffb74d, #fff176, #66bb6a, #42a5f5, #ab47bc);
+  color: #fff;
+  border: none;
+  -webkit-text-stroke: 0.4px rgba(0,0,0,0.35);
   text-shadow: none;
 }
 [data-design="future"] .apt-badge {
