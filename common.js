@@ -260,15 +260,36 @@ if (scrollTopBtn) scrollTopBtn.addEventListener('click', () => window.scrollTo({
 if (scrollBottomBtn) scrollBottomBtn.addEventListener('click', () => window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' }));
 
 // --- 汎用モーダル制御 ---
+// 縮小表示中(.compact-eligible.compact)のポップアップは、設定や登録
+// フォームなど他の一般的なモーダルを開閉する操作では触れない(裏で
+// 開いたままにしておく)。縮小表示自体を明示的に閉じたい時は、各
+// ポップアップ自身の×ボタン(専用のclose処理)を使う。
 function openModal(id) {
-  document.querySelectorAll('.modal').forEach(m => { m.hidden = m.id !== id; });
+  document.querySelectorAll('.modal').forEach(m => {
+    if (m.id === id) { m.hidden = false; return; }
+    if (m.classList.contains('compact-eligible') && m.classList.contains('compact')) return;
+    m.hidden = true;
+  });
   const overlay = document.getElementById('modalOverlay');
-  if (overlay) overlay.hidden = false;
+  if (overlay) {
+    overlay.hidden = false;
+    if (typeof updateOverlayBackdropState === 'function') updateOverlayBackdropState();
+  }
 }
 function closeModal() {
+  document.querySelectorAll('.modal').forEach(m => {
+    if (m.classList.contains('compact-eligible') && m.classList.contains('compact')) return;
+    m.hidden = true;
+  });
   const overlay = document.getElementById('modalOverlay');
-  if (overlay) overlay.hidden = true;
-  document.querySelectorAll('.modal').forEach(m => { m.hidden = true; });
+  if (overlay) {
+    const stillOpen = Array.from(document.querySelectorAll('.modal')).some(m => !m.hidden);
+    if (!stillOpen) {
+      overlay.hidden = true;
+    } else if (typeof updateOverlayBackdropState === 'function') {
+      updateOverlayBackdropState();
+    }
+  }
 }
 // character-config.js等の各ウィジェットが「戻り先が無い」時のフォールバックで使う。
 // closeModal()と違い他の開いているモーダルには触れず、
