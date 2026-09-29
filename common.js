@@ -672,21 +672,15 @@ window.addEventListener('resize', positionPinnedTabsBar);
 function openPinnedTab(key) {
   const tab = loadPinnedTabs().find(t => t.key === key);
   if (!tab) return;
-  // キャラ編成は複数キャラを同時に開けるようにしたいので、同じページを
-  // 開いている時でもページ内蔵の単一モーダルではなく、常にcharacter-config.js
-  // の複数インスタンス対応版を使う(training.html上でも他ページ経由でも
-  // 挙動を揃えるため)。
+  // キャラ編成/育成計画詳細/イベント結果詳細は、いずれもcharacter-config.js
+  // を読み込んでいるどのページからでもポップアップとして開ける(自前で
+  // データを取得する)ので、遷移せずその場で開く。キャラ編成は複数キャラを
+  // 同時に開けるようにしたいため、常にcharacter-config.jsの複数インスタンス
+  // 対応版を使う。
   if (tab.type === 'characterConfig' && typeof window.openCharacterConfigWidget === 'function') {
     window.openCharacterConfigWidget(tab.params.plan, Number(tab.params.char), { keepCompactState: true });
     return;
   }
-  if (tab.page === currentPage && typeof window.openPinnedTabTarget === 'function') {
-    window.openPinnedTabTarget(tab);
-    return;
-  }
-  // 育成計画詳細・イベント結果詳細はcharacter-config.js
-  // を読み込んでいるどのページからでもポップアップとして開けるので、
-  // 遷移せずその場で開く。
   if (tab.type === 'planDetail' && typeof window.openPlanDetailWidget === 'function') {
     window.openPlanDetailWidget(tab.params.plan);
     return;
@@ -716,22 +710,14 @@ window.addEventListener('load', () => {
 
 // --- 縮小表示ポップアップを開いたまま別ページへ遷移した時、遷移先で自動的に
 // 同じタブを開き直す ---
-// 実際にどのポップアップが開いているか(hiddenでないか)は、character-config.js /
-// training.js / pvp.jsそれぞれが自前のモーダル要素・状態変数で管理しているため、
-// 各ページが window.ccGetOpenPinnedTabKeys / window.getLocalOpenPinnedTabKeys を
-// 定義していればそれを呼び出して集約する(定義されていないページ・実装では
-// 単純にスキップされる)。
+// 実際にどのポップアップが開いているか(hiddenでないか)はcharacter-config.js
+// が自前のモーダル要素・状態変数で管理しているため、window.ccGetOpenPinnedTabKeys
+// を呼び出して集約する。
 const OPEN_PINNED_TABS_KEY = 'umaFactorLedger:openPinnedTabs';
 function collectOpenPinnedTabKeys() {
-  const keys = new Set();
-  if (typeof window.ccGetOpenPinnedTabKeys === 'function') {
-    window.ccGetOpenPinnedTabKeys().forEach(k => keys.add(k));
-  }
-  if (typeof window.getLocalOpenPinnedTabKeys === 'function') {
-    window.getLocalOpenPinnedTabKeys().forEach(k => keys.add(k));
-  }
+  const keys = typeof window.ccGetOpenPinnedTabKeys === 'function' ? window.ccGetOpenPinnedTabKeys() : [];
   const pinnedKeys = new Set(loadPinnedTabs().map(t => t.key));
-  return Array.from(keys).filter(k => pinnedKeys.has(k));
+  return keys.filter(k => pinnedKeys.has(k));
 }
 // ページを離れる直前(タブを閉じる/リロードも含む)に、その時点で実際に
 // 開いていたピン留めタブのキー一覧を保存しておく。次に(同じページ・別
