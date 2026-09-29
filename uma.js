@@ -14,6 +14,23 @@ let allUmas = [];
 let editingUmaId = null;
 let skillCategoryIndex = new Map(); // スキル名 -> categories配列（スキルブックより）
 
+// 保存成功後の自動クローズ(700ms遅延)が、その間に別のモーダルを
+// 開いた場合にそちらを巻き込んで閉じてしまわないようにするための管理
+let pendingAutoCloseTimer = null;
+function cancelPendingAutoClose() {
+  if (pendingAutoCloseTimer) {
+    clearTimeout(pendingAutoCloseTimer);
+    pendingAutoCloseTimer = null;
+  }
+}
+function scheduleAutoClose() {
+  cancelPendingAutoClose();
+  pendingAutoCloseTimer = setTimeout(() => {
+    pendingAutoCloseTimer = null;
+    closeModal();
+  }, 700);
+}
+
 function contentsApiUrl() {
   const owner = (config && config.owner) || DEFAULT_OWNER;
   const repo = (config && config.repo) || DEFAULT_REPO;
@@ -285,6 +302,7 @@ function resetForm() {
 }
 
 document.getElementById('openRegisterModalBtn').addEventListener('click', () => {
+  cancelPendingAutoClose();
   resetForm();
   setUmaModalMode(null);
   openModal('umaModal');
@@ -319,6 +337,7 @@ function fillForm(parsed) {
   document.getElementById('fGrowthPower').value = growth.power || 0;
   document.getElementById('fGrowthGuts').value = growth.guts || 0;
   document.getElementById('fGrowthWisdom').value = growth.wisdom || 0;
+  document.getElementById('fOwned').checked = parsed.owned !== false;
 }
 
 document.getElementById('loadJsonBtn').addEventListener('click', () => {
@@ -340,6 +359,7 @@ document.getElementById('clearBtn').addEventListener('click', resetForm);
 function startEditUma(id) {
   const uma = allUmas.find(u => u.id === id);
   if (!uma) return;
+  cancelPendingAutoClose();
   resetForm();
   setUmaModalMode(id);
   fillForm(uma);
@@ -388,6 +408,7 @@ document.getElementById('umaForm').addEventListener('submit', async e => {
       wisdom: Number(document.getElementById('fGrowthWisdom').value) || 0,
     },
     notes: document.getElementById('fNotes').value.trim(),
+    owned: document.getElementById('fOwned').checked,
     savedAt: new Date().toISOString(),
   };
 
@@ -413,10 +434,11 @@ document.getElementById('umaForm').addEventListener('submit', async e => {
     await saveUmasToGitHub(updated, `${isEditing ? 'ウマ娘編集' : 'ウマ娘登録'}: ${name}`);
     allUmas = sortByName(updated);
     renderUmas();
+    renderUnownedList();
     resetForm();
     setStatus(isEditing ? '更新しました。' : '保存しました。');
     showToast(isEditing ? '更新しました' : '保存しました');
-    setTimeout(closeModal, 700);
+    scheduleAutoClose();
   } catch (err) {
     console.error(err);
     if (err instanceof ConflictError) {
@@ -433,6 +455,7 @@ let pendingDeleteId = null;
 let pendingDeleteBtn = null;
 
 function askDeleteConfirm(uma, btn) {
+  cancelPendingAutoClose();
   pendingDeleteId = uma.id;
   pendingDeleteBtn = btn;
   document.getElementById('confirmDeleteMessage').textContent = `「${uma.name}」を削除します。この操作は取り消せません。よろしいですか？`;
@@ -459,6 +482,7 @@ async function deleteUma(id, btn) {
     allUmas = updated;
     setListStatus('');
     renderUmas();
+    renderUnownedList();
   } catch (err) {
     console.error(err);
     if (err instanceof ConflictError) {
@@ -477,6 +501,70 @@ function aptLabel(v) { return v ? v : '-'; }
 function aptBadge(prefix, v) {
   const rankClass = v ? 'rank-' + v : 'rank-none';
   return `<span class="apt-badge ${rankClass}">${prefix}${aptLabel(v)}</span>`;
+}
+
+// ownedフィールドが無い(過去登録分)場合は所持扱いにする
+function isUmaOwned(uma) { return uma.owned !== false; }
+
+function buildUmaEntryRow(uma, { showObtainBtn } = {}) {
+  const row = document.createElement('div');
+  row.className = 'entry';
+  const skillChips = (uma.skills || []).map(s => {
+    const skill = normalizeSkill(s);
+    const catClass = skillChipCategoryClass(skill.name);
+    return `<span class="chip white skill-chip skill-${skill.type}${catClass ? ' ' + catClass : ''}">${escapeHtml(skill.name)}</span>`;
+  }).join('');
+  const growthLabels = { speed: 'スピ', stamina: 'スタ', power: 'パワ', guts: '根性', wisdom: '賢さ' };
+  const growthItemsHtml = Object.entries(growthLabels)
+    .filter(([key]) => uma.growth[key])
+    .map(([key, label]) => `<span class="growth-item">${label}+${uma.growth[key]}%</span>`)
+    .join('');
+  const growthText = growthItemsHtml ? `<span class="growth-item">成長率:</span>${growthItemsHtml}` : '';
+  const imageUrl = uma.imagePath ? imageRawUrl(uma.imagePath) : null;
+  row.innerHTML = `
+    <div class="entry-main">
+      <div class="entry-name-row">
+        ${imageUrl ? `<img class="uma-icon" src="${escapeHtml(imageUrl)}" data-image-url="${escapeHtml(imageUrl)}" alt="${escapeHtml(uma.name)}" loading="lazy">` : ''}
+        <div class="entry-name">${escapeHtml(uma.name)}</div>
+      </div>
+      <div class="apt-group">
+        <span class="apt-group-label">コース</span>
+        <div class="apt-row">
+          ${aptBadge('芝', uma.track.turf)}
+          ${aptBadge('ダ', uma.track.dirt)}
+        </div>
+      </div>
+      <div class="apt-group">
+        <span class="apt-group-label">距離</span>
+        <div class="apt-row">
+          ${aptBadge('短', uma.distance.short)}
+          ${aptBadge('マ', uma.distance.mile)}
+          ${aptBadge('中', uma.distance.medium)}
+          ${aptBadge('長', uma.distance.long)}
+        </div>
+      </div>
+      <div class="apt-group">
+        <span class="apt-group-label">脚質</span>
+        <div class="apt-row">
+          ${aptBadge('逃', uma.style.nige)}
+          ${aptBadge('先', uma.style.senko)}
+          ${aptBadge('差', uma.style.sashi)}
+          ${aptBadge('追', uma.style.oikomi)}
+        </div>
+      </div>
+      ${growthText ? `<div class="growth-row">${growthText}</div>` : ''}
+      <div class="chips">${skillChips || '<span style="color:var(--ink-soft);font-size:12px;">スキル未登録</span>'}</div>
+      ${uma.notes ? `<div class="entry-notes">${escapeHtml(uma.notes)}</div>` : ''}
+    </div>
+    <div class="entry-side">
+      <div class="entry-actions">
+        ${showObtainBtn ? `<button class="entry-obtain btn secondary" data-id="${uma.id}">入手した</button>` : ''}
+        <button class="entry-edit" data-id="${uma.id}">編集</button>
+        <button class="entry-del" data-id="${uma.id}">削除</button>
+      </div>
+    </div>
+  `;
+  return row;
 }
 
 const RANK_ORDER = { S: 8, A: 7, B: 6, C: 5, D: 4, E: 3, F: 2, G: 1 };
@@ -543,7 +631,8 @@ function renderUmas() {
   const container = document.getElementById('entries');
   const emptyMsg = document.getElementById('emptyMsg');
 
-  document.getElementById('countLabel').textContent = allUmas.length + ' 件 登録';
+  const ownedUmas = allUmas.filter(isUmaOwned);
+  document.getElementById('countLabel').textContent = ownedUmas.length + ' 件 登録';
 
   const nameKeyword = searchNameInput.value.trim().toLowerCase();
   const skillKeyword = searchSkillInput.value.trim().toLowerCase();
@@ -554,7 +643,7 @@ function renderUmas() {
     .map(f => ({ path: f.path, rank: document.getElementById(f.id).value }))
     .filter(f => f.rank);
   const lte = aptSearchLte.checked;
-  const filtered = allUmas.filter(uma => {
+  const filtered = ownedUmas.filter(uma => {
     if (nameKeyword && !(uma.name || '').toLowerCase().includes(nameKeyword)) return false;
     if (skillKeyword && !(uma.skills || []).some(s => normalizeSkill(s).name.toLowerCase().includes(skillKeyword))) return false;
     if (!activeGrowthFilters.every(f => {
@@ -571,74 +660,87 @@ function renderUmas() {
   if (!filtered.length) {
     container.innerHTML = '';
     emptyMsg.style.display = 'block';
-    emptyMsg.textContent = allUmas.length ? '該当する登録が見つかりません。' : 'まだ登録がありません。「＋ ウマ娘登録」からClaudeの出力を貼り付けるか、手入力して保存してください。';
+    emptyMsg.textContent = ownedUmas.length ? '該当する登録が見つかりません。' : 'まだ登録がありません。「＋ ウマ娘登録」からClaudeの出力を貼り付けるか、手入力して保存してください。';
     return;
   }
   emptyMsg.style.display = 'none';
 
   const fragment = document.createDocumentFragment();
-  filtered.forEach(uma => {
-    const row = document.createElement('div');
-    row.className = 'entry';
-    const skillChips = (uma.skills || []).map(s => {
-      const skill = normalizeSkill(s);
-      const catClass = skillChipCategoryClass(skill.name);
-      return `<span class="chip white skill-chip skill-${skill.type}${catClass ? ' ' + catClass : ''}">${escapeHtml(skill.name)}</span>`;
-    }).join('');
-    const growthLabels = { speed: 'スピ', stamina: 'スタ', power: 'パワ', guts: '根性', wisdom: '賢さ' };
-    const growthItemsHtml = Object.entries(growthLabels)
-      .filter(([key]) => uma.growth[key])
-      .map(([key, label]) => `<span class="growth-item">${label}+${uma.growth[key]}%</span>`)
-      .join('');
-    const growthText = growthItemsHtml ? `<span class="growth-item">成長率:</span>${growthItemsHtml}` : '';
-    const imageUrl = uma.imagePath ? imageRawUrl(uma.imagePath) : null;
-    row.innerHTML = `
-      <div class="entry-main">
-        <div class="entry-name-row">
-          ${imageUrl ? `<img class="uma-icon" src="${escapeHtml(imageUrl)}" data-image-url="${escapeHtml(imageUrl)}" alt="${escapeHtml(uma.name)}" loading="lazy">` : ''}
-          <div class="entry-name">${escapeHtml(uma.name)}</div>
-        </div>
-        <div class="apt-group">
-          <span class="apt-group-label">コース</span>
-          <div class="apt-row">
-            ${aptBadge('芝', uma.track.turf)}
-            ${aptBadge('ダ', uma.track.dirt)}
-          </div>
-        </div>
-        <div class="apt-group">
-          <span class="apt-group-label">距離</span>
-          <div class="apt-row">
-            ${aptBadge('短', uma.distance.short)}
-            ${aptBadge('マ', uma.distance.mile)}
-            ${aptBadge('中', uma.distance.medium)}
-            ${aptBadge('長', uma.distance.long)}
-          </div>
-        </div>
-        <div class="apt-group">
-          <span class="apt-group-label">脚質</span>
-          <div class="apt-row">
-            ${aptBadge('逃', uma.style.nige)}
-            ${aptBadge('先', uma.style.senko)}
-            ${aptBadge('差', uma.style.sashi)}
-            ${aptBadge('追', uma.style.oikomi)}
-          </div>
-        </div>
-        ${growthText ? `<div class="growth-row">${growthText}</div>` : ''}
-        <div class="chips">${skillChips || '<span style="color:var(--ink-soft);font-size:12px;">スキル未登録</span>'}</div>
-        ${uma.notes ? `<div class="entry-notes">${escapeHtml(uma.notes)}</div>` : ''}
-      </div>
-      <div class="entry-side">
-        <div class="entry-actions">
-          <button class="entry-edit" data-id="${uma.id}">編集</button>
-          <button class="entry-del" data-id="${uma.id}">削除</button>
-        </div>
-      </div>
-    `;
-    fragment.appendChild(row);
-  });
+  filtered.forEach(uma => fragment.appendChild(buildUmaEntryRow(uma)));
   container.innerHTML = '';
   container.appendChild(fragment);
 }
+
+function renderUnownedList() {
+  const container = document.getElementById('unownedEntries');
+  const emptyMsg = document.getElementById('unownedEmptyMsg');
+  const unowned = allUmas.filter(uma => !isUmaOwned(uma));
+
+  if (!unowned.length) {
+    container.innerHTML = '';
+    emptyMsg.style.display = 'block';
+    return;
+  }
+  emptyMsg.style.display = 'none';
+
+  const fragment = document.createDocumentFragment();
+  unowned.forEach(uma => fragment.appendChild(buildUmaEntryRow(uma, { showObtainBtn: true })));
+  container.innerHTML = '';
+  container.appendChild(fragment);
+}
+
+document.getElementById('openUnownedListBtn').addEventListener('click', () => {
+  cancelPendingAutoClose();
+  renderUnownedList();
+  openModal('unownedListModal');
+});
+
+async function markUmaObtained(id, btn) {
+  if (!config || !config.token) { setUnownedListStatus('更新にはPATが必要です。設定でPATを入力してください。', true); return; }
+  const target = allUmas.find(u => u.id === id);
+  if (!target) return;
+  const updated = allUmas.map(u => u.id === id ? { ...u, owned: true } : u);
+  setUnownedListStatus('更新しています…');
+  if (btn) btn.disabled = true;
+  try {
+    await saveUmasToGitHub(updated, `ウマ娘入手: ${target.name}`);
+    allUmas = sortByName(updated);
+    setUnownedListStatus('');
+    renderUnownedList();
+    renderUmas();
+    showToast(`「${target.name}」を所持一覧に移動しました`);
+  } catch (err) {
+    console.error(err);
+    if (err instanceof ConflictError) {
+      setUnownedListStatus('他の端末で更新されています。「更新」ボタンで最新を取得してからもう一度お試しください。', true);
+    } else {
+      setUnownedListStatus('更新中にエラーが発生しました: ' + err.message, true);
+    }
+    if (btn) btn.disabled = false;
+  }
+}
+
+function setUnownedListStatus(msg, isError) {
+  const el = document.getElementById('unownedListStatus');
+  if (!el) return;
+  el.textContent = msg;
+  el.classList.toggle('error', !!isError);
+}
+
+document.getElementById('unownedEntries').addEventListener('click', e => {
+  const obtainBtn = e.target.closest('.entry-obtain');
+  if (obtainBtn) { markUmaObtained(obtainBtn.dataset.id, obtainBtn); return; }
+  const editBtn = e.target.closest('.entry-edit');
+  if (editBtn) { startEditUma(editBtn.dataset.id); return; }
+  const delBtn = e.target.closest('.entry-del');
+  if (delBtn) {
+    const uma = allUmas.find(u => u.id === delBtn.dataset.id);
+    if (uma) askDeleteConfirm(uma, delBtn);
+    return;
+  }
+  const icon = e.target.closest('.uma-icon');
+  if (icon) openLightbox(icon.dataset.imageUrl);
+});
 
 resetForm();
 loadUmas();
