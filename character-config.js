@@ -92,6 +92,35 @@
     return { sha: json.sha, entries };
   }
 
+  // --- 短時間メモリキャッシュ ---
+  // プラン詳細→キャラ編成、複数キャラを続けて開く、といった同一セッション内の
+  // 連続操作で同じJSON(ウマ娘図鑑・サポカ図鑑・育成計画)を何度も取り直さない
+  // ようにする。個人用ツールでの利用を前提に、ごく短いTTLだけキャッシュし、
+  // 育成計画は保存(PUT)成功時に即座に破棄して常に最新のshaを取り直せるように
+  // する(他のJSONはこのモジュールから書き込むことがないためTTL経過を待つだけ)。
+  const CC_CACHE_TTL_MS = 20000;
+  const ccJsonCache = new Map(); // path -> { data, expiresAt }
+  let ccPlansCache = null; // { data: {sha, entries}, expiresAt }
+
+  async function ccFetchJsonCached(path) {
+    const cached = ccJsonCache.get(path);
+    if (cached && cached.expiresAt > Date.now()) return cached.data;
+    const data = await ccFetchJson(path);
+    ccJsonCache.set(path, { data, expiresAt: Date.now() + CC_CACHE_TTL_MS });
+    return data;
+  }
+
+  async function ccFetchPlansRawCached() {
+    if (ccPlansCache && ccPlansCache.expiresAt > Date.now()) return ccPlansCache.data;
+    const data = await ccFetchPlansRaw();
+    ccPlansCache = { data, expiresAt: Date.now() + CC_CACHE_TTL_MS };
+    return data;
+  }
+
+  function ccInvalidatePlansCache() {
+    ccPlansCache = null;
+  }
+
   async function ccSavePlans(newEntries, sha, commitMessage) {
     const body = {
       message: commitMessage,
@@ -351,9 +380,9 @@
 
     try {
       const [plansRaw, umas, supports] = await Promise.all([
-        ccFetchPlansRaw(),
-        ccFetchJson(UMA_PATH),
-        ccFetchJson(SUPPORT_PATH),
+        ccFetchPlansRawCached(),
+        ccFetchJsonCached(UMA_PATH),
+        ccFetchJsonCached(SUPPORT_PATH),
       ]);
       instance.plans = plansRaw.entries;
       instance.sha = plansRaw.sha;
@@ -431,8 +460,8 @@
 
     try {
       const [plansRaw, umas] = await Promise.all([
-        ccFetchPlansRaw(),
-        ccFetchJson(UMA_PATH),
+        ccFetchPlansRawCached(),
+        ccFetchJsonCached(UMA_PATH),
       ]);
       ccPlans = plansRaw.entries;
       ccSha = plansRaw.sha;
@@ -654,8 +683,8 @@
 
     try {
       const [events, umas] = await Promise.all([
-        ccFetchJson(EVENTS_PATH),
-        ccFetchJson(UMA_PATH),
+        ccFetchJsonCached(EVENTS_PATH),
+        ccFetchJsonCached(UMA_PATH),
       ]);
       ccEvents = events;
       ccUmas = umas;
@@ -1134,6 +1163,7 @@
     saveBtn.disabled = true;
     try {
       await ccSavePlans(updated, instance.sha, `育成計画サポカ編成更新: ${character.name}`);
+      ccInvalidatePlansCache();
       instance.plans = updated;
       statusEl.textContent = '保存しました。';
       if (typeof showToast === 'function') showToast('保存しました');
