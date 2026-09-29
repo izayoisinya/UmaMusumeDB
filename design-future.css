@@ -199,6 +199,16 @@
   backdrop-filter: blur(26px) saturate(190%);
   -webkit-backdrop-filter: blur(26px) saturate(190%);
 }
+/* 縮小表示(.compact)は「裏のメイン画面を見ながら操作したい」ための
+   モードなので、通常表示よりさらに透明度を上げて背後がよく見えるように
+   する。輪郭は縁の白いラインと影で保つ */
+[data-design="future"] .modal.compact-eligible.compact {
+  background:
+    radial-gradient(140% 70% at 15% -10%, rgba(255,255,255,0.45), transparent 55%),
+    rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(16px) saturate(190%);
+  -webkit-backdrop-filter: blur(16px) saturate(190%);
+}
 [data-design="future"] .pedigree-card.pedigree-group-a { border-color: var(--blue); }
 [data-design="future"] .pedigree-card.pedigree-group-b { border-color: var(--red); }
 [data-design="future"] .pedigree-card.pedigree-group-self { border-color: var(--green); }
