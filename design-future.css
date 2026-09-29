@@ -185,8 +185,15 @@
 }
 
 /* ============ 6. パネル/カード: 半透明ガラス ============ */
+/* .entryはウマ娘図鑑・因子台帳等の一覧で1ページに何十〜何百件も並ぶため、
+   .modal/.plan-card等(画面に同時に出るのはせいぜい数個)と同じ
+   backdrop-filterを掛けると、要素数だけ背景の再サンプリングが発生して
+   スクロールが大きくカクつく(実測: 標準デザイン平均16ms/フレームに対し
+   backdrop-filter適用時は平均44ms/フレーム・重いフレームが9割)。そのため
+   .entryだけはbackdrop-filterを使わず、半透明の塗り+縁取り+影だけで
+   同系統の見た目に寄せる(ぼかしによる透け感は無いが、動作はほぼ標準
+   デザイン並みに軽くなる) */
 [data-design="future"] .modal,
-[data-design="future"] .entry,
 [data-design="future"] .plan-card,
 [data-design="future"] .pedigree-card,
 [data-design="future"] .team-slot {
@@ -198,6 +205,14 @@
   box-shadow: var(--glass-specular);
   backdrop-filter: blur(26px) saturate(190%);
   -webkit-backdrop-filter: blur(26px) saturate(190%);
+}
+[data-design="future"] .entry {
+  background:
+    radial-gradient(140% 70% at 15% -10%, rgba(255,255,255,0.55), transparent 55%),
+    rgba(255, 255, 255, 0.72);
+  border-radius: 24px;
+  border: 1px solid rgba(255,255,255,0.7);
+  box-shadow: var(--glass-specular);
 }
 /* 縮小表示(.compact)は「裏のメイン画面を見ながら操作したい」ための
    モードなので、通常表示よりさらに透明度を上げて背後がよく見えるように
