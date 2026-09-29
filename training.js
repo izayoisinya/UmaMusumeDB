@@ -845,6 +845,7 @@ function renderCharacterConfigBody() {
               <span id="deckSlotName${i}"></span>
             </div>
           </div>
+          <div class="team-slot-skills" id="deckSlotSkills${i}"></div>
         </div>
       `).join('')}
     </div>
@@ -1017,6 +1018,19 @@ function renderPedigreeAptArea(slot) {
   });
 }
 
+// --- サポカ編成の各枠に、そのサポカで取得できるスキル(所持・育成イベント)を表示 ---
+function normalizeConfigDeckSkill(s) {
+  return typeof s === 'string' ? { name: s, type: 'normal' } : { name: s.name || '', type: s.type || 'normal' };
+}
+function deckSlotSkillChipsHtml(sel) {
+  if (!sel) return '';
+  const card = cachedSupportCards.find(c => (sel.id ? c.id === sel.id : c.name === sel.name));
+  if (!card) return '';
+  const skills = [...(card.skills || []), ...(card.eventSkills || [])].map(normalizeConfigDeckSkill).filter(s => s.name);
+  if (!skills.length) return '';
+  return skills.map(s => `<span class="chip white skill-chip skill-${s.type}">${escapeHtml(s.name)}</span>`).join('');
+}
+
 function updateDeckSlotBox(i) {
   const sel = configDeckSelections[i];
   const box = document.getElementById('deckSlotBox' + i);
@@ -1043,6 +1057,7 @@ function updateDeckSlotBox(i) {
     filledEl.hidden = true;
     clearBtn.hidden = true;
   }
+  document.getElementById('deckSlotSkills' + i).innerHTML = deckSlotSkillChipsHtml(sel);
 }
 
 document.getElementById('characterConfigSaveBtn').addEventListener('click', async () => {
