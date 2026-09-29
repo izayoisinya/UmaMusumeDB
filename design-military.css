@@ -1,0 +1,223 @@
+/* design-military.css — 追加デザイン「ミリタリー」プレビュー版
+ *
+ * [data-design="military"] でスコープした上書き専用スタイル。style.cssは
+ * 一切変更しない。data-design属性がこの値でない時はこのファイルのルールは
+ * 何も効かない。
+ *
+ * まずは気に入るかどうかを見るための軽いプレビューとして、design-sf.cssと
+ * 同じ範囲(パレット/見出し/マストヘッド/ボタン/カード/チップ/フォーム/
+ * 登録タブ)をひととおり上書きしている。本採用する場合は全ページへの
+ * <link>追加や細部の調整をあらためて行う。
+ */
+
+/* ============ 1. パレット ============ */
+:root[data-design="military"] {
+  --bg-top: #2b2e22;
+  --bg-bottom: #1a1c15;
+  --panel: rgba(38, 41, 30, 0.94);
+  --panel-line: #6b7a4f;
+  --ink: #e8e2ce;
+  --ink-soft: #a8a58c;
+  --gold: #c9a227;
+  --gold-dim: #a5841e;
+  --blue: #5c7a6e;
+  --blue-dim: #46614f;
+  --red: #b5451f;
+  --red-dim: #8f371a;
+  --white-f: #e8e2ce;
+  --green: #7a8c4a;
+  --green-dim: #5f6e39;
+  --danger: #b5451f;
+  --header-a: #4b5d3a;
+  --header-b: #33401f;
+  --surface: rgba(45, 48, 34, 0.9);
+  --surface-alt: rgba(55, 58, 42, 0.9);
+  --surface-alt-active: rgba(201, 162, 39, 0.18);
+  --code-bg: rgba(30, 32, 22, 0.9);
+  --overlay-bg: rgba(15, 16, 10, 0.8);
+}
+
+/* ============ 2. 背景 ============ */
+:root[data-design="military"] body {
+  font-family: 'Oswald', 'M PLUS Rounded 1c', sans-serif;
+  background: var(--bg-bottom);
+}
+[data-design="military"] .ledger {
+  background:
+    repeating-linear-gradient(135deg, rgba(0,0,0,0.06) 0px, rgba(0,0,0,0.06) 2px, transparent 2px, transparent 14px),
+    linear-gradient(180deg, var(--bg-top) 0%, var(--bg-bottom) 65%);
+}
+
+/* ============ 3. 見出し: ステンシル書体 ============ */
+[data-design="military"] .masthead h1,
+[data-design="military"] h2,
+[data-design="military"] .settings-tab,
+[data-design="military"] .config-section-title,
+[data-design="military"] .apt-group-label {
+  font-family: 'Black Ops One', 'M PLUS Rounded 1c', sans-serif;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+[data-design="military"] .modal-header-row h2 {
+  color: var(--gold);
+  text-decoration: none;
+  border-bottom: 2px solid var(--gold);
+  padding-bottom: 3px;
+}
+
+/* ============ 4. マストヘッド ============ */
+[data-design="military"] .masthead {
+  background: linear-gradient(180deg, var(--header-a) 0%, var(--header-b) 100%);
+  border-radius: 2px;
+  border: 2px solid rgba(0,0,0,0.4);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+  /* .mastheadは元々position:stickyでヘッダー固定をしているため、
+     ここでpositionは上書きしない(SFデザインの時の反省点) */
+}
+[data-design="military"] .masthead::after {
+  content: '';
+  position: absolute;
+  left: 8px; right: 8px; bottom: 3px;
+  height: 3px;
+  background: repeating-linear-gradient(90deg, var(--gold) 0 10px, transparent 10px 16px);
+}
+
+/* ============ 5. ボタン全般 ============ */
+[data-design="military"] .btn,
+[data-design="military"] .masthead-btn,
+[data-design="military"] .modal-icon-btn,
+[data-design="military"] .settings-tab {
+  font-family: 'Oswald', 'M PLUS Rounded 1c', sans-serif;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  background: rgba(20, 22, 14, 0.7);
+  color: var(--ink);
+  border: 1.5px solid var(--panel-line);
+  border-radius: 2px;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+[data-design="military"] .masthead-btn {
+  background: rgba(0, 0, 0, 0.25);
+  color: var(--ink);
+  border-color: rgba(232,226,206,0.5);
+}
+[data-design="military"] .masthead-btn.active,
+[data-design="military"] .masthead-nav.active {
+  background: rgba(201,162,39,0.22);
+  border-color: var(--gold);
+  color: var(--gold);
+}
+[data-design="military"] .btn:hover,
+[data-design="military"] .masthead-btn:hover,
+[data-design="military"] .modal-icon-btn:hover,
+[data-design="military"] .settings-tab:hover {
+  background: rgba(201,162,39,0.18);
+  border-color: var(--gold);
+  transform: translateY(-1px);
+}
+[data-design="military"] .btn.secondary {
+  color: var(--red);
+  border-color: var(--red);
+}
+[data-design="military"] .btn.secondary:hover {
+  background: rgba(181,69,31,0.18);
+}
+[data-design="military"] .settings-tab.active {
+  background: rgba(201,162,39,0.22);
+  color: var(--gold);
+  border-color: var(--gold);
+}
+[data-design="military"] .scroll-fab {
+  border-radius: 6px;
+  border: 2px solid rgba(0,0,0,0.4);
+}
+
+/* ============ 6. パネル/カード: 金属プレート風 ============ */
+[data-design="military"] .modal,
+[data-design="military"] .entry,
+[data-design="military"] .plan-card,
+[data-design="military"] .pedigree-card,
+[data-design="military"] .team-slot {
+  background: var(--panel);
+  border-radius: 2px;
+  border: 2px solid rgba(0,0,0,0.35);
+  border-left: 4px solid var(--gold);
+  box-shadow: 0 8px 22px rgba(0,0,0,0.5);
+}
+[data-design="military"] .pedigree-card.pedigree-group-b {
+  border-left-color: var(--red);
+}
+[data-design="military"] .pedigree-card.pedigree-group-self {
+  border-left-color: var(--green);
+}
+[data-design="military"] .char-select-box {
+  border: 1.5px dashed var(--panel-line);
+  border-radius: 2px;
+  background: rgba(15, 16, 10, 0.35);
+}
+[data-design="military"] .char-select-box.filled {
+  border-style: solid;
+  border-color: var(--gold);
+}
+
+/* ============ 7. チップ/バッジ: タグ札風(角なし) ============ */
+[data-design="military"] .chip,
+[data-design="military"] .apt-badge,
+[data-design="military"] .white-count-badge {
+  font-family: 'Oswald', 'M PLUS Rounded 1c', sans-serif;
+  letter-spacing: 0.02em;
+  border-radius: 2px;
+}
+[data-design="military"] .chip.blue { background: var(--blue); }
+[data-design="military"] .chip.red { background: var(--red); }
+[data-design="military"] .chip.green { background: var(--green); }
+[data-design="military"] .chip.white { border-color: var(--white-f); color: var(--white-f); }
+/* SFデザインの時と同じ理由(.chip.whiteとの特異度衝突)で、種別枠色と
+   金/固有スキルの可読性を個別に上書きしておく */
+[data-design="military"] .skill-chip.cat-green { border-color: var(--green); }
+[data-design="military"] .skill-chip.cat-heal { border-color: var(--blue); }
+[data-design="military"] .skill-chip.cat-debuff { border-color: var(--red); }
+[data-design="military"] .chip.skill-gold { color: #4a3a08; }
+[data-design="military"] .chip.skill-unique {
+  color: #fff;
+  -webkit-text-stroke: 0.6px rgba(0,0,0,0.85);
+  text-shadow: none;
+}
+[data-design="military"] .apt-badge {
+  border-width: 1.5px;
+  background: rgba(15,16,10,0.6);
+}
+
+/* ============ 8. フォーム要素 ============ */
+[data-design="military"] input[type=text],
+[data-design="military"] input[type=number],
+[data-design="military"] input[type=password],
+[data-design="military"] input[type=month],
+[data-design="military"] textarea,
+[data-design="military"] select {
+  background: rgba(15, 16, 10, 0.6);
+  color: var(--ink);
+  border: 1.5px solid var(--panel-line);
+  border-radius: 2px;
+}
+[data-design="military"] input[type=text]:focus,
+[data-design="military"] input[type=number]:focus,
+[data-design="military"] input[type=month]:focus,
+[data-design="military"] textarea:focus,
+[data-design="military"] select:focus {
+  border-color: var(--gold);
+}
+
+/* ============ 9. 登録タブ等の小物 ============ */
+[data-design="military"] .pinned-tab {
+  background: rgba(45, 48, 34, 0.96);
+  border: 1.5px solid var(--gold);
+}
+[data-design="military"] .pinned-tab-icon,
+[data-design="military"] .pinned-tab-label {
+  color: var(--gold);
+  font-family: 'Oswald', 'M PLUS Rounded 1c', sans-serif;
+}
+[data-design="military"] .toast-notice {
+  background: var(--green);
+}
