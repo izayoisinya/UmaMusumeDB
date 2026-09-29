@@ -249,9 +249,9 @@
 }
 [data-design="future"] .chip.skill-unique {
   background: linear-gradient(90deg, #ff5252, #ffb74d, #fff176, #66bb6a, #42a5f5, #ab47bc);
-  color: #fff;
+  color: #000;
   border: none;
-  -webkit-text-stroke: 0.4px rgba(0,0,0,0.35);
+  -webkit-text-stroke: 0;
   text-shadow: none;
 }
 [data-design="future"] .apt-badge {

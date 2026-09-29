@@ -210,12 +210,9 @@
    ほぼ読めなくなっていた。単色背景なので文字色を元の配色に戻すだけで
    十分読みやすくなる */
 [data-design="sf"] .chip.skill-gold { color: #6d4c00; }
-/* 固有スキルは背景が虹色グラデーション(赤〜紫まで全域)なので、
-   単色の文字色ではどこかの区間で必ず埋もれてしまう。文字色を変えるより
-   縁取り(黒っぽいアウトライン)を強めた方が全区間で安定して読める */
 [data-design="sf"] .chip.skill-unique {
-  color: #fff;
-  -webkit-text-stroke: 0.6px rgba(0,0,0,0.85);
+  color: #000;
+  -webkit-text-stroke: 0;
   text-shadow: none;
 }
 [data-design="sf"] .apt-badge {

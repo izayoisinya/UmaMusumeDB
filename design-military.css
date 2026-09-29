@@ -175,8 +175,8 @@
 [data-design="military"] .skill-chip.cat-debuff { border-color: var(--red); }
 [data-design="military"] .chip.skill-gold { color: #4a3a08; }
 [data-design="military"] .chip.skill-unique {
-  color: #fff;
-  -webkit-text-stroke: 0.6px rgba(0,0,0,0.85);
+  color: #000;
+  -webkit-text-stroke: 0;
   text-shadow: none;
 }
 [data-design="military"] .apt-badge {
