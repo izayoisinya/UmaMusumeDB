@@ -176,6 +176,13 @@
       track: u.track || {}, distance: u.distance || {}, style: u.style || {},
     };
   }
+  // 選択済みのウマ娘/サポカが現在「未所持」登録かどうかを図鑑データから判定する
+  // (選択内容自体にはownedを持たせず、都度最新の図鑑データを見て判定する)
+  function ccSelectionIsUnowned(list, sel) {
+    if (!sel || !sel.id) return false;
+    const item = (list || []).find(x => x.id === sel.id);
+    return !!(item && item.owned === false);
+  }
 
   // --- 状態 ---
   // 育成計画詳細・イベント結果詳細はこれまで通り1つずつ(シングルトン)。
@@ -744,6 +751,7 @@
         <div class="pedigree-card-main">
           <div class="char-select-box">
             <button type="button" class="char-select-clear-btn" hidden>×</button>
+            <span class="unowned-badge" hidden>未所持</span>
             <div class="char-select-empty-text">タップして図鑑から選択</div>
             <div class="char-select-filled-inner" hidden>
               <img class="uma-icon" alt="">
@@ -797,6 +805,7 @@
           <div class="team-slot">
             <div class="char-select-box" data-slot="${i}">
               <button type="button" class="char-select-clear-btn" hidden>×</button>
+              <span class="unowned-badge" hidden>未所持</span>
               <div class="char-select-empty-text">タップして選択</div>
               <div class="char-select-filled-inner" hidden>
                 <img class="uma-icon" alt="">
@@ -921,6 +930,7 @@
     const iconEl = filledEl.querySelector('.uma-icon');
     const nameEl = filledEl.querySelector('.char-select-name');
     const clearBtn = card.querySelector('.char-select-clear-btn');
+    const badgeEl = card.querySelector('.unowned-badge');
     const labelEl = card.querySelector('.pedigree-card-label');
     if (labelEl) labelEl.hidden = hasRegistrySel;
     if (hasRegistrySel) {
@@ -935,11 +945,13 @@
       }
       nameEl.textContent = sel.name;
       clearBtn.hidden = false;
+      if (badgeEl) badgeEl.hidden = !ccSelectionIsUnowned(instance.umas, sel);
     } else {
       box.classList.remove('filled');
       emptyEl.hidden = false;
       filledEl.hidden = true;
       clearBtn.hidden = true;
+      if (badgeEl) badgeEl.hidden = true;
     }
     renderPedigreeAptArea(instance, slot);
   }
@@ -1024,6 +1036,7 @@
     const iconEl = filledEl.querySelector('.uma-icon');
     const nameEl = filledEl.querySelector('.char-select-name');
     const clearBtn = box.querySelector('.char-select-clear-btn');
+    const badgeEl = box.querySelector('.unowned-badge');
     const skillsEl = box.parentElement.querySelector('.team-slot-skills');
     if (sel) {
       box.classList.add('filled');
@@ -1037,9 +1050,11 @@
       }
       nameEl.textContent = sel.name;
       clearBtn.hidden = false;
+      if (badgeEl) badgeEl.hidden = !ccSelectionIsUnowned(instance.supportCards, sel);
     } else {
       box.classList.remove('filled');
       emptyEl.hidden = false;
+      if (badgeEl) badgeEl.hidden = true;
       filledEl.hidden = true;
       clearBtn.hidden = true;
     }
@@ -1070,6 +1085,7 @@
       tile.className = 'character-picker-tile';
       const imageUrl = c.imagePath ? imageRawUrl(c.imagePath) : '';
       tile.innerHTML = `
+        ${c.owned === false ? '<span class="unowned-badge">未所持</span>' : ''}
         ${imageUrl ? `<img src="${ccEscapeHtml(imageUrl)}" alt="${ccEscapeHtml(c.name)}" loading="lazy">` : ''}
         <span>${ccEscapeHtml(c.name)}</span>
       `;
@@ -1113,6 +1129,7 @@
       tile.className = 'character-picker-tile';
       const imageUrl = u.imagePath ? imageRawUrl(u.imagePath) : '';
       tile.innerHTML = `
+        ${u.owned === false ? '<span class="unowned-badge">未所持</span>' : ''}
         ${imageUrl ? `<img src="${ccEscapeHtml(imageUrl)}" alt="${ccEscapeHtml(u.name)}" loading="lazy">` : ''}
         <span>${ccEscapeHtml(u.name)}</span>
       `;
