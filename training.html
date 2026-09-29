@@ -211,40 +211,6 @@
     <button type="button" class="btn secondary" id="characterPickerCloseBtn">閉じる</button>
   </div>
 
-  <div class="modal compact-eligible" id="planDetailModal" data-pos-key="training-plan-detail" role="dialog" aria-labelledby="planDetailTitle" hidden>
-    <div class="modal-header-row">
-      <h2 id="planDetailTitle">育成計画詳細</h2>
-      <div class="modal-header-actions">
-        <button type="button" class="modal-icon-btn modal-compact-toggle" id="planDetailCompactBtn" title="ポップアップを小さくして裏の画面を見る" aria-label="縮小表示切替">⤡</button>
-        <button type="button" class="modal-icon-btn" id="planDetailPinBtn" title="タブに登録" aria-label="タブに登録"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg></button>
-        <button type="button" class="modal-icon-btn modal-close-btn" data-modal="planDetailModal" title="閉じる" aria-label="閉じる">✕</button>
-      </div>
-    </div>
-    <div id="planDetailBody"></div>
-  </div>
-
-  <div class="modal compact-eligible" id="characterConfigModal" data-pos-key="training-character-config" role="dialog" aria-labelledby="characterConfigTitle" hidden>
-    <div class="modal-header-row">
-      <h2 id="characterConfigTitle">キャラ編成</h2>
-      <div class="modal-header-actions">
-        <button type="button" class="modal-icon-btn modal-compact-toggle" id="characterConfigCompactBtn" title="ポップアップを小さくして裏の画面を見る" aria-label="縮小表示切替">⤡</button>
-        <button type="button" class="modal-icon-btn config-save-btn" id="characterConfigSaveBtn" title="この内容を保存" aria-label="この内容を保存">💾</button>
-        <button type="button" class="modal-icon-btn" id="characterConfigPinBtn" title="タブに登録" aria-label="タブに登録"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg></button>
-        <button type="button" class="modal-icon-btn" id="characterConfigBackBtn" title="戻る" aria-label="戻る">←</button>
-      </div>
-    </div>
-    <div id="characterConfigBody"></div>
-    <div class="status" id="characterConfigStatus"></div>
-  </div>
-
-  <div class="modal" id="supportCardPickerModal" role="dialog" aria-labelledby="supportCardPickerTitle" hidden>
-    <h2 id="supportCardPickerTitle">サポートカードを選択</h2>
-    <input type="text" id="supportCardPickerSearch" class="character-picker-search" placeholder="名前で検索">
-    <div id="supportCardPickerGrid" class="character-picker-grid"></div>
-    <div class="status" id="supportCardPickerStatus"></div>
-    <button type="button" class="btn secondary" id="supportCardPickerCloseBtn">閉じる</button>
-  </div>
-
   <div class="modal" id="confirmDeleteModal" role="dialog" aria-labelledby="confirmDeleteTitle" hidden>
     <h2 id="confirmDeleteTitle">削除の確認</h2>
     <p class="hint" id="confirmDeleteMessage"></p>
