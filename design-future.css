@@ -5,11 +5,13 @@
  * 何も効かない。
  *
  * 既存のSF(サイバーパンク/ネオン・暗い背景)とは方向性を分け、明るい
- * ガラス質のホログラフィックUIを目指す(白〜銀基調+シアン〜紫の淡い
- * グラデーション、半透明パネル、細いライン)。まずは気に入るかどうかを
- * 見るための軽いプレビューとして、design-sf.css/design-military.cssと
- * 同じ範囲(パレット/見出し/マストヘッド/ボタン/カード/チップ/フォーム/
- * 登録タブ)をひととおり上書きしている。
+ * ガラス質のUIを目指す。iOSの「Liquid Glass」(背景を強くぼかして
+ * 透過させ、縁に光の反射(スペキュラーハイライト)を効かせるガラス
+ * 表現)を意識し、装飾的な色よりも強めのぼかし+縁のハイライトで
+ * 「ガラスそのもの」の質感を出す方向に寄せている。まずは気に入るか
+ * どうかを見るための軽いプレビューとして、design-sf.css/
+ * design-military.cssと同じ範囲(パレット/見出し/マストヘッド/ボタン/
+ * カード/チップ/フォーム/登録タブ)をひととおり上書きしている。
  */
 
 /* ============ 1. パレット ============ */
@@ -39,6 +41,9 @@
   --overlay-bg: rgba(210, 222, 240, 0.7);
 
   --future-glow: 0 0 0 1px rgba(34,196,232,0.35), 0 8px 24px rgba(120,150,220,0.22);
+  /* ガラスの縁の反射(上端に明るいハイライト、下端はわずかに沈む)を
+     どのガラス要素でも同じ質感で使い回せるようにした共通シャドウ */
+  --glass-specular: inset 0 1px 0 rgba(255,255,255,0.85), inset 0 -1px 0 rgba(255,255,255,0.15), 0 10px 30px rgba(31,55,110,0.16);
 }
 
 /* ============ 2. 背景: 淡いホログラム光 ============ */
@@ -73,23 +78,27 @@
   padding-bottom: 3px;
 }
 
-/* ============ 4. マストヘッド: ガラス質の淡いグラデーション ============ */
+/* ============ 4. マストヘッド: 強いぼかし+縁のスペキュラーハイライト ============ */
+/* Liquid Glassは「色を塗った板」ではなく「背景を強くぼかして透かした
+   ガラス」なので、装飾的なグラデーションで塗りつぶすのはやめ、ごく
+   淡いティントの半透明+強いbackdrop-filterで.ledger側の背景光彩を
+   透過させる方向にする */
 [data-design="future"] .masthead {
-  background: linear-gradient(120deg, var(--header-a) 0%, #f2f6ff 45%, var(--header-b) 100%);
-  border-radius: 20px;
-  box-shadow: var(--future-glow);
-  border: 1px solid rgba(255,255,255,0.7);
-  backdrop-filter: blur(6px);
+  background: linear-gradient(120deg, rgba(255,255,255,0.55), rgba(255,255,255,0.32));
+  border-radius: 28px;
+  box-shadow: var(--glass-specular);
+  border: 1px solid rgba(255,255,255,0.6);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
   /* .mastheadは元々position:stickyでヘッダー固定をしているため、
      ここでpositionは上書きしない */
 }
 [data-design="future"] .masthead::after {
   content: '';
   position: absolute;
-  left: 20px; right: 20px; bottom: 2px;
-  height: 2px;
-  background: linear-gradient(90deg, var(--blue), var(--gold), var(--green));
-  opacity: 0.8;
+  left: 24px; right: 24px; bottom: 3px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.9), transparent);
 }
 
 /* ============ 5. ボタン全般: ガラスピル型 ============ */
@@ -98,21 +107,23 @@
 [data-design="future"] .modal-icon-btn,
 [data-design="future"] .settings-tab {
   font-family: 'Sora', 'M PLUS Rounded 1c', sans-serif;
-  background: rgba(255, 255, 255, 0.55);
+  background: linear-gradient(180deg, rgba(255,255,255,0.7), rgba(255,255,255,0.35));
   color: var(--ink);
-  border: 1px solid rgba(143,180,224,0.6);
+  border: 1px solid rgba(255,255,255,0.7);
   border-radius: 999px;
-  box-shadow: 0 2px 8px rgba(120,150,220,0.18);
+  box-shadow: var(--glass-specular);
+  backdrop-filter: blur(14px) saturate(160%);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
   transition: box-shadow 0.15s ease, transform 0.15s ease;
 }
 [data-design="future"] .masthead-btn {
-  background: rgba(255,255,255,0.45);
+  background: linear-gradient(180deg, rgba(255,255,255,0.55), rgba(255,255,255,0.2));
   color: var(--ink);
-  border-color: rgba(255,255,255,0.8);
+  border-color: rgba(255,255,255,0.75);
 }
 [data-design="future"] .masthead-btn.active,
 [data-design="future"] .masthead-nav.active {
-  background: rgba(34,196,232,0.2);
+  background: linear-gradient(180deg, rgba(34,196,232,0.35), rgba(34,196,232,0.15));
   border-color: var(--blue);
   color: var(--blue-dim);
 }
@@ -120,7 +131,7 @@
 [data-design="future"] .masthead-btn:hover,
 [data-design="future"] .modal-icon-btn:hover,
 [data-design="future"] .settings-tab:hover {
-  box-shadow: var(--future-glow);
+  box-shadow: var(--glass-specular), 0 0 0 1px rgba(34,196,232,0.3);
   transform: translateY(-1px);
 }
 [data-design="future"] .btn.secondary {
@@ -137,7 +148,9 @@
 }
 [data-design="future"] .scroll-fab {
   border: 1px solid rgba(255,255,255,0.8);
-  box-shadow: var(--future-glow);
+  box-shadow: var(--glass-specular);
+  backdrop-filter: blur(14px) saturate(160%);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
 }
 
 /* ============ 6. パネル/カード: 半透明ガラス ============ */
@@ -147,17 +160,18 @@
 [data-design="future"] .pedigree-card,
 [data-design="future"] .team-slot {
   background: var(--panel);
-  border-radius: 18px;
+  border-radius: 24px;
   border: 1px solid rgba(255,255,255,0.7);
-  box-shadow: var(--future-glow);
-  backdrop-filter: blur(10px);
+  box-shadow: var(--glass-specular);
+  backdrop-filter: blur(20px) saturate(170%);
+  -webkit-backdrop-filter: blur(20px) saturate(170%);
 }
 [data-design="future"] .pedigree-card.pedigree-group-a { border-color: var(--blue); }
 [data-design="future"] .pedigree-card.pedigree-group-b { border-color: var(--red); }
 [data-design="future"] .pedigree-card.pedigree-group-self { border-color: var(--green); }
 [data-design="future"] .char-select-box {
   border: 1px dashed rgba(34,196,232,0.5);
-  border-radius: 12px;
+  border-radius: 16px;
   background: rgba(255,255,255,0.35);
 }
 [data-design="future"] .char-select-box.filled {
@@ -172,10 +186,10 @@
   font-family: 'Sora', 'M PLUS Rounded 1c', sans-serif;
   border-radius: 999px;
 }
-[data-design="future"] .chip.blue { background: linear-gradient(135deg, var(--blue), var(--blue-dim)); color: #06222c; }
-[data-design="future"] .chip.red { background: linear-gradient(135deg, var(--red), var(--red-dim)); color: #3a0a1c; }
-[data-design="future"] .chip.green { background: linear-gradient(135deg, var(--green), var(--green-dim)); color: #063326; }
-[data-design="future"] .chip.white { border-color: var(--blue); color: var(--ink); background: rgba(255,255,255,0.6); }
+[data-design="future"] .chip.blue { background: linear-gradient(160deg, var(--blue), var(--blue-dim)); color: #06222c; box-shadow: inset 0 1px 0 rgba(255,255,255,0.5); }
+[data-design="future"] .chip.red { background: linear-gradient(160deg, var(--red), var(--red-dim)); color: #3a0a1c; box-shadow: inset 0 1px 0 rgba(255,255,255,0.5); }
+[data-design="future"] .chip.green { background: linear-gradient(160deg, var(--green), var(--green-dim)); color: #063326; box-shadow: inset 0 1px 0 rgba(255,255,255,0.5); }
+[data-design="future"] .chip.white { border-color: var(--blue); color: var(--ink); background: rgba(255,255,255,0.55); backdrop-filter: blur(8px); }
 /* design-sf.css/design-military.cssと同じ理由(.chip.whiteとの特異度衝突)で
    種別枠色と金/固有スキルの可読性を個別に上書きしておく */
 [data-design="future"] .skill-chip.cat-green { border-color: var(--green); }
@@ -199,10 +213,13 @@
 [data-design="future"] input[type=month],
 [data-design="future"] textarea,
 [data-design="future"] select {
-  background: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.5);
   color: var(--ink);
-  border: 1px solid rgba(143,180,224,0.6);
-  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.7);
+  border-radius: 14px;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 [data-design="future"] input[type=text]:focus,
 [data-design="future"] input[type=number]:focus,
@@ -210,14 +227,16 @@
 [data-design="future"] textarea:focus,
 [data-design="future"] select:focus {
   border-color: var(--blue);
-  box-shadow: var(--future-glow);
+  box-shadow: var(--glass-specular);
 }
 
 /* ============ 9. 登録タブ等の小物 ============ */
 [data-design="future"] .pinned-tab {
-  background: rgba(255, 255, 255, 0.85);
-  border: 1.5px solid var(--blue);
-  box-shadow: var(--future-glow);
+  background: linear-gradient(180deg, rgba(255,255,255,0.85), rgba(255,255,255,0.55));
+  border: 1.5px solid rgba(255,255,255,0.75);
+  box-shadow: var(--glass-specular);
+  backdrop-filter: blur(14px) saturate(160%);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
 }
 [data-design="future"] .pinned-tab-icon,
 [data-design="future"] .pinned-tab-label {
