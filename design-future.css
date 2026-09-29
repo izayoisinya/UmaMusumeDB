@@ -277,15 +277,17 @@
 /* このデザインは明るい背景の上に明るい半透明ガラスを重ねる構成のため、
    他の要素と同じ透明度のままだと淡い背景に溶けてほぼ見えなくなって
    しまう(実際に「タブが見えない」との指摘で発覚)。登録タブは常時
-   画面に浮いた状態で押せる必要がある実用要素なので、背景を高めの
-   不透明度にし縁の色もはっきりさせて、ガラスの中でも周囲から浮き
-   上がって見えるようにする */
+   画面に浮いた状態で押せる必要がある実用要素なので、はっきりした
+   縁の色+影で輪郭そのものを強く残しつつ、中身の塗りはパネル類と
+   同じくらい透明度を上げて、輪郭は保ったまま透け感を出す */
 [data-design="future"] .pinned-tab {
-  background: linear-gradient(180deg, rgba(255,255,255,0.97), rgba(255,255,255,0.88));
+  background:
+    radial-gradient(120% 120% at 25% -20%, rgba(255,255,255,0.85), transparent 55%),
+    linear-gradient(180deg, rgba(255,255,255,0.55), rgba(255,255,255,0.3));
   border: 1.5px solid var(--blue);
   box-shadow: 0 4px 14px rgba(31,55,110,0.35), 0 0 0 1px rgba(255,255,255,0.6);
-  backdrop-filter: blur(14px) saturate(160%);
-  -webkit-backdrop-filter: blur(14px) saturate(160%);
+  backdrop-filter: blur(18px) saturate(200%);
+  -webkit-backdrop-filter: blur(18px) saturate(200%);
 }
 [data-design="future"] .pinned-tab-icon,
 [data-design="future"] .pinned-tab-label {
