@@ -1433,9 +1433,9 @@ mark.search-hit {
   width: 260px;
   max-height: 80vh;
   overflow-y: auto;
-  /* 画面が狭いと反対側の親/祖カードに重なることがあるため、下が少し
-     透けて見える程度の不透明度にしておく */
-  background: color-mix(in srgb, var(--panel) 90%, transparent);
+  /* 画面が狭いと反対側の親/祖カードに重なることがあるが、その場合は
+     下が見えにくくなっても構わない(透けさせる必要はない)ため不透明のまま */
+  background: var(--panel);
   border: 1.5px solid var(--panel-line);
   border-radius: 12px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.35);
