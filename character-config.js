@@ -313,18 +313,23 @@
       supportCards: [],
       deckSelections: [null, null, null, null, null, null],
       pedigreeSelections: new Array(7).fill(null),
+      ancestorPopupEl: null,
+      ancestorPopupSlot: null,
     };
     modalEl.querySelector('.cc-config-close-btn').addEventListener('click', () => closeConfigInstance(instance));
     modalEl.querySelector('.config-save-btn').addEventListener('click', () => handleSave(instance));
     modalEl.querySelector('.cc-config-pin-btn').addEventListener('click', () => handlePin(instance));
     modalEl.querySelector('.modal-compact-toggle').addEventListener('click', () => {
-      setModalCompact(!modalEl.classList.contains('compact'), modalEl);
+      const compact = !modalEl.classList.contains('compact');
+      if (compact) closeAncestorPopup(instance);
+      setModalCompact(compact, modalEl);
     });
     ccConfigInstances.set(key, instance);
     return instance;
   }
 
   function closeConfigInstance(instance) {
+    closeAncestorPopup(instance);
     instance.modalEl.hidden = true;
     ccConfigInstances.delete(instance.key);
     instance.modalEl.remove();
@@ -425,7 +430,7 @@
       // 反映させるため)。図鑑登録済み(manual:false)の場合はidから毎回引き直す。
       if (p && !p.manual && p.id) {
         const uma = instance.umas.find(u => u.id === p.id);
-        if (uma) return { ...ccPedigreeEntryFromUma(uma), redFactor: p.redFactor || null };
+        if (uma) return { ...ccPedigreeEntryFromUma(uma), redFactor: p.redFactor || null, ancestorFactors: p.ancestorFactors || null };
       }
       if (p) return p;
       if (slot === 0) {
@@ -844,18 +849,26 @@
     });
     [0, 1, 2, 3, 4, 5, 6].forEach(slot => {
       const card = pedigreeCardEl(instance, slot);
-      card.querySelector('.char-select-box').addEventListener('click', () => openUmaPickerForPedigree(instance, slot));
+      card.querySelector('.char-select-box').addEventListener('click', e => {
+        e.stopPropagation();
+        openUmaPickerForPedigree(instance, slot);
+      });
       card.querySelector('.char-select-clear-btn').addEventListener('click', e => {
         e.stopPropagation();
-        const keepRedFactor = instance.pedigreeSelections[slot] && instance.pedigreeSelections[slot].redFactor;
-        instance.pedigreeSelections[slot] = keepRedFactor ? { ...ccEmptyPedigreeEntry(), redFactor: keepRedFactor } : null;
+        const prev = instance.pedigreeSelections[slot];
+        const keepRedFactor = prev && prev.redFactor;
+        const keepAncestorFactors = prev && prev.ancestorFactors;
+        instance.pedigreeSelections[slot] = (keepRedFactor || keepAncestorFactors)
+          ? { ...ccEmptyPedigreeEntry(), redFactor: keepRedFactor || null, ancestorFactors: keepAncestorFactors || null }
+          : null;
         updatePedigreeCard(instance, slot);
       });
       updatePedigreeCard(instance, slot);
       if (slot !== 0) {
         const rarityEl = card.querySelector('.star-rating');
         rarityEl.querySelectorAll('.star-btn').forEach(btn => {
-          btn.addEventListener('click', () => {
+          btn.addEventListener('click', e => {
+            e.stopPropagation();
             const n = Number(btn.dataset.star);
             const current = Number(rarityEl.dataset.value) || 0;
             const newValue = current === n ? 0 : n;
@@ -869,12 +882,18 @@
             refreshPedigreeDependents(instance, slot);
           });
         });
-        card.querySelector('.pedigree-red-factor-row select').addEventListener('change', e => {
+        const redFactorSelect = card.querySelector('.pedigree-red-factor-row select');
+        redFactorSelect.addEventListener('click', e => e.stopPropagation());
+        redFactorSelect.addEventListener('change', e => {
           if (!instance.pedigreeSelections[slot]) instance.pedigreeSelections[slot] = ccEmptyPedigreeEntry();
           instance.pedigreeSelections[slot].redFactor = instance.pedigreeSelections[slot].redFactor || {};
           instance.pedigreeSelections[slot].redFactor.type = e.target.value;
           refreshPedigreeDependents(instance, slot);
         });
+      }
+      if (slot >= 3) {
+        card.classList.add('pedigree-card-ancestor-tap');
+        card.addEventListener('click', () => openAncestorPopup(instance, slot));
       }
     });
   }
@@ -918,6 +937,121 @@
     renderPedigreeAptArea(instance, 0);
     if (sourceSlot === 3 || sourceSlot === 4) renderPedigreeAptArea(instance, 1);
     if (sourceSlot === 5 || sourceSlot === 6) renderPedigreeAptArea(instance, 2);
+  }
+
+  // --- 祖カードをタップして開く、その祖自身の親・祖の赤因子入力ポップアップ ---
+  // (キャラ設定は不要、赤因子の記録だけ。自動加算の計算対象には含めない
+  //  =あくまで本人の因子設計図より更に上の世代を書き留めておくためのメモ)
+  const ANCESTOR_FACTOR_LABELS = ['親1', '親2', '祖1', '祖2', '祖3', '祖4'];
+  const ANCESTOR_FACTOR_GROUPS = [
+    { title: '親', indexes: [0, 1] },
+    { title: '祖', indexes: [2, 3, 4, 5] },
+  ];
+  function ancestorFactorSlotHtml(index, factor) {
+    const rarity = Number(factor && factor.rarity) || 0;
+    const type = (factor && factor.type) || '';
+    return `
+      <div class="ancestor-factor-slot" data-index="${index}">
+        <span class="ancestor-factor-label">${ANCESTOR_FACTOR_LABELS[index]}</span>
+        <div class="pedigree-red-factor-row">
+          <div class="star-rating" data-value="${rarity}">
+            ${[1, 2, 3].map(n => `<button type="button" class="star-btn${n <= rarity ? ' active' : ''}" data-star="${n}">★</button>`).join('')}
+          </div>
+          <select>
+            <option value="">種類を選択</option>
+            <optgroup label="バ場">
+              <option value="track.turf"${type === 'track.turf' ? ' selected' : ''}>芝</option>
+              <option value="track.dirt"${type === 'track.dirt' ? ' selected' : ''}>ダート</option>
+            </optgroup>
+            <optgroup label="距離">
+              <option value="distance.short"${type === 'distance.short' ? ' selected' : ''}>短距離</option>
+              <option value="distance.mile"${type === 'distance.mile' ? ' selected' : ''}>マイル</option>
+              <option value="distance.medium"${type === 'distance.medium' ? ' selected' : ''}>中距離</option>
+              <option value="distance.long"${type === 'distance.long' ? ' selected' : ''}>長距離</option>
+            </optgroup>
+            <optgroup label="脚質">
+              <option value="style.nige"${type === 'style.nige' ? ' selected' : ''}>逃げ</option>
+              <option value="style.senko"${type === 'style.senko' ? ' selected' : ''}>先行</option>
+              <option value="style.sashi"${type === 'style.sashi' ? ' selected' : ''}>差し</option>
+              <option value="style.oikomi"${type === 'style.oikomi' ? ' selected' : ''}>追込</option>
+            </optgroup>
+          </select>
+        </div>
+      </div>
+    `;
+  }
+  function closeAncestorPopup(instance) {
+    if (instance.ancestorPopupEl) {
+      instance.ancestorPopupEl.remove();
+      instance.ancestorPopupEl = null;
+      instance.ancestorPopupSlot = null;
+    }
+  }
+  function positionAncestorPopup(instance, slot, popupEl) {
+    const modalRect = instance.modalEl.getBoundingClientRect();
+    const openOnRight = slot === 3 || slot === 4; // 左側の祖(祖a/祖b)は右側に、右側の祖(祖c/祖d)は左側に表示
+    const gap = 12;
+    const popupRect = popupEl.getBoundingClientRect();
+    let left = openOnRight ? modalRect.right + gap : modalRect.left - gap - popupRect.width;
+    left = Math.max(8, Math.min(left, window.innerWidth - popupRect.width - 8));
+    let top = modalRect.top;
+    top = Math.max(8, Math.min(top, window.innerHeight - popupRect.height - 8));
+    popupEl.style.left = left + 'px';
+    popupEl.style.top = top + 'px';
+  }
+  function openAncestorPopup(instance, slot) {
+    if (instance.modalEl.classList.contains('compact')) return;
+    if (instance.ancestorPopupSlot === slot) {
+      closeAncestorPopup(instance);
+      return;
+    }
+    closeAncestorPopup(instance);
+    if (!instance.pedigreeSelections[slot]) instance.pedigreeSelections[slot] = ccEmptyPedigreeEntry();
+    const sel = instance.pedigreeSelections[slot];
+    sel.ancestorFactors = sel.ancestorFactors || [null, null, null, null, null, null];
+
+    const popup = document.createElement('div');
+    popup.className = 'ancestor-popup';
+    popup.style.visibility = 'hidden';
+    popup.innerHTML = `
+      <div class="ancestor-popup-header">
+        <span class="ancestor-popup-title">${ccEscapeHtml(sel.name || '祖')}の血統</span>
+        <button type="button" class="ancestor-popup-close" aria-label="閉じる">×</button>
+      </div>
+      ${ANCESTOR_FACTOR_GROUPS.map(g => `
+        <div class="ancestor-popup-group-label">${g.title}</div>
+        ${g.indexes.map(i => ancestorFactorSlotHtml(i, sel.ancestorFactors[i])).join('')}
+      `).join('')}
+    `;
+    document.body.appendChild(popup);
+    instance.ancestorPopupEl = popup;
+    instance.ancestorPopupSlot = slot;
+
+    popup.querySelector('.ancestor-popup-close').addEventListener('click', () => closeAncestorPopup(instance));
+    popup.querySelectorAll('.ancestor-factor-slot').forEach(slotEl => {
+      const index = Number(slotEl.dataset.index);
+      const rarityEl = slotEl.querySelector('.star-rating');
+      rarityEl.querySelectorAll('.star-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const n = Number(btn.dataset.star);
+          const current = Number(rarityEl.dataset.value) || 0;
+          const newValue = current === n ? 0 : n;
+          sel.ancestorFactors[index] = sel.ancestorFactors[index] || {};
+          sel.ancestorFactors[index].rarity = newValue;
+          rarityEl.dataset.value = newValue;
+          rarityEl.querySelectorAll('.star-btn').forEach(b => {
+            b.classList.toggle('active', Number(b.dataset.star) <= newValue);
+          });
+        });
+      });
+      slotEl.querySelector('select').addEventListener('change', e => {
+        sel.ancestorFactors[index] = sel.ancestorFactors[index] || {};
+        sel.ancestorFactors[index].type = e.target.value;
+      });
+    });
+
+    positionAncestorPopup(instance, slot, popup);
+    popup.style.visibility = '';
   }
 
   function updatePedigreeCard(instance, slot) {
@@ -1172,6 +1306,9 @@
       distance: sel.distance || {},
       style: sel.style || {},
       redFactor: sel.redFactor ? { rarity: Number(sel.redFactor.rarity) || 0, type: sel.redFactor.type || '' } : null,
+      ancestorFactors: sel.ancestorFactors
+        ? sel.ancestorFactors.map(f => f ? { rarity: Number(f.rarity) || 0, type: f.type || '' } : null)
+        : null,
     } : null);
     const updated = instance.plans.map(p => p.id === plan.id ? plan : p);
     statusEl.textContent = '保存しています…';
