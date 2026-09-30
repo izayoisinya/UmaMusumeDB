@@ -929,17 +929,24 @@
     const rfB = instance.pedigreeSelections[slotB] && instance.pedigreeSelections[slotB].redFactor;
     return pairFactorBonus(rfA, rfB);
   }
-  // 祖カードのポップアップで入力した「その祖自身の親2枠+祖4枠」の赤因子も、
-  // 祖自身の赤因子と同じ2世代上まで(その祖の親・本人)反映する。
-  function ancestorBonusAtSourceSlot(instance, slot) {
+  // 祖カードのポップアップで入力した赤因子も、既存の「ペアの赤因子は
+  // その2世代上まで(直接の親+その先)反映する」ルールをそのまま踏襲する。
+  // ポップアップの親1/親2(=その祖自身の親)は祖自身の1世代上にあたるため、
+  // 祖自身とその祖の実の親(親A/親B)までの2世代分に反映。
+  // ポップアップの祖1〜4(=その祖自身の祖、親1/親2の親)はさらに1世代上に
+  // あたるため、祖自身の1世代のみ(親1/親2は画面に存在しないため実質的に
+  // そこで反映が止まる)に反映する。どちらも本人までは届かない。
+  function ancestorParentPairBonus(instance, slot) {
     const sel = instance.pedigreeSelections[slot];
     const af = sel && sel.ancestorFactors;
     if (!af) return {};
-    return mergeBonuses(
-      pairFactorBonus(af[0], af[1]),
-      pairFactorBonus(af[2], af[3]),
-      pairFactorBonus(af[4], af[5])
-    );
+    return pairFactorBonus(af[0], af[1]);
+  }
+  function ancestorGrandparentPairBonus(instance, slot) {
+    const sel = instance.pedigreeSelections[slot];
+    const af = sel && sel.ancestorFactors;
+    if (!af) return {};
+    return mergeBonuses(pairFactorBonus(af[2], af[3]), pairFactorBonus(af[4], af[5]));
   }
   function mergeBonuses(...bonusObjs) {
     const merged = {};
@@ -952,20 +959,26 @@
   }
   function bonusesForPedigreeSlot(instance, slot) {
     if (slot === 0) {
-      return mergeBonuses(
-        computePairBonus(instance, 1, 2), computePairBonus(instance, 3, 4), computePairBonus(instance, 5, 6),
-        ancestorBonusAtSourceSlot(instance, 3), ancestorBonusAtSourceSlot(instance, 4),
-        ancestorBonusAtSourceSlot(instance, 5), ancestorBonusAtSourceSlot(instance, 6)
-      );
+      return mergeBonuses(computePairBonus(instance, 1, 2), computePairBonus(instance, 3, 4), computePairBonus(instance, 5, 6));
     }
-    if (slot === 1) return mergeBonuses(computePairBonus(instance, 3, 4), ancestorBonusAtSourceSlot(instance, 3), ancestorBonusAtSourceSlot(instance, 4));
-    if (slot === 2) return mergeBonuses(computePairBonus(instance, 5, 6), ancestorBonusAtSourceSlot(instance, 5), ancestorBonusAtSourceSlot(instance, 6));
+    if (slot === 1) return mergeBonuses(computePairBonus(instance, 3, 4), ancestorParentPairBonus(instance, 3), ancestorParentPairBonus(instance, 4));
+    if (slot === 2) return mergeBonuses(computePairBonus(instance, 5, 6), ancestorParentPairBonus(instance, 5), ancestorParentPairBonus(instance, 6));
+    if (slot === 3 || slot === 4 || slot === 5 || slot === 6) {
+      return mergeBonuses(ancestorParentPairBonus(instance, slot), ancestorGrandparentPairBonus(instance, slot));
+    }
     return {};
   }
   function refreshPedigreeDependents(instance, sourceSlot) {
     renderPedigreeAptArea(instance, 0);
     if (sourceSlot === 3 || sourceSlot === 4) renderPedigreeAptArea(instance, 1);
     if (sourceSlot === 5 || sourceSlot === 6) renderPedigreeAptArea(instance, 2);
+  }
+  // 祖のポップアップ側の赤因子編集時は、祖自身とその実の親までしか
+  // 反映されない(本人までは届かない)ため、専用の再描画を行う。
+  function refreshAncestorDependents(instance, slot) {
+    renderPedigreeAptArea(instance, slot);
+    if (slot === 3 || slot === 4) renderPedigreeAptArea(instance, 1);
+    if (slot === 5 || slot === 6) renderPedigreeAptArea(instance, 2);
   }
 
   // --- 祖カードをタップして開く、その祖自身の親・祖の赤因子入力ポップアップ ---
@@ -1071,13 +1084,13 @@
           rarityEl.querySelectorAll('.star-btn').forEach(b => {
             b.classList.toggle('active', Number(b.dataset.star) <= newValue);
           });
-          refreshPedigreeDependents(instance, slot);
+          refreshAncestorDependents(instance, slot);
         });
       });
       slotEl.querySelector('select').addEventListener('change', e => {
         sel.ancestorFactors[index] = sel.ancestorFactors[index] || {};
         sel.ancestorFactors[index].type = e.target.value;
-        refreshPedigreeDependents(instance, slot);
+        refreshAncestorDependents(instance, slot);
       });
     });
 
