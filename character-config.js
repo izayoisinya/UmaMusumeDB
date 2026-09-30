@@ -332,6 +332,16 @@
       if (modalEl.hidden) closeAncestorPopup(instance);
     });
     ancestorPopupSyncObserver.observe(modalEl, { attributes: true, attributeFilter: ['hidden'] });
+    // 血統ポップアップを開いている間、キャラ編成側で祖カード以外の場所を
+    // タップしたら血統ポップアップを閉じる。キャプチャフェーズで判定する
+    // ことで、各要素側のクリックハンドラがstopPropagationしていても
+    // 確実に先に判定できるようにする(祖カード自身のタップは専用ハンドラ
+    // 側の開閉トグルに任せ、ここでは何もしない)。
+    modalEl.addEventListener('click', e => {
+      if (!instance.ancestorPopupEl) return;
+      if (e.target.closest('.pedigree-card-ancestor-tap')) return;
+      closeAncestorPopup(instance);
+    }, true);
     ccConfigInstances.set(key, instance);
     return instance;
   }
