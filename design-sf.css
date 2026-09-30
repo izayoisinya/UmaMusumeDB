@@ -172,6 +172,14 @@
   border-left: 3px solid var(--blue);
   box-shadow: 0 0 0 1px rgba(45,226,255,0.18), 0 10px 28px rgba(0,0,0,0.55);
 }
+/* サポカ編成は.char-select-box自身が枠を持つため、外側の.team-slotには
+   枠を付けない(標準デザインの意図をそのまま踏襲。付けると枠とスキル
+   チップの間隔が詰まりすぎて重なって見える) */
+[data-design="sf"] .support-deck-grid .team-slot {
+  background: none;
+  border: none;
+  box-shadow: none;
+}
 [data-design="sf"] .pedigree-card.pedigree-group-b {
   border-left-color: var(--red);
 }
