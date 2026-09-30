@@ -324,6 +324,14 @@
       if (compact) closeAncestorPopup(instance);
       setModalCompact(compact, modalEl);
     });
+    // 設定モーダル等、他のモーダルの開閉に巻き込まれてこのキャラ編成が
+    // hiddenにされるケース(common.jsの汎用openModal/closeModal経由。
+    // closeConfigInstance()を通らない)でも祖ポップアップが取り残されない
+    // よう、hidden属性の変化を直接監視しておく。
+    const ancestorPopupSyncObserver = new MutationObserver(() => {
+      if (modalEl.hidden) closeAncestorPopup(instance);
+    });
+    ancestorPopupSyncObserver.observe(modalEl, { attributes: true, attributeFilter: ['hidden'] });
     ccConfigInstances.set(key, instance);
     return instance;
   }
@@ -898,14 +906,12 @@
     });
   }
 
-  function computePairBonus(instance, slotA, slotB) {
+  function pairFactorBonus(rfA, rfB) {
     const bonuses = {};
     const add = (type, stars) => {
       if (!type || !stars) return;
       bonuses[type] = Math.min(4, (bonuses[type] || 0) + Math.ceil(stars / 3));
     };
-    const rfA = instance.pedigreeSelections[slotA] && instance.pedigreeSelections[slotA].redFactor;
-    const rfB = instance.pedigreeSelections[slotB] && instance.pedigreeSelections[slotB].redFactor;
     const typeA = rfA && rfA.type;
     const typeB = rfB && rfB.type;
     const starA = (rfA && Number(rfA.rarity)) || 0;
@@ -918,6 +924,23 @@
     }
     return bonuses;
   }
+  function computePairBonus(instance, slotA, slotB) {
+    const rfA = instance.pedigreeSelections[slotA] && instance.pedigreeSelections[slotA].redFactor;
+    const rfB = instance.pedigreeSelections[slotB] && instance.pedigreeSelections[slotB].redFactor;
+    return pairFactorBonus(rfA, rfB);
+  }
+  // 祖カードのポップアップで入力した「その祖自身の親2枠+祖4枠」の赤因子も、
+  // 祖自身の赤因子と同じ2世代上まで(その祖の親・本人)反映する。
+  function ancestorBonusAtSourceSlot(instance, slot) {
+    const sel = instance.pedigreeSelections[slot];
+    const af = sel && sel.ancestorFactors;
+    if (!af) return {};
+    return mergeBonuses(
+      pairFactorBonus(af[0], af[1]),
+      pairFactorBonus(af[2], af[3]),
+      pairFactorBonus(af[4], af[5])
+    );
+  }
   function mergeBonuses(...bonusObjs) {
     const merged = {};
     bonusObjs.forEach(b => {
@@ -928,9 +951,15 @@
     return merged;
   }
   function bonusesForPedigreeSlot(instance, slot) {
-    if (slot === 0) return mergeBonuses(computePairBonus(instance, 1, 2), computePairBonus(instance, 3, 4), computePairBonus(instance, 5, 6));
-    if (slot === 1) return computePairBonus(instance, 3, 4);
-    if (slot === 2) return computePairBonus(instance, 5, 6);
+    if (slot === 0) {
+      return mergeBonuses(
+        computePairBonus(instance, 1, 2), computePairBonus(instance, 3, 4), computePairBonus(instance, 5, 6),
+        ancestorBonusAtSourceSlot(instance, 3), ancestorBonusAtSourceSlot(instance, 4),
+        ancestorBonusAtSourceSlot(instance, 5), ancestorBonusAtSourceSlot(instance, 6)
+      );
+    }
+    if (slot === 1) return mergeBonuses(computePairBonus(instance, 3, 4), ancestorBonusAtSourceSlot(instance, 3), ancestorBonusAtSourceSlot(instance, 4));
+    if (slot === 2) return mergeBonuses(computePairBonus(instance, 5, 6), ancestorBonusAtSourceSlot(instance, 5), ancestorBonusAtSourceSlot(instance, 6));
     return {};
   }
   function refreshPedigreeDependents(instance, sourceSlot) {
@@ -1042,11 +1071,13 @@
           rarityEl.querySelectorAll('.star-btn').forEach(b => {
             b.classList.toggle('active', Number(b.dataset.star) <= newValue);
           });
+          refreshPedigreeDependents(instance, slot);
         });
       });
       slotEl.querySelector('select').addEventListener('change', e => {
         sel.ancestorFactors[index] = sel.ancestorFactors[index] || {};
         sel.ancestorFactors[index].type = e.target.value;
+        refreshPedigreeDependents(instance, slot);
       });
     });
 
