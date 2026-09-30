@@ -1030,11 +1030,17 @@
     }
   }
   function positionAncestorPopup(instance, slot, popupEl) {
-    const modalRect = instance.modalEl.getBoundingClientRect();
     const openOnRight = slot === 3 || slot === 4; // 左側の祖(祖a/祖b)は右側に、右側の祖(祖c/祖d)は左側に表示
-    const gap = 12;
+    // 画面の端に離して出すと遠すぎるため、反対側の親・祖カードの列
+    // (pedigree-column)にポップアップの端をぴったり重ねる位置にする
+    // (左祖のポップアップ→右列の左端に左端を合わせる、右祖のポップアップ
+    // →左列の右端に右端を合わせる)。
+    const columns = instance.bodyEl.querySelectorAll('.pedigree-columns .pedigree-column');
+    const oppositeColumn = openOnRight ? columns[1] : columns[0];
+    const modalRect = instance.modalEl.getBoundingClientRect();
+    const anchorRect = oppositeColumn ? oppositeColumn.getBoundingClientRect() : modalRect;
     const popupRect = popupEl.getBoundingClientRect();
-    let left = openOnRight ? modalRect.right + gap : modalRect.left - gap - popupRect.width;
+    let left = openOnRight ? anchorRect.left : anchorRect.right - popupRect.width;
     left = Math.max(8, Math.min(left, window.innerWidth - popupRect.width - 8));
     let top = modalRect.top;
     top = Math.max(8, Math.min(top, window.innerHeight - popupRect.height - 8));
