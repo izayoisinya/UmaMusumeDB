@@ -84,7 +84,7 @@ button { touch-action: manipulation; }
 .masthead-top {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   gap: 10px 14px;
   flex-wrap: nowrap;
 }
@@ -108,12 +108,15 @@ button { touch-action: manipulation; }
 }
 /* 横幅が足りる時はタイトルと件数の間に挟んで1行で表示する。
    足りない場合は@media側で非表示にし、代わりにタイトル自体
-   (.masthead-title-toggle)をタップした時だけポップアップで出す */
+   (.masthead-title-toggle)をタップした時だけポップアップで出す。
+   margin-left:autoで常に右寄せにすることで、タイトルの文字数が
+   ページごとに違ってもボタン群の位置がずれないようにする */
 .masthead-menu {
   display: flex;
   gap: 8px;
   flex-wrap: nowrap;
   min-width: 0;
+  margin-left: auto;
 }
 .masthead-btn {
   font-family: 'M PLUS Rounded 1c', sans-serif;
