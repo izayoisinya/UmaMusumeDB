@@ -166,7 +166,8 @@
 [data-design="sf"] .entry,
 [data-design="sf"] .plan-card,
 [data-design="sf"] .pedigree-card,
-[data-design="sf"] .team-slot {
+[data-design="sf"] .team-slot,
+[data-design="sf"] .ancestor-popup {
   background: var(--panel);
   border-radius: 4px 16px 4px 4px;
   border-left: 3px solid var(--blue);

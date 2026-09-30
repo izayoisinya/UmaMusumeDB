@@ -196,7 +196,8 @@
 [data-design="future"] .modal,
 [data-design="future"] .plan-card,
 [data-design="future"] .pedigree-card,
-[data-design="future"] .team-slot {
+[data-design="future"] .team-slot,
+[data-design="future"] .ancestor-popup {
   background:
     radial-gradient(140% 70% at 15% -10%, rgba(255,255,255,0.7), transparent 55%),
     rgba(255, 255, 255, 0.42);

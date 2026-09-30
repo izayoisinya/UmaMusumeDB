@@ -1008,6 +1008,9 @@ mark.search-hit {
   margin: 0 0 14px;
   color: var(--green-dim);
 }
+/* スキル一覧の所持ウマ娘/対応サポカ/スキル詳細ポップアップのタイトルは
+   スキル名を表示するため、下線を引いて分かりやすくする */
+#ownerDetailTitle { text-decoration: underline; }
 .modal textarea {
   font-family: 'Inter', sans-serif;
   font-size: 12px;
@@ -1433,12 +1436,13 @@ mark.search-hit {
   width: 260px;
   max-height: 80vh;
   overflow-y: auto;
-  /* 画面が狭いと反対側の親/祖カードに重なることがあるが、その場合は
-     下が見えにくくなっても構わない(透けさせる必要はない)ため不透明のまま */
+  /* スキル一覧の所持ウマ娘/対応サポカ詳細ポップアップ(.modal)と
+     同じ背景・枠・影にする(画面が狭いと反対側の親/祖カードに重なる
+     ことがあるが、その場合は下が見えにくくなっても構わない) */
   background: var(--panel);
-  border: 1.5px solid var(--panel-line);
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+  border: none;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(74,53,39,0.3);
   padding: 14px;
   z-index: 250;
 }

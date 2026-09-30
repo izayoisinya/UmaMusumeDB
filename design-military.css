@@ -133,7 +133,8 @@
 [data-design="military"] .entry,
 [data-design="military"] .plan-card,
 [data-design="military"] .pedigree-card,
-[data-design="military"] .team-slot {
+[data-design="military"] .team-slot,
+[data-design="military"] .ancestor-popup {
   background: var(--panel);
   border-radius: 2px;
   border: 2px solid rgba(0,0,0,0.35);
