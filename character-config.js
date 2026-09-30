@@ -172,7 +172,8 @@
   }
   // 赤因子の種類は、そのスロット自身の適性がA以上のものだけを選択肢に出す
   // (既にA未満の種類が選択済みの場合は、データを消さないよう選択肢としては残す)
-  function pedigreeRedFactorOptionsHtml(sel, redFactor) {
+  function pedigreeRedFactorOptionsHtml(sel, redFactor, bonuses) {
+    bonuses = bonuses || {};
     const track = (sel && sel.track) || {};
     const distance = (sel && sel.distance) || {};
     const style = (sel && sel.style) || {};
@@ -196,7 +197,7 @@
     ];
     return groups.map(g => {
       const opts = g.options
-        .filter(([value, , rank]) => ccIsHighApt(rank) || redFactor.type === value)
+        .filter(([value, , rank]) => ccIsHighApt(ccBoostRank(rank, bonuses[value])) || redFactor.type === value)
         .map(([value, text]) => `<option value="${value}"${redFactor.type === value ? ' selected' : ''}>${text}</option>`)
         .join('');
       return opts ? `<optgroup label="${g.label}">${opts}</optgroup>` : '';
@@ -798,6 +799,7 @@
   function pedigreeCardHtml(instance, slot, label) {
     const sel = instance.pedigreeSelections[slot];
     const redFactor = (sel && sel.redFactor) || {};
+    const bonuses = slot !== 0 ? bonusesForPedigreeSlot(instance, slot) : {};
     const isWide = slot <= 2;
     const isParent = slot === 1 || slot === 2;
     // 親A(1)・祖a(3)・祖b(4)は同じ色、親B(2)・祖c(5)・祖d(6)は別の色の枠で
@@ -827,7 +829,7 @@
               </div>
               <select>
                 <option value="">種類を選択</option>
-                ${pedigreeRedFactorOptionsHtml(sel, redFactor)}
+                ${pedigreeRedFactorOptionsHtml(sel, redFactor, bonuses)}
               </select>
             </div>
           </div>
@@ -1166,6 +1168,17 @@
     renderPedigreeAptArea(instance, slot);
   }
 
+  // 適性の加点で新たにA以上になった種類も選べるよう、適性が変わるたびに
+  // 赤因子タイプの<select>の選択肢も作り直す(選択済みの値は維持される)
+  function refreshPedigreeRedFactorSelect(instance, slot, bonuses) {
+    const card = pedigreeCardEl(instance, slot);
+    const select = card && card.querySelector('.pedigree-red-factor-row select');
+    if (!select) return;
+    const sel = instance.pedigreeSelections[slot];
+    const redFactor = (sel && sel.redFactor) || {};
+    select.innerHTML = `<option value="">種類を選択</option>${pedigreeRedFactorOptionsHtml(sel, redFactor, bonuses)}`;
+  }
+
   function renderPedigreeAptArea(instance, slot) {
     const card = pedigreeCardEl(instance, slot);
     const area = card && card.querySelector('.pedigree-apt-area');
@@ -1173,6 +1186,7 @@
     const sel = instance.pedigreeSelections[slot];
     const hasRegistrySel = !!(sel && !sel.manual);
     const bonuses = bonusesForPedigreeSlot(instance, slot);
+    refreshPedigreeRedFactorSelect(instance, slot, bonuses);
 
     if (hasRegistrySel) {
       const track = sel.track || {};
@@ -1221,6 +1235,7 @@
         if (!instance.pedigreeSelections[slot]) instance.pedigreeSelections[slot] = ccEmptyPedigreeEntry();
         instance.pedigreeSelections[slot].manual = true;
         instance.pedigreeSelections[slot][group][fieldKey] = e.target.value || null;
+        refreshPedigreeRedFactorSelect(instance, slot, bonusesForPedigreeSlot(instance, slot));
       });
     });
   }
