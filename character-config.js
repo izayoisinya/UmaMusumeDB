@@ -170,34 +170,36 @@
   function ccIsHighApt(rank) {
     return CC_RANK_SCALE.indexOf(rank) >= CC_RANK_SCALE.indexOf('A');
   }
+  const PEDIGREE_RED_FACTOR_GROUPS = [
+    { label: 'バ場', keys: [['track.turf', '芝'], ['track.dirt', 'ダート']] },
+    { label: '距離', keys: [['distance.short', '短距離'], ['distance.mile', 'マイル'], ['distance.medium', '中距離'], ['distance.long', '長距離']] },
+    { label: '脚質', keys: [['style.nige', '逃げ'], ['style.senko', '先行'], ['style.sashi', '差し'], ['style.oikomi', '追込']] },
+  ];
+  function pedigreeAptRankFor(sel, value) {
+    const [group, key] = value.split('.');
+    return ((sel && sel[group]) || {})[key];
+  }
+  // 赤因子の種類は、そのスロット自身の適性がボーナス込みでA以上のものだけを選択可能にする
+  function pedigreeRedFactorQualifies(sel, bonuses, value) {
+    if (!value) return false;
+    return ccIsHighApt(ccBoostRank(pedigreeAptRankFor(sel, value), (bonuses || {})[value]));
+  }
+  // 祖の赤因子や血統ポップアップの入力で適性ボーナスが下がりA未満に戻った場合、
+  // 既に選択済みの赤因子タイプは選べなくなるので選択を解除する
+  function clearRedFactorTypeIfUnqualified(instance, slot, bonuses) {
+    const sel = instance.pedigreeSelections[slot];
+    const type = sel && sel.redFactor && sel.redFactor.type;
+    if (type && !pedigreeRedFactorQualifies(sel, bonuses, type)) {
+      sel.redFactor.type = '';
+    }
+  }
   // 赤因子の種類は、そのスロット自身の適性がA以上のものだけを選択肢に出す
   // (既にA未満の種類が選択済みの場合は、データを消さないよう選択肢としては残す)
   function pedigreeRedFactorOptionsHtml(sel, redFactor, bonuses) {
     bonuses = bonuses || {};
-    const track = (sel && sel.track) || {};
-    const distance = (sel && sel.distance) || {};
-    const style = (sel && sel.style) || {};
-    const groups = [
-      { label: 'バ場', options: [
-        ['track.turf', '芝', track.turf],
-        ['track.dirt', 'ダート', track.dirt],
-      ] },
-      { label: '距離', options: [
-        ['distance.short', '短距離', distance.short],
-        ['distance.mile', 'マイル', distance.mile],
-        ['distance.medium', '中距離', distance.medium],
-        ['distance.long', '長距離', distance.long],
-      ] },
-      { label: '脚質', options: [
-        ['style.nige', '逃げ', style.nige],
-        ['style.senko', '先行', style.senko],
-        ['style.sashi', '差し', style.sashi],
-        ['style.oikomi', '追込', style.oikomi],
-      ] },
-    ];
-    return groups.map(g => {
-      const opts = g.options
-        .filter(([value, , rank]) => ccIsHighApt(ccBoostRank(rank, bonuses[value])) || redFactor.type === value)
+    return PEDIGREE_RED_FACTOR_GROUPS.map(g => {
+      const opts = g.keys
+        .filter(([value]) => pedigreeRedFactorQualifies(sel, bonuses, value) || redFactor.type === value)
         .map(([value, text]) => `<option value="${value}"${redFactor.type === value ? ' selected' : ''}>${text}</option>`)
         .join('');
       return opts ? `<optgroup label="${g.label}">${opts}</optgroup>` : '';
@@ -1002,15 +1004,20 @@
   }
   function refreshPedigreeDependents(instance, sourceSlot) {
     renderPedigreeAptArea(instance, 0);
-    if (sourceSlot === 3 || sourceSlot === 4) renderPedigreeAptArea(instance, 1);
-    if (sourceSlot === 5 || sourceSlot === 6) renderPedigreeAptArea(instance, 2);
+    // 祖の赤因子設定を変えて親の適性ボーナスが下がりA未満に戻った場合、
+    // 親側で既に選択済みの赤因子タイプが選べなくなるので選択を解除する
+    if (sourceSlot === 3 || sourceSlot === 4) renderPedigreeAptArea(instance, 1, true);
+    if (sourceSlot === 5 || sourceSlot === 6) renderPedigreeAptArea(instance, 2, true);
   }
   // 祖のポップアップ側の赤因子編集時は、祖自身とその実の親までしか
   // 反映されない(本人までは届かない)ため、専用の再描画を行う。
   function refreshAncestorDependents(instance, slot) {
-    renderPedigreeAptArea(instance, slot);
-    if (slot === 3 || slot === 4) renderPedigreeAptArea(instance, 1);
-    if (slot === 5 || slot === 6) renderPedigreeAptArea(instance, 2);
+    // 血統ポップアップの赤因子設定を変えて祖自身の適性ボーナスが下がり
+    // A未満に戻った場合、祖側で既に選択済みの赤因子タイプが選べなくなるので
+    // 選択を解除する(実の親側も同様)
+    renderPedigreeAptArea(instance, slot, true);
+    if (slot === 3 || slot === 4) renderPedigreeAptArea(instance, 1, true);
+    if (slot === 5 || slot === 6) renderPedigreeAptArea(instance, 2, true);
   }
 
   // --- 祖カードをタップして開く、その祖自身の親・祖の赤因子入力ポップアップ ---
@@ -1179,13 +1186,14 @@
     select.innerHTML = `<option value="">種類を選択</option>${pedigreeRedFactorOptionsHtml(sel, redFactor, bonuses)}`;
   }
 
-  function renderPedigreeAptArea(instance, slot) {
+  function renderPedigreeAptArea(instance, slot, enforceUnqualified) {
     const card = pedigreeCardEl(instance, slot);
     const area = card && card.querySelector('.pedigree-apt-area');
     if (!area) return;
     const sel = instance.pedigreeSelections[slot];
     const hasRegistrySel = !!(sel && !sel.manual);
     const bonuses = bonusesForPedigreeSlot(instance, slot);
+    if (enforceUnqualified) clearRedFactorTypeIfUnqualified(instance, slot, bonuses);
     refreshPedigreeRedFactorSelect(instance, slot, bonuses);
 
     if (hasRegistrySel) {
