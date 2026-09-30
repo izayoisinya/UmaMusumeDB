@@ -159,6 +159,11 @@ button { touch-action: manipulation; }
     -webkit-tap-highlight-color: transparent;
   }
   .masthead-menu { display: none; }
+  /* この幅ではナビボタン群自体が非表示(flexに参加しない)になるため、
+     件数ラベル側にもmargin-left:autoを持たせて右端に固定する
+     (.masthead-menuが表示される幅ではそちら側のautoマージンだけで
+     十分なので、ここでのみ追加する) */
+  #countLabel { margin-left: auto; }
   .masthead-menu.open {
     display: flex;
     flex-direction: column;
