@@ -167,6 +167,41 @@
     const rankClass = boosted ? 'rank-' + boosted : 'rank-none';
     return `<span class="apt-badge ${rankClass}"><span class="apt-badge-prefix">${prefix}</span><span class="apt-badge-value">${boosted || '-'}<small>+${bonus}</small></span></span>`;
   }
+  function ccIsHighApt(rank) {
+    return CC_RANK_SCALE.indexOf(rank) >= CC_RANK_SCALE.indexOf('A');
+  }
+  // 赤因子の種類は、そのスロット自身の適性がA以上のものだけを選択肢に出す
+  // (既にA未満の種類が選択済みの場合は、データを消さないよう選択肢としては残す)
+  function pedigreeRedFactorOptionsHtml(sel, redFactor) {
+    const track = (sel && sel.track) || {};
+    const distance = (sel && sel.distance) || {};
+    const style = (sel && sel.style) || {};
+    const groups = [
+      { label: 'バ場', options: [
+        ['track.turf', '芝', track.turf],
+        ['track.dirt', 'ダート', track.dirt],
+      ] },
+      { label: '距離', options: [
+        ['distance.short', '短距離', distance.short],
+        ['distance.mile', 'マイル', distance.mile],
+        ['distance.medium', '中距離', distance.medium],
+        ['distance.long', '長距離', distance.long],
+      ] },
+      { label: '脚質', options: [
+        ['style.nige', '逃げ', style.nige],
+        ['style.senko', '先行', style.senko],
+        ['style.sashi', '差し', style.sashi],
+        ['style.oikomi', '追込', style.oikomi],
+      ] },
+    ];
+    return groups.map(g => {
+      const opts = g.options
+        .filter(([value, , rank]) => ccIsHighApt(rank) || redFactor.type === value)
+        .map(([value, text]) => `<option value="${value}"${redFactor.type === value ? ' selected' : ''}>${text}</option>`)
+        .join('');
+      return opts ? `<optgroup label="${g.label}">${opts}</optgroup>` : '';
+    }).join('');
+  }
   function ccEmptyPedigreeEntry() {
     return { id: null, name: '', imagePath: null, manual: true, track: {}, distance: {}, style: {} };
   }
@@ -792,22 +827,7 @@
               </div>
               <select>
                 <option value="">種類を選択</option>
-                <optgroup label="バ場">
-                  <option value="track.turf"${redFactor.type === 'track.turf' ? ' selected' : ''}>芝</option>
-                  <option value="track.dirt"${redFactor.type === 'track.dirt' ? ' selected' : ''}>ダート</option>
-                </optgroup>
-                <optgroup label="距離">
-                  <option value="distance.short"${redFactor.type === 'distance.short' ? ' selected' : ''}>短距離</option>
-                  <option value="distance.mile"${redFactor.type === 'distance.mile' ? ' selected' : ''}>マイル</option>
-                  <option value="distance.medium"${redFactor.type === 'distance.medium' ? ' selected' : ''}>中距離</option>
-                  <option value="distance.long"${redFactor.type === 'distance.long' ? ' selected' : ''}>長距離</option>
-                </optgroup>
-                <optgroup label="脚質">
-                  <option value="style.nige"${redFactor.type === 'style.nige' ? ' selected' : ''}>逃げ</option>
-                  <option value="style.senko"${redFactor.type === 'style.senko' ? ' selected' : ''}>先行</option>
-                  <option value="style.sashi"${redFactor.type === 'style.sashi' ? ' selected' : ''}>差し</option>
-                  <option value="style.oikomi"${redFactor.type === 'style.oikomi' ? ' selected' : ''}>追込</option>
-                </optgroup>
+                ${pedigreeRedFactorOptionsHtml(sel, redFactor)}
               </select>
             </div>
           </div>

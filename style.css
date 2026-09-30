@@ -1635,6 +1635,9 @@ mark.search-hit {
   .pedigree-card-parent .pedigree-card-main { display: block; }
   .pedigree-card-parent .char-select-box { width: auto; }
   .pedigree-card-parent .pedigree-apt-area { margin-top: 8px; }
+  /* 縦向きでは祖カードと同様、親カードも「赤因子」の文字ラベルを
+     非表示にして星評価+種類選択だけにする(横幅が狭いため) */
+  .pedigree-card-parent .pedigree-red-factor label { display: none; }
 }
 
 .pvp-team-grid {
