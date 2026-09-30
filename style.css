@@ -106,6 +106,10 @@ button { touch-action: manipulation; }
   text-shadow: 0 1px 2px rgba(70,90,20,0.2);
   flex-shrink: 0;
 }
+/* 件数ラベルは桁数が増えるとその分だけ右寄せのページ切替ボタン群
+   (.masthead-menu)の位置も押されてずれるため、4桁分の幅をあらかじめ
+   確保しておく(実測: 4桁「9999 件 登録」で約75px) */
+#countLabel { min-width: 76px; text-align: right; }
 /* 横幅が足りる時はタイトルと件数の間に挟んで1行で表示する。
    足りない場合は@media側で非表示にし、代わりにタイトル自体
    (.masthead-title-toggle)をタップした時だけポップアップで出す。
