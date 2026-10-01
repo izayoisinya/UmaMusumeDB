@@ -160,6 +160,9 @@ html.body-scroll-locked { overflow: hidden; }
   font-size: 0.7em;
   vertical-align: middle;
 }
+/* サイドメニュー(カード)上端の「メニュー」見出し。横幅が十分ある時は
+   .masthead-menuが通常のナビ行に戻るため、この見出しは不要(非表示) */
+.masthead-menu-title { display: none; }
 @media (max-width: 999px) {
   .masthead-menu-icon { display: inline-block; }
   .masthead-title-toggle {
@@ -197,6 +200,20 @@ html.body-scroll-locked { overflow: hidden; }
     transform: translateX(calc(100% + 24px));
     transition: transform 0.25s ease;
     pointer-events: none;
+  }
+  /* カードの一番上に、本体のヘッダーと同じ配色の帯で「メニュー」という
+     見出しを付ける。.masthead-menuのpaddingを打ち消す負のマージンで
+     カード上端に隙間なく敷き、上の角だけカードの丸みに合わせる */
+  .masthead-menu-title {
+    display: block;
+    margin: -20px -18px 10px;
+    padding: 14px 18px;
+    background: linear-gradient(90deg, var(--header-a), var(--header-b));
+    border-radius: 18px 18px 0 0;
+    color: #fff;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+    font-weight: 800;
+    font-size: 15px;
   }
   /* 背景を薄暗くして、サイドメニューが手前に出ていることを分かりやすく
      する。position:fixedの疑似要素なので.masthead-menu自身の狭い横幅を
