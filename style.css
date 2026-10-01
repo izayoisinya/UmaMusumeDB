@@ -54,10 +54,6 @@ html, body {
   background: var(--bg-bottom);
   color: var(--ink);
   font-family: 'M PLUS Rounded 1c', sans-serif;
-  /* 一覧カードを右にスワイプした時、画面外やお隣のカードにはみ出す
-     演出を許容するため(編集/削除ボタンを出すための挙動)、横スクロール
-     バーだけは出ないようにしておく */
-  overflow-x: hidden;
 }
 button { touch-action: manipulation; }
 @media (prefers-reduced-motion: reduce) {
@@ -300,6 +296,13 @@ button { touch-action: manipulation; }
   max-width: 1100px;
   width: 100%;
   margin: 0 auto;
+  /* 一覧カードを右にスワイプした時、画面外やお隣のカードにはみ出す演出を
+     許容するため(編集/削除ボタンを出すための挙動)、横スクロールバーだけは
+     出ないようにしておく。html/body側に付けるとoverflow-yが暗黙にautoへ
+     変換され、.mastheadのposition:stickyが効かなくなる(実機で発覚した
+     不具合)ため、.masthead(.layoutの外側の兄弟要素)を巻き込まないよう
+     ここ(.layout)に限定して付ける */
+  overflow-x: hidden;
 }
 
 .panel {
