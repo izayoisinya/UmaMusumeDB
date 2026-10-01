@@ -225,6 +225,14 @@
   border: 1px solid rgba(255,255,255,0.7);
   box-shadow: var(--glass-specular);
 }
+/* スキル詳細ポップアップの対応サポカ表示など、囲い無し指定の.entry-flatは
+   上のガラス風の枠+影を打ち消して本当に囲い無しにする */
+[data-design="future"] .entry.entry-flat {
+  background: none;
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+}
 /* 縮小表示(.compact)は「裏のメイン画面を見ながら操作したい」ための
    モードなので、通常表示よりさらに透明度を上げて背後がよく見えるように
    する。輪郭は縁の白いラインと影で保つ */

@@ -242,7 +242,7 @@ function renderCardDetailHtml(card) {
   const skillChips = (card.skills || []).map(detailSkillChip).join('');
   const eventSkillChips = (card.eventSkills || []).map(detailSkillChip).join('');
   return `
-    <div class="entry" style="border:none;padding:0;background:none;">
+    <div class="entry entry-flat">
       <div class="entry-main">
         <div class="entry-name-row"><div class="entry-name">${escapeHtml(card.name)}</div></div>
         ${typeChips ? `<div class="apt-row">${typeChips}</div>` : ''}

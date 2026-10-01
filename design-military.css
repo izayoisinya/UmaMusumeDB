@@ -141,6 +141,14 @@
   border-left: 4px solid var(--gold);
   box-shadow: 0 8px 22px rgba(0,0,0,0.5);
 }
+/* スキル詳細ポップアップの対応サポカ表示など、囲い無し指定の.entry-flatは
+   上の金属プレート枠+影を打ち消して本当に囲い無しにする */
+[data-design="military"] .entry.entry-flat {
+  background: none;
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+}
 /* サポカ編成は.char-select-box自身が枠を持つため、外側の.team-slotには
    枠を付けない(標準デザインの意図をそのまま踏襲。付けると枠とスキル
    チップの間隔が詰まりすぎて重なって見える) */

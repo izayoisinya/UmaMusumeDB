@@ -724,6 +724,17 @@ input[type=text]:focus, input[type=number]:focus, input[type=month]:focus, texta
   gap: 14px;
   align-items: flex-start;
 }
+/* スキル詳細ポップアップの対応サポカ表示など、ポップアップ内で囲いを
+   出したくない箇所用。カスタムデザイン側の.entryへの上書き(box-shadow等)
+   も合わせて打ち消す必要があるため、各design-*.cssでも.entry-flatを
+   個別に無効化している */
+.entry-flat {
+  border: none;
+  padding: 0;
+  background: none;
+  box-shadow: none;
+  border-radius: 0;
+}
 .entry-main { flex: 1; min-width: 0; }
 .entry-clickable { cursor: pointer; }
 .entry-clickable:hover { opacity: 0.85; }
