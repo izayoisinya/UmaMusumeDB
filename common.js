@@ -603,13 +603,22 @@ if (mastheadMenu && mastheadTitle) {
     //  ブレークポイントの数値をJS側にも二重管理しないための判定方法)
     return getComputedStyle(mastheadMenu).position === 'fixed';
   }
+  const mastheadEl = document.querySelector('.masthead');
   function openMastheadMenu() {
     mastheadMenu.classList.add('open');
     mastheadTitle.setAttribute('aria-expanded', 'true');
+    // サイドメニュー自身はz-index:200でも、DOM上の親である.masthead
+    // (z-index:10)を超えて右下のスクロールボタン群(z-index:150)より
+    // 手前には出られないため、開いている間だけ.masthead側も引き上げる
+    if (mastheadEl) mastheadEl.classList.add('menu-open');
+    // 開いている間は裏のメイン画面がスクロールしないようにする
+    document.documentElement.classList.add('body-scroll-locked');
   }
   function closeMastheadMenu() {
     mastheadMenu.classList.remove('open');
     mastheadTitle.setAttribute('aria-expanded', 'false');
+    if (mastheadEl) mastheadEl.classList.remove('menu-open');
+    document.documentElement.classList.remove('body-scroll-locked');
   }
   mastheadTitle.addEventListener('click', () => {
     if (mastheadMenu.classList.contains('open')) closeMastheadMenu();

@@ -56,6 +56,9 @@ html, body {
   font-family: 'M PLUS Rounded 1c', sans-serif;
 }
 button { touch-action: manipulation; }
+/* サイドメニューが開いている間、裏のメイン画面がスクロールしないように
+   common.js側でhtmlへ付け外しする */
+html.body-scroll-locked { overflow: hidden; }
 @media (prefers-reduced-motion: reduce) {
   * { animation: none !important; transition: none !important; }
 }
@@ -81,6 +84,12 @@ button { touch-action: manipulation; }
   padding: 16px 22px;
   box-shadow: 0 4px 14px rgba(139,195,74,0.35);
 }
+/* .masthead-menu(サイドメニュー)はDOM上.masthead(z-index:10)の子孫にあるため、
+   .masthead-menu自身にz-index:200を付けても、スタッキングコンテキストの
+   親である.mastheadのz-index:10を超えて右下のスクロールボタン群
+   (z-index:150)の手前には出られない。開いている間だけ.masthead自体の
+   z-indexを引き上げて、サイドメニューがボタン群の上に来るようにする */
+.masthead.menu-open { z-index: 250; }
 .masthead-top {
   display: flex;
   align-items: center;
@@ -164,6 +173,8 @@ button { touch-action: manipulation; }
      十分なので、ここでのみ追加する) */
   #countLabel { margin-left: auto; }
   /* タイトルタップ、または右からのスワイプで開く右サイドメニュー。
+     画面全体を覆うドロワーではなく、上端が画面の縦半分の位置に来る
+     カード形式にする(右下に余白を残してフロー要素っぽく見せる)。
      display:noneではtransitionできないため、常時flexで配置した上で
      transform(画面外へ送る/0に戻す)で出し入れする(common.js側で
      .open の付け外し+スワイプ検知を行う)。 */
@@ -171,20 +182,19 @@ button { touch-action: manipulation; }
     display: flex;
     flex-direction: column;
     position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
+    top: 50vh;
+    right: 12px;
+    bottom: 12px;
     width: min(78vw, 300px);
     margin: 0;
     background: var(--panel);
-    border-radius: 18px 0 0 18px;
-    padding: 24px 18px;
-    padding-top: max(24px, env(safe-area-inset-top, 0px));
+    border-radius: 18px;
+    padding: 20px 18px;
     gap: 8px;
-    box-shadow: -14px 0 36px rgba(0,0,0,0.35);
+    box-shadow: 0 14px 36px rgba(0,0,0,0.35);
     z-index: 200;
     overflow-y: auto;
-    transform: translateX(100%);
+    transform: translateX(calc(100% + 24px));
     transition: transform 0.25s ease;
     pointer-events: none;
   }
