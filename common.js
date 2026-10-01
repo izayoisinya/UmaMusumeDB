@@ -943,8 +943,11 @@ function showToast(message) {
     wheelAccum += e.deltaX;
     clearTimeout(wheelResetTimer);
     wheelResetTimer = setTimeout(() => { wheelAccum = 0; }, 400);
-    if (wheelAccum < -WHEEL_THRESHOLD) setOpenEntry(entry);
-    else if (wheelAccum > WHEEL_THRESHOLD && entry === openEntry) closeOpenEntry();
+    // 開閉を発動させたら溜まった量を0に戻す。戻さないと、開いた直後に逆方向へ
+    // スワイプした時、閾値を超えるまでの分(開いた時に溜まった分の相殺)が
+    // 必要になり、1回目のスワイプが反応しなくなる
+    if (wheelAccum < -WHEEL_THRESHOLD) { setOpenEntry(entry); wheelAccum = 0; }
+    else if (wheelAccum > WHEEL_THRESHOLD && entry === openEntry) { closeOpenEntry(); wheelAccum = 0; }
   }, { passive: false });
 
   // 開いているカード以外をタップ/クリックしたら閉じる
