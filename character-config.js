@@ -1301,10 +1301,12 @@
     renderSupportPickerGrid('');
     instance.modalEl.hidden = true;
     document.getElementById('ccSupportCardPickerModal').hidden = false;
+    window.ccOverlayBackHandler = closeSupportPicker;
   }
   function closeSupportPicker() {
     document.getElementById('ccSupportCardPickerModal').hidden = true;
     if (ccActivePickerCtx && ccActivePickerCtx.instance) ccActivePickerCtx.instance.modalEl.hidden = false;
+    if (window.ccOverlayBackHandler === closeSupportPicker) window.ccOverlayBackHandler = null;
   }
   function renderSupportPickerGrid(keyword) {
     const grid = document.getElementById('ccSupportCardPickerGrid');
@@ -1345,10 +1347,12 @@
     renderUmaPickerGrid('');
     instance.modalEl.hidden = true;
     document.getElementById('ccUmaPickerModal').hidden = false;
+    window.ccOverlayBackHandler = closeUmaPicker;
   }
   function closeUmaPicker() {
     document.getElementById('ccUmaPickerModal').hidden = true;
     if (ccActivePickerCtx && ccActivePickerCtx.instance) ccActivePickerCtx.instance.modalEl.hidden = false;
+    if (window.ccOverlayBackHandler === closeUmaPicker) window.ccOverlayBackHandler = null;
   }
   function renderUmaPickerGrid(keyword) {
     const grid = document.getElementById('ccUmaPickerGrid');

@@ -291,6 +291,7 @@ function closeModal() {
     if (m.classList.contains('compact-eligible') && m.classList.contains('compact')) return;
     m.hidden = true;
   });
+  window.ccOverlayBackHandler = null;
   const overlay = document.getElementById('modalOverlay');
   if (overlay) {
     const stillOpen = Array.from(document.querySelectorAll('.modal')).some(m => !m.hidden);
@@ -313,11 +314,23 @@ function hideOverlayIfNoModalOpen() {
   if (!stillOpen) overlay.hidden = true;
 }
 
+// サポカ/ウマ娘ピッカーなど、「全部閉じる」ではなく「ひとつ前の画面(呼び出し元の
+// モーダル)に戻る」挙動にしたいモーダルが開いている間、character-config.js側が
+// ここにその専用close処理をセットしておく。画面外タップ/Escapeはこれを優先して呼ぶ。
+window.ccOverlayBackHandler = null;
 const modalOverlay = document.getElementById('modalOverlay');
 if (modalOverlay) {
   document.querySelectorAll('.modal-close-btn').forEach(btn => btn.addEventListener('click', closeModal));
-  modalOverlay.addEventListener('click', e => { if (e.target === modalOverlay) closeModal(); });
-  document.addEventListener('keydown', e => { if (e.key === 'Escape' && !modalOverlay.hidden) closeModal(); });
+  modalOverlay.addEventListener('click', e => {
+    if (e.target !== modalOverlay) return;
+    if (typeof window.ccOverlayBackHandler === 'function') { window.ccOverlayBackHandler(); return; }
+    closeModal();
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key !== 'Escape' || modalOverlay.hidden) return;
+    if (typeof window.ccOverlayBackHandler === 'function') { window.ccOverlayBackHandler(); return; }
+    closeModal();
+  });
 }
 
 // --- ポップアップ縮小表示(裏のメイン画面を見ながら操作したい場合用) ---
