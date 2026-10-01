@@ -764,6 +764,9 @@ input[type=text]:focus, input[type=number]:focus, input[type=month]:focus, texta
 /* チップが多い因子台帳などカードが縦に長くなる場合、height:100%+中央寄せ
    だとボタンがカードの真ん中(スクロールしないと見えない位置)に来てしまう
    ので、カード上部(entry-surfaceの先頭余白と揃う位置)に固定で置く */
+/* 未来風デザイン等、カード自体が半透明(すりガラス)なデザインだと、
+   閉じている間もカード越しに裏のボタンが透けて見えてしまうため、
+   見た目をスライドだけに頼らずopacityでも隠しておく */
 .entry-swipe > .entry-actions {
   position: absolute;
   left: 0;
@@ -773,13 +776,24 @@ input[type=text]:focus, input[type=number]:focus, input[type=month]:focus, texta
   gap: 8px;
   padding-left: 14px;
   z-index: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease;
 }
 .entry-swipe.actions-open > .entry-surface {
   transform: translateX(var(--entry-swipe-w, 140px));
 }
+.entry-swipe.actions-open > .entry-actions {
+  opacity: 1;
+  pointer-events: auto;
+}
 @media (hover: hover) and (pointer: fine) {
   .entry-swipe:hover > .entry-surface {
     transform: translateX(var(--entry-swipe-w, 140px));
+  }
+  .entry-swipe:hover > .entry-actions {
+    opacity: 1;
+    pointer-events: auto;
   }
 }
 /* スキル詳細ポップアップの対応サポカ表示など、ポップアップ内で囲いを
