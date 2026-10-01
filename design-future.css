@@ -275,7 +275,11 @@
 [data-design="future"] .chip.blue { background: linear-gradient(160deg, var(--blue), var(--blue-dim)); color: #06222c; box-shadow: inset 0 1px 0 rgba(255,255,255,0.5); }
 [data-design="future"] .chip.red { background: linear-gradient(160deg, var(--red), var(--red-dim)); color: #3a0a1c; box-shadow: inset 0 1px 0 rgba(255,255,255,0.5); }
 [data-design="future"] .chip.green { background: linear-gradient(160deg, var(--green), var(--green-dim)); color: #063326; box-shadow: inset 0 1px 0 rgba(255,255,255,0.5); }
-[data-design="future"] .chip.white { border-color: var(--blue); color: var(--ink); background: rgba(255,255,255,0.55); backdrop-filter: blur(8px); }
+/* .chip.whiteは1枚のカードに何個も並び、一覧ページでは合計で数百〜
+   千個規模になることもあるため、.entry(-surface)と同じ理由で
+   backdrop-filterは使わない(要素数だけ背景の再サンプリングが発生し、
+   スクロールが大きくカクつく)。半透明の塗りだけで同系統の見た目に寄せる */
+[data-design="future"] .chip.white { border-color: var(--blue); color: var(--ink); background: rgba(255,255,255,0.72); }
 /* design-sf.css/design-military.cssと同じ理由(.chip.whiteとの特異度衝突)で
    種別枠色と金/固有スキルの可読性を個別に上書きしておく。このデザインは
    さらに.chip.whiteにガラス風の半透明背景も設定しているため、それが
