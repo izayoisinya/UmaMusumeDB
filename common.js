@@ -834,12 +834,56 @@ function showToast(message) {
 }
 
 // --- 一覧カードの編集/削除ボタンをスワイプで出し入れ ---
-// 常時表示だと邪魔なので普段は(CSS側で)畳んでおき、カードを左に
-// スワイプした時だけ表示する。指でのタッチスワイプと、iPad等の
-// トラックパッドでの2本指横スワイプ(wheelイベントのdeltaXとして来る)の
-// 両方に対応する。マウス等hoverできる環境はCSS側の:hoverだけで表示できる
-// ようにしてあるので、ここでは何もしない。
+// 常時表示だと邪魔なので普段はボタンをカードの裏(左側)に隠しておき、
+// カードそのものを右にスワイプした時だけカード本体をずらしてボタンを
+// 覗かせる(ずれたカードは右隣のカードや画面外に被ってOK)。
+// 指でのタッチスワイプと、iPad等のトラックパッドでの2本指横スワイプ
+// (wheelイベントのdeltaXとして来る)の両方に対応する。マウス等hover
+// できる環境はCSS側の:hoverだけで表示できるようにしてあるので、
+// ここでは何もしない。
 (function () {
+  // 各ページのJS(uma.js/support.js/skill.js/training.js/pvp.js/script.js)は
+  // 従来通り <div class="entry"><div class="entry-main">...</div>
+  // <div class="entry-side"><div class="entry-actions">...</div>...</div></div>
+  // を描画するだけでよく、ここでDOMを
+  // <div class="entry entry-swipe"><div class="entry-actions">...</div>
+  // <div class="entry-surface">(元のentry-main/entry-side)</div></div>
+  // に組み替えてスワイプ対応にする(各ページ側の変更は不要)。
+  function prepareEntrySwipeStructure(entry) {
+    if (!entry || entry.dataset.swipePrepared) return;
+    const side = entry.querySelector(':scope > .entry-side');
+    const actions = side && side.querySelector(':scope > .entry-actions');
+    if (!actions) return; // 編集/削除ボタンが無いカード(詳細ポップアップ等)は対象外
+    entry.dataset.swipePrepared = '1';
+    actions.remove();
+    // 画像等が無く.entry-sideが空になった場合、120px幅の余白として
+    // 残ってしまうので取り除く(スキル一覧など画像を持たないカード向け)
+    if (side && !side.firstElementChild) side.remove();
+    const surface = document.createElement('div');
+    surface.className = 'entry-surface';
+    while (entry.firstChild) surface.appendChild(entry.firstChild);
+    entry.appendChild(actions);
+    entry.appendChild(surface);
+    entry.classList.add('entry-swipe');
+    const width = actions.getBoundingClientRect().width;
+    if (width) entry.style.setProperty('--entry-swipe-w', width + 'px');
+  }
+  function prepareAllEntries(root) {
+    (root || document).querySelectorAll('.entry').forEach(prepareEntrySwipeStructure);
+  }
+  prepareAllEntries();
+  // 各ページは検索/フィルタのたびに一覧を丸ごと再描画するため、
+  // 追加されたカードを都度検知して組み替える
+  new MutationObserver(mutations => {
+    mutations.forEach(m => {
+      m.addedNodes.forEach(node => {
+        if (node.nodeType !== 1) return;
+        if (node.classList && node.classList.contains('entry')) prepareEntrySwipeStructure(node);
+        else if (node.querySelector) prepareAllEntries(node);
+      });
+    });
+  }).observe(document.body, { childList: true, subtree: true });
+
   let openEntry = null;
   function setOpenEntry(entry) {
     if (openEntry && openEntry !== entry) openEntry.classList.remove('actions-open');
@@ -850,7 +894,7 @@ function showToast(message) {
     setOpenEntry(null);
   }
 
-  // 指でのスワイプ
+  // 指でのスワイプ(右で開く・左で閉じる)
   const SWIPE_THRESHOLD = 24;
   const SWIPE_LOCK_THRESHOLD = 6;
   let touchEntry = null;
@@ -858,7 +902,7 @@ function showToast(message) {
   let touchStartY = 0;
   let touchAxis = null; // 'x' | 'y' | null(未確定)
   document.addEventListener('touchstart', e => {
-    const entry = e.target.closest('.entry');
+    const entry = e.target.closest('.entry-swipe');
     // ボタン自体からのタッチはスワイプ扱いせず、普通にタップできるようにする
     if (!entry || e.target.closest('.entry-actions')) { touchEntry = null; return; }
     touchEntry = entry;
@@ -875,35 +919,37 @@ function showToast(message) {
       touchAxis = Math.abs(dx) > Math.abs(dy) ? 'x' : 'y';
     }
     if (touchAxis !== 'x') return;
-    if (dx < -SWIPE_THRESHOLD) setOpenEntry(touchEntry);
-    else if (dx > SWIPE_THRESHOLD && touchEntry === openEntry) closeOpenEntry();
+    if (dx > SWIPE_THRESHOLD) setOpenEntry(touchEntry);
+    else if (dx < -SWIPE_THRESHOLD && touchEntry === openEntry) closeOpenEntry();
   }, { passive: true });
   document.addEventListener('touchend', () => { touchEntry = null; touchAxis = null; });
   document.addEventListener('touchcancel', () => { touchEntry = null; touchAxis = null; });
 
   // トラックパッドの2本指横スワイプ(wheelイベント)。縦スクロールの
   // ついでに誤反応しないよう、横方向の動きが縦方向より明確に大きい時だけ扱う。
+  // (向きの対応関係は実機未確認。逆に感じる場合はここの不等号を
+  //  入れ替えれば直る)
   const WHEEL_THRESHOLD = 40;
   let wheelEntry = null;
   let wheelAccum = 0;
   let wheelResetTimer = null;
   document.addEventListener('wheel', e => {
-    const entry = e.target.closest('.entry');
+    const entry = e.target.closest('.entry-swipe');
     if (!entry || e.target.closest('.entry-actions')) return;
     if (Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return;
     if (wheelEntry !== entry) { wheelEntry = entry; wheelAccum = 0; }
     wheelAccum += e.deltaX;
     clearTimeout(wheelResetTimer);
     wheelResetTimer = setTimeout(() => { wheelAccum = 0; }, 400);
-    if (wheelAccum > WHEEL_THRESHOLD) setOpenEntry(entry);
-    else if (wheelAccum < -WHEEL_THRESHOLD && entry === openEntry) closeOpenEntry();
+    if (wheelAccum < -WHEEL_THRESHOLD) setOpenEntry(entry);
+    else if (wheelAccum > WHEEL_THRESHOLD && entry === openEntry) closeOpenEntry();
   }, { passive: true });
 
   // 開いているカード以外をタップ/クリックしたら閉じる
   document.addEventListener('click', e => {
     if (!openEntry) return;
     if (e.target.closest('.entry-actions')) return;
-    if (e.target.closest('.entry') === openEntry) return;
+    if (e.target.closest('.entry-swipe') === openEntry) return;
     closeOpenEntry();
   }, true);
 })();

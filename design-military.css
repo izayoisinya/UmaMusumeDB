@@ -131,6 +131,7 @@
 /* ============ 6. パネル/カード: 金属プレート風 ============ */
 [data-design="military"] .modal,
 [data-design="military"] .entry,
+[data-design="military"] .entry-surface,
 [data-design="military"] .plan-card,
 [data-design="military"] .pedigree-card,
 [data-design="military"] .team-slot,
@@ -144,6 +145,14 @@
 /* スキル詳細ポップアップの対応サポカ表示など、囲い無し指定の.entry-flatは
    上の金属プレート枠+影を打ち消して本当に囲い無しにする */
 [data-design="military"] .entry.entry-flat {
+  background: none;
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+}
+/* 右スワイプで編集/削除ボタンを出す.entry.entry-swipeは、見た目(枠/背景/影)が
+   .entry-surface側に付くので、外側の.entry自身は打ち消して透明な台紙に戻す */
+[data-design="military"] .entry.entry-swipe {
   background: none;
   border: none;
   box-shadow: none;

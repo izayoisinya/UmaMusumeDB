@@ -54,6 +54,10 @@ html, body {
   background: var(--bg-bottom);
   color: var(--ink);
   font-family: 'M PLUS Rounded 1c', sans-serif;
+  /* 一覧カードを右にスワイプした時、画面外やお隣のカードにはみ出す
+     演出を許容するため(編集/削除ボタンを出すための挙動)、横スクロール
+     バーだけは出ないようにしておく */
+  overflow-x: hidden;
 }
 button { touch-action: manipulation; }
 @media (prefers-reduced-motion: reduce) {
@@ -724,6 +728,60 @@ input[type=text]:focus, input[type=number]:focus, input[type=month]:focus, texta
   gap: 14px;
   align-items: flex-start;
 }
+/* 編集/削除ボタン付きの一覧カードは、common.jsが実行時に
+   <div class="entry entry-swipe"><div class="entry-actions">...</div>
+   <div class="entry-surface">(元々.entry直下にあったentry-main/entry-side)</div></div>
+   という構造に組み替える(各ページのJS自体は変更不要)。
+   entry-actionsをカードの裏(左側)に敷いておき、カードの見た目(背景/枠線/
+   パディング)を持つentry-surfaceだけを右にスライドさせて、
+   右スワイプでボタンを覗かせる仕組み。
+   .entry自身の見た目(背景/枠線等)は不要になるので打ち消し、
+   代わりにentry-surfaceへ移す。JSが未実行/失敗した場合は.entryの
+   見た目がそのまま残り、ボタンも常時表示に戻るだけなので安全。 */
+.entry.entry-swipe {
+  border: none;
+  background: none;
+  padding: 0;
+  gap: 0;
+  position: relative;
+  overflow: visible;
+}
+.entry.entry-swipe.actions-open {
+  z-index: 5; /* 2列表示などで隣のカードに被さる時、手前に出す */
+}
+.entry-surface {
+  border: 1.5px solid var(--panel-line);
+  border-radius: 14px;
+  background: var(--surface);
+  padding: 14px 16px;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  position: relative;
+  z-index: 1;
+  transition: transform 0.2s ease;
+}
+/* チップが多い因子台帳などカードが縦に長くなる場合、height:100%+中央寄せ
+   だとボタンがカードの真ん中(スクロールしないと見えない位置)に来てしまう
+   ので、カード上部(entry-surfaceの先頭余白と揃う位置)に固定で置く */
+.entry-swipe > .entry-actions {
+  position: absolute;
+  left: 0;
+  top: 14px;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding-left: 14px;
+  z-index: 0;
+}
+.entry-swipe.actions-open > .entry-surface {
+  transform: translateX(var(--entry-swipe-w, 140px));
+}
+@media (hover: hover) and (pointer: fine) {
+  .entry-swipe:hover > .entry-surface {
+    transform: translateX(var(--entry-swipe-w, 140px));
+  }
+}
 /* スキル詳細ポップアップの対応サポカ表示など、ポップアップ内で囲いを
    出したくない箇所用。カスタムデザイン側の.entryへの上書き(box-shadow等)
    も合わせて打ち消す必要があるため、各design-*.cssでも.entry-flatを
@@ -902,31 +960,6 @@ mark.search-hit {
   border: 1.5px solid var(--danger);
 }
 .entry-del:hover { background: var(--danger); color: #fff; }
-
-/* 編集/削除ボタンは常時表示だと邪魔なので普段は畳んでおき、カードを
-   左にスワイプ(指 or トラックパッドの2本指)した時だけ出す
-   (common.jsでスワイプ/トラックパッド操作を検知して.actions-openを付け外し)。
-   マウス等hoverできる環境では、スワイプ操作がなくてもカードにカーソルを
-   乗せるだけで出せるようにしておく(フォールバック) */
-.entry-actions {
-  max-height: 0;
-  opacity: 0;
-  overflow: hidden;
-  pointer-events: none;
-  transition: max-height 0.18s ease, opacity 0.12s ease;
-}
-.entry.actions-open .entry-actions {
-  max-height: 72px;
-  opacity: 1;
-  pointer-events: auto;
-}
-@media (hover: hover) and (pointer: fine) {
-  .entry:hover .entry-actions {
-    max-height: 72px;
-    opacity: 1;
-    pointer-events: auto;
-  }
-}
 
 .empty {
   color: var(--ink-soft);
