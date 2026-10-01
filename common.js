@@ -590,26 +590,88 @@ document.querySelectorAll('.masthead-nav').forEach(a => {
 });
 
 // --- ヘッダーの横幅が足りない時、タイトルをタップするとページ切替ボタン群を
-//     ハンバーガーメニューとして開閉できるようにする ---
+//     右からのサイドメニューとして開閉できるようにする。
+//     タイトルのタップに加えて、画面を右から左にスワイプしても開く
+//     (右端スワイプで開く・左端は使わない。閉じるのは逆方向のスワイプ/
+//     背景タップ/Escapeいずれでも可) ---
 const mastheadMenu = document.getElementById('mastheadMenu');
 const mastheadTitle = document.getElementById('mastheadTitle');
 if (mastheadMenu && mastheadTitle) {
+  function isMastheadMenuDrawerMode() {
+    // 幅が十分ある時はナビが通常の横並び行に戻り、サイドメニュー化しない
+    // (@media (max-width:999px)でposition:fixedになっているかで判定する。
+    //  ブレークポイントの数値をJS側にも二重管理しないための判定方法)
+    return getComputedStyle(mastheadMenu).position === 'fixed';
+  }
+  function openMastheadMenu() {
+    mastheadMenu.classList.add('open');
+    mastheadTitle.setAttribute('aria-expanded', 'true');
+  }
+  function closeMastheadMenu() {
+    mastheadMenu.classList.remove('open');
+    mastheadTitle.setAttribute('aria-expanded', 'false');
+  }
   mastheadTitle.addEventListener('click', () => {
-    const open = mastheadMenu.classList.toggle('open');
-    mastheadTitle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    if (mastheadMenu.classList.contains('open')) closeMastheadMenu();
+    else openMastheadMenu();
   });
   document.addEventListener('click', e => {
     if (!mastheadMenu.classList.contains('open')) return;
-    if (e.target.closest('#mastheadMenu') || e.target.closest('#mastheadTitle')) return;
-    mastheadMenu.classList.remove('open');
-    mastheadTitle.setAttribute('aria-expanded', 'false');
+    if (e.target.closest('#mastheadTitle')) return;
+    // メニュー自体は::beforeの半透明オーバーレイがposition:fixedで画面全体に
+    // 広がっているため、closest('#mastheadMenu')で判定すると背景(オーバーレイ)
+    // をタップした時も「メニュー内をタップした」扱いになってしまう。
+    // 実際にメニューの箱の中かどうかは座標で判定する
+    const rect = mastheadMenu.getBoundingClientRect();
+    const inside = e.clientX >= rect.left && e.clientX <= rect.right && e.clientY >= rect.top && e.clientY <= rect.bottom;
+    if (inside) return;
+    closeMastheadMenu();
   });
   document.addEventListener('keydown', e => {
-    if (e.key === 'Escape' && mastheadMenu.classList.contains('open')) {
-      mastheadMenu.classList.remove('open');
-      mastheadTitle.setAttribute('aria-expanded', 'false');
-    }
+    if (e.key === 'Escape' && mastheadMenu.classList.contains('open')) closeMastheadMenu();
   });
+
+  // 右端からのスワイプで開く・開いている時に右へスワイプで閉じる
+  const MENU_SWIPE_THRESHOLD = 50;
+  const MENU_SWIPE_LOCK_THRESHOLD = 6;
+  const MENU_EDGE_ZONE = 60; // 閉じている時、開く判定をするのは右端からこの距離以内で始まったタッチだけ
+  let menuTouchActive = false;
+  let menuTouchStartX = 0;
+  let menuTouchStartY = 0;
+  let menuTouchAxis = null;
+  document.addEventListener('touchstart', e => {
+    menuTouchActive = false;
+    if (!isMastheadMenuDrawerMode()) return;
+    const touch = e.touches[0];
+    const isOpen = mastheadMenu.classList.contains('open');
+    if (isOpen) {
+      // 開いている間はメニューの箱の中から始まったタッチだけ対象にする
+      if (!e.target.closest('#mastheadMenu')) return;
+    } else {
+      // 閉じている間は右端付近から始まったタッチだけ対象にする
+      if (touch.clientX < window.innerWidth - MENU_EDGE_ZONE) return;
+    }
+    menuTouchActive = true;
+    menuTouchStartX = touch.clientX;
+    menuTouchStartY = touch.clientY;
+    menuTouchAxis = null;
+  }, { passive: true });
+  document.addEventListener('touchmove', e => {
+    if (!menuTouchActive) return;
+    const touch = e.touches[0];
+    const dx = touch.clientX - menuTouchStartX;
+    const dy = touch.clientY - menuTouchStartY;
+    if (menuTouchAxis === null) {
+      if (Math.abs(dx) < MENU_SWIPE_LOCK_THRESHOLD && Math.abs(dy) < MENU_SWIPE_LOCK_THRESHOLD) return;
+      menuTouchAxis = Math.abs(dx) > Math.abs(dy) ? 'x' : 'y';
+    }
+    if (menuTouchAxis !== 'x') { menuTouchActive = false; return; }
+    const isOpen = mastheadMenu.classList.contains('open');
+    if (!isOpen && dx < -MENU_SWIPE_THRESHOLD) { openMastheadMenu(); menuTouchActive = false; }
+    else if (isOpen && dx > MENU_SWIPE_THRESHOLD) { closeMastheadMenu(); menuTouchActive = false; }
+  }, { passive: true });
+  document.addEventListener('touchend', () => { menuTouchActive = false; menuTouchAxis = null; });
+  document.addEventListener('touchcancel', () => { menuTouchActive = false; menuTouchAxis = null; });
 }
 
 // --- ポップアップのタブ登録(擬似タスクバー。ページを跨いで特定のポップアップに素早く戻れるようにする) ---

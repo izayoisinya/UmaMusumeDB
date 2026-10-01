@@ -158,28 +158,59 @@ button { touch-action: manipulation; }
     touch-action: manipulation;
     -webkit-tap-highlight-color: transparent;
   }
-  .masthead-menu { display: none; }
   /* この幅ではナビボタン群自体が非表示(flexに参加しない)になるため、
      件数ラベル側にもmargin-left:autoを持たせて右端に固定する
      (.masthead-menuが表示される幅ではそちら側のautoマージンだけで
      十分なので、ここでのみ追加する) */
   #countLabel { margin-left: auto; }
-  .masthead-menu.open {
+  /* タイトルタップ、または右からのスワイプで開く右サイドメニュー。
+     display:noneではtransitionできないため、常時flexで配置した上で
+     transform(画面外へ送る/0に戻す)で出し入れする(common.js側で
+     .open の付け外し+スワイプ検知を行う)。 */
+  .masthead-menu {
     display: flex;
     flex-direction: column;
-    position: absolute;
-    left: 16px;
-    top: 100%;
-    margin-top: 8px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: min(78vw, 300px);
+    margin: 0;
     background: var(--panel);
-    border-radius: 14px;
-    padding: 10px;
-    gap: 6px;
-    min-width: 180px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.35);
-    z-index: 20;
+    border-radius: 18px 0 0 18px;
+    padding: 24px 18px;
+    padding-top: max(24px, env(safe-area-inset-top, 0px));
+    gap: 8px;
+    box-shadow: -14px 0 36px rgba(0,0,0,0.35);
+    z-index: 200;
+    overflow-y: auto;
+    transform: translateX(100%);
+    transition: transform 0.25s ease;
+    pointer-events: none;
   }
-  .masthead-menu.open .masthead-btn { justify-content: center; }
+  /* 背景を薄暗くして、サイドメニューが手前に出ていることを分かりやすく
+     する。position:fixedの疑似要素なので.masthead-menu自身の狭い横幅を
+     超えて画面全体を覆える(別途オーバーレイ用の要素をHTML側に足す必要が
+     ない) */
+  .masthead-menu::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.35);
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+    pointer-events: none;
+  }
+  .masthead-menu.open {
+    transform: translateX(0);
+    pointer-events: auto;
+  }
+  .masthead-menu.open::before {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .masthead-menu .masthead-btn { justify-content: flex-start; width: 100%; }
 }
 /* 登録タブは右下の＋/↑/↓ボタン群のすぐ上に縦積みで固定表示する。
    通常は丸い小さいボタン(頭文字のみ)で、マウスhover/タップで
