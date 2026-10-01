@@ -763,6 +763,11 @@ input[type=text]:focus, input[type=number]:focus, input[type=month]:focus, texta
   position: relative;
   z-index: 1;
   transition: transform 0.2s ease;
+  /* .entry-swipeの唯一の通常フロー子要素だが、flexアイテムとしては
+     デフォルトでは内容にシュリンクしてしまい、.entry自体の幅(一覧側で
+     ストレッチされている)いっぱいに広がらずカードの横幅がバラバラに
+     なってしまうため、明示的に幅いっぱいまで広げる */
+  width: 100%;
 }
 /* チップが多い因子台帳などカードが縦に長くなる場合、height:100%+中央寄せ
    だとボタンがカードの真ん中(スクロールしないと見えない位置)に来てしまう
