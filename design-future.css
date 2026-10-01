@@ -278,8 +278,11 @@
 /* .chip.whiteは1枚のカードに何個も並び、一覧ページでは合計で数百〜
    千個規模になることもあるため、.entry(-surface)と同じ理由で
    backdrop-filterは使わない(要素数だけ背景の再サンプリングが発生し、
-   スクロールが大きくカクつく)。半透明の塗りだけで同系統の見た目に寄せる */
-[data-design="future"] .chip.white { border-color: var(--blue); color: var(--ink); background: rgba(255,255,255,0.72); }
+   スクロールが大きくカクつく)。半透明の塗りだけで同系統の見た目に寄せる。
+   種別(緑/回復/デバフ)が付いていないスキルは下の.skill-chip.cat-*で
+   上書きされないため、黄色をデフォルトの枠色にしておく(回復と誤認しない
+   ように青以外にする) */
+[data-design="future"] .chip.white { border-color: #ffb300; color: var(--ink); background: rgba(255,255,255,0.72); }
 /* design-sf.css/design-military.cssと同じ理由(.chip.whiteとの特異度衝突)で
    種別枠色と金/固有スキルの可読性を個別に上書きしておく。このデザインは
    さらに.chip.whiteにガラス風の半透明背景も設定しているため、それが
@@ -288,10 +291,16 @@
 [data-design="future"] .skill-chip.cat-green { border-color: var(--green); }
 [data-design="future"] .skill-chip.cat-heal { border-color: var(--blue); }
 [data-design="future"] .skill-chip.cat-debuff { border-color: var(--red); }
+/* 金スキルも種別があれば上の.skill-chip.cat-*の色、無ければ.chip.whiteの
+   黄色いデフォルトの枠色が見えるようにする(以前はborder: noneで消えて
+   いた)。base側(style.css)の.chip.skill-goldがborder: noneなので、ここで
+   幅/線種だけ明示的に指定し直す(border-colorには触れず、cat-*側の
+   指定を上書きしないようにする) */
 [data-design="future"] .chip.skill-gold {
   background: linear-gradient(160deg, #ffe082, #ffb300);
   color: #6d4c00;
-  border: none;
+  border-width: 2px;
+  border-style: solid;
   box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
 }
 [data-design="future"] .chip.skill-unique {
