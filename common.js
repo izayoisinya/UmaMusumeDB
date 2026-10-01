@@ -927,8 +927,9 @@ function showToast(message) {
 
   // トラックパッドの2本指横スワイプ(wheelイベント)。縦スクロールの
   // ついでに誤反応しないよう、横方向の動きが縦方向より明確に大きい時だけ扱う。
-  // (向きの対応関係は実機未確認。逆に感じる場合はここの不等号を
-  //  入れ替えれば直る)
+  // カード上での横スワイプと判定した時点でpreventDefault()し、ブラウザ標準の
+  // 「2本指横スワイプ=ページを戻る/進む」ジェスチャーと競合しないようにする
+  // (これをしないと、カードの開閉と同時にページ全体が前後に動いてしまう)。
   const WHEEL_THRESHOLD = 40;
   let wheelEntry = null;
   let wheelAccum = 0;
@@ -937,13 +938,14 @@ function showToast(message) {
     const entry = e.target.closest('.entry-swipe');
     if (!entry || e.target.closest('.entry-actions')) return;
     if (Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return;
+    e.preventDefault();
     if (wheelEntry !== entry) { wheelEntry = entry; wheelAccum = 0; }
     wheelAccum += e.deltaX;
     clearTimeout(wheelResetTimer);
     wheelResetTimer = setTimeout(() => { wheelAccum = 0; }, 400);
     if (wheelAccum < -WHEEL_THRESHOLD) setOpenEntry(entry);
     else if (wheelAccum > WHEEL_THRESHOLD && entry === openEntry) closeOpenEntry();
-  }, { passive: true });
+  }, { passive: false });
 
   // 開いているカード以外をタップ/クリックしたら閉じる
   document.addEventListener('click', e => {
