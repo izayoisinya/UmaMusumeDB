@@ -1913,6 +1913,14 @@ mark.search-hit {
     align-items: start;
   }
 }
+/* ウマ娘図鑑はタブレット横向きだとカード1枚がスカスカになるので3列にする
+   (スマホの横向き、大画面機でも~950px程度までなので、幅が足りず窮屈に
+   ならないよう1000pxをタブレットとの境目にする) */
+@media (orientation: landscape) and (min-width: 1000px) {
+  .uma-page .entries {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
 /* ウマ娘図鑑はタブレットなど幅に余裕がある端末なら縦向きでも2列にする
    (スマホの縦向きは1列のまま) */
 @media (orientation: portrait) and (min-width: 700px) {
