@@ -903,6 +903,31 @@ mark.search-hit {
 }
 .entry-del:hover { background: var(--danger); color: #fff; }
 
+/* 編集/削除ボタンは常時表示だと邪魔なので普段は畳んでおき、カードを
+   左にスワイプ(指 or トラックパッドの2本指)した時だけ出す
+   (common.jsでスワイプ/トラックパッド操作を検知して.actions-openを付け外し)。
+   マウス等hoverできる環境では、スワイプ操作がなくてもカードにカーソルを
+   乗せるだけで出せるようにしておく(フォールバック) */
+.entry-actions {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  pointer-events: none;
+  transition: max-height 0.18s ease, opacity 0.12s ease;
+}
+.entry.actions-open .entry-actions {
+  max-height: 72px;
+  opacity: 1;
+  pointer-events: auto;
+}
+@media (hover: hover) and (pointer: fine) {
+  .entry:hover .entry-actions {
+    max-height: 72px;
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
 .empty {
   color: var(--ink-soft);
   font-size: 13px;

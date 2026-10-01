@@ -832,3 +832,78 @@ function showToast(message) {
     toastRemoveTimer = setTimeout(() => { toast.classList.remove('hide'); }, 300);
   }, 2200);
 }
+
+// --- 一覧カードの編集/削除ボタンをスワイプで出し入れ ---
+// 常時表示だと邪魔なので普段は(CSS側で)畳んでおき、カードを左に
+// スワイプした時だけ表示する。指でのタッチスワイプと、iPad等の
+// トラックパッドでの2本指横スワイプ(wheelイベントのdeltaXとして来る)の
+// 両方に対応する。マウス等hoverできる環境はCSS側の:hoverだけで表示できる
+// ようにしてあるので、ここでは何もしない。
+(function () {
+  let openEntry = null;
+  function setOpenEntry(entry) {
+    if (openEntry && openEntry !== entry) openEntry.classList.remove('actions-open');
+    openEntry = entry;
+    if (entry) entry.classList.add('actions-open');
+  }
+  function closeOpenEntry() {
+    setOpenEntry(null);
+  }
+
+  // 指でのスワイプ
+  const SWIPE_THRESHOLD = 24;
+  const SWIPE_LOCK_THRESHOLD = 6;
+  let touchEntry = null;
+  let touchStartX = 0;
+  let touchStartY = 0;
+  let touchAxis = null; // 'x' | 'y' | null(未確定)
+  document.addEventListener('touchstart', e => {
+    const entry = e.target.closest('.entry');
+    // ボタン自体からのタッチはスワイプ扱いせず、普通にタップできるようにする
+    if (!entry || e.target.closest('.entry-actions')) { touchEntry = null; return; }
+    touchEntry = entry;
+    touchStartX = e.touches[0].clientX;
+    touchStartY = e.touches[0].clientY;
+    touchAxis = null;
+  }, { passive: true });
+  document.addEventListener('touchmove', e => {
+    if (!touchEntry) return;
+    const dx = e.touches[0].clientX - touchStartX;
+    const dy = e.touches[0].clientY - touchStartY;
+    if (touchAxis === null) {
+      if (Math.abs(dx) < SWIPE_LOCK_THRESHOLD && Math.abs(dy) < SWIPE_LOCK_THRESHOLD) return;
+      touchAxis = Math.abs(dx) > Math.abs(dy) ? 'x' : 'y';
+    }
+    if (touchAxis !== 'x') return;
+    if (dx < -SWIPE_THRESHOLD) setOpenEntry(touchEntry);
+    else if (dx > SWIPE_THRESHOLD && touchEntry === openEntry) closeOpenEntry();
+  }, { passive: true });
+  document.addEventListener('touchend', () => { touchEntry = null; touchAxis = null; });
+  document.addEventListener('touchcancel', () => { touchEntry = null; touchAxis = null; });
+
+  // トラックパッドの2本指横スワイプ(wheelイベント)。縦スクロールの
+  // ついでに誤反応しないよう、横方向の動きが縦方向より明確に大きい時だけ扱う。
+  const WHEEL_THRESHOLD = 40;
+  let wheelEntry = null;
+  let wheelAccum = 0;
+  let wheelResetTimer = null;
+  document.addEventListener('wheel', e => {
+    const entry = e.target.closest('.entry');
+    if (!entry || e.target.closest('.entry-actions')) return;
+    if (Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return;
+    if (wheelEntry !== entry) { wheelEntry = entry; wheelAccum = 0; }
+    wheelAccum += e.deltaX;
+    clearTimeout(wheelResetTimer);
+    wheelResetTimer = setTimeout(() => { wheelAccum = 0; }, 400);
+    if (wheelAccum > WHEEL_THRESHOLD) setOpenEntry(entry);
+    else if (wheelAccum < -WHEEL_THRESHOLD && entry === openEntry) closeOpenEntry();
+  }, { passive: true });
+
+  // 開いているカード以外をタップ/クリックしたら閉じる
+  document.addEventListener('click', e => {
+    if (!openEntry) return;
+    if (e.target.closest('.entry-actions')) return;
+    if (e.target.closest('.entry') === openEntry) return;
+    closeOpenEntry();
+  }, true);
+})();
