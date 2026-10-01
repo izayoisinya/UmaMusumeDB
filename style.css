@@ -1841,6 +1841,16 @@ mark.search-hit {
     align-items: start;
   }
 }
+/* ウマ娘図鑑はタブレットなど幅に余裕がある端末なら縦向きでも2列にする
+   (スマホの縦向きは1列のまま) */
+@media (orientation: portrait) and (min-width: 700px) {
+  .uma-page .entries {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    align-items: start;
+  }
+}
 
 .toast-notice {
   position: fixed;
