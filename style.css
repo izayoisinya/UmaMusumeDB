@@ -804,6 +804,16 @@ input[type=text]:focus, input[type=number]:focus, input[type=month]:focus, texta
     pointer-events: auto;
   }
 }
+/* マウスを動かさずページだけスクロールしても、カーソル位置に来たカードへ
+   次々:hoverが移ってtransition(transform/opacity)が発生し続け、カード数の
+   多い一覧(ウマ娘図鑑等)でスクロールがカクつく原因になっていた。
+   スクロール中(common.jsが付け外しする.is-scrolling)はtransitionを止めて
+   瞬時切り替えにすることで負荷を抑える(スクロール中は見えないので
+   アニメーションが無くても体感上問題ない) */
+.is-scrolling .entry-surface,
+.is-scrolling .entry-actions {
+  transition: none !important;
+}
 /* スキル詳細ポップアップの対応サポカ表示など、ポップアップ内で囲いを
    出したくない箇所用。カスタムデザイン側の.entryへの上書き(box-shadow等)
    も合わせて打ち消す必要があるため、各design-*.cssでも.entry-flatを

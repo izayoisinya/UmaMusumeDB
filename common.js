@@ -957,4 +957,20 @@ function showToast(message) {
     if (e.target.closest('.entry-swipe') === openEntry) return;
     closeOpenEntry();
   }, true);
+
+  // PC等hoverできる環境では、マウスを動かさずページだけをスクロールしても
+  // ブラウザは「カーソル位置に今どのカードがあるか」を再計算して:hoverの
+  // 対象を切り替える。カードが多い一覧だと、スクロール中に次々別のカードへ
+  // :hoverが移ってはtransformのアニメーションが発生し続け、カクつく原因に
+  // なっていた。スクロール中だけ一時的にtransitionを無効化して、
+  // (見た目はアニメーションせず瞬時に切り替わるだけになるが、どのみち
+  // スクロール中は見えないので体感上は問題ない)負荷を抑える。
+  let scrollingResetTimer = null;
+  window.addEventListener('scroll', () => {
+    document.documentElement.classList.add('is-scrolling');
+    clearTimeout(scrollingResetTimer);
+    scrollingResetTimer = setTimeout(() => {
+      document.documentElement.classList.remove('is-scrolling');
+    }, 150);
+  }, { passive: true, capture: true });
 })();
