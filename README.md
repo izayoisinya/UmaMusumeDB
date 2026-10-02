@@ -1,8 +1,8 @@
 # 因子台帳
 
-ウマ娘プリティーダービーのデータ（因子・所持ウマ娘・サポートカード・スキル・イベント結果記録）
-を登録・検索できる個人用ツール。もともとは因子台帳単体のツールだったが、現在は5ページ構成の
-アプリになっている。
+ウマ娘プリティーダービーのデータ（因子・所持ウマ娘・サポートカード・スキル・イベント結果記録・
+育成計画・進行状況ログ）を登録・検索できる個人用ツール。もともとは因子台帳単体のツールだったが、
+現在は7ページ構成のアプリになっている。
 
 データはこのリポジトリの `data/*.json` を GitHub Contents API 経由でDB代わりに読み書きする。
 サーバー側の処理は一切なく、静的ファイルのみで完結する（GitHub Pages）。
@@ -16,6 +16,8 @@
 | サポカ図鑑 | `support.html` / `support.js` | 所持サポートカードの効果・所持スキルを登録・検索 |
 | スキルブック | `skill.html` / `skill.js` | スキルの種別・効果・所持ウマ娘/サポカを一覧管理 |
 | イベント結果記録 | `pvp.html` / `pvp.js` | チャンピオンズミーティング・リーグオブヒーローズの成績記録 |
+| 育成計画 | `training.html` / `training.js` | 育成予定ウマ娘のサポカ編成・因子設計図を記録 |
+| 進行状況ログ | `progress.html` / `progress.js` | 育成回数・レース成績・コレクション進行度・ファン数などの月次スナップショットと前回比 |
 
 各ページの右上「GitHub連携」ボタンから、この1つのリポジトリに対して同じ接続設定
 （所有者・リポジトリ名・ブランチ・PAT）を使い回す。
@@ -29,9 +31,13 @@
 ├── support.html / support.js  # サポカ図鑑
 ├── skill.html / skill.js      # スキルブック
 ├── pvp.html / pvp.js          # イベント結果記録
+├── training.html / training.js # 育成計画
+├── progress.html / progress.js # 進行状況ログ
 ├── common.js                  # 全ページ共通のロジック
 │                               # (GitHub連携設定・画像アップロード・ライトボックス等)
+├── character-config.js        # キャラ編成(サポカ編成・因子設計図)の共通ウィジェット
 ├── style.css                  # 全ページ共通のスタイル
+├── design-sf.css / design-military.css / design-future.css  # 切り替え式デザイン
 ├── manifest.json               # PWA用マニフェスト
 ├── sw.js                       # Service Worker（キャッシュは行わず常に最新を取得）
 ├── icons/                      # PWAアイコン
@@ -40,7 +46,9 @@
 │   ├── uma_musume.json        # ウマ娘データ
 │   ├── support_cards.json     # サポートカードデータ
 │   ├── skills.json            # スキルデータ
-│   └── pvp_events.json        # イベント結果記録データ
+│   ├── pvp_events.json        # イベント結果記録データ
+│   ├── training_plans.json    # 育成計画データ
+│   └── progress_log.json      # 進行状況ログデータ
 ├── images/                     # 各種スクリーンショット・イラスト画像
 ├── videos/                     # イベント結果の決勝動画など
 └── README.md

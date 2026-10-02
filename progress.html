@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>進行状況ログ - 因子台帳</title>
+
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#8bc34a">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="因子台帳">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="design-sf.css">
+<link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="design-military.css">
+<link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="design-future.css">
+</head>
+<body>
+<div class="ledger progress-page">
+  <div class="masthead">
+    <div class="masthead-top">
+      <h1 id="mastheadTitle" class="masthead-title-toggle" aria-expanded="false"><span class="masthead-menu-icon" aria-hidden="true">☰</span>進行状況ログ</h1>
+      <nav class="masthead-menu" id="mastheadMenu">
+        <div class="masthead-menu-title" aria-hidden="true">メニュー</div>
+        <a href="index.html" class="masthead-btn masthead-nav">因子台帳</a>
+        <a href="uma.html" class="masthead-btn masthead-nav">ウマ娘</a>
+        <a href="support.html" class="masthead-btn masthead-nav">サポカ</a>
+        <a href="skill.html" class="masthead-btn masthead-nav">スキル</a>
+        <a href="pvp.html" class="masthead-btn masthead-nav">イベント結果</a>
+        <a href="training.html" class="masthead-btn masthead-nav">育成計画</a>
+        <a href="progress.html" class="masthead-btn masthead-nav">進行状況</a>
+        <button type="button" class="masthead-btn" id="openSettingsModalBtn">⚙ 設定</button>
+      </nav>
+      <div id="pinnedTabsBar" class="pinned-tabs-bar" hidden></div>
+      <p id="countLabel">0 件記録</p>
+    </div>
+  </div>
+
+  <div class="layout">
+    <div class="panel list-panel">
+      <h2>
+        月ごとの記録
+        <button type="button" class="btn secondary btn-inline" id="refreshBtn">更新</button>
+      </h2>
+
+      <div class="status" id="listStatus"></div>
+      <div class="entries" id="entries"></div>
+      <div class="empty" id="emptyMsg" style="display:none;">まだ記録がありません。「＋ 記録を追加」から入力して保存してください。</div>
+    </div>
+  </div>
+</div>
+
+<div class="scroll-fab-group" id="scrollFabGroup">
+  <button type="button" class="scroll-fab register-fab" id="openRegisterModalBtn" aria-label="＋ 記録を追加">＋</button>
+  <button type="button" class="scroll-fab" id="scrollTopBtn" aria-label="一番上へ">↑</button>
+  <button type="button" class="scroll-fab" id="scrollBottomBtn" aria-label="一番下へ">↓</button>
+</div>
+
+<div class="modal-overlay" id="modalOverlay" hidden>
+  <div class="modal" id="progressModal" role="dialog" aria-labelledby="progressModalTitle" hidden>
+    <h2 id="progressModalTitle">進行状況ログを追加</h2>
+
+    <form class="form-grid" id="progressForm">
+      <div>
+        <label for="fDate">記録日</label>
+        <input type="date" id="fDate">
+      </div>
+
+      <div class="config-section-title">育成</div>
+      <div>
+        <label for="fTrainingCount">育成回数</label>
+        <input type="number" id="fTrainingCount" min="0" placeholder="例: 6179">
+      </div>
+      <div>
+        <label for="fGoodEndCount">グッドエンド</label>
+        <input type="number" id="fGoodEndCount" min="0" placeholder="例: 108">
+      </div>
+      <div>
+        <label for="fBestScore">歴代最高評価点</label>
+        <input type="number" id="fBestScore" min="0" placeholder="例: 76831">
+      </div>
+      <div>
+        <label for="fRaisedUma">育成ウマ娘</label>
+        <input type="number" id="fRaisedUma" min="0" placeholder="例: 172">
+      </div>
+
+      <div class="config-section-title">重賞勝利数</div>
+      <div>
+        <label for="fG1Wins">GI</label>
+        <input type="number" id="fG1Wins" min="0" placeholder="例: 44">
+      </div>
+      <div>
+        <label for="fG2Wins">GII</label>
+        <input type="number" id="fG2Wins" min="0" placeholder="例: 44">
+      </div>
+      <div>
+        <label for="fG3Wins">GIII</label>
+        <input type="number" id="fG3Wins" min="0" placeholder="例: 76">
+      </div>
+      <div>
+        <label for="fExWins">EX</label>
+        <input type="number" id="fExWins" min="0" placeholder="例: 167">
+      </div>
+
+      <div class="config-section-title">チーム戦</div>
+      <div>
+        <label for="fTeamClass">CLASS</label>
+        <input type="number" id="fTeamClass" min="0" placeholder="例: 6">
+      </div>
+      <div>
+        <label for="fTeamBestScore">チーム最高スコア</label>
+        <input type="number" id="fTeamBestScore" min="0" placeholder="例: 5564502">
+      </div>
+      <div>
+        <label for="fTeamWins">勝利数</label>
+        <input type="number" id="fTeamWins" min="0" placeholder="例: 6268">
+      </div>
+
+      <div class="config-section-title">進行度</div>
+      <div>
+        <label for="fMainStory">メインストーリー</label>
+        <input type="number" id="fMainStory" min="0" placeholder="例: 169">
+      </div>
+      <div>
+        <label for="fUmaStory">ウマ娘ストーリー</label>
+        <input type="number" id="fUmaStory" min="0" placeholder="例: 847">
+      </div>
+      <div>
+        <label for="fSupportCards">サポートカード</label>
+        <input type="number" id="fSupportCards" min="0" placeholder="例: 491">
+      </div>
+      <div>
+        <label for="fSongs">楽曲</label>
+        <input type="number" id="fSongs" min="0" placeholder="例: 51">
+      </div>
+      <div>
+        <label for="fStaging">演出</label>
+        <input type="number" id="fStaging" min="0" placeholder="例: 725">
+      </div>
+      <div>
+        <label for="fGallery">ギャラリー</label>
+        <input type="number" id="fGallery" min="0" placeholder="例: 11688">
+      </div>
+      <div>
+        <label for="fVoice">ボイス</label>
+        <input type="number" id="fVoice" min="0" placeholder="例: 13371">
+      </div>
+
+      <div class="config-section-title">ファン</div>
+      <div>
+        <label for="fTotalFans">ファン総獲得数</label>
+        <input type="number" id="fTotalFans" min="0" placeholder="例: 3169227473">
+      </div>
+
+      <div class="status" id="status"></div>
+      <button type="submit" class="btn" id="saveProgressBtn">この内容を保存</button>
+      <button type="button" class="btn secondary" id="clearBtn">フォームをクリア</button>
+    </form>
+    <button type="button" class="btn secondary modal-close-btn" data-modal="progressModal">閉じる</button>
+  </div>
+
+  <div class="modal" id="confirmDeleteModal" role="dialog" aria-labelledby="confirmDeleteTitle" hidden>
+    <h2 id="confirmDeleteTitle">削除の確認</h2>
+    <p class="hint" id="confirmDeleteMessage"></p>
+    <button type="button" class="btn danger" id="confirmDeleteBtn">削除する</button>
+    <button type="button" class="btn secondary modal-close-btn" data-modal="confirmDeleteModal">キャンセル</button>
+  </div>
+
+  <div class="modal" id="settingsModal" role="dialog" aria-labelledby="settingsModalTitle" hidden>
+    <h2 id="settingsModalTitle">設定</h2>
+    <div class="settings-tabs">
+      <button type="button" class="settings-tab active" data-tab="display">表示</button>
+      <button type="button" class="settings-tab" data-tab="github">GitHub連携</button>
+    </div>
+
+    <div class="settings-pane" data-pane="display">
+      <p class="hint">アプリの見た目を切り替えます。</p>
+      <button type="button" class="btn secondary" id="themeToggleBtn">🌙 ダークモードに切り替え</button>
+      <p class="hint" id="themeToggleHint" hidden>このデザインは明暗を問わず固定の配色のため、テーマ切り替えは使用できません。</p>
+      <div style="margin-top:14px;">
+        <label for="designSelect">デザイン</label>
+        <select id="designSelect">
+          <option value="default">標準</option>
+          <option value="sf">SF(サイバーパンク)</option>
+          <option value="military">ミリタリー</option>
+          <option value="future">未来風(Liquid Glass)</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="settings-pane" data-pane="github" hidden>
+      <p class="hint">このアプリのデータは、このリポジトリに保存されます。<strong>閲覧のみならPATなしでも見られます</strong>（リポジトリ所有者・リポジトリ名だけ入力）。保存・削除には Contents 権限を持つ個人アクセストークン(PAT)が必要です。</p>
+      <div class="form-grid">
+        <div>
+          <label for="cfgOwner">リポジトリ所有者</label>
+          <input type="text" id="cfgOwner" placeholder="例: izayoisinya">
+        </div>
+        <div>
+          <label for="cfgRepo">リポジトリ名</label>
+          <input type="text" id="cfgRepo" placeholder="例: UmaMusumeDB">
+        </div>
+        <div>
+          <label for="cfgBranch">ブランチ</label>
+          <input type="text" id="cfgBranch" placeholder="main">
+        </div>
+        <div>
+          <label for="cfgToken">個人アクセストークン (PAT・保存/削除する場合のみ)</label>
+          <input type="password" id="cfgToken" placeholder="閲覧だけなら空欄でOK" autocomplete="off">
+        </div>
+        <button type="button" class="btn" id="cfgSaveBtn">保存して読み込む</button>
+        <button type="button" class="btn secondary" id="cfgClearBtn">設定を消去</button>
+      </div>
+      <div class="status" id="cfgStatus"></div>
+    </div>
+
+    <button type="button" class="btn secondary modal-close-btn" data-modal="settingsModal">閉じる</button>
+  </div>
+</div>
+
+<script src="common.js"></script>
+<script src="progress.js"></script>
+</body>
+</html>

@@ -320,6 +320,7 @@
 [data-design="future"] input[type=number],
 [data-design="future"] input[type=password],
 [data-design="future"] input[type=month],
+[data-design="future"] input[type=date],
 [data-design="future"] textarea,
 [data-design="future"] select {
   background: rgba(255, 255, 255, 0.5);
@@ -333,6 +334,7 @@
 [data-design="future"] input[type=text]:focus,
 [data-design="future"] input[type=number]:focus,
 [data-design="future"] input[type=month]:focus,
+[data-design="future"] input[type=date]:focus,
 [data-design="future"] textarea:focus,
 [data-design="future"] select:focus {
   border-color: var(--blue);

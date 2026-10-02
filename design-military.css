@@ -215,6 +215,7 @@
 [data-design="military"] input[type=number],
 [data-design="military"] input[type=password],
 [data-design="military"] input[type=month],
+[data-design="military"] input[type=date],
 [data-design="military"] textarea,
 [data-design="military"] select {
   background: rgba(15, 16, 10, 0.6);
@@ -225,6 +226,7 @@
 [data-design="military"] input[type=text]:focus,
 [data-design="military"] input[type=number]:focus,
 [data-design="military"] input[type=month]:focus,
+[data-design="military"] input[type=date]:focus,
 [data-design="military"] textarea:focus,
 [data-design="military"] select:focus {
   border-color: var(--gold);

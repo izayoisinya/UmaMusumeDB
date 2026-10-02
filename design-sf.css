@@ -253,6 +253,7 @@
 [data-design="sf"] input[type=number],
 [data-design="sf"] input[type=password],
 [data-design="sf"] input[type=month],
+[data-design="sf"] input[type=date],
 [data-design="sf"] textarea,
 [data-design="sf"] select {
   background: rgba(5, 8, 16, 0.7);
@@ -263,6 +264,7 @@
 [data-design="sf"] input[type=text]:focus,
 [data-design="sf"] input[type=number]:focus,
 [data-design="sf"] input[type=month]:focus,
+[data-design="sf"] input[type=date]:focus,
 [data-design="sf"] textarea:focus,
 [data-design="sf"] select:focus {
   border-color: var(--blue);

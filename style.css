@@ -530,7 +530,7 @@ label {
   border-left: 4px solid var(--green-dim);
   margin-bottom: 8px;
 }
-input[type=text], input[type=number], input[type=password], input[type=month], textarea, select {
+input[type=text], input[type=number], input[type=password], input[type=month], input[type=date], textarea, select {
   width: 100%;
   font-family: 'M PLUS Rounded 1c', sans-serif;
   font-size: 13px;
@@ -540,7 +540,7 @@ input[type=text], input[type=number], input[type=password], input[type=month], t
   background: var(--surface);
   color: var(--ink);
 }
-input[type=text]:focus, input[type=number]:focus, input[type=month]:focus, textarea:focus, select:focus {
+input[type=text]:focus, input[type=number]:focus, input[type=month]:focus, input[type=date]:focus, textarea:focus, select:focus {
   border-color: var(--blue);
 }
 
@@ -787,6 +787,36 @@ input[type=text]:focus, input[type=number]:focus, input[type=month]:focus, texta
   padding-bottom: 4px;
   border-bottom: 2px solid var(--panel-line);
 }
+/* 進行状況ログ: 月ごとのステータス数値を項目グループごとに並べる */
+.progress-date {
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--ink);
+}
+.progress-stat-group { margin-top: 12px; }
+.progress-stat-group:first-child { margin-top: 0; }
+.progress-stat-group-title {
+  font-size: 11px;
+  color: var(--ink-soft);
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.progress-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 8px;
+}
+.progress-stat {
+  background: var(--bg-bottom);
+  border: 1px solid var(--panel-line);
+  border-radius: 10px;
+  padding: 6px 8px;
+}
+.progress-stat-label { font-size: 10px; color: var(--ink-soft); font-weight: 700; }
+.progress-stat-value { font-size: 14px; font-weight: 800; color: var(--ink); }
+.progress-stat-diff { font-size: 10px; font-weight: 700; color: var(--green-dim); }
+.progress-stat-diff.negative { color: var(--danger); }
 .entry {
   border: 1.5px solid var(--panel-line);
   border-radius: 14px;
