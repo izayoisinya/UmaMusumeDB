@@ -179,14 +179,22 @@ html.body-scroll-locked { overflow: hidden; }
      画面全体を覆うドロワーではなく、上端が画面の縦半分の位置に来る
      カード形式にする(右下に余白を残してフロー要素っぽく見せる)。
      display:noneではtransitionできないため、常時flexで配置した上で
-     transform(画面外へ送る/0に戻す)で出し入れする(common.js側で
-     .open の付け外し+スワイプ検知を行う)。 */
+     出し入れする(common.js側で.open の付け外し+スワイプ検知を行う)。
+     出し入れの位置指定にはtransformではなくrightプロパティを使う。
+     transformは「computed値がnoneでなければ、position:fixedな子孫
+     (このすぐ下の::beforeの全画面オーバーレイ)の基準点を自分自身に
+     変えてしまう」という仕様があり、transformで動かすと::beforeの
+     inset:0がこのカード自身の小さな箱だけに効くようになってしまい、
+     画面の他の部分(カードの外)をタップ/スワイプしても暗転オーバーレイに
+     当たらず、裏の一覧カードのスワイプなどがそのまま反応してしまう
+     (実機で発覚)。rightなら基準点に影響しないため、::beforeは引き続き
+     ビューポート全体を覆える */
   .masthead-menu {
     display: flex;
     flex-direction: column;
     position: fixed;
     top: 50vh;
-    right: 12px;
+    right: -340px; /* 最大width(300px)+余裕を持って画面外へ */
     bottom: 12px;
     width: min(78vw, 300px);
     margin: 0;
@@ -197,8 +205,7 @@ html.body-scroll-locked { overflow: hidden; }
     box-shadow: 0 14px 36px rgba(0,0,0,0.35);
     z-index: 200;
     overflow-y: auto;
-    transform: translateX(calc(100% + 24px));
-    transition: transform 0.25s ease;
+    transition: right 0.25s ease;
     pointer-events: none;
   }
   /* カードの一番上に、本体のヘッダーと同じ配色の帯で「メニュー」という
@@ -230,7 +237,7 @@ html.body-scroll-locked { overflow: hidden; }
     pointer-events: none;
   }
   .masthead-menu.open {
-    transform: translateX(0);
+    right: 12px;
     pointer-events: auto;
   }
   .masthead-menu.open::before {
