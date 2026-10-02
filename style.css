@@ -366,8 +366,12 @@ html.body-scroll-locked { overflow: hidden; }
      出ないようにしておく。html/body側に付けるとoverflow-yが暗黙にautoへ
      変換され、.mastheadのposition:stickyが効かなくなる(実機で発覚した
      不具合)ため、.masthead(.layoutの外側の兄弟要素)を巻き込まないよう
-     ここ(.layout)に限定して付ける */
-  overflow-x: hidden;
+     ここ(.layout)に限定して付ける。
+     overflow-x:hiddenだとこの.layout自身もoverflow-y:autoへ暗黙変換され、
+     .layoutの子孫(進行状況ログのグラフパネルなど)のposition:stickyが
+     効かなくなる不具合が後日発覚したため、スクロールコンテナを作らない
+     overflow-x:clipに変更した(横のクリップ自体はhiddenと同じ効果) */
+  overflow-x: clip;
 }
 
 .panel {
@@ -817,6 +821,53 @@ input[type=text]:focus, input[type=number]:focus, input[type=month]:focus, input
 .progress-stat-value { font-size: 14px; font-weight: 800; color: var(--ink); }
 .progress-stat-diff { font-size: 10px; font-weight: 700; color: var(--green-dim); }
 .progress-stat-diff.negative { color: var(--danger); }
+
+/* 進行状況ログ: 横画面の広い画面(タブレット横画面など)では、数値一覧が
+   間延びするため右半分にグラフを並べる。数値一覧側はページ全体のスクロールに
+   任せ、グラフ側はposition:stickyで画面内に留まる(スクロールしない)ようにする */
+.progress-page .chart-panel { display: none; }
+@media (orientation: landscape) and (min-width: 900px) {
+  .progress-page .layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+    gap: 16px;
+  }
+  .progress-page .chart-panel {
+    display: block;
+    position: sticky;
+    top: 90px;
+  }
+}
+.progress-chart { margin-top: 16px; }
+.progress-chart:first-of-type { margin-top: 10px; }
+.progress-chart-title {
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+.progress-chart svg { display: block; width: 100%; height: auto; }
+.progress-chart-bar-hit { cursor: pointer; }
+.progress-chart-bar { transition: opacity 0.1s ease; }
+.progress-chart-tooltip {
+  position: fixed;
+  z-index: 300;
+  pointer-events: none;
+  background: var(--panel);
+  border: 1.5px solid var(--panel-line);
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-size: 11px;
+  color: var(--ink-soft);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+  white-space: nowrap;
+}
+.progress-chart-tooltip strong {
+  display: block;
+  font-size: 13px;
+  color: var(--ink);
+}
 .entry {
   border: 1.5px solid var(--panel-line);
   border-radius: 14px;

@@ -54,8 +54,17 @@
       <div class="entries" id="entries"></div>
       <div class="empty" id="emptyMsg" style="display:none;">まだ記録がありません。「＋ 記録を追加」から入力して保存してください。</div>
     </div>
+
+    <div class="panel chart-panel" id="chartPanel">
+      <h2>月間の増加数</h2>
+      <div class="progress-chart" id="trainingCountChart"></div>
+      <div class="progress-chart" id="totalFansChart"></div>
+      <div class="empty" id="chartEmptyMsg" style="display:none;">比較できる記録が2件以上になるとグラフが表示されます。</div>
+    </div>
   </div>
 </div>
+
+<div class="progress-chart-tooltip" id="chartTooltip" hidden></div>
 
 <div class="scroll-fab-group" id="scrollFabGroup">
   <button type="button" class="scroll-fab register-fab" id="openRegisterModalBtn" aria-label="＋ 記録を追加">＋</button>

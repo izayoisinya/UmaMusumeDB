@@ -298,6 +298,7 @@ function renderEntries() {
   container.innerHTML = '';
 
   document.getElementById('countLabel').textContent = allEntries.length + ' 件記録';
+  renderCharts();
 
   if (!allEntries.length) {
     emptyMsg.style.display = 'block';
@@ -349,6 +350,163 @@ function renderEntries() {
     row.querySelector('.entry-del').addEventListener('click', e => { e.stopPropagation(); askDeleteConfirm(entry, e.currentTarget); });
     container.appendChild(row);
   });
+}
+
+// --- グラフ(タブレット横画面で数値一覧の右側に表示する、月間の増加数の棒グラフ) ---
+// 総数を積み上げる折れ線ではなく、前回記録からの増分だけを月ごとの棒で見せる。
+const CHART_VIEW_W = 480;
+const CHART_VIEW_H = 190;
+const CHART_PAD_TOP = 10;
+const CHART_PAD_BOTTOM = 32;
+const CHART_PAD_LEFT = 56;
+const CHART_PAD_RIGHT = 10;
+
+// 0/最大値のグリッド線をキリのいい数値(1/2/5×10^n)に丸める
+function niceMax(value) {
+  if (value <= 0) return 1;
+  const exp = Math.floor(Math.log10(value));
+  const base = Math.pow(10, exp);
+  const n = value / base;
+  let niceN;
+  if (n <= 1) niceN = 1;
+  else if (n <= 2) niceN = 2;
+  else if (n <= 5) niceN = 5;
+  else niceN = 10;
+  return niceN * base;
+}
+
+function measureTextWidth(text, fontSize, fontWeight) {
+  if (!measureTextWidth._ctx) measureTextWidth._ctx = document.createElement('canvas').getContext('2d');
+  const ctx = measureTextWidth._ctx;
+  ctx.font = `${fontWeight || 400} ${fontSize}px 'M PLUS Rounded 1c', sans-serif`;
+  return ctx.measureText(text).width;
+}
+
+// 上端だけ角丸・ベースライン側は直角の棒のpath(SVGのrxは四隅均等にしか
+// 丸められないため、pathで上2角だけ丸める)
+function roundedTopBarPath(x, y, w, h, r) {
+  if (h <= 0) return '';
+  const radius = Math.min(r, w / 2, h);
+  return `M ${x} ${y + h} L ${x} ${y + radius} Q ${x} ${y} ${x + radius} ${y} `
+    + `L ${x + w - radius} ${y} Q ${x + w} ${y} ${x + w} ${y + radius} L ${x + w} ${y + h} Z`;
+}
+
+// 年をまたいだ時だけ先頭に年を付ける(「26年8月」→「9月」「10月」→年が変わったら「27年1月」)
+function monthLabelFor(dateStr, prevBarDateStr) {
+  const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(dateStr || '');
+  if (!m) return '?';
+  const year = m[1];
+  const month = Number(m[2]);
+  const prevYear = prevBarDateStr ? (/^(\d{4})-/.exec(prevBarDateStr) || [])[1] : null;
+  if (prevBarDateStr == null || prevYear !== year) return `${year.slice(2)}年${month}月`;
+  return `${month}月`;
+}
+
+// 指定した項目の「1つ前の記録からの増分」を記録日の昇順(古い順)で並べる
+function buildDiffSeries(key) {
+  const ascending = allEntries.slice().sort((a, b) => (a.date || '').localeCompare(b.date || ''));
+  const series = [];
+  for (let i = 1; i < ascending.length; i++) {
+    const cur = ascending[i];
+    const prev = ascending[i - 1];
+    if (cur[key] == null || prev[key] == null) continue;
+    series.push({
+      date: cur.date,
+      label: monthLabelFor(cur.date, series.length ? series[series.length - 1].date : null),
+      value: cur[key] - prev[key],
+    });
+  }
+  return series;
+}
+
+const chartTooltipEl = document.getElementById('chartTooltip');
+function showChartTooltip(targetEl, title, label, value) {
+  const sign = value >= 0 ? '+' : '';
+  chartTooltipEl.innerHTML = '';
+  const strong = document.createElement('strong');
+  strong.textContent = sign + formatNumber(value);
+  chartTooltipEl.appendChild(strong);
+  chartTooltipEl.appendChild(document.createTextNode(`${title} ／ ${label}`));
+  chartTooltipEl.hidden = false;
+  const rect = targetEl.getBoundingClientRect();
+  chartTooltipEl.style.left = (rect.left + rect.width / 2) + 'px';
+  chartTooltipEl.style.top = (rect.top - 6) + 'px';
+  chartTooltipEl.style.transform = 'translate(-50%, -100%)';
+}
+function hideChartTooltip() {
+  chartTooltipEl.hidden = true;
+}
+
+function renderBarChart(containerId, title, color, series) {
+  const container = document.getElementById(containerId);
+  if (!series.length) { container.innerHTML = ''; return; }
+
+  const maxVal = niceMax(Math.max(...series.map(d => Math.abs(d.value)), 1));
+  const plotW = CHART_VIEW_W - CHART_PAD_LEFT - CHART_PAD_RIGHT;
+  const plotH = CHART_VIEW_H - CHART_PAD_TOP - CHART_PAD_BOTTOM;
+  const baselineY = CHART_PAD_TOP + plotH;
+  const slotW = plotW / series.length;
+  const barW = Math.min(24, slotW * 0.6);
+
+  let svg = `<svg viewBox="0 0 ${CHART_VIEW_W} ${CHART_VIEW_H}" role="img" aria-label="${escapeHtml(title)}の月間増加数">`;
+
+  [0, maxVal].forEach(val => {
+    const y = baselineY - (val / maxVal) * plotH;
+    svg += `<line x1="${CHART_PAD_LEFT}" y1="${y}" x2="${CHART_VIEW_W - CHART_PAD_RIGHT}" y2="${y}" stroke="var(--panel-line)" stroke-width="1" />`;
+    svg += `<text x="${CHART_PAD_LEFT - 6}" y="${y + 3}" text-anchor="end" font-size="9" fill="var(--ink-soft)">${formatNumber(val)}</text>`;
+  });
+
+  series.forEach((d, i) => {
+    const slotX = CHART_PAD_LEFT + i * slotW;
+    const barX = slotX + (slotW - barW) / 2;
+    const h = maxVal > 0 ? (Math.max(d.value, 0) / maxVal) * plotH : 0;
+    const barY = baselineY - h;
+    const path = roundedTopBarPath(barX, barY, barW, h, 4);
+
+    svg += `<g class="progress-chart-bar-group" data-label="${escapeHtml(d.label)}" data-value="${d.value}">`;
+    if (path) svg += `<path class="progress-chart-bar" d="${path}" fill="${color}" pointer-events="none" />`;
+    svg += `<rect class="progress-chart-bar-hit" x="${slotX}" y="${CHART_PAD_TOP}" width="${slotW}" height="${plotH}" fill="transparent" tabindex="0" />`;
+
+    const labelText = (d.value >= 0 ? '+' : '') + formatNumber(d.value);
+    if (measureTextWidth(labelText, 9, 700) <= slotW - 4) {
+      const labelY = Math.max(barY - 4, CHART_PAD_TOP + 8);
+      svg += `<text x="${barX + barW / 2}" y="${labelY}" text-anchor="middle" font-size="9" font-weight="700" fill="var(--ink)" pointer-events="none">${escapeHtml(labelText)}</text>`;
+    }
+    svg += `<text x="${slotX + slotW / 2}" y="${baselineY + 14}" text-anchor="middle" font-size="9" fill="var(--ink-soft)" pointer-events="none">${escapeHtml(d.label)}</text>`;
+    svg += `</g>`;
+  });
+
+  svg += `</svg>`;
+  container.innerHTML = `<div class="progress-chart-title">${escapeHtml(title)}</div>${svg}`;
+
+  container.querySelectorAll('.progress-chart-bar-group').forEach(g => {
+    const hit = g.querySelector('.progress-chart-bar-hit');
+    const bar = g.querySelector('.progress-chart-bar');
+    const label = g.dataset.label;
+    const value = Number(g.dataset.value);
+    const onEnter = () => { if (bar) bar.style.opacity = '0.8'; showChartTooltip(hit, title, label, value); };
+    const onLeave = () => { if (bar) bar.style.opacity = ''; hideChartTooltip(); };
+    hit.addEventListener('pointerenter', onEnter);
+    hit.addEventListener('pointerleave', onLeave);
+    hit.addEventListener('focus', onEnter);
+    hit.addEventListener('blur', onLeave);
+  });
+}
+
+function renderCharts() {
+  const chartEmptyMsg = document.getElementById('chartEmptyMsg');
+  const trainingSeries = buildDiffSeries('trainingCount');
+  const fansSeries = buildDiffSeries('totalFans');
+
+  if (!trainingSeries.length && !fansSeries.length) {
+    document.getElementById('trainingCountChart').innerHTML = '';
+    document.getElementById('totalFansChart').innerHTML = '';
+    chartEmptyMsg.style.display = 'block';
+    return;
+  }
+  chartEmptyMsg.style.display = 'none';
+  renderBarChart('trainingCountChart', '育成回数', 'var(--green-dim)', trainingSeries);
+  renderBarChart('totalFansChart', 'ファン総獲得数', 'var(--blue)', fansSeries);
 }
 
 resetForm();
