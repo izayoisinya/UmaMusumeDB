@@ -442,7 +442,11 @@ function renderBarChart(containerId, title, color, series) {
   if (!series.length) { container.innerHTML = ''; return; }
 
   const maxVal = niceMax(Math.max(...series.map(d => Math.abs(d.value)), 1));
-  const plotW = CHART_VIEW_W - CHART_PAD_LEFT - CHART_PAD_RIGHT;
+  // Y軸の目盛り数値(0とmaxVal)の実測幅から左余白を決める。ファン総獲得数のように
+  // 桁数の多い値は固定の余白だと数字がグラフ左端からはみ出して見切れてしまうため
+  const maxLabelWidth = Math.max(measureTextWidth(formatNumber(0), 9), measureTextWidth(formatNumber(maxVal), 9));
+  const padLeft = Math.max(CHART_PAD_LEFT, maxLabelWidth + 16);
+  const plotW = CHART_VIEW_W - padLeft - CHART_PAD_RIGHT;
   const plotH = CHART_VIEW_H - CHART_PAD_TOP - CHART_PAD_BOTTOM;
   const baselineY = CHART_PAD_TOP + plotH;
   const slotW = plotW / series.length;
@@ -452,12 +456,12 @@ function renderBarChart(containerId, title, color, series) {
 
   [0, maxVal].forEach(val => {
     const y = baselineY - (val / maxVal) * plotH;
-    svg += `<line x1="${CHART_PAD_LEFT}" y1="${y}" x2="${CHART_VIEW_W - CHART_PAD_RIGHT}" y2="${y}" stroke="var(--panel-line)" stroke-width="1" />`;
-    svg += `<text x="${CHART_PAD_LEFT - 6}" y="${y + 3}" text-anchor="end" font-size="9" fill="var(--ink-soft)">${formatNumber(val)}</text>`;
+    svg += `<line x1="${padLeft}" y1="${y}" x2="${CHART_VIEW_W - CHART_PAD_RIGHT}" y2="${y}" stroke="var(--panel-line)" stroke-width="1" />`;
+    svg += `<text x="${padLeft - 6}" y="${y + 3}" text-anchor="end" font-size="9" fill="var(--ink-soft)">${formatNumber(val)}</text>`;
   });
 
   series.forEach((d, i) => {
-    const slotX = CHART_PAD_LEFT + i * slotW;
+    const slotX = padLeft + i * slotW;
     const barX = slotX + (slotW - barW) / 2;
     const h = maxVal > 0 ? (Math.max(d.value, 0) / maxVal) * plotH : 0;
     const barY = baselineY - h;
