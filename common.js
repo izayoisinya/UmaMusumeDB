@@ -643,7 +643,11 @@ if (mastheadMenu && mastheadTitle) {
   // 右端からのスワイプで開く・開いている時に右へスワイプで閉じる
   const MENU_SWIPE_THRESHOLD = 50;
   const MENU_SWIPE_LOCK_THRESHOLD = 6;
-  const MENU_EDGE_ZONE = 60; // 閉じている時、開く判定をするのは右端からこの距離以内で始まったタッチだけ
+  // 閉じている時、開く判定をするのは右端からこの距離以内で始まったタッチだけ。
+  // 端末によってはこの付近がOS標準の「戻る」スワイプの判定域と重なり、
+  // ほぼ端ギリギリでしか開始できないと戻るジェスチャーと競合しやすいため、
+  // 内側まで余裕を持たせて開始できる範囲を広げている
+  const MENU_EDGE_ZONE = 110;
   let menuTouchActive = false;
   let menuTouchStartX = 0;
   let menuTouchStartY = 0;
