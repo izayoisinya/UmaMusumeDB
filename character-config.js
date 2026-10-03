@@ -565,8 +565,6 @@
 
   function renderPlanDetailBody(plan) {
     const monthLabel = formatMonthLabelCc(plan.month);
-    const isLoh = plan.eventType === 'loh';
-    const eventTypeLabel = isLoh ? 'リーグオブヒーローズ' : 'チャンピオンズミーティング';
     const rc = plan.raceCondition || {};
     const raceConditionLabel = [
       rc.location,
@@ -594,9 +592,7 @@
     body.innerHTML = `
       <div class="entry-name-row">
         ${monthLabel ? `<span class="apt-badge">${ccEscapeHtml(monthLabel)}</span>` : ''}
-        <div class="entry-name">${plan.title ? ccEscapeHtml(plan.title) : '（タイトル未設定）'}</div>
       </div>
-      <div class="apt-row"><span class="apt-badge">${eventTypeLabel}</span></div>
       ${raceConditionLabel ? `<div class="entry-notes">${ccEscapeHtml(raceConditionLabel)}</div>` : ''}
       ${charCardsHtml ? `<div class="apt-group owner-group"><span class="apt-group-label">育成予定(タップして編成を設定)</span><div class="plan-char-row">${charCardsHtml}</div></div>` : ''}
       ${plan.notes ? `<div class="entry-notes">${ccEscapeHtml(plan.notes)}</div>` : ''}
