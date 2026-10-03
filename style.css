@@ -1526,14 +1526,23 @@ mark.search-hit {
   gap: 3px;
   min-width: 0;
 }
-.plan-char-mini-row { display: flex; flex-wrap: wrap; gap: 3px; }
+.plan-char-mini-row { display: flex; align-items: flex-end; flex-wrap: wrap; gap: 4px; }
 .plan-char-mini-icon {
-  border-radius: 3px;
+  border-radius: 4px;
   border: 1px solid var(--panel-line);
   object-fit: cover;
 }
-.plan-char-mini-icon.plan-char-mini-support { width: 14px; height: 18px; }
-.plan-char-mini-icon.plan-char-mini-pedigree { width: 16px; height: 16px; }
+.plan-char-mini-icon.plan-char-mini-support { width: 22px; height: 28px; }
+/* 因子設計図の行は実際の血統(親1-祖1-祖2 / 親2-祖3-祖4)通り2段で並べる。
+   親は祖よりひとまわり大きく・枠色をアクセントカラーにして、どちらが
+   親かひと目で分かるようにする */
+.plan-char-mini-icon.plan-char-mini-grandparent { width: 20px; height: 20px; }
+.plan-char-mini-icon.plan-char-mini-parent {
+  width: 28px;
+  height: 28px;
+  border-width: 2px;
+  border-color: var(--green-dim);
+}
 .plan-detail-char {
   cursor: pointer;
   border: 1.5px solid var(--panel-line);

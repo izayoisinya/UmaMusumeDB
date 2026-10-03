@@ -590,12 +590,21 @@
         return `<img class="plan-char-mini-icon plan-char-mini-support" src="${ccEscapeHtml(imageRawUrl(card.imagePath))}" alt="${ccEscapeHtml(d.name)}" loading="lazy">`;
       }).join('');
 
-      // 因子設計図で図鑑から選んだ親・祖(本人=slot 0は除く)のアイコンを小さく並べる
-      const pedigreeIconsHtml = (c.pedigree || []).slice(1).filter(p => p && !p.manual && p.id).map(p => {
+      // 因子設計図で図鑑から選んだ親・祖(本人=slot 0は除く)のアイコンを、
+      // 実際の血統構造(親1-祖1-祖2/親2-祖3-祖4)通り2段(各段: 親→祖→祖)で並べる。
+      // 親は祖より大きく表示し、どちらが親か一目で分かるようにする
+      const pedSlotHtml = (slot, isParent) => {
+        const p = (c.pedigree || [])[slot];
+        if (!p || p.manual || !p.id) return '';
         const pedUma = ccUmas.find(u => u.id === p.id);
         if (!pedUma || !pedUma.imagePath) return '';
-        return `<img class="plan-char-mini-icon plan-char-mini-pedigree" src="${ccEscapeHtml(imageRawUrl(pedUma.imagePath))}" alt="${ccEscapeHtml(p.name)}" loading="lazy">`;
-      }).join('');
+        const roleClass = isParent ? 'plan-char-mini-parent' : 'plan-char-mini-grandparent';
+        return `<img class="plan-char-mini-icon plan-char-mini-pedigree ${roleClass}" src="${ccEscapeHtml(imageRawUrl(pedUma.imagePath))}" alt="${ccEscapeHtml(p.name)}" loading="lazy">`;
+      };
+      const pedigreeRowsHtml = [
+        pedSlotHtml(1, true) + pedSlotHtml(3, false) + pedSlotHtml(4, false),
+        pedSlotHtml(2, true) + pedSlotHtml(5, false) + pedSlotHtml(6, false),
+      ].filter(Boolean).map(row => `<div class="plan-char-mini-row">${row}</div>`).join('');
 
       return `
         <div class="plan-char-chip plan-detail-char" data-index="${idx}">
@@ -603,7 +612,7 @@
           <div class="plan-char-chip-body">
             <span>${ccEscapeHtml(c.name)}</span>
             ${supportIconsHtml ? `<div class="plan-char-mini-row">${supportIconsHtml}</div>` : ''}
-            ${pedigreeIconsHtml ? `<div class="plan-char-mini-row">${pedigreeIconsHtml}</div>` : ''}
+            ${pedigreeRowsHtml}
           </div>
         </div>
       `;
