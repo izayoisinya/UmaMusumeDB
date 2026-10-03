@@ -70,9 +70,21 @@
   <button type="button" class="scroll-fab register-fab" id="openRegisterModalBtn" aria-label="＋ 記録を追加">＋</button>
   <button type="button" class="scroll-fab" id="scrollTopBtn" aria-label="一番上へ">↑</button>
   <button type="button" class="scroll-fab" id="scrollBottomBtn" aria-label="一番下へ">↓</button>
+  <button type="button" class="scroll-fab" id="showChartPopupBtn" aria-label="グラフを表示">📊</button>
 </div>
 
 <div class="modal-overlay" id="modalOverlay" hidden>
+  <div class="modal compact-eligible compact chart-popup-modal" id="chartPopupModal" role="dialog" aria-labelledby="chartPopupTitle" data-pos-key="progressChartPopup" hidden>
+    <div class="modal-header-row">
+      <h2 id="chartPopupTitle">グラフ</h2>
+      <div class="modal-header-actions">
+        <button type="button" class="modal-icon-btn" id="chartPopupCloseBtn" title="閉じる" aria-label="閉じる">✕</button>
+      </div>
+    </div>
+    <div class="progress-chart" id="trainingCountChartPopup"></div>
+    <div class="progress-chart" id="totalFansChartPopup"></div>
+  </div>
+
   <div class="modal" id="progressModal" role="dialog" aria-labelledby="progressModalTitle" hidden>
     <h2 id="progressModalTitle">進行状況ログを追加</h2>
 

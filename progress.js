@@ -505,13 +505,28 @@ function renderCharts() {
   if (!trainingSeries.length && !fansSeries.length) {
     document.getElementById('trainingCountChart').innerHTML = '';
     document.getElementById('totalFansChart').innerHTML = '';
+    document.getElementById('trainingCountChartPopup').innerHTML = '';
+    document.getElementById('totalFansChartPopup').innerHTML = '';
     chartEmptyMsg.style.display = 'block';
     return;
   }
   chartEmptyMsg.style.display = 'none';
   renderBarChart('trainingCountChart', '育成回数', 'var(--green-dim)', trainingSeries);
   renderBarChart('totalFansChart', 'ファン総獲得数', 'var(--blue)', fansSeries);
+  // 縦画面用の「グラフ表示」ポップアップにも同じ内容を描画する(常駐の
+  // 横画面側パネルとは別要素なので、同じデータで個別にもう一度描画する)
+  renderBarChart('trainingCountChartPopup', '育成回数', 'var(--green-dim)', trainingSeries);
+  renderBarChart('totalFansChartPopup', 'ファン総獲得数', 'var(--blue)', fansSeries);
 }
+
+document.getElementById('showChartPopupBtn').addEventListener('click', () => {
+  openModal('chartPopupModal');
+});
+document.getElementById('chartPopupCloseBtn').addEventListener('click', () => {
+  document.getElementById('chartPopupModal').hidden = true;
+  hideOverlayIfNoModalOpen();
+  updateOverlayBackdropState();
+});
 
 resetForm();
 loadEntries();

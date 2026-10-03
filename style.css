@@ -838,7 +838,24 @@ input[type=text]:focus, input[type=number]:focus, input[type=month]:focus, input
     position: sticky;
     top: 90px;
   }
+  /* 横画面の広い幅では右側に常時グラフが出ているので、ボタン経由の
+     ポップアップ表示は不要(ボタン自体を消す) */
+  #showChartPopupBtn { display: none; }
 }
+/* 縦画面などグラフパネルが隠れている幅専用の「グラフ表示」ポップアップ。
+   他の縮小表示ポップアップ(character-config.js側)と同じドラッグ移動の
+   仕組み(common.js)をそのまま使うが、通常サイズへの切り替えボタンも
+   タブ登録ボタンも持たず、常にこの縮小状態のみで存在する。サイズも
+   720px基準をscale(0.6)で縮める汎用の縮小ルールではなく、グラフ2つが
+   ちょうど収まる幅に最初から合わせている */
+#chartPopupModal.modal.compact-eligible.compact {
+  width: min(86vw, 340px);
+  max-width: min(86vw, 340px);
+  max-height: none;
+  transform: none;
+  padding: 14px 16px 16px;
+}
+#chartPopupModal .progress-chart:first-of-type { margin-top: 10px; }
 .progress-chart { margin-top: 16px; }
 .progress-chart:first-of-type { margin-top: 10px; }
 .progress-chart-title {
