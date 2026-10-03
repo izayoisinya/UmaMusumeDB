@@ -1518,6 +1518,22 @@ mark.search-hit {
 .plan-char-chip { display: flex; align-items: center; gap: 6px; }
 .plan-char-chip .uma-icon { width: 32px; height: 32px; cursor: zoom-in; }
 .plan-char-chip span { font-size: 13px; }
+/* 育成計画詳細のキャラチップ: 名前の下に、編成済みサポカの画像と
+   因子設計図で図鑑から選んだ親・祖の画像を、それぞれ別の行で小さく並べる */
+.plan-char-chip-body {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+.plan-char-mini-row { display: flex; flex-wrap: wrap; gap: 3px; }
+.plan-char-mini-icon {
+  border-radius: 3px;
+  border: 1px solid var(--panel-line);
+  object-fit: cover;
+}
+.plan-char-mini-icon.plan-char-mini-support { width: 14px; height: 18px; }
+.plan-char-mini-icon.plan-char-mini-pedigree { width: 16px; height: 16px; }
 .plan-detail-char {
   cursor: pointer;
   border: 1.5px solid var(--panel-line);

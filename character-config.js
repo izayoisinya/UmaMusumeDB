@@ -227,6 +227,7 @@
   let ccPlans = [];
   let ccSha = null;
   let ccUmas = [];
+  let ccSupports = [];
   let ccPlanDetailId = null;
   let ccPlanDetailReturnModalId = null;
   let ccEvents = [];
@@ -527,13 +528,15 @@
     if (typeof applyDefaultCompactOnOpen === 'function') applyDefaultCompactOnOpen(document.getElementById('ccPlanDetailModal'), !!options.keepCompactState);
 
     try {
-      const [plansRaw, umas] = await Promise.all([
+      const [plansRaw, umas, supports] = await Promise.all([
         ccFetchPlansRawCached(),
         ccFetchJsonCached(UMA_PATH),
+        ccFetchJsonCached(SUPPORT_PATH),
       ]);
       ccPlans = plansRaw.entries;
       ccSha = plansRaw.sha;
       ccUmas = umas;
+      ccSupports = supports;
     } catch (err) {
       console.error(err);
       statusEl.textContent = 'データの読み込みに失敗しました: ' + err.message;
@@ -579,11 +582,29 @@
     const charCardsHtml = (plan.characters || []).map((c, idx) => {
       const uma = c.id ? ccUmas.find(u => u.id === c.id) : ccUmas.find(u => u.name === c.name);
       const imageUrl = uma && uma.imagePath ? imageRawUrl(uma.imagePath) : null;
-      const deckCount = (c.supportDeck || []).filter(Boolean).length;
+
+      // 編成済みサポカ(6枚)の画像を小さく並べる
+      const supportIconsHtml = (c.supportDeck || []).filter(Boolean).map(d => {
+        const card = d.id ? ccSupports.find(s => s.id === d.id) : ccSupports.find(s => s.name === d.name);
+        if (!card || !card.imagePath) return '';
+        return `<img class="plan-char-mini-icon plan-char-mini-support" src="${ccEscapeHtml(imageRawUrl(card.imagePath))}" alt="${ccEscapeHtml(d.name)}" loading="lazy">`;
+      }).join('');
+
+      // 因子設計図で図鑑から選んだ親・祖(本人=slot 0は除く)のアイコンを小さく並べる
+      const pedigreeIconsHtml = (c.pedigree || []).slice(1).filter(p => p && !p.manual && p.id).map(p => {
+        const pedUma = ccUmas.find(u => u.id === p.id);
+        if (!pedUma || !pedUma.imagePath) return '';
+        return `<img class="plan-char-mini-icon plan-char-mini-pedigree" src="${ccEscapeHtml(imageRawUrl(pedUma.imagePath))}" alt="${ccEscapeHtml(p.name)}" loading="lazy">`;
+      }).join('');
+
       return `
         <div class="plan-char-chip plan-detail-char" data-index="${idx}">
           ${imageUrl ? `<img class="uma-icon" src="${ccEscapeHtml(imageUrl)}" alt="${ccEscapeHtml(c.name)}" loading="lazy">` : ''}
-          <span>${ccEscapeHtml(c.name)}${deckCount ? `<br><small>サポカ${deckCount}/6</small>` : ''}</span>
+          <div class="plan-char-chip-body">
+            <span>${ccEscapeHtml(c.name)}</span>
+            ${supportIconsHtml ? `<div class="plan-char-mini-row">${supportIconsHtml}</div>` : ''}
+            ${pedigreeIconsHtml ? `<div class="plan-char-mini-row">${pedigreeIconsHtml}</div>` : ''}
+          </div>
         </div>
       `;
     }).join('');
