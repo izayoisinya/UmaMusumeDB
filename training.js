@@ -503,7 +503,7 @@ function renderPlans() {
         return `
           <div class="plan-char-chip">
             ${imageUrl ? `<img class="uma-icon plan-char-icon" src="${escapeHtml(imageUrl)}" alt="${escapeHtml(c.name)}" loading="lazy">` : ''}
-            <span>${escapeHtml(c.name)}</span>
+            <span class="plan-char-name">${escapeHtml(c.name)}</span>
           </div>
         `;
       }).join('');
@@ -514,11 +514,11 @@ function renderPlans() {
           <div class="entry-name-row">
             ${monthLabel ? `<span class="apt-badge">${escapeHtml(monthLabel)}</span>` : ''}
             <div class="entry-name">${plan.title ? escapeHtml(plan.title) : '（タイトル未設定）'}</div>
+            ${raceConditionLabel ? `<div class="entry-notes plan-race-condition">${escapeHtml(raceConditionLabel)}</div>` : ''}
           </div>
           <div class="apt-row">
             <span class="apt-badge">${eventTypeLabel}</span>
           </div>
-          ${raceConditionLabel ? `<div class="entry-notes">${escapeHtml(raceConditionLabel)}</div>` : ''}
           ${charChipsHtml ? `<div class="apt-group owner-group"><span class="apt-group-label">育成予定</span><div class="plan-char-row">${charChipsHtml}</div></div>` : ''}
           ${plan.notes ? `<div class="entry-notes">${escapeHtml(plan.notes)}</div>` : ''}
         </div>

@@ -993,6 +993,16 @@ input[type=text]:focus, input[type=number]:focus, input[type=month]:focus, input
 .entry-clickable:hover { opacity: 0.85; }
 .entry-clickable .entry-actions { cursor: default; }
 .entry-name-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+/* 育成計画(一覧/詳細ポップアップ共通): 画面が十分広い時は、開催月バッジと
+   同じ行の右側にレース条件を表示し、縦に専有する行を1つ減らす。
+   狭い時は他のentry-name-rowの子と同じく自然に折り返して次の行に来る */
+@media (orientation: landscape) and (min-width: 700px) {
+  .plan-race-condition {
+    margin-top: 0;
+    margin-left: auto;
+    text-align: right;
+  }
+}
 .uma-icon {
   width: 40px;
   height: 40px;
@@ -1518,8 +1528,13 @@ mark.search-hit {
 .plan-char-chip { display: flex; align-items: center; gap: 6px; }
 .plan-char-chip .uma-icon { width: 32px; height: 32px; cursor: zoom-in; }
 .plan-char-chip span { font-size: 13px; }
+.plan-char-name { text-decoration: underline; color: var(--green-dim); font-weight: 700; }
 /* 育成計画詳細のキャラチップ: 名前の下に、編成済みサポカの画像と
-   因子設計図で図鑑から選んだ親・祖の画像を、それぞれ別の行で小さく並べる */
+   因子設計図で図鑑から選んだ親・祖の画像を、それぞれ別の行で小さく並べる。
+   サポカ/因子の行が増えてチップ全体が縦に長くなった分、align-items:center
+   のままだとアイコンが名前ではなく全体の縦中央(名前より下)に来てしまうため、
+   このチップだけアイコンを上揃え(=名前と同じ高さ)に変更する */
+.plan-detail-char.plan-char-chip { align-items: flex-start; }
 .plan-char-chip-body {
   display: flex;
   flex-direction: column;

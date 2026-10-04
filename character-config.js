@@ -610,7 +610,7 @@
         <div class="plan-char-chip plan-detail-char" data-index="${idx}">
           ${imageUrl ? `<img class="uma-icon" src="${ccEscapeHtml(imageUrl)}" alt="${ccEscapeHtml(c.name)}" loading="lazy">` : ''}
           <div class="plan-char-chip-body">
-            <span>${ccEscapeHtml(c.name)}</span>
+            <span class="plan-char-name">${ccEscapeHtml(c.name)}</span>
             ${supportIconsHtml ? `<div class="plan-char-mini-row">${supportIconsHtml}</div>` : ''}
             ${pedigreeRowsHtml}
           </div>
@@ -622,8 +622,8 @@
     body.innerHTML = `
       <div class="entry-name-row">
         ${monthLabel ? `<span class="apt-badge">${ccEscapeHtml(monthLabel)}</span>` : ''}
+        ${raceConditionLabel ? `<div class="entry-notes plan-race-condition">${ccEscapeHtml(raceConditionLabel)}</div>` : ''}
       </div>
-      ${raceConditionLabel ? `<div class="entry-notes">${ccEscapeHtml(raceConditionLabel)}</div>` : ''}
       ${charCardsHtml ? `<div class="apt-group owner-group"><span class="apt-group-label">育成予定(タップして編成を設定)</span><div class="plan-char-row">${charCardsHtml}</div></div>` : ''}
       ${plan.notes ? `<div class="entry-notes">${ccEscapeHtml(plan.notes)}</div>` : ''}
     `;
