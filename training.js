@@ -483,8 +483,6 @@ function renderPlans() {
       const row = document.createElement('div');
       row.className = 'entry entry-clickable';
       row.dataset.id = plan.id;
-      const isLoh = plan.eventType === 'loh';
-      const eventTypeLabel = isLoh ? 'リーグオブヒーローズ' : 'チャンピオンズミーティング';
 
       const rc = plan.raceCondition || {};
       const raceConditionLabel = [
@@ -515,9 +513,6 @@ function renderPlans() {
             ${monthLabel ? `<span class="apt-badge">${escapeHtml(monthLabel)}</span>` : ''}
             <div class="entry-name">${plan.title ? escapeHtml(plan.title) : '（タイトル未設定）'}</div>
             ${raceConditionLabel ? `<div class="entry-notes plan-race-condition">${escapeHtml(raceConditionLabel)}</div>` : ''}
-          </div>
-          <div class="apt-row">
-            <span class="apt-badge">${eventTypeLabel}</span>
           </div>
           ${charChipsHtml ? `<div class="apt-group owner-group"><span class="apt-group-label">育成予定</span><div class="plan-char-row">${charChipsHtml}</div></div>` : ''}
           ${plan.notes ? `<div class="entry-notes">${escapeHtml(plan.notes)}</div>` : ''}
