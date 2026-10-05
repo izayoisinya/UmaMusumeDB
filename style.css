@@ -336,9 +336,9 @@ html.body-scroll-locked { overflow: hidden; }
    元のサイズ(より少し大きめ)に戻して目立たせる */
 @media (orientation: landscape) and (min-width: 1000px) {
   .masthead-btn {
-    font-size: 11px;
-    padding: 6px 12px;
-    min-height: 30px;
+    font-size: 10px;
+    padding: 4px 9px;
+    min-height: 24px;
   }
   .masthead-nav.active {
     font-size: 13px;
