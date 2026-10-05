@@ -331,6 +331,22 @@ html.body-scroll-locked { overflow: hidden; }
   color: #fff;
 }
 .masthead-nav.active:hover { background: #558b2f; }
+/* 横画面でヘッダーのナビが横並び表示になる幅では、ボタンの数が多く
+   窮屈になりがちなので全体を一回り縮め、その中で今いるページのボタンだけ
+   元のサイズ(より少し大きめ)に戻して目立たせる */
+@media (orientation: landscape) and (min-width: 1000px) {
+  .masthead-btn {
+    font-size: 11px;
+    padding: 6px 12px;
+    min-height: 30px;
+  }
+  .masthead-nav.active {
+    font-size: 13px;
+    font-weight: 800;
+    padding: 9px 18px;
+    min-height: 38px;
+  }
+}
 
 .settings-tabs {
   display: flex;
