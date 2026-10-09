@@ -1,5 +1,80 @@
 [
   {
+    "id": "pvp_1791585008688_ksdmm",
+    "month": "2026-09",
+    "eventType": "champions",
+    "raceCondition": {
+      "location": "ロンシャン",
+      "distance": 2400,
+      "surface": "芝",
+      "direction": "右回り",
+      "season": "秋",
+      "weather": "晴",
+      "going": "不良"
+    },
+    "team": [
+      {
+        "name": "セイウンスカイ",
+        "id": "uma_1789507386398_xpsma",
+        "winRate": null,
+        "placeRate": null,
+        "showRate": null,
+        "points": null,
+        "imagePath": null,
+        "results": {
+          "first": 0,
+          "second": 0,
+          "third": 0,
+          "other": 0,
+          "races": 0
+        }
+      },
+      {
+        "name": "キタサンブラック",
+        "id": "uma_1789589419069_syoa2",
+        "winRate": null,
+        "placeRate": null,
+        "showRate": null,
+        "points": null,
+        "imagePath": null,
+        "results": {
+          "first": 0,
+          "second": 0,
+          "third": 0,
+          "other": 0,
+          "races": 0
+        }
+      },
+      {
+        "name": "シュヴァルグラン",
+        "id": "uma_1789596408725_9enh0",
+        "winRate": null,
+        "placeRate": null,
+        "showRate": null,
+        "points": null,
+        "imagePath": null,
+        "results": {
+          "first": 0,
+          "second": 0,
+          "third": 0,
+          "other": 0,
+          "races": 0
+        }
+      }
+    ],
+    "videoPath": null,
+    "extraImages": [],
+    "champions": {
+      "tier": "grade",
+      "reachedFinal": true,
+      "finalRound": "B",
+      "rank": 1
+    },
+    "loh": null,
+    "notes": "デバフなし",
+    "savedAt": "2026-10-09T22:30:08.688Z"
+  },
+  {
     "id": "pvp_1790176048735_kyifb",
     "month": "2026-09",
     "eventType": "champions",
