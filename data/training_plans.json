@@ -1,5 +1,29 @@
 [
   {
+    "id": "training_1794763407390_aee5c",
+    "month": "2026-11",
+    "title": "菊花賞LoH",
+    "status": "not_started",
+    "eventType": "loh",
+    "raceCondition": {
+      "location": "京都",
+      "distance": 3000,
+      "surface": "芝",
+      "direction": "右回り",
+      "season": "秋",
+      "weather": "晴",
+      "going": "良"
+    },
+    "characters": [
+      {
+        "id": "uma_1789507346863_pg2yu",
+        "name": "セイウンスカイ"
+      }
+    ],
+    "notes": "",
+    "savedAt": "2026-11-15T17:23:27.390Z"
+  },
+  {
     "id": "training_1790404979348_kdmk5",
     "month": "2026-09",
     "title": "毎日王冠チャンミ",
