@@ -7,393 +7,393 @@
     "blue": [
       {
         "name": "スピード",
-        "self": true,
-        "parent1": false,
-        "parent2": false
+        "self": 3,
+        "parent1": 0,
+        "parent2": 0
       },
       {
         "name": "賢さ",
-        "self": false,
-        "parent1": true,
-        "parent2": true
+        "self": 0,
+        "parent1": 3,
+        "parent2": 3
       }
     ],
     "red": [
       {
         "name": "マイル",
-        "self": true,
-        "parent1": true,
-        "parent2": false
+        "self": 3,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "ダート",
-        "self": false,
-        "parent1": false,
-        "parent2": true
+        "self": 0,
+        "parent1": 0,
+        "parent2": 3
       }
     ],
     "green": [
       {
         "name": "オペレーション・Cacao",
-        "self": true,
-        "parent1": false,
-        "parent2": false
+        "self": 3,
+        "parent1": 0,
+        "parent2": 0
       },
       {
         "name": "烈々と咲く",
-        "self": false,
-        "parent1": true,
-        "parent2": false
+        "self": 0,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "霊験均然チョベリグ神託",
-        "self": false,
-        "parent1": false,
-        "parent2": true
+        "self": 0,
+        "parent1": 0,
+        "parent2": 3
       }
     ],
     "white": [
       {
         "name": "ヴィクトリアマイル",
-        "self": true,
-        "parent1": true,
-        "parent2": false
+        "self": 3,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "ジャパンC",
-        "self": true,
-        "parent1": false,
-        "parent2": true
+        "self": 3,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "道悪○",
-        "self": true,
-        "parent1": false,
-        "parent2": false
+        "self": 3,
+        "parent1": 0,
+        "parent2": 0
       },
       {
         "name": "急ぎ足",
-        "self": true,
-        "parent1": false,
-        "parent2": true
+        "self": 3,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "長距離コーナー○",
-        "self": true,
-        "parent1": false,
-        "parent2": true
+        "self": 3,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "一番乗り",
-        "self": true,
-        "parent1": true,
-        "parent2": false
+        "self": 3,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "戦略家",
-        "self": true,
-        "parent1": false,
-        "parent2": false
+        "self": 3,
+        "parent1": 0,
+        "parent2": 0
       },
       {
         "name": "立ち合い",
-        "self": true,
-        "parent1": true,
-        "parent2": true
+        "self": 3,
+        "parent1": 3,
+        "parent2": 3
       },
       {
         "name": "前だけ見据えて",
-        "self": true,
-        "parent1": false,
-        "parent2": false
+        "self": 3,
+        "parent1": 0,
+        "parent2": 0
       },
       {
         "name": "東奔西走",
-        "self": true,
-        "parent1": false,
-        "parent2": false
+        "self": 3,
+        "parent1": 0,
+        "parent2": 0
       },
       {
         "name": "トレセン軒シナリオ",
-        "self": true,
-        "parent1": true,
-        "parent2": false
+        "self": 3,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "NHKマイルC",
-        "self": true,
-        "parent1": false,
-        "parent2": true
+        "self": 3,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "宝塚記念",
-        "self": true,
-        "parent1": false,
-        "parent2": true
+        "self": 3,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "中京レース場○",
-        "self": true,
-        "parent1": true,
-        "parent2": false
+        "self": 3,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "ペースキープ",
-        "self": true,
-        "parent1": false,
-        "parent2": true
+        "self": 3,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "負けん気",
-        "self": true,
-        "parent1": false,
-        "parent2": false
+        "self": 3,
+        "parent1": 0,
+        "parent2": 0
       },
       {
         "name": "直滑降",
-        "self": true,
-        "parent1": false,
-        "parent2": false
+        "self": 3,
+        "parent1": 0,
+        "parent2": 0
       },
       {
         "name": "中盤巧者",
-        "self": true,
-        "parent1": false,
-        "parent2": false
+        "self": 3,
+        "parent1": 0,
+        "parent2": 0
       },
       {
         "name": "連綿",
-        "self": true,
-        "parent1": true,
-        "parent2": true
+        "self": 3,
+        "parent1": 3,
+        "parent2": 3
       },
       {
         "name": "アオハル点火・賢",
-        "self": true,
-        "parent1": false,
-        "parent2": true
+        "self": 3,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "右回りの目覚め",
-        "self": true,
-        "parent1": true,
-        "parent2": false
+        "self": 3,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "Legendsシナリオ",
-        "self": true,
-        "parent1": false,
-        "parent2": false
+        "self": 3,
+        "parent1": 0,
+        "parent2": 0
       },
       {
         "name": "安田記念",
-        "self": false,
-        "parent1": true,
-        "parent2": true
+        "self": 0,
+        "parent1": 3,
+        "parent2": 3
       },
       {
         "name": "天皇賞（秋）",
-        "self": false,
-        "parent1": true,
-        "parent2": false
+        "self": 0,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "ホープフルS",
-        "self": false,
-        "parent1": true,
-        "parent2": true
+        "self": 0,
+        "parent1": 3,
+        "parent2": 3
       },
       {
         "name": "JDダービー",
-        "self": false,
-        "parent1": true,
-        "parent2": false
+        "self": 0,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "マイルCS南部杯",
-        "self": false,
-        "parent1": true,
-        "parent2": false
+        "self": 0,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "右回り○",
-        "self": false,
-        "parent1": true,
-        "parent2": false
+        "self": 0,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "東京レース場○",
-        "self": false,
-        "parent1": true,
-        "parent2": false
+        "self": 0,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "コーナー巧者○",
-        "self": false,
-        "parent1": true,
-        "parent2": false
+        "self": 0,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "コーナー回復○",
-        "self": false,
-        "parent1": true,
-        "parent2": false
+        "self": 0,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "直線巧者",
-        "self": false,
-        "parent1": true,
-        "parent2": false
+        "self": 0,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "深呼吸",
-        "self": false,
-        "parent1": true,
-        "parent2": false
+        "self": 0,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "地固め",
-        "self": false,
-        "parent1": true,
-        "parent2": true
+        "self": 0,
+        "parent1": 3,
+        "parent2": 3
       },
       {
         "name": "遊びはおしまいっ!",
-        "self": false,
-        "parent1": true,
-        "parent2": false
+        "self": 0,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "下り坂巧者",
-        "self": false,
-        "parent1": true,
-        "parent2": true
+        "self": 0,
+        "parent1": 3,
+        "parent2": 3
       },
       {
         "name": "向こう見ず",
-        "self": false,
-        "parent1": true,
-        "parent2": false
+        "self": 0,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "心惹かれて",
-        "self": false,
-        "parent1": true,
-        "parent2": false
+        "self": 0,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "風切り",
-        "self": false,
-        "parent1": true,
-        "parent2": false
+        "self": 0,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "海の加護",
-        "self": false,
-        "parent1": true,
-        "parent2": false
+        "self": 0,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "ダートの遺伝子",
-        "self": false,
-        "parent1": true,
-        "parent2": false
+        "self": 0,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "賢さの目覚め",
-        "self": false,
-        "parent1": true,
-        "parent2": false
+        "self": 0,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "左回りの目覚め",
-        "self": false,
-        "parent1": true,
-        "parent2": false
+        "self": 0,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "叩き良化型",
-        "self": false,
-        "parent1": true,
-        "parent2": false
+        "self": 0,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "日本ダービー",
-        "self": false,
-        "parent1": false,
-        "parent2": true
+        "self": 0,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "帝王賞",
-        "self": false,
-        "parent1": false,
-        "parent2": true
+        "self": 0,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "夏ウマ娘○",
-        "self": false,
-        "parent1": false,
-        "parent2": true
+        "self": 0,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "曇りの日○",
-        "self": false,
-        "parent1": false,
-        "parent2": true
+        "self": 0,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "マイルコーナー○",
-        "self": false,
-        "parent1": false,
-        "parent2": true
+        "self": 0,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "尻尾上がり",
-        "self": false,
-        "parent1": false,
-        "parent2": true
+        "self": 0,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "スリップストリーム",
-        "self": false,
-        "parent1": false,
-        "parent2": true
+        "self": 0,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "快速",
-        "self": false,
-        "parent1": false,
-        "parent2": true
+        "self": 0,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "比類なき",
-        "self": false,
-        "parent1": false,
-        "parent2": true
+        "self": 0,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "追い風に乗って",
-        "self": false,
-        "parent1": false,
-        "parent2": true
+        "self": 0,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "もう一踏ん張り",
-        "self": false,
-        "parent1": false,
-        "parent2": true
+        "self": 0,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "西の雄",
-        "self": false,
-        "parent1": false,
-        "parent2": true
+        "self": 0,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "春の目覚め",
-        "self": false,
-        "parent1": false,
-        "parent2": true
+        "self": 0,
+        "parent1": 0,
+        "parent2": 3
       }
     ],
     "notes": "",
@@ -408,435 +408,435 @@
     "blue": [
       {
         "name": "スタミナ",
-        "self": true,
-        "parent1": true,
-        "parent2": false
+        "self": 3,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "パワー",
-        "self": false,
-        "parent1": false,
-        "parent2": true
+        "self": 0,
+        "parent1": 0,
+        "parent2": 3
       }
     ],
     "red": [
       {
         "name": "逃げ",
-        "self": true,
-        "parent1": false,
-        "parent2": false
+        "self": 3,
+        "parent1": 0,
+        "parent2": 0
       },
       {
         "name": "長距離",
-        "self": false,
-        "parent1": true,
-        "parent2": true
+        "self": 0,
+        "parent1": 3,
+        "parent2": 3
       }
     ],
     "green": [
       {
         "name": "海風にまったり身を任せ",
-        "self": true,
-        "parent1": false,
-        "parent2": false
+        "self": 3,
+        "parent1": 0,
+        "parent2": 0
       },
       {
         "name": "HOP STEP♪LOCK ON!",
-        "self": false,
-        "parent1": true,
-        "parent2": false
+        "self": 0,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "あっぱれ大盤振る舞い!",
-        "self": false,
-        "parent1": false,
-        "parent2": true
+        "self": 0,
+        "parent1": 0,
+        "parent2": 3
       }
     ],
     "white": [
       {
         "name": "NHKマイルC",
-        "self": true,
-        "parent1": false,
-        "parent2": false
+        "self": 3,
+        "parent1": 0,
+        "parent2": 0
       },
       {
         "name": "日本ダービー",
-        "self": true,
-        "parent1": false,
-        "parent2": false
+        "self": 3,
+        "parent1": 0,
+        "parent2": 0
       },
       {
         "name": "ホープフルS",
-        "self": true,
-        "parent1": false,
-        "parent2": false
+        "self": 3,
+        "parent1": 0,
+        "parent2": 0
       },
       {
         "name": "右回り○",
-        "self": true,
-        "parent1": false,
-        "parent2": false
+        "self": 3,
+        "parent1": 0,
+        "parent2": 0
       },
       {
         "name": "根幹距離○",
-        "self": true,
-        "parent1": false,
-        "parent2": true
+        "self": 3,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "徹底マーク○",
-        "self": true,
-        "parent1": false,
-        "parent2": false
+        "self": 3,
+        "parent1": 0,
+        "parent2": 0
       },
       {
         "name": "コーナー巧者○",
-        "self": true,
-        "parent1": true,
-        "parent2": false
+        "self": 3,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "直線巧者",
-        "self": true,
-        "parent1": true,
-        "parent2": false
+        "self": 3,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "末脚",
-        "self": true,
-        "parent1": false,
-        "parent2": false
+        "self": 3,
+        "parent1": 0,
+        "parent2": 0
       },
       {
         "name": "先駆け",
-        "self": true,
-        "parent1": true,
-        "parent2": false
+        "self": 3,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "先頭プライド",
-        "self": true,
-        "parent1": false,
-        "parent2": true
+        "self": 3,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "スリップストリーム",
-        "self": true,
-        "parent1": false,
-        "parent2": true
+        "self": 3,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "闘争心",
-        "self": true,
-        "parent1": false,
-        "parent2": false
+        "self": 3,
+        "parent1": 0,
+        "parent2": 0
       },
       {
         "name": "ロンシャンレース場○",
-        "self": true,
-        "parent1": false,
-        "parent2": true
+        "self": 3,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "パイオニア",
-        "self": true,
-        "parent1": false,
-        "parent2": false
+        "self": 3,
+        "parent1": 0,
+        "parent2": 0
       },
       {
         "name": "躍動",
-        "self": true,
-        "parent1": false,
-        "parent2": true
+        "self": 3,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "譲れぬ一歩",
-        "self": true,
-        "parent1": false,
-        "parent2": false
+        "self": 3,
+        "parent1": 0,
+        "parent2": 0
       },
       {
         "name": "気持ちを乗せて",
-        "self": true,
-        "parent1": false,
-        "parent2": true
+        "self": 3,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "逃げるが勝ち!",
-        "self": true,
-        "parent1": false,
-        "parent2": false
+        "self": 3,
+        "parent1": 0,
+        "parent2": 0
       },
       {
         "name": "押せ押せムード",
-        "self": true,
-        "parent1": false,
-        "parent2": false
+        "self": 3,
+        "parent1": 0,
+        "parent2": 0
       },
       {
         "name": "連綿",
-        "self": true,
-        "parent1": false,
-        "parent2": true
+        "self": 3,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "アオハル点火・賢",
-        "self": true,
-        "parent1": false,
-        "parent2": true
+        "self": 3,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "海の加護",
-        "self": true,
-        "parent1": false,
-        "parent2": false
+        "self": 3,
+        "parent1": 0,
+        "parent2": 0
       },
       {
         "name": "いつまでも健やかに",
-        "self": true,
-        "parent1": false,
-        "parent2": false
+        "self": 3,
+        "parent1": 0,
+        "parent2": 0
       },
       {
         "name": "Dreamsシナリオ",
-        "self": true,
-        "parent1": false,
-        "parent2": false
+        "self": 3,
+        "parent1": 0,
+        "parent2": 0
       },
       {
         "name": "右回りの目覚め",
-        "self": true,
-        "parent1": false,
-        "parent2": true
+        "self": 3,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "皐月賞",
-        "self": false,
-        "parent1": true,
-        "parent2": false
+        "self": 0,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "ヴィクトリアマイル",
-        "self": false,
-        "parent1": true,
-        "parent2": true
+        "self": 0,
+        "parent1": 3,
+        "parent2": 3
       },
       {
         "name": "安田記念",
-        "self": false,
-        "parent1": true,
-        "parent2": true
+        "self": 0,
+        "parent1": 3,
+        "parent2": 3
       },
       {
         "name": "ジャパンC",
-        "self": false,
-        "parent1": true,
-        "parent2": false
+        "self": 0,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "左回り○",
-        "self": false,
-        "parent1": true,
-        "parent2": false
+        "self": 0,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "冬ウマ娘○",
-        "self": false,
-        "parent1": true,
-        "parent2": true
+        "self": 0,
+        "parent1": 3,
+        "parent2": 3
       },
       {
         "name": "ペースアップ",
-        "self": false,
-        "parent1": true,
-        "parent2": false
+        "self": 0,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "束縛",
-        "self": false,
-        "parent1": true,
-        "parent2": false
+        "self": 0,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "逃げ直線○",
-        "self": false,
-        "parent1": true,
-        "parent2": false
+        "self": 0,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "危険回避",
-        "self": false,
-        "parent1": true,
-        "parent2": true
+        "self": 0,
+        "parent1": 3,
+        "parent2": 3
       },
       {
         "name": "二の矢",
-        "self": false,
-        "parent1": true,
-        "parent2": false
+        "self": 0,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "地固め",
-        "self": false,
-        "parent1": true,
-        "parent2": false
+        "self": 0,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "シンパシー",
-        "self": false,
-        "parent1": true,
-        "parent2": false
+        "self": 0,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "中盤巧者",
-        "self": false,
-        "parent1": true,
-        "parent2": false
+        "self": 0,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "序盤巧者",
-        "self": false,
-        "parent1": true,
-        "parent2": false
+        "self": 0,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "目にも留まらず",
-        "self": false,
-        "parent1": true,
-        "parent2": false
+        "self": 0,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "心惹かれて",
-        "self": false,
-        "parent1": true,
-        "parent2": false
+        "self": 0,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "阿吽の呼吸",
-        "self": false,
-        "parent1": true,
-        "parent2": false
+        "self": 0,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "存在感",
-        "self": false,
-        "parent1": true,
-        "parent2": false
+        "self": 0,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "華麗な踏み込み",
-        "self": false,
-        "parent1": true,
-        "parent2": false
+        "self": 0,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "中距離の遺伝子",
-        "self": false,
-        "parent1": true,
-        "parent2": false
+        "self": 0,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "賢さの目覚め",
-        "self": false,
-        "parent1": true,
-        "parent2": false
+        "self": 0,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "東の雄",
-        "self": false,
-        "parent1": true,
-        "parent2": false
+        "self": 0,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "西の雄",
-        "self": false,
-        "parent1": true,
-        "parent2": true
+        "self": 0,
+        "parent1": 3,
+        "parent2": 3
       },
       {
         "name": "叩き良化型",
-        "self": false,
-        "parent1": true,
-        "parent2": false
+        "self": 0,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "天皇賞（春）",
-        "self": false,
-        "parent1": false,
-        "parent2": true
+        "self": 0,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "天皇賞（秋）",
-        "self": false,
-        "parent1": false,
-        "parent2": true
+        "self": 0,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "BC・デルマー",
-        "self": false,
-        "parent1": false,
-        "parent2": true
+        "self": 0,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "中距離直線○",
-        "self": false,
-        "parent1": false,
-        "parent2": true
+        "self": 0,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "中距離コーナー○",
-        "self": false,
-        "parent1": false,
-        "parent2": true
+        "self": 0,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "迷いなし",
-        "self": false,
-        "parent1": false,
-        "parent2": true
+        "self": 0,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "夢への挑戦",
-        "self": false,
-        "parent1": false,
-        "parent2": true
+        "self": 0,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "光明",
-        "self": false,
-        "parent1": false,
-        "parent2": true
+        "self": 0,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "気ままな足取り",
-        "self": false,
-        "parent1": false,
-        "parent2": true
+        "self": 0,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "労を惜しまず",
-        "self": false,
-        "parent1": false,
-        "parent2": true
+        "self": 0,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "戦略家",
-        "self": false,
-        "parent1": false,
-        "parent2": true
+        "self": 0,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "筆に任せて",
-        "self": false,
-        "parent1": false,
-        "parent2": true
+        "self": 0,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "アメリカンドリーム",
-        "self": false,
-        "parent1": false,
-        "parent2": true
+        "self": 0,
+        "parent1": 0,
+        "parent2": 3
       }
     ],
     "notes": "",
@@ -851,381 +851,381 @@
     "blue": [
       {
         "name": "スタミナ",
-        "self": true,
-        "parent1": true,
-        "parent2": false
+        "self": 3,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "パワー",
-        "self": false,
-        "parent1": false,
-        "parent2": true
+        "self": 0,
+        "parent1": 0,
+        "parent2": 3
       }
     ],
     "red": [
       {
         "name": "中距離",
-        "self": true,
-        "parent1": false,
-        "parent2": false
+        "self": 3,
+        "parent1": 0,
+        "parent2": 0
       },
       {
         "name": "マイル",
-        "self": false,
-        "parent1": true,
-        "parent2": true
+        "self": 0,
+        "parent1": 3,
+        "parent2": 3
       }
     ],
     "green": [
       {
         "name": "光れ！弾けろ！超新星爆発！",
-        "self": true,
-        "parent1": false,
-        "parent2": false
+        "self": 3,
+        "parent1": 0,
+        "parent2": 0
       },
       {
         "name": "オペレーション・Cacao",
-        "self": false,
-        "parent1": true,
-        "parent2": false
+        "self": 0,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "ミンナノアタシへ！",
-        "self": false,
-        "parent1": false,
-        "parent2": true
+        "self": 0,
+        "parent1": 0,
+        "parent2": 3
       }
     ],
     "white": [
       {
         "name": "天皇賞（春）",
-        "self": true,
-        "parent1": true,
-        "parent2": false
+        "self": 3,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "ホープフルS",
-        "self": true,
-        "parent1": true,
-        "parent2": false
+        "self": 3,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "おひとり様○",
-        "self": true,
-        "parent1": false,
-        "parent2": false
+        "self": 3,
+        "parent1": 0,
+        "parent2": 0
       },
       {
         "name": "スピードイーター",
-        "self": true,
-        "parent1": false,
-        "parent2": false
+        "self": 3,
+        "parent1": 0,
+        "parent2": 0
       },
       {
         "name": "危険回避",
-        "self": true,
-        "parent1": false,
-        "parent2": false
+        "self": 3,
+        "parent1": 0,
+        "parent2": 0
       },
       {
         "name": "弾みをつけて",
-        "self": true,
-        "parent1": false,
-        "parent2": false
+        "self": 3,
+        "parent1": 0,
+        "parent2": 0
       },
       {
         "name": "連綿",
-        "self": true,
-        "parent1": false,
-        "parent2": false
+        "self": 3,
+        "parent1": 0,
+        "parent2": 0
       },
       {
         "name": "アオハル点火・賢",
-        "self": true,
-        "parent1": true,
-        "parent2": true
+        "self": 3,
+        "parent1": 3,
+        "parent2": 3
       },
       {
         "name": "恩返し、召し上がれ",
-        "self": true,
-        "parent1": false,
-        "parent2": false
+        "self": 3,
+        "parent1": 0,
+        "parent2": 0
       },
       {
         "name": "春の目覚め",
-        "self": true,
-        "parent1": true,
-        "parent2": false
+        "self": 3,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "大阪杯",
-        "self": true,
-        "parent1": true,
-        "parent2": false
+        "self": 3,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "ジャパンC",
-        "self": true,
-        "parent1": true,
-        "parent2": true
+        "self": 3,
+        "parent1": 3,
+        "parent2": 3
       },
       {
         "name": "良バ場○",
-        "self": true,
-        "parent1": false,
-        "parent2": false
+        "self": 3,
+        "parent1": 0,
+        "parent2": 0
       },
       {
         "name": "先駆け",
-        "self": true,
-        "parent1": false,
-        "parent2": false
+        "self": 3,
+        "parent1": 0,
+        "parent2": 0
       },
       {
         "name": "逃げ直線○",
-        "self": true,
-        "parent1": false,
-        "parent2": false
+        "self": 3,
+        "parent1": 0,
+        "parent2": 0
       },
       {
         "name": "気持ちを乗せて",
-        "self": true,
-        "parent1": false,
-        "parent2": false
+        "self": 3,
+        "parent1": 0,
+        "parent2": 0
       },
       {
         "name": "存在感",
-        "self": true,
-        "parent1": false,
-        "parent2": false
+        "self": 3,
+        "parent1": 0,
+        "parent2": 0
       },
       {
         "name": "突き抜ける走り",
-        "self": true,
-        "parent1": false,
-        "parent2": false
+        "self": 3,
+        "parent1": 0,
+        "parent2": 0
       },
       {
         "name": "海の加護",
-        "self": true,
-        "parent1": true,
-        "parent2": false
+        "self": 3,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "トレセン軒シナリオ",
-        "self": true,
-        "parent1": false,
-        "parent2": true
+        "self": 3,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "東の雄",
-        "self": true,
-        "parent1": true,
-        "parent2": true
+        "self": 3,
+        "parent1": 3,
+        "parent2": 3
       },
       {
         "name": "NHKマイルC",
-        "self": false,
-        "parent1": true,
-        "parent2": true
+        "self": 0,
+        "parent1": 3,
+        "parent2": 3
       },
       {
         "name": "マイルCS",
-        "self": false,
-        "parent1": true,
-        "parent2": false
+        "self": 0,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "日本ダービー",
-        "self": false,
-        "parent1": true,
-        "parent2": false
+        "self": 0,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "朝日杯FS",
-        "self": false,
-        "parent1": true,
-        "parent2": false
+        "self": 0,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "有馬記念",
-        "self": false,
-        "parent1": true,
-        "parent2": false
+        "self": 0,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "春ウマ娘○",
-        "self": false,
-        "parent1": true,
-        "parent2": false
+        "self": 0,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "冬ウマ娘○",
-        "self": false,
-        "parent1": true,
-        "parent2": false
+        "self": 0,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "ベースキープ",
-        "self": false,
-        "parent1": true,
-        "parent2": false
+        "self": 0,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "負けん気",
-        "self": false,
-        "parent1": true,
-        "parent2": false
+        "self": 0,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "ウマ好み",
-        "self": false,
-        "parent1": true,
-        "parent2": false
+        "self": 0,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "地固め",
-        "self": false,
-        "parent1": true,
-        "parent2": false
+        "self": 0,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "中盤巧者",
-        "self": false,
-        "parent1": true,
-        "parent2": false
+        "self": 0,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "風切り",
-        "self": false,
-        "parent1": true,
-        "parent2": false
+        "self": 0,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "押しの一手",
-        "self": false,
-        "parent1": true,
-        "parent2": true
+        "self": 0,
+        "parent1": 3,
+        "parent2": 3
       },
       {
         "name": "連戦連勝",
-        "self": false,
-        "parent1": true,
-        "parent2": true
+        "self": 0,
+        "parent1": 3,
+        "parent2": 3
       },
       {
         "name": "バランス重視",
-        "self": false,
-        "parent1": true,
-        "parent2": false
+        "self": 0,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "皐月賞",
-        "self": false,
-        "parent1": false,
-        "parent2": true
+        "self": 0,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "道悪○",
-        "self": false,
-        "parent1": false,
-        "parent2": true
+        "self": 0,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "集中力",
-        "self": false,
-        "parent1": false,
-        "parent2": true
+        "self": 0,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "急ぎ足",
-        "self": false,
-        "parent1": false,
-        "parent2": true
+        "self": 0,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "先頭プライド",
-        "self": false,
-        "parent1": false,
-        "parent2": true
+        "self": 0,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "差しコーナー○",
-        "self": false,
-        "parent1": false,
-        "parent2": true
+        "self": 0,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "遊びはおしまいっ!",
-        "self": false,
-        "parent1": false,
-        "parent2": true
+        "self": 0,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "フルスロットル",
-        "self": false,
-        "parent1": false,
-        "parent2": true
+        "self": 0,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "粘り腰",
-        "self": false,
-        "parent1": false,
-        "parent2": true
+        "self": 0,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "序盤巧者",
-        "self": false,
-        "parent1": false,
-        "parent2": true
+        "self": 0,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "大詰め",
-        "self": false,
-        "parent1": false,
-        "parent2": true
+        "self": 0,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "迷いなし",
-        "self": false,
-        "parent1": false,
-        "parent2": true
+        "self": 0,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "瞬発力",
-        "self": false,
-        "parent1": false,
-        "parent2": true
+        "self": 0,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "灯を胸に",
-        "self": false,
-        "parent1": false,
-        "parent2": true
+        "self": 0,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "急旋回",
-        "self": false,
-        "parent1": false,
-        "parent2": true
+        "self": 0,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "レースの真髄・心",
-        "self": false,
-        "parent1": false,
-        "parent2": true
+        "self": 0,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "マイルの遺伝子",
-        "self": false,
-        "parent1": false,
-        "parent2": true
+        "self": 0,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "右回りの目覚め",
-        "self": false,
-        "parent1": false,
-        "parent2": true
+        "self": 0,
+        "parent1": 0,
+        "parent2": 3
       }
     ],
     "notes": "",
@@ -1240,363 +1240,363 @@
     "blue": [
       {
         "name": "根性",
-        "self": true,
-        "parent1": false,
-        "parent2": true
+        "self": 3,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "賢さ",
-        "self": false,
-        "parent1": true,
-        "parent2": false
+        "self": 0,
+        "parent1": 3,
+        "parent2": 0
       }
     ],
     "red": [
       {
         "name": "逃げ",
-        "self": true,
-        "parent1": false,
-        "parent2": false
+        "self": 3,
+        "parent1": 0,
+        "parent2": 0
       },
       {
         "name": "長距離",
-        "self": false,
-        "parent1": true,
-        "parent2": false
+        "self": 0,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "マイル",
-        "self": false,
-        "parent1": false,
-        "parent2": true
+        "self": 0,
+        "parent1": 0,
+        "parent2": 3
       }
     ],
     "green": [
       {
         "name": "アングリング×スキーミング",
-        "self": true,
-        "parent1": false,
-        "parent2": false
+        "self": 3,
+        "parent1": 0,
+        "parent2": 0
       },
       {
         "name": "あっぱれ大飯振る舞い!",
-        "self": false,
-        "parent1": true,
-        "parent2": false
+        "self": 0,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "恵福バルカローレ",
-        "self": false,
-        "parent1": false,
-        "parent2": true
+        "self": 0,
+        "parent1": 0,
+        "parent2": 3
       }
     ],
     "white": [
       {
         "name": "急ぎ足",
-        "self": true,
-        "parent1": true,
-        "parent2": false
+        "self": 3,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "リードキープ",
-        "self": true,
-        "parent1": false,
-        "parent2": false
+        "self": 3,
+        "parent1": 0,
+        "parent2": 0
       },
       {
         "name": "遊びはおしまいっ!",
-        "self": true,
-        "parent1": false,
-        "parent2": false
+        "self": 3,
+        "parent1": 0,
+        "parent2": 0
       },
       {
         "name": "押しの一手",
-        "self": true,
-        "parent1": false,
-        "parent2": true
+        "self": 3,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "アオハル点火・賢",
-        "self": true,
-        "parent1": true,
-        "parent2": true
+        "self": 3,
+        "parent1": 3,
+        "parent2": 3
       },
       {
         "name": "マイルの遺伝子",
-        "self": true,
-        "parent1": true,
-        "parent2": true
+        "self": 3,
+        "parent1": 3,
+        "parent2": 3
       },
       {
         "name": "左回りの目覚め",
-        "self": true,
-        "parent1": false,
-        "parent2": false
+        "self": 3,
+        "parent1": 0,
+        "parent2": 0
       },
       {
         "name": "日本ダービー",
-        "self": true,
-        "parent1": false,
-        "parent2": false
+        "self": 3,
+        "parent1": 0,
+        "parent2": 0
       },
       {
         "name": "スピードイーター",
-        "self": true,
-        "parent1": false,
-        "parent2": false
+        "self": 3,
+        "parent1": 0,
+        "parent2": 0
       },
       {
         "name": "先頭プライド",
-        "self": true,
-        "parent1": false,
-        "parent2": true
+        "self": 3,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "序盤巧者",
-        "self": true,
-        "parent1": false,
-        "parent2": false
+        "self": 3,
+        "parent1": 0,
+        "parent2": 0
       },
       {
         "name": "連綿",
-        "self": true,
-        "parent1": true,
-        "parent2": true
+        "self": 3,
+        "parent1": 3,
+        "parent2": 3
       },
       {
         "name": "海の加護",
-        "self": true,
-        "parent1": true,
-        "parent2": false
+        "self": 3,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "スピードの目覚め",
-        "self": true,
-        "parent1": false,
-        "parent2": true
+        "self": 3,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "連戦連勝",
-        "self": true,
-        "parent1": false,
-        "parent2": true
+        "self": 3,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "NHKマイルC",
-        "self": false,
-        "parent1": true,
-        "parent2": false
+        "self": 0,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "エリザベス女王杯",
-        "self": false,
-        "parent1": true,
-        "parent2": true
+        "self": 0,
+        "parent1": 3,
+        "parent2": 3
       },
       {
         "name": "右回り○",
-        "self": false,
-        "parent1": true,
-        "parent2": false
+        "self": 0,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "コーナー回復○",
-        "self": false,
-        "parent1": true,
-        "parent2": false
+        "self": 0,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "勢い任せ",
-        "self": false,
-        "parent1": true,
-        "parent2": false
+        "self": 0,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "品行方正",
-        "self": false,
-        "parent1": true,
-        "parent2": false
+        "self": 0,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "比類なき",
-        "self": false,
-        "parent1": true,
-        "parent2": true
+        "self": 0,
+        "parent1": 3,
+        "parent2": 3
       },
       {
         "name": "長距離の遺伝子",
-        "self": false,
-        "parent1": true,
-        "parent2": false
+        "self": 0,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "東の雄",
-        "self": false,
-        "parent1": true,
-        "parent2": false
+        "self": 0,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "早月賞",
-        "self": false,
-        "parent1": true,
-        "parent2": false
+        "self": 0,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "菊花賞",
-        "self": false,
-        "parent1": true,
-        "parent2": false
+        "self": 0,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "有馬記念",
-        "self": false,
-        "parent1": true,
-        "parent2": false
+        "self": 0,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "阪神レース場○",
-        "self": false,
-        "parent1": true,
-        "parent2": false
+        "self": 0,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "先駆け",
-        "self": false,
-        "parent1": true,
-        "parent2": false
+        "self": 0,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "逃げコーナー○",
-        "self": false,
-        "parent1": true,
-        "parent2": true
+        "self": 0,
+        "parent1": 3,
+        "parent2": 3
       },
       {
         "name": "快速",
-        "self": false,
-        "parent1": true,
-        "parent2": false
+        "self": 0,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "素直な一歩",
-        "self": false,
-        "parent1": true,
-        "parent2": false
+        "self": 0,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "心惹かれて",
-        "self": false,
-        "parent1": true,
-        "parent2": true
+        "self": 0,
+        "parent1": 3,
+        "parent2": 3
       },
       {
         "name": "秋の目覚め",
-        "self": false,
-        "parent1": true,
-        "parent2": true
+        "self": 0,
+        "parent1": 3,
+        "parent2": 3
       },
       {
         "name": "天皇賞（春）",
-        "self": false,
-        "parent1": false,
-        "parent2": true
+        "self": 0,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "マイルCS",
-        "self": false,
-        "parent1": false,
-        "parent2": true
+        "self": 0,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "冬ウマ娘○",
-        "self": false,
-        "parent1": false,
-        "parent2": true
+        "self": 0,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "ベースアップ",
-        "self": false,
-        "parent1": false,
-        "parent2": true
+        "self": 0,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "逃げのコツ",
-        "self": false,
-        "parent1": false,
-        "parent2": true
+        "self": 0,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "尻尾上がり",
-        "self": false,
-        "parent1": false,
-        "parent2": true
+        "self": 0,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "中盤巧者",
-        "self": false,
-        "parent1": false,
-        "parent2": true
+        "self": 0,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "トレセン軒シナリオ",
-        "self": false,
-        "parent1": false,
-        "parent2": true
+        "self": 0,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "皐月賞",
-        "self": false,
-        "parent1": false,
-        "parent2": true
+        "self": 0,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "非根幹距離○",
-        "self": false,
-        "parent1": false,
-        "parent2": true
+        "self": 0,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "おひとり様",
-        "self": false,
-        "parent1": false,
-        "parent2": true
+        "self": 0,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "逃げ直線○",
-        "self": false,
-        "parent1": false,
-        "parent2": true
+        "self": 0,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "地固め",
-        "self": false,
-        "parent1": false,
-        "parent2": true
+        "self": 0,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "影打",
-        "self": false,
-        "parent1": false,
-        "parent2": true
+        "self": 0,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "切り込み隊長",
-        "self": false,
-        "parent1": false,
-        "parent2": true
+        "self": 0,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "恩返し、召し上がれ",
-        "self": false,
-        "parent1": false,
-        "parent2": true
+        "self": 0,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "賢さの目覚め",
-        "self": false,
-        "parent1": false,
-        "parent2": true
+        "self": 0,
+        "parent1": 0,
+        "parent2": 3
       }
     ],
     "notes": "",
@@ -1611,441 +1611,441 @@
     "blue": [
       {
         "name": "賢さ",
-        "self": true,
-        "parent1": false,
-        "parent2": true
+        "self": 3,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "スタミナ",
-        "self": false,
-        "parent1": true,
-        "parent2": false
+        "self": 0,
+        "parent1": 3,
+        "parent2": 0
       }
     ],
     "red": [
       {
         "name": "マイル",
-        "self": true,
-        "parent1": false,
-        "parent2": false
+        "self": 3,
+        "parent1": 0,
+        "parent2": 0
       },
       {
         "name": "ダート",
-        "self": false,
-        "parent1": true,
-        "parent2": true
+        "self": 0,
+        "parent1": 3,
+        "parent2": 3
       }
     ],
     "green": [
       {
         "name": "烈々と咲く",
-        "self": true,
-        "parent1": false,
-        "parent2": false
+        "self": 3,
+        "parent1": 0,
+        "parent2": 0
       },
       {
         "name": "紅焔ギア/LP1211-M",
-        "self": false,
-        "parent1": true,
-        "parent2": false
+        "self": 0,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "プランチャ☆ガナドール",
-        "self": false,
-        "parent1": false,
-        "parent2": true
+        "self": 0,
+        "parent1": 0,
+        "parent2": 3
       }
     ],
     "white": [
       {
         "name": "安田記念",
-        "self": true,
-        "parent1": false,
-        "parent2": true
+        "self": 3,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "ホープフルS",
-        "self": true,
-        "parent1": false,
-        "parent2": false
+        "self": 3,
+        "parent1": 0,
+        "parent2": 0
       },
       {
         "name": "マイルCS南部杯",
-        "self": true,
-        "parent1": false,
-        "parent2": true
+        "self": 3,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "東京レース場○",
-        "self": true,
-        "parent1": false,
-        "parent2": true
+        "self": 3,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "コーナー巧者○",
-        "self": true,
-        "parent1": false,
-        "parent2": true
+        "self": 3,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "直線巧者",
-        "self": true,
-        "parent1": false,
-        "parent2": true
+        "self": 3,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "地固め",
-        "self": true,
-        "parent1": false,
-        "parent2": false
+        "self": 3,
+        "parent1": 0,
+        "parent2": 0
       },
       {
         "name": "下り坂巧者",
-        "self": true,
-        "parent1": false,
-        "parent2": false
+        "self": 3,
+        "parent1": 0,
+        "parent2": 0
       },
       {
         "name": "一番乗り",
-        "self": true,
-        "parent1": false,
-        "parent2": false
+        "self": 3,
+        "parent1": 0,
+        "parent2": 0
       },
       {
         "name": "心惹かれて",
-        "self": true,
-        "parent1": false,
-        "parent2": false
+        "self": 3,
+        "parent1": 0,
+        "parent2": 0
       },
       {
         "name": "立ち合い",
-        "self": true,
-        "parent1": false,
-        "parent2": false
+        "self": 3,
+        "parent1": 0,
+        "parent2": 0
       },
       {
         "name": "トレセン軒シナリオ",
-        "self": true,
-        "parent1": false,
-        "parent2": false
+        "self": 3,
+        "parent1": 0,
+        "parent2": 0
       },
       {
         "name": "賢さの目覚め",
-        "self": true,
-        "parent1": false,
-        "parent2": false
+        "self": 3,
+        "parent1": 0,
+        "parent2": 0
       },
       {
         "name": "左回りの目覚め",
-        "self": true,
-        "parent1": false,
-        "parent2": false
+        "self": 3,
+        "parent1": 0,
+        "parent2": 0
       },
       {
         "name": "ヴィクトリアマイル",
-        "self": true,
-        "parent1": false,
-        "parent2": false
+        "self": 3,
+        "parent1": 0,
+        "parent2": 0
       },
       {
         "name": "天皇賞（秋）",
-        "self": true,
-        "parent1": true,
-        "parent2": false
+        "self": 3,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "JDダービー",
-        "self": true,
-        "parent1": true,
-        "parent2": false
+        "self": 3,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "右回り○",
-        "self": true,
-        "parent1": false,
-        "parent2": false
+        "self": 3,
+        "parent1": 0,
+        "parent2": 0
       },
       {
         "name": "中京レース場○",
-        "self": true,
-        "parent1": false,
-        "parent2": false
+        "self": 3,
+        "parent1": 0,
+        "parent2": 0
       },
       {
         "name": "コーナー回復○",
-        "self": true,
-        "parent1": true,
-        "parent2": true
+        "self": 3,
+        "parent1": 3,
+        "parent2": 3
       },
       {
         "name": "深呼吸",
-        "self": true,
-        "parent1": false,
-        "parent2": false
+        "self": 3,
+        "parent1": 0,
+        "parent2": 0
       },
       {
         "name": "遊びはおしまいっ!",
-        "self": true,
-        "parent1": false,
-        "parent2": false
+        "self": 3,
+        "parent1": 0,
+        "parent2": 0
       },
       {
         "name": "向こう見ず",
-        "self": true,
-        "parent1": false,
-        "parent2": false
+        "self": 3,
+        "parent1": 0,
+        "parent2": 0
       },
       {
         "name": "風切り",
-        "self": true,
-        "parent1": false,
-        "parent2": false
+        "self": 3,
+        "parent1": 0,
+        "parent2": 0
       },
       {
         "name": "連綿",
-        "self": true,
-        "parent1": true,
-        "parent2": true
+        "self": 3,
+        "parent1": 3,
+        "parent2": 3
       },
       {
         "name": "海の加護",
-        "self": true,
-        "parent1": true,
-        "parent2": false
+        "self": 3,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "ダートの遺伝子",
-        "self": true,
-        "parent1": true,
-        "parent2": false
+        "self": 3,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "右回りの目覚め",
-        "self": true,
-        "parent1": false,
-        "parent2": true
+        "self": 3,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "叩き良化型",
-        "self": true,
-        "parent1": false,
-        "parent2": false
+        "self": 3,
+        "parent1": 0,
+        "parent2": 0
       },
       {
         "name": "日本ダービー",
-        "self": false,
-        "parent1": true,
-        "parent2": true
+        "self": 0,
+        "parent1": 3,
+        "parent2": 3
       },
       {
         "name": "川崎記念",
-        "self": false,
-        "parent1": true,
-        "parent2": false
+        "self": 0,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "冬ウマ娘○",
-        "self": false,
-        "parent1": true,
-        "parent2": true
+        "self": 0,
+        "parent1": 3,
+        "parent2": 3
       },
       {
         "name": "ペースキープ",
-        "self": false,
-        "parent1": true,
-        "parent2": false
+        "self": 0,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "シンパシー",
-        "self": false,
-        "parent1": true,
-        "parent2": false
+        "self": 0,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "追い風に乗って",
-        "self": false,
-        "parent1": true,
-        "parent2": true
+        "self": 0,
+        "parent1": 3,
+        "parent2": 3
       },
       {
         "name": "筆に任せて",
-        "self": false,
-        "parent1": true,
-        "parent2": false
+        "self": 0,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "アオハル点火・賢",
-        "self": false,
-        "parent1": true,
-        "parent2": true
+        "self": 0,
+        "parent1": 3,
+        "parent2": 3
       },
       {
         "name": "レースの真髄・速",
-        "self": false,
-        "parent1": true,
-        "parent2": false
+        "self": 0,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "Dreamsシナリオ",
-        "self": false,
-        "parent1": true,
-        "parent2": false
+        "self": 0,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "長距離の遺伝子",
-        "self": false,
-        "parent1": true,
-        "parent2": false
+        "self": 0,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "フェブラリーS",
-        "self": false,
-        "parent1": true,
-        "parent2": true
+        "self": 0,
+        "parent1": 3,
+        "parent2": 3
       },
       {
         "name": "菊花賞",
-        "self": false,
-        "parent1": true,
-        "parent2": false
+        "self": 0,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "朝日杯FS",
-        "self": false,
-        "parent1": true,
-        "parent2": false
+        "self": 0,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "夏ウマ娘○",
-        "self": false,
-        "parent1": true,
-        "parent2": false
+        "self": 0,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "先駆け",
-        "self": false,
-        "parent1": true,
-        "parent2": false
+        "self": 0,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "中盤巧者",
-        "self": false,
-        "parent1": true,
-        "parent2": false
+        "self": 0,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "巨歩",
-        "self": false,
-        "parent1": true,
-        "parent2": false
+        "self": 0,
+        "parent1": 3,
+        "parent2": 0
       },
       {
         "name": "綺羅星",
-        "self": false,
-        "parent1": true,
-        "parent2": true
+        "self": 0,
+        "parent1": 3,
+        "parent2": 3
       },
       {
         "name": "皐月賞",
-        "self": false,
-        "parent1": false,
-        "parent2": true
+        "self": 0,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "ジャパンC",
-        "self": false,
-        "parent1": false,
-        "parent2": true
+        "self": 0,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "スタミナキープ",
-        "self": false,
-        "parent1": false,
-        "parent2": true
+        "self": 0,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "恐れぬ心",
-        "self": false,
-        "parent1": false,
-        "parent2": true
+        "self": 0,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "快速",
-        "self": false,
-        "parent1": false,
-        "parent2": true
+        "self": 0,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "二段構え",
-        "self": false,
-        "parent1": false,
-        "parent2": true
+        "self": 0,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "精進",
-        "self": false,
-        "parent1": false,
-        "parent2": true
+        "self": 0,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "バイタリティ",
-        "self": false,
-        "parent1": false,
-        "parent2": true
+        "self": 0,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "レースの真髄・心",
-        "self": false,
-        "parent1": false,
-        "parent2": true
+        "self": 0,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "春の目覚め",
-        "self": false,
-        "parent1": false,
-        "parent2": true
+        "self": 0,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "エリザベス女王杯",
-        "self": false,
-        "parent1": false,
-        "parent2": true
+        "self": 0,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "東京大賞典",
-        "self": false,
-        "parent1": false,
-        "parent2": true
+        "self": 0,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "ペースアップ",
-        "self": false,
-        "parent1": false,
-        "parent2": true
+        "self": 0,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "直滑降",
-        "self": false,
-        "parent1": false,
-        "parent2": true
+        "self": 0,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "砂浴び○",
-        "self": false,
-        "parent1": false,
-        "parent2": true
+        "self": 0,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "迷いなし",
-        "self": false,
-        "parent1": false,
-        "parent2": true
+        "self": 0,
+        "parent1": 0,
+        "parent2": 3
       },
       {
         "name": "静かな胆",
-        "self": false,
-        "parent1": false,
-        "parent2": true
+        "self": 0,
+        "parent1": 0,
+        "parent2": 3
       }
     ],
     "notes": "",

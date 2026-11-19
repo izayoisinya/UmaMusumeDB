@@ -87,15 +87,21 @@ function onGithubConfigChanged() {
 
 document.getElementById('refreshBtn').addEventListener('click', () => loadEntries());
 
+function starSelectHtml(className, value) {
+  const v = Number(value) || 0;
+  const options = [0, 1, 2, 3].map(n => `<option value="${n}" ${n === v ? 'selected' : ''}>${n}</option>`).join('');
+  return `<select class="${className}">${options}</select>`;
+}
+
 function addFactorLine(listId, name, self, parent1, parent2) {
   const list = document.getElementById(listId);
   const row = document.createElement('div');
   row.className = 'stack-factor-row';
   row.innerHTML = `
     <input type="text" class="fname" placeholder="因子名" value="${escapeAttr(name||'')}">
-    <input type="checkbox" class="fself" ${self ? 'checked' : ''}>
-    <input type="checkbox" class="fp1" ${parent1 ? 'checked' : ''}>
-    <input type="checkbox" class="fp2" ${parent2 ? 'checked' : ''}>
+    ${starSelectHtml('fself', self)}
+    ${starSelectHtml('fp1', parent1)}
+    ${starSelectHtml('fp2', parent2)}
     <button type="button" class="remove-line" aria-label="削除">×</button>
   `;
   row.querySelector('.remove-line').addEventListener('click', () => row.remove());
@@ -106,7 +112,7 @@ const FACTOR_LIST_IDS = { blue: 'blueList', red: 'redList', green: 'greenList', 
 
 document.querySelectorAll('.add-line[data-add]').forEach(btn => {
   btn.addEventListener('click', () => {
-    addFactorLine(FACTOR_LIST_IDS[btn.dataset.add], '', false, false, false);
+    addFactorLine(FACTOR_LIST_IDS[btn.dataset.add], '', 0, 0, 0);
   });
 });
 
@@ -122,9 +128,9 @@ function dedupeFactors(factors) {
   factors.forEach(f => {
     const existing = map.get(f.name);
     if (existing) {
-      existing.self = existing.self || f.self;
-      existing.parent1 = existing.parent1 || f.parent1;
-      existing.parent2 = existing.parent2 || f.parent2;
+      existing.self = Math.max(existing.self, f.self);
+      existing.parent1 = Math.max(existing.parent1, f.parent1);
+      existing.parent2 = Math.max(existing.parent2, f.parent2);
     } else {
       map.set(f.name, { ...f });
     }
@@ -140,9 +146,9 @@ function readListFactors(listId) {
     if (!name) return;
     out.push({
       name,
-      self: r.querySelector('.fself').checked,
-      parent1: r.querySelector('.fp1').checked,
-      parent2: r.querySelector('.fp2').checked,
+      self: Number(r.querySelector('.fself').value) || 0,
+      parent1: Number(r.querySelector('.fp1').value) || 0,
+      parent2: Number(r.querySelector('.fp2').value) || 0,
     });
   });
   return dedupeFactors(out);
@@ -230,8 +236,8 @@ document.getElementById('loadJsonBtn').addEventListener('click', () => {
 function fillFactorList(listId, factors) {
   document.getElementById(listId).innerHTML = '';
   const list = factors || [];
-  list.forEach(f => addFactorLine(listId, f.name, !!f.self, !!f.parent1, !!f.parent2));
-  if (!list.length) addFactorLine(listId, '', false, false, false);
+  list.forEach(f => addFactorLine(listId, f.name, Number(f.self) || 0, Number(f.parent1) || 0, Number(f.parent2) || 0));
+  if (!list.length) addFactorLine(listId, '', 0, 0, 0);
 }
 
 function fillForm(parsed) {
@@ -298,7 +304,7 @@ function resetForm() {
   document.getElementById('entryForm').reset();
   Object.values(FACTOR_LIST_IDS).forEach(listId => {
     document.getElementById(listId).innerHTML = '';
-    addFactorLine(listId, '', false, false, false);
+    addFactorLine(listId, '', 0, 0, 0);
   });
   document.getElementById('pasteJson').value = '';
   pendingImageDataUrl = null;
@@ -590,7 +596,7 @@ function renderEntries() {
     row.className = 'entry';
 
     const chips = [];
-    const mark = v => v ? '○' : '×';
+    const mark = v => v > 0 ? String(v) : '×';
     const stackLabel = f => `${highlightMatches(f.name, terms)}<${mark(f.self)},${mark(f.parent1)},${mark(f.parent2)}>`;
     const pushChip = (color, f) => {
       const matchClass = matchesAnyTerm(f.name, terms) ? ' search-match' : '';

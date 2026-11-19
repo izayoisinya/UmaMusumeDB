@@ -655,7 +655,9 @@ input[type=text]:focus, input[type=number]:focus, input[type=month]:focus, input
 .stack-header span:nth-child(5) { width: 20px; }
 .stack-factor-row { display: flex; gap: 6px; align-items: center; }
 .stack-factor-row input[type=text] { flex: 1; }
-.stack-factor-row input[type=checkbox] { width: 44px; height: 18px; margin: 0; cursor: pointer; accent-color: var(--green-dim); }
+.stack-factor-row select.fself,
+.stack-factor-row select.fp1,
+.stack-factor-row select.fp2 { width: 44px; height: 28px; margin: 0; padding: 0; text-align: center; cursor: pointer; }
 
 .search-row {
   display: flex;
