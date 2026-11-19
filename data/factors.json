@@ -665,7 +665,7 @@
         "parent2": 0
       },
       {
-        "name": "ベースキープ",
+        "name": "ペースキープ",
         "self": 0,
         "parent1": 3,
         "parent2": 0
@@ -878,7 +878,7 @@
         "parent2": 0
       },
       {
-        "name": "あっぱれ大飯振る舞い!",
+        "name": "あっぱれ大盤振る舞い!",
         "self": 0,
         "parent1": 3,
         "parent2": 0
@@ -1036,12 +1036,6 @@
         "parent2": 0
       },
       {
-        "name": "早月賞",
-        "self": 0,
-        "parent1": 3,
-        "parent2": 0
-      },
-      {
         "name": "菊花賞",
         "self": 0,
         "parent1": 3,
@@ -1114,13 +1108,13 @@
         "parent2": 3
       },
       {
-        "name": "ベースアップ",
+        "name": "ペースアップ",
         "self": 0,
         "parent1": 0,
         "parent2": 3
       },
       {
-        "name": "逃げのコツ",
+        "name": "逃げのコツ○",
         "self": 0,
         "parent1": 0,
         "parent2": 3
@@ -1146,7 +1140,7 @@
       {
         "name": "皐月賞",
         "self": 0,
-        "parent1": 0,
+        "parent1": 3,
         "parent2": 3
       },
       {
@@ -1641,7 +1635,7 @@
         "parent2": 3
       },
       {
-        "name": "静かな胆",
+        "name": "静かな熱",
         "self": 0,
         "parent1": 0,
         "parent2": 3
